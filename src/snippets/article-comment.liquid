@@ -1,0 +1,15 @@
+{%- comment -%}
+ * snippet: product-card.liquid
+ * ----------------------------
+ * Renders an article commment
+ *
+ * @param {Object} comment 
+ * @usage: {% render 'article-comment', comment: comment %}
+{%- endcomment -%}
+
+<article id="{{ comment.id }}" class="comment">
+  {{ comment.content }}
+  <footer class="comment__footer">
+    <span class="comment__author">{{ comment.author }}</span>
+  </footer>
+</article>

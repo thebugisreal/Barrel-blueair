@@ -1,0 +1,70 @@
+s-drawer {
+  @apply hidden
+  fixed 
+  overflow-hidden 
+  w-full 
+  max-w-[375px]
+  bg-white 
+  transform
+  transition-all
+  duration-300
+  ease-in-out;
+}
+
+s-drawer[position="top"],
+s-drawer[position="bottom"] {
+  @apply w-screen
+  max-w-none
+  left-0;
+}
+
+s-drawer[position="left"],
+s-drawer[position="right"] {
+  @apply h-full
+  top-[env(safe-area-inset-top)]
+  bottom-[env(safe-area-inset-bottom)];
+}
+
+s-drawer[position="top"] {
+  @apply top-0
+  -translate-y-full;
+}
+
+s-drawer[position="right"] {
+  @apply right-0
+  translate-x-full;
+}
+
+s-drawer[position="bottom"] {
+  @apply bottom-0
+  translate-y-full;
+}
+
+s-drawer[position="left"] {
+  @apply left-0
+  -translate-x-full;
+}
+
+s-drawer.open {
+  @apply block
+  translate-x-0
+  translate-y-0;
+}
+
+.drawer-background:after {
+  content: "";
+  @apply invisible
+  opacity-0
+  fixed
+  inset-0
+  w-full
+  h-full
+  bg-black-true
+  bg-opacity-60
+  transition-all;
+}
+
+.js-drawer-open .drawer-background::after {
+  @apply visible
+  opacity-100;
+}

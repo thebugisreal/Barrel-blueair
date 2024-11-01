@@ -1,0 +1,29 @@
+.swiper {
+  @apply overflow-visible;
+}
+
+.swiper.swiper-initialized {
+  @apply overflow-hidden;
+}
+
+.swiper-wrapper {
+  @apply block;
+}
+
+.swiper-initialized .swiper-wrapper {
+  @apply flex;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply hidden;
+}
+
+.swiper-initialized .swiper-button-prev,
+.swiper-initialized .swiper-button-next {
+  @apply flex;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply pointer-events-none
+}

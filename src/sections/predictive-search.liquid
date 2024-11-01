@@ -1,0 +1,9 @@
+{%- if predictive_search.performed -%}
+  <section id="predictive-search-results">
+    {% render 'predictive-search--resources' resources: predictive_search.resources.products, title: 'Products'%}
+    {% render 'predictive-search--resources' resources: predictive_search.resources.collections, title: 'Collections'%}
+    {% render 'predictive-search--resources' resources: predictive_search.resources.articles, title: 'Articles'%}
+    {% render 'predictive-search--resources' resources: predictive_search.resources.pages, title: 'Pages'%}
+    <button class="predictive-search__item" tabindex="-1">Search for “{{ predictive_search.terms }}”</button>
+  </section>
+{%- endif -%}

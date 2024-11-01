@@ -1,0 +1,33 @@
+{% comment %}
+@summary Social Sharing Component to share article or product on social media
+
+BE CAREFUL WHEN EDITTING THIS FILE AS IT MAY BE USED FOR ARTICLE AND PRODUCT PAGES
+MAKE SURE TO CHECK WHERE ITS BEING USED AND THAT THE STYLING IS NOT BEING BROKEN
+ON PAGES THAT YOU AREN'T WORKING ON. IF STYLING DIFFERS BETWEEN THE 2 PAGES, SET
+UP INDEPENDENT CSS INSTEAD OF EDITING THIS FILE.
+
+@usage {% render 'social-sharing' %}
+
+
+@param {{share_title}} - Title of object
+@param {{share_permalink}} - Permalink to object
+@param {{share_image}} - Object (article or product)
+{% endcomment %}
+
+<ul class="social-sharing flex">
+  <li class="social-sharing__item">
+    <a class="social-sharing__link block" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{share_title}} on Facebook" title="Share {{share_title}} on Facebook">
+      {% render 'icon-facebook' %}
+    </a>
+  </li>
+  <li class="social-sharing__item">
+    <a class="social-sharing__link block" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{share_title}} on Twitter" title="Share {{share_title}} on Twitter">
+      {% render 'icon-twitter' %}
+    </a>
+  </li>
+  <li class="social-sharing__item">
+    <a class="social-sharing__link block" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}}&amp;media={{ share_image | image_url: width: 1024, height: 1024, crop: 'center' }}&amp;description={{ share_title | url_param_escape }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{share_title}} on Instagram" title="Share {{share_title}} on Instagram">
+      {% render 'icon-pinterest' %}
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,32 @@
+{%- comment -%}
+ * snippet: master-variant-select.liquid
+ * -------------------------------------
+ * Snippet for rendering master variant select markup. 
+ *
+ * Feel free to update select option element with variant attributes as needed
+ *
+ * @param {Array} variants - required, product variants
+ * @param {Array} id - required, master select id
+ * @param {Array} name - options, input name, defaults to 'id'
+ * @param {Object} current_variant - optional, current variant to set initial state
+ * @param {String} display - ['sr-only', 'no-js', 'visible'] default: 'no-js'
+ *
+ * @usage
+  {% render 'master-variant-select'
+      variants: product.variants
+      id: 'unique_identifier'
+      current_variant: current_variant
+  %}
+{%- endcomment -%}
+{% assign display = display | default: 'no-js' %}
+
+<select id="{{ id }}" name="{{ name | default: 'id' }}" class="{{ display }}">
+  {% for variant in variants %}
+    <option
+      {% if variant == current_variant %}selected="selected"{% endif %}
+      {% unless variant.available %}disabled="disabled"{% endunless %}
+      value="{{ variant.id }}">
+        {{ variant.title }}
+    </option>
+  {% endfor %}
+</select>

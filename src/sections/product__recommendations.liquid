@@ -1,0 +1,27 @@
+<product-recommendations class="product-recommendations block" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    {% if section.settings.related_title != blank %}
+      <h1 class="product-recommendations__title">{{ section.settings.title }}</h1>
+      <div class="product-recommendations__products">
+        {% for recommendation in recommendations.products %}
+          {% render 'product-card' product: product, brand: product.vendor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endif %}
+</product-recommendations>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text", 
+      "id": "title",
+      "label": "Title",
+      "default": "You May Also Like"
+    }
+  ]
+}
+{% endschema %}

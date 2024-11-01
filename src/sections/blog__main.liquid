@@ -1,0 +1,24 @@
+{%- paginate blog.articles by 6 -%}
+
+  <div class="blog">
+    <h1 class="blog__title">{{ blog.title | escape }}</h1>
+
+    <ul class="blog-articles" role="list">
+      {%- for article in blog.articles -%}
+        <li class="blog-articles__article">
+          {%- render 'article-card', article: article -%}
+        </li>
+      {%- endfor -%}
+      </ul>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog Posts"
+}
+{% endschema %}

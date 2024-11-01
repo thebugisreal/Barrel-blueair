@@ -1,0 +1,80 @@
+{%- comment -%}
+ * snippet: product-option-selector.liquid 
+ * ---------------------------------------
+ * Snippet for rendering <product-options> component markup.
+ *
+ * Feel free to add case statements and new type parameters as needed. Just
+ * make sure each input has [js-product-option-selector] and data-index="option{{option.position}}"
+ *
+ * @param {Object} option - required product options with values
+ * @param {String} type - required, must be one of ['select', 'swatch']. 
+ *                        This dictates if the option will be rendered as a
+ *                        select dropdown, a radio/swatch 
+ *
+ * @param {Number} section_id - optional, recommended to pass in. This helps avoid
+ *                              redundant id issues, that can cause weird bugs
+ * @param {Number} product_id - optional, recommended to pass in. This helps avoid
+ *                              redundant id issues, that can cause weird bugs
+ * @usage
+    {% render 'product-option-selector'
+      option: option
+      type: 'swatch'
+      section_id: section.id
+      product_id: product.id
+    %}
+{%- endcomment -%}
+
+{% case type %}
+  {% when 'select' %}
+    <div class="product-option {% if option.values.size == 1 %} sr-only {% endif %}">
+      {% capture input_id %}option-{{ option.name }}-{{ section.id }}-{{ product.id }}{% endcapture %}
+      <label for="{{ input_id }}">
+        {{ option.name }}
+      </label>
+
+      <select
+        id="{{ input_id }}"
+        js-product-option-selector
+        data-index="option{{ option.position }}">
+        {% for value in option.values %}
+          <option
+            value="{{ value | handle }}"
+            {% if option.selected_value == value %}selected="selected"{% endif %}>
+              {{ value }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+  {% when 'swatch' %}
+    <div class="product-option {% if option.values.size == 1 %} sr-only {% endif %}">
+      <div class="product-option__swatch product-swatch">
+          <h2 class="product-swatch__header">{{ option.name }}</h2>
+          <div class="product-swatch__container">
+            {% for value in option.values %}
+              {% capture input_id %}swatch-{{ value }}-{{ section.id }}-{{ product.id }}{% endcapture %}
+              {% capture radio_name %}swatch-{{ option.name }}-{{ section.id }}-{{ product.id }}{% endcapture %}
+              <div class="product-swatch__group relative">
+                <input 
+                  id="{{ input_id }}"
+                  class="product-swatch__input"
+                  type="radio" 
+                  name="{{ radio_name }}"
+                  value="{{ value | handle }}" 
+                  {% if option.values.size == 1 and option.selected_value == value %} checked="checked" {% endif %}
+                  data-index="option{{ option.position }}" 
+                  js-product-option-selector>
+                <label 
+                  for="{{ input_id }}"
+                  class="product-swatch__label">
+                  {{ value }}
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </div><!-- .product-option__swatch -->
+    </div>
+{% endcase %}
+
+
+

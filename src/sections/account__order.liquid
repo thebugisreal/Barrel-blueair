@@ -1,0 +1,92 @@
+<section class="account self-center justify-self-center w-full max-w-[475px]">
+  <div class="account__container border">
+    <div class="account__header">
+      <h1 class="account__title">Order {{ order.name }}</h1>
+      {%- assign order_date =  -%}
+      <p class="account-order__created-date">Placed on: {{ order.created_at | time_tag: format: "date_at_time" }}</p>
+      {%- if order.cancelled -%}
+        <p class="account-order__cancelled-date">Cancelled on: {{ order.cancelled_at | time_tag: format: "date_at_time" }}</p>
+        <p class="account-order__cancelled-reason">Cancellation Reason: {{ order.cancel_reason_label }}</p>
+      {%- endif -%}
+    </div>
+    <div class="account-order_addresses">
+      <div class="account-order__address">
+        <h2 class="account-order__address-title">Billing Address</h2>
+        <h3 class="account-order__payment-status">Payment Status: <span>{{ order.financial_status_label }}</span></h3>
+        <p class="account-order__address-details">
+          {{order.billing_address.first_name}} {{order.billing_address.last_name}}<br>
+          {%- if order.billing_address.company != blank -%}{{order.billing_address.company}}<br>{%- endif -%}
+          {{order.billing_address.address1}}<br>
+          {%- if order.billing_address.address2 != blank -%}{{order.billing_address.address2}}<br>{%- endif -%}
+          {{order.billing_address.city}}, {{order.billing_address.province_code}} {{order.billing_address.zip}}<br>
+          {{order.billing_address.country}}<br>
+        </p>
+      </div>
+      <div class="account-order__address">
+        <h2 class="account-order__address-title">Shipping Address</h2>
+        <h3 class="account-order__shipping-status">Fulfillment Status: <span>{{ order.fulfillment_status_label }}</span></h3>
+        <p class="account-order__address-details">
+          {{order.shipping_address.first_name}} {{order.shipping_address.last_name}}<br>
+          {%- if order.shipping_address.company != blank -%}{{order.shipping_address.company}}<br>{%- endif -%}
+          {{order.shipping_address.address1}}<br>
+          {%- if order.shipping_address.address2 != blank -%}{{order.shipping_address.address2}}<br>{%- endif -%}
+          {{order.shipping_address.city}}, {{order.shipping_address.province_code}} {{order.shipping_address.zip}}<br>
+          {{order.shipping_address.country}}<br>
+        </p>
+      </div>
+    </div>
+    <div class="account-order__items">
+      {% for item in order.line_items %}
+        <article class="account-order__item">
+          <div class="account-order__image">{% render 'lazy-image', image: item.image %}</div>
+          <h1 class="account-order-item__title">{{ item.title }}</h1>
+          <h2 class="account-order-item__variant">{{ item.variant.title}}</h2>
+          <p class="account-order-item__quantity">Quantity: {{item.quantity}}</p>
+          <p class="account-order-item__price">{{item.final_price | money }}</p>
+          {% if item.fulfillment %}
+            <p class="account-order-item__fulfillment">
+              Fulfillment: {{ item.fulfillment.created_at | date: '%m/%d/%y' }} <br />
+              {% if item.fulfillment.tracking_url %}
+                <a class="account-order-item__fulfillment-url" href="{{ item.fulfillment.tracking_url }}">{{ item.fulfillment.tracking_company }}{% if item.fulfillment.tracking_number %}: {{ item.fulfillment.tracking_number }}{% endif %}</a>
+              {% else %}
+                <span class="account-order-item__fulfillment-details">{{ item.fulfillment.tracking_company }}{% if item.fulfillment.tracking_number %}: {{ item.fulfillment.tracking_number }}{% endif %}</span>
+              {% endif %}
+            </p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <div class="account-order__details">
+      <table class="account-order__financial-details w-full">
+        {% for discount in order.discounts %}
+          <tr>
+            <td>{{ discount.code }} Discount</td>
+            <td class="text-right">{{ discount.savings | money }}</td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td>Subtotal</td>
+          <td class="text-right">{{ order.subtotal_price | money }}</td>
+        </tr>
+        {% for shipping_method in order.shipping_methods %}
+          <tr>
+            <td>Shipping ({{ shipping_method.title }})</td>
+            <td class="text-right">{{ order.shipping_method.price | money }}</td>
+          </tr>
+        {% endfor %}
+        {% for tax_line in order.tax_lines %}
+          <tr>
+            <td>Tax ({{tax_line.title }} {{tax_line.rate | times: 100 }}%)</td>
+            <td class="text-right">{{ tax_line.price | money }}</td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td>Total</td>
+          <td class="text-right">{{ order.total_price | money }}</td>
+        </tr>
+      </table>
+    </div>
+    <a href="{{routes.account_url}}">Back to Account Dashboard</a>
+    <a href="{{routes.account_logout_url}}">Sign Out</a>
+  </div>
+</section>

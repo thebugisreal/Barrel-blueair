@@ -1,0 +1,41 @@
+@layer base{
+  /* FIX FOR ROUNDED IOS INPUTS SIDEWIDE */
+  input:not[type="checkbox"],
+  input[type="search"] {
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  /* clears the ‘X’ from Internet Explorer */
+  input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+  input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+  /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+  label{
+    cursor: pointer;
+  }
+
+  address{
+    @apply not-italic;
+  }
+  
+  .form__element{
+    @apply text-16
+    w-full
+  }
+
+  .form__element::placeholder{
+
+  }
+
+  .form__errors{
+    
+  }
+
+  .form__label{
+    
+  }
+}

@@ -1,0 +1,7 @@
+#recover:target .account-login__forgot{
+  @apply block;
+}
+
+#recover:target .account-login__forgot ~ .account-login__login {
+  @apply hidden;
+}

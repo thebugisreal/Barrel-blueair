@@ -1,0 +1,32 @@
+<active-filters class="active-filters" role="list" js-active-filters>
+  {% assign has_filters = false %}
+  {% for filter in collection.filters %}
+    {% for value in filter.active_values %}
+      {% assign has_filters = true %}
+      <li class="active-filters__filter" js-active-filter>
+        <button class="active-filters__remove" data-value="{{ value.value }}" data-name="{{ value.param_name }}" js-remove>          
+          {{ value.label | escape }} X
+          <span class="visually-hidden">Clear Filter</span>
+        </button>
+      </li>
+    {% endfor %}
+    {% if filter.type == 'price_range' %}
+      {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+        {% assign has_filters = true %}
+        <li class="active-filters__filter" js-active-filter>
+          <button class="active-filters__remove" js-remove>
+            {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+            <span class="visually-hidden">Clear Filter</span>
+          </button>
+        </li>
+      {%- endif -%}
+    {% endif %}
+  {% endfor %}
+  {% if has_filters %}
+    <li class="active-filters__clear-all clear-all" js-active-filter>
+      <button class="active-filters__remove"  js-clear-all>
+        Clear All
+      </button>
+    </li>
+  {% endif %}
+</active-filters>

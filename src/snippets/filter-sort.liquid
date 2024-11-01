@@ -1,0 +1,94 @@
+{%- comment -%}
+ * snippet: filter-sort.liquid 
+ * ---------------------------
+ * Collection filter and sort
+ *
+ * @param {Object} results: Collection of Search object
+ * @param {Boolean} enable_filtering
+ * @param {Boolean} enable_sorting
+ * @param {String} scope - descriptive string to scope different filter-sort instances
+ * @usage 
+    {% render 'facets', 
+      results: collection, 
+      enable_filtering: true, 
+      enable_sorting: true 
+      scope: "mobile" 
+    %}
+{%- endcomment -%}
+
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign total_active_values = 0
+-%}
+
+<filter-sort class="filter-sort" data-scope="{{ scope }}">
+  <form class="filter-sort__form" js-filter-form>
+    <div class="filter-sort__filters-container">
+      {%- unless results.filters == empty -%}
+        <p class="filter-sort__filter-by-label">Filter:</p>
+      {%- endunless -%}
+
+      <s-accordion data-manual-collapse="false" js-accordion>
+        {%- for filter in results.filters -%}
+          {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+          <div class="filter-sort accordion-item" data-index="{{ forloop.index }}" js-accordion-item js-filter>
+            <button type="button" class="filter-sort__label accordion-header" aria-expanded="true" aria-controls="{{ filter.label | handle }}-master-filter" js-accordion-header>{{ filter.label | escape }}</button>
+            <div id="{{ filter.label | handle }}-master-filter" class="filter-sort__values-container accordion-content" aria-hidden="false" js-accordion-content>
+              {% case filter.type %}
+                {% when 'list' %}
+                  <ul class="filter-sort__values" role="list">
+                    {%- for value in filter.values -%}
+                      {% capture value_id %}FilterSort-{{ filter.label | escape }}-{{ forloop.index }}-{{ scope }}{% endcapture %}
+                      <li class="filter-sort__value">
+                        <div class="filter-value">
+                          <input type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            id="{{ value_id }}"
+                            {% if value.active %}checked{% endif %}
+                            {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          >
+                          <label for="{{ value_id }}" 
+                            class="filter-value__label {% if value.count == 0 and value.active == false %} disabled opacity-30 {% endif %}"
+                          >{{ value.label | escape }} ({{ value.count }})</label>
+                        </div>
+                      </li>                          
+                    {%- endfor -%}
+                  </ul>   
+                {% when 'price_range' %}   
+                  {% render 'filter--range' filter: filter, value: value, scope: scope %}
+              {% endcase %}
+            </div><!-- .filter-sort__values-container -->
+          </div>
+        {%- endfor -%}
+      </s-accordion>
+    </div><!-- .filter-sort__filters-container -->
+
+    <div class="filter-sort__container">
+      <label for="SortBy" class="filter-sort__label">Sort By:</label>
+      {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+      <select name="sort_by" class="filter-sort__select" id="SortBy" aria-describedby="a11y-refresh-page-message" js-filter-form-sort>
+        {%- for option in results.sort_options -%}
+          <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+        {%- endfor -%}
+      </select>
+    </div>
+
+    <div class="filter-sort__footer">
+      <button class="active-filters__remove" js-clear-all>
+        Clear All
+      </button>
+      <button class="no-js-hidden" js-filter-sort-close>Apply</button>
+    </div>
+
+    {% if results.current_vendor or results.current_type %}
+      <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+    {% endif %}
+
+    {%- if results.terms -%}
+      <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      <input name="options[prefix]" type="hidden" value="last">
+    {%- endif -%}     
+  </form>
+  <loading-spinner class="filter__loading-spinner fixed" style="--width: 40px; --height: 40px;"></loading-spinner>
+</filter-sort>

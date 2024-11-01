@@ -1,0 +1,103 @@
+@layer base{
+  *:focus{
+    @apply outline-none;
+  }
+
+  .no-js:not(html) {
+    display: none !important;
+  }
+  
+  html.no-js .no-js:not(html) {
+    display: block !important;
+  }
+  
+  .no-js-inline {
+    display: none !important;
+  }
+  
+  html.no-js .no-js-inline {
+    display: inline-block !important;
+  }
+  
+  html.no-js .no-js-hidden {
+    display: none !important;
+  }
+
+  /* Disallows scrolling for when drawers + modals are open */
+  body.js-focusable-widget-open {
+    @apply overflow-hidden;
+  }
+
+  .main{
+    grid-template-rows: min-content;
+  }
+
+  .icon{
+    @apply inline-block
+    w-full
+    h-auto;
+  }
+
+  .icon:not(.icon--full-color){
+    @apply fill-current;
+  }
+
+  .is-transitioning {
+    @apply block
+    visible !important;
+  }
+
+  .visually-hidden {
+    @apply absolute
+    overflow-hidden
+    whitespace-nowrap !important;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+  }
+
+  .shopify-challenge__container{
+    @apply self-center
+    justify-self-center;
+  }
+
+  .lazypicture img{
+    aspect-ratio: var(--ar-lzimg-mobile);
+  }
+
+  @media screen(tabletp) {
+    .lazypicture img{
+      aspect-ratio:  var(--ar-lzimg-tabletp, var(--ar-lzimg-mobile));
+    }
+  }
+
+  @media screen(tabletl) {
+    .lazypicture img{
+      aspect-ratio:  var(--ar-lzimg-tabletl, var(--ar-lzimg-tabletp, var(--ar-lzimg-mobile)));
+    }
+  }
+
+  @media screen(desktop) {
+    .lazypicture img{
+      aspect-ratio:  var(--ar-lzimg-desktop, var(--ar-lzimg-tabletl, var(--ar-lzimg-tabletp, var(--ar-lzimg-mobile))));
+    }
+  }
+
+  @media screen(laptop) {
+    .lazypicture img{
+      aspect-ratio:  var(--ar-lzimg-laptop, var(--ar-lzimg-desktop, var(--ar-lzimg-tabletl, var(--ar-lzimg-tabletp, var(--ar-lzimg-mobile)))));
+    }
+  }
+
+  @media screen(widescreen) {
+    .lazypicture img{
+      aspect-ratio:  var(--ar-lzimg-widescreen, var(--ar-lzimg-laptop, var(--ar-lzimg-desktop, var(--ar-lzimg-tabletl, var(--ar-lzimg-tabletp, var(--ar-lzimg-mobile))))));
+    }
+  }
+
+  @media screen(extrawide) {
+    .lazypicture img{
+      aspect-ratio:  var(--ar-lzimg-extrawide, var(--ar-lzimg-widescreen, var(--ar-lzimg-laptop, var(--ar-lzimg-desktop, var(--ar-lzimg-tabletl, var(--ar-lzimg-tabletp, var(--ar-lzimg-mobile)))))));
+    }
+  }
+}

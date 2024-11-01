@@ -1,0 +1,7 @@
+.tab__panel[aria-hidden="false"]{
+  display: block;
+}
+
+.tab__panel[aria-hidden="true"]{
+  display: none;
+}

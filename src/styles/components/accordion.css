@@ -1,0 +1,20 @@
+.accordion {
+  display: block;
+}
+
+.accordion-header {
+  cursor: pointer;
+}
+
+.accordion-content{
+  transition: max-height 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.accordion-content[aria-hidden="true"]{
+  max-height: 0;
+}
+
+.accordion-content[aria-hidden="false"]{
+  max-height: 9999px;
+}

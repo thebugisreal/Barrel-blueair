@@ -1,0 +1,148 @@
+{%- liquid 
+  assign current_variant = product.selected_or_first_available_variant 
+  assign product_form_id = 'ProductForm-' | append: section.id | append: product.id
+  assign master_select_id = 'MasterSelect-' | append: section.id
+-%}
+
+<s-product role="section" class="product" data-section-id="{{ section.id }}">
+  <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
+  <div class="product__layout">
+    <div class="product__images w-1/2">
+      <s-carousel data-init="belowTablet">
+        <div id="ProductMainImages" class="swiper w-full" js-carousel>
+          <div class="swiper-wrapper">
+            {% for media in product.media %}
+              {% case media.media_type %}
+                {% when 'image' %}
+                  <div class="swiper-slide" js-carousel-slide>
+                    {% render 'lazy-image' image: media %}
+                  </div>
+                {% when 'video' %}
+                  <div class="swiper-slide" js-carousel-slide>
+                    {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
+                  </div>
+                {% when 'external_video' %}              
+                  <div class="swiper-slide" js-carousel-slide>
+                    {{ media | external_video_tag }}
+                  </div>
+                {% endcase %}
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </s-carousel>
+    </div><!-- .product__images-container -->
+
+    <div class="product__information" id="ProductInfo-{{ section.id }}">
+      <h1 class="product__title">{{ product.title }}</h1>
+      <div class="product__price" js-price>{{product.price | money }}</div>
+      <div class="product__description">{{ product.description }}</div>
+      {%- comment -%}
+        * Product Form
+      {%- endcomment -%}
+      {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', js-product-form: true -%}
+        
+        {%- comment -%} Product Variant Master Select {%- endcomment -%}
+        {% render 'master-variant-select',
+          variants: product.variants,
+          id: master_select_id,
+          current_variant: current_variant
+        %}
+
+        {% unless product.has_only_default_variant %}
+          <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state>
+            {% for option in product.options_with_values %}
+              {% render 'product-option-selector' 
+                option: option
+                type: 'swatch'
+                section_id: section.id
+                product_id: product.id
+              %}
+            {% endfor %}
+          </product-options>
+        {% endunless %}
+
+        <label class="form__label" for="Quantity-{{ section.id }}">
+          Qty
+        </label>
+        <quantity-input class="quantity">
+          <button class="quantity__button" name="minus" type="button" aria-label="Decrease quantity for {{ product.title }}" title="Decrease quantity for {{ product.title }}">&minus;</button>
+          <input class="quantity__input"
+              type="number"
+              name="quantity"
+              id="Quantity-{{ section.id }}"
+              min="1"
+              value="1"
+              form="{{ product_form_id }}"
+            >
+          <button class="quantity__button" name="plus" type="button" aria-label="Increase quantity for {{ product.title }}" title="Increase quantity for {{ product.title }}">&plus;</button>
+        </quantity-input>
+
+        <button 
+          class="btn relative"
+          type="submit" 
+          {% unless current_variant.available %} disabled {% endunless %}
+          js-add-to-cart>
+          <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
+          {% if current_variant.available %} Add To Cart {% else %} Sold Out {% endif %}
+        </button>
+        <p class="hidden" js-error-message></p>
+
+      {%- endform -%}
+    </div><!-- .product__images-container -->
+  </div><!-- .product__layout -->
+
+  <script type="application/json" id="ProductJSON">{{ product | json }}</script>
+
+</s-product>
+
+{%- liquid
+  if product.selected_or_first_available_variant.featured_media
+    assign seo_media = product.selected_or_first_available_variant.featured_media
+  else
+    assign seo_media = product.featured_media
+  endif
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    {% if seo_media -%}
+      "image": [
+        {{ seo_media | image_url: width: seo_media.preview_image.width | prepend: "https:" | json }}
+      ],
+    {%- endif %}
+    "description": {{ product.description | strip_html | json }},
+    {%- if product.selected_or_first_available_variant.sku != blank -%}
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- endif -%}
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | json }}
+    },
+    "offers": [
+      {%- for variant in product.variants -%}
+        {
+          "@type" : "Offer",
+          {%- if variant.sku != blank -%}
+            "sku": {{ variant.sku | json }},
+          {%- endif -%}
+          "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price" : {{ variant.price | divided_by: 100.00 | json }},
+          "priceCurrency" : {{ cart.currency.iso_code | json }},
+          "url" : {{ shop.url | append: variant.url | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product"
+}
+{% endschema %}

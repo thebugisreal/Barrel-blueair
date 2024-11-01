@@ -1,0 +1,76 @@
+{%- liquid
+  case section.settings.sort
+    when 'products_high' or 'products_low'
+      assign collections = collections | sort: 'all_products_count'
+    when 'date' or 'date_reversed'
+      assign collections = collections | sort: 'published_at'
+  endcase
+
+  if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+    assign collections = collections | reverse
+  endif
+-%}
+
+<section class="collection-list">
+  <div class="collection-list__layout">
+    {% if section.settings.title != blank %}
+      <h1 class="collection-list__title">{{ section.settings.title | escape }}</h1>
+    {% endif %}
+
+    {% if collections.size > 0 %}
+      <ul class="collection-list__grid" role="list">
+        <li class="collection-list__item">
+          {% render 'collection-list-item' %}
+        </li>
+      </ul>
+    {% endif %}
+
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collections"
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "options": [
+        {
+          "value": "alphabetical",
+          "label": "Alphabetically, A-Z"
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": "Alphabetically, Z-A"
+        },
+        {
+          "value": "date_reversed",
+          "label": "Date, new to old"
+        },
+        {
+          "value": "date",
+          "label": "Date, old to new"
+        },
+        {
+          "value": "products_high",
+          "label": "Product count, high to low"
+        },
+        {
+          "value": "products_low",
+          "label": "Product count, low to high"
+        }
+      ],
+      "default": "alphabetical",
+      "label": "Sort collections by:"
+    }
+  ]
+}
+{% endschema %}

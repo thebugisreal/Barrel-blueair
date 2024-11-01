@@ -1,0 +1,31 @@
+{%- comment -%}
+ * Snippet: predictive-search--resources.liquid
+ * --------------------------------------------
+ * Used to display predictive search resources, such as products, collections and articles.
+ * @param title - required
+ * @param resources - required
+{%- endcomment -%}
+
+{%- if resources.size > 0 -%}
+  <h2 id="predictive-search-products" class="predictive-search__heading">{{ title }}</h2>
+  <ul id="predictive-search-results-list" class="predictive-search__results-list" role="listbox" aria-labelledby="predictive-search-products">
+  {%- for resource in resources -%}
+    <li class="predictive-search__list-item" role="option">
+      <a href="{{ resource.url }}" class="predictive-search__item" tabindex="-1">
+        {% if resource.image != blank or resource.featured_media != blank %}
+          <div class="predictive-search__item-image w-[100px]">
+            {% if resource.image != blank %}
+              {% render 'lazy-image', image: resource.image %}
+            {% else %}            
+              {% render 'lazy-image', image: resource.featured_media %}
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="predictive-search__item-content">
+          <span class="predictive-search__item-heading">{{ resource.title }}</span>
+        </div>
+      </a>
+    </li>
+  {%- endfor -%}
+  </ul>
+{%- endif -%}

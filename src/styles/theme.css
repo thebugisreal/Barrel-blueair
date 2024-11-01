@@ -1,0 +1,20 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/utilities';
+
+@import '/global/fonts.css';
+@import '/global/layout.css';
+@import '/global/buttons.css';
+@import '/global/forms.css';
+
+@import '/global/drawers.css';
+@import '/global/modals.css';
+
+@import '/global/z-index.css';
+
+@import '/components/carousel.css';
+@import '/components/accordion.css';
+@import '/components/tabs.css';
+
+@import '/account/login.css';
+
+@import '/templates/cart.css';

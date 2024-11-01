@@ -1,0 +1,94 @@
+<section class="account self-center justify-self-center w-full max-w-[475px]">
+  <div class="account__container border">
+    <div class="account__links w-full grid grid-cols-2">
+      <a href="/account/login" class="btn">Sign In</a>
+      <div class="w-full flex items-center justify-center text-center">Create Account</div>
+    </div>
+    
+    {%- form 'create_customer', id: 'create', class: 'account-create__form', novalidate: 'novalidate' -%}
+    <h1 class="account__title">Create Account</h1>
+    <p>
+      By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.
+    </p>
+    {%- if form.errors -%}
+      <ul class="form__errors">
+        {% for field in form.errors %}
+          <li>
+            {% if field == 'form' %}
+              {{ form.errors.messages[field] }}
+            {% else %}
+              {{ form.errors.translated_fields[field] }} - {{ form.errors.messages[field] }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {%- endif -%}
+
+    <div class="relative">
+      <label for="RegisterForm-FirstName" class="form__label">First Name</label>     
+      <input
+        type="text"
+        name="customer[first_name]"
+        id="RegisterForm-FirstName"
+        class="form__element"
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+        autocomplete="given-name"
+        placeholder="First Name"
+      >
+    </div>
+
+    <div class="relative">
+      <label for="RegisterForm-LastName" class="form__label">Last Name</label>
+      <input
+        type="text"
+        name="customer[last_name]"
+        id="RegisterForm-LastName"
+        class="form__element"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+        autocomplete="family-name"
+        placeholder="Last Name"
+      >
+    </div>
+
+    <div class="relative"> 
+      <label for="RegisterForm-email" class="form__label">Email Address</label>     
+      <input
+        type="email"
+        name="customer[email]"
+        id="RegisterForm-email"
+        class="form__element"
+        {% if form.email %} value="{{ form.email }}"{% endif %}
+        spellcheck="false"
+        autocapitalize="off"
+        autocomplete="email"
+        aria-required="true"
+        {% if form.errors contains 'email' %}
+          aria-invalid="true"
+          aria-describedby="RegisterForm-email-error"
+        {% endif %}
+        placeholder="Email Address"
+      >
+    </div>
+
+    <div class="relative">
+      <label for="RegisterForm-password" class="form__label">Password</label>  
+      <input
+        type="password"
+        name="customer[password]"
+        id="RegisterForm-password"
+        class="form__element"
+        aria-required="true"
+        {% if form.errors contains 'password' %}
+          aria-invalid="true"
+          aria-describedby="RegisterForm-password-error"
+        {% endif %}
+        placeholder="Password"
+      >
+    </div>
+
+    
+    <button class="btn">Create Account</button>
+    
+  {%- endform -%}
+  </div>
+</section>

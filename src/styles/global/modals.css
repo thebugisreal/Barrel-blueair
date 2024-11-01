@@ -1,0 +1,40 @@
+s-modal {
+  @apply hidden
+  fixed
+  top-1/2
+  left-1/2
+  transform
+  -translate-y-2/4
+  -translate-x-2/4
+  max-h-[75vh]
+  m-auto
+  overflow-auto
+  bg-white
+  opacity-0
+  transition-all
+  duration-300
+  ease-in-out;
+}
+
+s-modal.open {
+  @apply block
+  opacity-100;
+}
+
+.modal-background:before {
+  content: "";
+  @apply invisible
+  opacity-0
+  fixed
+  inset-0
+  w-full
+  h-full
+  bg-black-true
+  bg-opacity-60
+  transition-all;
+}
+
+.js-modal-open .modal-background::before {
+  @apply visible
+  opacity-100;
+}

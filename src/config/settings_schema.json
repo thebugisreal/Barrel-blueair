@@ -1,0 +1,71 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "SEED",
+    "theme_version": "1.0.0",
+    "theme_author": "SEED",
+    "theme_support_url": "https://www.seedcms.com",
+    "theme_documentation_url": "https://www.seedcms.com"
+  },
+  {
+    "name": "Navigation",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "header_nav",
+        "label": "Header Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_nav",
+        "label": "Footer Navigation"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "label": "Show Cart Note"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "Youtube"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

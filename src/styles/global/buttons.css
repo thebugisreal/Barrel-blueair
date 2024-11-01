@@ -1,0 +1,19 @@
+@layer base{
+  .btn{
+    @apply cursor-pointer
+    disabled:cursor-not-allowed;
+  }
+
+  /* focus and focus-visible styles should be the same. */
+  .btn:focus{}
+
+  /* this should reset focus styles, because this is 'non keyboard/screen reader' focus events (i.e. lingering mouse clicks) */
+  .btn:focus:not(:focus-visible){}
+
+  /* focus and focus-visible styles should be the same. */
+  .btn:focus-visible{}
+
+  @media screen(desktop){
+    .btn:hover{}
+  }
+}

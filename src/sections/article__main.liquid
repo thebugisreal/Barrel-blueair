@@ -1,0 +1,41 @@
+<article class="article" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="article__header">
+    {% if article.image != blank %}
+      <div class="article__image">{% render 'lazy-image' image: article.image %}</div>
+    {% endif %}
+    <h1 class="article__title">{{ article.title }}</h1>
+  </header>
+  <div class="article__content">
+    {{ article.content }}
+  </div>
+
+  <div class="article__social-sharing">
+    {% render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+  </div>
+
+  {%- if blog.comments_enabled? and article.comments.size > 0-%}
+    {%- assign anchorId = '#Comments-' | append: article.id -%}
+    {% paginate article.comments by 5 %} 
+      <div class="article__comments"> 
+        <h2 class="article__comments-title">{{ article.comments_count }} Comments</h2>
+        {% for comment in article.comments %}
+          {% render 'article-comment' comment: comment %}
+        {% endfor %}
+        {% render 'pagination', paginate: paginate, anchor: anchorId %}
+      </div>
+    {% endpaginate %}
+
+    <div class="article__new-comment-form">
+      {% render 'new-comment-form', blog: blog %}
+    </div>
+  {%- endif -%}
+
+</article>
+
+
+{% schema %}
+{
+  "name": "Blog Post",
+  "tag": "section"
+}
+{% endschema %}

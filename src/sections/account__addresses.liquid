@@ -1,0 +1,194 @@
+<s-account class="account self-center justify-self-center w-full max-w-[475px]">
+  <div class="account__container border">
+    <div class="account-dashboard__header">
+      <h1 class="account__title">My Addresses</h1>
+    </div>
+    <div class="account__addresses">
+      <h2 class="account__subtitle">Default Address</h2>
+      {% for address in customer.addresses %}
+        {% if address == customer.default_address %}
+          <div class="account-address__container" data-address-id="{{address.id}}">
+            <div class="account__address">
+              {{address.first_name}} {{address.last_name}}<br>
+              {%- if address.company != blank -%}
+                {{address.company}}<br>
+              {%- endif -%}
+              {{address.address1}}<br>
+              {%- if address.address2 != blank -%}
+                {{address.address2}}<br>
+              {%- endif -%}
+              {{address.city}}, {{address.province_code}} {{address.zip}}<br>
+              {{address.country}}
+            </div>
+            <button data-form="{{address.id}}" js-edit-address>Edit</button>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if customer.addresses.size > 1 %}
+      <div class="account__addresses">
+        <h2 class="account__subtitle">Other Saved Addresses</h2>
+        <ul class="account-address__list grid grid-cols-2">
+          {% for address in customer.addresses %}
+            {% unless address == customer.default_address %}
+              <li class="account-address__container" data-address-id="{{address.id}}">
+                <div class="account__address">
+                  {{address.first_name}} {{address.last_name}}<br>
+                  {%- if address.company != blank -%}
+                    {{address.company}}<br>
+                  {%- endif -%}
+                  {{address.address1}}<br>
+                  {%- if address.address2 != blank -%}
+                    {{address.address2}}<br>
+                  {%- endif -%}
+                  {{address.city}}, {{address.province_code}} {{address.zip}}<br>
+                  {{address.country}}
+                </div>
+                <button data-form="{{address.id}}" js-edit-address>Edit</button>
+              </li>
+            {% endunless %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <button js-open-add-address>Add New Address</button>
+    <a href="{{routes.account_logout_url}}">Sign Out</a>
+  </div>
+  <s-modal id="addAddressModal" open="[js-open-add-address]" close="[js-close-add-address]">
+    <div class="account-address__modal">
+      <header class="account-address-modal__header">
+        <h2 class="account__subtitle">Add New Address</h2>
+        <button js-close-add-address>X</button>
+      </header>
+      {%- form 'customer_address', customer.new_address -%}
+        {%- if form.errors -%}
+          <ul class="form__errors">
+            {% for field in form.errors %}
+              <li>
+                {% if field == 'form' %}
+                  {{ form.errors.messages[field] }}
+                {% else %}
+                  {{ form.errors.translated_fields[field] }} - {{ form.errors.messages[field] }}
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {%- endif -%}
+        <div class="grid grid-cols-2">
+          <div class="relative">
+            <label for="AddressFirstNameNew" class="form__label">First Name</label>
+            <input type="text" id="AddressFirstNameNew" class="form__element" name="address[first_name]" value="{{ customer.first_name }}" autocomplete="given-name" placeholder="First Name">
+          </div>
+          <div class="relative">
+            <label for="AddressLastNameNew" class="form__label">Last Name</label>
+            <input type="text" id="AddressLastNameNew" class="form__element" name="address[last_name]" value="{{ customer.last_name }}" autocomplete="family-name" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="relative">
+          <label for="AddressCompanyNew" class="form__label">Company</label>
+          <input type="text" id="AddressCompanyNew" class="form__element" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="Company">
+        </div>
+        <div class="relative">
+          <label for="AddressAddress1New" class="form__label">Address 1</label>
+          <input type="text" id="AddressAddress1New" class="form__element" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="Address 1">
+        </div>
+        <div class="relative">
+          <label for="AddressAddress2New" class="form__label">Address 2</label>
+          <input type="text" id="AddressAddress2New" class="form__element" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="Address 2">
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="relative">
+            <label for="AddressCountryNew" class="form__label">Country</label>
+            <select id="AddressCountryNew" class="form__element" name="address[country]" data-default="{{ form.country }}" autocomplete="country">{{ all_country_option_tags }}</select>
+          </div>
+          <div id="AddressProvinceContainerNew" class="relative">
+            <label for="AddressProvinceNew" class="form__label">State/Province</label>
+            <select id="AddressProvinceNew" class="form__element" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1"></select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="relative">     
+            <label for="AddressCityNew" class="form__label">City</label>     
+            <input type="text" id="AddressCityNew" class="form__element" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="City">
+          </div>
+          <div class="relative">
+            <label for="AddressZipNew" class="form__label">Postal/Zip Code</label>
+            <input type="text" id="AddressZipNew" class="form__element" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="Postal/Zip Code">
+          </div>
+        </div>
+        <div class="relative">
+          <label for="AddressPhoneNew" class="form__label">Phone Number</label>
+          <input type="tel" id="AddressPhoneNew" class="form__element" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="Phone Number">
+        </div>
+        <div class="relative flex items-center justify-start">
+          <input type="checkbox" id="address_default_address_new" name="address[default]" value="1">
+          <label for="address_default_address_new">Set as default</label>
+        </div>
+        <div>
+          <button class="btn">Save Address</button>
+        </div>
+      {%- endform -%}
+    </div>
+  </s-modal>
+  <s-modal id="editAddressModal" open="[js-open-edit-address]" close="[js-close-edit-address]" js-edit-address-modal>
+    {% for address in customer.addresses %}
+      {% form 'customer_address', address, class: 'hidden', js-edit-address-form: '' %}
+        <div class="grid grid-cols-2">
+          <div class="relative">
+            <label for="AddressFirstName_{{ form.id }}" class="form__label">First Name</label>
+            <input type="text" id="AddressFirstName_{{ form.id }}" class="form__element" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="First Name">
+          </div>
+          <div class="relative">
+            <label for="AddressLastName_{{ form.id }}" class="form__label">Last Name</label>
+            <input type="text" id="AddressLastName_{{ form.id }}" class="form__element" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="relative">
+          <label for="AddressCompany_{{ form.id }}" class="form__label">Company</label>
+          <input type="text" id="AddressCompany_{{ form.id }}" class="form__element" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="Company">
+        </div>
+        <div class="relative">
+          <label for="AddressAddress1_{{ form.id }}" class="form__label">Address 1</label>
+          <input type="text" id="AddressAddress1_{{ form.id }}" class="form__element" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="Address 1">
+        </div>
+        <div class="relative">
+          <label for="AddressAddress2_{{ form.id }}" class="form__label">Address 2</label>
+          <input type="text" id="AddressAddress2_{{ form.id }}" class="form__element" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="Address 2">
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="relative">
+            <label for="AddressCountry_{{ form.id }}" class="form__label">Country</label>
+            <select id="AddressCountry_{{ form.id }}" class="form__element" name="address[country]" data-default="{{ form.country }}" autocomplete="country" data-form-id="{{ form.id }}" js-country-select>{{ all_country_option_tags }}</select>
+          </div>
+          <div id="AddressProvinceContainer_{{ form.id }}" class="relative">
+            <label for="AddressProvince_{{ form.id }}" class="form__label">State/Province</label>
+            <select id="AddressProvince_{{ form.id }}" class="form__element" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1"></select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="relative">     
+            <label for="AddressCity_{{ form.id }}" class="form__label">City</label>
+            <input type="text" id="AddressCity_{{ form.id }}" class="form__element" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="City">
+          </div>
+          <div class="relative">
+            <label for="AddressZip_{{ form.id }}" class="form__label">Postal/Zip Code</label>
+            <input type="text" id="AddressZip_{{ form.id }}" class="form__element" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="Postal/Zip Code">
+          </div>
+        </div>
+        <div class="relative">
+          <label for="AddressPhone_{{ form.id }}" class="form__label">Phone Number</label>
+          <input type="tel" id="AddressPhone_{{form.id}}" class="form__element" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="Phone Number">
+        </div>
+        <div class="relative flex items-center justify-start">
+          {{ form.set_as_default_checkbox }}
+          <label for="address_default_address_{{form.id}}">Make this my default shipping address</label>
+        </div>
+        <div>
+          <button type="submit" class="account-address__edit-save">Save</button>
+          <button type="button" class="account-address__edit-delete" data-target="{{address.url}}" js-delete-address>Delete</button>
+        </div>
+      {% endform %}
+    {% endfor %}
+    <button js-close-edit-address>Cancel</button>
+  </s-modal>
+</s-account>

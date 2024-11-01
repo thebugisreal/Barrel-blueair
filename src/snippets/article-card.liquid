@@ -1,0 +1,27 @@
+{% comment %}
+ * snippet: article-card.liquid
+ * ----------------------------
+ * Renders an article card.
+ * @param {Object} article 
+ * @usage: {% render 'article-card' article: article %}    
+{% endcomment %}
+
+<article class="article-card" >
+  <a href="{{ article.url }}" class="article-content motion-reduce">
+    {% if article.image != blank %}
+      <div class="article-card__image">{% render 'lazy-image' image: article.image %}</div>
+    {% endif %}
+    <header class="article-card__header">
+      <h3 class="article-card__title">{{ article.title }}</h3>
+    </header>
+    {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+    <p class="article-card__excerpt">
+      {%- if article.excerpt.size > 0 -%}
+        {{ article.excerpt | strip_html | truncatewords: 30 }}
+      {%- else -%}
+        {{ article.content | strip_html | truncatewords: 30 }}
+      {%- endif -%}
+    </p>
+  {%- endif -%}
+  </a>
+</article>

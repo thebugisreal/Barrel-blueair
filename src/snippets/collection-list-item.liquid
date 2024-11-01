@@ -1,0 +1,25 @@
+{% comment %}
+ * snippet: collection-list-itemliquid
+ * ----------------------------
+ * Renders a collection as a list item.
+ * @param {Object} collection
+ * @usage: {% render 'collection-list-item' collection: collection %}    
+{% endcomment %}
+
+<article class="collection-list-item">
+  <a href="{{ collection.url }}">
+    <header class="collection-list-item__header">
+      {% if collection.image != blank %}
+        <div class="collection-list-item__image">
+          {% render 'lazy-image' image: collection.image %}
+        </div>
+      {% endif %}
+      <h3 class="collection-list-item__title">{{ collection.title }}</h3>
+    </header>
+    <div class="collection-list-item__content">
+      {%- if collection.description != blank -%}
+        <p>{{- collection.description | strip_html | truncatewords: 12 -}}</p>
+      {%- endif -%}
+    </div>
+  </a>
+</article>

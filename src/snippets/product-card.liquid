@@ -1,0 +1,12 @@
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__image">
+    {% render 'lazy-image' image: product.featured_image %}
+  </a>
+  <div class="product-card__info">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}" class="product-card__title-link">{{ product.title }}</a>
+    </h3>
+    <div class="product-card__price">{{product.price | money}}</div>
+  </div>
+</div>
+

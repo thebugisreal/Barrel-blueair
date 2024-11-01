@@ -1,0 +1,54 @@
+{%- comment -%}
+ * snippet: filter--range.liquid 
+ * ----------------------------
+ * Display filter range value
+ * @param {Object} filter - Filter Object
+ * @param {Object} value - Value Object
+ * @param {String} scope - descriptive string to scope different instances
+{%- endcomment -%}
+{% liquid
+  assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+  assign uses_comma_decimals = false
+  if currencies_using_comma_decimals contains cart.currency.iso_code
+    assign uses_comma_decimals = true
+  endif
+%}
+
+<price-range>
+  <span class="filter-range__currency">{{ cart.currency.symbol }}</span>
+  <div class="filter-range__field">
+    <label class="filter-range__label" for="Filter-{{ filter.label | escape }}-GTE-{{ scope }}">From</label>
+    <input class="filter-range__input"
+      name="{{ filter.min_value.param_name }}"
+      id="Filter-{{ filter.label | escape }}-GTE-{{ scope }}"
+      {%- if filter.min_value.value -%}
+        {%- if uses_comma_decimals -%}value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"{% endif %}
+      {%- endif -%}
+      type="number"
+      placeholder="0"
+      min="0"
+      {%- if uses_comma_decimals -%}max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"{% endif %}
+    >
+    </input>
+  </div><!-- .filter-range__field -->
+  <span class="filter-range__currency">{{ cart.currency.symbol }}</span>
+  <div class="filter-range__field">
+    <label class="filter-range__label" for="Filter-{{ filter.label | escape }}-LTE">To</label>
+    <input class="filter-range__input"
+      name="{{ filter.max_value.param_name }}"
+      id="Filter-{{ filter.label | escape }}-LTE"
+      {%- if filter.max_value.value -%}{%- if uses_comma_decimals -%}value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"{% endif %}
+      {%- endif -%}
+      type="number"
+      min="0"
+      {%- if uses_comma_decimals -%}
+        placeholder="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+        max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+      {%- else -%}
+        placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+        max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+      {% endif %}
+    >
+    </input>
+  </div><!-- .filter-range__field -->
+</price-range>

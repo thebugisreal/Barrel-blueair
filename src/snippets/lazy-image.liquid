@@ -1,0 +1,80 @@
+{% comment %}
+  Template for lazyloading images
+
+  @param {string/object} image - 
+    Image object/url string. Used for Mobile + Desktop
+
+  @param {string/object} image_desktop - 
+    Desktop Image object/url string, will be rendered at higher breakpoint (default width 768px+). If this field is blank, image will be used for mobile + desktop
+
+  @param {string} loading -
+          lazy: (default) lazy loading, assets below the fold/hidden from initial view
+         eager: eager loading, assets above the fold
+  
+  @param {string/object} breakpoint - 
+          tabletp (default), tabletl, desktop, laptop, widescreen, extrawide
+          (based on tailwind config variables)
+
+  @param {string} picture_classes - Additional CSS classes for picture object for styling
+
+  @param {string} img_classes - Additional CSS classes for image object for styling
+
+  @param {string} alt - Alt tag for image, use this instead of image.alt if not using shopify object/need to hardcode for any reason.
+
+  @param {string} styles - Additional styles needed not covered by tailwind
+{% endcomment %}
+
+{% liquid
+  if loading == blank
+    assign loading = 'lazy'
+  endif
+
+  if alt == blank
+    assign alt = image.alt
+  endif
+
+  assign break_widths = '300, 600, 750, 1024, 1280, 1440, 1920'
+
+  case breakpoint
+    when 'tabletl'
+      assign breakpoint = '64rem'
+      assign ar = '--ar-lzimg-tabletl'
+    when 'desktop'
+      assign breakpoint = '64.01rem'
+      assign ar = '--ar-lzimg-desktop'
+    when 'laptop'
+      assign breakpoint = '71.25rem'
+      assign ar = '--ar-lzimg-laptop'
+    when 'widescreen'
+      assign breakpoint = '80rem'
+      assign ar = '--ar-lzimg-widescreen'
+    when 'extrawide'
+      assign breakpoint = '90rem'
+      assign ar = '--ar-lzimg-extrawide'
+    else
+      assign breakpoint = '48rem'
+      assign ar = '--ar-lzimg-tabletp'
+  endcase
+
+  if max_width == blank and image_desktop == blank
+    assign max_width = '1920px'
+  elsif max_width == blank
+    assign max_width = breakpoint | replace: 'rem', '' | times: 16 | append: 'px'
+  endif
+
+  assign img_classes = 'w-full ' | append: img_classes
+
+  assign image_url = image | image_url: width: max_width
+
+  if image_desktop != blank
+    assign desktop_srcset = image_desktop | image_url: width: 1920 | image_tag: width: nil, widths: break_widths | split: 'srcset="' | last | split: '"' | first
+    assign src_tag = '<source srcset="' | append: desktop_srcset | append: '" media="(min-width:' | append: breakpoint | append: ')">'
+  endif
+%}
+
+<picture class="lazypicture block w-full {% if picture_classes %}{{ picture_classes }}{% endif %}" style="--ar-lzimg-mobile: {{image.aspect_ratio}}; {% if image_desktop != blank %}{{ar}}: {{image_desktop.aspect_ratio}};{% endif %}">
+  {% if image_desktop != blank %}
+    {{src_tag}}
+  {% endif %}
+  {{ image_url | image_tag: width: nil, widths: break_widths, loading: loading, alt: alt, class: img_classes }}
+</picture>
