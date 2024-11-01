@@ -32,21 +32,67 @@ module.exports = {
         true: "#000000",
         DEFAULT: "#000000",
       },
+      blue: {
+        sky: "#BAE6FF",
+        DEFAULT: "#002955"
+      },
+      green: {
+        light: "#C9EADC",
+        dark: "#558080"
+      },
+      pink: {
+        light: "#FFE2E2",
+        dark: "#80556F"
+      },
+      yellow: {
+        light: "#FFF7CA",
+        dark: "#807955"
+      },
+      brown: {
+        light: "#F8E6C6",
+        dark: "#805F55"
+      }
       // add custom colors here, refer to: https://tailwindcss.com/docs/customizing-colors
     },
     fontWeight: {
+      300: 300,
       400: 400,
+      500: 500,
       700: 700,
     },
     fontFamily: {
       // add font families here:
       // ex: sans: ['Helvetica', 'sans-serif']
+      gilroy: ['Gilroy', 'sans-serif'],
+      roboto: ['Roboto', 'sans-serif']
     },
     fontSize: {
+      12: "12px",
+      14: "14px",
       16: "16px",
+      18: "18px",
+      20: "20px",
+      22: "22px",
+      26: "26px",
+      28: "28px",
+      30: "30px",
+      40: "40px",
+      50: "50px",
+      60: "60px",
+      72: "72px"
     },
     spacing: {
       //add spacing as needed. keep multiples of 4, comment any anomalies
+      "xxxs": "4px",
+      "xxs": "8px",
+      "xs": "12px",
+      "sm": "16px",
+      "md": "24px",
+      "lg": "36px",
+      "xl": "64px",
+      "xxl": "80px",
+      "xxxl": "128px",
+      "xxxxl": "160px",
       0: "0",
       4: "4px",
       8: "8px",
