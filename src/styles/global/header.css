@@ -1,0 +1,13 @@
+.template-index #shopify-section-header {
+  @apply fixed
+  bg-transparent;
+}
+
+.mobile-nav__child-nav[data-active="true"] {
+  @apply translate-x-0
+  pointer-events-auto;
+}
+
+.mobile-child-nav__item + .mobile-child-nav__item {
+  @apply border-0;
+}

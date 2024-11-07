@@ -1,0 +1,12 @@
+<div class="room-icon relative min-w-[18px] w-[18px] h-[18px] bg-gray">
+  {% case size %}
+    {% when 'small' %}
+      <div class="absolute bottom-0 right-0 w-[7px] h-[7px] bg-blue"></div>
+    {% when 'medium' %}
+      <div class="absolute bottom-0 right-0 w-[11px] h-[11px] bg-blue"></div>
+    {% when 'large' %}
+      <div class="absolute bottom-0 right-0 w-[14px] h-[14px] bg-blue"></div>
+    {% when 'extralarge' %}
+      <div class="absolute bottom-0 right-0 w-full h-full bg-blue"></div>
+  {% endcase %}
+</div>

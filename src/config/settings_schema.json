@@ -19,6 +19,56 @@
         "type": "link_list",
         "id": "footer_nav",
         "label": "Footer Navigation"
+      },
+      {
+        "type": "header",
+        "content": "Quiz Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "quiz_image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "quiz_text",
+        "label": "Text",
+        "default": "Find the right air purifier for your home"
+      },
+      {
+        "type": "text",
+        "id": "quiz_link_text",
+        "label": "Link Text",
+        "default": "Take the Quiz"
+      },
+      {
+        "type": "url",
+        "id": "quiz_link_url",
+        "label": "Link URL"
+      },
+      {
+        "type": "header",
+        "content": "App Links"
+      },
+      {
+        "type": "url",
+        "id": "app_store_url_mobile",
+        "label": "App Store URL - Mobile"
+      },
+      {
+        "type": "url",
+        "id": "app_store_url_desktop",
+        "label": "App Store URL - Desktop"
+      },
+      {
+        "type": "url",
+        "id": "google_play_url_mobile",
+        "label": "Google Play URL - Mobile"
+      },
+      {
+        "type": "url",
+        "id": "google_play_url_desktop",
+        "label": "Google Play URL - Desktop"
       }
     ]
   },

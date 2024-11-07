@@ -3,15 +3,37 @@ class SiteHeader extends HTMLElement {
     super();
 
     this._selectors = {
-      header: "#shopify-section-header"
+      header: "#shopify-section-header",
+      mobileNavDrawer: '#MobileNavDrawer',
+      mobileSubnav: '[js-mobile-subnav]',
+      mobileSubnavTrigger: '[js-mobile-subnav-trigger]',
+      mobileSubnavClose: '[js-mobile-subnav-close]'
     }
   }
 
   connectedCallback() {
     this.header = document.querySelector(this._selectors.header);
+    this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
+    this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
 
     this._setVariables();
     this._watchWindowResize();
+    this.mobileSubnavTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', this._openMobileSubNav);
+    });
+    this.mobileSubnavCloseBtns.forEach((btn) => {
+      btn.addEventListener('click', this._closeMobileSubNav);
+    });
+  }
+
+  _closeMobileSubNav = (evt) => {
+    const subnavTarget = evt.currentTarget.closest(this._selectors.mobileSubnav);
+    subnavTarget.dataset.active = 'false';
+  }
+
+  _openMobileSubNav = (evt) => {
+    const subnavTarget = document.querySelector(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnav}[id="${evt.currentTarget.dataset.target}"]`);
+    subnavTarget.dataset.active = 'true';
   }
 
   _watchWindowResize = evt => {
