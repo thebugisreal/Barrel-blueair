@@ -134,13 +134,13 @@
 
   a,
   .link {
-    @apply no-underline;
+    @apply no-underline
+    underline-offset-4;
   }
 
   a:focus,
   .link:focus {
-    @apply underline
-    underline-offset-4;
+    @apply underline;
   }
 
   a:focus:not(:focus-visible),
@@ -150,8 +150,7 @@
 
   a:focus-visible,
   .link:focus-visible {
-    @apply underline
-    underline-offset-4;
+    @apply underline;
   }
 
   @media screen(desktop){
@@ -177,8 +176,7 @@
 
     a:hover,
     .link:hover {
-      @apply underline
-      underline-offset-4;
+      @apply underline;
     }
   }
 }

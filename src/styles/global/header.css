@@ -11,3 +11,30 @@
 .mobile-child-nav__item + .mobile-child-nav__item {
   @apply border-0;
 }
+
+.mega-menu__left > div:first-child {
+  @apply border-0;
+}
+
+.mega-menu__left .mega-menu__item + .mega-menu__item {
+  @apply border-0;
+}
+
+@media screen(desktop) {
+  .template-index #shopify-section-header:hover,
+  .template-index #shopify-section-header:focus-within {
+    @apply bg-white;
+  }
+
+  .header-desktop-nav__item:focus-within .header-desktop-nav__mega-menu-title,
+  .header-desktop-nav__item:hover .header-desktop-nav__mega-menu-title {
+    @apply underline
+    underline-offset-[12px]
+    font-500;
+  }
+
+  .header-desktop-nav__item:focus-within .header-desktop-nav__mega-menu-wrapper,
+  .header-desktop-nav__item:hover .header-desktop-nav__mega-menu-wrapper {
+    @apply block;
+  }
+}

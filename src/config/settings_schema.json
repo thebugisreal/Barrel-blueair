@@ -12,8 +12,13 @@
     "settings": [
       {
         "type": "link_list",
-        "id": "header_nav",
-        "label": "Header Navigation"
+        "id": "header_nav_mobile",
+        "label": "Header Navigation - Mobile"
+      },
+      {
+        "type": "link_list",
+        "id": "header_nav_desktop",
+        "label": "Header Navigation - Desktop"
       },
       {
         "type": "link_list",

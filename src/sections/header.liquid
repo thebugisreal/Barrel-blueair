@@ -1,10 +1,24 @@
-<s-header class="site-header p-md flex justify-between items-center gap-md desktop:px-xl desktop:gap-lg">
-  <button class="site-header__mobile-nav w-24 desktop:hidden" js-open-mobile-nav>{% render 'icon-nav' %}</button>
-  <a href="{{ routes.root_url }}" class="site-header__logo w-[140px]">{% render 'icon-blueair-logo' %}</a>
-  <div class="site-header__desktop-nav hidden flex-1 desktop:flex justify-start items-center gap-md">
-
-  </div>
-  <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs">
+<s-header class="site-header px-md flex justify-between gap-md relative desktop:px-xl desktop:gap-lg">
+  <button class="site-header__mobile-nav w-24 self-center desktop:hidden" js-open-mobile-nav>{% render 'icon-nav' %}</button>
+  <a href="{{ routes.root_url }}" class="site-header__logo w-[140px] self-center">{% render 'icon-blueair-logo' %}</a>
+  <ul class="site-header__desktop-nav hidden flex-1 desktop:flex justify-start">
+    {% assign nav_linklist = linklists[settings.header_nav_desktop] %}
+    {% for link in nav_linklist.links %}
+      {% if link.links != blank %}
+        <li class="header-desktop-nav__item px-sm flex items-center text-16 cursor-default">
+          <div class="header-desktop-nav__mega-menu-title">{{ link.title }}</div>
+          <div class="header-desktop-nav__mega-menu-wrapper absolute left-0 w-full bottom-0 translate-y-full bg-white hidden">
+            {% render 'mega-menu' link: link %}
+          </div>
+        </li>
+      {% else %}
+        <li class="header-desktop-nav__item px-sm flex items-center text-16">
+          <a href="{{ link.url }}" class="header-desktop-nav__link !no-underline">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs py-sm">
     <button class="site-header__search w-36 hidden desktop:block">{% render 'icon-search' %}</button>
     <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="site-header__account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
     <button class="site-header__cart w-36 relative" js-open-cart>

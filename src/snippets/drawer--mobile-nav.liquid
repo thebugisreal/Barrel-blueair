@@ -5,7 +5,7 @@
       <button class="mobile-nav__close w-40" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
     </div>
     <ul class="mobile-nav__main-nav p-md flex-1 max-h-full overflow-y-auto flex flex-col gap-xs text-18">
-      {% assign nav_linklist = linklists[settings.header_nav] %}
+      {% assign nav_linklist = linklists[settings.header_nav_mobile] %}
       {% for link in nav_linklist.links %}
         {% if link.links != blank %}
           <li class="mobile-main-nav__item">
@@ -23,7 +23,7 @@
         {% endif %}
       {% endfor %}
     </ul>
-    <div class="mobile-nav__footer border-t border-gray px-md py-xs grid grid-cols-2 text-14">
+    <div class="mobile-nav__footer border-t border-gray px-md py-xs grid grid-cols-2">
       <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="mobile-nav__account flex justify-start items-center gap-xxxs">
         <span class="w-36">{% render 'icon-account' %}</span>
         <span>{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
@@ -38,7 +38,7 @@
         <div id="MobileChildNav-{{ link.handle }}" class="mobile-nav__child-nav absolute top-0 bottom-[61px] left-0 right-0 z-[1] bg-white -translate-x-full transition-transform duration-300 ease-in-out pointer-events-none flex flex-col" data-active="false" js-mobile-subnav>
           <div class="mobile-child-nav__header border-b border-gray flex justify-between items-center px-md py-xs">
             <button class="w-32" js-mobile-subnav-close>{% render 'icon-active-left' %}</button>
-            <span class="text-14 font-700">{{ link.title }}</span>
+            <span class="font-700">{{ link.title }}</span>
             <button class="mobile-nav__close w-40" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
           </div>
           <div class="mobile-child-nav__links-container flex-1 max-h-full overflow-y-auto">
@@ -50,17 +50,17 @@
                     <li class="mobile-child-nav__item">
                       <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link block">
                         {% assign image_link_title = grandchild_link.title %}
-                        <div class="w-[124px] min-w-[124px] h-[124px]">
+                        <div class="w-[124px] min-w-[124px]">
                           {% if grandchild_link.title contains '|' %}
                             {% assign image_link_title = grandchild_link.title | split: '|' | first | strip %}
                             {% assign image_file = grandchild_link.title | split: '|' | last | strip %}
                             {% assign image_object = images[image_file] %}
-                            {% render 'lazy-image', image: image_object, picture_classes: 'h-full', img_classes: 'h-full object-cover object-bottom' %}
-                          {% elsif grandchild_link.object.metafields.seed.nav_link_image != blank %}
-                            {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image, picture_classes: 'h-full', img_classes: 'h-full object-cover object-bottom' %}
+                            {% render 'lazy-image', image: image_object %}
+                          {% elsif grandchild_link.object.metafields.seed.nav_link_image_mobile != blank %}
+                            {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_mobile %}
                           {% endif %}
                         </div>
-                        <div class="text-14 font-700 mt-xxs">
+                        <div class="font-700 mt-xxs">
                           {{ image_link_title }}
                         </div>
                       </a>
@@ -84,16 +84,10 @@
                 <div class="mobile-child-nav__app py-md mx-md border-t border-gray">
                   <div>Download the Blueair App</div>
                   <div class="mobile-child-nav__app-links flex justify-start gap-xs mt-xs">
-                    <a href="{{ settings.app_store_url_mobile }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile desktop:hidden">
+                    <a href="{{ settings.app_store_url_mobile }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
                       <img src="{{ 'app-store--black.png' | asset_url }}" class="block w-auto h-[38px]" />
                     </a>
-                    <a href="{{ settings.google_play_url_mobile }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile desktop:hidden">
-                      <img src="{{ 'google-play--black.png' | asset_url }}" class="block w-auto h-[38px]" />
-                    </a>
-                    <a href="{{ settings.app_store_url_desktop }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--desktop hidden desktop:block">
-                      <img src="{{ 'app-store--black.png' | asset_url }}" class="block w-auto h-[38px]" />
-                    </a>
-                    <a href="{{ settings.google_play_url_desktop }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--desktop hidden desktop:block">
+                    <a href="{{ settings.google_play_url_mobile }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
                       <img src="{{ 'google-play--black.png' | asset_url }}" class="block w-auto h-[38px]" />
                     </a>
                   </div>
@@ -101,11 +95,11 @@
               {% else %}
                 {% if child_link.links != blank %}
                   <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-gray">
-                    <div class="text-14 font-700 mb-xs">{{ child_link.title }}</div>
+                    <div class="font-700 mb-xs">{{ child_link.title }}</div>
                     <ul class="mobile-child-nav__links">
                       {% for grandchild_link in child_link.links %}
                         <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
-                          <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 w-full flex gap-xxs items-center">
+                          <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit">
                             {% if child_link_handle contains 'room-size' %}
                               {% if grandchild_link.title contains 'Small' %}
                                 {% render 'room-icon', size: 'small' %}
@@ -125,7 +119,7 @@
                   </div>
                 {% else %}
                   <div class="mobile-child-nav__item mx-md border-t border-gray">
-                    <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 w-full block my-md">
+                    <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
                       {{ child_link.title }}
                     </a>
                   </div>
