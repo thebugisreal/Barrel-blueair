@@ -23,7 +23,7 @@
         {% endif %}
       {% endfor %}
     </ul>
-    <div class="mobile-nav__footer border-t border-gray px-md py-xs grid grid-cols-2">
+    <div class="mobile-nav__footer border-t border-blue-light px-md py-xs grid grid-cols-2">
       <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="mobile-nav__account flex justify-start items-center gap-xxxs">
         <span class="w-36">{% render 'icon-account' %}</span>
         <span>{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
@@ -36,7 +36,7 @@
     {% for link in nav_linklist.links %}
       {% if link.links != blank %}
         <div id="MobileChildNav-{{ link.handle }}" class="mobile-nav__child-nav absolute top-0 bottom-[61px] left-0 right-0 z-[1] bg-white -translate-x-full transition-transform duration-300 ease-in-out pointer-events-none flex flex-col" data-active="false" js-mobile-subnav>
-          <div class="mobile-child-nav__header border-b border-gray flex justify-between items-center px-md py-xs">
+          <div class="mobile-child-nav__header border-b border-blue-light flex justify-between items-center px-md py-xs">
             <button class="w-32" js-mobile-subnav-close>{% render 'icon-active-left' %}</button>
             <span class="font-700">{{ link.title }}</span>
             <button class="mobile-nav__close w-40" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
@@ -86,7 +86,7 @@
                 {% endif %}
               {% elsif child_link_handle == 'app' %}
                 {% if settings.app_store_url_mobile != blank or settings.google_play_url_mobile != blank %}
-                  <div class="mobile-child-nav__app py-md mx-md border-t border-gray">
+                  <div class="mobile-child-nav__app py-md mx-md border-t border-blue-light">
                     <div>Download the Blueair App</div>
                     <div class="mobile-child-nav__app-links flex justify-start gap-xs mt-xs">
                       {% if settings.app_store_url_mobile != blank %}
@@ -104,7 +104,7 @@
                 {% endif %}
               {% else %}
                 {% if child_link.links != blank %}
-                  <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-gray">
+                  <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
                     <div class="font-700 mb-xs">{{ child_link.title }}</div>
                     <ul class="mobile-child-nav__links">
                       {% for grandchild_link in child_link.links %}
@@ -128,7 +128,7 @@
                     </ul>
                   </div>
                 {% else %}
-                  <div class="mobile-child-nav__item mx-md border-t border-gray">
+                  <div class="mobile-child-nav__item mx-md border-t border-blue-light">
                     <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
                       {{ child_link.title }}
                     </a>

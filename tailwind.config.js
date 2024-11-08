@@ -33,7 +33,9 @@ module.exports = {
         DEFAULT: "#000000",
       },
       blue: {
+        light: "#F0F3F6",
         sky: "#BAE6FF",
+        medium: "#405D7F",
         DEFAULT: "#002955"
       },
       green: {
@@ -51,9 +53,6 @@ module.exports = {
       brown: {
         light: "#F8E6C6",
         dark: "#805F55"
-      },
-      gray: {
-        DEFAULT: "#F0F3F6"
       }
       // add custom colors here, refer to: https://tailwindcss.com/docs/customizing-colors
     },

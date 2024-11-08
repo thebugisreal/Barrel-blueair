@@ -5,7 +5,7 @@
       {% unless child_link_handle == 'image-links' %}
         {% if child_link_handle == 'quiz' %}
           {% if settings.quiz_link_url != blank and settings.quiz_link_text != blank %}
-            <div class="mega-menu__quiz py-md border-t border-gray">
+            <div class="mega-menu__quiz py-md border-t border-blue-light">
               {% if settings.quiz_text != blank %}
                 <div class="mega-menu__quiz-text text-16 font-700 mb-xxs">{{ settings.quiz_text }}</div>
               {% endif %}
@@ -17,7 +17,7 @@
           {% endif %}
         {% elsif child_link_handle == 'app' %}
           {% if settings.app_store_url_desktop != blank or settings.google_play_url_desktop != blank %}
-            <div class="mega-menu__app py-md border-t border-gray">
+            <div class="mega-menu__app py-md border-t border-blue-light">
               <div>Download the Blueair App</div>
               <div class="mega-menu__app-links flex flex-col gap-xxs mt-xs">
                 {% if settings.app_store_url_desktop != blank %}
@@ -35,7 +35,7 @@
           {% endif %}
         {% elsif child_link_handle == 'b-corp' %}
           {% if settings.bcorp_link_url != blank %}
-            <div class="mega-menu__bcorp py-md border-t border-gray">
+            <div class="mega-menu__bcorp py-md border-t border-blue-light">
               <a href="{{ settings.bcorp_link_url }}" target="_blank" rel="noopener noreferrer" class="mega-menu__bcorp-link w-[160px]">
                 {% render 'icon-b-default' %}
               </a>
@@ -43,7 +43,7 @@
           {% endif %}
         {% else %}
           {% if child_link.links != blank %}
-            <div class="mega-menu__links-wrapper py-md border-t border-gray">
+            <div class="mega-menu__links-wrapper py-md border-t border-blue-light">
               <div class="font-700 mb-sm">{{ child_link.title }}</div>
               <ul class="mega-menu__links">
                 {% for grandchild_link in child_link.links %}
@@ -67,7 +67,7 @@
               </ul>
             </div>
           {% else %}
-            <div class="mega-menu__item border-t border-gray">
+            <div class="mega-menu__item border-t border-blue-light">
               <a href="{{ child_link.url }}" class="mega-menu__link link text-18 block my-md w-fit">
                 {{ child_link.title }}
               </a>
