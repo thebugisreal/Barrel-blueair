@@ -87,6 +87,11 @@
                 <div class="text-16 font-700 mt-sm">
                   {{ image_link_title }}
                 </div>
+                {% if grandchild_link.type == 'article_link' %}
+                  <div class="text-12 font-500 mt-xxxs">
+                    Updated {% if grandchild_link.object.updated_at != blank %}{{ grandchild_link.object.updated_at | date: '%b %d, %Y' }}{% else %}{{ grandchild_link.object.published_at | date: '%b %d, %Y' }}{% endif %}
+                  </div>
+                {% endif %}
               </a>
             </li>
           {% endfor %}
