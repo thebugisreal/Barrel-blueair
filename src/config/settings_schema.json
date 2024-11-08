@@ -21,6 +21,11 @@
     "name": "Special Links",
     "settings": [
       {
+        "type": "link_list",
+        "id": "subfooter_nav",
+        "label": "Subfooter Navigation"
+      },
+      {
         "type": "header",
         "content": "Quiz Link"
       },
@@ -86,8 +91,8 @@
     "settings": [
       {
         "type": "url",
-        "id": "social_twitter",
-        "label": "Twitter"
+        "id": "social_instagram",
+        "label": "Instagram"
       },
       {
         "type": "url",
@@ -96,13 +101,13 @@
       },
       {
         "type": "url",
-        "id": "social_instagram",
-        "label": "Instagram"
+        "id": "social_tiktok",
+        "label": "TikTok"
       },
       {
         "type": "url",
-        "id": "social_youtube",
-        "label": "Youtube"
+        "id": "social_linkedin",
+        "label": "LinkedIn"
       }
     ]
   },
