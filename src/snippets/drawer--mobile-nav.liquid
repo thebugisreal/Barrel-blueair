@@ -68,30 +68,40 @@
                   {% endfor %}
                 </ul>
               {% elsif child_link_handle == 'quiz' %}
-                <div class="mobile-child-nav__quiz p-md">
-                  {% if settings.quiz_image != blank %}
-                    <div class="mobile-child-nav__quiz-image mb-xs">
-                      {% render 'lazy-image' image: settings.quiz_image %}
-                    </div>
-                  {% endif %}
-                  <div class="mobile-child-nav__quiz-text text-16 font-700 mb-xs">{{ settings.quiz_text }}</div>
-                  <a href="{{ settings.quiz_link_url }}" class="mobile-child-nav__quiz-link btn">
-                    <span class="btn__text">{{ settings.quiz_link_text }}</span>
-                    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-                  </a>
-                </div>
-              {% elsif child_link_handle == 'app' %}
-                <div class="mobile-child-nav__app py-md mx-md border-t border-gray">
-                  <div>Download the Blueair App</div>
-                  <div class="mobile-child-nav__app-links flex justify-start gap-xs mt-xs">
-                    <a href="{{ settings.app_store_url_mobile }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
-                      <img src="{{ 'app-store--black.png' | asset_url }}" class="block w-auto h-[38px]" />
-                    </a>
-                    <a href="{{ settings.google_play_url_mobile }}" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
-                      <img src="{{ 'google-play--black.png' | asset_url }}" class="block w-auto h-[38px]" />
+                {% if settings.quiz_link_url != blank and settings.quiz_link_text != blank %}
+                  <div class="mobile-child-nav__quiz p-md">
+                    {% if settings.quiz_image != blank %}
+                      <div class="mobile-child-nav__quiz-image mb-xs">
+                        {% render 'lazy-image' image: settings.quiz_image %}
+                      </div>
+                    {% endif %}
+                    {% if settings.quiz_text != blank %}
+                      <div class="mobile-child-nav__quiz-text text-16 font-700 mb-xs">{{ settings.quiz_text }}</div>
+                    {% endif %}
+                    <a href="{{ settings.quiz_link_url }}" class="mobile-child-nav__quiz-link btn">
+                      <span class="btn__text">{{ settings.quiz_link_text }}</span>
+                      <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                     </a>
                   </div>
-                </div>
+                {% endif %}
+              {% elsif child_link_handle == 'app' %}
+                {% if settings.app_store_url_mobile != blank or settings.google_play_url_mobile != blank %}
+                  <div class="mobile-child-nav__app py-md mx-md border-t border-gray">
+                    <div>Download the Blueair App</div>
+                    <div class="mobile-child-nav__app-links flex justify-start gap-xs mt-xs">
+                      {% if settings.app_store_url_mobile != blank %}
+                        <a href="{{ settings.app_store_url_mobile }}" target="_blank" rel="noopener noreferrer" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
+                          <img src="{{ 'app-store--black.png' | asset_url }}" class="block w-auto h-[38px]" />
+                        </a>
+                      {% endif %}
+                      {% if settings.google_play_url_mobile != blank %}
+                        <a href="{{ settings.google_play_url_mobile }}" target="_blank" rel="noopener noreferrer" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
+                          <img src="{{ 'google-play--black.png' | asset_url }}" class="block w-auto h-[38px]" />
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
               {% else %}
                 {% if child_link.links != blank %}
                   <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-gray">

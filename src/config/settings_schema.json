@@ -53,6 +53,15 @@
       },
       {
         "type": "header",
+        "content": "B Corp Link"
+      },
+      {
+        "type": "url",
+        "id": "bcorp_link_url",
+        "label": "Link URL"
+      },
+      {
+        "type": "header",
         "content": "App Links"
       },
       {
