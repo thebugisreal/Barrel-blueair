@@ -18,3 +18,7 @@
 .accordion-content[aria-hidden="false"]{
   max-height: 9999px;
 }
+
+.accordion-header[aria-expanded="true"] .accordion-icon {
+  @apply rotate-180;
+}
