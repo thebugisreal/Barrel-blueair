@@ -5,7 +5,7 @@
       <button class="mobile-nav__close w-40" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
     </div>
     <ul class="mobile-nav__main-nav p-md flex-1 max-h-full overflow-y-auto flex flex-col gap-xs text-18">
-      {% assign nav_linklist = linklists[settings.header_nav_mobile] %}
+      {% assign nav_linklist = linklists[section.settings.header_nav_mobile] %}
       {% for link in nav_linklist.links %}
         {% if link.links != blank %}
           <li class="mobile-main-nav__item">

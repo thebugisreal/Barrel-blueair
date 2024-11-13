@@ -1,8 +1,3 @@
-.template-index #shopify-section-header {
-  @apply fixed
-  bg-transparent;
-}
-
 .mobile-nav__child-nav[data-active="true"] {
   @apply translate-x-0
   pointer-events-auto;
@@ -21,8 +16,8 @@
 }
 
 @media screen(desktop) {
-  .template-index #shopify-section-header:hover,
-  .template-index #shopify-section-header:focus-within {
+  .template-index s-header:hover,
+  .template-index s-header:focus-within {
     @apply bg-white;
   }
 
@@ -35,6 +30,9 @@
 
   .header-desktop-nav__item:focus-within .header-desktop-nav__mega-menu-wrapper,
   .header-desktop-nav__item:hover .header-desktop-nav__mega-menu-wrapper {
-    @apply block;
+    @apply opacity-100
+    pointer-events-auto
+    z-[1]
+    translate-y-full;
   }
 }

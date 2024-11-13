@@ -3,7 +3,6 @@ class SiteHeader extends HTMLElement {
     super();
 
     this._selectors = {
-      header: "#shopify-section-header",
       mobileNavDrawer: '#MobileNavDrawer',
       mobileSubnav: '[js-mobile-subnav]',
       mobileSubnavTrigger: '[js-mobile-subnav-trigger]',
@@ -12,7 +11,6 @@ class SiteHeader extends HTMLElement {
   }
 
   connectedCallback() {
-    this.header = document.querySelector(this._selectors.header);
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
 
@@ -41,6 +39,6 @@ class SiteHeader extends HTMLElement {
   }
 
   _setVariables = evt => {
-    document.documentElement.style.setProperty('--header-height', `${this.header.clientHeight}px`)
+    document.documentElement.style.setProperty('--header-height', `${this.clientHeight}px`)
   }
 }

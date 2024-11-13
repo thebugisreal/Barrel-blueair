@@ -8,23 +8,18 @@
     "theme_documentation_url": "https://www.seedcms.com"
   },
   {
-    "name": "Navigation",
+    "name": "Cart",
     "settings": [
       {
-        "type": "link_list",
-        "id": "header_nav_mobile",
-        "label": "Header Navigation - Mobile"
-      },
-      {
-        "type": "link_list",
-        "id": "header_nav_desktop",
-        "label": "Header Navigation - Desktop"
-      },
-      {
-        "type": "link_list",
-        "id": "footer_nav",
-        "label": "Footer Navigation"
-      },
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "label": "Show Cart Note"
+      }
+    ]
+  },
+  {
+    "name": "Special Links",
+    "settings": [
       {
         "type": "header",
         "content": "Quiz Link"
@@ -83,16 +78,6 @@
         "type": "url",
         "id": "google_play_url_desktop",
         "label": "Google Play URL - Desktop"
-      }
-    ]
-  },
-  {
-    "name": "Cart",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "show_cart_note",
-        "label": "Show Cart Note"
       }
     ]
   },

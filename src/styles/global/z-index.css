@@ -1,13 +1,13 @@
-#shopify-section-header{
-  @apply z-[1];
+s-header {
+  @apply z-[2];
 }
 
 s-drawer,
-s-modal{
-  @apply z-[3];
+s-modal {
+  @apply z-[4];
 }
 
 .drawer-background:after,
-.modal-background:before{
-  @apply z-[2];
+.modal-background:before {
+  @apply z-[3];
 }

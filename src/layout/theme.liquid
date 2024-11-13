@@ -62,10 +62,9 @@
 
     {% section 'header' %}
 
-    {% render 'drawer--mobile-nav' %}
     {% render 'drawer--cart' %}
 
-    <main id="MainContent" class="main drawer-background modal-background grid min-h-header" role="main">
+    <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">
       {{ content_for_layout }}
     </main>
 
