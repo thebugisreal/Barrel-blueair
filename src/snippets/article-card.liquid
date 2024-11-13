@@ -9,10 +9,19 @@
 <article class="article-card" >
   <a href="{{ article.url }}" class="article-content motion-reduce">
     {% if article.image != blank %}
-      <div class="article-card__image">{% render 'lazy-image' image: article.image %}</div>
+      <div class="article-card__image aspect-square">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'h-full' %}</div>
+      <div class="spacing-divider h-[16px] tabletl:h-[20px]"></div>
     {% endif %}
     <header class="article-card__header">
-      <h3 class="article-card__title">{{ article.title }}</h3>
+      <ul class="blog__first-article-tags flex">
+        {% for tag in article.tags %}
+          <li class="article-card__tag tag-small py-[6px] px-[10px] border border-gray rounded-[60px]"> {{ tag }} </li>
+        {% endfor %}
+      </ul>
+      <div class="spacing-divider h-[12px] tabletl:h-[16px]"></div>
+
+      <h4 class="article-card__title text-sub1 tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
+      <div class="spacing-divider h-[8px]"></div>
     </header>
     {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
     <p class="article-card__excerpt">
@@ -22,6 +31,10 @@
         {{ article.content | strip_html | truncatewords: 30 }}
       {%- endif -%}
     </p>
-  {%- endif -%}
+    <div class="spacing-divider h-[12px] tabletl:h-[16px]"></div>
+    {%- endif -%}
+
+    <p class="blog__first-article-date text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
+    <div class="spacing-divider h-[64px]"></div>
   </a>
 </article>

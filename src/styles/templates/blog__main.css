@@ -1,0 +1,26 @@
+.blog__first-article-tag.active {
+    @apply text-white
+    bg-blue
+}
+
+.blog__first-article-tag:focus {
+    @apply text-white
+    bg-blue
+}
+
+.blog__first-article-tag:focus:not(:focus-visible) {
+    @apply text-blue
+    bg-white
+}
+
+.blog__first-article-tag:focus-visible {
+    @apply text-white
+    bg-blue
+}
+
+@media screen(tabletl) {
+    .blog__first-article-tag:hover {
+        @apply text-white
+        bg-blue
+    }
+}

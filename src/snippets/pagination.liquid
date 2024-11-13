@@ -13,21 +13,39 @@
 {% endcomment %}
 
 {%- if paginate.parts.size > 0 -%}
-<nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-  {%- if paginate.previous -%}
-    <a href="{{ paginate.previous.url }}" class="pagination__item" aria-label="Previous"><</a>
-  {%- endif -%}
+  <div class="pagination-container tabletl:max-w-[63ch] tabletl:mx-auto">
+    <div class="spacing-divider h-[40px] tabletl:h-[64px]"></div>
+    <nav class="pagination flex justify-between items-center px-30 tabletl:px-0" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      {%- if paginate.previous -%}
+        <a href="{{ paginate.previous.url }}" class="pagination__item h-[40px] w-[40px] block" aria-label="Previous">{%  render 'icon-arrow-left' %}</a>
+      {% else %}
+        <a href="{{ paginate.previous.url }}" class="pagination__item h-[40px] w-[40px] block text-gray pointer-events-none" aria-label="Previous">{%  render 'icon-arrow-left' %}</a>
+      {%- endif -%}
+    
+      <div class="pagination-parts__mobile tabletl:hidden">
+        <p>
+          <span class="text-sub2">{{ paginate.current_page }}</span> / <span class="text-sub3 ">{{ paginate.parts | size }}</span>
+        </p>
+      </div>
+    
+      <div class="pagination-parts__desktop gap-8 hidden tabletl:flex">
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="pagination__item link text-sub3 px-[14px] py-[5px]">{{ part.title }}</a>
+          {%- else -%}
+            <span class="pagination__item pagination__item--current text-sub2  border-b px-[14px] py-[5px]">{{ part.title }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    
+    
+      {%- if paginate.next -%}
+        <a href="{{ paginate.next.url }}" class="pagination__item h-[40px] w-[40px] block" aria-label="Next">{%  render 'icon-arrow-right' %} </a>
+      {% else %}
+        <a href="{{ paginate.next.url }}" class="pagination__item h-[40px] w-[40px] block text-gray pointer-events-none" aria-label="Next">{%  render 'icon-arrow-right' %}</a>
+      {%- endif -%}
+    </nav>
+    <div class="spacing-divider h-[120px]"></div>
+  </div>
 
-  {%- for part in paginate.parts -%}
-    {%- if part.is_link -%}
-      <a href="{{ part.url }}" class="pagination__item link">{{ part.title }}</a>
-    {%- else -%}
-      <span class="pagination__item pagination__item--current">{{ part.title }}</span>
-    {%- endif -%}
-  {%- endfor -%}
-
-  {%- if paginate.next -%}
-    <a href="{{ paginate.next.url }}" class="pagination__item" aria-label="Next">></a>
-  {%- endif -%}
-</nav>
 {%- endif -%}

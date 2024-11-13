@@ -1,10 +1,72 @@
-{%- paginate blog.articles by 6 -%}
+{%- paginate blog.articles by 9 -%}
+  {% assign first_article = blog.articles[0] %}
 
-  <div class="blog">
-    <h1 class="blog__title">{{ blog.title | escape }}</h1>
+  <div class="blog tabletl:px-[60px]">
+    <h1 class="blog__title text-center mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
 
-    <ul class="blog-articles" role="list">
-      {%- for article in blog.articles -%}
+    <div class="blog__first-article">
+      <div class="spacing-divider h-[48px] tabletl:h-[80px]"></div>
+      <p class="text-sub1 hidden tabletl:block">Featured</p>
+      <div class="spacing-divider hidden h-[16px] tabletl:block"></div>
+      <div class="tabletl:flex tabletl:gap-64 tabletl:items-center">
+        {% if first_article.image != blank %}
+          <div class="blog__first-article-image tabletl:w-1/2">{% render 'lazy-image' image: first_article.image %}</div>
+        {% endif %}
+        <div class="blog__first-article-text-container px-[30px] tabletl:pl-0 tabletl:pr-[40px] tabletl:w-1/2">
+          <div class="spacing-divider h-[16px] tabletl:hidden"></div>
+          <header class="blog__first-article-header">
+            <div class="blog__first-article-tag-container flex items-center gap-12 tabletl:gap-16">
+              <ul class="blog__first-article-tags flex">
+                {% for tag in first_article.tags %}
+                  <li class="blog__first-article-tag tag-small py-[6px] px-[10px] border border-gray rounded-[60px]"> {{ tag }} </li>
+                {% endfor %}
+              </ul>
+              <p class="blog__first-article-date text-p4">Updated {{ first_article.created_at | date: "%b %d, %Y"}}</p>
+            </div>
+            <div class="spacing-divider h-[16px] tabletl:h-[24px]"></div>
+            <h3 class="blog__first-article-title">{{ first_article.title }}</h3>
+          </header>
+          <div class="spacing-divider h-[16px] tabletl:h-[24px]"></div>
+          {%- if first_article.excerpt.size > 0 or first_article.content.size > 0 -%}
+            <p class="blog__first-article-excerpt text-p2">
+              {%- if first_article.excerpt.size > 0 -%}
+                {{ first_article.excerpt | strip_html | truncatewords: 50 }}
+              {%- else -%}
+                {{ first_article.content | strip_html | truncatewords: 50 }}
+              {%- endif -%}
+            </p>
+            <div class="spacing-divider h-[16px] tabletl:h-[24px]"></div>
+          {%- endif -%}
+          <div class="flex py-[10px]">
+            <a href="{{ first_article.url }}" class="flex gap-12 items-center"> 
+              <p>Read More</p>
+              <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue">{%  render 'icon-arrow-right' %}</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="spacing-divider h-[48px] tabletl:h-[64px]"></div>
+    </div>
+
+    <div class="spacing-divider h-[40px] mx-30 tabletl:mx-0 tabletl:h-[64px]"></div>
+    <h3 class="px-30 font-900 tabletl:px-0">Latest Entries</h3>
+    <div class="spacing-divider h-[16px] mx-30 tabletl:mx-0 tabletl:h-[24px]"></div>
+
+    <ul class="blog-tags flex flex-wrap gap-8 mx-30 tabletl:mx-0 tabletl:gap-16">
+      <li class="blog__first-article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %} tabletl:py-[8px]">
+        <a href="{{ blog.url }}" class="py-[8px] px-[20px]">All</a>
+      </li>
+      {% for tag in blog.all_tags %}
+        <li class="blog__first-article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %} tabletl:py-[8px]">
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="py-[8px] px-[20px]">{{ tag }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="spacing-divider h-[24px] mx-30 tabletl:mx-0 tabletl:h-[40px]"></div>
+
+    <ul class="blog-articles grid grid-cols-1 gap-x-48 mx-30 tabletl:mx-0 tabletl:grid-cols-3" role="list">
+      {%- for article in blog.articles offset: 1 -%}
         <li class="blog-articles__article">
           {%- render 'article-card', article: article -%}
         </li>
