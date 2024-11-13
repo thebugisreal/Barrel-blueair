@@ -1,5 +1,5 @@
-{% assign footer_linklist = linklists[settings.footer_nav] %}
-{% assign subfooter_linklist = linklists[settings.subfooter_nav] %}
+{% assign footer_linklist = linklists[section.settings.footer_nav] %}
+{% assign subfooter_linklist = linklists[section.settings.subfooter_nav] %}
 
 <footer class="site-footer bg-blue text-white px-md pt-xl pb-lg desktop:px-xl desktop:pt-xxl">
   <div class="site-footer__main desktop:flex desktop:justify-between desktop:gap-lg">
@@ -146,6 +146,16 @@
 {
   "name": "Footer",
   "settings": [
+    {
+      "type": "link_list",
+      "id": "footer_nav",
+      "label": "Footer Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "subfooter_nav",
+      "label": "Subfooter Navigation"
+    },
     {
       "type": "text",
       "id": "footer_heading_text",

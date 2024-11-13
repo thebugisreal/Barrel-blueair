@@ -21,11 +21,6 @@
     "name": "Special Links",
     "settings": [
       {
-        "type": "link_list",
-        "id": "subfooter_nav",
-        "label": "Subfooter Navigation"
-      },
-      {
         "type": "header",
         "content": "Quiz Link"
       },
