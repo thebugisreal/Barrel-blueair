@@ -351,10 +351,30 @@
         }
       ],
       "default": "desktop:pb-0"
-    },    
+    },
+    {
+      "type": "range",
+      "id": "num_cols_mobile",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Mobile",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "num_cols_desktop",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Desktop",
+      "default": 4
+    },
     {
       "type": "header",
-      "content": "Content"
+      "content": "Color Set"
     },
     {
       "type": "select",
@@ -363,7 +383,7 @@
       "options": [
         {
           "value": "text-blue",
-          "label": "None"
+          "label": "None (white bg & blue text)"
         },
         {
           "value": "bg-blue-sky text-blue",
@@ -387,6 +407,10 @@
         }
       ],
       "default": "text-blue"
+    },
+    {
+      "type": "header",
+      "content": "Content"
     },
     {
       "type": "text",
@@ -482,26 +506,6 @@
       "default": "desktop:text-left"
     },
     {
-      "type": "range",
-      "id": "num_cols_mobile",
-      "min": 1,
-      "max": 8,
-      "step": 1,
-      "unit": "col",
-      "label": "Number of Columns - Mobile",
-      "default": 2
-    },
-    {
-      "type": "range",
-      "id": "num_cols_desktop",
-      "min": 1,
-      "max": 8,
-      "step": 1,
-      "unit": "col",
-      "label": "Number of Columns - Desktop",
-      "default": 4
-    },
-    {
       "type": "number",
       "id": "max_width_desktop",
       "label": "Content Max Width (px) - Desktop",
@@ -546,7 +550,7 @@
             },
             {
               "value": "h5",
-              "label": "h6"
+              "label": "h5"
             },
             {
               "value": "h6",
