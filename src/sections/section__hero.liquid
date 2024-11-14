@@ -18,7 +18,7 @@
           <h1 class="hero__title {{ section.settings.title_style }} mb-sm">{{ section.settings.title }}</h1>
         {% endif %}
         {% if section.settings.subtext != blank %}
-          <p class="hero__subtext {{ section.settings.subtext_font_weight }}" style="font-size: {{ section.settings.subtext_font_size }}px;">{{ section.settings.title }}</p>
+          <p class="hero__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
         {% endif %}
         {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
           {% case section.settings.text_align_mobile %}
@@ -489,30 +489,76 @@
       "label": "Subtext"
     },
     {
-      "type": "number",
-      "id": "subtext_font_size",
-      "label": "Subtext Font Size (px)",
-      "default": 26
-    },
-    {
       "type": "select",
-      "id": "subtext_font_weight",
-      "label": "Subtext Font Weight",
+      "id": "subtext_style",
+      "label": "Subtext Style",
       "options": [
         {
-          "value": "font-300",
-          "label": "Light"
+          "value": "h1",
+          "label": "h1"
         },
         {
-          "value": "font-400",
-          "label": "Regular"
+          "value": "h2",
+          "label": "h2"
         },
         {
-          "value": "font-700",
-          "label": "Bold"
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        },
+        {
+          "value": "p1",
+          "label": "p1"
+        },
+        {
+          "value": "p2",
+          "label": "p2"
+        },
+        {
+          "value": "p3",
+          "label": "p3"
+        },
+        {
+          "value": "p4",
+          "label": "p4"
+        },
+        {
+          "value": "p5",
+          "label": "p5"
+        },
+        {
+          "value": "p6",
+          "label": "p6"
         }
       ],
-      "default": "font-400"
+      "default": "h5"
     },
     {
       "type": "url",

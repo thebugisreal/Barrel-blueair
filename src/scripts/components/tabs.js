@@ -40,8 +40,8 @@ class Tabs extends HTMLElement {
     for (let i = 0; i < tabs.length; i++) {
       tabs[i].setAttribute('aria-selected', 'false');
     }
-    el.target.setAttribute('aria-selected', 'true');
-    var tabPanelToOpen = el.target.getAttribute('aria-controls');
+    el.currentTarget.setAttribute('aria-selected', 'true');
+    var tabPanelToOpen = el.currentTarget.getAttribute('aria-controls');
     var tabPanels = document.querySelectorAll('[role=tabpanel]');
     for (let i = 0; i < tabPanels.length; i++) {
       tabPanels[i].setAttribute('aria-hidden', 'true');

@@ -5,3 +5,11 @@
 .tab__panel[aria-hidden="true"]{
   display: none;
 }
+
+.testimonial-tab__trigger[aria-selected="true"] {
+  @apply opacity-100;
+}
+
+.testimonial-tab__trigger[aria-selected="false"] {
+  @apply opacity-25;
+}
