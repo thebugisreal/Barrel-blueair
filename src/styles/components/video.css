@@ -1,0 +1,9 @@
+s-video[data-paused="false"] .video__trigger {
+  @apply hidden;
+}
+
+@media screen(desktop){
+  s-video[data-paused="false"]:hover .video__trigger {
+    @apply flex;
+  }
+}
