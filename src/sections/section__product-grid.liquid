@@ -19,13 +19,13 @@
         <div class="swiper-wrapper product-grid__products desktop:!grid desktop:gap-md">
           {% if section.settings.collection != blank %}
             {% for product in section.settings.collection.products limit: section.settings.num_products %}
-              <div class="swiper-slide product-grid__product w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xs{%  elsif forloop.last %}pl-xs pr-md{% else %}px-xs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
+              <div class="swiper-slide product-grid__product w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
                 {% render 'product-card' product: product %}
               </div>
             {% endfor %}
           {% else %}
             {% for block in section.blocks %}
-              <div class="swiper-slide product-grid__product w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xs{%  elsif forloop.last %}pl-xs pr-md{% else %}px-xs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
+              <div class="swiper-slide product-grid__product w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
                 {% render 'product-card' product: block.settings.product %}
               </div>
             {% endfor %}
@@ -34,7 +34,7 @@
       </div>
     </s-carousel>
   {% else %}
-    <div class="product-grid__grid grid gap-sm desktop:gap-md px-md desktop:px-xl">
+    <div class="product-grid__grid grid gap-x-sm gap-y-md desktop:gap-md px-md desktop:px-xl">
       {% if section.settings.collection != blank %}
         {% for product in section.settings.collection.products limit: section.settings.num_products %}
           <div class="product-grid__product">
