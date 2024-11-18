@@ -1,0 +1,540 @@
+{% capture margins_paddings %}
+  {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+<div class="section__product-grid {{ margins_paddings }} {{ section.settings.color }}" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+  {% if section.settings.title != blank %}
+    <h1 class="product-grid__title {{ section.settings.title_style }} text-center mb-md desktop:mb-xl px-md desktop:px-xl">{{ section.settings.title }}</h1>
+  {% endif %}
+  
+  {% if section.settings.carousel_mobile %}
+    {%- capture carousel_options -%}
+      {
+        "cssMode": true,
+        "loop": false,
+        "autoHeight": false
+      }
+    {%- endcapture -%}
+    <s-carousel data-options='{{ carousel_options }}' data-init="belowDesktop" class="product-grid__carousel grid desktop:px-xl">
+      <div id="ProductGrid-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+        <div class="swiper-wrapper product-grid__products desktop:!grid desktop:gap-md">
+          {% if section.settings.collection != blank %}
+            {% for product in section.settings.collection.products limit: section.settings.num_products %}
+              <div class="swiper-slide product-grid__product w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xs{%  elsif forloop.last %}pl-xs pr-md{% else %}px-xs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
+                {% render 'product-card' product: product %}
+              </div>
+            {% endfor %}
+          {% else %}
+            {% for block in section.blocks %}
+              <div class="swiper-slide product-grid__product w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xs{%  elsif forloop.last %}pl-xs pr-md{% else %}px-xs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
+                {% render 'product-card' product: block.settings.product %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </s-carousel>
+  {% else %}
+    <div class="product-grid__grid grid gap-sm desktop:gap-md px-md desktop:px-xl">
+      {% if section.settings.collection != blank %}
+        {% for product in section.settings.collection.products limit: section.settings.num_products %}
+          <div class="product-grid__product">
+            {% render 'product-card' product: product %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for block in section.blocks %}
+          <div class="product-grid__product">
+            {% render 'product-card' product: block.settings.product %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top - Mobile",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom - Mobile",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pt-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pb-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:mt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:mb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pt-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pb-0"
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_mobile",
+      "label": "Carousel on Mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "num_cols_mobile",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Mobile",
+      "default": 1,
+      "info": "If it's grid on mobile (carousel checkbox above should be unchecked)"
+    },
+    {
+      "type": "range",
+      "id": "num_cols_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Desktop",
+      "default": 3
+    },    
+    {
+      "type": "header",
+      "content": "Color Set"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        }
+      ],
+      "default": "text-blue"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title Style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Leave this blank if pulling products manually by adding blocks"
+    },
+    {
+      "type": "range",
+      "id": "num_products",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "unit": "ct",
+      "label": "Number of Products from the Collection",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Product",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}
