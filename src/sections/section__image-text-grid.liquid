@@ -1,32 +1,36 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__image-text block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px]">
-  <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
-    <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width == 0 or section.settings.text_max_width == blank  %}unset{% else %}{{ section.settings.text_max_width }}px{% endif %};">
+<div class="section__image-text-grid block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px]">
+  <div class="image-text-grid__grid-container desktop:flex-1">
+    <div class="image-text-grid__grid-wrapper {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width == 0 or section.settings.text_max_width == blank  %}unset{% else %}{{ section.settings.text_max_width }}px{% endif %};">
       {% if section.settings.title != blank %}
-        <h2 class="image-text__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
+        <h2 class="image-text-grid__title {{ section.settings.title_style }} mb-lg desktop:pb-xs">{{ section.settings.title }}</h2>
       {% endif %}
-      {% if section.settings.subtext != blank %}
-        <p class="image-text__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
-      {% endif %}
-      {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
-        <a href="{{ section.settings.cta_url }}" class="image-text__cta {{ section.settings.cta_style }}">
-          <span class="btn__text">{{ section.settings.cta_text }}</span>
-          <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-        </a>
-      {% endif %}
+      <div class="image-text-grid__grid grid grid-cols-2 gap-x-md gap-y-lg">
+        {% for block in section.blocks %}
+          <div class="image-text-grid__block">
+            {% if block.settings.title != blank %}
+              <h3 class="image-text-grid-block__title {{ block.settings.title_style }} mb-xxs">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.subtext != blank %}
+              <p class="image-text-grid-block__subtext {{ block.settings.subtext_style }}">{{ block.settings.subtext }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
-  <div class="image-text__image {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
+  <div class="image-text-grid__image {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
     {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Image and Text",
+  "name": "Image and Text Grid",
   "tag": "section",
+  "max_blocks": 4,
   "settings": [
     {
       "type": "header",
@@ -502,126 +506,153 @@
       "default": "h3"
     },
     {
-      "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "select",
-      "id": "subtext_style",
-      "label": "Subtext Style",
-      "options": [
-        {
-          "value": "h1",
-          "label": "h1"
-        },
-        {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        },
-        {
-          "value": "p1",
-          "label": "p1"
-        },
-        {
-          "value": "p2",
-          "label": "p2"
-        },
-        {
-          "value": "p3",
-          "label": "p3"
-        },
-        {
-          "value": "p4",
-          "label": "p4"
-        },
-        {
-          "value": "p5",
-          "label": "p5"
-        },
-        {
-          "value": "p6",
-          "label": "p6"
-        }
-      ],
-      "default": "s3"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "CTA URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text"
-    },
-    {
-      "type": "select",
-      "id": "cta_style",
-      "label": "CTA Style",
-      "options": [
-        {
-          "value": "btn",
-          "label": "Default"
-        },
-        {
-          "value": "btn btn--blue-rounded",
-          "label": "Blue Rounded"
-        },
-        {
-          "value": "btn btn--white-rounded",
-          "label": "White Rounded"
-        },
-        {
-          "value": "btn btn--transparent-rounded",
-          "label": "Transparent Rounded"
-        }
-      ],
-      "default": "btn"
-    },
-    {
       "type": "number",
       "id": "text_max_width",
       "label": "Text Content Max Width (px) - Desktop",
       "info": "blank or zero = no max width applied"
     }
   ],
+  "blocks": [
+    {
+      "name": "Text Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_style",
+          "label": "Title Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "s1",
+              "label": "s1"
+            },
+            {
+              "value": "s2",
+              "label": "s2"
+            },
+            {
+              "value": "s3",
+              "label": "s3"
+            },
+            {
+              "value": "s4",
+              "label": "s4"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Subtext"
+        },
+        {
+          "type": "select",
+          "id": "subtext_style",
+          "label": "Subtext Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "s1",
+              "label": "s1"
+            },
+            {
+              "value": "s2",
+              "label": "s2"
+            },
+            {
+              "value": "s3",
+              "label": "s3"
+            },
+            {
+              "value": "s4",
+              "label": "s4"
+            },
+            {
+              "value": "p1",
+              "label": "p1"
+            },
+            {
+              "value": "p2",
+              "label": "p2"
+            },
+            {
+              "value": "p3",
+              "label": "p3"
+            },
+            {
+              "value": "p4",
+              "label": "p4"
+            },
+            {
+              "value": "p5",
+              "label": "p5"
+            },
+            {
+              "value": "p6",
+              "label": "p6"
+            }
+          ],
+          "default": "h6"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Image and Text"
+      "name": "Image and Text Grid"
     }
   ]
 }
