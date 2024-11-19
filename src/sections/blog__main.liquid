@@ -42,7 +42,7 @@
       </div>
     {% endif %}
 
-    <h3 class="px-30 font-900 my-40 tabletl:my-64 tabletl:px-0">Latest Entries</h3>
+    <h3 class="px-30 font-900 mt-40 tabletl:mb-16 tabletl:mt-64 tabletl:mb-24 tabletl:px-0">Latest Entries</h3>
 
     <ul class="blog-tags flex flex-wrap gap-8 mx-30 tabletl:mx-0 tabletl:gap-16">
       <li class="blog__article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %} tabletl:py-[8px]">
@@ -57,7 +57,7 @@
       {% endfor %}
     </ul>
 
-    <ul class="blog-articles mt-24 grid grid-cols-1 gap-x-48 mx-30 tabletl:mt-40 tabletl:mx-0 tabletl:grid-cols-3" role="list">
+    <ul class="blog-articles mt-24 grid grid-cols-1 gap-x-48 mx-30 gap-y-64 tabletl:mt-40 tabletl:mx-0 tabletl:grid-cols-3" role="list">
       {%- for article in blog.articles -%}
         {% unless first_article == article  %}
         <li class="blog-articles__article h-auto">
