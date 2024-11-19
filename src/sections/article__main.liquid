@@ -1,37 +1,29 @@
 <article class="article" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="spacing-divider h-[48px] tabletl:hidden"></div>
 
-  <div class="article__header-container bg-gray-athans tabletl:flex tabletl:items-center">
+  <div class="article__header-container mt-48 bg-gray-athans tabletl:mt-0 tabletl:flex tabletl:items-center">
     <header class="article__header mx-[30px] tabletl:mx-[40px] tabletl:w-1/2">
       <a href="{{ blog.url }}" class="flex gap-12 items-center py-[10px]"> 
         <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue">{%  render 'icon-arrow-left' %}</div>
         <p>Back to {{ blog.title }}</p>
       </a>
-      <div class="spacing-divider h-[24px] tabletl:h-[48px]"></div>
-      <h1 class="article__title font-900">{{ article.title }}</h1>
-      <div class="spacing-divider h-[24px] tabletl:h-[48px]"></div>
-      <div class="article__author tabletl:flex tabletl:gap-16">
-        <p class="text-p4">Reviewed by <span class="text-p3 underline">{{ article.author }}</span></p>
-        <div class="spacing-divider h-[16px] tabletl:hidden"></div>
+      <h1 class="article__title font-900 my-24 tabletl:my-48">{{ article.title }}</h1>
+      <div class="article__author tabletl:flex tabletl:mb-24 tabletl:gap-16">
+        <p class="text-p4 mb-16 tabletl:mb-0">Reviewed by <span class="text-p3 underline">{{ article.author }}</span></p>
         <p class="hidden text-[#121A224D] tabletl:block">&bull;</p>
         <p class="text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
       </div>
-      <div class="spacing-divider hidden tabletl:h-[24px] tabletl:block"></div>
     </header>
-    <div class="spacing-divider h-[48px] tabletl:hidden"></div>
   
     {% if article.image != blank %}
-      <div class="article__image tabletl:w-1/2">{% render 'lazy-image' image: article.image %}</div>
-      <div class="spacing-divider h-[48px] tabletl:hidden"></div>
+      <div class="article__image mt-48 tabletl:mt-0 tabletl:w-1/2">{% render 'lazy-image' image: article.image %}</div>
     {% endif %}
   </div>
 
-
-  <div class="article__content bg-gray-athans px-[30px] tabletl:px-0 tabletl:mx-auto tabletl:max-w-[109ch]">
-    <div class="spacing-divider h-[48px] tabletl:h-[96px]"></div>
-    {{ article.content }}
-    <div class="spacing-divider h-[48px] tabletl:h-[96px]"></div>
-  </div>
+  {% if article.content != blank %}
+    <div class="article__content rte px-[30px] py-48 tabletl:py-[96px] tabletl:px-0 tabletl:mx-auto tabletl:max-w-[109ch]">
+      {{ article.content }}
+    </div>
+  {% endif %}
 
 
   {% comment %} Blog Comments {% endcomment %}

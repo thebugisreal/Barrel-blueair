@@ -1,38 +1,27 @@
-<section class="section__product-desc-image mx-30 {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    <div class="section__product-desc-image-content">
-        {% if section.settings.title != blank %}
-            <h1 class="{{ section.settings.title_style }} mb-8 font-900">{{ section.settings.title }}</h1>
-        {% endif %}
+<section class="section__accordion mx-30 tabletl:mx-auto {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    <s-accordion class="section__accordion-content" data-manual-collapse="true" js-accordion>
+        {% for block in section.blocks %}
+            <div class="accordion-item my-16" js-accordion-item>
 
-        {% if section.blocks.size > 0 %}
-            <ul class="section__products"  style="background-color: {{ section.settings.bg_color }};">
-                {% for block in section.blocks %}
-                    {% if block.settings.product != blank %}
-                        <li class="grid grid-cols-3 gap-8 pl-16 {% unless forloop.last %} mb-12 tabletl:mb-24 {% endunless %} tabletl:pl-32 tabletl:gap-24">
-                            <div class="product__description flex flex-col justify-center py-16 col-span-2">
-                                <h1 class="product__title text-sub1 mb-8 tabletl:mb-12"> {{ block.settings.product.title }}</h1>
-                                <p class="product__price text-sub3 mb-16 tabletl:mb-24">{{ block.settings.product.price |  money }}</p>
-                                <div class="flex">
-                                    <a href="{{ block.settings.product.url }}" class="flex gap-12 items-center"> 
-                                    <p class="text-p1 font-400">Shop Now</p>
-                                    <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue">{%  render 'icon-arrow-right' %}</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product__image">
-                                {% render 'lazy-image' image:block.settings.product.featured_image %}
-                            </div>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
+                <button class="accordion-header w-full flex justify-between items-center" {% if forloop.first %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
+                    <p class="{{ block.settings.title_style }}">{{ block.settings.title }}</p>
+                    <div class="icon-container h-[33px] w-[33px] p-8">
+                        {%  render 'icon-plus' %}
+                        {%  render 'icon-minus' %}
+                    </div>
+                </button>
+
+                <div id="accordionID-{{ section.id }}-{{ forloop.index }}" class="accordion-content rte text-p2" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %} js-accordion-content>
+                    {{ block.settings.richtext }}
+                </div>
+            </div>
+        {% endfor %}
+    </s-accordion>
 </section>
 
 {% schema %}
     {
-      "name": "Product Desc + Image",
+      "name": "Accordion",
       "tag": "section",
       "settings": [
         {
@@ -87,7 +76,7 @@
                 { "value": "tabletl:mt-xxxl", "label": "xxxl" },
                 { "value": "tabletl:mt-xxxxl", "label": "xxxxl" }
             ],
-            "default": "tabletl:mt-lg"
+            "default": "tabletl:mt-xxl"
         },
         {
             "type": "select",
@@ -105,7 +94,7 @@
                 { "value": "tabletl:mb-xxxl", "label": "xxxl" },
                 { "value": "tabletl:mb-xxxxl", "label": "xxxxl" }
             ],
-            "default": "tabletl:mb-lg"
+            "default": "tabletl:mb-xxl"
         },
         {
             "type": "text",
@@ -113,51 +102,48 @@
             "label": "Max Width - Desktop",
             "info": "Make sure to include units",
             "default": "109ch"
-        },
-        {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Background Color",
-            "default": "#F0F3F6"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
-          "type": "select",
-          "id": "title_style",
-          "label": "Title Style",
-          "options": [
-            { "value": "h1", "label": "h1" },
-            { "value": "h2", "label": "h2" },
-            { "value": "h3", "label": "h3" },
-            { "value": "h4", "label": "h4" },
-            { "value": "text-p1", "label": "text-p1" },
-            { "value": "text-p2", "label": "text-p2" },
-            { "value": "text-p3", "label": "text-p3" },
-            { "value": "text-p4", "label": "text-p4" }
-          ],
-          "default": "text-p1"
         }
       ],
       "blocks": [
         {
-            "type": "Product",
-            "name": "Product",
+            "type": "accordion-item",
+            "name": "Accordion Item",
             "settings": [
                 {
-                    "type": "product",
-                    "id": "product",
-                    "label": "Product"
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "select",
+                    "id": "title_style",
+                    "label": "Title Style",
+                    "options": [
+                        { "value": "h1", "label": "h1" },
+                        { "value": "h2", "label": "h2" },
+                        { "value": "h3", "label": "h3" },
+                        { "value": "h4", "label": "h4" },
+                        { "value": "text-sub1", "label": "text-sub1" },
+                        { "value": "text-sub2", "label": "text-sub2" },
+                        { "value": "text-sub3", "label": "text-sub3" },
+                        { "value": "text-p1", "label": "text-p1" },
+                        { "value": "text-p2", "label": "text-p2" },
+                        { "value": "text-p3", "label": "text-p3" },
+                        { "value": "text-p4", "label": "text-p4" }
+                    ],
+                    "default": "text-sub1"
+                },
+                {
+                    "type": "richtext",
+                    "id": "richtext",
+                    "label": "Richtext"
                 }
             ]
         }
       ],
       "presets": [
         {
-          "name": "Product Desc + Image"
+          "name": "Accordion"
         }
       ]
     }

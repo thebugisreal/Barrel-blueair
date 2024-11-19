@@ -97,8 +97,8 @@ module.exports = {
       "sm": "16px",
       "md": "24px",
       "lg": "36px",
-      "xl": "64px",
-      "xxl": "80px",
+      "xl": "48px",
+      "xxl": "96px",
       "xxxl": "128px",
       "xxxxl": "160px",
       0: "0",
@@ -122,6 +122,10 @@ module.exports = {
         header: "calc(100vh - var(--header-height))"
       },
     },
+  },
+  borderRadius: {
+    "pill": "9999px",
+    "full": "100%"
   },
   // include if more variants are necessary. for defaults, refer to: https://tailwindcss.com/docs/configuring-variants
   variants: {

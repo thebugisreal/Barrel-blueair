@@ -38,3 +38,13 @@
   @apply !bg-blue
   !rounded-none;
 }
+
+.swiper-button-disabled .swiper-button-icon {
+  @apply text-gray
+}
+
+/* Carousel Section */
+.enable-title-link-same-line .section__carousel-title,
+.enable-title-link-same-line .section__carousel-button {
+  @apply m-0
+}

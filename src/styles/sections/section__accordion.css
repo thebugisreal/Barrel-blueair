@@ -1,0 +1,23 @@
+.section__accordion .rte p {
+    @apply my-24
+}
+
+.accordion-header[aria-expanded="true"] .icon--plus {
+    @apply hidden
+}
+.accordion-header[aria-expanded="true"] .icon--minus {
+    @apply block
+}
+
+.accordion-header[aria-expanded="false"] .icon--plus {
+    @apply block
+}
+.accordion-header[aria-expanded="false"] .icon--minus {
+    @apply hidden
+}
+
+@media screen(tabletl) {
+    .section__accordion {
+        max-width: var(--max-width-desktop)
+    }
+}

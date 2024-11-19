@@ -11,6 +11,7 @@
 @import '/global/modals.css';
 
 @import '/global/z-index.css';
+@import '/global/rte.css';
 
 @import '/sections/section__image-text.css';
 @import '/sections/section__product-desc-image.css';
@@ -18,6 +19,8 @@
 @import '/sections/section__image-caption.css';
 @import '/sections/section__quote.css';
 @import '/sections/section__carousel.css';
+@import '/sections/section__image-text-review.css';
+@import '/sections/section__accordion.css';
 
 @import '/components/section__spacing-divider.css';
 @import '/components/carousel.css';
@@ -35,3 +38,5 @@
 @import '/sections/hotspot.css';
 @import '/sections/product-grid.css';
 @import '/templates/blog__main.css';
+@import '/templates/blog__main.css';
+@import '/templates/article__main.css';

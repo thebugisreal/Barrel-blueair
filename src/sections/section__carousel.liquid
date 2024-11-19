@@ -33,10 +33,20 @@
     }
   {%- endcapture -%}
 
-<section class="section__carousel" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    {% render 'spacing-divider' mobile_height:section.settings.spacing_top_mobile, desktop_height:section.settings.spacing_top_desktop %}
+<section class="section__carousel {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
+    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-64 tabletl:mb-40 tabletl:flex tabletl:justify-between tabletl:mx-[60px] tabletl:items-center {% endif %}">
+        {% if section.settings.title != blank %}
+            <h1 class="section__carousel-title mx-30 mb-24 text-center">{{ section.settings.title }}</h1>
+        {% endif %}
+        {% if section.settings.url != blank %}
+            <a href="{{ section.settings.url }}" class="section__carousel-button flex mx-auto mb-40 gap-16 items-center bg-blue text-white py-[11px] pl-24 pr-12 rounded-[9999px] h-fit w-fit tabletl:mb-48"> 
+                <p class="text-p2">{{ section.settings.url_text }}</p>
+                <div class="h-[34px] w-[34px] p-4 rounded-full text-blue bg-white">{%  render 'icon-arrow-right' %}</div>
+            </a>
+        {% endif %}
+    </header>
 
-    <div class="section__carousel-content grid grid-cols-1 ml-30 tabletl:ml-auto">
+    <div class="section__carousel-content grid grid-cols-1 ml-30 {% if section.settings.enable_centered_carousel %} tabletl:mx-[60px] {% else %} tabletl:ml-auto {% endif %}">
         <s-carousel class="block" data-options='{{carousel_options}}'>
             <div id="{{section.id}}" class="swiper" js-carousel>
                 <div class="swiper-wrapper">
@@ -45,7 +55,7 @@
                             {% when 'image_caption' %}
                                 {% if block.settings.image_mobile != blank %}
                                     <div class="swiper-slide h-auto" js-carousel-slide>
-                                        <div class="image-container flex flex-col relative h-full">
+                                        <div class="image-container flex flex-col relative h-full mb-12">
                                             {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full' %}
                                             {% if block.settings.url != blank %}
                                                 <a href="{{ block.settings.url }}" class="image-url-link absolute top-12 left-12 tabletl:top-24 tabletl:left-24">
@@ -57,40 +67,66 @@
                                                     {% endif %}
                                                 </a>
                                             {% endif %}
-                                            {% render 'spacing-divider' mobile_height:12 desktop_height:12 %}
 
                                             {% if block.settings.caption != blank %}
-                                                <p class="text-p6">{{ block.settings.caption }}</p>
+                                                <p class="text-p6 mt-12">{{ block.settings.caption }}</p>
                                             {% endif %}
                                         </div>
                                     </div>
+                                {% endif %}
+                            {% when 'product' %}
+                                {% if block.settings.product != blank %}
+                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                        {% render 'product-card__carousel' product:block.settings.product %}
+                                    </div>
+                                {% endif %}
+                            {% when 'collection' %}
+                                {% if block.settings.collection != blank %}
+                                    {% for product in block.settings.collection %}
+                                        <div class="swiper-slide h-auto" js-carousel-slide>
+                                            {% render 'product-card__carousel' product:product %}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% when 'article' %}
+                                {% if block.settings.article != blank %}
+                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                        {% render 'article-card' article:block.settings.article %}
+                                    </div>
+                                {% endif %}
+                            {% when 'blog' %}
+                                {% if block.settings.blog != blank %}
+                                    {% for article in block.settings.blog.articles %}
+                                        <div class="swiper-slide h-auto" js-carousel-slide>
+                                            {% render 'article-card' article:article %}
+                                        </div>
+                                    {% endfor %}
                                 {% endif %}
                         {% endcase %}
                     {% endfor %}
                 </div>
 
                 {% comment %} Swiper Nav {% endcomment %}
-                {% if section.settings.enable_second_nav %}
-                    <div class="swiper-nav-container py-8 flex justify-between items-center">
-                        <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
-                        <div class="nav-button-container flex gap-24">
+                {% case section.settings.carousel_nav %}
+                    {% when 'pagination'%}
+                        <div class="swiper-nav-container py-8 flex justify-between items-center">
+                            <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
+                            <div class="nav-button-container flex gap-24">
+                                <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                                <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                            </div>
+                        </div>
+                    {% when 'scrollbar'%}
+                        <div class="swiper-nav-container py-8 flex gap-24 items-center">
                             <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                            <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                             <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                         </div>
-                    </div>
-                {% else %}
-                    <div class="swiper-nav-container py-8 flex gap-24 items-center">
-                        <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
-                        <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
-                        <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
-                    </div>
-                {% endif %}
+                {% endcase %}
                 {% comment %} END Swiper Nav {% endcomment %}
             </div>
         </s-carousel>
     </div>
-    
-    {% render 'spacing-divider' mobile_height:section.settings.spacing_bottom_mobile, desktop_height:section.settings.spacing_bottom_desktop %}
 </section>
 
 {% schema %}
@@ -99,28 +135,76 @@
       "tag": "section",
       "settings": [
         {
-            "type": "number",
-            "id": "spacing_top_mobile",
-            "label": "Spacing Top - Mobile",
-            "default": 12
+            "type": "select",
+            "id": "margin_top",
+            "label": "Margin Top - Mobile",
+            "options": [
+                { "value": "mt-xxxs", "label": "xxxs" },
+                { "value": "mt-xxs", "label": "xxs" },
+                { "value": "mt-xs", "label": "xs" },
+                { "value": "mt-sm", "label": "sm" },
+                { "value": "mt-md", "label": "md" },
+                { "value": "mt-lg", "label": "lg" },
+                { "value": "mt-xl", "label": "xl" },
+                { "value": "mt-xxl", "label": "xxl" },
+                { "value": "mt-xxxl", "label": "xxxl" },
+                { "value": "mt-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "mt-xs"
         },
         {
-            "type": "number",
-            "id": "spacing_bottom_mobile",
-            "label": "Spacing Bottom - Mobile",
-            "default": 12
+            "type": "select",
+            "id": "margin_bottom",
+            "label": "Margin Bottom - Mobile",
+            "options": [
+                { "value": "mb-xxxs", "label": "xxxs" },
+                { "value": "mb-xxs", "label": "xxs" },
+                { "value": "mb-xs", "label": "xs" },
+                { "value": "mb-sm", "label": "sm" },
+                { "value": "mb-md", "label": "md" },
+                { "value": "mb-lg", "label": "lg" },
+                { "value": "mb-xl", "label": "xl" },
+                { "value": "mb-xxl", "label": "xxl" },
+                { "value": "mb-xxxl", "label": "xxxl" },
+                { "value": "mb-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "mb-xs"
         },
         {
-            "type": "number",
-            "id": "spacing_top_desktop",
-            "label": "Spacing Top - Desktop",
-            "default": 24
+            "type": "select",
+            "id": "margin_top_desktop",
+            "label": "Margin Top - Desktop",
+            "options": [
+                { "value": "tabletl:mt-xxxs", "label": "xxxs" },
+                { "value": "tabletl:mt-xxs", "label": "xxs" },
+                { "value": "tabletl:mt-xs", "label": "xs" },
+                { "value": "tabletl:mt-sm", "label": "sm" },
+                { "value": "tabletl:mt-md", "label": "md" },
+                { "value": "tabletl:mt-lg", "label": "lg" },
+                { "value": "tabletl:mt-xl", "label": "xl" },
+                { "value": "tabletl:mt-xxl", "label": "xxl" },
+                { "value": "tabletl:mt-xxxl", "label": "xxxl" },
+                { "value": "tabletl:mt-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "tabletl:mt-md"
         },
         {
-            "type": "number",
-            "id": "spacing_bottom_desktop",
-            "label": "Spacing Bottom - Desktop",
-            "default": 24
+            "type": "select",
+            "id": "margin_bottom_desktop",
+            "label": "Margin Bottom - Desktop",
+            "options": [
+                { "value": "tabletl:mb-xxxs", "label": "xxxs" },
+                { "value": "tabletl:mb-xxs", "label": "xxs" },
+                { "value": "tabletl:mb-xs", "label": "xs" },
+                { "value": "tabletl:mb-sm", "label": "sm" },
+                { "value": "tabletl:mb-md", "label": "md" },
+                { "value": "tabletl:mb-lg", "label": "lg" },
+                { "value": "tabletl:mb-xl", "label": "xl" },
+                { "value": "tabletl:mb-xxl", "label": "xxl" },
+                { "value": "tabletl:mb-xxxl", "label": "xxxl" },
+                { "value": "tabletl:mb-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "tabletl:mb-md"
         },
         {
             "type": "text",
@@ -128,6 +212,12 @@
             "label": "Max Width - Desktop",
             "info": "Make sure to include units",
             "default": "109ch"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color",
+            "default": "#ffffff"
         },
         {
             "type": "text",
@@ -142,9 +232,40 @@
             "default": "1.8"
         },
         {
+            "type": "select",
+            "id": "carousel_nav",
+            "label": "Carousel Nav",
+            "options": [
+                { "value":"scrollbar", "label":"Scrollbar" },
+                { "value":"pagination", "label":"Pagination" },
+                { "value":"none", "label":"None"}
+            ],
+            "default": "scrollbar"
+        },
+        {
             "type": "checkbox",
-            "id": "enable_second_nav",
-            "label": "Enable Second Nav"
+            "id": "enable_centered_carousel",
+            "label": "Enable Centered Carousel - Desktop"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_title_link_same_link",
+            "label": "Enable Title and Button Same Line"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+        },
+        {
+            "type": "text",
+            "id": "url_text",
+            "label": "URL Text"
         }
       ],
       "blocks": [
@@ -176,6 +297,56 @@
                     "type": "text",
                     "id": "url_text",
                     "label": "URL Text"
+                }
+            ]
+        },
+        {
+            "name": "Product",
+            "type": "product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                }
+            ]
+        },
+        {
+            "name": "Collection",
+            "type": "collection",
+            "settings": [
+                {
+                    "type": "collection",
+                    "id": "collection",
+                    "label": "Collection"
+                }
+            ]
+        },
+        {
+            "name": "Article",
+            "type": "article",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "article",
+                    "label": "Article"
+                }
+            ]
+        },
+        {
+            "name": "Blog",
+            "type": "blog",
+            "settings": [
+                {
+                    "type": "blog",
+                    "id": "blog",
+                    "label": "Blog"
+                },
+                {
+                    "type": "number",
+                    "id": "article_pulled",
+                    "label": "Article Pulled",
+                    "default": 3
                 }
             ]
         }

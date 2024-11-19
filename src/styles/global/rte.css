@@ -1,0 +1,12 @@
+.rte ul li::before {
+    content: '●';
+    @apply pr-20;
+}
+
+.rte p {
+    @apply my-24
+}
+
+.rte ol li{
+    list-style-type: decimal;
+}

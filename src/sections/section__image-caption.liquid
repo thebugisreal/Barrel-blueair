@@ -1,9 +1,7 @@
-<section class="section__image-caption tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    {% render 'spacing-divider' mobile_height:section.settings.spacing_top_mobile, desktop_height:section.settings.spacing_top_desktop %}
-
+<section class="section__image-caption tabletl:mx-auto {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
     <div class="section__image-caption-content mx-30 tabletl:mx-0">
         {% if section.settings.image != blank %}
-            <div class="image-container relative">
+            <div class="image-container relative mb-12">
                 {% render 'lazy-image' image:section.settings.image, image_desktop:section.settings.image_desktop %}
 
                 {% if section.settings.url != blank %}
@@ -16,7 +14,6 @@
                         {% endif %}
                     </a>
                 {% endif %}
-                {% render 'spacing-divider' mobile_height:12 desktop_height:12 %}
             </div>
         {% endif %}
         {% if section.settings.caption != blank %}
@@ -24,8 +21,6 @@
         {% endif %}
     </div>
     
-
-    {% render 'spacing-divider' mobile_height:section.settings.spacing_bottom_mobile, desktop_height:section.settings.spacing_bottom_desktop %}
 </section>
 
 {% schema %}
@@ -34,28 +29,76 @@
       "tag": "section",
       "settings": [
         {
-            "type": "number",
-            "id": "spacing_top_mobile",
-            "label": "Spacing Top - Mobile",
-            "default": 0
+            "type": "select",
+            "id": "margin_top",
+            "label": "Margin Top - Mobile",
+            "options": [
+                { "value": "mt-xxxs", "label": "xxxs" },
+                { "value": "mt-xxs", "label": "xxs" },
+                { "value": "mt-xs", "label": "xs" },
+                { "value": "mt-sm", "label": "sm" },
+                { "value": "mt-md", "label": "md" },
+                { "value": "mt-lg", "label": "lg" },
+                { "value": "mt-xl", "label": "xl" },
+                { "value": "mt-xxl", "label": "xxl" },
+                { "value": "mt-xxxl", "label": "xxxl" },
+                { "value": "mt-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "mt-md"
         },
         {
-            "type": "number",
-            "id": "spacing_bottom_mobile",
-            "label": "Spacing Bottom - Mobile",
-            "default": 24
+            "type": "select",
+            "id": "margin_bottom",
+            "label": "Margin Bottom - Mobile",
+            "options": [
+                { "value": "mb-xxxs", "label": "xxxs" },
+                { "value": "mb-xxs", "label": "xxs" },
+                { "value": "mb-xs", "label": "xs" },
+                { "value": "mb-sm", "label": "sm" },
+                { "value": "mb-md", "label": "md" },
+                { "value": "mb-lg", "label": "lg" },
+                { "value": "mb-xl", "label": "xl" },
+                { "value": "mb-xxl", "label": "xxl" },
+                { "value": "mb-xxxl", "label": "xxxl" },
+                { "value": "mb-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "mb-md"
         },
         {
-            "type": "number",
-            "id": "spacing_top_desktop",
-            "label": "Spacing Top - Desktop",
-            "default": 0
+            "type": "select",
+            "id": "margin_top_desktop",
+            "label": "Margin Top - Desktop",
+            "options": [
+                { "value": "tabletl:mt-xxxs", "label": "xxxs" },
+                { "value": "tabletl:mt-xxs", "label": "xxs" },
+                { "value": "tabletl:mt-xs", "label": "xs" },
+                { "value": "tabletl:mt-sm", "label": "sm" },
+                { "value": "tabletl:mt-md", "label": "md" },
+                { "value": "tabletl:mt-lg", "label": "lg" },
+                { "value": "tabletl:mt-xl", "label": "xl" },
+                { "value": "tabletl:mt-xxl", "label": "xxl" },
+                { "value": "tabletl:mt-xxxl", "label": "xxxl" },
+                { "value": "tabletl:mt-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "tabletl:mt-lg"
         },
         {
-            "type": "number",
-            "id": "spacing_bottom_desktop",
-            "label": "Spacing Bottom - Desktop",
-            "default": 24
+            "type": "select",
+            "id": "margin_bottom_desktop",
+            "label": "Margin Bottom - Desktop",
+            "options": [
+                { "value": "tabletl:mb-xxxs", "label": "xxxs" },
+                { "value": "tabletl:mb-xxs", "label": "xxs" },
+                { "value": "tabletl:mb-xs", "label": "xs" },
+                { "value": "tabletl:mb-sm", "label": "sm" },
+                { "value": "tabletl:mb-md", "label": "md" },
+                { "value": "tabletl:mb-lg", "label": "lg" },
+                { "value": "tabletl:mb-xl", "label": "xl" },
+                { "value": "tabletl:mb-xxl", "label": "xxl" },
+                { "value": "tabletl:mb-xxxl", "label": "xxxl" },
+                { "value": "tabletl:mb-xxxxl", "label": "xxxxl" }
+            ],
+            "default": "tabletl:mb-lg"
         },
         {
             "type": "text",
