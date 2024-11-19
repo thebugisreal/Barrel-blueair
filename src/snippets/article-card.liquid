@@ -6,11 +6,10 @@
  * @usage: {% render 'article-card' article: article %}    
 {% endcomment %}
 
-<article class="article-card" >
+<article class="article-card h-full">
   <a href="{{ article.url }}" class="article-content motion-reduce">
     {% if article.image != blank %}
-      <div class="article-card__image aspect-square">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'h-full' %}</div>
-      <div class="spacing-divider h-[16px] tabletl:h-[20px]"></div>
+      <div class="article-card__image aspect-square mb-16 tabletl:mb-20">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'h-full' %}</div>
     {% endif %}
     <header class="article-card__header">
       <ul class="blog__first-article-tags flex">
@@ -18,23 +17,18 @@
           <li class="article-card__tag tag-small py-[6px] px-[10px] border border-gray rounded-[60px]"> {{ tag }} </li>
         {% endfor %}
       </ul>
-      <div class="spacing-divider h-[12px] tabletl:h-[16px]"></div>
-
-      <h4 class="article-card__title text-sub1 tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
-      <div class="spacing-divider h-[8px]"></div>
+      <h4 class="article-card__title text-sub1 mt-12 mb-8 tabletl:mt-16 tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
     </header>
     {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-    <p class="article-card__excerpt">
+    <p class="article-card__excerpt mb-12 tabletl:mb-16">
       {%- if article.excerpt.size > 0 -%}
         {{ article.excerpt | strip_html | truncatewords: 30 }}
       {%- else -%}
         {{ article.content | strip_html | truncatewords: 30 }}
       {%- endif -%}
     </p>
-    <div class="spacing-divider h-[12px] tabletl:h-[16px]"></div>
     {%- endif -%}
 
     <p class="blog__first-article-date text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
-    <div class="spacing-divider h-[64px]"></div>
   </a>
 </article>
