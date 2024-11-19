@@ -1,0 +1,99 @@
+<section class="section__image-caption tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    {% render 'spacing-divider' mobile_height:section.settings.spacing_top_mobile, desktop_height:section.settings.spacing_top_desktop %}
+
+    <div class="section__image-caption-content mx-30 tabletl:mx-0">
+        {% if section.settings.image != blank %}
+            <div class="image-container relative">
+                {% render 'lazy-image' image:section.settings.image, image_desktop:section.settings.image_desktop %}
+
+                {% if section.settings.url != blank %}
+                    <a href="{{ section.settings.url }}" class="image-url-link absolute top-12 left-12 tabletl:top-24 tabletl:left-24">
+                        {% if section.settings.url_text != blank %}
+                            <div class="flex items-center gap-[10px] bg-white py-8 px-12 w-fit">
+                                <p class="text-p2">{{ section.settings.url_text }} </p>
+                                <div class="w-[32px] border border-blue rounded-full">{%  render 'icon-arrows-diag' %}</div>
+                            </div>
+                        {% endif %}
+                    </a>
+                {% endif %}
+                {% render 'spacing-divider' mobile_height:12 desktop_height:12 %}
+            </div>
+        {% endif %}
+        {% if section.settings.caption != blank %}
+            <p class="text-p6">{{ section.settings.caption }}</p>
+        {% endif %}
+    </div>
+    
+
+    {% render 'spacing-divider' mobile_height:section.settings.spacing_bottom_mobile, desktop_height:section.settings.spacing_bottom_desktop %}
+</section>
+
+{% schema %}
+    {
+      "name": "Image + Caption",
+      "tag": "section",
+      "settings": [
+        {
+            "type": "number",
+            "id": "spacing_top_mobile",
+            "label": "Spacing Top - Mobile",
+            "default": 0
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_mobile",
+            "label": "Spacing Bottom - Mobile",
+            "default": 24
+        },
+        {
+            "type": "number",
+            "id": "spacing_top_desktop",
+            "label": "Spacing Top - Desktop",
+            "default": 0
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_desktop",
+            "label": "Spacing Bottom - Desktop",
+            "default": 24
+        },
+        {
+            "type": "text",
+            "id": "max_width_desktop",
+            "label": "Max Width - Desktop",
+            "info": "Make sure to include units",
+            "default": "1096px"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image - Mobile"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image - Desktop"
+        },
+        {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+        },
+        {
+            "type": "text",
+            "id": "url_text",
+            "label": "URL Text"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Image + Caption"
+        }
+      ]
+    }
+{% endschema %}

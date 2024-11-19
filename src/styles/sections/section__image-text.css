@@ -1,0 +1,5 @@
+@media screen(tabletl) {
+    .section__image-text {
+        max-width: var(--max-width-desktop)
+    }
+}

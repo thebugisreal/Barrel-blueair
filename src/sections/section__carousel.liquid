@@ -1,0 +1,189 @@
+{%- capture carousel_options -%}
+    {
+      "spaceBetween": 12,
+      "runCallbacksOnInit": true,
+      "slidesPerView": {{section.settings.slides_per_view}},
+      "cssMode": true,
+      "loop": false,
+      "scrollbar": {
+        "el": "[js-scrollbar-{{section.id}}]",
+        "hide": false,
+        "draggable": true
+      },
+      "navigation": {
+        "enabled": true,
+        "nextEl": ".swiper-button-next--{{section.id}}",
+        "prevEl": ".swiper-button-prev--{{section.id}}"
+      },
+      "pagination": {
+        "el": ".swiper-pagination",
+        "type": "fraction"
+      },
+      "breakpoints": {
+        "1024": {
+          "slidesPerView": {{section.settings.slides_per_view_desktop}},
+          "spaceBetween": 24,
+          "navigation": {
+            "enabled": true,
+            "nextEl": ".swiper-button-next--{{section.id}}",
+            "prevEl": ".swiper-button-prev--{{section.id}}"
+          }
+        }
+      }
+    }
+  {%- endcapture -%}
+
+<section class="section__carousel" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    {% render 'spacing-divider' mobile_height:section.settings.spacing_top_mobile, desktop_height:section.settings.spacing_top_desktop %}
+
+    <div class="section__carousel-content grid grid-cols-1 ml-30 tabletl:ml-auto">
+        <s-carousel class="block" data-options='{{carousel_options}}'>
+            <div id="{{section.id}}" class="swiper" js-carousel>
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% case block.type %}
+                            {% when 'image_caption' %}
+                                {% if block.settings.image_mobile != blank %}
+                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                        <div class="image-container flex flex-col relative h-full">
+                                            {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full' %}
+                                            {% if block.settings.url != blank %}
+                                                <a href="{{ block.settings.url }}" class="image-url-link absolute top-12 left-12 tabletl:top-24 tabletl:left-24">
+                                                    {% if block.settings.url_text != blank %}
+                                                        <div class="flex items-center gap-[10px] bg-white py-8 px-12 w-fit">
+                                                            <p class="text-p2">{{ block.settings.url_text }} </p>
+                                                            <div class="w-[32px] border border-blue rounded-full">{%  render 'icon-arrows-diag' %}</div>
+                                                        </div>
+                                                    {% endif %}
+                                                </a>
+                                            {% endif %}
+                                            {% render 'spacing-divider' mobile_height:12 desktop_height:12 %}
+
+                                            {% if block.settings.caption != blank %}
+                                                <p class="text-p6">{{ block.settings.caption }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                        {% endcase %}
+                    {% endfor %}
+                </div>
+
+                {% comment %} Swiper Nav {% endcomment %}
+                {% if section.settings.enable_second_nav %}
+                    <div class="swiper-nav-container py-8 flex justify-between items-center">
+                        <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
+                        <div class="nav-button-container flex gap-24">
+                            <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                            <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="swiper-nav-container py-8 flex gap-24 items-center">
+                        <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                        <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
+                        <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                    </div>
+                {% endif %}
+                {% comment %} END Swiper Nav {% endcomment %}
+            </div>
+        </s-carousel>
+    </div>
+    
+    {% render 'spacing-divider' mobile_height:section.settings.spacing_bottom_mobile, desktop_height:section.settings.spacing_bottom_desktop %}
+</section>
+
+{% schema %}
+    {
+      "name": "Carousel",
+      "tag": "section",
+      "settings": [
+        {
+            "type": "number",
+            "id": "spacing_top_mobile",
+            "label": "Spacing Top - Mobile",
+            "default": 12
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_mobile",
+            "label": "Spacing Bottom - Mobile",
+            "default": 12
+        },
+        {
+            "type": "number",
+            "id": "spacing_top_desktop",
+            "label": "Spacing Top - Desktop",
+            "default": 24
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_desktop",
+            "label": "Spacing Bottom - Desktop",
+            "default": 24
+        },
+        {
+            "type": "text",
+            "id": "max_width_desktop",
+            "label": "Max Width - Desktop",
+            "info": "Make sure to include units",
+            "default": "109ch"
+        },
+        {
+            "type": "text",
+            "label": "Slides per view",
+            "id": "slides_per_view",
+            "default": "1.2"
+        },
+        {
+            "type": "text",
+            "label": "Slides per view - Desktop",
+            "id": "slides_per_view_desktop",
+            "default": "1.8"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_second_nav",
+            "label": "Enable Second Nav"
+        }
+      ],
+      "blocks": [
+        {
+            "name": "Image + Caption",
+            "type": "image_caption",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image_mobile",
+                    "label": "Image - Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Image - Desktop"
+                },
+                {
+                    "type": "text",
+                    "id": "caption",
+                    "label": "Caption"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                },
+                {
+                    "type": "text",
+                    "id": "url_text",
+                    "label": "URL Text"
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Carousel"
+        }
+      ]
+    }
+{% endschema %}

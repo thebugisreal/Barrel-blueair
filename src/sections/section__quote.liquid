@@ -1,0 +1,99 @@
+<section class="section__quote mx-30 tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    <div class="tabletl:px-[40px]">
+        {% render 'spacing-divider' mobile_height:section.settings.spacing_top_mobile, desktop_height:section.settings.spacing_top_desktop %}
+    </div>
+
+    <div class="section__quote-content">
+        <div class="flex flex-col tabletl:flex-row tabletl:gap-24">
+            <div class="quote-container text-[#00B5E2] w-[30px] tabletl:w-[45px]">
+                {%  render 'icon-quote' %}
+            </div>
+            <div class="text-container flex-1">
+                {% if section.settings.title != blank %}
+                    <h1 class="{{ section.settings.title_style }} font-500">{{ section.settings.title }}</h1>
+                {% endif %}
+                {% if section.settings.author != blank %}
+                    <div class="spacing-divider h-[24px]"></div>
+                    <p class="text-sub2"> {{ section.settings.author }}</p>
+                    <div class="spacing-divider h-[24px]"></div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="tabletl:px-[40px]">
+        {% render 'spacing-divider' mobile_height:section.settings.spacing_bottom_mobile, desktop_height:section.settings.spacing_bottom_desktop %}
+    </div>
+</section>
+
+{% schema %}
+    {
+      "name": "Quote",
+      "tag": "section",
+      "settings": [
+        {
+            "type": "number",
+            "id": "spacing_top_mobile",
+            "label": "Spacing Top - Mobile",
+            "default": 24
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_mobile",
+            "label": "Spacing Bottom - Mobile",
+            "default": 24
+        },
+        {
+            "type": "number",
+            "id": "spacing_top_desktop",
+            "label": "Spacing Top - Desktop",
+            "default": 96
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_desktop",
+            "label": "Spacing Bottom - Desktop",
+            "default": 96
+        },
+        {
+            "type": "text",
+            "id": "max_width_desktop",
+            "label": "Max Width - Desktop",
+            "info": "Make sure to include units",
+            "default": "109ch"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_style",
+          "label": "Title Style",
+          "options": [
+            { "value": "h1", "label": "h1" },
+            { "value": "h2", "label": "h2" },
+            { "value": "h3", "label": "h3" },
+            { "value": "h4", "label": "h4" },
+            { "value": "text-p1", "label": "text-p1" },
+            { "value": "text-p2", "label": "text-p2" },
+            { "value": "text-p3", "label": "text-p3" },
+            { "value": "text-p4", "label": "text-p4" }
+          ],
+          "default": "h3"
+        },
+        {
+            "type": "text",
+            "id": "author",
+            "label": "Author"
+        }
+      ],
+      "presets": [
+        {
+          "name": "Quote"
+        }
+      ]
+    }
+{% endschema %}

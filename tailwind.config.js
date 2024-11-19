@@ -56,7 +56,8 @@ module.exports = {
         dark: "#805F55"
       },
       gray: {
-        DEFAULT: "#D8DBDE"
+        DEFAULT: "#D8DBDE",
+        athans: "#F0F3F6"
       }
       // add custom colors here, refer to: https://tailwindcss.com/docs/customizing-colors
     },

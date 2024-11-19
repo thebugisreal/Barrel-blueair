@@ -1,0 +1,15 @@
+.spacing-divider {
+    @apply bg-pink-light
+  }
+
+.spacing-divider-snippet {
+    @apply bg-pink-light;
+    height: var(--mobile-height);
+}
+
+@media screen(tabletl) {
+    .spacing-divider-snippet {
+        @apply bg-pink-light;
+        height: var(--desktop-height, var(--mobile-height));
+    }
+}

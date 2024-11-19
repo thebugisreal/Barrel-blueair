@@ -1,0 +1,298 @@
+<section class="section__product-text tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    {% render 'spacing-divider' mobile_height:section.settings.spacing_top_mobile, desktop_height:section.settings.spacing_top_desktop %}
+    <s-accordion data-manual-collapse="false" js-accordion>
+        <ul class="section__product-text-content mx-30 tabletl:mx-auto">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'title' %}
+                        {% if block.settings.title != blank %}
+                            <li class="list-none">
+                                {% render 'spacing-divider' mobile_height:block.settings.spacing_top_mobile, desktop_height:block.settings.spacing_top_desktop %}
+                                <h1 class="{{ block.settings.title_style }} font-900" style="background-color: {{ block.settings.bg_color }};">{{ block.settings.title }}</h1>
+                                {% render 'spacing-divider' mobile_height:block.settings.spacing_bottom_mobile, desktop_height:block.settings.spacing_bottom_desktop %}
+                            </li>
+                        {% endif %}
+                    {% when 'richtext' %}
+                        {% if block.settings.richtext != blank %}
+                            <li class="list-none">
+                                {% render 'spacing-divider' mobile_height:block.settings.spacing_top_mobile, desktop_height:block.settings.spacing_top_desktop %}
+                                <div class="rte {{ block.settings.richtext_style }}" style="background-color: {{ block.settings.bg_color }};">
+                                    {{ block.settings.richtext }}
+                                </div>
+                                {% render 'spacing-divider' mobile_height:block.settings.spacing_bottom_mobile, desktop_height:block.settings.spacing_bottom_desktop %}
+                            </li>
+                        {% endif %}
+                    {% when 'bullet' %}
+                        {% if block.settings.text != blank %}
+                            <li class="list-none">
+                                {% render 'spacing-divider' mobile_height:block.settings.spacing_top_mobile, desktop_height:block.settings.spacing_top_desktop %}
+                                <div class="flex gap-20" style="background-color: {{ block.settings.bg_color }};">
+                                    <div class="bullet">&#9679;</div> 
+                                    <p class="{{ block.settings.text_style }}">{{ block.settings.text }} </p>
+                                </div>
+                                {% render 'spacing-divider' mobile_height:block.settings.spacing_bottom_mobile, desktop_height:block.settings.spacing_bottom_desktop %}
+                            </li>
+                        {% endif %}
+                    {% when 'accordion_item' %}
+                        <div class="accordion-item" js-accordion-item>
+                            <button class="accordion-header {{ block.settings.title_style }}" aria-expanded="true" aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>{{ block.settings.title }}</button>
+                            <div id="accordionID-{{ section.id }}-{{ forloop.index }}" class="accordion-content rte text-p2" aria-hidden="false" js-accordion-content>
+                                {{ block.settings.accordion_content }}
+                            </div>
+                        </div>
+                {% endcase %}
+            {% endfor %}
+        </ul>
+    </s-accordion>
+    {% render 'spacing-divider' mobile_height:section.settings.spacing_bottom_mobile, desktop_height:section.settings.spacing_bottom_desktop %}
+</section>
+
+{% schema %}
+    {
+      "name": "Text",
+      "tag": "section",
+      "settings": [
+        {
+            "type": "number",
+            "id": "spacing_top_mobile",
+            "label": "Spacing Top - Mobile",
+            "default": 24
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_mobile",
+            "label": "Spacing Bottom - Mobile",
+            "default": 24
+        },
+        {
+            "type": "number",
+            "id": "spacing_top_desktop",
+            "label": "Spacing Top - Desktop",
+            "default": 48
+        },
+        {
+            "type": "number",
+            "id": "spacing_bottom_desktop",
+            "label": "Spacing Bottom - Desktop",
+            "default": 48
+        },
+        {
+            "type": "text",
+            "id": "max_width_desktop",
+            "label": "Max Width - Desktop",
+            "info": "Make sure to include units",
+            "default": "109ch"
+        }
+      ],
+      "blocks": [
+        {
+            "name": "Title",
+            "type": "title",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "spacing_top_mobile",
+                    "label": "Spacing Top - Mobile",
+                    "default": 24
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_bottom_mobile",
+                    "label": "Spacing Bottom - Mobile",
+                    "default": 24
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_top_desktop",
+                    "label": "Spacing Top - Desktop",
+                    "default": 48
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_bottom_desktop",
+                    "label": "Spacing Bottom - Desktop",
+                    "default": 48
+                },
+                {
+                    "type": "color",
+                    "id": "bg_color",
+                    "label": "Background Color",
+                    "default": "#F0F3F6"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "select",
+                    "id": "title_style",
+                    "label": "Title Style",
+                    "options": [
+                        { "value": "h1", "label": "h1" },
+                        { "value": "h2", "label": "h2" },
+                        { "value": "h3", "label": "h3" },
+                        { "value": "h4", "label": "h4" },
+                        { "value": "text-p1", "label": "text-p1" },
+                        { "value": "text-p2", "label": "text-p2" },
+                        { "value": "text-p3", "label": "text-p3" },
+                        { "value": "text-p4", "label": "text-p4" }
+                    ],
+                    "default": "h2"
+                }
+            ]
+        },
+        {
+            "name": "Richtext",
+            "type": "richtext",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "spacing_top_mobile",
+                    "label": "Spacing Top - Mobile",
+                    "default": 24
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_bottom_mobile",
+                    "label": "Spacing Bottom - Mobile",
+                    "default": 24
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_top_desktop",
+                    "label": "Spacing Top - Desktop",
+                    "default": 48
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_bottom_desktop",
+                    "label": "Spacing Bottom - Desktop",
+                    "default": 48
+                },
+                {
+                    "type": "color",
+                    "id": "bg_color",
+                    "label": "Background Color",
+                    "default": "#F0F3F6"
+                },
+                {
+                    "type": "richtext",
+                    "id": "richtext",
+                    "label": "Richtext"
+                },
+                {
+                    "type": "select",
+                    "id": "richtext_style",
+                    "label": "Richtext Style",
+                    "options": [
+                        { "label": "text-sub1", "value": "text-sub1" },
+                        { "label": "text-sub2", "value": "text-sub2" },
+                        { "label": "text-sub3", "value": "text-sub3" },
+                        { "label": "text-p1", "value": "text-p1" },
+                        { "label": "text-p2", "value": "text-p2" },
+                        { "label": "text-p3", "value": "text-p3" },
+                        { "label": "text-p4", "value": "text-p4" },
+                        { "label": "text-p6", "value": "text-p6" }
+                    ],
+                    "default": "text-p2"
+                }
+            ]
+        },
+        {
+            "name": "Bullet",
+            "type": "bullet",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "spacing_top_mobile",
+                    "label": "Spacing Top - Mobile",
+                    "default": 8
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_bottom_mobile",
+                    "label": "Spacing Bottom - Mobile",
+                    "default": 8
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_top_desktop",
+                    "label": "Spacing Top - Desktop",
+                    "default": 8
+                },
+                {
+                    "type": "number",
+                    "id": "spacing_bottom_desktop",
+                    "label": "Spacing Bottom - Desktop",
+                    "default": 8
+                },
+                {
+                    "type": "color",
+                    "id": "bg_color",
+                    "label": "Background Color",
+                    "default": "#F0F3F6"
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "select",
+                    "id": "text_style",
+                    "label": "Text Style",
+                    "options": [
+                        { "label": "text-sub1", "value": "text-sub1" },
+                        { "label": "text-sub2", "value": "text-sub2" },
+                        { "label": "text-sub3", "value": "text-sub3" },
+                        { "label": "text-p1", "value": "text-p1" },
+                        { "label": "text-p2", "value": "text-p2" },
+                        { "label": "text-p3", "value": "text-p3" },
+                        { "label": "text-p4", "value": "text-p4" },
+                        { "label": "text-p6", "value": "text-p6" }
+                    ],
+                    "default": "text-p2"
+                }
+            ]
+        },
+        {
+            "name": "Accordion Item",
+            "type": "accordion_item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Accordion Title"
+                },
+                {
+                    "type": "select",
+                    "id": "title_style",
+                    "label": "Title Style",
+                    "options": [
+                        { "value": "h1", "label": "h1" },
+                        { "value": "h2", "label": "h2" },
+                        { "value": "h3", "label": "h3" },
+                        { "value": "h4", "label": "h4" },
+                        { "value": "text-p1", "label": "text-p1" },
+                        { "value": "text-p2", "label": "text-p2" },
+                        { "value": "text-p3", "label": "text-p3" },
+                        { "value": "text-p4", "label": "text-p4" }
+                    ],
+                    "default": "h2"
+                },
+                {
+                    "type": "richtext",
+                    "id": "accordion_content",
+                    "label": "Accordion Content"
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Text"
+        }
+      ]
+    }
+{% endschema %}
