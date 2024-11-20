@@ -3,7 +3,7 @@ s-video[data-paused="false"] .video__trigger {
 }
 
 @media screen(desktop){
-  s-video[data-paused="false"]:hover .video__trigger {
+  s-video[data-paused="false"][data-controls="false"]:hover .video__trigger {
     @apply flex;
   }
 }

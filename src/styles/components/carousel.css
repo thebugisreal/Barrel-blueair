@@ -27,3 +27,14 @@
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   @apply pointer-events-none
 }
+
+.swiper-scrollbar {
+  @apply !h-[2px]
+  !bg-gray
+  !rounded-none;
+}
+
+.swiper-scrollbar .swiper-scrollbar-drag {
+  @apply !bg-blue
+  !rounded-none;
+}

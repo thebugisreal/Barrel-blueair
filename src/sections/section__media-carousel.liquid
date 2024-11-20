@@ -1,23 +1,65 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__video {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="video__wrapper mx-auto max-w-[var(--max-w-mobile)] desktop:max-w-[var(--max-w-desktop)]" style="--max-w-mobile: {% if section.settings.max_width_mobile == 0 or section.settings.max_width_mobile == blank %}unset{% else %}{{ section.settings.max_width_mobile }}px{% endif %}; --max-w-desktop: {% if section.settings.max_width_desktop == 0 or section.settings.max_width_desktop == blank %}unset{% else %}{{ section.settings.max_width_desktop }}px{% endif %};">
+<div class="section__media-carousel {{ margins_paddings }} {{ section.settings.color }}">
+  <div class="media-carousel__title-container text-center px-md desktop:px-xl flex flex-col gap-sm {% if section.settings.title != blank or section.settings.subtext != blank %}mb-lg desktop:mb-xl{% endif %}">
     {% if section.settings.title != blank %}
-      <h1 class="video__title {{ section.settings.title_style }} text-center mb-xl">{{ section.settings.title }}</h1>
+      <h1 class="media-carousel__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>
     {% endif %}
-    {% if section.settings.video != blank %}
-      <s-video data-paused="true" data-controls="false" class="block relative aspect-square overflow-hidden rounded-full">
-        {{ section.settings.video | video_tag: class: 'block w-full h-full object-cover object-center desktop:pointer-events-none', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
-        <button class="video__trigger text-20 font-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue text-white w-[80px] h-[80px] flex justify-center items-center rounded-full" data-text="true" js-video-trigger>Play</button>
-      </s-video>
+    {% if section.settings.subtext != blank %}
+      <div class="media-carousel__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
     {% endif %}
   </div>
+  
+  {%- capture carousel_options -%}
+    {
+      "cssMode": true,
+      "loop": false,
+      "autoHeight": false,
+      "scrollbar": {
+        "enabled": true,
+        "el": "[js-scrollbar-{{ section.id }}]",
+        "draggable": true
+      },
+      "navigation": {
+        "enabled": true,
+        "prevEl": "[js-prev-{{ section.id }}]",
+        "nextEl": "[js-next-{{ section.id }}]"
+      }
+    }
+  {%- endcapture -%}
+  <s-carousel data-options='{{ carousel_options }}' class="media-carousel__carousel grid">
+    <div id="MediaCarousel-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide media-carousel__slide w-[40%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
+            {% if block.type == 'image' %}
+              <div class="media-carousel__image">
+                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+              </div>
+            {% elsif block.type == 'video' %}
+              <s-video data-paused="true" data-controls="true" class="media-carousel__video block relative">
+                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
+                <button class="video__trigger absolute bottom-sm left-sm w-[40px] h-[40px] pl-xxxs flex justify-center items-center rounded-full bg-white" data-text="false" js-video-trigger>
+                  <span class="w-16 leading-[0px]">{% render 'icon-play' %}</span>
+                </button>
+              </s-video>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="hidden desktop:flex gap-md items-center mt-xl px-xl">
+      <div class="swiper-button-prev !static !w-[40px] !block after:!content-none !text-blue" js-prev-{{ section.id }}>{% render 'icon-arrow-left' %}</div>
+      <div class="swiper-scrollbar !static flex-1" js-scrollbar-{{ section.id }}></div>
+      <div class="swiper-button-next !static !w-[40px] !block after:!content-none !text-blue" js-next-{{ section.id }}>{% render 'icon-arrow-right' %}</div>
+    </div>
+  </s-carousel>
 </div>
 
 {% schema %}
 {
-  "name": "Video",
+  "name": "Media Carousel",
   "tag": "section",
   "settings": [
     {
@@ -438,26 +480,115 @@
       "default": "h2"
     },
     {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "select",
+      "id": "subtext_style",
+      "label": "Subtext Style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        },
+        {
+          "value": "p1",
+          "label": "p1"
+        },
+        {
+          "value": "p2",
+          "label": "p2"
+        },
+        {
+          "value": "p3",
+          "label": "p3"
+        },
+        {
+          "value": "p4",
+          "label": "p4"
+        },
+        {
+          "value": "p5",
+          "label": "p5"
+        },
+        {
+          "value": "p6",
+          "label": "p6"
+        }
+      ],
+      "default": "s2"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image",
+      "type": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image - Mobile"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image - Desktop"
+        }
+      ]
+    },
+    {
+      "name": "Video",
       "type": "video",
-      "id": "video",
-      "label": "Video"
-    },
-    {
-      "type": "number",
-      "id": "max_width_mobile",
-      "label": "Content Max Width (px) - Mobile",
-      "info": "blank or zero = no max width applied"
-    },
-    {
-      "type": "number",
-      "id": "max_width_desktop",
-      "label": "Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Video"
+      "name": "Media Carousel"
     }
   ]
 }

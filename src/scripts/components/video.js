@@ -12,8 +12,10 @@ class Video extends HTMLElement {
     this.video = this.querySelector(this._selectors.video);
     this.trigger = this.querySelector(this._selectors.trigger);
 
-    this.video.addEventListener('click', this._videoOnClick);
     this.trigger.addEventListener('click', this._triggerOnClick);
+    if (this.dataset.controls == 'false') {
+      this.video.addEventListener('click', this._videoOnClick);
+    }
   }
 
   _videoOnClick = () => {
@@ -34,13 +36,20 @@ class Video extends HTMLElement {
 
   _playVideo = () => {
     this.video.play();
-    this.trigger.textContent = 'Pause';
+    if (this.dataset.controls == 'true') {
+      this.video.setAttribute('controls', 'controls');
+    }
+    if (this.trigger.dataset.text == 'true') {
+      this.trigger.textContent = 'Pause';
+    }
     this.dataset.paused = 'false';
   }
 
   _pauseVideo = () => {
     this.video.pause();
-    this.trigger.textContent = 'Play';
+    if (this.trigger.dataset.text == 'true') {
+      this.trigger.textContent = 'Play';
+    }
     this.dataset.paused = 'true';
   }
 }
