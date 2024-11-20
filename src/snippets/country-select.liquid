@@ -2,7 +2,7 @@
   {% capture form_id %}{{ scope }}LocalizationForm{% endcapture %}
   {% capture input_id %}{{ scope }}CountryCode{% endcapture %}
   {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
-    <div class="country-select__label flex gap-xxxs justify-start items-center">
+    <div class="country-select__label flex gap-xxxs justify-start items-center {% if scope == 'Footer' %}py-xxs px-xs pr-md{% endif %}">
       <div class="w-32">{% render 'icon-globe' %}</div>
       <div class="text-12 flex-1">{{ localization.country.name }}</div>
     </div>  

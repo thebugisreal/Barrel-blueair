@@ -127,8 +127,8 @@
   </div>
   
   <div class="site-footer__subfooter flex flex-col gap-lg desktop:flex-row-reverse desktop:justify-between desktop:items-center">
-    <div class="w-36">
-      {% render 'icon-globe' %}
+    <div class="site-footer__county-select border border-white rounded-[24px] overflow-hidden text-white max-w-max">
+      {% render 'country-select' scope: 'Footer' %}
     </div>
     <ul class="site-footer__links flex flex-wrap gap-x-md gap-y-xs font-300">
       {% for link in subfooter_linklist.links %}
