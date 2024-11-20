@@ -2,7 +2,7 @@
   <div class="mobile-nav h-full flex flex-col relative">
     <div class="mobile-nav__header px-md py-xs flex justify-between items-center">
       <a href="{{ routes.root_url }}" class="mobile-nav__logo w-[140px]">{% render 'icon-blueair-logo' %}</a>
-      <button class="mobile-nav__close w-40" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
+      <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
     </div>
     <ul class="mobile-nav__main-nav p-md flex-1 max-h-full overflow-y-auto flex flex-col gap-xs text-18">
       {% assign nav_linklist = linklists[section.settings.header_nav_mobile] %}
@@ -11,7 +11,7 @@
           <li class="mobile-main-nav__item">
             <button class="mobile-main-nav__child-nav-trigger w-full flex justify-between items-center gap-md" data-target="MobileChildNav-{{ link.handle }}" js-mobile-subnav-trigger>
               <span>{{ link.title }}</span>
-              <span class="w-40">{% render 'icon-active-right' %}</span>
+              <span class="w-[42px]">{% render 'icon-active-right' %}</span>
             </button>
           </li>
         {% else %}
@@ -26,10 +26,10 @@
     <div class="mobile-nav__footer border-t border-blue-light px-md py-xs grid grid-cols-2">
       <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="mobile-nav__account flex justify-start items-center gap-xxxs">
         <span class="w-36">{% render 'icon-account' %}</span>
-        <span>{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
+        <span class="text-12">{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
       </a>
-      <div class="w-36">
-        {% render 'icon-globe' %}
+      <div class="mobile-nav__county-select">
+        {% render 'country-select' scope: 'MobileNav' %}
       </div>
     </div>
 
@@ -37,9 +37,9 @@
       {% if link.links != blank %}
         <div id="MobileChildNav-{{ link.handle }}" class="mobile-nav__child-nav absolute top-0 bottom-[61px] left-0 right-0 z-[1] bg-white -translate-x-full transition-transform duration-300 ease-in-out pointer-events-none flex flex-col" data-active="false" js-mobile-subnav>
           <div class="mobile-child-nav__header border-b border-blue-light flex justify-between items-center px-md py-xs">
-            <button class="w-32" js-mobile-subnav-close>{% render 'icon-active-left' %}</button>
+            <button class="w-[42px]" js-mobile-subnav-close>{% render 'icon-active-left' %}</button>
             <span class="font-700">{{ link.title }}</span>
-            <button class="mobile-nav__close w-40" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
+            <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
           </div>
           <div class="mobile-child-nav__links-container flex-1 max-h-full overflow-y-auto">
             {% for child_link in link.links %}
@@ -48,9 +48,9 @@
                 <ul class="mobile-child-nav__image-links p-md flex flex-nowrap gap-xs overflow-x-auto">
                   {% for grandchild_link in child_link.links %}
                     <li class="mobile-child-nav__item">
-                      <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link block">
+                      <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link mobile-child-nav__link--image block">
                         {% assign image_link_title = grandchild_link.title %}
-                        <div class="w-[124px] min-w-[124px]">
+                        <div class="w-[124px] min-w-[124px] relative">
                           {% if grandchild_link.title contains '|' %}
                             {% assign image_link_title = grandchild_link.title | split: '|' | first | strip %}
                             {% assign image_file = grandchild_link.title | split: '|' | last | strip %}
@@ -58,6 +58,12 @@
                             {% render 'lazy-image', image: image_object %}
                           {% elsif grandchild_link.object.metafields.seed.nav_link_image_mobile != blank %}
                             {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_mobile %}
+                          {% endif %}
+
+                          {% if grandchild_link.object.metafields.seed.nav_link_tag!= blank %}
+                            <div class="absolute top-xxs left-xxs text-12 leading-[12px] font-500 bg-blue-sky rounded-[60px] py-xxxs px-xxs">
+                              {{ grandchild_link.object.metafields.seed.nav_link_tag }}
+                            </div>
                           {% endif %}
                         </div>
                         <div class="font-700 mt-xxs">

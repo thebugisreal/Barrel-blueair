@@ -22,6 +22,7 @@ window.theme = window.theme || {};
 // =require components/filter-sort.js
 // =require components/active-filters.js
 // =require components/price-range.js
+// =require components/country-select.js
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -44,6 +45,8 @@ customElements.define("predictive-search", PredictiveSearch);
 customElements.define("filter-sort", FilterSort);
 customElements.define('active-filters', ActiveFilters);
 customElements.define('price-range', PriceRange);
+
+customElements.define('country-select', CountrySelect);
 
 /*================ Sections ================*/
 // =require sections/collection__grid.js

@@ -84,19 +84,25 @@
         {% if child_link_handle == 'image-links' %}
           {% for grandchild_link in child_link.links %}
             <li class="mega-menu__item">
-              <a href="{{ grandchild_link.url }}" class="mega-menu__link block">
+              <a href="{{ grandchild_link.url }}" class="mega-menu__link mega-menu__link--image block !no-underline">
                 {% assign image_link_title = grandchild_link.title %}
-                <div class="w-[200px] min-w-[200px]">
+                <div class="mega-menu__image-wrapper w-[200px] min-w-[200px] overflow-hidden relative">
                   {% if grandchild_link.title contains '|' %}
                     {% assign image_link_title = grandchild_link.title | split: '|' | first | strip %}
                     {% assign image_file = grandchild_link.title | split: '|' | last | strip %}
                     {% assign image_object = images[image_file] %}
-                    {% render 'lazy-image', image: image_object %}
+                    {% render 'lazy-image', image: image_object, img_classes: 'mega-menu__image transition-transform' %}
                   {% elsif grandchild_link.object.metafields.seed.nav_link_image_desktop != blank %}
-                    {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_desktop %}
+                    {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_desktop, img_classes: 'mega-menu__image transition-transform' %}
+                  {% endif %}
+
+                  {% if grandchild_link.object.metafields.seed.nav_link_tag!= blank %}
+                    <div class="mega-menu__image-tag absolute top-xs left-xs text-12 leading-[12px] font-500 bg-blue-sky rounded-[60px] py-xxs px-xs">
+                      {{ grandchild_link.object.metafields.seed.nav_link_tag }}
+                    </div>
                   {% endif %}
                 </div>
-                <div class="text-16 font-700 mt-sm">
+                <div class="mega-menu__image-title text-16 font-700 mt-sm">
                   {{ image_link_title }}
                 </div>
                 {% if grandchild_link.object.metafields.seed.nav_link_text != blank %}

@@ -1,3 +1,17 @@
+.site-header__icon-link path {
+  @apply stroke-current
+  stroke-0;
+}
+
+.site-header__icon-link:focus path,
+.site-header__icon-link:focus-visible path {
+  @apply stroke-1;
+}
+
+.site-header__icon-link:focus:not(:focus-visible) path {
+  @apply stroke-0;
+}
+
 .mobile-nav__child-nav[data-active="true"] {
   @apply translate-x-0
   pointer-events-auto;
@@ -5,6 +19,21 @@
 
 .mobile-child-nav__item + .mobile-child-nav__item {
   @apply border-0;
+}
+
+.header-desktop-nav__item--mega-menu::before {
+  @apply content-['']
+  absolute
+  top-[var(--header-height)]
+  left-0
+  w-full
+  h-[calc(100vh-var(--header-height))]
+  bg-white
+  opacity-50
+  backdrop-blur
+  z-[-2]
+  pointer-events-none
+  hidden;
 }
 
 .mega-menu__left > div:first-child {
@@ -15,10 +44,32 @@
   @apply border-0;
 }
 
+.mega-menu__link--image:focus .mega-menu__image,
+.mega-menu__link--image:focus-visible .mega-menu__image {
+  @apply scale-110;
+}
+
+.mega-menu__link--image:focus:not(:focus-visible) .mega-menu__image {
+  @apply scale-100;
+}
+
+.mega-menu__link--image:focus .mega-menu__image-title,
+.mega-menu__link--image:focus-visible .mega-menu__image-title {
+  @apply underline;
+}
+
+.mega-menu__link--image:focus:not(:focus-visible) .mega-menu__image-title {
+  @apply no-underline;
+}
+
 @media screen(desktop) {
   .template-index s-header:hover,
   .template-index s-header:focus-within {
     @apply bg-white;
+  }
+
+  .site-header__icon-link:hover path {
+    @apply stroke-1;
   }
 
   .header-desktop-nav__item:focus-within .header-desktop-nav__mega-menu-title,
@@ -34,5 +85,18 @@
     pointer-events-auto
     z-[1]
     translate-y-full;
+  }
+
+  .header-desktop-nav__item--mega-menu:focus-within::before,
+  .header-desktop-nav__item--mega-menu:hover::before {
+    @apply block;
+  }
+
+  .mega-menu__link--image:hover .mega-menu__image {
+    @apply scale-110;
+  }
+
+  .mega-menu__link--image:hover .mega-menu__image-title {
+    @apply underline;
   }
 }

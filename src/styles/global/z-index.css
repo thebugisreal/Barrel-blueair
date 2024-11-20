@@ -1,13 +1,13 @@
 s-header {
-  @apply z-[2];
+  @apply z-[3];
 }
 
 s-drawer,
 s-modal {
-  @apply z-[4];
+  @apply z-[5];
 }
 
 .drawer-background:after,
 .modal-background:before {
-  @apply z-[3];
+  @apply z-[4];
 }
