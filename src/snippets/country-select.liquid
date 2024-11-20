@@ -2,11 +2,11 @@
   {% capture form_id %}{{ scope }}LocalizationForm{% endcapture %}
   {% capture input_id %}{{ scope }}CountryCode{% endcapture %}
   {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
-    <div class="country-select__label absolute inset-0 flex gap-xxxs justify-start items-center z-[-1]">
+    <div class="country-select__label flex gap-xxxs justify-start items-center">
       <div class="w-32">{% render 'icon-globe' %}</div>
-      <div class="text-12">{{ localization.country.name }}</div>
+      <div class="text-12 flex-1">{{ localization.country.name }}</div>
     </div>  
-    <select name="country_code" id="{{ input_id }}" class="country-select__selector block w-full h-full opacity-0 cursor-pointer" js-country-select>
+    <select name="country_code" id="{{ input_id }}" class="country-select__selector block absolute inset-0 z-[1] opacity-0 cursor-pointer" js-country-select>
       {% for country in localization.available_countries %}
         <option value="{{ country.iso_code }}" {% if localization.country.iso_code == country.iso_code %}selected{% endif %}>
           {{ country.name }}
