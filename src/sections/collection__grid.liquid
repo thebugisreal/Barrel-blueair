@@ -8,7 +8,7 @@
     <h2 class="collection-grid__title">{{ collection.title }}</h2>
 
     {% if collection.products.size > 0 %}
-      <ul class="collection-grid__products" js-products-grid>
+      <ul class="collection-grid__products p-md desktop:p-xl grid grid-cols-1 desktop:grid-cols-3 gap-md" js-products-grid>
           {% for product in collection.products %}
             <li class="collection-grid__product">
               {% render 'product-card' product: product, section_id: section.id %}

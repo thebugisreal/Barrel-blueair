@@ -1,12 +1,25 @@
-<div class="product-card">
-  <a href="{{ product.url }}" class="product-card__image">
+<product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
+  <a href="{{ product.url }}" class="product-card__image block !no-underline">
     {% render 'lazy-image' image: product.featured_image %}
   </a>
-  <div class="product-card__info">
-    <h3 class="product-card__title">
-      <a href="{{ product.url }}" class="product-card__title-link">{{ product.title }}</a>
-    </h3>
-    <div class="product-card__price">{{product.price | money}}</div>
+  <div class="product-card__info px-sm py-md desktop:p-md">
+    {% if product.metafields.seed.product_tags != blank %}
+      <div class="product-card__tags mb-sm flex justify-start gap-xs">
+        {% for tag in product.metafields.seed.product_tags.value %}
+          <span class="product-card__tag product-card__tag--blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <a href="{{ product.url }}" class="product-card__title s1 block mb-xxs !no-underline">{{ product.title }}</a>
+    <div class="product-card__price-wrapper text-16 mt-md">
+      {% if product.compare_at_price > product.price %}
+        <s class="product-card__price product-card__price--compare mr-sm">{{ product.compare_at_price | money }}</s>
+        <span class="product-card__price product-card__price--current font-700">{{ product.price | money }}</span>
+      {% else %}
+        <span class="product-card__price product-card__price--current font-700">{{ product.price | money }}</span>
+      {% endif %}
+    </div>
+    <div class="text-12 mt-sm">Compare (TBD)</div>
   </div>
-</div>
+</product-card>
 

@@ -23,6 +23,7 @@ window.theme = window.theme || {};
 // =require components/filter-sort.js
 // =require components/active-filters.js
 // =require components/price-range.js
+// =require components/product-card.js
 // =require components/country-select.js
 // =require components/section__image-caption-modal.js
 
@@ -48,6 +49,7 @@ customElements.define("predictive-search", PredictiveSearch);
 customElements.define("filter-sort", FilterSort);
 customElements.define('active-filters', ActiveFilters);
 customElements.define('price-range', PriceRange);
+customElements.define('product-card', ProductCard);
 
 customElements.define('country-select', CountrySelect);
 
