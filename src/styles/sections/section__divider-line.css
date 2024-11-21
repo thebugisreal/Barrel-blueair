@@ -1,5 +1,5 @@
 @media screen(tabletl) {
-    .article__header-content {
+    .section__divider-line hr{
         max-width: var(--max-width-desktop)
     }
 }

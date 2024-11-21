@@ -1,10 +1,22 @@
 <section class="section__accordion mx-30 tabletl:mx-auto {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+  
+    {% if section.settings.title != blank %}
+        {% liquid
+            assign title_tag = 'p'
+            assign title_options = 'h1,h2,h3,h4'
+
+            if title_options contains section.settings.title_style
+                assign title_tag = section.settings.title_style
+            endif
+        %}
+        <{{ title_tag }} class="section__accordion-title mb-24 tabletl:mb-48">{{ section.settings.title }}</{{ title_tag }}>
+    {% endif %}
     <s-accordion class="section__accordion-content" data-manual-collapse="true" js-accordion>
         {% for block in section.blocks %}
             <div class="accordion-item my-16" js-accordion-item>
 
-                <button class="accordion-header w-full flex justify-between items-center" {% if forloop.first %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
-                    <p class="{{ block.settings.title_style }}">{{ block.settings.title }}</p>
+                <button class="accordion-header w-full flex justify-between items-center gap-12" {% if forloop.first %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
+                    <p class="{{ block.settings.title_style }} text-left flex-1">{{ block.settings.title }}</p>
                     <div class="icon-container h-[33px] w-[33px] p-8">
                         {%  render 'icon-plus' %}
                         {%  render 'icon-minus' %}
@@ -95,6 +107,27 @@
                 { "value": "tabletl:mb-xxxxl", "label": "xxxxl" }
             ],
             "default": "tabletl:mb-xxl"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "select",
+            "id": "title_style",
+            "label": "Title Style",
+            "options": [
+                { "value": "h1", "label": "h1" },
+                { "value": "h2", "label": "h2" },
+                { "value": "h3", "label": "h3" },
+                { "value": "h4", "label": "h4" },
+                { "value": "text-p1", "label": "text-p1" },
+                { "value": "text-p2", "label": "text-p2" },
+                { "value": "text-p3", "label": "text-p3" },
+                { "value": "text-p4", "label": "text-p4" }
+            ],
+            "default": "h2"
         },
         {
             "type": "text",

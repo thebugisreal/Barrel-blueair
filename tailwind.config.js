@@ -97,8 +97,8 @@ module.exports = {
       "sm": "16px",
       "md": "24px",
       "lg": "36px",
-      "xl": "48px",
-      "xxl": "96px",
+      "xl": "64px",
+      "xxl": "80px",
       "xxxl": "128px",
       "xxxxl": "160px",
       0: "0",
@@ -114,6 +114,7 @@ module.exports = {
       40: "40px",
       44: "44px",
       48: "48px",
+      60: "60px",
       64: "64px", //used by default for ajax cart placeholders
       72: "72px", //used by default for ajax cart placeholders
     },

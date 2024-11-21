@@ -5,7 +5,15 @@
                 {% when 'title' %}
                     {% if block.settings.title != blank %}
                         <li class="list-none">
-                            <h1 class="{{ block.settings.title_style }} font-900 my-24">{{ block.settings.title }}</h1>
+                            {% liquid
+                                assign title_tag = 'p'
+                                assign title_options = 'h1,h2,h3,h4'
+
+                                if title_options contains block.settings.title_style
+                                    assign title_tag = block.settings.title_style
+                                endif
+                            %}
+                            <{{title_tag}} class="{{ block.settings.title_style }} font-900 my-24">{{ block.settings.title }}</{{title_tag}}>
                         </li>
                     {% endif %}
                 {% when 'richtext' %}

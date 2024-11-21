@@ -36,12 +36,20 @@
 <section class="section__carousel {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
     <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-64 tabletl:mb-40 tabletl:flex tabletl:justify-between tabletl:mx-[60px] tabletl:items-center {% endif %}">
         {% if section.settings.title != blank %}
-            <h1 class="section__carousel-title mx-30 mb-24 text-center">{{ section.settings.title }}</h1>
+            {% liquid
+                assign title_tag = 'p'
+                assign title_options = 'h1,h2,h3,h4'
+
+                if title_options contains section.settings.title_style
+                    assign title_tag = section.settings.title_style
+                endif
+            %}
+            <{{ title_tag }} class="section__carousel-title mx-30 mb-24 text-center">{{ section.settings.title }}</{{ title_tag }}>
         {% endif %}
         {% if section.settings.url != blank %}
-            <a href="{{ section.settings.url }}" class="section__carousel-button flex mx-auto mb-40 gap-16 items-center bg-blue text-white py-[11px] pl-24 pr-12 rounded-[9999px] h-fit w-fit tabletl:mb-48"> 
-                <p class="text-p2">{{ section.settings.url_text }}</p>
-                <div class="h-[34px] w-[34px] p-4 rounded-full text-blue bg-white">{%  render 'icon-arrow-right' %}</div>
+            <a href="{{ section.settings.url }}" class="section__carousel-button btn btn--blue-rounded mx-auto mb-40 tabletl:mb-48"> 
+                <p class="text-p2 btn__text">{{ section.settings.url_text }}</p>
+                <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
             </a>
         {% endif %}
     </header>
@@ -57,15 +65,11 @@
                                     <div class="swiper-slide h-auto" js-carousel-slide>
                                         <div class="image-container flex flex-col relative h-full mb-12">
                                             {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full' %}
-                                            {% if block.settings.url != blank %}
-                                                <a href="{{ block.settings.url }}" class="image-url-link absolute top-12 left-12 tabletl:top-24 tabletl:left-24">
-                                                    {% if block.settings.url_text != blank %}
-                                                        <div class="flex items-center gap-[10px] bg-white py-8 px-12 w-fit">
-                                                            <p class="text-p2">{{ block.settings.url_text }} </p>
-                                                            <div class="w-[32px] border border-blue rounded-full">{%  render 'icon-arrows-diag' %}</div>
-                                                        </div>
-                                                    {% endif %}
-                                                </a>
+  
+                                            {% if block.settings.product != blank %}
+                                                <div class="absolute bg-gray-athans top-12 left-12 overflow-hidden tabletl:top-24 tabletl:left-24">
+                                                    {%  render 'section__image-caption-modal' product:block.settings.product%}
+                                                </div>
                                             {% endif %}
 
                                             {% if block.settings.caption != blank %}
@@ -96,7 +100,7 @@
                                 {% endif %}
                             {% when 'blog' %}
                                 {% if block.settings.blog != blank %}
-                                    {% for article in block.settings.blog.articles %}
+                                    {% for article in block.settings.blog.articles limit:block.settings.article_pulled%}
                                         <div class="swiper-slide h-auto" js-carousel-slide>
                                             {% render 'article-card' article:article %}
                                         </div>
@@ -112,15 +116,15 @@
                         <div class="swiper-nav-container py-8 flex justify-between items-center">
                             <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                             <div class="nav-button-container flex gap-24">
-                                <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
-                                <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                                <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                                <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                             </div>
                         </div>
                     {% when 'scrollbar'%}
                         <div class="swiper-nav-container py-8 flex gap-24 items-center">
-                            <div class="swiper-button-prev--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                            <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
                             <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
-                            <div class="swiper-button-next--{{ section.id }} w-[40px]"><span class="swiper-button-icon swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                            <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                         </div>
                 {% endcase %}
                 {% comment %} END Swiper Nav {% endcomment %}
@@ -258,6 +262,22 @@
             "label": "Title"
         },
         {
+            "type": "select",
+            "id": "title_style",
+            "label": "Title Style",
+            "options": [
+                { "value": "h1", "label": "h1" },
+                { "value": "h2", "label": "h2" },
+                { "value": "h3", "label": "h3" },
+                { "value": "h4", "label": "h4" },
+                { "value": "text-p1", "label": "text-p1" },
+                { "value": "text-p2", "label": "text-p2" },
+                { "value": "text-p3", "label": "text-p3" },
+                { "value": "text-p4", "label": "text-p4" }
+            ],
+            "default": "h2"
+        },
+        {
             "type": "url",
             "id": "url",
             "label": "URL"
@@ -284,19 +304,14 @@
                     "label": "Image - Desktop"
                 },
                 {
-                    "type": "text",
+                    "type": "richtext",
                     "id": "caption",
                     "label": "Caption"
                 },
                 {
-                    "type": "url",
-                    "id": "url",
-                    "label": "URL"
-                },
-                {
-                    "type": "text",
-                    "id": "url_text",
-                    "label": "URL Text"
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
                 }
             ]
         },

@@ -7,6 +7,19 @@
     @apply my-24
 }
 
-.rte ol li{
-    list-style-type: decimal;
+.rte ol{
+    list-style: none;
+    counter-reset: list-counter; 
 }
+
+
+.rte ol li{
+    @apply flex
+}
+
+.rte ol li::before {
+    content: counter(list-counter) ". ";
+    counter-increment: list-counter;
+    @apply mr-12
+    text-p6;
+  }

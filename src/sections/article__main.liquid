@@ -1,17 +1,21 @@
-<article class="article" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article" itemscope itemtype="http://schema.org/BlogPosting" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
 
   <div class="article__header-container mt-48 bg-gray-athans tabletl:mt-0 tabletl:flex tabletl:items-center">
     <header class="article__header mx-[30px] tabletl:mx-[40px] tabletl:w-1/2">
-      <a href="{{ blog.url }}" class="flex gap-12 items-center py-[10px]"> 
-        <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue">{%  render 'icon-arrow-left' %}</div>
-        <p>Back to {{ blog.title }}</p>
-      </a>
-      <h1 class="article__title font-900 my-24 tabletl:my-48">{{ article.title }}</h1>
-      <div class="article__author tabletl:flex tabletl:mb-24 tabletl:gap-16">
-        <p class="text-p4 mb-16 tabletl:mb-0">Reviewed by <span class="text-p3 underline">{{ article.author }}</span></p>
-        <p class="hidden text-[#121A224D] tabletl:block">&bull;</p>
-        <p class="text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
+      <div class="article__header-content mx-auto">
+        <a href="{{ blog.url }}" class="btn pt-[10px]">
+          <span class="btn__arrow">{% render 'icon-arrow-left' %}</span>
+          <span class="btn__text">Back to {{ blog.title }}</span>
+        </a>
+        
+        <h1 class="article__title font-900 my-24 tabletl:my-48">{{ article.title }}</h1>
+        <div class="article__author tabletl:flex tabletl:mb-24 tabletl:gap-16">
+          <p class="text-p4 mb-16 tabletl:mb-0">Reviewed by <span class="text-p3 underline">{{ article.author }}</span></p>
+          <p class="hidden text-[#121A224D] tabletl:block">&bull;</p>
+          <p class="text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
+        </div>
       </div>
+
     </header>
   
     {% if article.image != blank %}
@@ -51,6 +55,15 @@
 {% schema %}
 {
   "name": "Blog Post",
-  "tag": "section"
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    }
+  ]
 }
 {% endschema %}

@@ -1,3 +1,15 @@
+.modal-body {
+    max-height: 0;
+    max-width: 0;
+    transition: max-width 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.modal-body.expanded {
+    max-width: 80vw;
+    max-height: 10000px;
+    transition: max-width 1s ease-in-out;
+}
+
 @media screen(tabletl) {
     .section__image-caption {
         max-width: var(--max-width-desktop)

@@ -1,26 +1,10 @@
-<section class="section__image-caption tabletl:mx-auto {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    <div class="section__image-caption-content mx-0">
-        {% if section.settings.image != blank %}
-            <div class="image-container relative mb-12">
-                {% render 'lazy-image' image:section.settings.image, image_desktop:section.settings.image_desktop %}
-
-                {% if section.settings.product != blank %}
-                    <div class="absolute bg-gray-athans top-12 left-12 overflow-hidden tabletl:top-24 tabletl:left-24">
-                        {%  render 'section__image-caption-modal' product:section.settings.product%}
-                    </div>
-                {% endif %}
-            </div>
-        {% endif %}
-        {% if section.settings.caption != blank %}
-            <div class="text-p6">{{ section.settings.caption }}</div>
-        {% endif %}
-    </div>
-    
-</section>
+<div class="section__divider-line tabletl:mx-auto {{ section.settings.margin_top }} {{ section.settings.margin_bottom }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    <hr class="text-gray mx-auto">
+</div>
 
 {% schema %}
     {
-      "name": "Image + Caption",
+      "name": "Divider Line",
       "tag": "section",
       "settings": [
         {
@@ -101,31 +85,11 @@
             "label": "Max Width - Desktop",
             "info": "Make sure to include units",
             "default": "1096px"
-        },
-        {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image - Mobile"
-        },
-        {
-            "type": "image_picker",
-            "id": "image_desktop",
-            "label": "Image - Desktop"
-        },
-        {
-            "type": "richtext",
-            "id": "caption",
-            "label": "Caption"
-        },
-        {
-            "type": "product",
-            "id": "product",
-            "label": "Product"
         }
       ],
       "presets": [
         {
-          "name": "Image + Caption"
+          "name": "Divider Line"
         }
       ]
     }

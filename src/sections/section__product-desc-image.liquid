@@ -5,22 +5,24 @@
         {% endif %}
 
         {% if section.blocks.size > 0 %}
-            <ul class="section__products"  style="background-color: {{ section.settings.bg_color }};">
+            <ul class="section__products flex flex-col gap-12 tabletl:gap-24">
                 {% for block in section.blocks %}
                     {% if block.settings.product != blank %}
-                        <li class="grid grid-cols-3 gap-8 pl-16 {% unless forloop.last %} mb-12 tabletl:mb-24 {% endunless %} tabletl:pl-32 tabletl:gap-24">
+                        <li class="grid grid-cols-3 gap-8 pl-16 tabletl:pl-32 tabletl:gap-24" style="background-color: {{ section.settings.bg_color }};">
                             <div class="product__description flex flex-col justify-center py-16 col-span-2">
                                 <h1 class="product__title text-sub1 mb-8 tabletl:mb-12"> {{ block.settings.product.title }}</h1>
                                 <p class="product__price text-sub3 mb-16 tabletl:mb-24">{{ block.settings.product.price |  money }}</p>
-                                <div class="flex">
-                                    <a href="{{ block.settings.product.url }}" class="flex gap-12 items-center"> 
-                                    <p class="text-p1 font-400">Shop Now</p>
-                                    <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue">{%  render 'icon-arrow-right' %}</div>
-                                    </a>
-                                </div>
+                                <a {{ block.settings.product.url }} class="btn">
+                                    <span class="btn__text">Shop Now</span>
+                                    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                </a>
                             </div>
                             <div class="product__image">
-                                {% render 'lazy-image' image:block.settings.product.featured_image %}
+                                {% if block.settings.image != blank %}
+                                    {% render 'lazy-image' image:block.settings.image, image_desktop:image:block.settings.image_desktop %}
+                                {% else %}
+                                    {% render 'lazy-image' image:block.settings.product.featured_image %}
+                                {% endif %}
                             </div>
                         </li>
                     {% endif %}
@@ -151,6 +153,16 @@
                     "type": "product",
                     "id": "product",
                     "label": "Product"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image - Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Image - Desktop"
                 }
             ]
         }

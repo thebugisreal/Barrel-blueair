@@ -2,15 +2,15 @@
     {% if product.metafields.seed.product_tags != blank %}
     <ul class="product-card__carousel-tags mb-[22px] flex justify-center">
         {% for tag in product.metafields.seed.product_tags.value %}
-            <li class="tag-small border border-gray py-[6px] px-[10px] rounded-[9999px] w-fit">{{ tag }}</li>
+            <li class="tag-small border bg-white border-gray py-[6px] px-[10px] rounded-[9999px] w-fit">{{ tag }}</li>
         {% endfor %}
     </ul>
     {% endif %}
-    <h1 class="h4">{{ product.title }}</h1>
+    <h4>{{ product.title }}</h4>
     <p class="text-sub3 mb-24">{{ product.price |  money }}</p>
-    <a href="{{ product.url }}" class="flex mx-auto mb-40 gap-16 items-center border border-blue bg-white py-[11px] pl-24 pr-12 rounded-[9999px] w-fit tabletl:mb-48"> 
-        <p class="text-p2"> Shop Now</p>
-        <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue text-blue bg-white">{%  render 'icon-arrow-right' %}</div>
+    <a href="{{ product.url }}" class="flex btn btn--transparent-rounded mx-auto tabletl:mb-48"> 
+        <p class="text-p2 btn__text"> Shop Now</p>
+        <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
     </a>
     <div class="product-card__carousel-image">
         {% render 'lazy-image' image:product.featured_image %}
