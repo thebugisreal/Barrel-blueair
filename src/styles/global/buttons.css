@@ -1,19 +1,182 @@
+/* btn markup
+  <button class="btn">
+    <span class="btn__text">text</span>
+    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+  </button>
+*/
 @layer base{
-  .btn{
+  .btn {
     @apply cursor-pointer
-    disabled:cursor-not-allowed;
+    disabled:cursor-not-allowed
+    !no-underline
+    flex
+    justify-start
+    items-center
+    gap-xs
+    w-fit
+    text-16
+    text-blue
+    bg-transparent;
+  }
+
+  .btn__arrow {
+    @apply w-[32px]
+    border
+    border-blue
+    rounded-full
+    overflow-hidden
+    text-blue
+    bg-transparent;
+  }
+
+  .btn--blue-rounded {
+    @apply p-xxs
+    pl-sm
+    rounded-[30px]
+    border
+    border-blue
+    text-white
+    bg-blue;
+  }
+
+  .btn--blue-rounded .btn__arrow {
+    @apply bg-white;
+  }
+
+  .btn--white-rounded {
+    @apply p-xxs
+    pl-sm
+    rounded-[30px]
+    border
+    border-blue
+    bg-white;
+  }
+
+  .btn--white-rounded .btn__arrow {
+    @apply bg-white;
+  }
+
+  .btn--transparent-rounded {
+    @apply p-xxs
+    pl-sm
+    rounded-[30px]
+    border
+    border-blue;
   }
 
   /* focus and focus-visible styles should be the same. */
-  .btn:focus{}
+  .btn:focus .btn__arrow {
+    @apply text-white
+    bg-blue;
+  }
+
+  .btn--blue-rounded:focus {
+    @apply text-blue
+    bg-white;
+  }
+
+  .btn--white-rounded:focus {
+    @apply text-white
+    bg-blue;
+  }
+
+  .btn--white-rounded:focus .btn__arrow {
+    @apply text-blue
+    bg-white;
+  }
 
   /* this should reset focus styles, because this is 'non keyboard/screen reader' focus events (i.e. lingering mouse clicks) */
-  .btn:focus:not(:focus-visible){}
+  .btn:focus:not(:focus-visible) .btn__arrow {
+    @apply text-blue
+    bg-transparent;
+  }
+
+  .btn--blue-rounded:focus:not(:focus-visible) {
+    @apply text-white
+    bg-blue;
+  }
+
+  .btn--blue-rounded:focus:not(:focus-visible) .btn__arrow {
+    @apply text-blue
+    bg-white;
+  }
+
+  .btn--white-rounded:focus:not(:focus-visible) {
+    @apply text-blue
+    bg-white;
+  }
+
+  .btn--white-rounded:focus:not(:focus-visible) .btn__arrow {
+    @apply text-blue
+    bg-white;
+  }
 
   /* focus and focus-visible styles should be the same. */
-  .btn:focus-visible{}
+  .btn:focus-visible .btn__arrow {
+    @apply text-white
+    bg-blue;
+  }
+
+  .btn--blue-rounded:focus-visible {
+    @apply text-blue
+    bg-white;
+  }
+
+  .btn--white-rounded:focus-visible {
+    @apply text-white
+    bg-blue;
+  }
+
+  .btn--white-rounded:focus-visible .btn__arrow {
+    @apply text-blue
+    bg-white;
+  }
+
+  a,
+  .link {
+    @apply no-underline
+    underline-offset-4;
+  }
+
+  a:focus,
+  .link:focus {
+    @apply underline;
+  }
+
+  a:focus:not(:focus-visible),
+  .link:focus:not(:focus-visible) {
+    @apply no-underline;
+  }
+
+  a:focus-visible,
+  .link:focus-visible {
+    @apply underline;
+  }
 
   @media screen(desktop){
-    .btn:hover{}
+    .btn:hover .btn__arrow {
+      @apply text-white
+      bg-blue;
+    }
+
+    .btn--blue-rounded:hover {
+      @apply text-blue
+      bg-white;
+    }
+
+    .btn--white-rounded:hover {
+      @apply text-white
+      bg-blue;
+    }
+
+    .btn--white-rounded:hover .btn__arrow {
+      @apply text-blue
+      bg-white;
+    }
+
+    a:hover,
+    .link:hover {
+      @apply underline;
+    }
   }
 }
