@@ -31,27 +31,26 @@
                 {%- endif -%}
               </p>
             {%- endif -%}
-            <div class="flex py-[10px]">
-              <a href="{{ first_article.url }}" class="flex gap-12 items-center"> 
-                <p>Read More</p>
-                <div class="h-[34px] w-[34px] p-4 rounded-full border border-blue">{%  render 'icon-arrow-right' %}</div>
-              </a>
-            </div>
+            <a href="{{ first_article.url }}" class="btn py-[10px]"> 
+              <p class="btn__text">Read More</p>
+              <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
+            </a>
+           
           </div>
         </div>
       </div>
     {% endif %}
 
-    <h3 class="px-30 font-900 mt-40 tabletl:mb-16 tabletl:mt-64 tabletl:mb-24 tabletl:px-0">Latest Entries</h3>
+    <h3 class="px-30 font-900 mt-40 mb-16 tabletl:mt-64 tabletl:mb-24 tabletl:px-0">Latest Entries</h3>
 
     <ul class="blog-tags flex flex-wrap gap-8 mx-30 tabletl:mx-0 tabletl:gap-16">
       <li class="blog__article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %} tabletl:py-[8px]">
-        <a href="{{ blog.url }}" class="py-[8px] px-[20px]">All</a>
+        <a href="{{ blog.url }}" class="py-[10px] px-[20px]">All</a>
       </li>
       {% for tag in blog.all_tags %}
         {% unless first_article.tags contains tag %}
         <li class="blog__article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %} tabletl:py-[8px]">
-          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="py-[8px] px-[20px]">{{ tag }}</a>
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="py-[10px] px-[20px]">{{ tag }}</a>
         </li>
         {% endunless %}
       {% endfor %}

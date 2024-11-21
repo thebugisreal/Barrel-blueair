@@ -20,7 +20,7 @@
       <h4 class="article-card__title text-sub1 mt-12 mb-8 tabletl:mt-16 tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
     </header>
     {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-    <p class="article-card__excerpt mb-12 tabletl:mb-16">
+    <p class="article-card__excerpt text-p2 mb-12 tabletl:mb-16">
       {%- if article.excerpt.size > 0 -%}
         {{ article.excerpt | strip_html | truncatewords: 30 }}
       {%- else -%}
