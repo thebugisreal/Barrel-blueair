@@ -132,18 +132,46 @@
     leading-[28px]
   }
 
-  h5,
-  .h5{
+  .p1 {
     @apply font-gilroy
-    font-400
-    text-26
+    font-700
+    text-16
+    leading-[22px]
   }
 
-  h6,
-  .h6{
+  .p2 {
     @apply font-gilroy
     font-400
-    text-22
+    text-16
+    leading-[26px]
+  }
+
+  .p3 {
+    @apply font-gilroy
+    font-700
+    text-14
+    leading-[22px]
+  }
+
+  .p4 {
+    @apply font-gilroy
+    font-400
+    text-14
+    leading-[22px]
+  }
+
+  .p5 {
+    @apply font-gilroy
+    font-300
+    text-14
+    leading-[22px]
+  }
+
+  .p6 {
+    @apply font-gilroy
+    font-400
+    text-12
+    leading-[22px]
   }
 
   @media screen(tabletl) {
