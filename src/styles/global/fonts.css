@@ -84,6 +84,20 @@
     text-28
   }
 
+  h5,
+  .h5{
+    @apply font-gilroy
+    font-400
+    text-26
+  }
+
+  h6,
+  .h6{
+    @apply font-gilroy
+    font-400
+    text-22
+  }
+
   @media screen(tabletl) {
     h1,
     .h1{
