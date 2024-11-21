@@ -14,7 +14,6 @@ window.theme = window.theme || {};
 // =require components/carousel.js
 // =require components/video.js
 // =require components/header.js
-// =require components/announcement-bar.js
 
 // =require components/cart.js
 // =require components/product-options.js
@@ -32,7 +31,6 @@ customElements.define("s-accordion", Accordion);
 customElements.define("s-tabs", Tabs);
 customElements.define("s-carousel", Carousel);
 customElements.define("s-video", Video);
-customElements.define("s-announcement-bar", AnnouncementBar);
 
 customElements.define('cart-remove-button', CartRemoveButton);
 customElements.define('cart-items', CartItems);

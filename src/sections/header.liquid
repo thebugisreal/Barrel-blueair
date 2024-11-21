@@ -1,5 +1,5 @@
 <s-header class="site-header fixed top-[0] left-0 right-0 {% if template.name == 'index' %}bg-transparent{% else %}bg-white{% endif %}">
-  <s-announcement-bar class="section__announcement-bar hidden block relative p-[5px] tabletl:p-[10px] {{ section.settings.bg_color }}">
+  <div class="section__announcement-bar hidden relative p-[5px] tabletl:p-[10px] {{ section.settings.bg_color }}" js-announcement-bar>
     {%- capture carousel_options -%}
         {
           "slidesPerView": 1,
@@ -34,7 +34,7 @@
         </div>
       </div>
     </s-carousel>
-  </s-announcement-bar>
+  </div>
   <div class="site-header__warpper relative w-full px-md flex justify-between gap-md desktop:px-xl">
     <button class="site-header__mobile-nav w-24 self-center desktop:hidden" js-open-mobile-nav>{% render 'icon-nav' %}</button>
     <a href="{{ routes.root_url }}" class="site-header__logo w-[140px] self-center">{% render 'icon-blueair-logo' %}</a>
