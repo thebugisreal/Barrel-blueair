@@ -1,4 +1,4 @@
-<s-header class="site-header fixed top-0 left-0 right-0 {% if template.name == 'index' %}bg-transparent{% else %}bg-white{% endif %}">
+<s-header class="site-header sticky top-[var(--announcement-height)] left-0 right-0 {% if template.name == 'index' %}bg-transparent{% else %}bg-white{% endif %}">
   <div class="site-header__warpper relative w-full px-md flex justify-between gap-md desktop:px-xl">
     <button class="site-header__mobile-nav w-24 self-center desktop:hidden" js-open-mobile-nav>{% render 'icon-nav' %}</button>
     <a href="{{ routes.root_url }}" class="site-header__logo w-[140px] self-center">{% render 'icon-blueair-logo' %}</a>

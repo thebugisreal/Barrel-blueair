@@ -1,6 +1,7 @@
-<div class="section__announcement-bar block {{ section.settings.bg_color }}">
+<s-announcement-bar class="section__announcement-bar block {{ section.settings.bg_color }}">
     {%- capture carousel_options -%}
         {
+          "slidesPerView": 1,
           "cssMode": true,
           "loop": false,
           "autoHeight": false,
@@ -13,16 +14,16 @@
       {%- endcapture -%}
       <s-carousel data-options='{{ carousel_options }}' class="announcement-bar__carousel">
         <div id="AnnouncementBar-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-            <div class="swiper-wrapper product-grid__products desktop:!grid desktop:gap-md">
+            <div class="swiper-wrapper">
                 {% for block in section.blocks %}
                     <div class="swiper-slide" js-carousel-slide>
-                        <div class="announcement {{ block.settings.announcement_style }} text-center">
+                        <p class="announcement p3 text-center">
                             {% if block.settings.url != blank %}
                                 <a href="{{ block.settings.url }}">{{ block.settings.announcement }}</a>
                             {% else %}
                                 <div>{{ block.settings.announcement }}</div>
                             {% endif %}
-                        </div>
+                        </p>
                     </div>
                 {% endfor %}
                 <div class="swiper-nav-container py-8 flex gap-24 items-center">
@@ -32,7 +33,7 @@
             </div>
           </div>
       </s-carousel>
-</div>
+</s-announcement-bar>
 {% schema %}
 {
     "name": "Announcement Bar",
@@ -47,30 +48,30 @@
             "id": "bg_color",
             "label": "Background Color",
             "options": [
-            {
-                "value": "text-blue",
-                "label": "None (white bg & blue text)"
-            },
-            {
-                "value": "bg-blue-sky text-blue",
-                "label": "Blue"
-            },
-            {
-                "value": "bg-green-light text-green-dark",
-                "label": "Green"
-            },
-            {
-                "value": "bg-pink-light text-pink-dark",
-                "label": "Pink"
-            },
-            {
-                "value": "bg-yellow-light text-yellow-dark",
-                "label": "Yellow"
-            },
-            {
-                "value": "bg-brown-light text-brown-dark",
-                "label": "Brown"
-            }
+                {
+                    "value": "text-blue",
+                    "label": "None (white bg & blue text)"
+                },
+                {
+                    "value": "bg-blue-sky text-blue",
+                    "label": "Blue"
+                },
+                {
+                    "value": "bg-green-light text-green-dark",
+                    "label": "Green"
+                },
+                {
+                    "value": "bg-pink-light text-pink-dark",
+                    "label": "Pink"
+                },
+                {
+                    "value": "bg-yellow-light text-yellow-dark",
+                    "label": "Yellow"
+                },
+                {
+                    "value": "bg-brown-light text-brown-dark",
+                    "label": "Brown"
+                }
             ],
             "default": "text-blue"
         }
@@ -87,55 +88,7 @@
                 {
                     "type": "text",
                     "id": "announcement",
-                    "label": "Announcement"
-                },
-                {
-                    "type": "select",
-                    "id": "announcement_style",
-                    "label": "Announcement Style",
-                    "options": [
-                    {
-                        "value": "h1",
-                        "label": "h1"
-                    },
-                    {
-                        "value": "h2",
-                        "label": "h2"
-                    },
-                    {
-                        "value": "h3",
-                        "label": "h3"
-                    },
-                    {
-                        "value": "h4",
-                        "label": "h4"
-                    },
-                    {
-                        "value": "h5",
-                        "label": "h5"
-                    },
-                    {
-                        "value": "h6",
-                        "label": "h6"
-                    },
-                    {
-                        "value": "s1",
-                        "label": "s1"
-                    },
-                    {
-                        "value": "s2",
-                        "label": "s2"
-                    },
-                    {
-                        "value": "s3",
-                        "label": "s3"
-                    },
-                    {
-                        "value": "s4",
-                        "label": "s4"
-                    }
-                    ],
-                    "default": "h2"
+                    "label": "Announcement Text"
                 },
                 {
                     "type": "url",
