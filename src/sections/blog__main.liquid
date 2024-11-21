@@ -10,7 +10,7 @@
           {% if first_article.image != blank %}
             <div class="blog__first-article-image tabletl:w-1/2">{% render 'lazy-image' image: first_article.image %}</div>
           {% endif %}
-          <div class="blog__first-article-text-container px-[30px] tabletl:pl-0 tabletl:pr-[40px] tabletl:w-1/2">
+          <div class="blog__first-article-text-container px-[30px] tabletl:pl-0 tabletl:pr-[40px] tabletl:w-1/2 tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
             <header class="blog__first-article-header py-16 tabletl:pt-0 tabletl:pb-24">
               <div class="blog__first-article-tag-container flex items-center gap-12 tabletl:gap-16">
                 <ul class="blog__first-article-tags flex">
@@ -75,6 +75,15 @@
 
 {% schema %}
 {
-  "name": "Blog Posts"
+  "name": "Blog Posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    }
+  ]
 }
 {% endschema %}
