@@ -20,6 +20,7 @@ class SiteHeader extends HTMLElement {
 
     this._setVariables();
     this._watchWindowResize();
+    this._initAnnouncement();
     this.closeAnnouncementBtn.addEventListener('click', this._handleCloseAnnouncementClick.bind(this))
     this.mobileSubnavTriggers.forEach((trigger) => {
       trigger.addEventListener('click', this._openMobileSubNav);
