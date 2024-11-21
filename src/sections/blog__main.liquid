@@ -5,7 +5,7 @@
     <h1 class="blog__title text-center mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
     {% if first_article != blank %}
       <div class="blog__first-article my-[48px] tabletl:my-[80px]">
-        <p class="text-sub1 hidden tabletl:block tabletl:mb-16">Featured</p>
+        <p class="s1 hidden tabletl:block tabletl:mb-16">Featured</p>
         <div class="tabletl:flex tabletl:gap-64 tabletl:items-center">
           {% if first_article.image != blank %}
             <div class="blog__first-article-image tabletl:w-1/2">{% render 'lazy-image' image: first_article.image %}</div>
@@ -18,12 +18,12 @@
                     <li class="blog__first-article-tag tag-small py-[6px] px-[10px] border border-gray rounded-[60px]"> {{ tag }} </li>
                   {% endfor %}
                 </ul>
-                <p class="blog__first-article-date text-p4">Updated {{ first_article.created_at | date: "%b %d, %Y"}}</p>
+                <p class="blog__first-article-date p4">Updated {{ first_article.created_at | date: "%b %d, %Y"}}</p>
               </div>
               <h3 class="blog__first-article-title mt-16 tabletl:mt-24">{{ first_article.title }}</h3>
             </header>
             {%- if first_article.excerpt.size > 0 or first_article.content.size > 0 -%}
-              <p class="blog__first-article-excerpt text-p2 mb-16 tabletl:mb-24">
+              <p class="blog__first-article-excerpt p2 mb-16 tabletl:mb-24">
                 {%- if first_article.excerpt.size > 0 -%}
                   {{ first_article.excerpt | strip_html | truncatewords: 50 }}
                 {%- else -%}
@@ -44,12 +44,12 @@
     <h3 class="px-30 font-900 mt-40 mb-16 tabletl:mt-64 tabletl:mb-24 tabletl:px-0">Latest Entries</h3>
 
     <ul class="blog-tags flex flex-wrap gap-8 mx-30 tabletl:mx-0 tabletl:gap-16">
-      <li class="blog__article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %} tabletl:py-[8px]">
+      <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %} tabletl:py-[8px]">
         <a href="{{ blog.url }}" class="py-[10px] px-[20px]">All</a>
       </li>
       {% for tag in blog.all_tags %}
         {% unless first_article.tags contains tag %}
-        <li class="blog__article-tag text-sub3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %} tabletl:py-[8px]">
+        <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %} tabletl:py-[8px]">
           <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="py-[10px] px-[20px]">{{ tag }}</a>
         </li>
         {% endunless %}

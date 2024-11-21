@@ -24,16 +24,16 @@
     
       <div class="pagination-parts__mobile tabletl:hidden">
         <p>
-          <span class="text-sub2">{{ paginate.current_page }}</span> / <span class="text-sub3 ">{{ paginate.parts | size }}</span>
+          <span class="s2">{{ paginate.current_page }}</span> / <span class="s3 ">{{ paginate.parts | size }}</span>
         </p>
       </div>
     
       <div class="pagination-parts__desktop gap-8 hidden tabletl:flex">
         {%- for part in paginate.parts -%}
           {%- if part.is_link -%}
-            <a href="{{ part.url }}" class="pagination__item link text-sub3 px-[14px] py-[5px]">{{ part.title }}</a>
+            <a href="{{ part.url }}" class="pagination__item link s3 px-[14px] py-[5px]">{{ part.title }}</a>
           {%- else -%}
-            <span class="pagination__item pagination__item--current text-sub2  border-b px-[14px] py-[5px]">{{ part.title }}</span>
+            <span class="pagination__item pagination__item--current s2  border-b px-[14px] py-[5px]">{{ part.title }}</span>
           {%- endif -%}
         {%- endfor -%}
       </div>
