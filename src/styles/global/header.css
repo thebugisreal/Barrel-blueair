@@ -61,6 +61,10 @@
   @apply no-underline;
 }
 
+.announcement-bar__carousel .icon--close {
+  @apply block
+}
+
 @media screen(desktop) {
   .template-index s-header:hover,
   .template-index s-header:focus-within {
