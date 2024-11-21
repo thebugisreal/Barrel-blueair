@@ -60,8 +60,9 @@
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
+    {% section 'section__announcement-bar' %}
     {% section 'header' %}
-
+  
     {% render 'drawer--cart' %}
 
     <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">

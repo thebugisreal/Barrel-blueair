@@ -1,0 +1,154 @@
+<div class="section__announcement-bar block {{ section.settings.bg_color }}">
+    {%- capture carousel_options -%}
+        {
+          "cssMode": true,
+          "loop": false,
+          "autoHeight": false,
+          "navigation": {
+            "enabled": true,
+            "nextEl": ".swiper-button-next--{{section.id}}",
+            "prevEl": ".swiper-button-prev--{{section.id}}"
+          }
+        }
+      {%- endcapture -%}
+      <s-carousel data-options='{{ carousel_options }}' class="announcement-bar__carousel">
+        <div id="AnnouncementBar-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+            <div class="swiper-wrapper product-grid__products desktop:!grid desktop:gap-md">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide" js-carousel-slide>
+                        <div class="announcement {{ block.settings.announcement_style }} text-center">
+                            {% if block.settings.url != blank %}
+                                <a href="{{ block.settings.url }}">{{ block.settings.announcement }}</a>
+                            {% else %}
+                                <div>{{ block.settings.announcement }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="swiper-nav-container py-8 flex gap-24 items-center">
+                    <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                    <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                </div>
+            </div>
+          </div>
+      </s-carousel>
+</div>
+{% schema %}
+{
+    "name": "Announcement Bar",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Color Set"
+        },
+        {
+            "type": "select",
+            "id": "bg_color",
+            "label": "Background Color",
+            "options": [
+            {
+                "value": "text-blue",
+                "label": "None (white bg & blue text)"
+            },
+            {
+                "value": "bg-blue-sky text-blue",
+                "label": "Blue"
+            },
+            {
+                "value": "bg-green-light text-green-dark",
+                "label": "Green"
+            },
+            {
+                "value": "bg-pink-light text-pink-dark",
+                "label": "Pink"
+            },
+            {
+                "value": "bg-yellow-light text-yellow-dark",
+                "label": "Yellow"
+            },
+            {
+                "value": "bg-brown-light text-brown-dark",
+                "label": "Brown"
+            }
+            ],
+            "default": "text-blue"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "announcement",
+            "name": "Announcement",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "text",
+                    "id": "announcement",
+                    "label": "Announcement"
+                },
+                {
+                    "type": "select",
+                    "id": "announcement_style",
+                    "label": "Announcement Style",
+                    "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "s1",
+                        "label": "s1"
+                    },
+                    {
+                        "value": "s2",
+                        "label": "s2"
+                    },
+                    {
+                        "value": "s3",
+                        "label": "s3"
+                    },
+                    {
+                        "value": "s4",
+                        "label": "s4"
+                    }
+                    ],
+                    "default": "h2"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Announcement Bar"
+        }
+    ]
+}
+{% endschema %}
