@@ -7,7 +7,7 @@
 {% endcomment %}
 
 <article class="article-card h-full">
-  <a href="{{ article.url }}" class="article-content motion-reduce">
+  <a href="{{ article.url }}" class="article-card__content motion-reduce">
     {% if article.image != blank %}
       <div class="article-card__image overflow-hidden aspect-square mb-16 tabletl:mb-20">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'h-full' %}</div>
     {% endif %}
