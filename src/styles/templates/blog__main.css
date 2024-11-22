@@ -6,21 +6,28 @@
 .blog__article-tag:focus {
     @apply text-white
     bg-blue
+    no-underline
 }
 
 .blog__article-tag:focus:not(:focus-visible) {
     @apply text-blue
     bg-white
+    no-underline
 }
 
 .blog__article-tag:focus-visible {
     @apply text-white
     bg-blue
+    no-underline
 }
 
 @media screen(tabletl) {
     .blog__article-tag:hover {
         @apply text-white
         bg-blue
+        no-underline
+    }
+    .blog__article-tag:hover a {
+        @apply no-underline
     }
 }

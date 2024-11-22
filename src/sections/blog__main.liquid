@@ -1,7 +1,7 @@
 {%- paginate blog.articles by 9 -%}
   {% assign first_article = articles[blog.metafields.seed.featured_article] %}
 
-  <div class="blog tabletl:px-[60px]">
+  <div class="blog mb-xl tabletl:px-[60px]">
     <h1 class="blog__title text-center mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
     {% if first_article != blank %}
       <div class="blog__first-article my-[48px] tabletl:my-[80px]">
@@ -44,13 +44,13 @@
     <h3 class="px-30 font-900 mt-40 mb-16 tabletl:mt-64 tabletl:mb-24 tabletl:px-0">Latest Entries</h3>
 
     <ul class="blog-tags flex flex-wrap gap-8 mx-30 tabletl:mx-0 tabletl:gap-16">
-      <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %} tabletl:py-[8px]">
-        <a href="{{ blog.url }}" class="py-[10px] px-[20px]">All</a>
+      <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %}">
+        <a href="{{ blog.url }}" class="block py-[10px] px-[20px]">All</a>
       </li>
       {% for tag in blog.all_tags %}
         {% unless first_article.tags contains tag %}
-        <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %} tabletl:py-[8px]">
-          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="py-[10px] px-[20px]">{{ tag }}</a>
+        <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %}">
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="block py-[10px] px-[20px]">{{ tag }}</a>
         </li>
         {% endunless %}
       {% endfor %}
@@ -79,7 +79,7 @@
     {
       "type": "text",
       "id": "max_width_desktop",
-      "label": "Max Width - Desktop",
+      "label": "Top Highlighted Text Content - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "109ch"
     }
