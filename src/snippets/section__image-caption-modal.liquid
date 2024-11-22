@@ -6,7 +6,7 @@ product: Product Object
 
 <image-caption-modal class="bg-white py-8 px-12 block">
     <header class="flex justify-end">
-        <button class="btn" js-modal-open>
+        <button class="modal-open btn transition-opacity" js-modal-open>
             <p class="btn__text text-p2">View Product </p>
             <div class="btn__arrow">{%  render 'icon-arrows-diag' %}</div>
         </button>
@@ -29,7 +29,11 @@ product: Product Object
      
             {% if product.featured_image != blank %}
                 <div class="w-1/3 tabletl:w-auto tabletl:max-w-[250px] tabletl:mx-auto">
-                    {% render 'lazy-image' image:product.featured_image  picture_classes:'h-fit', img_classes:'h-fit object-contain'%}
+                    {% if product_image_override != blank %}
+                        {% render 'lazy-image' image:product_image_override  picture_classes:'h-fit', img_classes:'h-fit object-contain'%}
+                    {% else %}
+                        {% render 'lazy-image' image:product.featured_image  picture_classes:'h-fit', img_classes:'h-fit object-contain'%}
+                    {% endif %}
                 </div>
             {% endif %}
         </div>

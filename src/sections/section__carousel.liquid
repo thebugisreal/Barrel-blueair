@@ -71,7 +71,7 @@
   
                                             {% if block.settings.product != blank %}
                                                 <div class="absolute bg-gray-athans top-12 left-12 overflow-hidden tabletl:top-24 tabletl:left-24">
-                                                    {%  render 'section__image-caption-modal' product:block.settings.product%}
+                                                    {%  render 'section__image-caption-modal' product:block.settings.product, product_image_override:block.settings.product_image_override%}
                                                 </div>
                                             {% endif %}
 
@@ -318,9 +318,18 @@
                     "label": "Caption"
                 },
                 {
+                    "type": "header",
+                    "content": "View Product Modal"
+                },
+                {
                     "type": "product",
                     "id": "product",
                     "label": "Product"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "product_image_override",
+                    "label": "Product Image Override"
                 }
             ]
         },

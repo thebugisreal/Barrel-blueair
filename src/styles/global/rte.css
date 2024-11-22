@@ -7,6 +7,27 @@
     @apply my-24
 }
 
+.rte a {
+    @apply underline
+}
+
+.rte a:focus,
+.rte .link:focus {
+  @apply underline
+  decoration-2;
+}
+
+.rte a:focus:not(:focus-visible),
+.rte .link:focus:not(:focus-visible) {
+  @apply no-underline
+  decoration-1;
+}
+
+.rte a:focus-visible,
+.rte .link:focus-visible {
+  @apply underline;
+}
+
 .rte ol{
     list-style: none;
     counter-reset: list-counter; 
@@ -22,4 +43,12 @@
     counter-increment: list-counter;
     @apply mr-12
     text-p6;
-  }
+}
+
+@media screen(desktop) {
+    .rte a:hover,
+    .rte .link:hover {
+      @apply underline
+      decoration-2;
+    }
+}
