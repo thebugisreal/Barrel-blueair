@@ -1,13 +1,13 @@
 .modal-body {
     max-height: 0;
     max-width: 0;
-    transition: max-width 0.1s cubic-bezier(0, 1, 0, 1);
+    transition: all 1s ease-out;
 }
 
 .modal-body.expanded {
     max-width: 80vw;
     max-height: 10000px;
-    transition: max-width 1s ease-in-out;
+    transition: all 1s ease-out;
 }
 
 @media screen(tabletl) {

@@ -20,23 +20,23 @@ class ImageCaptionModal extends HTMLElement {
   
   
     _initEventListener = () => {
-        console.log('this.modalOpen', this.modalOpen)
-        console.log('this.modalBody', this.modalBody)
-        console.log('this.modalClose', this.modalClose)
         this.modalClose.addEventListener('click', this._handleCloseClick.bind(this))
         this.modalOpen.addEventListener('click', this._handleOpenClick.bind(this))
-
+        this.modalBody.addEventListener('transitionend', this._handleAnimationEnd.bind(this))
     }
 
     _handleOpenClick(e) {
-        this.modalClose.classList.remove('expanded')
+        this.modalClose.classList.remove('hidden')
         this.modalOpen.classList.add('hidden')
         this.modalBody.classList.add('expanded')
     }
 
     _handleCloseClick(e) {
-        this.modalClose.classList.add('expanded')
-        this.modalOpen.classList.remove('hidden')
         this.modalBody.classList.remove('expanded')
+    }
+
+    _handleAnimationEnd(e) {
+      this.modalOpen.classList.remove('hidden')
+      this.modalClose.classList.add('hidden')
     }
   }

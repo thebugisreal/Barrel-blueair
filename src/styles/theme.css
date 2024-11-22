@@ -23,8 +23,6 @@
 @import '/sections/section__accordion.css';
 @import '/sections/section__divider-line.css';
 
-
-@import '/components/section__spacing-divider.css';
 @import '/components/carousel.css';
 @import '/components/accordion.css';
 @import '/components/tabs.css';

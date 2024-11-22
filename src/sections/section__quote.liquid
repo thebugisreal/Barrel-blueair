@@ -2,7 +2,7 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__quote mx-30 tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+<div class="section__quote mx-30 tabletl:mx-auto {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
     <div class="section__quote-content">
         <div class="flex flex-col tabletl:flex-row tabletl:gap-24">
             <div class="quote-container text-[#00B5E2] w-[30px] tabletl:w-[45px]">
