@@ -19,10 +19,12 @@
 @import '/components/video.css';
 @import '/components/article__content.css';
 @import '/components/product-card.css';
+@import '/components/filter-sort.css';
 
 @import '/account/login.css';
 
 @import '/templates/cart.css';
+@import '/templates/collection.css';
 @import '/templates/blog__main.css';
 @import '/templates/article__main.css';
 

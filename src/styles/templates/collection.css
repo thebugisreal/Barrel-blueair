@@ -1,0 +1,19 @@
+.collection-grid__collection-link:focus,
+.collection-grid__collection-link:focus-visible {
+  @apply border-blue;
+}
+
+.collection-grid__collection-link:focus:not(:focus-visible) {
+  @apply border-gray;
+}
+
+
+@media screen(desktop) {
+  .collection-grid__collection-link:hover {
+    @apply border-blue;
+  }
+
+  .collection-grid__desktop-fitlers[data-opened="true"] {
+    @apply block;
+  }
+}
