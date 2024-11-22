@@ -1,24 +1,93 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign color_option = false
+  assign filter_type_option = false
+  if product.options_by_name['color'] != blank
+    assign color_option = product.options_by_name['color'].position | minus: 1
+  elsif product.options_by_name['filter type'] != blank
+    assign filter_type_option = product.options_by_name['filter type'].position | minus: 1
+  endif
+%}
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a href="{{ product.url }}" class="product-card__image block !no-underline">
-    {% render 'lazy-image' image: product.featured_image %}
-  </a>
-  <div class="product-card__info px-sm py-md desktop:p-md">
-    {% if product.metafields.seed.product_tags != blank %}
-      <div class="product-card__tags mb-sm flex justify-start gap-xs">
-        {% for tag in product.metafields.seed.product_tags.value %}
-          <span class="product-card__tag product-card__tag--blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
-        {% endfor %}
+  <a href="{{ product.url }}" class="product-card__image-link-wrapper block !no-underline">
+    {% if filter_type_option != false or color_option != false %}
+      {% for variant in product.variants %}
+        <div class="product-card__image {% unless variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ variant.options[color_option] }}" js-product-card-image>
+          {% assign image = variant.featured_image | default: product.featured_image %}
+          {% render 'lazy-image' image: image %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="product-card__image">
+        {% render 'lazy-image' image: product.featured_image %}
       </div>
     {% endif %}
-    <a href="{{ product.url }}" class="product-card__title s1 block mb-xxs !no-underline">{{ product.title }}</a>
-    <div class="product-card__price-wrapper text-16 mt-md">
-      {% if product.compare_at_price > product.price %}
-        <s class="product-card__price product-card__price--compare mr-sm">{{ product.compare_at_price | money }}</s>
-        <span class="product-card__price product-card__price--current font-700">{{ product.price | money }}</span>
+  </a>
+  <div class="product-card__info px-sm py-md desktop:p-md">
+    <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+      <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>Out of Stock</span>
+      {% for tag in product.metafields.seed.product_tags.value %}
+        <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <a href="{{ product.url }}" class="product-card__title s1 block !no-underline">{{ product.title }}</a>
+    {% if filter_type_option != false %}
+      <div class="text-20"><span js-product-card-current-swatch-label>{{ current_variant.options[filter_type_option] }}</span><span> Filter</span></div>
+    {% endif %}
+    {% if product.metafields.seed.blair_plpShortDescription != blank %}
+      <div class="product-card__short-description p2 mt-xxxs">{{ product.metafields.seed.blair_plpShortDescription }}</div>
+    {% endif %}
+
+    {% if color_option != false %}
+      <div class="product-card__swatches-container mt-sm">
+        <div class="product-card__current-swatch font-700">
+          <span>Color: </span>
+          <span js-product-card-current-swatch-label>{{ current_variant.options[color_option] }}</span>
+        </div>
+        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
+          {% for variant in product.variants %}
+            <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+              data-swatch="{{ variant.options[color_option] }}"
+              data-available="{{ variant.available }}"
+              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
+              data-selected="{% if variant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
+              title="{{ variant.options[color_option] }}"
+              js-product-card-swatch>
+              <div class="block w-full h-full rounded-full bg-green-dark">{{ variant.options[color_option] }}</div>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% elsif filter_type_option != false %}
+      <div class="product-card__swatches-container mt-sm">
+        <p class="font-700">Choose from various filter tyes</p>
+        <div class="product-card__swatches flex flex-wrap gap-sm mt-xxs">
+          {% for variant in product.variants %}
+            <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
+              data-swatch="{{ variant.options[filter_type_option] }}"  
+              data-available="{{ variant.available }}"
+              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
+              data-selected="{% if variant.options[filter_type_option] == current_variant.options[filter_type_option] %}true{% else %}false{% endif %}"
+              js-product-card-swatch>
+              <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
+                <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>
+              </span>
+              <span class="font-700">{{ variant.options[filter_type_option] }}</span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+      
+    <div class="product-card__price-wrapper text-16 mt-md flex justify-start items-center gap-sm" js-product-card-price>
+      {% if current_variant.compare_at_price > current_variant.price %}
+        <s class="product-card__price product-card__price--compare">{{ current_variant.compare_at_price | money }}</s>
+        <span class="product-card__price product-card__price--current font-700">{{ current_variant.price | money }}</span>
       {% else %}
-        <span class="product-card__price product-card__price--current font-700">{{ product.price | money }}</span>
+        <span class="product-card__price product-card__price--current font-700">{{ current_variant.price | money }}</span>
       {% endif %}
     </div>
+
     <div class="text-12 mt-sm">Compare (TBD)</div>
   </div>
 </product-card>
