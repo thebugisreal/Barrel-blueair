@@ -13,10 +13,10 @@
                     {% if block.settings.product != blank %}
                         <li class="grid grid-cols-3 gap-8 pl-16 {{ section.settings.color }} tabletl:pl-32 tabletl:gap-24">
                             <div class="product__description flex flex-col justify-center py-16 col-span-2">
-                                <h1 class="product__title text-sub1 mb-8 tabletl:mb-12"> {{ block.settings.product.title }}</h1>
-                                <p class="product__price text-sub3 mb-16 tabletl:mb-24">{{ block.settings.product.price |  money }}</p>
-                                <a {{ block.settings.product.url }} class="btn">
-                                    <span class="btn__text">Shop Now</span>
+                                <h1 class="product__title s1 mb-8 tabletl:mb-12"> {{ block.settings.product.title }}</h1>
+                                <p class="product__price s3 mb-16 tabletl:mb-24">{{ block.settings.product.price |  money }}</p>
+                                <a {{ block.settings.product.url }} class="{{ block.settings.btn_style }}">
+                                    <span class="btn__text">{{ block.settings.btn_text }}</span>
                                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                                 </a>
                             </div>
@@ -421,16 +421,72 @@
           "id": "title_style",
           "label": "Title Style",
           "options": [
-            { "value": "h1", "label": "h1" },
-            { "value": "h2", "label": "h2" },
-            { "value": "h3", "label": "h3" },
-            { "value": "h4", "label": "h4" },
-            { "value": "text-p1", "label": "text-p1" },
-            { "value": "text-p2", "label": "text-p2" },
-            { "value": "text-p3", "label": "text-p3" },
-            { "value": "text-p4", "label": "text-p4" }
-          ],
-          "default": "text-p1"
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "s1",
+                "label": "s1"
+            },
+            {
+                "value": "s2",
+                "label": "s2"
+            },
+            {
+                "value": "s3",
+                "label": "s3"
+            },
+            {
+                "value": "s4",
+                "label": "s4"
+            },
+            {
+                "value": "p1",
+                "label": "p1"
+            },
+            {
+                "value": "p2",
+                "label": "p2"
+            },
+            {
+                "value": "p3",
+                "label": "p3"
+            },
+            {
+                "value": "p4",
+                "label": "p4"
+            },
+            {
+                "value": "p5",
+                "label": "p5"
+            },
+            {
+                "value": "p6",
+                "label": "p6"
+            }
+        ],
+          "default": "p1"
         }
       ],
       "blocks": [
@@ -442,6 +498,36 @@
                     "type": "product",
                     "id": "product",
                     "label": "Product"
+                },
+                {
+                    "type": "text",
+                    "id": "btn_text",
+                    "label": "Button Text",
+                    "default": "Shop Now"
+                },
+                {
+                    "type": "select",
+                    "id": "btn_style",
+                    "label": "Button Style",
+                    "options": [
+                        {
+                            "value": "btn",
+                            "label": "Default"
+                        },
+                        {
+                            "value": "btn btn--blue-rounded",
+                            "label": "Blue Rounded"
+                        },
+                        {
+                            "value": "btn btn--white-rounded",
+                            "label": "White Rounded"
+                        },
+                        {
+                            "value": "btn btn--transparent-rounded",
+                            "label": "Transparent Rounded"
+                        }
+                    ],
+                    "default": "btn"
                 },
                 {
                     "type": "image_picker",

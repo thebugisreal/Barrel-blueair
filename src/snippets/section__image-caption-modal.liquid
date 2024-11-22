@@ -7,7 +7,7 @@ product: Product Object
 <image-caption-modal class="bg-white py-8 px-12 block">
     <header class="flex justify-end">
         <button class="modal-open btn transition-opacity" js-modal-open>
-            <p class="btn__text text-p2">View Product </p>
+            <p class="btn__text p2">View Product </p>
             <div class="btn__arrow">{%  render 'icon-arrows-diag' %}</div>
         </button>
     </header>
@@ -20,9 +20,9 @@ product: Product Object
         <div class="flex gap-24 tabletl:gap-0 tabletl:h-auto tabletl:flex-col">
             <div class="product-body px-24 tabletl:text-center">
                 <h4 class="h4">{{ product.title }}</h4>
-                <p class="text-p1 my-12 font-400">{{ product.price | money}}</p>
+                <p class="p1 my-12 font-400">{{ product.price | money}}</p>
                 <a href="{{ product.url }}" class="btn w-fit mb-16 tabletl:mx-auto">
-                    <p class="btn__text text-p2">Shop Now </p>
+                    <p class="btn__text p2">Shop Now </p>
                     <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
                 </a>
             </div>

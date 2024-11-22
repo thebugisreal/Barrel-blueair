@@ -42,7 +42,7 @@
     content: counter(list-counter) ". ";
     counter-increment: list-counter;
     @apply mr-12
-    text-p6;
+    p6;
 }
 
 @media screen(desktop) {

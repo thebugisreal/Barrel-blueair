@@ -16,7 +16,7 @@
             </div>
         {% endif %}
         {% if section.settings.caption != blank %}
-            <div class="text-p6 rte">{{ section.settings.caption }}</div>
+            <div class="rte {{ section.settings.caption_style }}">{{ section.settings.caption }}</div>
         {% endif %}
     </div>
     
@@ -372,6 +372,78 @@
             "type": "richtext",
             "id": "caption",
             "label": "Caption"
+        },
+        {
+            "type": "select",
+            "id": "caption_style",
+            "label": "Caption Style",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "h1"
+                },
+                {
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "s1",
+                    "label": "s1"
+                },
+                {
+                    "value": "s2",
+                    "label": "s2"
+                },
+                {
+                    "value": "s3",
+                    "label": "s3"
+                },
+                {
+                    "value": "s4",
+                    "label": "s4"
+                },
+                {
+                    "value": "p1",
+                    "label": "p1"
+                },
+                {
+                    "value": "p2",
+                    "label": "p2"
+                },
+                {
+                    "value": "p3",
+                    "label": "p3"
+                },
+                {
+                    "value": "p4",
+                    "label": "p4"
+                },
+                {
+                    "value": "p5",
+                    "label": "p5"
+                },
+                {
+                    "value": "p6",
+                    "label": "p6"
+                }
+            ],
+            "default": "p6"
         },
         {
             "type": "header",

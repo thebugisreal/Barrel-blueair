@@ -5,20 +5,6 @@
     <ul class="section__product-text-content mx-30 tabletl:mx-auto">
         {% for block in section.blocks %}
             {% case block.type %}
-                {% when 'title' %}
-                    {% if block.settings.title != blank %}
-                        <li class="list-none">
-                            {% liquid
-                                assign title_tag = 'p'
-                                assign title_options = 'h1,h2,h3,h4'
-
-                                if title_options contains block.settings.title_style
-                                    assign title_tag = block.settings.title_style
-                                endif
-                            %}
-                            <{{title_tag}} class="{{ block.settings.title_style }} font-900 my-24">{{ block.settings.title }}</{{title_tag}}>
-                        </li>
-                    {% endif %}
                 {% when 'richtext' %}
                     {% if block.settings.richtext != blank %}
                         <li class="list-none">
@@ -384,16 +370,72 @@
                     "id": "richtext_style",
                     "label": "Richtext Style",
                     "options": [
-                        { "label": "text-sub1", "value": "text-sub1" },
-                        { "label": "text-sub2", "value": "text-sub2" },
-                        { "label": "text-sub3", "value": "text-sub3" },
-                        { "label": "text-p1", "value": "text-p1" },
-                        { "label": "text-p2", "value": "text-p2" },
-                        { "label": "text-p3", "value": "text-p3" },
-                        { "label": "text-p4", "value": "text-p4" },
-                        { "label": "text-p6", "value": "text-p6" }
+                        {
+                            "value": "h1",
+                            "label": "h1"
+                        },
+                        {
+                            "value": "h2",
+                            "label": "h2"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "h3"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "h4"
+                        },
+                        {
+                            "value": "h5",
+                            "label": "h5"
+                        },
+                        {
+                            "value": "h6",
+                            "label": "h6"
+                        },
+                        {
+                            "value": "s1",
+                            "label": "s1"
+                        },
+                        {
+                            "value": "s2",
+                            "label": "s2"
+                        },
+                        {
+                            "value": "s3",
+                            "label": "s3"
+                        },
+                        {
+                            "value": "s4",
+                            "label": "s4"
+                        },
+                        {
+                            "value": "p1",
+                            "label": "p1"
+                        },
+                        {
+                            "value": "p2",
+                            "label": "p2"
+                        },
+                        {
+                            "value": "p3",
+                            "label": "p3"
+                        },
+                        {
+                            "value": "p4",
+                            "label": "p4"
+                        },
+                        {
+                            "value": "p5",
+                            "label": "p5"
+                        },
+                        {
+                            "value": "p6",
+                            "label": "p6"
+                        }
                     ],
-                    "default": "text-p2"
+                    "default": "p2"
                 }
             ]
         }

@@ -7,9 +7,9 @@
     </ul>
     {% endif %}
     <h4>{{ product.title }}</h4>
-    <p class="text-sub3 mb-24">{{ product.price |  money }}</p>
+    <p class="s3 mb-24">{{ product.price |  money }}</p>
     <a href="{{ product.url }}" class="flex btn btn--transparent-rounded mx-auto tabletl:mb-48"> 
-        <p class="text-p2 btn__text"> Shop Now</p>
+        <p class="p2 btn__text"> Shop Now</p>
         <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
     </a>
     <div class="product-card__carousel-image">

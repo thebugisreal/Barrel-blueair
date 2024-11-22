@@ -17,7 +17,7 @@
           <li class="article-card__tag tag-small py-xxs px-xs border border-gray rounded-[60px]"> {{ tag }} </li>
         {% endfor %}
       </ul>
-      <h4 class="article-card__title text-sub1 mt-xs mb-xxs tabletl:mt-xs tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
+      <h4 class="article-card__title s1 mt-12 mb-8 tabletl:mt-16 tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
     </header>
     {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
     <p class="article-card__excerpt mb-xs tabletl:mb-md">
@@ -29,6 +29,6 @@
     </p>
     {%- endif -%}
 
-    <p class="article-card__date text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
+    <p class="article-card__date p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
   </a>
 </article>
