@@ -12,6 +12,7 @@ window.theme = window.theme || {};
 // =require components/accordion.js
 // =require components/tabs.js
 // =require components/carousel.js
+// =require components/video.js
 // =require components/header.js
 
 // =require components/cart.js
@@ -29,6 +30,7 @@ customElements.define("s-modal", Modal);
 customElements.define("s-accordion", Accordion);
 customElements.define("s-tabs", Tabs);
 customElements.define("s-carousel", Carousel);
+customElements.define("s-video", Video);
 
 customElements.define('cart-remove-button', CartRemoveButton);
 customElements.define('cart-items', CartItems);
@@ -52,6 +54,7 @@ customElements.define('country-select', CountrySelect);
 // =require sections/collection__grid.js
 // =require sections/product__main.js
 // =require sections/product__recommendations.js
+// =require sections/section__hotspot.js
 
 customElements.define("s-collection-grid", CollectionGrid);
 
@@ -59,6 +62,8 @@ customElements.define("s-collection-grid", CollectionGrid);
 
 customElements.define('s-product', ProductMain)
 customElements.define('product-recommendations', ProductRecommendations);
+
+customElements.define('s-hotspot', Hotspot);
 
 /*================ Templates ================*/
 // =require templates/account.js

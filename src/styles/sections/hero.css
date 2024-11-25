@@ -1,0 +1,14 @@
+.template-index .main > .shopify-section:first-child .hero__content-wrapper {
+  @apply pt-[calc(var(--header-height)+36px)]
+  desktop:pt-[calc(var(--header-height)+64px)];
+}
+
+.hero__content {
+  max-width: var(--max-w-mobile);
+}
+
+@media screen(desktop) {
+  .hero__content {
+    max-width: var(--max-w-desktop);
+  }
+}

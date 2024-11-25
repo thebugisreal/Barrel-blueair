@@ -1,55 +1,31 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__hero {{ margins_paddings }} {{ section.settings.color }}">
-  <div class="hero__wrapper relative">
-    {% if section.settings.image_mobile != blank %}
-      <div class="hero__image">
-        {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop %}
-      </div>
+<div class="section__icons {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+  <div class="icons__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }}" style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
+    {% if section.settings.title != blank %}
+      <h1 class="icons__title {{ section.settings.title_style }} mb-lg desktop:mb-xl">{{ section.settings.title }}</h1>
     {% endif %}
-
-    {% capture alignments %}
-      {{ section.settings.text_align_mobile }} {{ section.settings.hor_align_mobile }} {{ section.settings.ver_align_mobile }} {{ section.settings.text_align_desktop }} {{ section.settings.hor_align_desktop }} {{ section.settings.ver_align_desktop }}
-    {% endcapture %}  
-    <div class="hero__content-wrapper absolute inset-0 flex px-md py-lg desktop:p-xl {{ alignments }}">
-      <div class="hero__content" style="--max-w-mobile: {% if section.settings.content_max_width_mobile != blank  %}{{ section.settings.content_max_width_mobile }}{% else %}unset{% endif %}; --max-w-desktop: {% if section.settings.content_max_width_desktop != blank %}{{ section.settings.content_max_width_desktop }}{% else %}unset{% endif %};">
-        {% if section.settings.title != blank %}
-          <h1 class="hero__title {{ section.settings.title_style }} mb-sm">{{ section.settings.title }}</h1>
-        {% endif %}
-        {% if section.settings.subtext != blank %}
-          <p class="hero__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
-        {% endif %}
-        {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
-          {% case section.settings.text_align_mobile %}
-            {% when 'text-left' %}
-              {% assign btn_alignment_mobile = 'mr-auto' %}
-            {% when 'text-center' %}
-              {% assign btn_alignment_mobile = 'mx-auto' %}
-            {% when 'text-right' %}
-              {% assign btn_alignment_mobile = 'ml-auto' %}
-          {% endcase %}
-          {% case section.settings.text_align_desktop %}
-            {% when 'desktop:text-left' %}
-              {% assign btn_alignment_desktop = 'desktop:mr-auto desktop:ml-0' %}
-            {% when 'desktop:text-center' %}
-              {% assign btn_alignment_desktop = 'desktop:mx-auto' %}
-            {% when 'desktop:text-right' %}
-              {% assign btn_alignment_desktop = 'desktop:ml-auto desktop:mr-0' %}
-          {% endcase %}
-          <a href="{{ section.settings.cta_url }}" class="hero__cta {{ section.settings.cta_style }} {{ btn_alignment_mobile }} {{ btn_alignment_desktop }} mt-md">
-            <span class="btn__text">{{ section.settings.cta_text }}</span>
-            <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-          </a>
-        {% endif %}
-      </div>
+    <div class="icons__grid grid gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+      {% for block in section.blocks %}
+        <div class="icons__block">
+          {% if block.settings.icon != blank %}
+            <div class="icon__image inline-block" style="{% if block.settings.icon_fixed_width != blank %}width: {{ block.settings.icon_fixed_width }}px{% else %}width: 100%{% endif %};">
+              {% render 'lazy-image' image: block.settings.icon %}
+            </div>
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <div class="icon__title {{ block.settings.title_style }} mt-sm">{{ block.settings.title }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Hero",
+  "name": "Icons",
   "tag": "section",
   "settings": [
     {
@@ -377,6 +353,32 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "range",
+      "id": "num_cols_mobile",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Mobile",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "num_cols_desktop",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Desktop",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Max Width - Desktop",
+      "info": "Make sure to include units"
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -415,20 +417,6 @@
         }
       ],
       "default": "text-blue"
-    },
-    {
-      "type": "header",
-      "content": "Background"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_mobile",
-      "label": "Image - Mobile"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_desktop",
-      "label": "Image - Desktop"
     },
     {
       "type": "header",
@@ -485,118 +473,7 @@
           "label": "s4"
         }
       ],
-      "default": "h1"
-    },
-    {
-      "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "select",
-      "id": "subtext_style",
-      "label": "Subtext Style",
-      "options": [
-        {
-          "value": "h1",
-          "label": "h1"
-        },
-        {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        },
-        {
-          "value": "p1",
-          "label": "p1"
-        },
-        {
-          "value": "p2",
-          "label": "p2"
-        },
-        {
-          "value": "p3",
-          "label": "p3"
-        },
-        {
-          "value": "p4",
-          "label": "p4"
-        },
-        {
-          "value": "p5",
-          "label": "p5"
-        },
-        {
-          "value": "p6",
-          "label": "p6"
-        }
-      ],
-      "default": "h5"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "CTA URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text"
-    },
-    {
-      "type": "select",
-      "id": "cta_style",
-      "label": "CTA Style",
-      "options": [
-        {
-          "value": "btn",
-          "label": "Default"
-        },
-        {
-          "value": "btn btn--blue-rounded",
-          "label": "Blue Rounded"
-        },
-        {
-          "value": "btn btn--white-rounded",
-          "label": "White Rounded"
-        },
-        {
-          "value": "btn btn--transparent-rounded",
-          "label": "Transparent Rounded"
-        }
-      ],
-      "default": "btn"
+      "default": "h3"
     },
     {
       "type": "select",
@@ -620,46 +497,6 @@
     },
     {
       "type": "select",
-      "id": "hor_align_mobile",
-      "label": "Horizontal Alignment - Mobile",
-      "options": [
-        {
-          "value": "justify-start",
-          "label": "Left"
-        },
-        {
-          "value": "justify-center",
-          "label": "Center"
-        },
-        {
-          "value": "justify-end",
-          "label": "Right"
-        }
-      ],
-      "default": "justify-start"
-    },
-    {
-      "type": "select",
-      "id": "ver_align_mobile",
-      "label": "Vertical Alignment - Mobile",
-      "options": [
-        {
-          "value": "items-start",
-          "label": "Top"
-        },
-        {
-          "value": "items-center",
-          "label": "Middle"
-        },
-        {
-          "value": "items-end",
-          "label": "Bottom"
-        }
-      ],
-      "default": "items-start"
-    },
-    {
-      "type": "select",
       "id": "text_align_desktop",
       "label": "Text Alignment - Desktop",
       "options": [
@@ -677,63 +514,83 @@
         }
       ],
       "default": "desktop:text-left"
-    },
+    }
+  ],
+  "blocks": [
     {
-      "type": "select",
-      "id": "hor_align_desktop",
-      "label": "Horizontal Alignment - Desktop",
-      "options": [
+      "name": "Icon",
+      "type": "icon",
+      "settings": [
         {
-          "value": "desktop:justify-start",
-          "label": "Left"
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
         },
         {
-          "value": "desktop:justify-center",
-          "label": "Center"
+          "type": "text",
+          "id": "icon_fixed_width",
+          "label": "Fixed Icon Width (px)",
+          "info": "number only"
         },
         {
-          "value": "desktop:justify-end",
-          "label": "Right"
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_style",
+          "label": "Title Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "s1",
+              "label": "s1"
+            },
+            {
+              "value": "s2",
+              "label": "s2"
+            },
+            {
+              "value": "s3",
+              "label": "s3"
+            },
+            {
+              "value": "s4",
+              "label": "s4"
+            }
+          ],
+          "default": "s1"
         }
-      ],
-      "default": "desktop:justify-start"
-    },
-    {
-      "type": "select",
-      "id": "ver_align_desktop",
-      "label": "Vertical Alignment - Desktop",
-      "options": [
-        {
-          "value": "desktop:items-start",
-          "label": "Top"
-        },
-        {
-          "value": "desktop:items-center",
-          "label": "Middle"
-        },
-        {
-          "value": "desktop:items-end",
-          "label": "Bottom"
-        }
-      ],
-      "default": "desktop:items-start"
-    },
-    {
-      "type": "text",
-      "id": "content_max_width_mobile",
-      "label": "Content Max Width - Mobile",
-      "info": "Make sure to include units"
-    },
-    {
-      "type": "text",
-      "id": "content_max_width_desktop",
-      "label": "Content Max Width - Desktop",
-      "info": "Make sure to include units"
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Hero"
+      "name": "Icons"
     }
   ]
 }

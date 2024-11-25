@@ -15,7 +15,14 @@
 @import '/components/carousel.css';
 @import '/components/accordion.css';
 @import '/components/tabs.css';
+@import '/components/video.css';
 
 @import '/account/login.css';
 
 @import '/templates/cart.css';
+
+@import '/sections/hero.css';
+@import '/sections/icons.css';
+@import '/sections/content-panels.css';
+@import '/sections/hotspot.css';
+@import '/sections/product-grid.css';

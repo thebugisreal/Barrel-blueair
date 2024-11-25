@@ -1,0 +1,48 @@
+.video__trigger--blue:focus,
+.video__trigger--blue:focus-visible {
+  @apply bg-blue-sky
+  text-blue;
+}
+
+.video__trigger--blue:focus:not(:focus-visible){
+  @apply bg-blue
+  text-white;
+}
+
+.video__trigger--white:focus,
+.video__trigger--white:focus-visible {
+  @apply bg-blue-sky;
+}
+
+.video__trigger--white:focus:not(:focus-visible){
+  @apply bg-white;
+}
+
+s-video[data-playing="true"] .video__trigger {
+  @apply hidden;
+}
+
+s-video[data-playing="false"] .video-trigger__play,
+s-video[data-playing="true"] .video-trigger__pause {
+  @apply block;
+}
+
+s-video[data-playing="true"] .video-trigger__play,
+s-video[data-playing="false"] .video-trigger__pause {
+  @apply hidden;
+}
+
+@media screen(desktop){
+  .video__trigger--blue:hover {
+    @apply bg-blue-sky
+    text-blue;
+  }
+
+  .video__trigger--white:hover {
+    @apply bg-blue-sky;
+  }
+
+  s-video[data-playing="true"][data-controls="false"]:hover .video__trigger {
+    @apply flex;
+  }
+}

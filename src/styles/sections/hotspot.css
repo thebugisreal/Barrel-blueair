@@ -1,0 +1,30 @@
+.hotspot__trigger[data-active="true"] {
+  @apply z-[1];
+}
+
+.hotspot-trigger__btn[data-active="false"] {
+  @apply bg-blue
+  text-white;
+}
+
+.hotspot-trigger__btn[data-active="true"] {
+  @apply bg-blue-sky
+  text-blue;
+}
+
+.hotspot-trigger__btn[data-active="false"] .minus {
+  @apply hidden;
+}
+
+.hotspot-trigger__btn[data-active="true"] .plus {
+  @apply hidden;
+}
+
+.hotspot-trigger__btn[data-active="true"] + .hotspot-trigger__content--desktop {
+  @apply desktop:block;
+}
+
+.hotspot-trigger__content--mobile[data-active="true"] {
+  @apply block
+  desktop:hidden;
+}

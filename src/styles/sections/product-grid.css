@@ -1,0 +1,10 @@
+.product-grid__grid {
+  grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
+}
+
+@media screen(desktop) {
+  .product-grid__products,
+  .product-grid__grid {
+    grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
+  }
+}

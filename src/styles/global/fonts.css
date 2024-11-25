@@ -61,6 +61,7 @@
     @apply font-roboto
     font-700
     text-50
+    leading-[58px]
   }
 
   h2,
@@ -68,6 +69,7 @@
     @apply font-roboto
     font-700
     text-40
+    leading-[46px]
   }
 
   h3,
@@ -75,6 +77,7 @@
     @apply font-roboto
     font-700
     text-30
+    leading-[38px]
   }
 
   h4,
@@ -82,6 +85,7 @@
     @apply font-roboto
     font-700
     text-28
+    leading-[40px]
   }
 
   h5,
@@ -89,6 +93,7 @@
     @apply font-gilroy
     font-400
     text-26
+    leading-[32px]
   }
 
   h6,
@@ -96,22 +101,96 @@
     @apply font-gilroy
     font-400
     text-22
+    leading-[28px]
+  }
+
+  .s1 {
+    @apply font-roboto
+    font-700
+    text-20
+    leading-[28px]
+  }
+
+  .s2 {
+    @apply font-roboto
+    font-700
+    text-18
+    leading-[28px]
+  }
+
+  .s3 {
+    @apply font-gilroy
+    font-400
+    text-18
+    leading-[28px]
+  }
+
+  .s4 {
+    @apply font-gilroy
+    font-300
+    text-18
+    leading-[28px]
+  }
+
+  .p1 {
+    @apply font-gilroy
+    font-700
+    text-16
+    leading-[22px]
+  }
+
+  .p2 {
+    @apply font-gilroy
+    font-400
+    text-16
+    leading-[26px]
+  }
+
+  .p3 {
+    @apply font-gilroy
+    font-700
+    text-14
+    leading-[22px]
+  }
+
+  .p4 {
+    @apply font-gilroy
+    font-400
+    text-14
+    leading-[22px]
+  }
+
+  .p5 {
+    @apply font-gilroy
+    font-300
+    text-14
+    leading-[22px]
+  }
+
+  .p6 {
+    @apply font-gilroy
+    font-400
+    text-12
+    leading-[22px]
   }
 
   @media screen(tabletl) {
     h1,
     .h1{
       @apply text-72
+      leading-[80px]
     }
 
     h2,
     .h2{
       @apply text-60
+      leading-[68px]
     }
 
     h3,
     .h3{
       @apply text-40
+      leading-[46px]
     }
   }
 }

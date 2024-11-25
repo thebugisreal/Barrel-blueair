@@ -19,6 +19,6 @@
   max-height: 9999px;
 }
 
-.accordion-header[aria-expanded="true"] .accordion-icon {
+.accordion-header[aria-expanded="true"] .accordion-icon--caret-down {
   @apply rotate-180;
 }
