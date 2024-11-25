@@ -43,13 +43,30 @@
   !rounded-none;
 }
 
+.section__carousel-content .swiper-scrollbar {
+  @apply bg-gray
+}
+
+.section__carousel-content .swiper-nav-container {
+  width: calc(100% - 30px);
+}
+
+.section__carousel-content .swiper-scrollbar-drag {
+  @apply rounded-[0]
+  bg-blue;
+}
+
 .swiper-button-disabled .swiper-button-icon {
   @apply text-gray
 }
 
-/* Carousel Section */
-
 @media screen(tabletl) {
+  .section__carousel-content {
+      max-width: var(--max-width-desktop)
+  }
+  .section__carousel-content .swiper-nav-container {
+      @apply w-[90%]
+  }
   .enable-title-link-same-line .section__carousel-title,
   .enable-title-link-same-line .section__carousel-button {
     @apply m-0
