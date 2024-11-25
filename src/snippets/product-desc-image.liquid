@@ -1,0 +1,32 @@
+{% capture margins_paddings %}
+    {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
+{% endcapture %}
+<div class="section__product-desc-image mx-30 {{ margins_paddings }} tabletl:mx-auto" style="--max-width-desktop: {{ max_width_desktop }};">
+    <div class="section__product-desc-image-content">
+        {% if title != blank %}
+            <h1 class="{{ title_style }} mb-8 font-900">{{ title }}</h1>
+        {% endif %}
+        <div class="section__products flex flex-col gap-12 tabletl:gap-24">
+            {% if product != blank %}
+                <div class="grid grid-cols-3 gap-8 pl-16 {{ color }} tabletl:pl-32 tabletl:gap-24">
+                    <div class="product__description flex flex-col justify-center py-16 col-span-2">
+                        <h1 class="product__title s1 mb-8 tabletl:mb-12"> {{ product.title }}</h1>
+                        <p class="product__price s3 mb-16 tabletl:mb-24">{{ product.price |  money }}</p>
+                        <a {{ product.url }} class="{{ btn_style }}">
+                            <span class="btn__text">{{ btn_text }}</span>
+                            <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                        </a>
+                    </div>
+                    <div class="product__image">
+                        {% if image != blank %}
+                            {% render 'lazy-image' image:image, image_desktop:image:image_desktop %}
+                        {% else %}
+                            {% render 'lazy-image' image:product.featured_image %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

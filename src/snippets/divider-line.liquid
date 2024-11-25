@@ -1,0 +1,7 @@
+{% capture margins_paddings %}
+    {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
+{% endcapture %}
+
+<div class="section__divider-line tabletl:mx-auto {{ margins_paddings }}" style="--max-width-desktop: {{ max_width_desktop }};">
+    <hr class="text-gray mx-auto">
+</div>

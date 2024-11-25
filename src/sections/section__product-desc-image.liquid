@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<section class="section__product-desc-image mx-30 {{ margins_paddings }} tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+<div class="section__product-desc-image mx-30 {{ margins_paddings }} tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
     <div class="section__product-desc-image-content">
         {% if section.settings.title != blank %}
             <h1 class="{{ section.settings.title_style }} mb-8 font-900">{{ section.settings.title }}</h1>
@@ -33,7 +33,7 @@
             </ul>
         {% endif %}
     </div>
-</section>
+</div>
 
 {% schema %}
     {

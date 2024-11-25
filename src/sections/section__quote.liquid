@@ -1,24 +1,17 @@
-{% capture margins_paddings %}
-    {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
-{% endcapture %}
-
-<div class="section__quote mx-30 tabletl:mx-auto {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    <div class="section__quote-content">
-        <div class="flex flex-col tabletl:flex-row tabletl:gap-24">
-            <div class="quote-container text-[#00B5E2] w-[30px] tabletl:w-[45px]">
-                {%  render 'icon-quote' %}
-            </div>
-            <div class="text-container flex-1">
-                {% if section.settings.title != blank %}
-                    <h1 class="{{ section.settings.title_style }} font-500">{{ section.settings.title }}</h1>
-                {% endif %}
-                {% if section.settings.author != blank %}
-                    <p class="s2 my-24 font-900"> {{ section.settings.author }}</p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+{% render 'quote'
+    margin_top_mobile: section.settings.margin_top_mobile,
+    margin_bottom_mobile: section.settings.margin_bottom_mobile,
+    padding_top_mobile: section.settings.padding_top_mobile,
+    padding_bottom_mobile: section.settings.padding_bottom_mobile,
+    margin_top_desktop: section.settings.margin_top_desktop,
+    margin_bottom_desktop: section.settings.margin_bottom_desktop,
+    padding_top_desktop: section.settings.padding_top_desktop,
+    padding_bottom_desktop: section.settings.padding_bottom_desktop,
+    max_width_desktop: section.settings.max_width_desktop,
+    title: section.settings.title,
+    title_style: section.settings.title_style,
+    author: section.settings.author
+%}
 
 {% schema %}
     {

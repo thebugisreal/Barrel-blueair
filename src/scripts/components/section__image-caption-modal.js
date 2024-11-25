@@ -20,23 +20,47 @@ class ImageCaptionModal extends HTMLElement {
   
   
     _initEventListener = () => {
-        this.modalClose.addEventListener('click', this._handleCloseClick.bind(this))
-        this.modalOpen.addEventListener('click', this._handleOpenClick.bind(this))
-        this.modalBody.addEventListener('transitionend', this._handleAnimationEnd.bind(this))
+      this.modalClose.addEventListener('click', this._handleCloseClick.bind(this))
+      this.modalOpen.addEventListener('click', this._handleOpenClick.bind(this))
+      this.style.width='168px';
+      this.style.height='48px';
     }
 
     _handleOpenClick(e) {
-        this.modalClose.classList.remove('hidden')
-        this.modalOpen.classList.add('hidden')
-        this.modalBody.classList.add('expanded')
+  
+      this.modalBody.classList.add('fadeIn')
+      this.modalBody.classList.remove('fadeOut')
+
+      this.modalClose.classList.remove('fadeOut')
+      this.modalClose.classList.add('fadeIn')
+      this.modalClose.classList.remove('hidden')
+
+      this.modalOpen.classList.add('fadeOut')
+      this.modalOpen.classList.remove('fadeIn')
+
+      if (window.innerWidth > 1025) {
+        this.style.width='250px';
+        this.style.height='318px';
+      } else {
+        let width =  window.innerWidth - 48
+        console.log('width', width)
+        this.style.width=`${width}px`;
+        this.style.height='212px';
+      }
     }
 
     _handleCloseClick(e) {
-        this.modalBody.classList.remove('expanded')
-    }
+      this.modalBody.classList.remove('fadeIn')
+      this.modalBody.classList.add('fadeOut')
 
-    _handleAnimationEnd(e) {
-      this.modalOpen.classList.remove('hidden')
+      this.modalOpen.classList.remove('fadeOut')
+      this.modalOpen.classList.add('fadeIn')
+
+      this.modalClose.classList.add('fadeOut')
+      this.modalClose.classList.remove('fadeIn')
       this.modalClose.classList.add('hidden')
+
+      this.style.width='168px';
+      this.style.height='48px';
     }
   }

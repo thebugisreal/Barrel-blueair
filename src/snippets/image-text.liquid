@@ -1,0 +1,20 @@
+{% capture margins_paddings %}
+    {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
+{% endcapture %}
+<div class="section__image-text mx-auto {{ margins_paddings }} {{ color }}" style="--max-width-desktop: {{ max_width_desktop }};">    
+    <div class="section__image-text-content px-30 flex {{ image_placement_mobile }} {{ image_placement_desktop }} tabletl:px-0 tabletl:items-center tabletl:gap-48">
+        <div class="section__text-content tabletl:w-1/2">
+            {% if title != blank %}
+                <h1 class="{{ title_style }} mb-16 font-900 tabletl:mb-24">{{ title }}</h1>
+            {% endif %}
+            {% if richtext != blank %}
+                <div class="rte"> {{ richtext }} </div>
+            {% endif %}
+        </div>
+        {% if image_mobile != blank %}
+            <div class="section__image-content mt-16 w-full tabletl:mt-0 tabletl:w-1/2">
+                {%  render 'lazy-image' image:image_mobile, image_desktop:image_desktop %}
+            </div>
+        {% endif %}
+    </div>
+</div>

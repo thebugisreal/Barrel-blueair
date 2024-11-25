@@ -1,0 +1,24 @@
+{% capture margins_paddings %}
+    {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
+{% endcapture %}
+
+<div class="section__image-text-review mx-auto p-24 {{ margins_paddings }} {{ color }}" style="--max-width-desktop: {{ max_width_desktop }}; ">
+    {% if section_title != blank %}
+        <h1 class="{{ section_title_style }} mb-12">{{ section_title }}</h1>
+    {% endif %}
+    <div class="section__image-text-review-content px-30 flex flex-col tabletl:flex-row tabletl:px-0 tabletl:items-center tabletl:gap-48">
+        {% if image_mobile != blank %}
+            <div class="section__image-content w-full mt-16 tabletl:mt-0 tabletl:w-1/3">
+                {%  render 'lazy-image' image:image_mobile, image_desktop:image_desktop %}
+            </div>
+        {% endif %}
+        <div class="section__text-content tabletl:w-2/3">
+            {% if title != blank %}
+                <h1 class="{{ title_style }} mb-16 font-900 tabletl:mb-24">{{ title }}</h1>
+            {% endif %}
+            {% if richtext != blank %}
+                <div class="rte {{ richtext_style }}"> {{ richtext }} </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

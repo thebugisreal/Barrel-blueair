@@ -1,22 +1,16 @@
-{% capture margins_paddings %}
-    {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
-{% endcapture %}
-<div class="section__product-text {{ margins_paddings }} tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    <ul class="section__product-text-content mx-30 tabletl:mx-auto">
-        {% for block in section.blocks %}
-            {% case block.type %}
-                {% when 'richtext' %}
-                    {% if block.settings.richtext != blank %}
-                        <li class="list-none">
-                            <div class="rte {{ block.settings.richtext_style }}">
-                                {{ block.settings.richtext }}
-                            </div>
-                        </li>
-                    {% endif %}
-            {% endcase %}
-        {% endfor %}
-    </ul>
-</div>
+{% render 'text'
+    margin_top_mobile: section.settings.margin_top_mobile,
+    margin_bottom_mobile: section.settings.margin_bottom_mobile,
+    padding_top_mobile: section.settings.padding_top_mobile,
+    padding_bottom_mobile: section.settings.padding_bottom_mobile,
+    margin_top_desktop: section.settings.margin_top_desktop,
+    margin_bottom_desktop: section.settings.margin_bottom_desktop,
+    padding_top_desktop: section.settings.padding_top_desktop,
+    padding_bottom_desktop: section.settings.padding_bottom_desktop,
+    max_width_desktop: section.settings.max_width_desktop,
+    richtext: section.settings.richtext,
+    richtext_style: section.settings.richtext_style
+%}
 
 {% schema %}
     {
@@ -353,91 +347,83 @@
             "label": "Max Width - Desktop",
             "info": "Make sure to include units",
             "default": "109ch"
-        }
-      ],
-      "blocks": [
+        },
         {
-            "name": "Richtext",
             "type": "richtext",
-            "settings": [
+            "id": "richtext",
+            "label": "Richtext"
+        },
+        {
+            "type": "select",
+            "id": "richtext_style",
+            "label": "Richtext Style",
+            "options": [
                 {
-                    "type": "richtext",
-                    "id": "richtext",
-                    "label": "Richtext"
+                    "value": "h1",
+                    "label": "h1"
                 },
                 {
-                    "type": "select",
-                    "id": "richtext_style",
-                    "label": "Richtext Style",
-                    "options": [
-                        {
-                            "value": "h1",
-                            "label": "h1"
-                        },
-                        {
-                            "value": "h2",
-                            "label": "h2"
-                        },
-                        {
-                            "value": "h3",
-                            "label": "h3"
-                        },
-                        {
-                            "value": "h4",
-                            "label": "h4"
-                        },
-                        {
-                            "value": "h5",
-                            "label": "h5"
-                        },
-                        {
-                            "value": "h6",
-                            "label": "h6"
-                        },
-                        {
-                            "value": "s1",
-                            "label": "s1"
-                        },
-                        {
-                            "value": "s2",
-                            "label": "s2"
-                        },
-                        {
-                            "value": "s3",
-                            "label": "s3"
-                        },
-                        {
-                            "value": "s4",
-                            "label": "s4"
-                        },
-                        {
-                            "value": "p1",
-                            "label": "p1"
-                        },
-                        {
-                            "value": "p2",
-                            "label": "p2"
-                        },
-                        {
-                            "value": "p3",
-                            "label": "p3"
-                        },
-                        {
-                            "value": "p4",
-                            "label": "p4"
-                        },
-                        {
-                            "value": "p5",
-                            "label": "p5"
-                        },
-                        {
-                            "value": "p6",
-                            "label": "p6"
-                        }
-                    ],
-                    "default": "p2"
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "s1",
+                    "label": "s1"
+                },
+                {
+                    "value": "s2",
+                    "label": "s2"
+                },
+                {
+                    "value": "s3",
+                    "label": "s3"
+                },
+                {
+                    "value": "s4",
+                    "label": "s4"
+                },
+                {
+                    "value": "p1",
+                    "label": "p1"
+                },
+                {
+                    "value": "p2",
+                    "label": "p2"
+                },
+                {
+                    "value": "p3",
+                    "label": "p3"
+                },
+                {
+                    "value": "p4",
+                    "label": "p4"
+                },
+                {
+                    "value": "p5",
+                    "label": "p5"
+                },
+                {
+                    "value": "p6",
+                    "label": "p6"
                 }
-            ]
+            ],
+            "default": "p2"
         }
       ],
       "presets": [

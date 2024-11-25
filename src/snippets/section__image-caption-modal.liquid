@@ -10,12 +10,12 @@ product: Product Object
             <p class="btn__text p2">View Product </p>
             <div class="btn__arrow">{%  render 'icon-arrows-diag' %}</div>
         </button>
-        <button class="close-icon btn w-[46px] hidden h-[46px] ml-auto" js-modal-close>
+        <button class="close-icon btn w-[46px] h-[46px] hidden ml-auto" js-modal-close>
             <div class="btn__arrow border-0">{% render 'icon-close-no-border' %}</div>
         </button>
     </header>
 
-    <div class="modal-body flex flex-col" js-modal-body>
+    <div class="modal-body flex flex-col fadeOut" js-modal-body>
         <div class="flex gap-24 tabletl:gap-0 tabletl:h-auto tabletl:flex-col">
             <div class="product-body px-24 tabletl:text-center">
                 <h4 class="h4">{{ product.title }}</h4>

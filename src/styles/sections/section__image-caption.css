@@ -1,13 +1,22 @@
 .modal-body {
-    max-height: 0;
-    max-width: 0;
-    transition: all 1s ease-out;
-}
-
-.modal-body.expanded {
     max-width: 80vw;
     max-height: 10000px;
-    transition: all 1s ease-out;
+    transition: height .5s ease-out, width .5s ease-out;
+}
+
+image-caption-modal {
+    overflow: hidden;
+    transition: height .5s ease-out, width .5s ease-out;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.fadeIn {
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
 }
 
 @media screen(tabletl) {
