@@ -10,7 +10,7 @@
   <s-tabs class="block">
     {% for block in section.blocks %}
       <div id="TestimonialTab{{ forloop.index }}-content-panel" class="tab__panel testimonial-tab__panel px-md desktop:px-xl" role="tabpanel" aria-labelledby="TestimonialTab{{ forloop.index }}-tab" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
-        <div class="testimonial-tab__content-text text-center {{ block.settings.text_style }} mx-auto max-w-[var(--max-w-mobile)] desktop:max-w-[var(--max-w-desktop)]" style="--max-w-mobile: {% if section.settings.max_width_mobile == 0 or section.settings.max_width_mobile == blank %}unset{% else %}{{ section.settings.max_width_mobile }}px{% endif %}; --max-w-desktop: {% if section.settings.max_width_desktop == 0 or section.settings.max_width_desktop == blank %}unset{% else %}{{ section.settings.max_width_desktop }}px{% endif %};">
+        <div class="testimonial-tab__content-text text-center {{ block.settings.text_style }} mx-auto max-w-[var(--max-w-mobile)] desktop:max-w-[var(--max-w-desktop)]" style="--max-w-mobile: {% if section.settings.tab_content_max_width_mobile != blank %}{{ section.settings.tab_content_max_width_mobile }}{% else %}unset{% endif %}; --max-w-desktop: {% if section.settings.tab_content_max_width_desktop != blank %}{{ section.settings.tab_content_max_width_desktop }}{% else %}unset{% endif %};">
           {{ block.settings.text }}
         </div>
       </div>
@@ -372,6 +372,10 @@
           "label": "Blue"
         },
         {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
+        },
+        {
           "value": "bg-green-light text-green-dark",
           "label": "Green"
         },
@@ -400,16 +404,16 @@
       "label": "Image"
     },
     {
-      "type": "number",
-      "id": "max_width_mobile",
-      "label": "Content Max Width (px) - Mobile",
-      "info": "blank or zero = no max width applied"
+      "type": "text",
+      "id": "tab_content_max_width_mobile",
+      "label": "Tab Content Max Width - Mobile",
+      "info": "Make sure to include units"
     },
     {
-      "type": "number",
-      "id": "max_width_desktop",
-      "label": "Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
+      "type": "text",
+      "id": "tab_content_max_width_desktop",
+      "label": "Tab Content Max Width - Desktop",
+      "info": "Make sure to include units"
     }
   ],
   "blocks": [

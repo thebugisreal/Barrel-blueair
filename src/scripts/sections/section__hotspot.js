@@ -16,6 +16,16 @@ class Hotspot extends HTMLElement {
     this.triggerBtns.forEach((btn) => {
       btn.addEventListener('click', this._toggleTriggerContent);
     });
+    if (this.hasAttribute('open-first-hotspot-mobile') && window.innerWidth <= 1024) {
+      this._clickFirstTriggerBtn();
+    }
+  }
+
+  _clickFirstTriggerBtn = () => {
+    const firstTriggerBtn = this.querySelector(`${this._selectors.triggerBtn}[data-index="0"]`);
+    if (firstTriggerBtn) {
+      firstTriggerBtn.click();
+    }
   }
 
   _audjustDesktopTriggerContentsPosition = () => {

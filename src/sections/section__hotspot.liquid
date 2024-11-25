@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<s-hotspot class="section__hotspot block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl desktop:flex desktop:items-center desktop:gap-[136px]">
+<s-hotspot {% if section.settings.open_first_hospot_mobile %}open-first-hotspot-mobile {% endif %}class="section__hotspot block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl desktop:flex desktop:items-center desktop:gap-[136px]">
   <div class="hotspot__text-content flex flex-col gap-sm desktop:flex-1 mb-xxl desktop:mb-0">
     {% if section.settings.title != blank %}
       <h2 class="hotspot__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
@@ -446,6 +446,11 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "checkbox",
+      "id": "open_first_hospot_mobile",
+      "label": "Open First Hotspot by Default on Mobile"
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -461,6 +466,10 @@
         {
           "value": "bg-blue-sky text-blue",
           "label": "Blue"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
         },
         {
           "value": "bg-green-light text-green-dark",

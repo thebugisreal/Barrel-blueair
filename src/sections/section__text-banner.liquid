@@ -2,7 +2,7 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 <div class="section__text-banner {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="text-banner__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }} {% if section.settings.image != blank %}desktop:flex desktop:justify-center desktop:items-center desktop:gap-[225px]{% endif %}" style="--max-w-desktop: {% if section.settings.max_width_desktop == 0 or section.settings.max_width_desktop == blank %}unset{% else %}{{ section.settings.max_width_desktop }}px{% endif %};">
+  <div class="text-banner__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }} {% if section.settings.image != blank %}desktop:flex desktop:justify-center desktop:items-center desktop:gap-[225px]{% endif %}" style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
     {% if section.settings.image != blank %}
       <div class="text-banner__image w-[111px] min-w-[111px] inline-block mb-lg desktop:mb-0">
         {% render 'lazy-image' image: section.settings.image %}
@@ -388,6 +388,10 @@
           "label": "Blue"
         },
         {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
+        },
+        {
           "value": "bg-green-light text-green-dark",
           "label": "Green"
         },
@@ -620,10 +624,10 @@
       "default": "desktop:text-left"
     },
     {
-      "type": "number",
+      "type": "text",
       "id": "max_width_desktop",
-      "label": "Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
+      "label": "Max Width - Desktop",
+      "info": "Make sure to include units"
     }
   ],
   "presets": [

@@ -2,7 +2,7 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 <div class="section__icons {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="icons__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }}" style="--max-w-desktop: {% if section.settings.max_width_desktop == 0 or section.settings.max_width_desktop == blank %}unset{% else %}{{ section.settings.max_width_desktop }}px{% endif %};">
+  <div class="icons__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }}" style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
     {% if section.settings.title != blank %}
       <h1 class="icons__title {{ section.settings.title_style }} mb-lg desktop:mb-xl">{{ section.settings.title }}</h1>
     {% endif %}
@@ -10,7 +10,7 @@
       {% for block in section.blocks %}
         <div class="icons__block">
           {% if block.settings.icon != blank %}
-            <div class="icon__image inline-block" style="{% if block.settings.icon_fixed_width == blank or block.settings.icon_fixed_width == 0 %}width: 100%{% else %}width: {{ block.settings.icon_fixed_width }}px{% endif %};">
+            <div class="icon__image inline-block" style="{% if block.settings.icon_fixed_width != blank %}width: {{ block.settings.icon_fixed_width }}px{% else %}width: 100%{% endif %};">
               {% render 'lazy-image' image: block.settings.icon %}
             </div>
           {% endif %}
@@ -373,6 +373,12 @@
       "default": 4
     },
     {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Max Width - Desktop",
+      "info": "Make sure to include units"
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -388,6 +394,10 @@
         {
           "value": "bg-blue-sky text-blue",
           "label": "Blue"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
         },
         {
           "value": "bg-green-light text-green-dark",
@@ -504,12 +514,6 @@
         }
       ],
       "default": "desktop:text-left"
-    },
-    {
-      "type": "number",
-      "id": "max_width_desktop",
-      "label": "Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
     }
   ],
   "blocks": [
@@ -523,10 +527,10 @@
           "label": "Icon"
         },
         {
-          "type": "number",
+          "type": "text",
           "id": "icon_fixed_width",
-          "label": "Fixed Icon Width",
-          "info": "blank or zero = no fixed width applied"
+          "label": "Fixed Icon Width (px)",
+          "info": "number only"
         },
         {
           "type": "text",

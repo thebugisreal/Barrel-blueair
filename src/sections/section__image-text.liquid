@@ -3,7 +3,7 @@
 {% endcapture %}
 <div class="section__image-text block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px]">
   <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
-    <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width == 0 or section.settings.text_max_width == blank  %}unset{% else %}{{ section.settings.text_max_width }}px{% endif %};">
+    <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width != blank  %}{{ section.settings.text_max_width }}{% else %}unset{% endif %};">
       {% if section.settings.title != blank %}
         <h2 class="image-text__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
       {% endif %}
@@ -370,6 +370,10 @@
           "label": "Blue"
         },
         {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
+        },
+        {
           "value": "bg-green-light text-green-dark",
           "label": "Green"
         },
@@ -613,10 +617,10 @@
       "default": "btn"
     },
     {
-      "type": "number",
+      "type": "text",
       "id": "text_max_width",
-      "label": "Text Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
+      "label": "Text Content Max Width - Desktop",
+      "info": "Make sure to include units"
     }
   ],
   "presets": [

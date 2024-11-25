@@ -19,7 +19,7 @@ class Video extends HTMLElement {
   }
 
   _videoOnClick = () => {
-    if (this.dataset.paused == 'true') {
+    if (this.dataset.playing == 'false') {
       return;
     }
 
@@ -27,7 +27,7 @@ class Video extends HTMLElement {
   }
 
   _triggerOnClick = () => {
-    if (this.dataset.paused == 'true') {
+    if (this.dataset.playing == 'false') {
       this._playVideo();
     } else {
       this._pauseVideo();
@@ -39,17 +39,11 @@ class Video extends HTMLElement {
     if (this.dataset.controls == 'true') {
       this.video.setAttribute('controls', 'controls');
     }
-    if (this.trigger.dataset.text == 'true') {
-      this.trigger.textContent = 'Pause';
-    }
-    this.dataset.paused = 'false';
+    this.dataset.playing = 'true';
   }
 
   _pauseVideo = () => {
     this.video.pause();
-    if (this.trigger.dataset.text == 'true') {
-      this.trigger.textContent = 'Play';
-    }
-    this.dataset.paused = 'true';
+    this.dataset.playing = 'false';
   }
 }

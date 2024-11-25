@@ -69,7 +69,7 @@
             <div class="accordion-item {% unless forloop.last %}mb-md{% endunless %}" js-accordion-item>
               <button class="accordion-header w-full flex justify-between items-center" aria-expanded="false" aria-controls="FooterNavLink{{ forloop.index }}" js-accordion-header>
                 <span class="h4 text-20">{{ link.title }}</span>
-                <span class="accordion-icon w-24">{% render 'icon-active-down' %}</span>
+                <span class="accordion-icon accordion-icon--caret-down w-24">{% render 'icon-active-down' %}</span>
               </button>
               <div id="FooterNavLink{{ forloop.index }}" class="accordion-content" aria-hidden="true" js-accordion-content>
                 <ul class="site-footer__links mt-md">

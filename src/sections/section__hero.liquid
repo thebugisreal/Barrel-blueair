@@ -13,7 +13,7 @@
       {{ section.settings.text_align_mobile }} {{ section.settings.hor_align_mobile }} {{ section.settings.ver_align_mobile }} {{ section.settings.text_align_desktop }} {{ section.settings.hor_align_desktop }} {{ section.settings.ver_align_desktop }}
     {% endcapture %}  
     <div class="hero__content-wrapper absolute inset-0 flex px-md py-lg desktop:p-xl {{ alignments }}">
-      <div class="hero__content" style="--max-w-mobile: {% if section.settings.max_width_mobile == 0 or section.settings.max_width_mobile == blank  %}unset{% else %}{{ section.settings.max_width_mobile }}px{% endif %}; --max-w-desktop: {% if section.settings.max_width_desktop == 0 or section.settings.max_width_desktop == blank %}unset{% else %}{{ section.settings.max_width_desktop }}px{% endif %};">
+      <div class="hero__content" style="--max-w-mobile: {% if section.settings.content_max_width_mobile != blank  %}{{ section.settings.content_max_width_mobile }}{% else %}unset{% endif %}; --max-w-desktop: {% if section.settings.content_max_width_desktop != blank %}{{ section.settings.content_max_width_desktop }}{% else %}unset{% endif %};">
         {% if section.settings.title != blank %}
           <h1 class="hero__title {{ section.settings.title_style }} mb-sm">{{ section.settings.title }}</h1>
         {% endif %}
@@ -394,6 +394,10 @@
           "label": "Blue"
         },
         {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
+        },
+        {
           "value": "bg-green-light text-green-dark",
           "label": "Green"
         },
@@ -715,16 +719,16 @@
       "default": "desktop:items-start"
     },
     {
-      "type": "number",
-      "id": "max_width_mobile",
-      "label": "Content Max Width (px) - Mobile",
-      "info": "blank or zero = no max width applied"
+      "type": "text",
+      "id": "content_max_width_mobile",
+      "label": "Content Max Width - Mobile",
+      "info": "Make sure to include units"
     },
     {
-      "type": "number",
-      "id": "max_width_desktop",
-      "label": "Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
+      "type": "text",
+      "id": "content_max_width_desktop",
+      "label": "Content Max Width - Desktop",
+      "info": "Make sure to include units"
     }
   ],
   "presets": [

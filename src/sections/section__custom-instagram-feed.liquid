@@ -1,13 +1,19 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__media-carousel {{ margins_paddings }} {{ section.settings.color }}">
-  <div class="media-carousel__title-container text-center px-md desktop:px-xl flex flex-col gap-sm {% if section.settings.title != blank or section.settings.subtext != blank %}mb-lg desktop:mb-xl{% endif %}">
+<div class="section__custom-instagram-feed {{ margins_paddings }} {{ section.settings.color }}">
+  <div class="custom-instagram-feed__title-container text-center px-md desktop:px-xl flex flex-col gap-xxs desktop:gap-xs mb-lg desktop:mb-xl">
     {% if section.settings.title != blank %}
-      <h1 class="media-carousel__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>
+      <h1 class="custom-instagram-feed__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>
     {% endif %}
     {% if section.settings.subtext != blank %}
-      <div class="media-carousel__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
+      <div class="custom-instagram-feed__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
+    {% endif %}
+    {% if settings.social_instagram != blank and section.settings.instagram_tag != blank %}
+      <a href="{{ settings.social_instagram }}" class="custom-instagram-feed__instagram-tag flex items-center gap-xs w-fit mx-auto bg-blue-light p-xxs desktop:p-xs" target="_blank" rel="noopener noreferrer">
+        <span class="w-[20px] leading-[0px]">{% render 'icon-social-ig' %}</span>
+        <span class="s2">{{ section.settings.instagram_tag }}</span>
+      </a>
     {% endif %}
   </div>
   
@@ -28,20 +34,20 @@
       }
     }
   {%- endcapture -%}
-  <s-carousel data-options='{{ carousel_options }}' class="media-carousel__carousel grid">
-    <div id="MediaCarousel-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+  <s-carousel data-options='{{ carousel_options }}' class="custom-instagram-feed__carousel grid">
+    <div id="CustomInstagramFeed-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
       <div class="swiper-wrapper">
         {% for block in section.blocks %}
-          <div class="swiper-slide media-carousel__slide w-[40%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
+          <div class="swiper-slide custom-instagram-feed__slide w-[40%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
             {% if block.type == 'image' %}
-              <div class="media-carousel__image">
+              <div class="custom-instagram-feed__image">
                 {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
               </div>
             {% elsif block.type == 'video' %}
-              <s-video data-paused="true" data-controls="true" class="media-carousel__video block relative">
+              <s-video data-playing="false" data-controls="true" class="custom-instagram-feed__video block relative">
                 {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
-                <button class="video__trigger absolute bottom-sm left-sm w-[40px] h-[40px] pl-xxxs flex justify-center items-center rounded-full bg-white" data-text="false" js-video-trigger>
-                  <span class="w-16 leading-[0px]">{% render 'icon-play' %}</span>
+                <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
+                  <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
                 </button>
               </s-video>
             {% endif %}
@@ -59,7 +65,7 @@
 
 {% schema %}
 {
-  "name": "Media Carousel",
+  "name": "Custome Instagram Feed",
   "tag": "section",
   "settings": [
     {
@@ -404,6 +410,10 @@
           "label": "Blue"
         },
         {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
+        },
+        {
           "value": "bg-green-light text-green-dark",
           "label": "Green"
         },
@@ -555,6 +565,11 @@
         }
       ],
       "default": "s2"
+    },
+    {
+      "type": "text",
+      "id": "instagram_tag",
+      "label": "Instagram Tag"
     }
   ],
   "blocks": [
@@ -588,7 +603,7 @@
   ],
   "presets": [
     {
-      "name": "Media Carousel"
+      "name": "Custome Instagram Feed"
     }
   ]
 }

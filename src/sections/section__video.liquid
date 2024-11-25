@@ -1,15 +1,18 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__video {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="video__wrapper mx-auto max-w-[var(--max-w-mobile)] desktop:max-w-[var(--max-w-desktop)]" style="--max-w-mobile: {% if section.settings.max_width_mobile == 0 or section.settings.max_width_mobile == blank %}unset{% else %}{{ section.settings.max_width_mobile }}px{% endif %}; --max-w-desktop: {% if section.settings.max_width_desktop == 0 or section.settings.max_width_desktop == blank %}unset{% else %}{{ section.settings.max_width_desktop }}px{% endif %};">
+<div class="section__video section__video--circle-cropped {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+  <div class="video__wrapper mx-auto max-w-[var(--max-w-mobile)] desktop:max-w-[var(--max-w-desktop)]" style="--max-w-mobile: {% if section.settings.max_width_mobile != blank %}{{ section.settings.max_width_mobile }}{% else %}unset{% endif %}; --max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
     {% if section.settings.title != blank %}
       <h1 class="video__title {{ section.settings.title_style }} text-center mb-xl">{{ section.settings.title }}</h1>
     {% endif %}
     {% if section.settings.video != blank %}
-      <s-video data-paused="true" data-controls="false" class="block relative aspect-square overflow-hidden rounded-full">
+      <s-video data-playing="false" data-controls="false" class="block relative aspect-square overflow-hidden rounded-full">
         {{ section.settings.video | video_tag: class: 'block w-full h-full object-cover object-center desktop:pointer-events-none', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
-        <button class="video__trigger text-20 font-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue text-white w-[80px] h-[80px] flex justify-center items-center rounded-full" data-text="true" js-video-trigger>Play</button>
+        <button class="video__trigger video__trigger--blue text-20 font-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue text-white w-[80px] h-[80px] flex justify-center items-center rounded-full" js-video-trigger>
+          <span class="video-trigger__play">Play</span>
+          <span class="video-trigger__pause">Pause</span>
+        </button>
       </s-video>
     {% endif %}
   </div>
@@ -17,7 +20,7 @@
 
 {% schema %}
 {
-  "name": "Video",
+  "name": "Video - Circle Cropped",
   "tag": "section",
   "settings": [
     {
@@ -345,6 +348,18 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "text",
+      "id": "max_width_mobile",
+      "label": "Max Width - Mobile",
+      "info": "Make sure to include units"
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Max Width - Desktop",
+      "info": "Make sure to include units"
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -360,6 +375,10 @@
         {
           "value": "bg-blue-sky text-blue",
           "label": "Blue"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Light Blue"
         },
         {
           "value": "bg-green-light text-green-dark",
@@ -441,23 +460,11 @@
       "type": "video",
       "id": "video",
       "label": "Video"
-    },
-    {
-      "type": "number",
-      "id": "max_width_mobile",
-      "label": "Content Max Width (px) - Mobile",
-      "info": "blank or zero = no max width applied"
-    },
-    {
-      "type": "number",
-      "id": "max_width_desktop",
-      "label": "Content Max Width (px) - Desktop",
-      "info": "blank or zero = no max width applied"
     }
   ],
   "presets": [
     {
-      "name": "Video"
+      "name": "Video - Circle Cropped"
     }
   ]
 }
