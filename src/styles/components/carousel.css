@@ -10,6 +10,10 @@
   @apply block;
 }
 
+.swiper-button-lock {
+  @apply !hidden
+}
+
 .swiper-initialized .swiper-wrapper {
   @apply flex;
 }
@@ -37,4 +41,29 @@
 .swiper-scrollbar .swiper-scrollbar-drag {
   @apply !bg-blue
   !rounded-none;
+}
+
+.swiper-button-disabled .swiper-button-icon {
+  @apply text-gray
+}
+
+/* Carousel Section */
+
+@media screen(tabletl) {
+  .enable-title-link-same-line .section__carousel-title,
+  .enable-title-link-same-line .section__carousel-button {
+    @apply m-0
+  }
+  .swiper-button-disabled.btn:hover .btn__arrow {
+    @apply text-gray
+    bg-transparent;
+  }
+  .swiper-button-disabled.btn--blue-rounded:hover .btn__arrow {
+    @apply text-gray
+    bg-blue;
+  }
+  .swiper-button-disabled.btn--white-rounded:hover .btn__arrow {
+    @apply text-gray
+    bg-white;
+  }
 }

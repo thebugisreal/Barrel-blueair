@@ -24,6 +24,7 @@ window.theme = window.theme || {};
 // =require components/active-filters.js
 // =require components/price-range.js
 // =require components/country-select.js
+// =require components/section__image-caption-modal.js
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -50,6 +51,7 @@ customElements.define('price-range', PriceRange);
 
 customElements.define('country-select', CountrySelect);
 
+customElements.define('image-caption-modal', ImageCaptionModal);
 /*================ Sections ================*/
 // =require sections/collection__grid.js
 // =require sections/product__main.js

@@ -1,0 +1,18 @@
+<div class="product-card__carousel h-full text-center bg-gray-athans px-30 pt-24 tabletl:pt-[50px]">
+    {% if product.metafields.seed.product_tags != blank %}
+    <ul class="product-card__carousel-tags mb-[22px] flex justify-center">
+        {% for tag in product.metafields.seed.product_tags.value %}
+            <li class="tag-small border bg-white border-gray py-[6px] px-[10px] rounded-[9999px] w-fit">{{ tag }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h4>{{ product.title }}</h4>
+    <p class="s3 mb-24">{{ product.price |  money }}</p>
+    <a href="{{ product.url }}" class="flex btn btn--transparent-rounded mx-auto tabletl:mb-48"> 
+        <p class="p2 btn__text"> Shop Now</p>
+        <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
+    </a>
+    <div class="product-card__carousel-image">
+        {% render 'lazy-image' image:product.featured_image %}
+    </div>
+</div>

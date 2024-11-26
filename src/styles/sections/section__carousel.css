@@ -1,0 +1,21 @@
+.section__carousel-content .swiper-scrollbar {
+    @apply bg-gray
+}
+
+.section__carousel-content .swiper-nav-container {
+    width: calc(100% - 30px);
+}
+
+.section__carousel-content .swiper-scrollbar-drag {
+    @apply rounded-[0]
+    bg-blue;
+  }
+
+@media screen(tabletl) {
+    .section__carousel-content {
+        max-width: var(--max-width-desktop)
+    }
+    .section__carousel-content .swiper-nav-container {
+        @apply w-[90%]
+    }
+}

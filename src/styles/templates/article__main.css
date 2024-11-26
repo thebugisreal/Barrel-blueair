@@ -1,0 +1,21 @@
+a.article-card__content .article-card__image img{
+    @apply transition-transform
+    duration-1000
+}
+
+@media screen(tabletl) {
+    a.article-card__content:hover{
+        @apply no-underline
+    }
+    a.article-card__content:hover .article-card__image img{
+        @apply scale-110
+    }
+
+    a.article-card__content:hover .article-card__title {
+        @apply underline
+    }
+
+    .article__header-content {
+        max-width: var(--max-width-desktop)
+    }
+}

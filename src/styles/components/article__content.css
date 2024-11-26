@@ -1,0 +1,45 @@
+/* Image Caption */
+
+.modal-body {
+    max-width: 80vw;
+    max-height: 10000px;
+    transition: height .5s ease-out, width .5s ease-out;
+}
+
+image-caption-modal {
+    overflow: hidden;
+    transition: height .5s ease-out, width .5s ease-out;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.fadeIn {
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+}
+
+.modal-open.fadeOut {
+    opacity: 0;
+    transition: opacity .1s ease-in-out;
+}
+
+.modal-open.fadeIn {
+    opacity: 1;
+    transition: opacity .1s ease-in-out;
+}
+
+.section__image-caption .rte p {
+    @apply my-xs
+}
+/* END Image Caption */
+
+/* Image Text Review */
+
+.section__image-text-review .rte p {
+    @apply my-24
+}
+
+/* END Image Text Review */

@@ -56,7 +56,8 @@ module.exports = {
         dark: "#805F55"
       },
       gray: {
-        DEFAULT: "#D8DBDE"
+        DEFAULT: "#D8DBDE",
+        athans: "#F0F3F6"
       }
       // add custom colors here, refer to: https://tailwindcss.com/docs/customizing-colors
     },
@@ -113,6 +114,7 @@ module.exports = {
       40: "40px",
       44: "44px",
       48: "48px",
+      60: "60px",
       64: "64px", //used by default for ajax cart placeholders
       72: "72px", //used by default for ajax cart placeholders
     },
@@ -121,6 +123,10 @@ module.exports = {
         header: "calc(100vh - var(--header-height))"
       },
     },
+  },
+  borderRadius: {
+    "pill": "9999px",
+    "full": "100%"
   },
   // include if more variants are necessary. for defaults, refer to: https://tailwindcss.com/docs/configuring-variants
   variants: {
