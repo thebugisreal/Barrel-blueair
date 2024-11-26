@@ -13,15 +13,17 @@ class SiteHeader extends HTMLElement {
   }
 
   connectedCallback() {
+    this.closeAnnouncementBtn = this.querySelector(this._selectors.closeAnnouncementBtn);
+    this.announcementBar = this.querySelector(this._selectors.announcementBar);
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
-    this.closeAnnouncementBtn = this.querySelector(this._selectors.closeAnnouncementBtn)
-    this.announcementBar = this.querySelector(this._selectors.announcementBar)
 
     this._setVariables();
     this._watchWindowResize();
-    this._initAnnouncement();
-    this.closeAnnouncementBtn.addEventListener('click', this._handleCloseAnnouncementClick.bind(this))
+    if (this.announcementBar) {
+      this._initAnnouncement();
+      this.closeAnnouncementBtn.addEventListener('click', this._closeAnnouncementOnClick);
+    }
     this.mobileSubnavTriggers.forEach((trigger) => {
       trigger.addEventListener('click', this._openMobileSubNav);
     });
@@ -40,23 +42,25 @@ class SiteHeader extends HTMLElement {
     subnavTarget.dataset.active = 'true';
   }
 
-  _watchWindowResize = evt => {
+  _watchWindowResize = () => {
     window.addEventListener('resize', this._setVariables)
   }
 
-  _setVariables = evt => {
+  _setVariables = () => {
     document.documentElement.style.setProperty('--header-height', `${this.clientHeight}px`)
   }
 
-  _initAnnouncement() {
+  _initAnnouncement = () => {
     const hideAnnouncement = sessionStorage.getItem("hideAnnouncement");
     if (hideAnnouncement) {
       this.announcementBar.classList.add('hidden')
     } else {
       this.announcementBar.classList.remove('hidden')
     }
+
+    this._setVariables();
   }
-  _handleCloseAnnouncementClick() {
+  _closeAnnouncementOnClick = () => {
     sessionStorage.setItem("hideAnnouncement", "true");
     this._initAnnouncement();
   }
