@@ -3,7 +3,7 @@
 {% render 'filter-sort', results: collection, scope: 'global' %}
 {% render 'active-filters', results: collection %}
 {% endcomment %}
-{% paginate collection.products by 24 %}
+{% paginate collection.products by 48 %}
 <s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}">
   <div class="collection-grid__layout">
     <div class="collection-grid__header bg-blue-light px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
@@ -13,7 +13,7 @@
       {% endif %}
       <div class="collection-grid__title-containe flex justify-start items-center gap-sm">
         <h1 class="collection-grid__title h3">{{ collection.title }}</h1>
-        <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-collection-count>{{ collection.products_count }} results</div>
+        <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
       </div>
     </div>
 
@@ -42,24 +42,59 @@
           {% endif %}
         {% endif %}
   
-        <div class="collection-grid__filter-sort-triggers mb-md grid grid-cols-2 gap-sm desktop:flex desktop:justify-between desktop:items-center">
-          <button class="collection-grid__filter-trigger collection-grid__filter-trigger--mobile desktop:hidden" js-open-mobile-filter>
-            <span>Filters</span>
+        {% liquid
+          assign sort_by = collection.sort_by | default: collection.default_sort_by
+          assign active_filters_count = 0
+          for filter in collection.filters
+            if filter.active_values.size > 0
+              assign active_filters_count = active_filters_count | plus: 1
+            endif
+          endfor
+        %}
+        <div class="collection-grid__filter-sort-triggers mb-md flex justify-start relative">
+          <button class="collection-grid__filter-trigger collection-grid__filter-trigger--mobile flex items-center py-xxs pr-xs desktop:hidden" js-open-mobile-filter>
+            <span class="w-[36px] leading-[0px] mr-xs">{% render 'icon-close' %}</span>
+            <span class="s2 mr-xxxs">Filters</span>
+            <span class="s2" js-active-fitlers-count>({{ active_filters_count }})</span>
           </button>
-          <button class="collection-grid__filter-trigger collection-grid__filter-trigger--desktop hidden desktop:block" js-desktop-filter-trigger>
-            <span js-desktop-filter-trigger-label>Show Filters</span>
+          <button class="collection-grid__filter-trigger collection-grid__filter-trigger--desktop hidden desktop:flex gap-xs items-center py-xxs pr-sm" js-desktop-filter-trigger>
+            <span class="w-[36px] leading-[0px]">{% render 'icon-close' %}</span>
+            <span class="s2" js-desktop-filter-trigger-label>Show Filters</span>
           </button>
-          <div class="collection-grid__sort-trigger-container">
-            <span>Sort by</span>
-          </div>
+          <s-accordion data-manual-collapse="false" class="collection-grid__sort-trigger-container block absolute right-0 top-0 desktop:flex desktop:justify-end desktop:gap-sm" js-accordion>
+            <div class="s2 mt-xs hidden desktop:block">Sort by</div>
+            <div class="accordion-item border border-gray" js-accordion-item>
+              <button class="accordion-header p-xs flex gap-xs items-center w-full" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
+                <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-close' %}</span>
+                <span class="flex-1 text-center s3 desktop:text-left" js-current-sort-label>
+                  {% for option in collection.sort_options %}
+                    {% if option.value == sort_by %}
+                      {{ option.name | escape }}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                </span>
+                <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
+              </button>
+              <div id="SortByTriggerAccordion" class="accordion-content bg-white" aria-hidden="true" js-accordion-content js-sort-triggers>
+                {% for option in collection.sort_options %}
+                  {% unless option.value == sort_by %}
+                    <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                      {{ option.name | escape }}
+                    </button>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            </div>
+          </s-accordion>
         </div>
-  
-        <div class="collection-grid__grid-container desktop:flex">
+
+        <div class="collection-grid__grid-container desktop:flex desktop:gap-md">
           <div class="collection-grid__desktop-fitlers hidden w-[300px]" js-desktop-filters data-opened="false">
             {% render 'filter-sort', results: collection, scope: 'desktop' %}
           </div>
           <div class="collection-grid__grid-wrapper desktop:flex-1">
-            <ul class="collection-grid__products grid grid-cols-1 gap-md desktop:grid-cols-3 desktop:gap-y-lg" js-products-grid>
+            <ul class="collection-grid__products grid {{ settings.plp_num_cols_mobile }} gap-md desktop:grid-cols-3 desktop:gap-y-lg" js-products-grid>
               {% for product in collection.products %}
                 <li class="collection-grid__product">
                   {% render 'product-card' product: product %}
@@ -78,7 +113,7 @@
         </div>
       </div>
       
-      <loading-spinner class="collection-grid__loading-spinner fixed z-[5]" style="--background: #00000060; --color: #002955; --width: 32px; --height: 32px;"></loading-spinner>
+      <loading-spinner js-show-more-loader js-filter-sort-loader class="collection-grid__loading-spinner fixed z-[5]" style="--background: #00000060; --color: #002955; --width: 32px; --height: 32px;"></loading-spinner>
     {% else %}
       <p class="collection-grid__no-results h6 px-md py-lg desktop:px-xl">No Products Found</p>
     {% endif %}

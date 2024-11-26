@@ -78,10 +78,25 @@ class Accordion extends HTMLElement {
   _collapseSection(element) {
     // mark the section as "currently hidden"
     element.setAttribute('aria-hidden', true);
+
+    const buttons = element.querySelectorAll('button');
+    if (buttons.length > 0) {
+      buttons.forEach((btn) => {
+        btn.setAttribute('disabled', '');
+      });
+    }
+    
   }
 
   _expandSection(element) {
     // mark the section as "currently not hidden"
     element.setAttribute('aria-hidden', false);
+
+    const buttons = element.querySelectorAll('button');
+    if (buttons.length > 0) {
+      buttons.forEach((btn) => {
+        btn.removeAttribute('disabled');
+      });
+    }
   }
 }

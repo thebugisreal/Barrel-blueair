@@ -25,32 +25,72 @@
   <form class="filter-sort__form" js-filter-form>
     <div class="filter-sort__filters-container">
       {%- unless results.filters == empty -%}
-        <p class="filter-sort__filter-by-label">Filter:</p>
+        <div class="filter-sort__results-count-container py-md flex justify-between items-center">
+          <span class="p2" js-results-count>{% if template.name == 'collection' %}{{ results.products_count }}{% elsif template.name == 'search' %}{{ results.results_count }}{% endif %} Results</span>
+          <button class="active-filters__remove p1 link" js-clear-all>Clear Filters</button>
+        </div>
       {%- endunless -%}
 
-      <s-accordion data-manual-collapse="false" js-accordion>
+      <s-accordion data-manual-collapse="true" js-accordion>
+        {% if results.metafields.seed.collection_links != blank and template.name == 'collection' %}
+          {% assign linklist = linklists[results.metafields.seed.collection_links] %}
+          {% if linklist != blank %}
+            <div class="filter-sort accordion-item border-t border-gray" js-accordion-item>
+              <button type="button" class="filter-sort__label accordion-header w-full flex justify-between items-center py-sm" aria-expanded="true" aria-controls="product-type-link" js-accordion-header>
+                <span class="s2">Product Type</span>
+                <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
+                <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
+              </button>
+              <div id="product-type-link" class="filter-sort__values-container accordion-content" aria-hidden="false" js-accordion-content>
+                <ul class="filter-sort__values pb-xxs" role="list">
+                  {% for link in linklist.links %}
+                    {% unless link.active %}
+                      <li class="filter-sort__value mb-sm">
+                        <a href="{{ link.url }}" class="filter-value__link flex justify-start items-center gap-xs !no-underline">
+                          <span class="filter-value-link__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230]"></span>
+                          <span class="filter-value-link__label p2 flex-1">{{ link.title }}</span>
+                        </a>
+                      </li>
+                    {% endunless %}
+                  {% endfor %}
+                </ul>   
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+
         {%- for filter in results.filters -%}
           {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
-          <div class="filter-sort accordion-item" data-index="{{ forloop.index }}" js-accordion-item js-filter>
-            <button type="button" class="filter-sort__label accordion-header" aria-expanded="true" aria-controls="{{ filter.label | handle }}-master-filter" js-accordion-header>{{ filter.label | escape }}</button>
+          <div class="filter-sort accordion-item border-t border-gray" data-index="{{ forloop.index }}" js-accordion-item js-filter>
+            <button type="button" class="filter-sort__label accordion-header w-full flex justify-between items-center py-sm" aria-expanded="true" aria-controls="{{ filter.label | handle }}-master-filter" js-accordion-header>
+              <span class="s2">{{ filter.label | escape }}</span>
+              <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
+              <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
+            </button>
             <div id="{{ filter.label | handle }}-master-filter" class="filter-sort__values-container accordion-content" aria-hidden="false" js-accordion-content>
               {% case filter.type %}
                 {% when 'list' %}
-                  <ul class="filter-sort__values" role="list">
+                  <ul class="filter-sort__values pb-xxs" role="list">
                     {%- for value in filter.values -%}
                       {% capture value_id %}FilterSort-{{ filter.label | escape }}-{{ forloop.index }}-{{ scope }}{% endcapture %}
-                      <li class="filter-sort__value">
+                      <li class="filter-sort__value mb-sm">
                         <div class="filter-value">
                           <input type="checkbox"
                             name="{{ value.param_name }}"
                             value="{{ value.value }}"
                             id="{{ value_id }}"
+                            class="filter-value__input visually-hidden"
                             {% if value.active %}checked{% endif %}
                             {% if value.count == 0 and value.active == false %}disabled{% endif %}
                           >
                           <label for="{{ value_id }}" 
-                            class="filter-value__label {% if value.count == 0 and value.active == false %} disabled opacity-30 {% endif %}"
-                          >{{ value.label | escape }} ({{ value.count }})</label>
+                            class="filter-value__label flex justify-start items-center gap-xs {% if value.count == 0 and value.active == false %} disabled opacity-30 {% endif %}"
+                          >
+                            <span class="filter-value-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
+                            <span class="filter-value-label__text p2 flex-1">
+                              {{ value.label | escape }}
+                            </span>
+                          </label>
                         </div>
                       </li>                          
                     {%- endfor -%}
@@ -64,21 +104,14 @@
       </s-accordion>
     </div><!-- .filter-sort__filters-container -->
 
-    <div class="filter-sort__container">
+    <div class="filter-sort__container hidden">
       <label for="SortBy" class="filter-sort__label">Sort By:</label>
       {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-      <select name="sort_by" class="filter-sort__select" id="SortBy" aria-describedby="a11y-refresh-page-message" js-filter-form-sort>
+      <select name="sort_by" class="filter-sort__select" id="SortBy" aria-describedby="a11y-refresh-page-message" js-sort>
         {%- for option in results.sort_options -%}
           <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
         {%- endfor -%}
       </select>
-    </div>
-
-    <div class="filter-sort__footer">
-      <button class="active-filters__remove" js-clear-all>
-        Clear All
-      </button>
-      <button class="no-js-hidden" js-filter-sort-close>Apply</button>
     </div>
 
     {% if results.current_vendor or results.current_type %}
@@ -90,5 +123,4 @@
       <input name="options[prefix]" type="hidden" value="last">
     {%- endif -%}     
   </form>
-  <loading-spinner class="filter__loading-spinner fixed" style="--width: 40px; --height: 40px;"></loading-spinner>
 </filter-sort>

@@ -1,0 +1,21 @@
+.filter-value-label__checkbox::after {
+  @apply content-['']
+  absolute
+  block
+  h-[12px]
+  w-[12px]
+  rounded-[1px]
+  left-1/2
+  -translate-x-1/2
+  top-1/2
+  -translate-y-1/2
+  bg-transparent;
+}
+
+.filter-value__input:checked + .filter-value__label .filter-value-label__checkbox {
+  @apply border-blue;
+}
+
+.filter-value__input:checked + .filter-value__label .filter-value-label__checkbox::after {
+  @apply bg-blue;
+}

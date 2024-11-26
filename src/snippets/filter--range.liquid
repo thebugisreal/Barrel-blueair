@@ -14,11 +14,11 @@
   endif
 %}
 
-<price-range>
+<price-range class="flex justify-start items-center gap-xxs pb-md">
   <span class="filter-range__currency">{{ cart.currency.symbol }}</span>
   <div class="filter-range__field">
-    <label class="filter-range__label" for="Filter-{{ filter.label | escape }}-GTE-{{ scope }}">From</label>
-    <input class="filter-range__input"
+    <label class="filter-range__label visually-hidden" for="Filter-{{ filter.label | escape }}-GTE-{{ scope }}">From</label>
+    <input class="filter-range__input bg-white border border-blue p-xs rounded-[2px]"
       name="{{ filter.min_value.param_name }}"
       id="Filter-{{ filter.label | escape }}-GTE-{{ scope }}"
       {%- if filter.min_value.value -%}
@@ -28,13 +28,13 @@
       placeholder="0"
       min="0"
       {%- if uses_comma_decimals -%}max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"{% endif %}
-    >
-    </input>
+    />
   </div><!-- .filter-range__field -->
+  <span class="mx-xxs">-</span>
   <span class="filter-range__currency">{{ cart.currency.symbol }}</span>
   <div class="filter-range__field">
-    <label class="filter-range__label" for="Filter-{{ filter.label | escape }}-LTE">To</label>
-    <input class="filter-range__input"
+    <label class="filter-range__label visually-hidden" for="Filter-{{ filter.label | escape }}-LTE">To</label>
+    <input class="filter-range__input bg-white border border-blue p-xs rounded-[2px]"
       name="{{ filter.max_value.param_name }}"
       id="Filter-{{ filter.label | escape }}-LTE"
       {%- if filter.max_value.value -%}{%- if uses_comma_decimals -%}value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"{% endif %}
@@ -48,7 +48,6 @@
         placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
         max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
       {% endif %}
-    >
-    </input>
+    />
   </div><!-- .filter-range__field -->
 </price-range>

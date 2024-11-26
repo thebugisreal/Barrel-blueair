@@ -7,6 +7,16 @@
   @apply border-gray;
 }
 
+.collection-grid__show-more-btn:focus,
+.collection-grid__show-more-btn:focus-visible {
+  @apply bg-blue
+  text-white;
+}
+
+.collection-grid__show-more-btn:focus:not(:focus-visible) {
+  @apply bg-white
+  text-blue;
+}
 
 @media screen(desktop) {
   .collection-grid__collection-link:hover {
@@ -16,4 +26,10 @@
   .collection-grid__desktop-fitlers[data-opened="true"] {
     @apply block;
   }
+
+  .collection-grid__show-more-btn:hover {
+    @apply bg-blue
+    text-white;
+  }
+  
 }
