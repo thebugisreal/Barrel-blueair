@@ -50,7 +50,7 @@
       {% for tag in blog.all_tags %}
         {% unless first_article.tags contains tag %}
         <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %}">
-          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="block py-[10px] px-[20px]">{{ tag }}</a>
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="block py-xs px-md">{{ tag }}</a>
         </li>
         {% endunless %}
       {% endfor %}
