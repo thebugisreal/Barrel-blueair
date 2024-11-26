@@ -61,12 +61,6 @@
     justify-self-center;
   }
 
-  .spacing-divider {
-    @apply bg-pink-fuschia
-    opacity-[10%]
-    h-full
-  }
-
   .lazypicture img{
     aspect-ratio: var(--ar-lzimg-mobile);
   }
