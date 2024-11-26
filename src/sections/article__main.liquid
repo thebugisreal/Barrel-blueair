@@ -24,7 +24,7 @@
   </div>
 
   {% if article.content != blank %}
-    <div class="article__content rte px-[30px] py-48 tabletl:py-[96px] tabletl:px-0 tabletl:mx-auto tabletl:max-w-[109ch]">
+    <div class="article__content rte px-[30px] py-48 tabletl:py-[96px] tabletl:px-0 tabletl:mx-auto tabletl:max-w-[80ch]">
       {{ article.content }}
     </div>
   {% endif %}
@@ -62,7 +62,7 @@
       "id": "max_width_desktop",
       "label": "Max Width of Text Content - Desktop",
       "info": "Make sure to include units",
-      "default": "109ch"
+      "default": "80ch"
     }
   ]
 }

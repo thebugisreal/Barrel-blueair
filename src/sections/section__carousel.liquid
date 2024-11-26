@@ -61,7 +61,7 @@
         {% endif %}
     </header>
 
-    <div class="section__carousel-content grid grid-cols-1 ml-30 {% if section.settings.enable_centered_carousel %} tabletl:mx-[60px] {% else %} tabletl:ml-auto {% endif %}">
+    <div class="section__carousel-content grid grid-cols-1 ml-30 {% if section.settings.enable_centered_carousel %} tabletl:px-[60px] tabletl:mx-auto {% else %} tabletl:ml-auto {% endif %}">
         <s-carousel class="block" data-options='{{carousel_options}}'>
             <div id="{{section.id}}" class="swiper" js-carousel>
                 <div class="swiper-wrapper">
@@ -70,7 +70,7 @@
                             {% when 'image_caption' %}
                                 {% if block.settings.image_mobile != blank %}
                                     <div class="swiper-slide h-auto" js-carousel-slide>
-                                        <div class="image-container flex flex-col relative h-full mb-12">
+                                        <div class="section__image-caption image-container flex flex-col relative h-full mb-12">
                                             {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full' %}
                                             {% if block.settings.product != blank %}
                                                 <div class="absolute bg-gray-athans top-12 left-12 overflow-hidden tabletl:top-24 tabletl:left-24">
@@ -78,7 +78,7 @@
                                                 </div>
                                             {% endif %}
                                             {% if block.settings.caption != blank %}
-                                                <p class="{{ block.settings.caption_style }} mt-12">{{ block.settings.caption }}</p>
+                                                <div class="{{ block.settings.caption_style }} rte">{{ block.settings.caption }}</div>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -472,7 +472,7 @@
             "id": "max_width_desktop",
             "label": "Max Width - Desktop",
             "info": "Make sure to include units",
-            "default": "109ch"
+            "default": "80ch"
         },
         {
             "type": "color",

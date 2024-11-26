@@ -6,7 +6,7 @@ product: Product Object
 
 <image-caption-modal class="bg-white py-8 px-12 block">
     <header class="flex justify-end">
-        <button class="modal-open btn transition-all duriation-1000" js-modal-open>
+        <button class="modal-open btn" js-modal-open>
             <p class="btn__text p2">View Product </p>
             <div class="btn__arrow">{%  render 'icon-arrows-diag' %}</div>
         </button>
@@ -16,8 +16,8 @@ product: Product Object
     </header>
 
     <div class="modal-body flex flex-col fadeOut" js-modal-body>
-        <div class="flex gap-24 tabletl:gap-0 tabletl:h-auto tabletl:flex-col">
-            <div class="product-body px-24 tabletl:text-center">
+        <div class="flex tabletl:gap-0 tabletl:h-auto tabletl:flex-col">
+            <div class="product-body px-24 flex-1 tabletl:text-center">
                 <h4 class="h4">{{ product.title }}</h4>
                 <p class="p1 my-12 font-400">{{ product.price | money}}</p>
                 <a href="{{ product.url }}" class="btn w-fit mb-16 tabletl:mx-auto">

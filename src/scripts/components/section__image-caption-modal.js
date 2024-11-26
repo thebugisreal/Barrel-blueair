@@ -8,7 +8,8 @@ class ImageCaptionModal extends HTMLElement {
       this.selectors = {
         modalOpen:'[js-modal-open]',
         modalBody: '[js-modal-body]',
-        modalClose: '[js-modal-close]'
+        modalClose: '[js-modal-close]',
+        imageContainer: '[js-image-container]'
       };
 
       this.modalOpen = this.querySelector(this.selectors.modalOpen)
@@ -42,10 +43,10 @@ class ImageCaptionModal extends HTMLElement {
         this.style.width='250px';
         this.style.height='318px';
       } else {
-        let width =  window.innerWidth - 48
-        console.log('width', width)
+        let closestImageContainer = this.parentElement.parentElement
+        let width =  closestImageContainer.getBoundingClientRect().width - 48
         this.style.width=`${width}px`;
-        this.style.height='212px';
+        this.style.height='auto';
       }
     }
 

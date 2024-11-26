@@ -2,7 +2,7 @@
     {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__image-text-review mx-auto p-24 {{ margins_paddings }} {{ color }}" style="--max-width-desktop: {{ max_width_desktop }}; ">
+<div class="section__image-text-review mx-auto {{ margins_paddings }} {{ color }}" style="--max-width-desktop: {{ max_width_desktop }}; ">
     {% if section_title != blank %}
         <h1 class="{{ section_title_style }} mb-12">{{ section_title }}</h1>
     {% endif %}

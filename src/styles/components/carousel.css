@@ -10,6 +10,10 @@
   @apply block;
 }
 
+.swiper-button-lock {
+  @apply !hidden
+}
+
 .swiper-initialized .swiper-wrapper {
   @apply flex;
 }

@@ -45,6 +45,21 @@
     p6;
 }
 
+.rte ul li {
+  @apply flex;
+}
+
+.rte ul li::before {
+  @apply mr-12
+  text-12
+  p-0;
+}
+
+.rte ul {
+  list-style-position: outside;
+}
+
+
 @media screen(desktop) {
     .rte a:hover,
     .rte .link:hover {

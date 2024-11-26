@@ -19,6 +19,20 @@ image-caption-modal {
     transition: opacity .5s ease-in-out;
 }
 
+.modal-open.fadeOut {
+    opacity: 0;
+    transition: opacity .1s ease-in-out;
+}
+
+.modal-open.fadeIn {
+    opacity: 1;
+    transition: opacity .1s ease-in-out;
+}
+
+.section__image-caption .rte p {
+    @apply my-xs
+}
+
 @media screen(tabletl) {
     .section__image-caption {
         max-width: var(--max-width-desktop)
