@@ -44,6 +44,7 @@ module.exports = {
       },
       pink: {
         light: "#FFE2E2",
+        fuschia:"#F65275",
         dark: "#80556F"
       },
       yellow: {
@@ -64,6 +65,7 @@ module.exports = {
       400: 400,
       500: 500,
       700: 700,
+      900: 900
     },
     fontFamily: {
       // add font families here:

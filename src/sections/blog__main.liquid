@@ -1,13 +1,68 @@
-{%- paginate blog.articles by 6 -%}
+{%- paginate blog.articles by 9 -%}
+  {% assign first_article = articles[blog.metafields.seed.featured_article] %}
 
-  <div class="blog">
-    <h1 class="blog__title">{{ blog.title | escape }}</h1>
+  <div class="blog mb-xl tabletl:px-xl">
+    <h1 class="blog__title text-center mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
+    {% if first_article != blank %}
+      <div class="blog__first-article py-xs my-lg tabletl:py-0 tabletl:my-xxl">
+        <p class="s1 hidden tabletl:block tabletl:mb-sm">Featured</p>
+        <div class="tabletl:flex tabletl:gap-xl tabletl:items-center">
+          {% if first_article.image != blank %}
+            <div class="blog__first-article-image tabletl:w-1/2">{% render 'lazy-image' image: first_article.image %}</div>
+          {% endif %}
+          <div class="blog__first-article-text-container px-lg tabletl:pl-0 tabletl:pr-lg tabletl:w-1/2 tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+            <header class="blog__first-article-header py-sm tabletl:pt-0 tabletl:pb-md">
+              <div class="blog__first-article-tag-container flex items-center gap-xs tabletl:gap-sm">
+                <ul class="blog__first-article-tags flex">
+                  {% for tag in first_article.tags %}
+                    <li class="blog__first-article-tag tag-small py-xxs px-xs border border-gray rounded-[60px]"> {{ tag }} </li>
+                  {% endfor %}
+                </ul>
+                <p class="blog__first-article-date p4">Updated {{ first_article.created_at | date: "%b %d, %Y"}}</p>
+              </div>
+              <h3 class="blog__first-article-title mt-sm tabletl:mt-md">{{ first_article.title }}</h3>
+            </header>
+            {%- if first_article.excerpt.size > 0 or first_article.content.size > 0 -%}
+              <p class="blog__first-article-excerpt p2 mb-sm tabletl:mb-md">
+                {%- if first_article.excerpt.size > 0 -%}
+                  {{ first_article.excerpt | strip_html | truncatewords: 50 }}
+                {%- else -%}
+                  {{ first_article.content | strip_html | truncatewords: 50 }}
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+            <a href="{{ first_article.url }}" class="btn py-xs"> 
+              <p class="btn__text">Read More</p>
+              <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
+            </a>
+           
+          </div>
+        </div>
+      </div>
+    {% endif %}
 
-    <ul class="blog-articles" role="list">
+    <h3 class="px-30 font-900 mt-lg mb-sm tabletl:mt-xl tabletl:mb-md tabletl:px-0">Latest Entries</h3>
+
+    <ul class="blog-tags flex flex-wrap gap-8 mx-lg tabletl:mx-0 tabletl:gap-sm">
+      <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags == blank %} active {% endif %}">
+        <a href="{{ blog.url }}" class="block py-xs px-md">All</a>
+      </li>
+      {% for tag in blog.all_tags %}
+        {% unless first_article.tags contains tag %}
+        <li class="blog__article-tag s3 border border-gray rounded-[60px] {% if current_tags contains tag %} active {% endif %}">
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="block py-xs px-md">{{ tag }}</a>
+        </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+
+    <ul class="blog-articles mt-md grid grid-cols-1 gap-x-lg mx-lg gap-y-xl tabletl:mt-lg tabletl:mx-0 tabletl:grid-cols-3" role="list">
       {%- for article in blog.articles -%}
-        <li class="blog-articles__article">
+        {% unless first_article == article  %}
+        <li class="blog-articles__article h-auto">
           {%- render 'article-card', article: article -%}
         </li>
+        {% endunless %}
       {%- endfor -%}
       </ul>
 
@@ -19,6 +74,15 @@
 
 {% schema %}
 {
-  "name": "Blog Posts"
+  "name": "Blog Posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Top Highlighted Text Content - Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    }
+  ]
 }
 {% endschema %}

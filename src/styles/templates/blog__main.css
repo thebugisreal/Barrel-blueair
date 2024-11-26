@@ -1,0 +1,49 @@
+.blog__article-tag.active {
+    @apply text-white
+    bg-blue
+}
+
+.blog__article-tag:focus {
+    @apply text-white
+    bg-blue
+    no-underline
+}
+
+.blog__article-tag:focus:not(:focus-visible) {
+    @apply text-blue
+    bg-white
+    no-underline
+}
+
+.blog__article-tag:focus-visible {
+    @apply text-white
+    bg-blue
+    no-underline
+}
+
+a.article-card__content .article-card__image img{
+    @apply transition-transform
+    duration-1000
+}
+
+@media screen(tabletl) {
+    .blog__article-tag:hover {
+        @apply text-white
+        bg-blue
+        no-underline
+    }
+
+    a.article-card__content:hover{
+        @apply no-underline
+    }
+    a.article-card__content:hover .article-card__image img{
+        @apply scale-110
+    }
+
+    a.article-card__content:hover .article-card__title {
+        @apply underline
+    }
+    .blog__article-tag:hover a {
+        @apply no-underline
+    }
+}

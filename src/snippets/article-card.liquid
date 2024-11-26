@@ -6,22 +6,29 @@
  * @usage: {% render 'article-card' article: article %}    
 {% endcomment %}
 
-<article class="article-card" >
-  <a href="{{ article.url }}" class="article-content motion-reduce">
+<article class="article-card h-full">
+  <a href="{{ article.url }}" class="article-card__content motion-reduce">
     {% if article.image != blank %}
-      <div class="article-card__image">{% render 'lazy-image' image: article.image %}</div>
+      <div class="article-card__image overflow-hidden aspect-square mb-sm tabletl:mb-md">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'h-full' %}</div>
     {% endif %}
     <header class="article-card__header">
-      <h3 class="article-card__title">{{ article.title }}</h3>
+      <ul class="blog__first-article-tags flex">
+        {% for tag in article.tags %}
+          <li class="article-card__tag tag-small py-xxs px-xs border border-gray rounded-[60px]"> {{ tag }} </li>
+        {% endfor %}
+      </ul>
+      <h4 class="article-card__title text-sub1 mt-xs mb-xxs tabletl:mt-xs tabletl:h4 tabletl:font-900">{{ article.title }}</h4>
     </header>
     {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-    <p class="article-card__excerpt">
+    <p class="article-card__excerpt mb-xs tabletl:mb-md">
       {%- if article.excerpt.size > 0 -%}
         {{ article.excerpt | strip_html | truncatewords: 30 }}
       {%- else -%}
         {{ article.content | strip_html | truncatewords: 30 }}
       {%- endif -%}
     </p>
-  {%- endif -%}
+    {%- endif -%}
+
+    <p class="article-card__date text-p4">Updated {{ article.created_at | date: "%b %d, %Y"}}</p>
   </a>
 </article>
