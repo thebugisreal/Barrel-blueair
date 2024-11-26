@@ -1,4 +1,40 @@
-<s-header class="site-header fixed top-0 left-0 right-0 {% if template.name == 'index' %}bg-transparent{% else %}bg-white{% endif %}">
+<s-header class="site-header fixed top-[0] left-0 right-0 {% if template.name == 'index' %}bg-transparent{% else %}bg-white{% endif %}">
+  <div class="section__announcement-bar hidden relative p-[5px] tabletl:p-[10px] {{ section.settings.bg_color }}" js-announcement-bar>
+    {%- capture carousel_options -%}
+        {
+          "slidesPerView": 1,
+          "cssMode": true,
+          "loop": false,
+          "autoHeight": false,
+          "navigation": {
+            "enabled": true,
+            "nextEl": ".swiper-button-next--{{section.id}}",
+            "prevEl": ".swiper-button-prev--{{section.id}}"
+          }
+        }
+    {%- endcapture -%}
+    {% if section.blocks.size < 2 %}
+      {% assign hide_nav = 'hidden' %}
+    {% endif %}
+    <s-carousel data-options='{{ carousel_options }}' class="announcement-bar__carousel tabletl:px-30">
+      <div id="AnnouncementBar-{{ section.id }}" class="swiper w-full max-w-full flex items-center" js-carousel>
+        <div class="absolute right-[10px] w-[22px] z-[2] btn tabletl:right-[1%]" js-close-announcement><span class="btn__arrow items-center border-0">{% render 'icon-close' %}</span></div>
+        <div class="swiper-button-prev--{{ section.id }} {{ hide_nav }} absolute z-[2] left-[20px] w-[24px] btn tabletl:left-[5%]"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+        <div class="swiper-button-next--{{ section.id }} {{ hide_nav }} absolute z-[2] right-[40px] w-[24px] btn tabletl:right-[5%]"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+        <div class="swiper-wrapper min-h-[25px] items-center">
+            {% for block in section.blocks %}
+                <div class="swiper-slide" js-carousel-slide>
+                    {% if block.settings.url != blank %}
+                        <a href="{{ block.settings.url }}" class="announcement p3 font-400 text-center block">{{ block.settings.announcement }}</a>
+                    {% else %}
+                        <div class="announcement p3 font-400 text-center">{{ block.settings.announcement }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %} 
+        </div>
+      </div>
+    </s-carousel>
+  </div>
   <div class="site-header__warpper relative w-full px-md flex justify-between gap-md desktop:px-xl">
     <button class="site-header__mobile-nav w-24 self-center desktop:hidden" js-open-mobile-nav>{% render 'icon-nav' %}</button>
     <a href="{{ routes.root_url }}" class="site-header__logo w-[140px] self-center">{% render 'icon-blueair-logo' %}</a>
@@ -51,7 +87,64 @@
         "type": "link_list",
         "id": "header_nav_desktop",
         "label": "Navigation - Desktop"
-      }
+      },
+      {
+        "type": "header",
+        "content": "Announcement Bar - Color Set"
+      },
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background Color",
+        "options": [
+            {
+                "value": "text-blue",
+                "label": "None (white bg & blue text)"
+            },
+            {
+                "value": "bg-blue-sky text-blue",
+                "label": "Blue"
+            },
+            {
+                "value": "bg-green-light text-green-dark",
+                "label": "Green"
+            },
+            {
+                "value": "bg-pink-light text-pink-dark",
+                "label": "Pink"
+            },
+            {
+                "value": "bg-yellow-light text-yellow-dark",
+                "label": "Yellow"
+            },
+            {
+                "value": "bg-brown-light text-brown-dark",
+                "label": "Brown"
+            }
+        ]
+      }  
+    ],
+    "blocks": [
+        {
+            "type": "announcement",
+            "name": "Announcement",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "text",
+                    "id": "announcement",
+                    "label": "Announcement Text"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                }
+            ]
+        }
     ]
   }
 {% endschema %}

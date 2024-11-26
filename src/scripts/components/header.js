@@ -6,16 +6,22 @@ class SiteHeader extends HTMLElement {
       mobileNavDrawer: '#MobileNavDrawer',
       mobileSubnav: '[js-mobile-subnav]',
       mobileSubnavTrigger: '[js-mobile-subnav-trigger]',
-      mobileSubnavClose: '[js-mobile-subnav-close]'
+      mobileSubnavClose: '[js-mobile-subnav-close]',
+      closeAnnouncementBtn: '[js-close-announcement]',
+      announcementBar: '[js-announcement-bar]'
     }
   }
 
   connectedCallback() {
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
+    this.closeAnnouncementBtn = this.querySelector(this._selectors.closeAnnouncementBtn)
+    this.announcementBar = this.querySelector(this._selectors.announcementBar)
 
     this._setVariables();
     this._watchWindowResize();
+    this._initAnnouncement();
+    this.closeAnnouncementBtn.addEventListener('click', this._handleCloseAnnouncementClick.bind(this))
     this.mobileSubnavTriggers.forEach((trigger) => {
       trigger.addEventListener('click', this._openMobileSubNav);
     });
@@ -40,5 +46,18 @@ class SiteHeader extends HTMLElement {
 
   _setVariables = evt => {
     document.documentElement.style.setProperty('--header-height', `${this.clientHeight}px`)
+  }
+
+  _initAnnouncement() {
+    const hideAnnouncement = sessionStorage.getItem("hideAnnouncement");
+    if (hideAnnouncement) {
+      this.announcementBar.classList.add('hidden')
+    } else {
+      this.announcementBar.classList.remove('hidden')
+    }
+  }
+  _handleCloseAnnouncementClick() {
+    sessionStorage.setItem("hideAnnouncement", "true");
+    this._initAnnouncement();
   }
 }
