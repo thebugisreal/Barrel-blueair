@@ -41,7 +41,7 @@
 {% endcapture %}
 
 <div class="section__carousel {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
-    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-64 tabletl:mb-40 tabletl:flex tabletl:justify-between tabletl:mx-[60px] tabletl:items-center {% endif %}">
+    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:mx-xl tabletl:items-center {% endif %}">
         {% if section.settings.title != blank %}
             {% liquid
                 assign title_tag = 'p'
@@ -51,17 +51,17 @@
                     assign title_tag = section.settings.title_style
                 endif
             %}
-            <{{ title_tag }} class="section__carousel-title mx-30 mb-24 text-center">{{ section.settings.title }}</{{ title_tag }}>
+            <{{ title_tag }} class="section__carousel-title mx-lg mb-md text-center">{{ section.settings.title }}</{{ title_tag }}>
         {% endif %}
         {% if section.settings.url != blank %}
-            <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mx-auto mb-40 tabletl:mb-48"> 
+            <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mx-auto mb-md pb-sm tabletl:pb-xs tabletl:mb-lg"> 
                 <p class="p2 btn__text">{{ section.settings.url_text }}</p>
                 <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
             </a>
         {% endif %}
     </header>
 
-    <div class="section__carousel-content grid grid-cols-1 ml-30 {% if section.settings.enable_centered_carousel %} tabletl:px-[60px] tabletl:mx-auto {% else %} tabletl:ml-auto {% endif %}">
+    <div class="section__carousel-content grid grid-cols-1 ml-lg {% if section.settings.enable_centered_carousel %} tabletl:px-xl tabletl:mx-auto {% else %} tabletl:ml-auto {% endif %}">
         <s-carousel class="block" data-options='{{carousel_options}}'>
             <div id="{{section.id}}" class="swiper" js-carousel>
                 <div class="swiper-wrapper">
@@ -70,10 +70,10 @@
                             {% when 'image_caption' %}
                                 {% if block.settings.image_mobile != blank %}
                                     <div class="swiper-slide h-auto" js-carousel-slide>
-                                        <div class="section__image-caption image-container flex flex-col relative h-full mb-12">
+                                        <div class="section__image-caption image-container flex flex-col relative h-full mb-xs">
                                             {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full' %}
                                             {% if block.settings.product != blank %}
-                                                <div class="absolute bg-gray-athans top-12 left-12 overflow-hidden tabletl:top-24 tabletl:left-24">
+                                                <div class="absolute bg-gray-athans top-xs left-xs overflow-hidden tabletl:top-md tabletl:left-md">
                                                     {%  render 'section__image-caption-modal' product:block.settings.product, product_image_override:block.settings.product_image_override%}
                                                 </div>
                                             {% endif %}
@@ -118,15 +118,15 @@
                 {% comment %} Swiper Nav {% endcomment %}
                 {% case section.settings.carousel_nav %}
                     {% when 'pagination'%}
-                        <div class="swiper-nav-container py-8 flex justify-between items-center">
+                        <div class="swiper-nav-container py-xxs flex justify-between items-center">
                             <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
-                            <div class="nav-button-container flex gap-24">
+                            <div class="nav-button-container flex gap-md">
                                 <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
                                 <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                             </div>
                         </div>
                     {% when 'scrollbar'%}
-                        <div class="swiper-nav-container py-8 flex gap-24 items-center">
+                        <div class="swiper-nav-container py-xxs flex gap-md items-center">
                             <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
                             <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                             <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>

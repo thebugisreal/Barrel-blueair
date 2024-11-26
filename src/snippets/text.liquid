@@ -1,8 +1,8 @@
 {% capture margins_paddings %}
     {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__product-text {{ margins_paddings }} tabletl:mx-auto" style="--max-width-desktop: {{ max_width_desktop }};">
-    <ul class="section__product-text-content mx-30 tabletl:mx-auto">
+<div class="section__product-text {{ margins_paddings }} tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ max_width_desktop }};">
+    <ul class="section__product-text-content mx-lg tabletl:mx-auto">
         {% if richtext != blank %}
             <li class="list-none">
                 <div class="rte {{ richtext_style }}">

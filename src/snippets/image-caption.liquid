@@ -2,14 +2,13 @@
     {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
   {% endcapture %}
 
-<div class="section__image-caption mx-30 tabletl:mx-auto {{ margins_paddings }}" style="--max-width-desktop: {{ max_width_desktop }};">
+<div class="section__image-caption mx-lg tabletl:mx-auto {{ margins_paddings }} tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ max_width_desktop }};">
     <div class="section__image-caption-content mx-0">
         {% if image != blank %}
-            <div class="image-container relative mb-12" js-image-container>
+            <div class="image-container relative mb-xs" js-image-container>
                 {% render 'lazy-image' image:image, image_desktop:image_desktop %}
-
                 {% if product != blank %}
-                    <div class="absolute bg-gray-athans top-12 left-12 overflow-hidden tabletl:top-24 tabletl:left-24">
+                    <div class="absolute bg-gray-athans top-xs left-xs overflow-hidden tabletl:top-md tabletl:left-md">
                         {%  render 'section__image-caption-modal' product:product, product_image_override:product_image_override%}
                     </div>
                 {% endif %}
@@ -19,5 +18,4 @@
             <div class="rte {{ caption_style }}">{{ caption }}</div>
         {% endif %}
     </div>
-    
 </div>

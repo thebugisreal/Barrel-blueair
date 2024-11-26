@@ -1,3 +1,5 @@
+/* Image Caption */
+
 .modal-body {
     max-width: 80vw;
     max-height: 10000px;
@@ -32,9 +34,12 @@ image-caption-modal {
 .section__image-caption .rte p {
     @apply my-xs
 }
+/* END Image Caption */
 
-@media screen(tabletl) {
-    .section__image-caption {
-        max-width: var(--max-width-desktop)
-    }
+/* Image Text Review */
+
+.section__image-text-review .rte p {
+    @apply my-24
 }
+
+/* END Image Text Review */

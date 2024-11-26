@@ -1,5 +1,0 @@
-@media screen(tabletl) {
-    .section__product-desc-image {
-        max-width: var(--max-width-desktop)
-    }
-}
