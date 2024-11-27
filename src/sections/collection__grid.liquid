@@ -53,19 +53,23 @@
         %}
         <div class="collection-grid__filter-sort-triggers mb-md flex justify-start relative">
           <button class="collection-grid__filter-trigger collection-grid__filter-trigger--mobile flex items-center py-xxs pr-xs desktop:hidden" js-open-mobile-filter>
-            <span class="w-[36px] leading-[0px] mr-xs">{% render 'icon-close' %}</span>
+            <span class="w-[36px] h-[36px] bg-blue text-white rounded-full flex justify-center items-center mr-xs">
+              <span class="w-[20px] leading-[0px]">{% render 'icon-filter' %}</span>
+            </span>
             <span class="s2 mr-xxxs">Filters</span>
             <span class="s2" js-active-fitlers-count>({{ active_filters_count }})</span>
           </button>
           <button class="collection-grid__filter-trigger collection-grid__filter-trigger--desktop hidden desktop:flex gap-xs items-center py-xxs pr-sm" js-desktop-filter-trigger>
-            <span class="w-[36px] leading-[0px]">{% render 'icon-close' %}</span>
+            <span class="w-[36px] h-[36px] bg-blue text-white rounded-full flex justify-center items-center">
+              <span class="w-[20px] leading-[0px]">{% render 'icon-filter' %}</span>
+            </span>
             <span class="s2" js-desktop-filter-trigger-label>Show Filters</span>
           </button>
           <s-accordion data-manual-collapse="false" class="collection-grid__sort-trigger-container block absolute right-0 top-0 desktop:flex desktop:justify-end desktop:gap-sm" js-accordion>
             <div class="s2 mt-xs hidden desktop:block">Sort by</div>
             <div class="accordion-item border border-gray" js-accordion-item>
               <button class="accordion-header p-xs flex gap-xs items-center w-full" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
-                <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-close' %}</span>
+                <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-sort' %}</span>
                 <span class="flex-1 text-center s3 desktop:text-left" js-current-sort-label>
                   {% for option in collection.sort_options %}
                     {% if option.value == sort_by %}
