@@ -9,7 +9,7 @@
   endif
 %}
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a href="{{ product.url }}" class="product-card__image-link-wrapper block !no-underline">
+  <a href="{{ product.url }}" class="product-card__image-link-wrapper block !no-underline" js-product-link>
     {% if filter_type_option != false or color_option != false %}
       {% for variant in product.variants %}
         <div class="product-card__image {% unless variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ variant.options[color_option] }}" js-product-card-image>
@@ -30,7 +30,7 @@
         <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
       {% endfor %}
     </div>
-    <a href="{{ product.url }}" class="product-card__title s1 block !no-underline">{{ product.title }}</a>
+    <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>{{ product.title }}</a>
     {% if filter_type_option != false %}
       <div class="text-20"><span js-product-card-current-swatch-label>{{ current_variant.options[filter_type_option] }}</span><span> Filter</span></div>
     {% endif %}
@@ -52,6 +52,7 @@
               data-available="{{ variant.available }}"
               data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
               data-selected="{% if variant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
+              data-url="{{ variant.url }}"
               title="{{ variant.options[color_option] }}"
               js-product-card-swatch>
               <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_objects[forloop.index0].color }};">
@@ -73,6 +74,7 @@
               data-available="{{ variant.available }}"
               data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
               data-selected="{% if variant.options[filter_type_option] == current_variant.options[filter_type_option] %}true{% else %}false{% endif %}"
+              data-url="{{ variant.url }}"
               js-product-card-swatch>
               <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
                 <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>

@@ -7,6 +7,7 @@ class ProductCard extends HTMLElement {
       soldOutTag: '[js-product-card-sold-out-tag]',
       swatch: '[js-product-card-swatch]',
       currentSwatchLabel: '[js-product-card-current-swatch-label]',
+      productLink: '[js-product-link]',
       price: '[js-product-card-price]'
     }
   }
@@ -15,6 +16,7 @@ class ProductCard extends HTMLElement {
     this.soldOutTag = this.querySelector(this._selectors.soldOutTag);
     this.swathces = this.querySelectorAll(this._selectors.swatch);
     this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
+    this.productLinks = this.querySelectorAll(this._selectors.productLink);
     this.price = this.querySelector(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
 
@@ -40,6 +42,12 @@ class ProductCard extends HTMLElement {
     } else {
       this.soldOutTag.classList.remove('hidden');
     }
+  }
+
+  _updateProductLink = (url) => {
+    this.productLinks.forEach((link) => {
+      link.href = url;
+    });
   }
 
   _updatePrice = (price) => {
@@ -75,6 +83,7 @@ class ProductCard extends HTMLElement {
 
     this._updateImage(swatchTarget.dataset.swatch);
     this._toggleSoldOutTag(swatchTarget.dataset.available == 'true');
+    this._updateProductLink(swatchTarget.dataset.url);
     this._updatePrice(swatchTarget.dataset.price);
   }
 }
