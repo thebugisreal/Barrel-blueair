@@ -101,7 +101,14 @@
                 </li>
               {% endfor %}
 
-              {% comment %}callouts here - if first page and no filters{% endcomment %}
+              {% if collection.metafields.seed.collection_touts != blank and paginate.current_page == 1 and active_filters_count == 0 %}
+                {% for collection_tout in collection.metafields.seed.collection_touts.value %}
+                  <li class="collection-grid__collection-tout" 
+                    style="--row-mobile: {% if collection_tout.y_position_mobile != blank %}{{ collection_tout.y_position_mobile }}{% else %}{{ forloop.index | times: 4 }}{% endif %}; --col-desktop: {% if collection_tout.x_position_desktop != blank %}{{ collection_tout.x_position_desktop }}{% else %}3{% endif %}; --row-desktop: {% if collection_tout.y_position_desktop != blank %}{{ collection_tout.y_position_desktop }}{% else %}{{ forloop.index | times: 2 }}{% endif %};">
+                    {% render 'collection-tout' collection_tout: collection_tout %}
+                  </li>
+                {% endfor %}
+              {% endif %}
             </ul>
             
             <div class="collection-grid__pagination" js-pagination>

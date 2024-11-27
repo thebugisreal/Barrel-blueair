@@ -7,6 +7,11 @@
   @apply border-gray;
 }
 
+.collection-grid__collection-tout {
+  grid-column: 1 / -1;
+  grid-row: var(--row-mobile) / span 1;
+}
+
 .collection-grid__show-more-btn:focus,
 .collection-grid__show-more-btn:focus-visible {
   @apply bg-blue
@@ -27,9 +32,13 @@
     @apply block;
   }
 
+  .collection-grid__collection-tout {
+    grid-column: var(--col-desktop) / span 1;
+    grid-row: var(--row-desktop) / span 1;
+  }
+
   .collection-grid__show-more-btn:hover {
     @apply bg-blue
     text-white;
   }
-  
 }
