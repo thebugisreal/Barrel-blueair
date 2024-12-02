@@ -2,40 +2,23 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-{% if product.metafields.seed.pdp_tabs != blank %}
-    <div class="product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
-        <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
-            <div class="tab__triggers flex flex-col gap-sm tabletl:justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
-              {% if product.metafields.seed.pdp_tabs_title != blank %}
-                <h4 class="font-900 mb-md">
-                  {{ product.metafields.seed.pdp_tabs_title }}
-                </h4>
-              {% endif %}
-                {% for tab in product.metafields.seed.pdp_tabs.value %}
-                    <button id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
-                        <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
-                        <div class="tab__text-content rte text-left">
-                            {{ tab.richtext |  metafield_tag }}
-                        </div>
-                    </button>
-                {% endfor %}
-            </div>
-            <div class="image-container tabletl:mt-0 tabletl:w-1/2">
-                {% for tab in product.metafields.seed.pdp_tabs.value %}
-                    <div id="product__tab-content-{{ forloop.index }}" class="tab__panel" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
-                        <div>
-                            {% render 'lazy-image' image:tab.image %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </s-tabs>
+{% if product.metafields.seed.pdp_filters != blank %}
+    <div class="product__filters {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
+        <h3 class="font-900">Meet our filters</h3>
+        <ul>
+            {% for filter in product.metafields.seed.pdp_filters.value %}
+                <li>
+                    {{ filter.filter_name }}
+                    {{ filter.description |  metafield_tag }}
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endif %}
 
 {% schema %}
 {
-  "name": "Product - Tabs",
+  "name": "Product - Filters",
   "tag": "section",
   "settings": [
     {
@@ -408,38 +391,6 @@
         }
         ],
         "default": "text-blue"
-    },
-    {
-      "type": "select",
-      "id": "image_position_mobile",
-      "label": "Image Position - Mobile",
-      "options": [
-        {
-          "label": "top",
-          "value": "flex-col"
-        },
-        {
-          "label": "bottom",
-          "value": "flex-col-reverse"
-        }
-      ],
-      "default": "flex-col"
-    },
-    {
-      "type": "select",
-      "id": "image_position_desktop",
-      "label": "Image Position - Desktop",
-      "options": [
-        {
-          "label": "left",
-          "value": "tabletl:flex-row"
-        },
-        {
-          "label": "right",
-          "value": "tabletl:flex-row-reverse"
-        }
-      ],
-      "default": "tabletl:flex-row"
     }
   ],
   "enabled_on": {
@@ -447,7 +398,7 @@
   },
   "presets": [
     {
-      "name": "Product - Tabs"
+      "name": "Product - Filters"
     }
   ]
 }
