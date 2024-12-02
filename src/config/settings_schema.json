@@ -22,7 +22,7 @@
     "settings": [
       {
         "type": "header",
-        "content": "Quiz Link"
+        "content": "Quiz Link on Mobile"
       },
       {
         "type": "image_picker",

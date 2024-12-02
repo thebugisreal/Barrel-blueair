@@ -75,7 +75,7 @@
                 <ul class="site-footer__links mt-md">
                   {% for child_link in link.links %}
                     <li class="site-footer__item {% unless forloop.last %}mb-xs{% endunless %}">
-                      <a href="{{ child_link }}" class="site-footer__link text-18 font-300">{{ child_link.title }}</a>
+                      <a href="{{ child_link.url }}" class="site-footer__link text-18 font-300">{{ child_link.title }}</a>
                     </li>
                   {% endfor %}
                 </ul>
@@ -136,7 +136,7 @@
           <a href="{{ link.url }}" class="site-footer__link !no-underline">{{ link.title }}</a>
         </li>
       {% endfor %}
-      <li class="site-footer__item w-full mt-sm desktop:w-auto desktop:mt-0 desktop:order-first">&copy; Blueair YEAR TBD</li>
+      <li class="site-footer__item w-full mt-sm desktop:w-auto desktop:mt-0 desktop:order-first">&copy; Blueair 2023-2024</li>
     </ul>
   </div>
 

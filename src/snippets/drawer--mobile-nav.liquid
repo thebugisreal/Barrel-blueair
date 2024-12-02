@@ -5,7 +5,7 @@
       <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
     </div>
     <ul class="mobile-nav__main-nav p-md flex-1 max-h-full overflow-y-auto flex flex-col gap-xs text-18">
-      {% assign nav_linklist = linklists[section.settings.header_nav_mobile] %}
+      {% assign nav_linklist = linklists[section.settings.header_nav_desktop] %}
       {% for link in nav_linklist.links %}
         {% if link.links != blank %}
           <li class="mobile-main-nav__item">
@@ -73,7 +73,12 @@
                     </li>
                   {% endfor %}
                 </ul>
-              {% elsif child_link_handle == 'quiz' %}
+              {% endif %}
+            {% endfor %}
+
+            {% for child_link in link.links %}
+              {% assign child_link_handle = child_link.title | handle %}
+              {% if child_link_handle == 'quiz' %}
                 {% if settings.quiz_link_url != blank and settings.quiz_link_text != blank %}
                   <div class="mobile-child-nav__quiz p-md">
                     {% if settings.quiz_image != blank %}
@@ -136,7 +141,11 @@
                 {% else %}
                   <div class="mobile-child-nav__item mx-md border-t border-blue-light">
                     <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
-                      {{ child_link.title }}
+                      {% if settings.bcorp_link_url == child_link.url %}
+                        <div class="mobile-child-nav__bcorp-link">{% render 'icon-b-default' %}</div>
+                      {% else %}
+                        {{ child_link.title }}
+                      {% endif %}
                     </a>
                   </div>
                 {% endif %}
