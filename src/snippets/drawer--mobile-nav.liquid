@@ -114,41 +114,43 @@
                   </div>
                 {% endif %}
               {% else %}
-                {% if child_link.links != blank %}
-                  <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
-                    <div class="font-700 mb-xs">{{ child_link.title }}</div>
-                    <ul class="mobile-child-nav__links">
-                      {% for grandchild_link in child_link.links %}
-                        <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
-                          <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit">
-                            {% if child_link_handle contains 'room-size' %}
-                              {% if grandchild_link.title contains 'Small' %}
-                                {% render 'room-icon', size: 'small' %}
-                              {% elsif grandchild_link.title contains 'Medium' %}
-                                {% render 'room-icon', size: 'medium' %}
-                              {% elsif grandchild_link.title contains 'Large' %}
-                                {% render 'room-icon', size: 'large' %}
-                              {% elsif grandchild_link.title contains 'Extralarge' %}
-                                {% render 'room-icon', size: 'extralarge' %}
+                {% unless child_link.title == "Image Links" %}
+                  {% if child_link.links != blank %}
+                    <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
+                      <div class="font-700 mb-xs">{{ child_link.title }}</div>
+                      <ul class="mobile-child-nav__links">
+                        {% for grandchild_link in child_link.links %}
+                          <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
+                            <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit">
+                              {% if child_link_handle contains 'room-size' %}
+                                {% if grandchild_link.title contains 'Small' %}
+                                  {% render 'room-icon', size: 'small' %}
+                                {% elsif grandchild_link.title contains 'Medium' %}
+                                  {% render 'room-icon', size: 'medium' %}
+                                {% elsif grandchild_link.title contains 'Large' %}
+                                  {% render 'room-icon', size: 'large' %}
+                                {% elsif grandchild_link.title contains 'Extralarge' %}
+                                  {% render 'room-icon', size: 'extralarge' %}
+                                {% endif %}
                               {% endif %}
-                            {% endif %}
-                            <span>{{ grandchild_link.title }}</span>
-                          </a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                {% else %}
-                  <div class="mobile-child-nav__item mx-md border-t border-blue-light">
-                    <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
-                      {% if settings.bcorp_link_url == child_link.url %}
-                        <div class="mobile-child-nav__bcorp-link">{% render 'icon-b-default' %}</div>
-                      {% else %}
-                        {{ child_link.title }}
-                      {% endif %}
-                    </a>
-                  </div>
-                {% endif %}
+                              <span>{{ grandchild_link.title }}</span>
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% else %}
+                    <div class="mobile-child-nav__item mx-md border-t border-blue-light">
+                      <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
+                        {% if settings.bcorp_link_url == child_link.url %}
+                          <div class="mobile-child-nav__bcorp-link">{% render 'icon-b-default' %}</div>
+                        {% else %}
+                          {{ child_link.title }}
+                        {% endif %}
+                      </a>
+                    </div>
+                  {% endif %}
+                {% endunless %}
               {% endif %}
             {% endfor %}
           </div>
