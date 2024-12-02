@@ -82,6 +82,10 @@
     const extendedOptions = this.dataset.options ? JSON.parse(this.dataset.options) : {}
     this.options = Object.assign(this.options, extendedOptions)
     this._initCarousel();
+
+    if (this.hasAttribute('data-controller')) {
+      this._linkCarousels(this.dataset.controller);
+    }
   }
 
   // Initialize carousel
@@ -102,5 +106,11 @@
     }else{
       this.carousel = new Swiper(id, this.options)
     }
+  }
+
+  _linkCarousels(controllerId) {
+    let controllerCarousel = document.querySelector(`#${controllerId}`).parentElement.carousel;
+    this.carousel.thumbs.swiper = controllerCarousel;
+    this.carousel.thumbs.init();
   }
 }

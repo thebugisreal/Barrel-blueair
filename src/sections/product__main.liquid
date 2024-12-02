@@ -2,94 +2,186 @@
   assign current_variant = product.selected_or_first_available_variant 
   assign product_form_id = 'ProductForm-' | append: section.id | append: product.id
   assign master_select_id = 'MasterSelect-' | append: section.id
+  assign current_swatch = ''
+  if product.options_by_name['color'] != blank
+    assign swatch_option = product.options_by_name['color'].position | minus: 1
+    assign current_swatch = current_variant.options[swatch_option]
+  elsif product.options_by_name['filter type'] != blank
+    assign swatch_option = product.options_by_name['filter type'].position | minus: 1
+    assign current_swatch = current_variant.options[swatch_option]
+  endif
 -%}
 
-<s-product role="section" class="product" data-section-id="{{ section.id }}">
+<s-product role="section" class="product" data-section-id="{{ section.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %}>
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
-  <div class="product__layout">
-    <div class="product__images w-1/2">
-      <s-carousel data-init="belowTablet">
-        <div id="ProductMainImages" class="swiper w-full" js-carousel>
+  <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
+    <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)]">
+      {%- capture thumb_carousel_options -%}
+        {
+          "loop": false,
+          "autoHeight": false,
+          "spaceBetween": 8,
+          "watchSlidesProgress": true,
+          "navigation": {
+            "enabled": true,
+            "prevEl": "[js-pdp-thumb-prev]",
+            "nextEl": "[js-pdp-thumb-next]"
+          }
+        }
+      {%- endcapture -%}
+      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md">
+        <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-full px-[40px]" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
+            {% assign active_thumb_taken = false %}
             {% for media in product.media %}
+              {% assign media_swatch = '' %}
+              {% assign hide_media = false %}
+              {% assign active_thumb = false %}
+              {% if current_swatch != blank %}
+                {% assign media_swatch = media.alt | strip %}
+                {% if media_swatch != current_swatch %}
+                  {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
+              {% if hide_media == false and active_thumb_taken == false %}
+                {% assign active_thumb_taken = true %}
+                {% assign active_thumb = true %}
+              {% endif %}
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="swiper-slide" js-carousel-slide>
-                    {% render 'lazy-image' image: media %}
-                  </div>
+                  <button class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                    {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
+                  </button>
                 {% when 'video' %}
-                  <div class="swiper-slide" js-carousel-slide>
+                  <button class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
-                  </div>
+                  </button>
                 {% when 'external_video' %}              
-                  <div class="swiper-slide" js-carousel-slide>
+                  <button class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | external_video_tag }}
-                  </div>
+                  </button>
                 {% endcase %}
             {% endfor %}
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev left-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-prev>{% render 'icon-active-left' %}</div>
+          <div class="swiper-button-next right-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-next>{% render 'icon-active-right' %}</div>
+          <div class="absolute h-full w-[40px] left-0 top-0 z-[5]" style="background: linear-gradient(to right, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
+          <div class="absolute h-full w-[40px] right-0 top-0 z-[5]" style="background: linear-gradient(to left, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
+        </div>
+      </s-carousel>
+      {%- capture main_carousel_options -%}
+        {
+          "slidesPerView": 1,
+          "loop": false,
+          "autoHeight": false,
+          "navigation": {
+            "enabled": true,
+            "prevEl": "[js-pdp-main-prev]",
+            "nextEl": "[js-pdp-main-next]"
+          }
+        }
+      {%- endcapture -%}
+      <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid">
+        <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
+          <div class="swiper-wrapper">
+            {% for media in product.media %}
+              {% assign media_swatch = '' %}
+              {% assign hide_media = false %}
+              {% if current_swatch != blank %}
+                {% assign media_swatch = media.alt | strip %}
+                {% if media_swatch != current_swatch %}
+                  {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
+              {% case media.media_type %}
+                {% when 'image' %}
+                  <button class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                    {% render 'lazy-image' image: media %}
+                  </button>
+                {% when 'video' %}
+                  <button class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                    {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
+                  </button>
+                {% when 'external_video' %}              
+                  <button class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                    {{ media | external_video_tag }}
+                  </button>
+                {% endcase %}
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev swiper-nav-btn left-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-prev>{% render 'icon-arrow-left' %}</div>
+          <div class="swiper-button-next swiper-nav-btn right-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-next>{% render 'icon-arrow-right' %}</div>
         </div>
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information" id="ProductInfo-{{ section.id }}">
-      <h1 class="product__title">{{ product.title }}</h1>
-      <div class="product__price" js-price>{{product.price | money }}</div>
-      <div class="product__description">{{ product.description }}</div>
+    <div class="product__information p-md desktop:px-xl" id="ProductInfo-{{ section.id }}">
       {%- comment -%}
         * Product Form
       {%- endcomment -%}
       {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', js-product-form: true -%}
-        
-        {%- comment -%} Product Variant Master Select {%- endcomment -%}
-        {% render 'master-variant-select',
-          variants: product.variants,
-          id: master_select_id,
-          current_variant: current_variant
-        %}
-
-        {% unless product.has_only_default_variant %}
-          <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state>
-            {% for option in product.options_with_values %}
-              {% render 'product-option-selector' 
-                option: option
-                type: 'swatch'
-                section_id: section.id
-                product_id: product.id
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'room_tag' %}
+              {% if product.metafields.seed.recommended_room_size != blank %}
+                <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs">{{ product.metafields.seed.recommended_room_size }}</div>
+              {% endif %}
+            {% when 'title' %}
+              <h1 class="product__title h3">{{ product.title }}</h1>
+            {% when 'star_rating' %}
+              <div class="product__star-rating mt-sm">reviews</div>
+            {% when 'option_selector' %}
+              {%- comment -%} Product Variant Master Select {%- endcomment -%}
+              {% render 'master-variant-select',
+              variants: product.variants,
+              id: master_select_id,
+              current_variant: current_variant
               %}
-            {% endfor %}
-          </product-options>
-        {% endunless %}
 
-        <label class="form__label" for="Quantity-{{ section.id }}">
-          Qty
-        </label>
-        <quantity-input class="quantity">
-          <button class="quantity__button" name="minus" type="button" aria-label="Decrease quantity for {{ product.title }}" title="Decrease quantity for {{ product.title }}">&minus;</button>
-          <input class="quantity__input"
-              type="number"
-              name="quantity"
-              id="Quantity-{{ section.id }}"
-              min="1"
-              value="1"
-              form="{{ product_form_id }}"
-            >
-          <button class="quantity__button" name="plus" type="button" aria-label="Increase quantity for {{ product.title }}" title="Increase quantity for {{ product.title }}">&plus;</button>
-        </quantity-input>
+              {% unless product.has_only_default_variant %}
+              <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
+                {% for option in product.options_with_values %}
+                  {% render 'product-option-selector' 
+                    option: option
+                    type: 'swatch'
+                    section_id: section.id
+                    product_id: product.id
+                    current_variant: current_variant
+                  %}
+                {% endfor %}
+              </product-options>
+              {% endunless %}
+            {% when 'subscription' %}
 
-        <button 
-          class="btn relative"
-          type="submit" 
-          {% unless current_variant.available %} disabled {% endunless %}
-          js-add-to-cart>
-          <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
-          {% if current_variant.available %} Add To Cart {% else %} Sold Out {% endif %}
-        </button>
-        <p class="hidden" js-error-message></p>
-
+            {% when 'atc' %}
+              <button 
+                class="product__atc btn btn--blue-rounded relative"
+                type="submit" 
+                {% unless current_variant.available %} disabled {% endunless %}
+                js-add-to-cart>
+                <div class="btn__text">
+                  <span js-price>{{ current_variant.price | money }}</span><span>&nbsp;-&nbsp;</span>
+                  <span js-atc-text>
+                    {% if current_variant.available %}
+                      Add to Cart
+                    {% else %}
+                      Out of Stock
+                    {% endif %}
+                  </span>
+                </div>
+                <div class="btn__arrow">{% render 'icon-arrow-right' %}</div>
+                <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
+              </button>
+              <p class="hidden p2" js-error-message></p>
+            {% when 'spacing' %}
+              <div class="product__spacing w-full h-[var(--spacing-mobile)] desktop:h-[var(--spacing-desktop)]" style="--spacing-mobile: {{ block.settings.spacing_mobile | default: 0 }}px; --spacing-desktop: {{ block.settings.spacing_desktop | default: 0 }}px;"></div>
+          {% endcase %}
+        {% endfor %}
+      
+      
+      {% if product.metafields.seed.short_description != blank %}
+        <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.short_description }}</p>
+      {% endif %}
       {%- endform -%}
     </div><!-- .product__images-container -->
   </div><!-- .product__layout -->
@@ -143,6 +235,48 @@
 
 {% schema %}
 {
-  "name": "Product"
+  "name": "Product",
+  "blocks": [
+    {
+      "name": "Room Size Tag",
+      "type": "room_tag"
+    },
+    {
+      "name": "Title",
+      "type": "title"
+    },
+    {
+      "name": "Star Rating",
+      "type": "star_rating"
+    },
+    {
+      "name": "Option Selector",
+      "type": "option_selector"
+    },
+    {
+      "name": "Subscription",
+      "type": "subscription"
+    },
+    {
+      "name": "ATC Button",
+      "type": "atc"
+    },
+    {
+      "name": "Spacing",
+      "type": "spacing",
+      "settings": [
+        {
+          "type": "number",
+          "id": "spacing_mobile",
+          "label": "Spacing (px) - Mobile"
+        },
+        {
+          "type": "number",
+          "id": "spacing_desktop",
+          "label": "Spacing (px) - Desktop"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

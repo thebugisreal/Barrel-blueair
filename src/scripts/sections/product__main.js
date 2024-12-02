@@ -3,15 +3,32 @@ class ProductMain extends HTMLElement {
     super();
 
     this._selectors = {
-      addToCart: "[js-add-to-cart]",
+      addToCart: '[js-add-to-cart]',
+      atcText: '[js-atc-text]',
       error: '[js-error-message]',
       form: "[js-product-form]",
       loader: "loading-spinner",
+      carousel: '[js-pdp-carousel]',
+      mainSlide: '[js-main-carousel-slide]',
+      thumbSlide: '[js-thumb-carousel-slide]',
+      price: '[js-price]',
+      currentSwatchLabel: '[js-current-swatch-label]'
     };
   }
 
   connectedCallback() {
     this.buttons = this.querySelectorAll(this._selectors.addToCart);
+    this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
+    this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
+    this.prices = this.querySelectorAll(this._selectors.price);
+    this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
+
+    if (this.dataset.currentSwatch) {
+      this.swatchOption = parseInt(this.dataset.swatchOption);
+      this.currentSwatch = this.dataset.currentSwatch;
+      this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
+    }
+
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
   }
@@ -93,37 +110,80 @@ class ProductMain extends HTMLElement {
   _handleVariantChange = (evt) => {
     const { variant, priceChange } = evt.detail;
 
+    console.log(variant)
+
     this._updateAddToCartState(variant);
+
+    if (this.currentSwatch && variant.options[this.swatchOption] != this.currentSwatch) {
+      this.currentSwatch = variant.options[this.swatchOption];
+      this.currentSwatchLabel.textContent = this.currentSwatch;
+      this._updateImageCarousel(this.currentSwatch);
+    }
 
     if (variant) {
       if (priceChange) this._updatePrice(variant);
     }
   };
 
+  _updateImageCarousel(swatchName) {
+    this.thumbSlides.forEach((slide) => {
+      slide.classList.remove('hidden', 'swiper-slide', 'swiper-slide-thumb', 'swiper-slide-thumb-active');
+      if (slide.dataset.swatch && slide.dataset.swatch != swatchName) {
+        slide.classList.add('hidden');
+      } else {
+        slide.classList.add('swiper-slide', 'swiper-slide-thumb');
+      }
+    });
+
+    this.mainSlides.forEach((slide) => {
+      slide.classList.remove('hidden', 'swiper-slide', 'swiper-slide-active');
+      if (slide.dataset.swatch && slide.dataset.swatch != swatchName) {
+        slide.classList.add('hidden');
+      } else {
+        slide.classList.add('swiper-slide');
+      }
+    });
+
+    const carousels = this.querySelectorAll(this._selectors.carousel);
+    carousels.forEach((carousel) => {
+      carousel.swiper.update();
+    });
+  }
+
   _updateAddToCartState(variant) {
-    const buttons = this.querySelectorAll(this._selectors.addToCart);
     if (variant) {
       if (variant.available) {
-        buttons.forEach((btn) => {
-          btn.textContent = "Add To Cart";
-          btn.removeAttribute("disabled");
+        this.buttons.forEach((btn) => {
+          btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+          btn.removeAttribute('disabled');
         });
       } else {
-        buttons.forEach((btn) => {
-          btn.textContent = "Sold out";
-          btn.setAttribute("disabled", "");
+        this.buttons.forEach((btn) => {
+          btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+          btn.setAttribute('disabled', '');
         });
       }
     } else {
-      buttons.forEach((btn) => {
-        btn.textContent = "Unavailable";
-        btn.setAttribute("disabled", "");
+      this.buttons.forEach((btn) => {
+        btn.querySelector(this._selectors.atcText).textContent = 'Unavailable';
+        btn.setAttribute('disabled', '');
       });
     }
   }
 
   _updatePrice(variant) {
-    //update price
+    /*
+    let priceMarkup = '';
+    if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+      priceMarkup = `<span class="product__price product__price--current text-red">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span><s class="product__price product__price--compare ml-3">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s>`;
+    } else {
+      priceMarkup = `<span class="product__price product__price--current">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+    }
+      */
+
+    this.prices.forEach((price) => {
+      price.innerHTML = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
+    })
   }
 
   _disableButtons() {
