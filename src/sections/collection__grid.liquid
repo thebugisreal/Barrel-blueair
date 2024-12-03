@@ -7,10 +7,14 @@
 <s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}">
   <div class="collection-grid__layout">
     <div class="collection-grid__header bg-blue-light px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
-      {% if collection.handle != 'shop-all' %}
+      <div class="collection-grid__breadcrumb mb-md flex gap-xxs items-center">
         {% assign shop_all_collection = collections['shop-all'] %}
-        <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline inline-block mb-md">Shop</a>
-      {% endif %}
+        <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline">Shop</a>
+        {% if collection.handle != 'shop-all' %}
+          <span class="w-[4px] h-[4px] rounded-full bg-blue"></span>
+          <span>{{ collection.title }}</span>
+        {% endif %}
+      </div>
       <div class="collection-grid__title-containe flex justify-start items-center gap-sm">
         <h1 class="collection-grid__title h3">{{ collection.title }}</h1>
         <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
@@ -93,8 +97,8 @@
           </s-accordion>
         </div>
 
-        <div class="collection-grid__grid-container desktop:flex desktop:gap-md">
-          <div class="collection-grid__desktop-fitlers hidden w-[300px]" js-desktop-filters data-opened="false">
+        <div class="collection-grid__grid-container desktop:flex">
+          <div class="collection-grid__desktop-fitlers hidden desktop:block w-0 -translate-x-[400px] transition-all duration-300" js-desktop-filters data-opened="false">
             {% render 'filter-sort', results: collection, scope: 'desktop' %}
           </div>
           <div class="collection-grid__grid-wrapper desktop:flex-1">

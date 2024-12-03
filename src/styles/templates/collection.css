@@ -29,7 +29,9 @@
   }
 
   .collection-grid__desktop-fitlers[data-opened="true"] {
-    @apply block;
+    @apply w-[300px]
+    translate-x-0
+    mr-md;
   }
 
   .collection-grid__collection-tout {
