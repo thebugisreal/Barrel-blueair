@@ -26,6 +26,7 @@ window.theme = window.theme || {};
 // =require components/product-card.js
 // =require components/country-select.js
 // =require components/section__image-caption-modal.js
+// =require components/product-card__upsell.js
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -50,6 +51,7 @@ customElements.define("filter-sort", FilterSort);
 customElements.define('active-filters', ActiveFilters);
 customElements.define('price-range', PriceRange);
 customElements.define('product-card', ProductCard);
+customElements.define('product-card-upsell', ProductCardUpsell);
 
 customElements.define('country-select', CountrySelect);
 

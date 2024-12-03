@@ -25,11 +25,6 @@
 
     {% render 'meta-tags' %}
 
-    {%- comment -%} Redirect Cart Page {%- endcomment -%}
-    {% if template.name == 'cart' %}
-      <script> location.href = '{{ routes.root_url }}?viewcart=true' </script>
-    {% endif %}
-
     {%- comment -%} Redirect Account Addresses Page {%- endcomment -%}
     {% if template.name == 'addresses' %}
       <script> location.href = '{{ routes.account_url }}' </script>

@@ -1,170 +1,302 @@
 <cart-items>
   <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
     <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}">
-      <div class="" js-cart-page-contents>
-        <h2>Your Cart</h2>
+      <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl" js-cart-page-contents>
+        <h2 class="font-900 text-center mb-sm">Your Cart</h2>
+            {% comment %} Shipping Threshold {% endcomment %}
+            {% if cart != empty and settings.shipping_threshold_enabled %}
+              {% render 'cart--shipping-threshold' %}
+            {% endif %}
+            {% comment %} END Shipping Threshold {% endcomment %}
         {% if cart == empty %}
           <p>
             Your cart is empty, <a href="/collections/all">continue shopping</a>.
           </p>
         {%- else -%}
-          <div class="cart__items-wrapper">
-            {%- for item in cart.items -%}
-              <div id="CartItem-{{ item.index | plus: 1 }}" class="relative" js-cart-item>
-                <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
-                <a href="{{item.url}}" js-cart-item-image>
-                  <img class="cart-item__image" src="{{ item.image | image_url: width: 300 }}" alt="{{ item.image.alt | escape }}" loading="lazy">
-                </a>
-                <a href="{{item.url}}">{{item.product.title}}</a>
-                <div>
-                  {% if item.original_price != item.final_price %}
-                    <s>{{ item.original_price | money }}</s>
-                    <span>{{ item.final_price | money }}</span>
-                  {% else %}
-                    <span>{{ item.original_price | money }}</span>
-                  {% endif %}
-                </div>
-                {%- if item.product.has_only_default_variant == false -%}
-                  {%- for option in item.options_with_values -%}
-                    <p>{{ option.name }}: {{ option.value -}}</p>
-                  {%- endfor -%}
-                {%- endif -%}
-                {%- for property in item.properties -%}
-                  {%- assign property_first_char = property.first | slice: 0 -%}
-                  {%- if property.last != blank and property_first_char != '_' -%}
-                    <p>{{ property.first }}: {{ property.last }}</p>
-                  {%- endif -%}
-                {%- endfor -%}
-                {% if product.selling_plan_allocation != null %}
-                  <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                {% endif %}
-                {% if item.discounts != empty %}
-                  <ul>
-                    {%- for discount in item.discounts -%}
-                      <li>{{ discount.title }}</li>
-                    {%- endfor -%}
-                  </ul>
-                {% endif %}
-                {%- if item.original_line_price != item.final_line_price -%}
-                  <div class="cart-item__discounted-prices">
-                    <span class="visually-hidden">
-                      {{ 'products.product.price.regular_price' | t }}
-                    </span>
-                    <s class="cart-item__old-price price price--end">
-                      {{ item.original_line_price | money }}
-                    </s>
-                    <span class="visually-hidden">
-                      {{ 'products.product.price.sale_price' | t }}
-                    </span>
-                    <span class="price price--end">
-                      {{ item.final_line_price | money }}
-                    </span>
-                  </div>
-                {%- else -%}
-                  <span class="price price--end">
-                    {{ item.original_line_price | money }}
-                  </span>
-                {%- endif -%}
-                <div class="cart-item__quantity-wrapper">
-                  <quantity-input class="quantity cart-quantity">
-                    <button class="quantity__button no-js-hidden" name="minus" type="button">
-                      <span class="visually-hidden">
-                        {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
-                      </span>
-                      -
-                    </button>
-                    <input
-                      class="quantity__input"
-                      type="number"
-                      data-quantity-variant-id="{{ item.variant.id }}"
-                      name="updates[]"
-                      value="{{ item.quantity }}"
-                      {% # theme-check-disable %}
-                      data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-                      min="{{ item.variant.quantity_rule.min }}"
-                      {% if item.variant.quantity_rule.max != null %}
-                        max="{{ item.variant.quantity_rule.max }}"
+          <div class="tabletl:flex tabletl:gap-xxxl">
+            {% comment %} Cart Items  {% endcomment %}
+              <div class="cart__items-wrapper tabletl:w-1/2">
+                {%- for item in cart.items -%}
+                  <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between" js-cart-item>
+                    <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
+                    <div class="flex gap-md">
+                      <a href="{{item.url}}" class="block w-1/2" js-cart-item-image>
+                        <img class="cart-item__image" src="{{ item.image | image_url: width: 300 }}" alt="{{ item.image.alt | escape }}" loading="lazy">
+                      </a>
+                      <div class="item-text-container w-1/2">
+                        <a href="{{item.url}}" class="p1 mb-xxxs">{{item.product.title}}</a>
+                        {%- if item.product.has_only_default_variant == false -%}
+                          {%- for option in item.options_with_values -%}
+                            <p class="my-4">{{ option.name }}: {{ option.value -}}</p>
+                          {%- endfor -%}
+                        {%- endif -%}
+
+                        <div class="cart-item__quantity-wrapper mt-xxs">
+                          <quantity-input class="quantity cart-quantity p3 flex justify-center border border-blue p-xxs gap-md rounded-[2px] max-w-[150px]">
+                            <button class="quantity__button no-js-hidden" name="minus" type="button">
+                              <span class="visually-hidden">
+                                {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
+                              </span>
+                              <div class="w-[16px]">{%  render 'icon-minus' %}</div>
+                            </button>
+                            <input
+                              class="quantity__input flex-1 max-w-[16px] text-center"
+                              type="number"
+                              data-quantity-variant-id="{{ item.variant.id }}"
+                              name="updates[]"
+                              value="{{ item.quantity }}"
+                              {% # theme-check-disable %}
+                              data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                              min="{{ item.variant.quantity_rule.min }}"
+                              {% if item.variant.quantity_rule.max != null %}
+                                max="{{ item.variant.quantity_rule.max }}"
+                              {% endif %}
+                              step="{{ item.variant.quantity_rule.increment }}"
+                              {% # theme-check-enable %}
+                              aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                              id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                              data-index="{{ item.index | plus: 1 }}"
+                            >
+                            <button class="quantity__button no-js-hidden" name="plus" type="button">
+                              <span class="visually-hidden">
+                                {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
+                              </span>
+                              <div class="w-[16px]">{%  render 'icon-plus' %}</div>
+                            </button>
+                          </quantity-input>
+        
+                          <cart-remove-button
+                            class="block mt-xxs"
+                            id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                            data-index="{{ item.index | plus: 1 }}"
+                          >
+                            <button
+                              type="button"
+                              class="button button--tertiary cart-remove-button underline"
+                              aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                            >
+                              Remove item
+                            </button>
+                          </cart-remove-button>
+                          
+        
+                          <div id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {% comment %} Price {% endcomment %}
+                    <div class="cart-price">
+                      <div class="p1 hidden">
+                        {% if item.original_price != item.final_price %}
+                          <s>{{ item.original_price | money }}</s>
+                          <span>{{ item.final_price | money }}</span>
+                        {% else %}
+                          <span>{{ item.original_price | money }}</span>
+                        {% endif %}
+                      </div>
+                      {%- for property in item.properties -%}
+                        {%- assign property_first_char = property.first | slice: 0 -%}
+                        {%- if property.last != blank and property_first_char != '_' -%}
+                          <p>{{ property.first }}: {{ property.last }}</p>
+                        {%- endif -%}
+                      {%- endfor -%}
+                      {% if product.selling_plan_allocation != null %}
+                        <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
                       {% endif %}
-                      step="{{ item.variant.quantity_rule.increment }}"
-                      {% # theme-check-enable %}
-                      aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
-                      id="Drawer-quantity-{{ item.index | plus: 1 }}"
-                      data-index="{{ item.index | plus: 1 }}"
-                    >
-                    <button class="quantity__button no-js-hidden" name="plus" type="button">
-                      <span class="visually-hidden">
-                        {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
-                      </span>
-                      +
-                    </button>
-                  </quantity-input>
+                      {% if item.discounts != empty %}
+                        <ul>
+                          {%- for discount in item.discounts -%}
+                            <li>{{ discount.title }}</li>
+                          {%- endfor -%}
+                        </ul>
+                      {% endif %}
+                      {%- if item.original_line_price != item.final_line_price -%}
+                        <div class="cart-item__discounted-prices p1">
+                          <span class="visually-hidden">
+                            {{ 'products.product.price.regular_price' | t }}
+                          </span>
+                          <s class="cart-item__old-price price price--end">
+                            {{ item.original_line_price | money }}
+                          </s>
+                          <span class="visually-hidden">
+                            {{ 'products.product.price.sale_price' | t }}
+                          </span>
+                          <span class="price price--end">
+                            {{ item.final_line_price | money }}
+                          </span>
+                        </div>
+                      {%- else -%}
+                        <span class="price price--end p1">
+                          {{ item.original_line_price | money }}
+                        </span>
+                      {%- endif -%}
+                    </div>
+                    {% comment %} END Price {% endcomment %}
+                  </div>
+                {%- endfor -%}
 
-                  <cart-remove-button
-                    id="Remove-{{ item.index | plus: 1 }}"
-                    data-index="{{ item.index | plus: 1 }}"
-                  >
-                    <button
-                      type="button"
-                      class="button button--tertiary cart-remove-button"
-                      aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-                    >
-                      remove
-                    </button>
-                  </cart-remove-button>
-                  
-                  <div id="Line-item-error-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
+                {% comment %} Gift with Purchases {% endcomment %}
+                {% assign gwp_1_variant = settings.gwp1.variants[0] %}
+                {% assign gwp_2_variant = settings.gwp2.variants[0] %}
+  
+                {% unless cart_variants contains gwp_1_variant.id and cart_variants contains gwp_2_variant.id %}
+                  {%- capture gwp_carousel_options -%}
+                    {
+                      "slidesPerView": 1,
+                      "pagination": {
+                        "el": ".swiper-gwp-pagination",
+                        "type": "fraction"
+                      },
+                      "navigation": {
+                        "nextEl": ".swiper-gwp-next",
+                        "prevEl": ".swiper-gwp-prev"
+                      }
+                    }
+                  {%- endcapture -%}
+                  <div class="cart-drawer__gwp-container my-lg grid grid-cols-1">
+                    <s-carousel class="block {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
+                        <div id="CartGwp-{{section.id}}" class="swiper w-full max-w-full" js-carousel>
+                          <div class="flex justify-between items-center mb-md">
+                            <h1 class="cart-drawer-gwp__title s1 font-900">Select Your Free Gift</h1>
+                            <div class="swiper-nav-container flex gap-xxs items-center">
+                              <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                              <div class="swiper-gwp-pagination w-fit p6"></div>
+                              <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
+                            </div>
+                          </div>
+  
+                          <div class="swiper-wrapper">
+                            {% unless cart_variants contains gwp_1_variant.id %}
+                              {% if settings.gwp1 != blank %}
+                                <div class="swiper-slide" js-carousel-slide>
+                                  {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
+                                </div>
+                              {% endif %}
+                            {% endunless %}
+  
+                            {% unless cart_variants contains gwp_2_variant.id %}
+                              {% if settings.gwp2 != blank %}
+                                <div class="swiper-slide" js-carousel-slide>
+                                  {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
+                                </div>
+                              {% endif %}
+                            {% endunless %}
+                          </div>
+                        </div>
+                    </s-carousel>
+                  </div>
+                {% endunless %}
+                {% comment %} END Gift with Purchases {% endcomment %}
+
+                {% comment %} Upsell Products {% endcomment %}
+                {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
+                {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
+
+                {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}   
+                  {%- capture upsell_carousel_options -%}
+                    {
+                      "slidesPerView": 1,
+                      "pagination": {
+                        "el": ".swiper-upsell-pagination",
+                        "type": "fraction"
+                      },
+                      "navigation": {
+                        "nextEl": ".swiper-upsell-next",
+                        "prevEl": ".swiper-upsell-prev"
+                      }
+                    }
+                  {%- endcapture -%}
+                  <div class="cart-drawer__upsell-container my-lg grid grid-cols-1">
+                    <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
+                        <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
+                          <div class="flex justify-between items-center mb-md">
+                            <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
+                            <div class="swiper-nav-container flex gap-xxs items-center">
+                              <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                              <div class="swiper-upsell-pagination w-fit p6"></div>
+                              <div class="swiper-upsell-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
+                            </div>
+                          </div>
+
+                          <div class="swiper-wrapper">
+                            {% unless cart_variants contains upsell_1_variant.id %}
+                              {% if settings.upsell_1 != blank %}
+                                <div class="swiper-slide" js-carousel-slide>
+                                  {% render 'product-card__upsell' product:settings.upsell_1, section_id: section.id %}
+                                </div>
+                              {% endif %}
+                            {% endunless %}
+
+                            {% unless cart_variants contains upsell_2_variant.id %}
+                              {% if settings.upsell_2 != blank %}
+                                <div class="swiper-slide" js-carousel-slide>
+                                  {% render 'product-card__upsell' product:settings.upsell_2, section_id: section.id%}
+                                </div>
+                              {% endif %}
+                            {% endunless %}
+                          </div>
+                        </div>
+                    </s-carousel>
+                  </div>
+                {% endunless %}
+                {% comment %} END Upsell Products {% endcomment %}
+              </div>
+            {% comment %} END Cart Items  {% endcomment %}
+            {% comment %} Cart Footer {% endcomment %}
+              <div class="cart__footer bg-blue-light p-md h-fit tabletl:w-1/2">
+                {%- if settings.show_cart_note -%}
+                  <details id="Details-CartDrawer">
+                    <summary>
+                      <span class="summary__title">
+                        {{ 'sections.cart.note' | t }}
+                        {% render 'icon-caret' %}
+                      </span>
+                    </summary>
+                    <cart-note class="cart__note field">
+                      <label class="visually-hidden" for="CartDrawer-Note">{{ 'sections.cart.note' | t }}</label>
+                      <textarea
+                        id="CartDrawer-Note"
+                        class="text-area text-area--resize-vertical field__input"
+                        name="note"
+                        placeholder="{{ 'sections.cart.note' | t }}"
+                      >{{ cart.note }}</textarea>
+                    </cart-note>
+                  </details>
+                {%- endif -%}
+                <div class="cart__totals">
+                  <div class="totals flex justify-between mb-xxs" role="status">
+                    <h2 class="totals__subtotal s2">Estimated Total:</h2>
+                    <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
+                  </div>
+                  <p class="p4 mb-xs">Taxes calculated at checkout</p>
+        
+                  <div>
+                    {%- if cart.cart_level_discount_applications.size > 0 -%}
+                      <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                        {%- for discount in cart.cart_level_discount_applications -%}
+                          <li class="discounts__discount discounts__discount--end">
+                            {%- render 'icon-discount' -%}
+                            {{ discount.title }}
+                            (-{{ discount.total_allocated_amount | money }})
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
                   </div>
                 </div>
+        
+                <!-- CTAs -->
+        
+                <div class="cart__ctas" {{ block.shopify_attributes }}>
+                  <button class="cart__checkout-button p2 btn btn--blue-rounded w-full justify-between" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
+                    <span class="btn__text">Go to Checkout</span>
+                    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                  </button>
+                </div>
               </div>
-            {%- endfor -%}
-          </div>
-          <div class="cart__footer">
-            {%- if settings.show_cart_note -%}
-              <details id="Details-CartDrawer">
-                <summary>
-                  <span class="summary__title">
-                    {{ 'sections.cart.note' | t }}
-                    {% render 'icon-caret' %}
-                  </span>
-                </summary>
-                <cart-note class="cart__note field">
-                  <label class="visually-hidden" for="CartDrawer-Note">{{ 'sections.cart.note' | t }}</label>
-                  <textarea
-                    id="CartPage-Note"
-                    class="text-area text-area--resize-vertical field__input"
-                    name="note"
-                    placeholder="{{ 'sections.cart.note' | t }}"
-                  >{{ cart.note }}</textarea>
-                </cart-note>
-              </details>
-            {%- endif -%}
-            <div class="cart-drawer__footer">
-              <div class="totals" role="status">
-                <h2 class="totals__subtotal">Subtotal</h2>
-                <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
-              </div>
-
-              <div>
-                {%- if cart.cart_level_discount_applications.size > 0 -%}
-                  <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                    {%- for discount in cart.cart_level_discount_applications -%}
-                      <li class="discounts__discount discounts__discount--end">
-                        {%- render 'icon-discount' -%}
-                        {{ discount.title }}
-                        (-{{ discount.total_allocated_amount | money }})
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
-              </div>
-              <p>Taxes and shipping calculated at checkout</p>
-            </div>
-
-            <!-- CTAs -->
-
-            <div class="cart__ctas" {{ block.shopify_attributes }}>
-              <button type="submit" id="CartDrawer-Checkout" class="cart__checkout-button button" name="checkout" form="CartDrawer-Form">Checkout</button>
-            </div>
+            {% comment %} END Cart Footer {% endcomment %}
           </div>
         {%- endif -%}
       </div>

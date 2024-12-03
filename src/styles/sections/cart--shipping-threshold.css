@@ -1,0 +1,13 @@
+.shipping-threshold__bar,
+.shipping-threshold__bar::-webkit-progress-bar {
+    --tw-bg-opacity: 1;
+    background-color: #D6E4F3;
+}
+
+.shipping-threshold__bar[value]::-webkit-progress-value {
+    background-color: #40C1AC;
+}
+
+.cart-drawer .cart_shipping-motivator--container {
+    @apply mx-md
+}
