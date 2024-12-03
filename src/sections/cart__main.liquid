@@ -1,3 +1,8 @@
+{% assign cart_variants = '' %}
+{% for item in cart.items %}
+  {% assign cart_variants = cart_variants | append: item.variant_id | append: ',' %}
+{% endfor %}
+
 <cart-items>
   <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
     <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}">
@@ -15,11 +20,11 @@
         {%- else -%}
           <div class="tabletl:flex tabletl:gap-xxxl">
             {% comment %} Cart Items  {% endcomment %}
-              <div class="cart__items-wrapper tabletl:w-1/2">
+              <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-1/2">
                 {%- for item in cart.items -%}
                   <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between" js-cart-item>
                     <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
-                    <div class="flex gap-md">
+                    <div class="flex gap-md w-full">
                       <a href="{{item.url}}" class="block w-1/2" js-cart-item-image>
                         <img class="cart-item__image" src="{{ item.image | image_url: width: 300 }}" alt="{{ item.image.alt | escape }}" loading="lazy">
                       </a>
@@ -155,7 +160,7 @@
                       }
                     }
                   {%- endcapture -%}
-                  <div class="cart-drawer__gwp-container my-lg grid grid-cols-1">
+                  <div class="cart-drawer__gwp-container grid grid-cols-1">
                     <s-carousel class="block {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
                         <div id="CartGwp-{{section.id}}" class="swiper w-full max-w-full" js-carousel>
                           <div class="flex justify-between items-center mb-md">
@@ -208,7 +213,7 @@
                       }
                     }
                   {%- endcapture -%}
-                  <div class="cart-drawer__upsell-container my-lg grid grid-cols-1">
+                  <div class="cart-drawer__upsell-container grid grid-cols-1">
                     <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
                         <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
                           <div class="flex justify-between items-center mb-md">

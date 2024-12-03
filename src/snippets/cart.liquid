@@ -25,7 +25,7 @@
             <p class="s1 mb-sm">Your Items</p>
 
             {% comment %} Cart Items  {% endcomment %}
-            <div class="drawer__cart-items-wrapper">
+            <div class="drawer__cart-items-wrapper flex flex-col gap-md">
               {%- for item in cart.items -%}
               <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative" js-cart-item>
                 <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
