@@ -60,7 +60,17 @@ class CartItems extends HTMLElement {
       {
         id: 'CartPage-CartItems',
         section: document.getElementById('CartPage-CartItems').dataset.id,
-        selector: '[js-cart-page-contents]',
+        selector: '[js-cart-page-contents]'
+      },
+      {
+        id: 'cart',
+        section: 'cart',
+        selector: '[js-cart-drawer-contents]',
+      },
+      {
+        id: 'cart-count',
+        section: 'cart-count',
+        selector: '.shopify-section',
       }
     ];
   }
@@ -205,6 +215,8 @@ class CartDrawer extends HTMLElement {
         : document.getElementById(section.id);
       sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
     });
+    const cartMain = document.querySelector('cart-items')
+    if (cartMain) cartMain.onCartUpdate()
   }
 
   getSectionInnerHTML(html, selector = '.shopify-section') {
@@ -219,7 +231,8 @@ class CartDrawer extends HTMLElement {
       },
       {
         id: 'cart-count'
-      }
+      },
+      
     ];
   }
 
@@ -235,17 +248,39 @@ class CartDrawer extends HTMLElement {
 
 class CartDrawerItems extends CartItems {
   getSectionsToRender() {
-    return [
-      {
-        id: 'cart',
-        section: 'cart',
-        selector: '[js-cart-drawer-contents]',
-      },
-      {
-        id: 'cart-count',
-        section: 'cart-count',
-        selector: '.shopify-section',
-      },
-    ];
+
+    if (window.location.pathname.includes('/cart')) {
+      return [
+        {
+          id: 'cart',
+          section: 'cart',
+          selector: '[js-cart-drawer-contents]',
+        },
+        {
+          id: 'cart-count',
+          section: 'cart-count',
+          selector: '.shopify-section',
+        },
+        {
+          id: 'CartPage-CartItems',
+          section: document.getElementById('CartPage-CartItems').dataset.id,
+          selector: '[js-cart-page-contents]'
+        }
+      ];
+    } else {
+      return [
+        {
+          id: 'cart',
+          section: 'cart',
+          selector: '[js-cart-drawer-contents]',
+        },
+        {
+          id: 'cart-count',
+          section: 'cart-count',
+          selector: '.shopify-section',
+        }
+      ];
+    }
+
   }
 }

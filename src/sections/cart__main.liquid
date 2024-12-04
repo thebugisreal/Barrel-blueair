@@ -5,8 +5,8 @@
 
 <cart-items>
   <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
-    <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}">
-      <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl" js-cart-page-contents>
+    <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}" js-cart-page-contents> 
+      <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl">
         <h2 class="font-900 text-center mb-sm">Your Cart</h2>
             {% comment %} Shipping Threshold {% endcomment %}
             {% if cart != empty and settings.shipping_threshold_enabled %}
@@ -52,7 +52,7 @@
                               value="{{ item.quantity }}"
                               {% # theme-check-disable %}
                               data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-                              min="{{ item.variant.quantity_rule.min }}"
+                              min="0"
                               {% if item.variant.quantity_rule.max != null %}
                                 max="{{ item.variant.quantity_rule.max }}"
                               {% endif %}

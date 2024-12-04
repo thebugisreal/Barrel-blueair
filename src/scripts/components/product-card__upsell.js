@@ -2,6 +2,7 @@ class ProductCardUpsell extends HTMLElement {
     constructor() {
       super();
   
+      this.changeEvent = new Event('change', { bubbles: true })
       this.selectors = {
         quickAdd: '[js-quick-add]'
       }
@@ -43,7 +44,12 @@ class ProductCardUpsell extends HTMLElement {
       .then((response) => response.json())
       .then((response) => {
         this.cart.renderContents(response);
-        this.cartDrawer.open();
+        if (!window.location.pathname.includes('/cart')) this.cartDrawer.open();
+        
+      })
+      .then((response) => {
+        const cartMain = document.querySelector('cart-items')
+        if (cartMain) cartMain.onCartUpdate()
       })
       .catch((error) => {
         console.error('Error:', error);
