@@ -31,18 +31,17 @@
 
 /* Product__tabs Styling */
 
-.product__tabs .tab__panel,
 .product__tabs .tab__text-content {
   transition-timing-function: cubic-bezier(.4,0,.2,1);
   transition-property: all;
-  transition-duration: .5s;
+  transition-duration: 1s;
 }
 
 .product__tabs .tab__trigger[aria-selected="false"] .tab__text-content {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transition: max-height .25s ease, opacity .25s ease;
+  transition: max-height .5s ease, opacity .5s ease;
 }
 
 .product__tabs .tab__trigger[aria-selected="true"] {
@@ -52,7 +51,20 @@
 .product__tabs .tab__trigger[aria-selected="true"] .tab__text-content {
   max-height: 100vh;
   opacity: 1;
-  transition: max-height .25s ease, opacity .25s ease;
+  transition: max-height .5s ease, opacity .5s ease;
+}
+
+.product__tabs .product-tab__panel[aria-hidden="false"] {
+  opacity: 1;
+  height: auto;
+  transition: max-height .5s ease, opacity .5s ease;
+}
+
+.product__tabs .product-tab__panel[aria-hidden="true"] {
+  transition: max-height .5s ease, opacity .5s ease;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* END Product__tabs Styling */

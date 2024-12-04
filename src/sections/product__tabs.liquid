@@ -22,7 +22,7 @@
             </div>
             <div class="image-container tabletl:mt-0 tabletl:w-1/2">
                 {% for tab in product.metafields.seed.pdp_tabs.value %}
-                    <div id="product__tab-content-{{ forloop.index }}" class="tab__panel" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
+                    <div id="product__tab-content-{{ forloop.index }}" class="product-tab__panel relative" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
                         <div>
                             {% render 'lazy-image' image:tab.image %}
                         </div>
