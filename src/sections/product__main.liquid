@@ -123,11 +123,18 @@
         {% for block in section.blocks %}
           {% case block.type %}
             {% when 'room_tag' %}
-              {% if product.metafields.seed.recommended_room_size != blank %}
-                <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs">{{ product.metafields.seed.recommended_room_size }}</div>
+              {% if product.metafields.seed.applicableFor != blank %}
+                <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs">{{ product.metafields.seed.applicableFor }}</div>
               {% endif %}
             {% when 'title' %}
               <h1 class="product__title h3">{{ product.title }}</h1>
+            {% when 'short_description' %}
+              {% if product.metafields.seed.productHeadline1 != blank %}
+                <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.productHeadline1 }}</p>
+              {% endif %}
+              {% if product.metafields.seed.blair_filterSupportModels != blank %}
+                <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
+              {% endif %}
             {% when 'star_rating' %}
               <div class="product__star-rating mt-sm">reviews</div>
             {% when 'option_selector' %}
@@ -173,17 +180,264 @@
                 <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
               </button>
               <p class="hidden p2" js-error-message></p>
+            {% when 'experience' %}
+              <div class="product__experience py-md border-t border-gray">
+                {% if product.metafields.seed.experience_heading != blank %}
+                  <div class="product-experience__heading s2 mb-sm desktop:mb-md">
+                    {{ product.metafields.seed.experience_heading }}
+                  </div>
+                {% endif %}
+                {% if product.metafields.seed.experience_description != blank %}
+                  <div class="product-experience__description rte p4">
+                    {{ product.metafields.seed.experience_description | metafield_tag }}
+                  </div>
+                {% endif %}
+                {% if product.metafields.seed.experience_icons != blank %}
+                  <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md desktop:gap-x-sm">
+                    {% for icon_object in product.metafields.seed.experience_icons.value %}
+                      <li class="product-experience__icon flex flex-col items-center gap-xs">
+                        <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                        <div class="p4 text-center">{{ icon_object.text }}</div>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            {% when 'additional_features' %}
+              <s-accordion data-manual-collapse="true" js-accordion>
+                <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
+                  <button class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductAdditionalFeatures" js-accordion-header>
+                    <span class="s2">Additional Features</span>
+                    <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
+                    <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
+                  </button>
+                  <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="false" js-accordion-content>
+                    <ul class="product-additional-features__list pb-md">
+                      {% if product.metafields.seed.blair_wifiConnectivity != blank %}
+                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                          <span class="p3">Wi-Fi connectivity for remote control</span>
+                          <span class="p4">{% if product.metafields.seed.blair_wifiConnectivity == '1' or product.metafields.seed.blair_wifiConnectivity == 'Yes' or product.metafields.seed.blair_wifiConnectivity == 'yes' %}Yes{% else %}No{% endif %}</span>
+                        </li>
+                      {% endif %}
+                      {% if product.metafields.seed.blair_productSpecification_timer != blank %}
+                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                          <span class="p3">On/ off timer</span>
+                          <span class="p4">
+                            {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
+                              Yes, <a href="/" class="link link--underline underline-offset-1">via Blueair App</a>
+                            {% else %}
+                              No
+                            {% endif %}
+                        </span>
+                        </li>
+                      {% endif %}
+                      {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
+                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                          <span class="p3">Speed control options</span>
+                          <span class="p4">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
+                        </li>
+                      {% endif %}
+                      {% if product.metafields.seed.blair_airSensor != blank %}
+                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                          <span class="p3">Integrated air sensors</span>
+                          <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}Yes{% else %}No{% endif %}</span>
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </s-accordion>
+            {% when 'shipping_warranty' %}
+              {% if block.settings.icons != blank %}
+                <s-accordion data-manual-collapse="true" js-accordion>
+                  <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
+                    <button class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
+                      <span class="s2">Shipping & Warranty</span>
+                      <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
+                      <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
+                    </button>
+                    <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="false" js-accordion-content>
+                      <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
+                        {% for icon_object in block.settings.icons %}
+                          <li class="product-shipping-warranty__icon flex justify-start items-center gap-xxs desktop:flex-col desktop:gap-xs">
+                            <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                            <div class="p4 text-center">{{ icon_object.text }}</div>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </s-accordion>
+              {% endif %}
+            {% when 'upsells' %}
+              {% if product.metafields.seed.upsell != blank %}
+                <div class="product__upsells py-md border-t border-gray">
+                  <div class="product-upsells__heading s2">Customize your purifier</div>
+                  <div class="product-upsells__items mt-md grid grid-cols-1 gap-md desktop:grid-cols-2 desktop:gap-sm">
+                    {% for upsell_product in product.metafields.seed.upsell.value %}
+                      <product-upsell class="product-upsell__item border border-gray p-sm desktop:py-md flex flex-col">
+                        <div class="product-upsell__title s2 mb-xxs">upsell title</div>
+                        <div class="product-upsell__description p4">upsell description</div>
+                        <div class="product-upsell__buybox mt-md flex-1 flex flex-col justify-between gap-md">
+                          {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
+                          {% if upsell_product.variants.size > 1 %}
+                            {% liquid
+                              assign color_option = false
+                              assign filter_type_option = false
+                              if upsell_product.options_by_name['color'] != blank
+                                assign color_option = upsell_product.options_by_name['color'].position | minus: 1
+                              elsif upsell_product.options_by_name['filter type'] != blank
+                                assign filter_type_option = upsell_product.options_by_name['filter type'].position | minus: 1
+                              endif
+                            %}
+                            {% if color_option != false %}
+                              <div class="product-upsell__variants-container">
+                                <div class="product-upsell__current-color-label p3 mb-xxxs" js-product-upsell-current-color-label>{{ upsell_current_variant.options[color_option] }}</div>
+                                <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
+                                  {% assign upsell_product_swatch_objects = upsell_product.metafields.seed.swatches.value | reverse | reverse %}
+                                  {% for upsell_variant in upsell_product.variants %}
+                                    <button type="button" 
+                                      class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                      data-variant-id="{{ upsell_variant.id }}"
+                                      data-available="{{ upsell_variant.available }}"
+                                      data-price="{{ upsell_variant.price | money }}"
+                                      data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
+                                      title="{{ upsell_variant.options[color_option] }}"
+                                      js-product-upsell-variant>
+                                      <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_product_swatch_objects[forloop.index0].color }};">
+                                        {% if upsell_product_swatch_objects[forloop.index0].image != blank %}
+                                          <img src="{{ upsell_product_swatch_objects[forloop.index0].image.value | img_url: '40x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
+                                        {% endif %}
+                                      </div>
+                                    </button>
+                                  {% endfor %}
+                                </div>
+                              </div>
+                            {% elsif filter_type_option != false %}
+                              <div class="product-upsell__variants grid grid-cols-1 gap-xxs">
+                                {% for upsell_variant in upsell_product.variants %}
+                                  <button type="button" 
+                                    class="product-upsell__variant product-upsell__variant--filter-type p3 border border-gray p-xxs text-center rounded-[2px]" 
+                                    data-variant-id="{{ upsell_variant.id }}"
+                                    data-available="{{ upsell_variant.available }}"
+                                    data-price="{{ upsell_variant.price | money }}"
+                                    data-selected="{% if upsell_variant.options[filter_type_option] == upsell_current_variant.options[filter_type_option] %}true{% else %}false{% endif %}"
+                                    js-product-upsell-variant>
+                                    {{ upsell_variant.options[filter_type_option] }}
+                                  </button>
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+                          {% endif %}
+                          <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs">
+                            <div class="product-upsell__price p1" js-product-upsell-price>{{ upsell_current_variant.price | money }}</div>
+                            <button type="button" class="product-upsell__atc btn btn--blue-rounded" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                              <span class="btn__text">
+                                {% if upsell_current_variant.available %}
+                                  Add to Cart
+                                {% else %}
+                                  Out of Stock
+                                {% endif %}
+                              </span>
+                              <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                            </button>
+                            <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                          </div>
+                        </div>
+                      </product-upsell>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
             {% when 'spacing' %}
               <div class="product__spacing w-full h-[var(--spacing-mobile)] desktop:h-[var(--spacing-desktop)]" style="--spacing-mobile: {{ block.settings.spacing_mobile | default: 0 }}px; --spacing-desktop: {{ block.settings.spacing_desktop | default: 0 }}px;"></div>
           {% endcase %}
         {% endfor %}
-      
-      
-      {% if product.metafields.seed.short_description != blank %}
-        <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.short_description }}</p>
-      {% endif %}
       {%- endform -%}
-    </div><!-- .product__images-container -->
+      <div>
+        addOnFilters - {{ product.metafields.seed.addOnFilters }}<br>
+        applicableFor - {{ product.metafields.seed.applicableFor }}<br>
+        availableInCountries - {{ product.metafields.seed.availableInCountries }}<br>
+        blair_airInlet - {{ product.metafields.seed.blair_airInlet }}<br>
+        blair_airOutlet - {{ product.metafields.seed.blair_airOutlet }}<br>
+        blair_airSensor - {{ product.metafields.seed.blair_airSensor }}<br>
+        blair_blue_allocated_unit - {{ product.metafields.seed.applicableFor }}<br>
+        blair_CADR_dust - {{ product.metafields.seed.blair_CADR_dust }}<br>
+        blair_CADR_pollen - {{ product.metafields.seed.blair_CADR_pollen }}<br>
+        blair_CADR_smoke - {{ product.metafields.seed.blair_CADR_smoke }}<br>
+        blair_casters - {{ product.metafields.seed.blair_casters }}<br>
+        blair_classic_allocated_unit - {{ product.metafields.seed.blair_classic_allocated_unit }}<br>
+        blair_clean_air_delivery_rate - {{ product.metafields.seed.blair_clean_air_delivery_rate }}<br>
+        blair_defaultFilter - {{ product.metafields.seed.blair_defaultFilter }}<br>
+        blair_defaultSpareID - {{ product.metafields.seed.blair_defaultSpareID }}<br>
+        blair_dimensions - {{ product.metafields.seed.blair_dimensions }}<br>
+        blair_dimensions_measurement - {{ product.metafields.seed.blair_dimensions_measurement }}<br>
+        blair_energyConsumption - {{ product.metafields.seed.blair_energyConsumption }}<br>
+        blair_familyValue - {{ product.metafields.seed.blair_familyValue }}<br>
+        blair_filterSpecification_filterNumber - {{ product.metafields.seed.blair_filterSpecification_filterNumber }}<br>
+        blair_filterSpecification_filterType - {{ product.metafields.seed.blair_filterSpecification_filterType }}<br>
+        blair_filterSpecification_frameMaterial - {{ product.metafields.seed.blair_filterSpecification_frameMaterial }}<br>
+        blair_filterSpecification_hepaTechnology - {{ product.metafields.seed.blair_filterSpecification_hepaTechnology }}<br>
+        blair_filterSpecification_lifetime - {{ product.metafields.seed.blair_filterSpecification_lifetime }}<br>
+        blair_filterSpecification_recycling - {{ product.metafields.seed.blair_filterSpecification_recycling }}<br>
+        blair_filterSupportModels - {{ product.metafields.seed.blair_filterSupportModels }}<br>
+        blair_intelligence - {{ product.metafields.seed.blair_intelligence }}<br>
+        blair_itemOption - {{ product.metafields.seed.blair_itemOption }}<br>
+        blair_productSpecification_airchanges - {{ product.metafields.seed.blair_productSpecification_airchanges }}<br>
+        blair_productSpecification_fanspeed - {{ product.metafields.seed.blair_productSpecification_fanspeed }}<br>
+        blair_productSpecification_soundlevel - {{ product.metafields.seed.blair_productSpecification_soundlevel }}<br>
+        blair_productSpecification_timer - {{ product.metafields.seed.blair_productSpecification_timer }}<br>
+        blair_productSpecification_weight - {{ product.metafields.seed.blair_productSpecification_weight }}<br>
+        blair_productSpecification_weight_measurement - {{ product.metafields.seed.blair_productSpecification_weight_measurement }}<br>
+        blair_pro_allocated_unit - {{ product.metafields.seed.blair_pro_allocated_unit }}<br>
+        blair_quantityProduct - {{ product.metafields.seed.blair_quantityProduct }}<br>
+        blair_recommended - {{ product.metafields.seed.blair_recommended }}<br>
+        blair_recommendedRoomSize - {{ product.metafields.seed.blair_recommendedRoomSize }}<br>
+        blair_recommendedRoomSize_measurement - {{ product.metafields.seed.blair_recommendedRoomSize_measurement }}<br>
+        blair_recurringSubscription - {{ product.metafields.seed.blair_recurringSubscription }}<br>
+        blair_remote - {{ product.metafields.seed.blair_remote }}<br>
+        blair_repIndicator - {{ product.metafields.seed.blair_repIndicator }}<br>
+        blair_sortByRoomSize - {{ product.metafields.seed.blair_sortByRoomSize }}<br>
+        blair_subscriptionFamily - {{ product.metafields.seed.blair_subscriptionFamily }}<br>
+        blair_subscriptionSeries - {{ product.metafields.seed.blair_subscriptionSeries }}<br>
+        blair_warranty - {{ product.metafields.seed.blair_warranty }}<br>
+        blair_wifi - {{ product.metafields.seed.blair_wifi }}<br>
+        blair_wifiConnectivity - {{ product.metafields.seed.blair_wifiConnectivity }}<br>
+        blueair_included_in_box - {{ product.metafields.seed.blueair_included_in_box }}<br>
+        buylink - {{ product.metafields.seed.buylink }}<br>
+        buyText - {{ product.metafields.seed.buyText }}<br>
+        bvAverageRating - {{ product.metafields.seed.bvAverageRating }}<br>
+        bvRatingRange - {{ product.metafields.seed.bvRatingRange }}<br>
+        bvReviewCount - {{ product.metafields.seed.bvReviewCount }}<br>
+        callOut - {{ product.metafields.seed.callOut }}<br>
+        crMarkBadge - {{ product.metafields.seed.crMarkBadge }}<br>
+        defaultPreFilterID - {{ product.metafields.seed.defaultPreFilterID }}<br>
+        filtervariation - {{ product.metafields.seed.filtervariation }}<br>
+        googleCategory - {{ product.metafields.seed.googleCategory }}<br>
+        googleProductCategories - {{ product.metafields.seed.googleProductCategories }}<br>
+        googleProductType - {{ product.metafields.seed.googleProductType }}<br>
+        images_360 - {{ product.metafields.seed.images_360 }}<br>
+        images_compatibleProducts - {{ product.metafields.seed.images_compatibleProducts }}<br>
+        images_galleryfront - {{ product.metafields.seed.images_galleryfront }}<br>
+        images_googlefeed - {{ product.metafields.seed.images_googlefeed }}<br>
+        images_hero - {{ product.metafields.seed.images_hero }}<br>
+        images_lifestyle - {{ product.metafields.seed.images_lifestyle }}<br>
+        images_newproducttile - {{ product.metafields.seed.images_newproducttile }}<br>
+        images_producttile - {{ product.metafields.seed.images_producttile }}<br>
+        images_specification - {{ product.metafields.seed.images_specification }}<br>
+        images_swatch - {{ product.metafields.seed.images_swatch }}<br>
+        isAffirmEnabled - {{ product.metafields.seed.isAffirmEnabled }}<br>
+        plpbadges - {{ product.metafields.seed.plpbadges }}<br>
+        preFilter - {{ product.metafields.seed.preFilter }}<br>
+        productHeadline1 - {{ product.metafields.seed.productHeadline1 }}<br>
+        productHeadline2 - {{ product.metafields.seed.productHeadline2 }}<br>
+        product_subtitle_import - {{ product.metafields.seed.product_subtitle_import }}<br>
+        sfc_product_id - {{ product.metafields.seed.sfc_product_id }}<br>
+        showPDPImageGallery - {{ product.metafields.seed.showPDPImageGallery }}<br>
+        variationContentReload - {{ product.metafields.seed.variationContentReload }}<br>
+        variationReload - {{ product.metafields.seed.variationReload }}<br>
+      </div>
+    </div><!-- .product__info-container -->
   </div><!-- .product__layout -->
 
   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
@@ -246,6 +500,10 @@
       "type": "title"
     },
     {
+      "name": "Short Description",
+      "type": "short_description"
+    },
+    {
       "name": "Star Rating",
       "type": "star_rating"
     },
@@ -260,6 +518,30 @@
     {
       "name": "ATC Button",
       "type": "atc"
+    },
+    {
+      "name": "Experience",
+      "type": "experience"
+    },
+    {
+      "name": "Additional Features",
+      "type": "additional_features"
+    },
+    {
+      "name": "Shipping & Warranty",
+      "type": "shipping_warranty",
+      "settings": [
+        {
+          "type": "metaobject_list",
+          "id": "icons",
+          "label": "Icons",
+          "metaobject_type": "icon"
+        }
+      ]
+    },
+    {
+      "name": "Upsells",
+      "type": "upsells"
     },
     {
       "name": "Spacing",
