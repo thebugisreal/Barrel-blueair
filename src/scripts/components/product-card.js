@@ -76,8 +76,7 @@ class ProductCard extends HTMLElement {
 
     const prevSelectedSwatch = this.querySelector(`${this._selectors.swatch}[data-selected="true"]`);
     if (prevSelectedSwatch) prevSelectedSwatch.dataset.selected = 'false';
-    const newSelectedSwatch = this.querySelector(`${this._selectors.swatch}[data-swatch="${swatchTarget.dataset.swatch}"]`);
-    if (newSelectedSwatch) newSelectedSwatch.dataset.selected = 'true';
+    swatchTarget.dataset.selected = 'true';
 
     this.currentSwatchLabel.textContent = swatchTarget.dataset.swatch;
 

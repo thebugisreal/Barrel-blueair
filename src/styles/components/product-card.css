@@ -14,7 +14,7 @@
 .product-card__swatch--color[data-selected="false"]:focus,
 .product-card__swatch--color[data-selected="false"]:focus-visible {
   @apply border
-  border-black
+  border-blue
   p-xxxs;
 }
 
@@ -52,7 +52,7 @@
 
   .product-card__swatch--color[data-selected="false"]:hover {
     @apply border
-    border-black
+    border-blue
     p-xxxs;
   }
 
