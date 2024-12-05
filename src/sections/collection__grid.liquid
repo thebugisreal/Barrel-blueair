@@ -27,12 +27,26 @@
           {% assign linklist = linklists[collection.metafields.seed.collection_links] %}
           {% if linklist != blank %}
             <div class="collection-grid__collection-links-container mb-lg">
-              <p>Choose Your Product Type</p>
+              {% if collection.metafields.seed.collection_links_heading != blank %}
+                <div class="p4">{{ collection.metafields.seed.collection_links_heading }}</div>
+              {% endif %}
               <div class="collection-grid__collection-links mt-xs grid grid-cols-2 gap-xs desktop:flex desktop:flex-wrap desktop:gap-md">
                 {% for link in linklist.links %}
                   {% unless link.active %}
                     <a href="{{ link.url }}" class="collection-grid__collection-link !no-underline border border-gray desktop:flex desktop:justify-start desktop:items-center desktop:w-[300px] desktop:min-w-[300px]">
-                      {% if link.object.metafields.seed.collection_link_image != blank %}
+                      {% if collection.metafields.seed.collection_links_heading contains 'Room Size' %}
+                        <div class="p-sm hidden desktop:block">
+                          {% if link.title contains 'Small' %}
+                            {% render 'room-icon', size: 'small', width: '64px' %}
+                          {% elsif link.title contains 'Medium' %}
+                            {% render 'room-icon', size: 'medium', width: '64px' %}
+                          {% elsif link.title contains 'Large' %}
+                            {% render 'room-icon', size: 'large', width: '64px' %}
+                          {% elsif link.title contains 'Extralarge' %}
+                            {% render 'room-icon', size: 'extralarge', width: '64px' %}
+                          {% endif %}
+                        </div>
+                      {% elsif link.object.metafields.seed.collection_link_image != blank %}
                         <div class="w-[100px] hidden desktop:block">
                           {% render 'lazy-image' image: link.object.metafields.seed.collection_link_image %}
                         </div>

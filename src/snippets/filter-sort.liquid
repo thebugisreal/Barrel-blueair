@@ -32,33 +32,6 @@
       {%- endunless -%}
 
       <s-accordion data-manual-collapse="true" js-accordion>
-        {% if results.metafields.seed.collection_links != blank and template.name == 'collection' %}
-          {% assign linklist = linklists[results.metafields.seed.collection_links] %}
-          {% if linklist != blank %}
-            <div class="filter-sort accordion-item border-t border-gray" js-accordion-item>
-              <button type="button" class="filter-sort__label accordion-header w-full flex justify-between items-center py-sm" aria-expanded="true" aria-controls="product-type-link" js-accordion-header>
-                <span class="s2">Product Type</span>
-                <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
-                <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
-              </button>
-              <div id="product-type-link" class="filter-sort__values-container accordion-content" aria-hidden="false" js-accordion-content>
-                <ul class="filter-sort__values pb-xxs" role="list">
-                  {% for link in linklist.links %}
-                    {% unless link.active %}
-                      <li class="filter-sort__value mb-sm">
-                        <a href="{{ link.url }}" class="filter-value__link flex justify-start items-center gap-xs !no-underline">
-                          <span class="filter-value-link__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230]"></span>
-                          <span class="filter-value-link__label p2 flex-1">{{ link.title }}</span>
-                        </a>
-                      </li>
-                    {% endunless %}
-                  {% endfor %}
-                </ul>   
-              </div>
-            </div>
-          {% endif %}
-        {% endif %}
-
         {%- for filter in results.filters -%}
           {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
           <div class="filter-sort accordion-item border-t border-gray" data-index="{{ forloop.index }}" js-accordion-item js-filter>
