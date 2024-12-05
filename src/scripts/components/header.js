@@ -18,6 +18,10 @@ class SiteHeader extends HTMLElement {
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
 
+    if (this.dataset.template == 'index') {
+      document.addEventListener('scroll', this._headerOnScroll);
+    }
+
     this._setVariables();
     this._watchWindowResize();
     if (this.announcementBar) {
@@ -30,6 +34,15 @@ class SiteHeader extends HTMLElement {
     this.mobileSubnavCloseBtns.forEach((btn) => {
       btn.addEventListener('click', this._closeMobileSubNav);
     });
+  }
+
+
+  _headerOnScroll = () => {
+    if (window.scrollY > 0) {
+      this.classList.add('bg-white');
+    } else {
+      this.classList.remove('bg-white');
+    }
   }
 
   _closeMobileSubNav = (evt) => {

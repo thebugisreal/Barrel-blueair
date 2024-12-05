@@ -1,11 +1,11 @@
-<s-header class="site-header fixed top-0 left-0 right-0 {% if template.name == 'index' %}bg-transparent{% else %}bg-white{% endif %}">
+<s-header class="site-header fixed top-0 left-0 right-0 {% if template.name == 'index' %}transition-colors duration-300 bg-transparent{% else %}bg-white{% endif %}" data-template="{{ template }}">
   {% if section.blocks.size > 0 %}
     <div class="section__announcement-bar hidden relative p-[5px] tabletl:p-[10px] {{ section.settings.bg_color }}" js-announcement-bar>
       {%- capture carousel_options -%}
           {
             "slidesPerView": 1,
             "cssMode": true,
-            "loop": false,
+            "loop": true,
             "autoHeight": false,
             "navigation": {
               "enabled": true,
@@ -83,13 +83,8 @@
   "settings": [
     {
       "type": "link_list",
-      "id": "header_nav_mobile",
-      "label": "Navigation - Mobile"
-    },
-    {
-      "type": "link_list",
       "id": "header_nav_desktop",
-      "label": "Navigation - Desktop"
+      "label": "Navigation"
     },
     {
       "type": "header",

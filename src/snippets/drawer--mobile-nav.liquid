@@ -5,7 +5,7 @@
       <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
     </div>
     <ul class="mobile-nav__main-nav p-md flex-1 max-h-full overflow-y-auto flex flex-col gap-xs text-18">
-      {% assign nav_linklist = linklists[section.settings.header_nav_mobile] %}
+      {% assign nav_linklist = linklists[section.settings.header_nav_desktop] %}
       {% for link in nav_linklist.links %}
         {% if link.links != blank %}
           <li class="mobile-main-nav__item">
@@ -61,7 +61,7 @@
                           {% endif %}
 
                           {% if grandchild_link.object.metafields.seed.nav_link_tag!= blank %}
-                            <div class="absolute top-xxs left-xxs text-12 leading-[12px] font-500 bg-blue-sky rounded-[60px] py-xxxs px-xxs">
+                            <div class="absolute top-xxs left-xxs text-12 leading-[12px] font-500 bg-[#D6E4F3] rounded-[60px] py-xxxs px-xxs">
                               {{ grandchild_link.object.metafields.seed.nav_link_tag }}
                             </div>
                           {% endif %}
@@ -73,7 +73,12 @@
                     </li>
                   {% endfor %}
                 </ul>
-              {% elsif child_link_handle == 'quiz' %}
+              {% endif %}
+            {% endfor %}
+
+            {% for child_link in link.links %}
+              {% assign child_link_handle = child_link.title | handle %}
+              {% if child_link_handle == 'quiz' %}
                 {% if settings.quiz_link_url != blank and settings.quiz_link_text != blank %}
                   <div class="mobile-child-nav__quiz p-md">
                     {% if settings.quiz_image != blank %}
@@ -109,37 +114,43 @@
                   </div>
                 {% endif %}
               {% else %}
-                {% if child_link.links != blank %}
-                  <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
-                    <div class="font-700 mb-xs">{{ child_link.title }}</div>
-                    <ul class="mobile-child-nav__links">
-                      {% for grandchild_link in child_link.links %}
-                        <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
-                          <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit">
-                            {% if child_link_handle contains 'room-size' %}
-                              {% if grandchild_link.title contains 'Small' %}
-                                {% render 'room-icon', size: 'small' %}
-                              {% elsif grandchild_link.title contains 'Medium' %}
-                                {% render 'room-icon', size: 'medium' %}
-                              {% elsif grandchild_link.title contains 'Large' %}
-                                {% render 'room-icon', size: 'large' %}
-                              {% elsif grandchild_link.title contains 'Extralarge' %}
-                                {% render 'room-icon', size: 'extralarge' %}
+                {% unless child_link.title == "Image Links" %}
+                  {% if child_link.links != blank %}
+                    <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
+                      <div class="font-700 mb-xs">{{ child_link.title }}</div>
+                      <ul class="mobile-child-nav__links">
+                        {% for grandchild_link in child_link.links %}
+                          <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
+                            <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit">
+                              {% if child_link_handle contains 'room-size' %}
+                                {% if grandchild_link.title contains 'Small' %}
+                                  {% render 'room-icon', size: 'small' %}
+                                {% elsif grandchild_link.title contains 'Medium' %}
+                                  {% render 'room-icon', size: 'medium' %}
+                                {% elsif grandchild_link.title contains 'Large' %}
+                                  {% render 'room-icon', size: 'large' %}
+                                {% elsif grandchild_link.title contains 'Extralarge' %}
+                                  {% render 'room-icon', size: 'extralarge' %}
+                                {% endif %}
                               {% endif %}
-                            {% endif %}
-                            <span>{{ grandchild_link.title }}</span>
-                          </a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                {% else %}
-                  <div class="mobile-child-nav__item mx-md border-t border-blue-light">
-                    <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
-                      {{ child_link.title }}
-                    </a>
-                  </div>
-                {% endif %}
+                              <span>{{ grandchild_link.title }}</span>
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% else %}
+                    <div class="mobile-child-nav__item mx-md border-t border-blue-light">
+                      <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
+                        {% if settings.bcorp_link_url == child_link.url %}
+                          <div class="mobile-child-nav__bcorp-link">{% render 'icon-b-default' %}</div>
+                        {% else %}
+                          {{ child_link.title }}
+                        {% endif %}
+                      </a>
+                    </div>
+                  {% endif %}
+                {% endunless %}
               {% endif %}
             {% endfor %}
           </div>
