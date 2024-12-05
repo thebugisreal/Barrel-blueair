@@ -14,7 +14,7 @@ class ProductCard extends HTMLElement {
 
   connectedCallback() {
     this.soldOutTag = this.querySelector(this._selectors.soldOutTag);
-    this.swathces = this.querySelectorAll(this._selectors.swatch);
+    this.swatches = this.querySelectorAll(this._selectors.swatch);
     this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     this.productLinks = this.querySelectorAll(this._selectors.productLink);
     this.price = this.querySelector(this._selectors.price);
@@ -24,7 +24,7 @@ class ProductCard extends HTMLElement {
   }
 
   _setListeners() {
-    this.swathces.forEach((swatch) => {
+    this.swatches.forEach((swatch) => {
       swatch.addEventListener('click', this._swatchOnClick);
     });
   }
@@ -52,14 +52,14 @@ class ProductCard extends HTMLElement {
 
   _updatePrice = (price) => {
     const compareAtPrice = parseFloat(price.split('|')[0]);
-    const currenttPrice = parseFloat(price.split('|')[1]);
+    const currentPrice = parseFloat(price.split('|')[1]);
 
     let priceMarkup;
-    if (compareAtPrice && compareAtPrice > currenttPrice) {
+    if (compareAtPrice && compareAtPrice > currentPrice) {
       priceMarkup = `<s class="product-card__price product-card__price--compare">${theme.utils.formatMoney(compareAtPrice, this.moneyFormat)}</s>
-                    <span class="product-card__price product-card__price--current font-700">${theme.utils.formatMoney(currenttPrice, this.moneyFormat)}</span>`;
+                    <span class="product-card__price product-card__price--current font-700">${theme.utils.formatMoney(currentPrice, this.moneyFormat)}</span>`;
     } else {
-      priceMarkup = `<span class="product-card__price product-card__price--current font-700">${theme.utils.formatMoney(currenttPrice, this.moneyFormat)}</span>`;
+      priceMarkup = `<span class="product-card__price product-card__price--current font-700">${theme.utils.formatMoney(currentPrice, this.moneyFormat)}</span>`;
     }
 
     this.price.innerHTML = priceMarkup;

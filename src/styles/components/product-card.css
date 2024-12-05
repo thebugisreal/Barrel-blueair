@@ -46,7 +46,8 @@
 }
 
 @media screen(desktop) {
-  .product-card:hover {
+  .product-card:hover,
+  .product-card:focus-within {
     @apply bg-blue-light;
   }
 
