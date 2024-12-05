@@ -2,10 +2,16 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
+
 {% if product.metafields.seed.pdp_video != blank %}
-    <div class="product__video {{ margins_paddings }}">
-        {{  product.metafields.seed.pdp_video.value }}
-    </div>
+  <div class="product__video {{ margins_paddings }} block relative overflow-hidden">
+    {{ product.metafields.seed.pdp_video.value | video_tag: class: 'block w-full h-full object-cover object-center', image_size: '1280x', autoplay: section.settings.enable_autoplay, loop: true, muted: true, controls: true }}
+  </div>
+
+{% elsif product.metafields.seed.pdp_video_embed != blank %}
+  <div class="product__video {{ margins_paddings }}">
+      {{  product.metafields.seed.pdp_video_embed.value }}
+  </div>
 {% endif %}
 
 {% schema %}
@@ -343,6 +349,17 @@
       "label": "Text Content - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "100%"
+    },
+    {
+      "type": "header",
+      "content": "Video Controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable Autoplay",
+      "info": "Uploaded video only",
+      "default": false
     }
   ],
   "enabled_on": {
