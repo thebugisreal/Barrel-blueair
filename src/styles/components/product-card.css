@@ -1,0 +1,63 @@
+.product-card__tag--blue {
+  @apply text-white
+  bg-blue;
+}
+
+.product-card__tag--white {
+  @apply text-blue
+  bg-white
+  border
+  border-gray;
+}
+
+.product-card__swatch--color[data-selected="true"],
+.product-card__swatch--color[data-selected="false"]:focus,
+.product-card__swatch--color[data-selected="false"]:focus-visible {
+  @apply border
+  border-blue
+  p-xxxs;
+}
+
+.product-card__swatch--color[data-selected="false"]:focus:not(:focus-visible) {
+  @apply border-0
+  p-0;
+}
+
+.product-card__swatch--filter-type[data-selected="true"] {
+  @apply bg-blue-light
+  border-blue;
+}
+
+.product-card__swatch--filter-type[data-selected="false"]:focus,
+.product-card__swatch--filter-type[data-selected="false"]:focus-visible {
+  @apply border-blue
+}
+
+.product-card__swatch--filter-type[data-selected="false"]:focus:not(:focus-visible) {
+  @apply border-gray
+}
+
+.product-card__swatch--filter-type[data-selected="true"] .product-card-swatch__checkbox {
+  @apply border-blue;
+}
+
+.product-card__swatch--filter-type[data-selected="true"] .product-card-swatch__checkbox-fill {
+  @apply bg-blue;
+}
+
+@media screen(desktop) {
+  .product-card:hover,
+  .product-card:focus-within {
+    @apply bg-blue-light;
+  }
+
+  .product-card__swatch--color[data-selected="false"]:hover {
+    @apply border
+    border-blue
+    p-xxxs;
+  }
+
+  .product-card__swatch--filter-type[data-selected="false"]:hover {
+    @apply border-blue
+  }
+}
