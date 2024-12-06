@@ -12,7 +12,11 @@ class ProductMain extends HTMLElement {
       mainSlide: '[js-main-carousel-slide]',
       thumbSlide: '[js-thumb-carousel-slide]',
       price: '[js-price]',
-      currentSwatchLabel: '[js-current-swatch-label]'
+      currentSwatchLabel: '[js-current-swatch-label]',
+      subscriptionContainer: '[js-subscription-container]',
+      subscriptionOffer: '[js-subscription-offer]',
+      subscriptionCustomization: '[js-subscription-customization]',
+      noSubscriptionBtn: '[js-no-subscription-btn]'
     };
   }
 
@@ -22,6 +26,7 @@ class ProductMain extends HTMLElement {
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
     this.prices = this.querySelectorAll(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
+    this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -31,6 +36,77 @@ class ProductMain extends HTMLElement {
 
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
+    this._handleSubscription();
+  }
+
+  _test() {
+    console.log('test')
+  }
+
+  _handleSubscription() {
+    if (!this.subscriptionContainer) {
+      return;
+    }
+
+    this.subscriptionOffer = this.subscriptionContainer.querySelector(this._selectors.subscriptionOffer);
+    this.subscriptionCustomization = this.subscriptionContainer.querySelector(this._selectors.subscriptionCustomization);
+    this.offerBtn = this.subscriptionOffer.querySelector('og-optin-toggle');
+    this.noSubscriptionBtn = this.subscriptionContainer.querySelector(this._selectors.noSubscriptionBtn);
+    this.noSubscriptionBtnJustClicked = false;
+
+    this.offerBtn.addEventListener('click', () => {
+      if (this.noSubscriptionBtnJustClicked) {
+        this.noSubscriptionBtn.dataset.selected = 'false';
+        this.noSubscriptionBtnJustClicked = false;
+      }
+      if (!this.offerBtn.hasAttribute('subscribed')) {
+        this.offerBtn.click();
+      }
+    })
+
+    this.noSubscriptionBtn.addEventListener('click', (evt) => {
+      evt.preventDefault();
+
+      console.log(evt.currentTarget.dataset.selected)
+
+      if (evt.currentTarget.dataset.selected == 'true') {
+        return;
+      }
+
+      evt.currentTarget.dataset.selected = 'true';
+      if (this.offerBtn.hasAttribute('subscribed')) {
+        this.offerBtn.click();
+      }
+      this.noSubscriptionBtnJustClicked = true;
+    });
+    /*
+    console.log(this.subscriptionOffer.querySelector('.og-text'))
+    let array = [];
+    array.push(this.dataset.productId);
+    console.log(array)
+    const offers = window.og.offers.getOptins([49364636860702])
+    console.log(offers)
+    console.log(this.subscriptionOffer, this.subscriptionCustomization)
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        console.log(mutation)
+        if (mutation.type === 'childList') {
+          console.log('Child node added:');
+          console.log('node')
+          this._test();
+          // Check if the added node is the one you're looking for
+          mutation.addedNodes.forEach(node => {
+            
+            if (node.id === 'specificChildId') {
+              console.log('Specific child node added!');
+            }
+          });
+        }
+      });
+    });
+    
+    observer.observe(this.subscriptionOffer, { childList: true, subtree: true });
+    */
   }
 
   _initProductForm() {
@@ -126,12 +202,14 @@ class ProductMain extends HTMLElement {
   };
 
   _updateImageCarousel(swatchName) {
+    let current_thumb_slides_count = 0
     this.thumbSlides.forEach((slide) => {
       slide.classList.remove('hidden', 'swiper-slide', 'swiper-slide-thumb', 'swiper-slide-thumb-active');
       if (slide.dataset.swatch && slide.dataset.swatch != swatchName) {
         slide.classList.add('hidden');
       } else {
         slide.classList.add('swiper-slide', 'swiper-slide-thumb');
+        current_thumb_slides_count++;
       }
     });
 
@@ -147,6 +225,14 @@ class ProductMain extends HTMLElement {
     const carousels = this.querySelectorAll(this._selectors.carousel);
     carousels.forEach((carousel) => {
       carousel.swiper.update();
+
+      if (carousel.hasAttribute('is-thumb-carousel')) {
+        if (current_thumb_slides_count < 2) {
+          carousel.querySelector('[js-pdp-thumb-next]').classList.add('hide-thumb-carousel');
+        } else {
+          carousel.querySelector('[js-pdp-thumb-next]').classList.remove('hide-thumb-carousel');
+        }
+      }
     });
   }
 

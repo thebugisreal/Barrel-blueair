@@ -1,5 +1,5 @@
 /* product carousel */
-.product__thumb-carousel:has(.swiper-button-lock) {
+.product__thumb-carousel:has(.hide-thumb-carousel) {
   @apply hidden;
 }
 
@@ -102,4 +102,96 @@
   .product-upsell__variant--filter-type[data-selected="false"]:hover {
     @apply border-blue
   }
+}
+
+/* subscription */
+.product-subscription__offer[subscribed] {
+  @apply bg-gray-athans
+  !text-blue;
+}
+
+.product-subscription__offer .og-optout-buttons{
+  @apply !m-0;
+}
+
+.product-subscription__offer .og-optout-buttons og-optin-toggle {
+  @apply !s3
+  !font-700;
+}
+
+.product-subscription__offer .og-button-toggle {
+  @apply border
+  border-gray
+  rounded-full
+  !px-xxxs
+  !pt-[5px]
+  !pb-[3px]
+  !bg-transparent
+  !ml-0
+  !mr-xs
+  !mt-0
+  !mb-[3px];
+}
+
+.product-subscription__offer .og-button-toggle svg {
+  @apply w-[12px]
+  h-[12px];
+}
+
+.product-subscription__offer .og-text,
+.product-subscription__offer .og-optin-buttons {
+  @apply !max-h-0
+  overflow-hidden
+  transition-[max-height]
+  duration-300
+  !m-0;
+}
+
+.product-subscription__offer[subscribed] .og-text,
+.product-subscription__offer[subscribed] .og-optin-buttons {
+  @apply !max-h-[1000px];
+}
+
+.product-subscription__offer .og-text {
+  @apply !p3
+  !text-14;
+}
+
+
+
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__non-subscription[data-selected="true"] {
+  @apply bg-gray-athans;
+}
+
+.product-subscription__non-subscription[data-selected="true"] .checkbox {
+  @apply border-blue;
+}
+
+.product-subscription__non-subscription[data-selected="false"] .checkbox .icon {
+  @apply hidden;
 }

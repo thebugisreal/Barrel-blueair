@@ -12,7 +12,7 @@
   endif
 -%}
 
-<s-product role="section" class="product" data-section-id="{{ section.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %}>
+<s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %}>
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
   <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
     <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)]">
@@ -29,9 +29,10 @@
           }
         }
       {%- endcapture -%}
-      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md">
-        <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-full px-[40px]" js-carousel js-pdp-carousel>
+      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md w-fit mx-auto">
+        <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-full px-[40px]" js-carousel js-pdp-carousel is-thumb-carousel>
           <div class="swiper-wrapper">
+            {% assign current_slides_count = 0 %}
             {% assign active_thumb_taken = false %}
             {% for media in product.media %}
               {% assign media_swatch = '' %}
@@ -47,24 +48,27 @@
                 {% assign active_thumb_taken = true %}
                 {% assign active_thumb = true %}
               {% endif %}
+              {% unless hide_media %}
+                {% assign current_slides_count = current_slides_count | plus: 1 %}
+              {% endunless %}
               {% case media.media_type %}
                 {% when 'image' %}
-                  <button class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
-                  </button>
+                  </div>
                 {% when 'video' %}
-                  <button class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
-                  </button>
+                  </div>
                 {% when 'external_video' %}              
-                  <button class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | external_video_tag }}
-                  </button>
-                {% endcase %}
+                  </div>
+              {% endcase %}
             {% endfor %}
           </div>
           <div class="swiper-button-prev left-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-prev>{% render 'icon-active-left' %}</div>
-          <div class="swiper-button-next right-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-next>{% render 'icon-active-right' %}</div>
+          <div class="swiper-button-next right-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none {% if current_slides_count < 2 %}hide-thumb-carousel{% endif %}" js-pdp-thumb-next>{% render 'icon-active-right' %}</div>
           <div class="absolute h-full w-[40px] left-0 top-0 z-[5]" style="background: linear-gradient(to right, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
           <div class="absolute h-full w-[40px] right-0 top-0 z-[5]" style="background: linear-gradient(to left, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
         </div>
@@ -95,18 +99,18 @@
               {% endif %}
               {% case media.media_type %}
                 {% when 'image' %}
-                  <button class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {% render 'lazy-image' image: media %}
-                  </button>
+                  </div>
                 {% when 'video' %}
-                  <button class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
-                  </button>
+                  </div>
                 {% when 'external_video' %}              
-                  <button class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {{ media | external_video_tag }}
-                  </button>
-                {% endcase %}
+                  </div>
+              {% endcase %}
             {% endfor %}
           </div>
           <div class="swiper-button-prev swiper-nav-btn left-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-prev>{% render 'icon-arrow-left' %}</div>
@@ -159,7 +163,29 @@
               </product-options>
               {% endunless %}
             {% when 'subscription' %}
+              <div class="product__subscription" js-subscription-container>
+                <div class="product-subscription__customized-element" js-subscription-customization>
+                  
+                </div>
 
+                <og-offer product="{{ current_variant.id }}" location="pdp" class="product-subscription__offer border border-blue rounded-[3px] px-xs py-md desktop:px-md" js-subscription-offer>
+                </og-offer>
+
+                <button type="button" data-selected="false" class="product-subscription__non-subscription px-xs py-md desktop:px-md flex items-center gap-sm w-full border border-blue rounded-[3px] mt-sm" js-no-subscription-btn>
+                  <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
+                    {% render 'icon-check' %}
+                  </div>
+                  <div class="s3 font-700 flex-1 text-left">{Product} Only</div>
+                  <div class="product__price-wrapper text-16 flex justify-end items-center gap-xs" js-price including-compare-at>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
+                      <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                    {% else %}
+                      <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                    {% endif %}
+                  </div>
+                </button>
+              </div>
             {% when 'atc' %}
               <button 
                 class="product__atc btn btn--blue-rounded relative"
@@ -181,77 +207,81 @@
               </button>
               <p class="hidden p2" js-error-message></p>
             {% when 'experience' %}
-              <div class="product__experience py-md border-t border-gray">
-                {% if product.metafields.seed.experience_heading != blank %}
-                  <div class="product-experience__heading s2 mb-sm desktop:mb-md">
-                    {{ product.metafields.seed.experience_heading }}
-                  </div>
-                {% endif %}
-                {% if product.metafields.seed.experience_description != blank %}
-                  <div class="product-experience__description rte p4">
-                    {{ product.metafields.seed.experience_description | metafield_tag }}
-                  </div>
-                {% endif %}
-                {% if product.metafields.seed.experience_icons != blank %}
-                  <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md desktop:gap-x-sm">
-                    {% for icon_object in product.metafields.seed.experience_icons.value %}
-                      <li class="product-experience__icon flex flex-col items-center gap-xs">
-                        <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                        <div class="p4 text-center">{{ icon_object.text }}</div>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-            {% when 'additional_features' %}
-              <s-accordion data-manual-collapse="true" js-accordion>
-                <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
-                  <button class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductAdditionalFeatures" js-accordion-header>
-                    <span class="s2">Additional Features</span>
-                    <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
-                    <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
-                  </button>
-                  <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="false" js-accordion-content>
-                    <ul class="product-additional-features__list pb-md">
-                      {% if product.metafields.seed.blair_wifiConnectivity != blank %}
-                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                          <span class="p3">Wi-Fi connectivity for remote control</span>
-                          <span class="p4">{% if product.metafields.seed.blair_wifiConnectivity == '1' or product.metafields.seed.blair_wifiConnectivity == 'Yes' or product.metafields.seed.blair_wifiConnectivity == 'yes' %}Yes{% else %}No{% endif %}</span>
+              {% if product.metafields.seed.experience_icons != blank or product.metafields.seed.experience_description != blank %}
+                <div class="product__experience py-md border-t border-gray">
+                  {% if product.metafields.seed.experience_heading != blank %}
+                    <div class="product-experience__heading s2 mb-sm desktop:mb-md">
+                      {{ product.metafields.seed.experience_heading }}
+                    </div>
+                  {% endif %}
+                  {% if product.metafields.seed.experience_description != blank %}
+                    <div class="product-experience__description rte p4">
+                      {{ product.metafields.seed.experience_description | metafield_tag }}
+                    </div>
+                  {% endif %}
+                  {% if product.metafields.seed.experience_icons != blank %}
+                    <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md desktop:gap-x-sm">
+                      {% for icon_object in product.metafields.seed.experience_icons.value %}
+                        <li class="product-experience__icon flex flex-col items-center gap-xs">
+                          <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                          <div class="p4 text-center">{{ icon_object.text }}</div>
                         </li>
-                      {% endif %}
-                      {% if product.metafields.seed.blair_productSpecification_timer != blank %}
-                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                          <span class="p3">On/ off timer</span>
-                          <span class="p4">
-                            {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
-                              Yes, <a href="/" class="link link--underline underline-offset-1">via Blueair App</a>
-                            {% else %}
-                              No
-                            {% endif %}
-                        </span>
-                        </li>
-                      {% endif %}
-                      {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
-                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                          <span class="p3">Speed control options</span>
-                          <span class="p4">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
-                        </li>
-                      {% endif %}
-                      {% if product.metafields.seed.blair_airSensor != blank %}
-                        <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                          <span class="p3">Integrated air sensors</span>
-                          <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}Yes{% else %}No{% endif %}</span>
-                        </li>
-                      {% endif %}
+                      {% endfor %}
                     </ul>
-                  </div>
+                  {% endif %}
                 </div>
-              </s-accordion>
+              {% endif %}
+            {% when 'additional_features' %}
+              {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifiConnectivity != blank %}
+                <s-accordion data-manual-collapse="true" js-accordion>
+                  <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
+                    <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductAdditionalFeatures" js-accordion-header>
+                      <span class="s2">Additional Features</span>
+                      <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
+                      <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
+                    </button>
+                    <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="false" js-accordion-content>
+                      <ul class="product-additional-features__list pb-md">
+                        {% if product.metafields.seed.blair_wifiConnectivity != blank %}
+                          <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                            <span class="p3">Wi-Fi connectivity for remote control</span>
+                            <span class="p4">{% if product.metafields.seed.blair_wifiConnectivity == '1' or product.metafields.seed.blair_wifiConnectivity == 'Yes' or product.metafields.seed.blair_wifiConnectivity == 'yes' %}Yes{% else %}No{% endif %}</span>
+                          </li>
+                        {% endif %}
+                        {% if product.metafields.seed.blair_productSpecification_timer != blank %}
+                          <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                            <span class="p3">On/ off timer</span>
+                            <span class="p4">
+                              {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
+                                Yes, <a href="/" class="link link--underline underline-offset-1">via Blueair App</a>
+                              {% else %}
+                                No
+                              {% endif %}
+                          </span>
+                          </li>
+                        {% endif %}
+                        {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
+                          <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                            <span class="p3">Speed control options</span>
+                            <span class="p4">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
+                          </li>
+                        {% endif %}
+                        {% if product.metafields.seed.blair_airSensor != blank %}
+                          <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                            <span class="p3">Integrated air sensors</span>
+                            <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}Yes{% else %}No{% endif %}</span>
+                          </li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                  </div>
+                </s-accordion>
+              {% endif %}
             {% when 'shipping_warranty' %}
               {% if block.settings.icons != blank %}
                 <s-accordion data-manual-collapse="true" js-accordion>
                   <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
-                    <button class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
+                    <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
                       <span class="s2">Shipping & Warranty</span>
                       <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
                       <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
@@ -270,15 +300,22 @@
                 </s-accordion>
               {% endif %}
             {% when 'upsells' %}
-              {% if product.metafields.seed.upsell != blank %}
+              {% if product.metafields.seed.upsells != blank %}
                 <div class="product__upsells py-md border-t border-gray">
-                  <div class="product-upsells__heading s2">Customize your purifier</div>
-                  <div class="product-upsells__items mt-md grid grid-cols-1 gap-md desktop:grid-cols-2 desktop:gap-sm">
-                    {% for upsell_product in product.metafields.seed.upsell.value %}
+                  {% if product.metafields.seed.upsells_heading != blank %}
+                    <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
+                  {% endif %}
+                  <div class="product-upsells__items grid grid-cols-1 gap-md desktop:grid-cols-2 desktop:gap-sm">
+                    {% for upsell_object in product.metafields.seed.upsells.value %}
                       <product-upsell class="product-upsell__item border border-gray p-sm desktop:py-md flex flex-col">
-                        <div class="product-upsell__title s2 mb-xxs">upsell title</div>
-                        <div class="product-upsell__description p4">upsell description</div>
+                        {% if upsell_object.heading != blank %}
+                          <div class="product-upsell__title s2 mb-xxs">{{ upsell_object.heading }}</div>
+                        {% endif %}
+                        {% if upsell_object.short_description != blank %}
+                          <div class="product-upsell__description p4">{{ upsell_object.short_description }}</div>
+                        {% endif %}
                         <div class="product-upsell__buybox mt-md flex-1 flex flex-col justify-between gap-md">
+                          {% assign upsell_product = upsell_object.product.value %}
                           {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
                           {% if upsell_product.variants.size > 1 %}
                             {% liquid
@@ -354,7 +391,7 @@
           {% endcase %}
         {% endfor %}
       {%- endform -%}
-      <div>
+      <div class="">
         addOnFilters - {{ product.metafields.seed.addOnFilters }}<br>
         applicableFor - {{ product.metafields.seed.applicableFor }}<br>
         availableInCountries - {{ product.metafields.seed.availableInCountries }}<br>
