@@ -6,10 +6,14 @@
     <div class="product__image-text {{ margins_paddings }} px-[30px] {{ section.settings.color }} tabletl:px-[60px]">
         <div class="mx-auto tabletl:max-w-[var(--max-width-desktop)]"  style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
             <div class="flex flex-col gap-xl tabletl:gap-[136px] tabletl:flex-row">
-                {% if product.metafields.seed.pdp_image_text.value.image != blank %}
-                    <div class="image-container tabletl:w-1/2">
-                        {%  render 'lazy-image' image: product.metafields.seed.pdp_image_text.value.image, image_desktop: product.metafields.seed.pdp_image_text.value.image_desktop, picture_classes: 'h-full', img_classes: 'h-full'%}
-                    </div>
+                {% if product.metafields.seed.pdp_image_text.value.video != blank %}
+                  <div class="video-container tabletl:w-1/2">
+                    {{ product.metafields.seed.pdp_image_text.value.video.value | video_tag: class: 'block w-full h-full object-cover object-center desktop:pointer-events-none', image_size: '1280x', autoplay: true, loop: true, muted: true, controls: false }}
+                  </div>
+                {% elsif product.metafields.seed.pdp_image_text.value.image != blank%}
+                  <div class="image-container tabletl:w-1/2">
+                      {%  render 'lazy-image' image: product.metafields.seed.pdp_image_text.value.image, image_desktop: product.metafields.seed.pdp_image_text.value.image_desktop, picture_classes: 'h-full', img_classes: 'h-full'%}
+                  </div>
                 {% endif %}
                 <div class="text-content tabletl:w-1/2 tabletl:py-xxl">
                     {% if product.metafields.seed.pdp_image_text.value.text != blank %}
