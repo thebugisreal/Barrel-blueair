@@ -2,17 +2,15 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-{% if product.metafields.seed.pdp_filters != blank %}
-    <div class="product__filters {{ margins_paddings }} mx-lg tabletl:mx-xl">
-        <h3 class="font-900 mb-xl text-center tabletl:pb-xs tabletl:mb-xxl">Meet our filters</h3>
-        <ul class="product__filters-container flex flex-col gap-xl tabletl:grid tabletl:grid-cols-3 tabletl:gap-md">
-          {% for filter in product.metafields.seed.pdp_filters.value %}
-              <li class="product__filter text-center flex flex-col justify-center items-center">
-                <div class="filter-icon w-[64px] mb-xs tabletl:w-[80px]">
+{% if product.metafields.seed.pdp_perks != blank %}
+    <div class="product__perks {{ margins_paddings }} bg-[#D6E4F3] px-lg tabletl:px-xl">
+        <ul class="product__perks-container flex flex-col gap-lg tabletl:grid tabletl:grid-cols-3 tabletl:gap-xl tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
+          {% for filter in product.metafields.seed.pdp_perks.value %}
+              <li class="product__filter text-center flex flex-col justify-center items-center gap-xxxs tabletl:gap-sm tabletl:flex-row">
+                <div class="filter-icon w-[34px] mb-xs">
                     {% render 'lazy-image' image:filter.icon %}
                 </div>
-                <p class="s1 font-900 mb-xs">{{ filter.filter_name }}</p>
-                <div class="rte p4">{{ filter.description |  metafield_tag}}</div>
+                <p class="s3 mb-xs">{{ filter.title }}</p>
               </li>
           {% endfor %}
         </ul>
@@ -21,7 +19,7 @@
 
 {% schema %}
 {
-  "name": "Product - Filters",
+  "name": "Product - Perks",
   "tag": "section",
   "settings": [
     {
@@ -361,7 +359,7 @@
   },
   "presets": [
     {
-      "name": "Product - Filters"
+      "name": "Product - Perks"
     }
   ]
 }

@@ -1,27 +1,43 @@
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
+{%- capture related_product_carousel_options -%}
+    {
+      "spaceBetween": 16,
+      "slidesPerView": 1.2,
+      "cssMode": true,
+      "loop": false,
+      "breakpoints": {
+        "1024": {
+          "slidesPerView": 4,
+          "spaceBetween": 24
+        }
+      }
+    }
+{%- endcapture -%}
 
-{% if product.metafields.seed.pdp_filters != blank %}
-    <div class="product__filters {{ margins_paddings }} mx-lg tabletl:mx-xl">
-        <h3 class="font-900 mb-xl text-center tabletl:pb-xs tabletl:mb-xxl">Meet our filters</h3>
-        <ul class="product__filters-container flex flex-col gap-xl tabletl:grid tabletl:grid-cols-3 tabletl:gap-md">
-          {% for filter in product.metafields.seed.pdp_filters.value %}
-              <li class="product__filter text-center flex flex-col justify-center items-center">
-                <div class="filter-icon w-[64px] mb-xs tabletl:w-[80px]">
-                    {% render 'lazy-image' image:filter.icon %}
+{% if product.metafields.seed.pdp_related_products != blank %}
+    <div class="product__related-products {{ margins_paddings }} bg-[#F7F9FA] pl-lg tabletl:px-xl">
+        <h3 class="font-900 mb-xl text-center tabletl:pb-xs tabletl:mb-xxl">Find your perfect fit in every room</h3>
+        <div class="grid grid-cols-1">
+            <s-carousel class="block" data-options='{{related_product_carousel_options}}'>
+                <div id="RelatedProducts-{{section.id}}" class="swiper" js-carousel>
+                    <div class="swiper-wrapper">
+                        {% for product in product.metafields.seed.pdp_related_products.value %}
+                            <div class="swiper-slide" js-carousel-slide>
+                                {% render 'product-card__description' product: product %}
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <p class="s1 font-900 mb-xs">{{ filter.filter_name }}</p>
-                <div class="rte p4">{{ filter.description |  metafield_tag}}</div>
-              </li>
-          {% endfor %}
-        </ul>
+            </s-carousel>
+        </div>
     </div>
 {% endif %}
 
 {% schema %}
 {
-  "name": "Product - Filters",
+  "name": "Related Products",
   "tag": "section",
   "settings": [
     {
@@ -361,7 +377,7 @@
   },
   "presets": [
     {
-      "name": "Product - Filters"
+      "name": "Related Products"
     }
   ]
 }

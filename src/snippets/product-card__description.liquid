@@ -1,0 +1,33 @@
+{% liquid
+    assign current_variant = product.selected_or_first_available_variant
+
+%}
+
+<div class="product-card__description p-md bg-white">
+    <div class="product-card__tags min-h-[28px] mb-xxs flex justify-center gap-x-xs gap-y-xxs flex-wrap">
+      <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" >Out of Stock</span>
+      {% for tag in product.metafields.seed.product_tags.value %}
+        <span class="product-card__tag product.metafields.seed.product_card_tag_style-{{ product.metafields.seed.product_card_tag_style  }} {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+      {% endfor %}
+    </div>
+
+    <a href="{{ product.url }}" class="product-card__title s1 block text-center !no-underline mb-md">{{ product.title }}</a>
+
+    <div class="product-card__image mb-lg">
+        {% render 'lazy-image' image: product.featured_image %}
+    </div>
+    {% if product.metafields.seed.pdp_additional_descriptions != blank %}
+        <ul class="product__additional-descriptions flex flex-col gap-md">
+            {% for description in product.metafields.seed.pdp_additional_descriptions.value %}
+                <li class="product__additional-description text-center">
+                    {%  liquid 
+                        assign title = description | split: ':' | first
+                        assign desc = description | split: ':' | last
+                    %}
+                    <p class="s2 font-900">{{ title }}</p>
+                    <p class="p2 font-400">{{ desc }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
