@@ -1,0 +1,26 @@
+{% liquid
+  assign difference = settings.shipping_threshold | minus: cart.total_price
+  assign threshold_float = settings.shipping_threshold | times: 1.0
+  assign percentage = cart.total_price | divided_by: threshold_float | times: 100
+  if percentage > 100
+    assign percentage = 100
+  endif
+%}
+
+<div class="cart_shipping-motivator--container mb-lg max-w-[550px] mx-auto">
+  <div class="shipping-motivator__message text-center p4">
+    {% if cart == empty %}
+      Start shopping to qualify for free shipping!
+      {% else %}
+      {% if difference > 0 %}
+        You almost get free shipping! Only {{ difference | money_without_trailing_zeros }} away!
+        {% else %}
+        You've qualified for free shipping
+      {% endif %}
+    {% endif %}
+  </div>
+  <div class="shipping-threshold__wrapper relative flex mt-md">
+    <progress class="shipping-threshold__bar w-full h-[8px] rounded-[100px] overflow-hidden" max="100" value="{{ percentage }}" cart-total="{{ cart.total_price }}">
+    </progress>
+  </div>
+</div>

@@ -14,6 +14,55 @@
         "type": "checkbox",
         "id": "show_cart_note",
         "label": "Show Cart Note"
+      },
+      {
+        "type": "header",
+        "content": "Shipping Threshold"
+      },
+      {
+        "type": "checkbox",
+        "id": "shipping_threshold_enabled",
+        "label": "Enable Shipping Threshold"
+      },
+      {
+        "type": "number",
+        "id": "shipping_threshold",
+        "label": "Free Shipping Threshold",
+        "info": "Integer number of cents. So if it's $49.99, input 4999."
+      },
+      {
+        "type": "header",
+        "content": "Gift with Purchases"
+      },
+      {
+        "type": "number",
+        "id": "gwp_threshold",
+        "label": "GWP Threshold",
+        "info": "Integer number of cents. So if it's $49.99, input 4999."
+      },
+      {
+        "type": "product",
+        "id": "gwp1",
+        "label": "GWP 1"
+      },
+      {
+        "type": "product",
+        "id": "gwp2",
+        "label": "GWP 2"
+      },
+      {
+        "type": "header",
+        "content": "Upsell Products"
+      },
+      {
+        "type": "product",
+        "id": "upsell_1",
+        "label": "Upsell Product 1"
+      },
+      {
+        "type": "product",
+        "id": "upsell_2",
+        "label": "Upsell Product 2"
       }
     ]
   },
@@ -64,7 +113,7 @@
       },
       {
         "type": "url",
-        "id": "quiz_link_url",
+        "id": "link_url",
         "label": "Link URL"
       },
       {

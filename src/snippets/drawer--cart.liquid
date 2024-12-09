@@ -1,4 +1,6 @@
-<s-drawer id="CartDrawer" position='right' open="[js-open-cart]" close="[js-close-cart">
-  <button js-close-cart>Close</button>
+<s-drawer id="CartDrawer" class="pt-md" position='right' open="[js-open-cart]" close="[js-close-cart">
+  <button class="absolute right-sm top-md w-[40px] h-[40px]" js-close-cart>
+    {%  render 'icon-close-no-border' %}
+  </button>
   {% render 'cart' %}
 </s-drawer>
