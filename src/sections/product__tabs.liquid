@@ -5,24 +5,26 @@
 {% if product.metafields.seed.pdp_tabs != blank %}
     <div class="product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
         <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
-            <div class="tab__triggers flex flex-col gap-sm tabletl:justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
+            <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
               {% if product.metafields.seed.pdp_tabs_title != blank %}
-                <h4 class="font-900 mb-md">
+                <h4 class="font-900 mb-md ">
                   {{ product.metafields.seed.pdp_tabs_title }}
                 </h4>
               {% endif %}
+              <ul class="flex flex-col gap-sm">
                 {% for tab in product.metafields.seed.pdp_tabs.value %}
-                    <button id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
+                    <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
                         <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
                         <div class="tab__text-content rte text-left">
                             {{ tab.richtext |  metafield_tag }}
                         </div>
-                    </button>
+                    </li>
                 {% endfor %}
+              </ul>
             </div>
-            <div class="image-container tabletl:mt-0 tabletl:w-1/2">
+            <div class="image-container relative tabletl:mt-0 tabletl:w-1/2">
                 {% for tab in product.metafields.seed.pdp_tabs.value %}
-                    <div id="product__tab-content-{{ forloop.index }}" class="product-tab__panel relative" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
+                    <div id="product__tab-content-{{ forloop.index }}" class="product-tab__panel absolute top-0 bottom-0 right-0 left-0" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
                         <div>
                             {% render 'lazy-image' image:tab.image %}
                         </div>
@@ -416,11 +418,11 @@
       "options": [
         {
           "label": "top",
-          "value": "flex-col"
+          "value": "flex-col-reverse"
         },
         {
           "label": "bottom",
-          "value": "flex-col-reverse"
+          "value": "flex-col"
         }
       ],
       "default": "flex-col"
@@ -432,11 +434,11 @@
       "options": [
         {
           "label": "left",
-          "value": "tabletl:flex-row"
+          "value": "tabletl:flex-row-reverse"
         },
         {
           "label": "right",
-          "value": "tabletl:flex-row-reverse"
+          "value": "tabletl:flex-row"
         }
       ],
       "default": "tabletl:flex-row"
