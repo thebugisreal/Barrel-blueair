@@ -1,31 +1,154 @@
+{% comment %}
 {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
 {% render 'filter-sort', results: collection, scope: 'global' %}
 {% render 'active-filters', results: collection %}
+{% endcomment %}
 {% paginate collection.products by 48 %}
-
-<s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}">
+<s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}" data-handle="{{ collection.handle }}">
   <div class="collection-grid__layout">
-    <h2 class="collection-grid__title">{{ collection.title }}</h2>
+    <div class="collection-grid__header bg-blue-light px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
+      <div class="collection-grid__breadcrumb mb-md flex gap-xxs items-center">
+        {% assign shop_all_collection = collections['shop-all'] %}
+        <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>
+        {% if collection.handle != 'shop-all' %}
+          <span class="w-[4px] h-[4px] rounded-full bg-blue"></span>
+          <span>{{ collection.title }}</span>
+        {% endif %}
+      </div>
+      <div class="collection-grid__title-containe flex justify-start items-center gap-sm">
+        <h1 class="collection-grid__title h3">{{ collection.title }}</h1>
+        <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
+      </div>
+    </div>
 
     {% if collection.products.size > 0 %}
-      <ul class="collection-grid__products p-md desktop:p-xl grid grid-cols-1 desktop:grid-cols-3 gap-md" js-products-grid>
-          {% for product in collection.products %}
-            <li class="collection-grid__product">
-              {% render 'product-card' product: product, section_id: section.id %}
-            </li>
-          {% endfor %}
-      </ul>
+      <div class="collection-grid__body px-md pt-lg pb-xxl desktop:px-xl">
+        {% if collection.metafields.seed.collection_links != blank %}
+          {% assign linklist = linklists[collection.metafields.seed.collection_links] %}
+          {% if linklist != blank %}
+            <div class="collection-grid__collection-links-container mb-lg">
+              {% if collection.metafields.seed.collection_links_heading != blank %}
+                <div class="p4">{{ collection.metafields.seed.collection_links_heading }}</div>
+              {% endif %}
+              <div class="collection-grid__collection-links mt-xs grid grid-cols-2 gap-xs desktop:flex desktop:flex-wrap desktop:gap-md">
+                {% for link in linklist.links %}
+                  {% unless link.active %}
+                    <a href="{{ link.url }}" 
+                      class="collection-grid__collection-link !no-underline border border-gray desktop:flex desktop:justify-start desktop:items-center desktop:w-[300px] desktop:min-w-[300px]"
+                      data-breadcrumb="{{ collection.handle }}|{{ collection.url }}|{{ collection.title }}" 
+                      js-collection-link>
+                      {% if collection.metafields.seed.collection_links_heading contains 'Room Size' %}
+                        <div class="p-sm hidden desktop:block">
+                          {% if link.title contains 'Small' %}
+                            {% render 'room-icon', size: 'small', width: '64px' %}
+                          {% elsif link.title contains 'Medium' %}
+                            {% render 'room-icon', size: 'medium', width: '64px' %}
+                          {% elsif link.title contains 'Large' %}
+                            {% render 'room-icon', size: 'large', width: '64px' %}
+                          {% elsif link.title contains 'Extralarge' %}
+                            {% render 'room-icon', size: 'extralarge', width: '64px' %}
+                          {% endif %}
+                        </div>
+                      {% elsif link.object.metafields.seed.collection_link_image != blank %}
+                        <div class="w-[100px] hidden desktop:block">
+                          {% render 'lazy-image' image: link.object.metafields.seed.collection_link_image %}
+                        </div>
+                      {% endif %}
+                      <div class="p-sm desktop:p-md desktop:flex-1 desktop:text-16">{{ link.title }}</div>
+                    </a>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+  
+        {% liquid
+          assign sort_by = collection.sort_by | default: collection.default_sort_by
+          assign active_filters_count = 0
+          for filter in collection.filters
+            if filter.active_values.size > 0
+              assign active_filters_count = active_filters_count | plus: 1
+            endif
+          endfor
+        %}
+        <div class="collection-grid__filter-sort-triggers mb-md flex justify-start relative">
+          <button class="collection-grid__filter-trigger collection-grid__filter-trigger--mobile flex items-center py-xxs pr-xs desktop:hidden" js-open-mobile-filter>
+            <span class="w-[36px] h-[36px] bg-blue text-white rounded-full flex justify-center items-center mr-xs">
+              <span class="w-[20px] leading-[0px]">{% render 'icon-filter' %}</span>
+            </span>
+            <span class="s2 mr-xxxs">Filters</span>
+            <span class="s2" js-active-fitlers-count>({{ active_filters_count }})</span>
+          </button>
+          <button class="collection-grid__filter-trigger collection-grid__filter-trigger--desktop hidden desktop:flex gap-xs items-center py-xxs pr-sm" js-desktop-filter-trigger>
+            <span class="w-[36px] h-[36px] bg-blue text-white rounded-full flex justify-center items-center">
+              <span class="w-[20px] leading-[0px]">{% render 'icon-filter' %}</span>
+            </span>
+            <span class="s2" js-desktop-filter-trigger-label>Show Filters</span>
+          </button>
+          <s-accordion data-manual-collapse="false" class="collection-grid__sort-trigger-container block absolute right-0 top-0 desktop:flex desktop:justify-end desktop:gap-sm" js-accordion>
+            <div class="s2 mt-xs hidden desktop:block">Sort by</div>
+            <div class="accordion-item border border-gray" js-accordion-item>
+              <button class="accordion-header p-xs flex gap-xs items-center w-full" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
+                <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-sort' %}</span>
+                <span class="flex-1 text-center s3 desktop:text-left" js-current-sort-label>
+                  {% for option in collection.sort_options %}
+                    {% if option.value == sort_by %}
+                      {{ option.name | escape }}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                </span>
+                <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
+              </button>
+              <div id="SortByTriggerAccordion" class="accordion-content bg-white" aria-hidden="true" js-accordion-content js-sort-triggers>
+                {% for option in collection.sort_options %}
+                  {% unless option.value == sort_by %}
+                    <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                      {{ option.name | escape }}
+                    </button>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            </div>
+          </s-accordion>
+        </div>
 
-      <div class="collection-grid__pagination" js-pagination>
-        {%- if paginate.pages > 1 -%}
-          {% render 'pagination', paginate: paginate, anchor: '' %}
-        {%- endif -%}
+        <div class="collection-grid__grid-container desktop:flex">
+          <div class="collection-grid__desktop-fitlers hidden desktop:block w-0 -translate-x-[400px] transition-all duration-300" js-desktop-filters data-opened="false">
+            {% render 'filter-sort', results: collection, scope: 'desktop' %}
+          </div>
+          <div class="collection-grid__grid-wrapper desktop:flex-1">
+            <ul class="collection-grid__products grid {{ settings.plp_num_cols_mobile }} gap-md desktop:grid-cols-3 desktop:gap-y-lg" js-products-grid>
+              {% for product in collection.products %}
+                <li class="collection-grid__product">
+                  {% render 'product-card' product: product %}
+                </li>
+              {% endfor %}
+
+              {% if collection.metafields.seed.collection_touts != blank and paginate.current_page == 1 and active_filters_count == 0 %}
+                {% for collection_tout in collection.metafields.seed.collection_touts.value %}
+                  <li class="collection-grid__collection-tout" 
+                    style="--row-mobile: {% if collection_tout.y_position_mobile != blank %}{{ collection_tout.y_position_mobile }}{% else %}{{ forloop.index | times: 4 }}{% endif %}; --col-desktop: {% if collection_tout.x_position_desktop != blank %}{{ collection_tout.x_position_desktop }}{% else %}3{% endif %}; --row-desktop: {% if collection_tout.y_position_desktop != blank %}{{ collection_tout.y_position_desktop }}{% else %}{{ forloop.index | times: 2 }}{% endif %};">
+                    {% render 'collection-tout' collection_tout: collection_tout %}
+                  </li>
+                {% endfor %}
+              {% endif %}
+            </ul>
+            
+            <div class="collection-grid__pagination" js-pagination>
+              {% if paginate.next.url %}
+                <button class="collection-grid__show-more-btn block w-max mx-auto my-xxl text-18 border border-blue py-sm px-xl" data-url="{{ paginate.next.url }}" js-show-more-btn>Show More</button>
+              {% endif %}
+            </div>
+          </div>
+        </div>
       </div>
       
+      <loading-spinner js-show-more-loader js-filter-sort-loader class="collection-grid__loading-spinner fixed z-[5]" style="--background: #00000060; --color: #002955; --width: 32px; --height: 32px;"></loading-spinner>
     {% else %}
-      <h3>No Products Found</h3>
+      <p class="collection-grid__no-results h6 px-md py-lg desktop:px-xl">No Products Found</p>
     {% endif %}
-
   </div>
 </s-collection-grid>
 {% endpaginate %}

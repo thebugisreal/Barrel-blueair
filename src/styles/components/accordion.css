@@ -7,7 +7,7 @@
 }
 
 .accordion-content{
-  transition: max-height 0.2s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
   overflow: hidden;
 }
 
@@ -16,9 +16,19 @@
 }
 
 .accordion-content[aria-hidden="false"]{
-  max-height: 9999px;
+  max-height: 999px;
 }
 
 .accordion-header[aria-expanded="true"] .accordion-icon--caret-down {
   @apply rotate-180;
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon--plus,
+.accordion-header[aria-expanded="false"] .accordion-icon--minus {
+  @apply hidden;
+}
+
+.accordion-header[aria-expanded="false"] .accordion-icon--plus,
+.accordion-header[aria-expanded="true"] .accordion-icon--minus {
+  @apply block;
 }

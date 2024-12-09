@@ -7,12 +7,18 @@ class FilterSort extends HTMLElement {
       form: '[js-filter-form]',
       filter: '[js-filter]',
       clearAll: '[js-clear-all]',
-      loader: 'loading-spinner'
+      loader: '[js-filter-sort-loader]'
     }
 
     this._events = {
       change: "filter:change"
     }
+
+    this._refresh = [
+      '[js-filter]',
+      '[js-sort]',
+      '[js-results-count]'
+    ]
 
     this._cache = [];
 
@@ -25,7 +31,7 @@ class FilterSort extends HTMLElement {
     this._scope = this.dataset.scope;
     this._form = this.querySelector(this._selectors.form);
     this._clearAll = this.querySelector(this._selectors.clearAll);
-    this._loader = this.querySelector(this._selectors.loader);
+    this._loader = document.querySelector(this._selectors.loader);
     this._setListeners();
 
     if (!this._scope) {
@@ -43,7 +49,7 @@ class FilterSort extends HTMLElement {
 
   _renderComponent(parsedHTML) {
     const scopedHTML = parsedHTML.querySelector(`${this._selectors.container}[data-scope="${this._scope}"]`) || parsedHTML.querySelector(this._selectors.container);
-    theme.utils.refreshElements([this._selectors.filter], scopedHTML, this);
+    theme.utils.refreshElements(this._refresh, scopedHTML, this);
 
     this.querySelectorAll('s-accordion').forEach(accordion => {
       accordion.connectedCallback();

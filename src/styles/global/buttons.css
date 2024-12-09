@@ -137,9 +137,17 @@
     underline-offset-4;
   }
 
+  .link--underline {
+    @apply underline;
+  }
+
   a:focus,
   .link:focus {
     @apply underline;
+  }
+
+  .link--underline:focus {
+    @apply no-underline;
   }
 
   a:focus:not(:focus-visible),
@@ -147,9 +155,17 @@
     @apply no-underline;
   }
 
+  .link--underline:focus:not(:focus-visible) {
+    @apply underline;
+  }
+
   a:focus-visible,
   .link:focus-visible {
     @apply underline;
+  }
+
+  .link--underline:focus-visible {
+    @apply no-underline;
   }
 
   @media screen(desktop){
@@ -176,6 +192,10 @@
     a:hover,
     .link:hover {
       @apply underline;
+    }
+
+    .link--underline:hover {
+      @apply no-underline;
     }
   }
 }

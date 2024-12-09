@@ -51,13 +51,13 @@
                     <a href="{{ grandchild_link.url }}" class="mega-menu__link link text-18 flex gap-xxs items-center w-fit">
                       {% if child_link_handle contains 'room-size' %}
                         {% if grandchild_link.title contains 'Small' %}
-                          {% render 'room-icon', size: 'small' %}
+                          {% render 'room-icon', size: 'small', width: '18px' %}
                         {% elsif grandchild_link.title contains 'Medium' %}
-                          {% render 'room-icon', size: 'medium' %}
+                          {% render 'room-icon', size: 'medium', width: '18px' %}
                         {% elsif grandchild_link.title contains 'Large' %}
-                          {% render 'room-icon', size: 'large' %}
+                          {% render 'room-icon', size: 'large', width: '18px' %}
                         {% elsif grandchild_link.title contains 'Extralarge' %}
-                          {% render 'room-icon', size: 'extralarge' %}
+                          {% render 'room-icon', size: 'extralarge', width: '18px' %}
                         {% endif %}
                       {% endif %}
                       <span>{{ grandchild_link.title }}</span>

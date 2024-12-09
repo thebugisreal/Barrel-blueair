@@ -18,6 +18,27 @@
     ]
   },
   {
+    "name": "PLP",
+    "settings": [
+      {
+        "type": "select",
+        "id": "plp_num_cols_mobile",
+        "label": "Number of Columns - Mobile",
+        "options": [
+          {
+            "value": "grid-cols-1",
+            "label": "1"
+          },
+          {
+            "value": "grid-cols-2",
+            "label": "2"
+          }
+        ],
+        "default": "grid-cols-2"
+      }
+    ]
+  },
+  {
     "name": "Special Links",
     "settings": [
       {

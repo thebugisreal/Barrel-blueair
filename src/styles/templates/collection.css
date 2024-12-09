@@ -1,0 +1,46 @@
+.collection-grid__collection-link:focus,
+.collection-grid__collection-link:focus-visible {
+  @apply border-blue;
+}
+
+.collection-grid__collection-link:focus:not(:focus-visible) {
+  @apply border-gray;
+}
+
+.collection-grid__collection-tout {
+  grid-column: 1 / -1;
+  grid-row: var(--row-mobile) / span 1;
+}
+
+.collection-grid__show-more-btn:focus,
+.collection-grid__show-more-btn:focus-visible {
+  @apply bg-blue
+  text-white;
+}
+
+.collection-grid__show-more-btn:focus:not(:focus-visible) {
+  @apply bg-white
+  text-blue;
+}
+
+@media screen(desktop) {
+  .collection-grid__collection-link:hover {
+    @apply border-blue;
+  }
+
+  .collection-grid__desktop-fitlers[data-opened="true"] {
+    @apply w-[300px]
+    translate-x-0
+    mr-md;
+  }
+
+  .collection-grid__collection-tout {
+    grid-column: var(--col-desktop) / span 1;
+    grid-row: var(--row-desktop) / span 1;
+  }
+
+  .collection-grid__show-more-btn:hover {
+    @apply bg-blue
+    text-white;
+  }
+}

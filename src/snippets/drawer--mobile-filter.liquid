@@ -1,0 +1,21 @@
+{%- liquid
+  if template.name == 'collection'
+    assign results = collection
+  elsif template.name == 'search'
+    assign results = search
+  endif
+-%}
+
+<s-drawer id="MobileFilterDrawer" class="mobile-filter-drawer desktop:rounded-md" position='left' open="[js-open-mobile-filter]" close="[js-close-mobile-filter]">
+  <div class="mobile-filter-drawer__wrapper h-full flex flex-col">
+    <div class="mobile-filter-drawer__header flex justify-between items-center px-md py-xs border-b border-blue-light">
+      <div class="mobile-filter-drawer__title s2">Filters</div>
+      <button class="mobile-filter-drawer__close w-[42px] leading-[0px]" js-close-mobile-filter>
+        {% render 'icon-nav-close' %}
+      </button>
+    </div>
+    <div class="mobile-filter-drawer__filters flex-1 max-h-full overflow-y-auto px-md pb-lg">
+      {% render 'filter-sort', results: results, scope: 'mobile' %}
+    </div>
+  </div>  
+</s-drawer>
