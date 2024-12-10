@@ -1,0 +1,222 @@
+/* atc btns */
+.btn.product__atc:disabled {
+  @apply pr-sm
+  py-xs
+  !bg-gray
+  !text-white
+  !border-gray;
+}
+
+.btn.product__atc:disabled .btn__arrow {
+  @apply hidden;
+}
+
+/* product carousel */
+.product__thumb-carousel:has(.hide-thumb-carousel) {
+  @apply hidden;
+}
+
+.product__thumb-carousel .swiper-slide-thumb.swiper-slide-thumb-active {
+  @apply border-blue;
+}
+
+.product__main-carousel .swiper-nav-btn {
+  @apply hidden;
+}
+
+.product__main-carousel .swiper-nav-btn.swiper-button-disabled {
+  @apply bg-transparent;
+}
+
+@media screen(desktop){
+  .product__main-carousel .swiper-initialized .swiper-nav-btn {
+    @apply flex;
+  }
+
+  .product__main-carousel .swiper-nav-btn:hover {
+    @apply bg-blue
+    text-white;
+  }
+}
+
+/* product option selector */
+.product-swatch__label--color {
+  @apply block
+  w-[50px]
+  min-w-[50px]
+  h-[50px]
+  p-xxxs
+  border
+  border-transparent
+  rounded-full;
+}
+
+.product-swatch__label--non-color {
+  @apply w-full
+  py-xxs
+  px-sm
+  text-center
+  flex
+  justify-between
+  items-center
+  desktop:flex-col
+  desktop:justify-center
+  border
+  border-gray
+  rounded-[2px]
+}
+
+.product-swatch__input:checked + .product-swatch__label {
+  @apply border-blue;
+}
+
+/* product experience */
+.product-experience__description.rte p {
+  @apply my-xxs;
+}
+
+/* product additional features */
+.product-additional-features__list-item:not(:first-child) {
+  @apply border-t
+  border-blue-light;
+}
+
+/* product upsell */
+.product-upsell__variant--color[data-selected="true"],
+.product-upsell__variant--color[data-selected="false"]:focus,
+.product-upsell__variant--color[data-selected="false"]:focus-visible {
+  @apply border
+  border-blue
+  p-xxxs;
+}
+
+.product-upsell__variant--color[data-selected="false"]:focus:not(:focus-visible) {
+  @apply border-0
+  p-0;
+}
+
+.product-upsell__variant--filter-type[data-selected="true"],
+.product-upsell__variant--filter-type[data-selected="false"]:focus,
+.product-upsell__variant--filter-type[data-selected="false"]:focus-visible {
+  @apply border-blue;
+}
+
+.product-upsell__variant--filter-type[data-selected="false"]:focus:not(:focus-visible) {
+  @apply border-gray
+}
+
+@media screen(desktop) {
+  .product-upsell__variant--color[data-selected="false"]:hover {
+    @apply border
+    border-blue
+    p-xxxs;
+  }
+
+  .product-upsell__variant--filter-type[data-selected="false"]:hover {
+    @apply border-blue
+  }
+}
+
+.btn.product-upsell__atc:disabled {
+  @apply pr-sm
+  py-xs
+  !bg-gray
+  !text-white
+  !border-gray;
+}
+
+.btn.product-upsell__atc:disabled .btn__arrow {
+  @apply hidden;
+}
+
+/* subscription */
+.product-subscription__offer[subscribed] {
+  @apply bg-gray-athans
+  !text-blue;
+}
+
+.product-subscription__offer .og-optout-buttons{
+  @apply !m-0;
+}
+
+.product-subscription__offer .og-optout-buttons og-optin-toggle {
+  @apply !s3
+  !font-700;
+}
+
+.product-subscription__offer .og-button-toggle {
+  @apply border
+  border-gray
+  rounded-full
+  !px-xxxs
+  !pt-[5px]
+  !pb-[3px]
+  !bg-transparent
+  !ml-0
+  !mr-xs
+  !mt-0
+  !mb-[3px];
+}
+
+.product-subscription__offer .og-button-toggle svg {
+  @apply w-[12px]
+  h-[12px];
+}
+
+.product-subscription__offer .og-text,
+.product-subscription__offer .og-optin-buttons {
+  @apply !max-h-0
+  overflow-hidden
+  transition-[max-height]
+  duration-300
+  !m-0;
+}
+
+.product-subscription__offer[subscribed] .og-text,
+.product-subscription__offer[subscribed] .og-optin-buttons {
+  @apply !max-h-[1000px];
+}
+
+.product-subscription__offer .og-text {
+  @apply !p3
+  !text-14;
+}
+
+
+
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__offer {
+  
+}
+
+.product-subscription__non-subscription[data-selected="true"] {
+  @apply bg-gray-athans;
+}
+
+.product-subscription__non-subscription[data-selected="true"] .checkbox {
+  @apply border-blue;
+}
+
+.product-subscription__non-subscription[data-selected="false"] .checkbox .icon {
+  @apply hidden;
+}

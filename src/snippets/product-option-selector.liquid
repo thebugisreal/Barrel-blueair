@@ -47,30 +47,52 @@
     </div>
 
   {% when 'swatch' %}
+    {% assign option_name_handle = option.name | handle %}
     <div class="product-option {% if option.values.size == 1 %} sr-only {% endif %}">
       <div class="product-option__swatch product-swatch">
-          <h2 class="product-swatch__header">{{ option.name }}</h2>
-          <div class="product-swatch__container">
+        <div class="product-swatch__header p3">Select {{ option.name }}</div>
+          <div class="product-swatch__container {% if option_name_handle == 'color' %}flex flex-wrap{% else %}grid grid-cols-1 desktop:grid-cols-3{% endif %} gap-xxs mt-xxxs">
             {% for value in option.values %}
               {% capture input_id %}swatch-{{ value }}-{{ section.id }}-{{ product.id }}{% endcapture %}
               {% capture radio_name %}swatch-{{ option.name }}-{{ section.id }}-{{ product.id }}{% endcapture %}
               <div class="product-swatch__group relative">
                 <input 
                   id="{{ input_id }}"
-                  class="product-swatch__input"
+                  class="product-swatch__input visually-hidden {% if value.variant.available == false and product.options_with_values.size == 1 %}sold-out{% endif %}"
                   type="radio" 
                   name="{{ radio_name }}"
                   value="{{ value | handle }}" 
-                  {% if option.values.size == 1 and option.selected_value == value %} checked="checked" {% endif %}
+                  {% if current_variant and option.selected_value == value or option.values.size == 1 %} checked="checked" {% endif %}
                   data-index="option{{ option.position }}" 
                   js-product-option-selector>
                 <label 
                   for="{{ input_id }}"
-                  class="product-swatch__label">
-                  {{ value }}
+                  class="product-swatch__label {% if option_name_handle == 'color' %}product-swatch__label--color{% else %}product-swatch__label--non-color{% endif %}"
+                  title="{{ value }}">
+                  {% if option_name_handle == 'color' %}
+                    {% assign swatch_objects = product.metafields.seed.swatches.value | reverse | reverse %}
+                    <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_objects[forloop.index0].color }};">
+                      {% if swatch_objects[forloop.index0].image != blank %}
+                        <img src="{{ swatch_objects[forloop.index0].image.value | img_url: '40x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
+                      {% endif %}
+                    </div>
+                  {% else %}
+                    <div class="p3">{{ value }}</div>
+                    <div class="p3 flex gap-xxs desktop:p6" js-full-price>
+                      {% if value.variant.compare_at_price > value.variant.price %}
+                        <s class="product-swatch__price product-swatch__price--compare font-400">{{ value.variant.compare_at_price | money }}</s>
+                        <span class="product-swatch__price product-swatch__price--current font-700">{{ value.variant.price | money }}</span>
+                      {% else %}
+                        <span class="product-swatch__price product-swatch__price--current font-700">{{ value.variant.price | money }}</span>
+                      {% endif %}
+                    </div>
+                  {% endif %}
                 </label>
               </div>
             {% endfor %}
+            <div class="product-swatch__current-swatch w-full {% if option_name_handle != 'color' %}hidden{% endif %}" js-current-swatch-label>
+              {{ option.selected_value }}
+            </div>
           </div>
         </div><!-- .product-option__swatch -->
     </div>

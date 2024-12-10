@@ -300,10 +300,14 @@ class ProductOptions extends HTMLElement {
    */
   _refreshValuesUI(values) {
     for (const key in values) {
-      const value = this.querySelector(`[value="${key}"]`);
+      const value = this.querySelector(`[value="${key.toLowerCase()}"]`);
       /** Update values as needed */
       if (value) {
-        value.disabled = !values[key];
+        if (!values[key]) {
+          value.classList.add('sold-out')
+        } else {
+          value.classList.remove('sold-out')
+        }
       }
     }
   }

@@ -27,6 +27,7 @@ window.theme = window.theme || {};
 // =require components/country-select.js
 // =require components/section__image-caption-modal.js
 // =require components/product-card__upsell.js
+// =require components/product-upsell.js
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -52,6 +53,7 @@ customElements.define('active-filters', ActiveFilters);
 customElements.define('price-range', PriceRange);
 customElements.define('product-card', ProductCard);
 customElements.define('product-card-upsell', ProductCardUpsell);
+customElements.define('product-upsell', ProductUpsell);
 
 customElements.define('country-select', CountrySelect);
 
