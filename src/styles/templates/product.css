@@ -1,3 +1,16 @@
+/* atc btns */
+.btn.product__atc:disabled {
+  @apply pr-sm
+  py-xs
+  !bg-gray
+  !text-white
+  !border-gray;
+}
+
+.btn.product__atc:disabled .btn__arrow {
+  @apply hidden;
+}
+
 /* product carousel */
 .product__thumb-carousel:has(.hide-thumb-carousel) {
   @apply hidden;
@@ -102,6 +115,18 @@
   .product-upsell__variant--filter-type[data-selected="false"]:hover {
     @apply border-blue
   }
+}
+
+.btn.product-upsell__atc:disabled {
+  @apply pr-sm
+  py-xs
+  !bg-gray
+  !text-white
+  !border-gray;
+}
+
+.btn.product-upsell__atc:disabled .btn__arrow {
+  @apply hidden;
 }
 
 /* subscription */
