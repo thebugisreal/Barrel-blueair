@@ -10,7 +10,10 @@ class Account extends HTMLElement {
       deleteAddressButton: '[js-delete-address]',
       ordersContainer: '[js-orders]',
       ordersPagination: '[js-next-page]',
-      order: '[js-order]'
+      order: '[js-order]',
+      accountTriggerAccordionHeader: '[js-account-trigger-accoridon-header]',
+      accountLabel: '[js-account-label]',
+      accountTab: '[js-account-tab]'
     }
   }
 
@@ -22,8 +25,11 @@ class Account extends HTMLElement {
     this.deleteAddressButtons = this.querySelectorAll(this._selectors.deleteAddressButton);
     this.ordersContainer = this.querySelector(this._selectors.ordersContainer);
     this.ordersPagination = this.querySelector(this._selectors.ordersPagination);
+    this.accountTriggerAccordionHeader = this.querySelector(this._selectors.accountTriggerAccordionHeader);
+    this.accountLabel = this.querySelector(this._selectors.accountLabel);
+    this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
 
-    this._setupCountries();
+    // this._setupCountries();
     this._setupEventListeners();
   }
 
@@ -44,19 +50,25 @@ class Account extends HTMLElement {
   }
 
   _setupEventListeners() {
-    if (this.ordersPagination) {
-      this.ordersPagination.addEventListener('click', this._addOrders);  
-    }
+    // if (this.ordersPagination) {
+    //   this.ordersPagination.addEventListener('click', this._addOrders);  
+    // }
 
-    this.openEditAddress.forEach((button) => {
-      button.addEventListener('click', this._handleOpenEditAddress);
-    });
+    // this.openEditAddress.forEach((button) => {
+    //   button.addEventListener('click', this._handleOpenEditAddress);
+    // });
 
-    this.deleteAddressButtons.forEach((button) => {
-      button.addEventListener('click', this._handleDeleteAddress);
+    // this.deleteAddressButtons.forEach((button) => {
+    //   button.addEventListener('click', this._handleDeleteAddress);
+    // })
+
+    // this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
+
+    this.accountTabs.forEach((button) => {
+      button.addEventListener('click', this._setAccountLabel);
     })
-
-    this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
+    
+    document.addEventListener('click', this._closeAccountTriggerAccordion);
   }
 
   _addOrders = async () => {
@@ -109,4 +121,21 @@ class Account extends HTMLElement {
       form.classList.add('hidden')
     });
   }
+
+  _setAccountLabel  = (e) => {
+    this.accountLabel.innerHTML = e.target.dataset.label;
+  }
+
+  _closeAccountTriggerAccordion = (e) => {
+    if (this.accountTriggerAccordionHeader.contains(e.target)) {
+      return;
+    }
+
+    if (this.accountTriggerAccordionHeader.getAttribute('aria-expanded') == 'false') {
+      return;
+    }
+
+    this.accountTriggerAccordionHeader.click();
+  }
+
 }

@@ -11,8 +11,8 @@
       <div class="flex justify-start relative h-[56px] desktop:hidden">
         <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0" js-accordion>
           <div class="accordion-item border border-gray" js-accordion-item>
-            <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header>
-              <span>{{ sections[0] }}</span>
+            <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header js-account-trigger-accoridon-header>
+              <span js-account-label>{{ sections[0] }}</span>
               <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
             </button>
             <div id="AccountSectionsAccordion" class="accordion-content bg-white" role="tablist" aria-hidden="true" aria-orientation="horizontal" js-accordion-content js-tablist>
@@ -21,7 +21,9 @@
                   role="tab" 
                   aria-controls="{{ section | handleize }}-content-panel" 
                   aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
-                  js-tab>
+                  data-label="{{ section }}"
+                  js-tab
+                  js-account-tab>
                   {{ section | escape }}
                 </button>
               {% endfor %}
@@ -46,7 +48,9 @@
               role="tab" 
               aria-controls="{{ section | handleize }}-content-panel" 
               aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
-              js-tab>
+              data-label="{{ section }}"
+              js-tab
+              js-account-tab>
               <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
               <span class="account-section-label__text p1 leading-none">
                 {{ section | escape }}
