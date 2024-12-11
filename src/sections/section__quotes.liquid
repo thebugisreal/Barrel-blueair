@@ -2,13 +2,38 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__quotes {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl">
-    <div class="text-container">
+<div class="section__quotes flex flex-col gap-lg {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:gap-md tabletl:px-xl tabletl:flex-row">
+    <div class="text-container tabletl:max-w-[30%]">
         {% if section.settings.title != blank %}
             <h1 class="section-quote__title {{ section.settings.title_style }} mb-md">{{ section.settings.title }}</h1>
         {% endif %}
+
+        {% if section.settings.rating != blank %}
+          <div class="ratings-container mb-xs">
+            {% render 'rating-star' rating:section.settings.rating %}
+          </div>
+          <div class="flex gap-xxs">
+            <p class="p1">{{ section.settings.rating }} Stars</p>
+            <span class="text-gray">&#9679;</span>
+            <p class="p1">{{ section.settings.reviews_count }} Reviews</p>
+          </div>
+        {% endif %}
     </div>
-    {%  render 'rating-star' %}
+    <ul class="quotes-container tabletl:grid tabletl:grid-cols-2 tabletl:gap-md tabletl:flex-1">
+        {% for block in section.blocks %}
+          {% if block.settings.quote != blank %}
+            <li class="quote py-md {% unless forloop.last %} border-b border-gray tabletl:border-0{% endunless %}">
+              <div class="quote-icon text-[#BAE6FF] w-[24px] mb-sm">
+                {%  render 'icon-quote' %}
+              </div>
+              <h5>{{ block.settings.quote }}</h5>
+              {% if block.settings.author != blank %}
+                <p class="s1 font-900 mt-lg mb-sm">{{ block.settings.author }}</p>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
 {% schema %}
@@ -345,7 +370,7 @@
       "id": "max_width_desktop",
       "label": "Text Content - Max Width - Desktop",
       "info": "Make sure to include units",
-      "default": "109ch"
+      "default": "100%"
     },
     {
         "type": "header",
@@ -443,6 +468,34 @@
         }
       ],
       "default": "h3"
+    },
+    {
+      "type": "number",
+      "id": "rating",
+      "label": "Rating"
+    },
+    {
+      "type": "text",
+      "id": "reviews_count",
+      "label": "Reviews Count"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Quote",
+      "type": "quote",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        }
+      ]
     }
   ],
   "presets": [

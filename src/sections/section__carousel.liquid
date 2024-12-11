@@ -40,7 +40,7 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__carousel {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
+<div class="section__carousel {{ margins_paddings }} tabletl:ml-xl" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
     <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:mx-xl tabletl:items-center {% endif %}">
         <div class="section__carousel-text-container mx-lg mb-md">
             {% if section.settings.title != blank %}
@@ -182,7 +182,8 @@
                 </div>
 
                 {% comment %} Swiper Nav {% endcomment %}
-                {% case section.settings.carousel_nav %}
+                 <div class="carousel_nav-container {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %}">
+                    {% case section.settings.carousel_nav %}
                     {% when 'pagination'%}
                         <div class="swiper-nav-container py-xxs flex justify-between items-center">
                             <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
@@ -198,6 +199,7 @@
                             <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                         </div>
                 {% endcase %}
+                 </div>
                 {% comment %} END Swiper Nav {% endcomment %}
             </div>
         </s-carousel>
@@ -574,6 +576,18 @@
                 { "value":"none", "label":"None"}
             ],
             "default": "scrollbar"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_carousel_nav_mobile",
+            "label": "Enable Carousel Nav - Mobile",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_carousel_nav_desktop",
+            "label": "Enable Carousel Nav - Desktop",
+            "default": true
         },
         {
             "type": "checkbox",

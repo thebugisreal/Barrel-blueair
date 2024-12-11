@@ -1,1 +1,28 @@
-<div class="stars-landing" id="stars-box" style="--rating: 2.9;" aria-label="Rating of this product is 2.3 out of 5.">★★★★★</div>
+<div class="star-rating flex gap-xxs">
+  {% assign full_stars = rating | floor %}
+  {% assign partial_star = rating | modulo: 1 %}
+  
+  <!-- Loop through full stars (integer part) -->
+  {% for i in (1..full_stars) %}
+    <span class="star full">&#9733;</span>
+  {% endfor %}
+
+  <!-- Convert the fractional part to a percentage -->
+  {% assign partial_percentage = partial_star | times: 100 %}
+  
+  <!-- Add partial star (only if there's a fractional part) -->
+  {% if partial_star >= 0.1 %}
+    <span class="star partial" style="--partial-percentage:{{partial_percentage}}%">&#9733;</span>
+  {% endif %}
+
+  <!-- Calculate the number of empty stars -->
+  {% assign empty_stars = 5 | minus: full_stars %}
+  {% if partial_star > 0 %}
+    {% assign empty_stars = empty_stars | minus: 1 %}
+  {% endif %}
+  
+  <!-- Loop through empty stars -->
+  {% for i in (1..empty_stars) %}
+    <span class="star empty">&#9733;</span>
+  {% endfor %}
+</div>
