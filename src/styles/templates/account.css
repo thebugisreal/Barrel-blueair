@@ -1,0 +1,35 @@
+.account__sections .tab__panel[aria-hidden=false] {
+  @apply grid;
+}
+
+.account-conent--bordered {
+  background-image: repeating-linear-gradient(0deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px), 
+                    repeating-linear-gradient(90deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px), 
+                    repeating-linear-gradient(180deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px), 
+                    repeating-linear-gradient(270deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px);
+  background-size: 1px 100%, 100% 1px, 1px 100% , 100% 1px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+}
+
+.account-section-label__checkbox::after {
+  @apply content-['']
+  absolute
+  block
+  rounded-full
+  h-[16px]
+  w-[16px]
+  left-1/2
+  -translate-x-1/2
+  top-1/2
+  -translate-y-1/2
+  bg-transparent;
+}
+
+.account-section__input:checked + .account-section__label .account-section-label__checkbox {
+  @apply border-gray;
+}
+
+.account-section__input:checked + .account-section__label .account-section-label__checkbox::after {
+  @apply bg-blue;
+}

@@ -30,6 +30,7 @@
 @import '/templates/blog__main.css';
 @import '/templates/article__main.css';
 @import '/templates/product.css';
+@import '/templates/account.css';
 
 @import '/sections/hero.css';
 @import '/sections/icons.css';
