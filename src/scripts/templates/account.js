@@ -50,19 +50,19 @@ class Account extends HTMLElement {
   }
 
   _setupEventListeners() {
-    // if (this.ordersPagination) {
-    //   this.ordersPagination.addEventListener('click', this._addOrders);  
-    // }
+    if (this.ordersPagination) {
+      this.ordersPagination.addEventListener('click', this._addOrders);  
+    }
 
-    // this.openEditAddress.forEach((button) => {
-    //   button.addEventListener('click', this._handleOpenEditAddress);
-    // });
+    this.openEditAddress.forEach((button) => {
+      button.addEventListener('click', this._handleOpenEditAddress);
+    });
 
-    // this.deleteAddressButtons.forEach((button) => {
-    //   button.addEventListener('click', this._handleDeleteAddress);
-    // })
+    this.deleteAddressButtons.forEach((button) => {
+      button.addEventListener('click', this._handleDeleteAddress);
+    })
 
-    // this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
+    this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
 
     this.accountTabs.forEach((button) => {
       button.addEventListener('click', this._setAccountLabel);
