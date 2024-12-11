@@ -42,11 +42,11 @@ class Tabs extends HTMLElement {
     }
     el.currentTarget.setAttribute('aria-selected', 'true');
     var tabPanelToOpen = el.currentTarget.getAttribute('aria-controls');
-    var tabPanels = document.querySelectorAll('[role=tabpanel]');
+    var tabPanels = this.querySelectorAll('[role=tabpanel]');
     for (let i = 0; i < tabPanels.length; i++) {
       tabPanels[i].setAttribute('aria-hidden', 'true');
     }
-    document.getElementById(tabPanelToOpen).setAttribute('aria-hidden', 'false');
+    this.querySelector(`[id="${tabPanelToOpen}"]`).setAttribute('aria-hidden', 'false');
   }
 
   _tabListListener = () => {

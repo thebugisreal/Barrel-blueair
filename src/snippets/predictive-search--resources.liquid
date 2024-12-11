@@ -69,12 +69,12 @@
 {%- endif -%}
 
 {% if results_count == 0 %}
-  <div class="predictive-search__no-results pt-xs pb-lg">
+  <div class="predictive-search__no-results pt-xs desktop:pt-0">
     <div class="h5 font-700">No Results for "{{ predictive_search.terms }}"</div>
     <div class="s3 mt-xxs">Try again using a different spelling or keywords.</div>
   </div>
   {% if popular_searches_linklist != blank %}
-    <div class="predictive-search__popular-searches py-md border-t border-gray-athans">
+    <div class="predictive-search__popular-searches pt-md mt-lg border-t border-gray-athans">
       {% render 'predictive-search--popular-searches' popular_searches_linklist: popular_searches_linklist %}
     </div>
   {% endif %}
