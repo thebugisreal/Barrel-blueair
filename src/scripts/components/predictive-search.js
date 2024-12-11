@@ -11,11 +11,17 @@ class PredictiveSearch extends HTMLElement {
     this.input.addEventListener('input', theme.utils.debounce((event) => {
       this.onChange(event);
     }, 300).bind(this));
+    this.clearBtn.addEventListener('click', this.clearSearch);
     document.addEventListener('MobileNavDrawer:close', () => {
       this.close();
       this.clearSearch();
     });
-    this.clearBtn.addEventListener('click', this.clearSearch);
+    document.addEventListener('DesktopSearchDrawer:open', () => {
+      if (this.dataset.scope == 'mobile') {
+        return;
+      }
+      this.input.focus();
+    });
   }
 
   clearSearch = () => {
@@ -31,16 +37,17 @@ class PredictiveSearch extends HTMLElement {
     const searchTerm = this.input.value.trim();
 
     if (!searchTerm.length) {
+      this.popularSearches?.classList.remove('hidden');
       this.clearBtn.classList.add('hidden');
       this.predictiveSearchResults.classList.add('hidden');
-      this.popularSearches.classList.remove('hidden');
+      
       return;
     }
 
-    this.popularSearches.classList.add('hidden');
-    this.clearBtn.classList.remove('hidden');
-    this.predictiveSearchResults.classList.remove('hidden');
     this.getSearchResults(searchTerm);
+    this.predictiveSearchResults.classList.remove('hidden');
+    this.clearBtn.classList.remove('hidden');
+    this.popularSearches?.classList.add('hidden');
   }
 
   getSearchResults(searchTerm) {
@@ -66,6 +73,10 @@ class PredictiveSearch extends HTMLElement {
   }
 
   open = () => {
+    if (this.dataset.scope == 'desktop') {
+      return;
+    }
+
     if (this.dataset.open == 'true') {
       return;
     }
@@ -74,6 +85,10 @@ class PredictiveSearch extends HTMLElement {
   }
 
   close = () => {
+    if (this.dataset.scope == 'desktop') {
+      return;
+    }
+
     if (this.dataset.open == 'false') {
       return;
     }

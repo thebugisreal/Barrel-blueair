@@ -14,5 +14,10 @@ predictive-search[data-open="true"] .mobile-nav-search__results-container {
 }
 
 .predictive-search-results__tabs .tab__trigger[aria-selected="true"]::after {
-  @apply block
+  @apply block;
+}
+
+.predictive-search__list-item--support:last-child {
+  @apply mb-0
+  border-b-0;
 }

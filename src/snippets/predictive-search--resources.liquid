@@ -11,9 +11,9 @@
   <ul id="predictive-search-results-list" class="predictive-search__results-list" role="listbox" aria-labelledby="predictive-search-products">
   {%- for resource in resources -%}
     {% if type == 'product' %}
-      <li class="predictive-search__list-item mb-xs" role="option">
+      <li class="predictive-search__list-item predictive-search__list-item--product mb-xs" role="option">
         <a href="{{ resource.url }}" class="predictive-search__item flex items-center gap-sm" tabindex="-1">
-          <div class="predictive-search__item-image w-[65px] h-[65px]">
+          <div class="predictive-search__item-image w-[65px] h-[65px] desktop:w-[88px] desktop:h-[88px]">
             {% if resource.featured_image != blank %}            
               {% render 'lazy-image', image: resource.featured_image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
             {% endif %}
@@ -26,9 +26,9 @@
       {% assign results_count = results_count | plus: 1 %}
     {% elsif type == 'article' %}
       {% unless resource.tags contains 'support' %}
-        <li class="predictive-search__list-item mb-xs" role="option">
+        <li class="predictive-search__list-item predictive-search__list-item--article mb-xs" role="option">
           <a href="{{ resource.url }}" class="predictive-search__item flex items-center gap-sm" tabindex="-1">
-            <div class="predictive-search__item-image w-[65px] h-[65px]">
+            <div class="predictive-search__item-image w-[65px] h-[65px] desktop:w-[88px] desktop:h-[88px]">
               {% if resource.image != blank %}
                 {% render 'lazy-image', image: resource.image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
               {% endif %}
@@ -43,7 +43,7 @@
       {% endunless %}
     {% elsif type == 'support' %}
       {% if resource.tags contains 'support' %}
-        <li class="predictive-search__list-item pb-md mb-md border-b border-gray-athans" role="option">
+        <li class="predictive-search__list-item predictive-search__list-item--support pb-md mb-md border-b border-gray-athans" role="option">
           <a href="{{ resource.url }}" class="predictive-search__item flex items-start gap-sm" tabindex="-1">
             <div class="predictive-search__item-image w-[32px]">
               {% render 'icon-article' %}

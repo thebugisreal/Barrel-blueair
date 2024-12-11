@@ -59,7 +59,7 @@
       {% endfor %}
     </ul>
     <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs py-sm">
-      <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block">{% render 'icon-search' %}</button>
+      <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block" js-open-desktop-search>{% render 'icon-search' %}</button>
       <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
       <button class="site-header__icon-link site-header__icon-link--cart w-36 relative" js-open-cart>
         {% render 'icon-cart' %}

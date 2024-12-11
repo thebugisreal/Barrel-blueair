@@ -24,13 +24,13 @@
           Support ({{ support_count }})
         </button>
       </div>
-      <div id="predictive-search-product-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto" role="tabpanel" aria-labelledby="predictive-search-product-tab" aria-hidden="false">
+      <div id="predictive-search-product-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto desktop:py-lg desktop:max-h-[calc(100vh-133px)]" role="tabpanel" aria-labelledby="predictive-search-product-tab" aria-hidden="false">
         {% render 'predictive-search--resources' resources: predictive_search.resources.products, type: 'product', popular_searches_linklist: popular_searches_linklist %}
       </div>
-      <div id="predictive-search-article-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto" role="tabpanel" aria-labelledby="predictive-search-article-tab" aria-hidden="true">
+      <div id="predictive-search-article-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto desktop:py-lg desktop:max-h-[calc(100vh-133px)]" role="tabpanel" aria-labelledby="predictive-search-article-tab" aria-hidden="true">
         {% render 'predictive-search--resources' resources: predictive_search.resources.articles, type: 'article', popular_searches_linklist: popular_searches_linklist %}
       </div>
-      <div id="predictive-search-support-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto" role="tabpanel" aria-labelledby="predictive-search-support-tab" aria-hidden="true">
+      <div id="predictive-search-support-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto desktop:py-lg desktop:max-h-[calc(100vh-133px)]" role="tabpanel" aria-labelledby="predictive-search-support-tab" aria-hidden="true">
         {% render 'predictive-search--resources' resources: predictive_search.resources.articles, type: 'support', popular_searches_linklist: popular_searches_linklist %}
       </div>
     </s-tabs>

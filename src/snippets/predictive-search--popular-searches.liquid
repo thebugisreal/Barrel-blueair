@@ -2,7 +2,7 @@
   <div class="popular-searches__heading p6 font-700 mb-md">Popular Searches</div>
   <ul class="popular-searches__links">
     {% for link in popular_searches_linklist.links %}
-      <li class="popular-searches__link-wrapper mb-sm">
+      <li class="popular-searches__link-wrapper mb-sm desktop:mb-xs">
         <a href="{{ link.url }}" class="popular-searches__link flex justify-start items-center gap-sm">
           <div class="w-[32px] h-[32px]">
             {% if link.type == 'product_link' %}
@@ -25,7 +25,7 @@
               {% endif %}
             {% endif %}
           </div>
-          <div class="p2 leading-[22px] flex-1">{{ link.title }}</div>
+          <div class="p2 leading-[22px] flex-1 desktop:text-20">{{ link.title }}</div>
         </a>
       </li>
     {% endfor %}
