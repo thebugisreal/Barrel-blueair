@@ -151,32 +151,3 @@
   ]
 }
 {% endschema %}
-
-{% comment %}
-  <predictive-search class="relative">
-    <form action="{{ routes.search_url }}" method="get" role="search">
-      <label for="header-search">Search</label>
-      <input
-        id="header-search"
-        type="search"
-        name="q"
-        value="{{ search.terms | escape }}"
-        {%- if settings.predictive_search_enabled -%}
-          role="combobox"
-          aria-expanded="false"
-          aria-owns="predictive-search-results-list"
-          aria-controls="predictive-search-results-list"
-          aria-haspopup="listbox"
-          aria-autocomplete="list"
-          autocorrect="off"
-          autocomplete="off"
-          autocapitalize="off"
-          spellcheck="false"
-        {%- endif -%}
-        placeholder="Enter keyword or item #"
-      >
-      <input name="options[prefix]" type="hidden" value="last">
-      <div class="absolute hidden w-full" tabindex="-1" js-predictive-search></div>
-    </form>
-  </predictive-search>
-{% endcomment %}

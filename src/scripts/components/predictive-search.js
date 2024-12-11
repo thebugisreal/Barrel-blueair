@@ -3,26 +3,48 @@ class PredictiveSearch extends HTMLElement {
     super();
 
     this.input = this.querySelector('input[type="search"]');
-    this.predictiveSearchResults = this.querySelector('[js-predictive-search]');
+    this.predictiveSearchResults = this.querySelector('[js-predictive-search-results]');
+    this.popularSearches = this.querySelector('[js-popular-searches]');
+    this.clearBtn = this.querySelector('[js-clear]');
 
+    this.input.addEventListener('focus', this.open);
     this.input.addEventListener('input', theme.utils.debounce((event) => {
       this.onChange(event);
     }, 300).bind(this));
+    document.addEventListener('MobileNavDrawer:close', () => {
+      this.close();
+      this.clearSearch();
+    });
+    this.clearBtn.addEventListener('click', this.clearSearch);
+  }
+
+  clearSearch = () => {
+    this.input.value = '';
+    const inputEvent = new Event('input', {
+      'bubbles': true,
+      'cancelable': true
+    });
+    this.input.dispatchEvent(inputEvent);
   }
 
   onChange() {
     const searchTerm = this.input.value.trim();
 
     if (!searchTerm.length) {
-      this.close();
+      this.clearBtn.classList.add('hidden');
+      this.predictiveSearchResults.classList.add('hidden');
+      this.popularSearches.classList.remove('hidden');
       return;
     }
 
+    this.popularSearches.classList.add('hidden');
+    this.clearBtn.classList.remove('hidden');
+    this.predictiveSearchResults.classList.remove('hidden');
     this.getSearchResults(searchTerm);
   }
 
   getSearchResults(searchTerm) {
-    fetch(`${routes.predictive_search_url}?q=${searchTerm}&resources[type]=product,collection,article,page&resources[limit]=4&section_id=predictive-search`)
+    fetch(`${routes.predictive_search_url}?q=${searchTerm}&resources[type]=product,article&resources[limit]=10&section_id=predictive-search`)
       .then((response) => {
         if (!response.ok) {
           var error = new Error(response.status);
@@ -43,11 +65,19 @@ class PredictiveSearch extends HTMLElement {
       });
   }
 
-  open() {
-    this.predictiveSearchResults.style.display = 'block';
+  open = () => {
+    if (this.dataset.open == 'true') {
+      return;
+    }
+
+    this.dataset.open = 'true';
   }
 
-  close() {
-    this.predictiveSearchResults.style.display = 'none';
+  close = () => {
+    if (this.dataset.open == 'false') {
+      return;
+    }
+
+    this.dataset.open = 'false';
   }
 }

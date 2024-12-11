@@ -1,9 +1,38 @@
 {%- if predictive_search.performed -%}
-  <section id="predictive-search-results">
-    {% render 'predictive-search--resources' resources: predictive_search.resources.products, title: 'Products'%}
-    {% render 'predictive-search--resources' resources: predictive_search.resources.collections, title: 'Collections'%}
-    {% render 'predictive-search--resources' resources: predictive_search.resources.articles, title: 'Articles'%}
-    {% render 'predictive-search--resources' resources: predictive_search.resources.pages, title: 'Pages'%}
-    <button class="predictive-search__item" tabindex="-1">Search for “{{ predictive_search.terms }}”</button>
+  {% liquid
+    assign popular_searches_linklist = linklists[settings.popular_searches]
+    assign article_count = 0
+    assign support_count = 0
+    for article in predictive_search.resources.articles
+      if article.tags contains 'support'
+        assign support_count = support_count | plus: 1
+      else 
+        assign article_count = article_count | plus: 1
+      endif
+    endfor
+  %}
+  <section id="predictive-search-results" class="h-full">
+    <s-tabs class="predictive-search-results__tabs h-full flex flex-col">
+      <div class="tab__triggers flex justify-start gap-xxs border-b border-gray-athans" role="tablist" aria-orientation="horizontal" js-tablist>
+        <button id="predictive-search-product-tab" class="tab__trigger p3 font-500 pb-xxs px-xxxs relative" aria-controls="predictive-search-product-content-panel" role="tab" aria-selected="true" js-tab>
+          Products ({{ predictive_search.resources.products.size }})
+        </button>
+        <button id="predictive-search-article-tab" class="tab__trigger p3 font-500 pb-xxs px-xxxs relative" aria-controls="predictive-search-article-content-panel" role="tab" aria-selected="false" js-tab>
+          Articles ({{ article_count }})
+        </button>
+        <button id="predictive-search-support-tab" class="tab__trigger p3 font-500 pb-xxs px-xxxs relative" aria-controls="predictive-search-support-content-panel" role="tab" aria-selected="false" js-tab>
+          Support ({{ support_count }})
+        </button>
+      </div>
+      <div id="predictive-search-product-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto" role="tabpanel" aria-labelledby="predictive-search-product-tab" aria-hidden="false">
+        {% render 'predictive-search--resources' resources: predictive_search.resources.products, type: 'product', popular_searches_linklist: popular_searches_linklist %}
+      </div>
+      <div id="predictive-search-article-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto" role="tabpanel" aria-labelledby="predictive-search-article-tab" aria-hidden="true">
+        {% render 'predictive-search--resources' resources: predictive_search.resources.articles, type: 'article', popular_searches_linklist: popular_searches_linklist %}
+      </div>
+      <div id="predictive-search-support-content-panel" class="tab__panel py-md flex-1 max-h-full overflow-y-auto" role="tabpanel" aria-labelledby="predictive-search-support-tab" aria-hidden="true">
+        {% render 'predictive-search--resources' resources: predictive_search.resources.articles, type: 'support', popular_searches_linklist: popular_searches_linklist %}
+      </div>
+    </s-tabs>
   </section>
 {%- endif -%}

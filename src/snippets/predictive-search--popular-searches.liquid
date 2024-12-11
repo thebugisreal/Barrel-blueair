@@ -1,0 +1,33 @@
+<div class="popular-searches">
+  <div class="popular-searches__heading p6 font-700 mb-md">Popular Searches</div>
+  <ul class="popular-searches__links">
+    {% for link in popular_searches_linklist.links %}
+      <li class="popular-searches__link-wrapper mb-sm">
+        <a href="{{ link.url }}" class="popular-searches__link flex justify-start items-center gap-sm">
+          <div class="w-[32px] h-[32px]">
+            {% if link.type == 'product_link' %}
+              {% render 'lazy-image' image: link.object.featured_image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
+            {% elsif link.type == 'collection_link' %}
+              {% assign collection_image = link.object.featured_image %}
+              {% if link.object.metafields.seed.collection_link_image != blank %}
+                {% assign collection_image = link.object.metafields.seed.collection_link_image %}
+              {% endif %}
+              {% if collection_image != blank %}
+                {% render 'lazy-image' image: collection_image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
+              {% endif %}
+            {% elsif link.type == 'article_link' %}
+              {% if link.object.tags contains 'support' %}
+                {% render 'icon-article' %}
+              {% else %}
+                {% if link.object.image != blank %}
+                  {% render 'lazy-image' image: link.object.image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="p2 leading-[22px] flex-1">{{ link.title }}</div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
