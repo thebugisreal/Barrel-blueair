@@ -10,7 +10,7 @@
       <!-- Mobile Navigation -->
       <div class="flex justify-start relative h-[56px] desktop:hidden">
         <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0" js-accordion>
-          <div class="accordion-item" js-accordion-item>
+          <div class="accordion-item border border-gray" js-accordion-item>
             <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header>
               <span>{{ sections[0] }}</span>
               <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
@@ -67,10 +67,10 @@
           <div class="account__section">
             <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">{{ section }}</h4>
             <div class="mt-md grid gap-md desktop:grid-cols-2">
-              <div class="account-content text-center bg-white px-md py-sm h-[225px] flex justify-center items-center gap-xxs">
+              <div class="account-content text-center bg-white p-md flex justify-center items-center gap-xxs min-h-[225px]">
                 <p>[{{ section }} content here]</p>
               </div>
-              <div class="account-content text-center bg-white px-md py-sm h-[225px] flex justify-center items-center gap-xxs">
+              <div class="account-content text-center bg-white p-md flex justify-center items-center gap-xxs min-h-[225px]">
                 <p>[{{ section }} content here]</p>
               </div>
             </div>            
@@ -78,12 +78,14 @@
 
           <div class="account__section">
             <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">{{ section }}</h4>
-            <p class="p2 mt-sm text-black">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="p2 mt-xss text-black text-center px-sm desktop:mt-sm desktop:text-left desktop:px-0">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
             <div class="mt-md grid gap-md desktop:grid-cols-2">
-              <div class="account-content text-center bg-white px-md py-sm h-[225px] flex justify-center items-center gap-xxs">
+              <div class="account-content text-center bg-white p-md flex justify-center items-center gap-xxs min-h-[225px]">
                 <p>[{{ section }} content here]</p>
               </div>
-              <button class="account-conent__bordered account-conent--bordered text-center text-blue bg-tranparent px-md py-sm h-[225px] flex justify-center items-center gap-xxs">
+              <button class="account-conent__bordered account-conent--bordered text-center text-blue bg-tranparent p-md flex justify-center items-center gap-xxs row-start-1 desktop:row-auto desktop:min-h-[225px]">
                 <p>[Add content here]</p>
                 <span class="p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
               </button>
@@ -93,10 +95,10 @@
           <div class="account__section">
             <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">{{ section }}</h4>
             <div class="mt-md grid gap-md desktop:grid-cols-2">
-              <div class="account-content text-center bg-white px-md py-sm h-[225px] flex justify-center items-center gap-xxs">
+              <div class="account-content text-center bg-white p-md flex justify-center items-center gap-xxs min-h-[225px]">
                 <p>[{{ section }} content here]</p>
               </div>
-              <button class="account-conent__bordered account-conent--bordered text-center text-blue bg-tranparent px-md py-sm h-[225px] flex justify-center items-center gap-xxs">
+              <button class="account-conent__bordered account-conent--bordered text-center text-blue bg-tranparent p-md flex justify-center items-center gap-xxs row-start-1 desktop:row-auto desktop:min-h-[225px]">
                 <p>[Add content here]</p>
                 <span class="p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
               </button>
