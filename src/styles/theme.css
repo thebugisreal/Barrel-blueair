@@ -20,6 +20,7 @@
 @import '/components/article__content.css';
 @import '/components/product-card.css';
 @import '/components/filter-sort.css';
+@import '/components/predictive-search.css';
 
 @import '/account/login.css';
 

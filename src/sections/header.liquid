@@ -59,7 +59,7 @@
       {% endfor %}
     </ul>
     <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs py-sm">
-      <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block">{% render 'icon-search' %}</button>
+      <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block" js-open-desktop-search>{% render 'icon-search' %}</button>
       <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
       <button class="site-header__icon-link site-header__icon-link--cart w-36 relative" js-open-cart>
         {% render 'icon-cart' %}
@@ -151,32 +151,3 @@
   ]
 }
 {% endschema %}
-
-{% comment %}
-  <predictive-search class="relative">
-    <form action="{{ routes.search_url }}" method="get" role="search">
-      <label for="header-search">Search</label>
-      <input
-        id="header-search"
-        type="search"
-        name="q"
-        value="{{ search.terms | escape }}"
-        {%- if settings.predictive_search_enabled -%}
-          role="combobox"
-          aria-expanded="false"
-          aria-owns="predictive-search-results-list"
-          aria-controls="predictive-search-results-list"
-          aria-haspopup="listbox"
-          aria-autocomplete="list"
-          autocorrect="off"
-          autocomplete="off"
-          autocapitalize="off"
-          spellcheck="false"
-        {%- endif -%}
-        placeholder="Enter keyword or item #"
-      >
-      <input name="options[prefix]" type="hidden" value="last">
-      <div class="absolute hidden w-full" tabindex="-1" js-predictive-search></div>
-    </form>
-  </predictive-search>
-{% endcomment %}

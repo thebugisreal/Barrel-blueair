@@ -88,6 +88,16 @@
     ]
   },
   {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "popular_searches",
+        "label": "Popular Searches"
+      }
+    ]
+  },
+  {
     "name": "Special Links",
     "settings": [
       {

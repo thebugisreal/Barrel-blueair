@@ -59,6 +59,7 @@
   
     {% render 'drawer--cart' %}
     {% render 'drawer--mobile-filter' %}
+    {% render 'drawer--desktop-search' %}
 
     <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">
       {{ content_for_layout }}
