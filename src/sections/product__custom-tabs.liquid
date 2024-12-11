@@ -1,0 +1,456 @@
+{% capture margins_paddings %}
+    {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+
+{% if product.metafields.seed.pdp_custom_tabs != blank %}
+    <div class="product__custom-tabs product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
+        <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
+            <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
+              {% if product.metafields.seed.pdp_custom_tab_title != blank %}
+                <h4 class="font-900 mb-md ">
+                  {{ product.metafields.seed.pdp_custom_tab_title }}
+                </h4>
+              {% endif %}
+              <ul class="flex flex-col gap-sm">
+                {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
+                    <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
+                        <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
+                        <div class="tab__text-content rte text-left">
+                            {{ tab.richtext |  metafield_tag }}
+                        </div>
+                    </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="image-container relative tabletl:mt-0 tabletl:w-1/2">
+                {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
+                    <div id="product__tab-content-{{ forloop.index }}" class="product-tab__panel absolute top-0 bottom-0 right-0 left-0" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
+                        <div>
+                            {% render 'lazy-image' image:tab.image %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </s-tabs>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product - Custom Tabs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top - Mobile",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom - Mobile",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pt-xl"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pb-xl"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:mt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:mb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pt-xxl"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pb-xxl"
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Text Content - Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    },
+    {
+        "type": "header",
+        "content": "Color Set"
+    },
+    {
+        "type": "select",
+        "id": "color",
+        "label": "Color",
+        "options": [
+        {
+            "value": "text-blue",
+            "label": "None (white bg & blue text)"
+        },
+        {
+            "value": "bg-blue-sky text-blue",
+            "label": "Blue"
+        },
+        {
+            "value": "bg-green-light text-green-dark",
+            "label": "Green"
+        },
+        {
+            "value": "bg-pink-light text-pink-dark",
+            "label": "Pink"
+        },
+        {
+            "value": "bg-yellow-light text-yellow-dark",
+            "label": "Yellow"
+        },
+        {
+            "value": "bg-brown-light text-brown-dark",
+            "label": "Brown"
+        },
+        {
+            "value": "bg-gray-athans text-blue",
+            "label": "Gray"
+        }
+        ],
+        "default": "text-blue"
+    },
+    {
+      "type": "select",
+      "id": "image_position_mobile",
+      "label": "Image Position - Mobile",
+      "options": [
+        {
+          "label": "top",
+          "value": "flex-col-reverse"
+        },
+        {
+          "label": "bottom",
+          "value": "flex-col"
+        }
+      ],
+      "default": "flex-col"
+    },
+    {
+      "type": "select",
+      "id": "image_position_desktop",
+      "label": "Image Position - Desktop",
+      "options": [
+        {
+          "label": "left",
+          "value": "tabletl:flex-row-reverse"
+        },
+        {
+          "label": "right",
+          "value": "tabletl:flex-row"
+        }
+      ],
+      "default": "tabletl:flex-row"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "presets": [
+    {
+      "name": "Product - Custom Tabs"
+    }
+  ]
+}
+{% endschema %}
