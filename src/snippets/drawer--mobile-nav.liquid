@@ -88,10 +88,11 @@
                         {% assign image_link_title = grandchild_link.title %}
                         <div class="w-[124px] min-w-[124px] relative">
                           {% if grandchild_link.title contains '|' %}
-                            {% assign image_link_title = grandchild_link.title | split: '|' | first | strip %}
-                            {% assign image_file = grandchild_link.title | split: '|' | last | strip %}
-                            {% assign image_object = images[image_file] %}
-                            {% render 'lazy-image', image: image_object %}
+                            {% assign image_link_title_split = grandchild_link.title | split: '|' %}
+                            {% assign image_link_title = image_link_title_split[0] | strip %}
+                            {% assign image_file_mobile = image_link_title_split[1] | strip %}
+                            {% assign image_object_mobile = images[image_file_mobile] %}
+                            {% render 'lazy-image', image: image_object_mobile %}
                           {% elsif grandchild_link.object.metafields.seed.nav_link_image_mobile != blank %}
                             {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_mobile %}
                           {% endif %}

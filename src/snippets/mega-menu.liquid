@@ -88,10 +88,15 @@
                 {% assign image_link_title = grandchild_link.title %}
                 <div class="mega-menu__image-wrapper overflow-hidden relative">
                   {% if grandchild_link.title contains '|' %}
-                    {% assign image_link_title = grandchild_link.title | split: '|' | first | strip %}
-                    {% assign image_file = grandchild_link.title | split: '|' | last | strip %}
-                    {% assign image_object = images[image_file] %}
-                    {% render 'lazy-image', image: image_object, img_classes: 'mega-menu__image transition-transform' %}
+                    {% assign image_link_title_split = grandchild_link.title | split: '|' %}
+                    {% assign image_link_title = image_link_title_split[0] | strip %}
+                    {% assign image_file_desktop = image_link_title_split[2] | strip %}
+                    {% assign image_object_desktop = images[image_file_desktop] %}
+                    {% if image_file_desktop == blank %}
+                      {% assign image_file_desktop = image_link_title_split[1] | strip %}
+                      {% assign image_object_desktop = images[image_file_desktop] %}
+                    {% endif %}
+                    {% render 'lazy-image', image: image_object_desktop, img_classes: 'mega-menu__image transition-transform' %}
                   {% elsif grandchild_link.object.metafields.seed.nav_link_image_desktop != blank %}
                     {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_desktop, img_classes: 'mega-menu__image transition-transform' %}
                   {% endif %}

@@ -9,7 +9,7 @@
 <article class="article-card h-full">
   <a href="{{ article.url }}" class="article-card__content motion-reduce">
     {% if article.image != blank %}
-      <div class="article-card__image overflow-hidden aspect-square mb-sm tabletl:mb-md">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'h-full' %}</div>
+      <div class="article-card__image overflow-hidden aspect-square mb-sm tabletl:mb-md">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'object-cover h-full' %}</div>
     {% endif %}
     <header class="article-card__header">
       <ul class="blog__first-article-tags flex">
