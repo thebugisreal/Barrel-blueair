@@ -12,6 +12,14 @@
   background-repeat: no-repeat;
 }
 
+.account__rte p {
+  @apply mb-xxs;
+}
+
+.account__rte p:last-child {
+  @apply mb-0;
+}
+
 .account-section-label__checkbox::after {
   @apply content-['']
   absolute

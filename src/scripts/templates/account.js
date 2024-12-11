@@ -67,7 +67,7 @@ class Account extends HTMLElement {
     this.accountTabs.forEach((button) => {
       button.addEventListener('click', this._setAccountLabel);
     })
-    
+
     document.addEventListener('click', this._closeAccountTriggerAccordion);
   }
 
@@ -123,11 +123,11 @@ class Account extends HTMLElement {
   }
 
   _setAccountLabel  = (e) => {
-    this.accountLabel.innerHTML = e.target.dataset.label;
+    this.accountLabel.innerHTML = e.currentTarget.dataset.label;
   }
 
   _closeAccountTriggerAccordion = (e) => {
-    if (this.accountTriggerAccordionHeader.contains(e.target)) {
+    if (this.accountTriggerAccordionHeader.contains(e.currentTarget)) {
       return;
     }
 
