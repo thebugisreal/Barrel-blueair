@@ -3,7 +3,7 @@
 {% endcapture %}
 
 {% if product.metafields.seed.pdp_tabs != blank %}
-    <div class="product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
+    <div class="product__app-tabs product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
         <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
             <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
               {% if product.metafields.seed.pdp_tabs_title != blank %}
@@ -37,7 +37,7 @@
 
 {% schema %}
 {
-  "name": "Product - Tabs",
+  "name": "Product - App Tabs",
   "tag": "section",
   "settings": [
     {
@@ -449,7 +449,7 @@
   },
   "presets": [
     {
-      "name": "Product - Tabs"
+      "name": "Product - App Tabs"
     }
   ]
 }

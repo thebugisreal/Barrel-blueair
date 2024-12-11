@@ -54,7 +54,7 @@
             <{{ title_tag }} class="section__carousel-title mx-lg mb-md text-center">{{ section.settings.title }}</{{ title_tag }}>
         {% endif %}
         {% if section.settings.url != blank %}
-            <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mx-auto mb-md pb-sm tabletl:pb-xs tabletl:mb-lg"> 
+            <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mx-auto mb-md tabletl:mb-lg"> 
                 <p class="p2 btn__text">{{ section.settings.url_text }}</p>
                 <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
             </a>
@@ -71,7 +71,7 @@
                                 {% if block.settings.image_mobile != blank %}
                                     <div class="swiper-slide h-auto" js-carousel-slide>
                                         <div class="section__image-caption image-container flex flex-col relative h-full mb-xs">
-                                            {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full' %}
+                                            {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full object-cover' %}
                                             {% if block.settings.product != blank %}
                                                 <div class="absolute bg-gray-athans top-xs left-xs overflow-hidden tabletl:top-md tabletl:left-md">
                                                     {%  render 'section__image-caption-modal' product:block.settings.product, product_image_override:block.settings.product_image_override%}
