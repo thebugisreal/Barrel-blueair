@@ -123,7 +123,7 @@
       },
       {
         "type": "url",
-        "id": "link_url",
+        "id": "quiz_link_url",
         "label": "Link URL"
       },
       {
