@@ -47,7 +47,7 @@
         {% if link.links != blank %}
           <li class="header-desktop-nav__item header-desktop-nav__item--mega-menu px-sm flex items-center cursor-default">
             <div class="header-desktop-nav__mega-menu-title text-16">{{ link.title }}</div>
-            <div class="header-desktop-nav__mega-menu-wrapper absolute left-0 w-full bottom-0 z-[-1] bg-white opacity-0 pointer-events-none">
+            <div class="header-desktop-nav__mega-menu-wrapper absolute left-0 w-full bottom-[1px] z-[-1] bg-white opacity-0 pointer-events-none">
               {% render 'mega-menu' link: link %}
             </div>
           </li>

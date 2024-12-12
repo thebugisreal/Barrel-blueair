@@ -2,7 +2,7 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 <div class="section__icons {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="icons__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }}" style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
+  <div class="icons__wrapper mx-auto max-w-[var(--max-w-mobile)] desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }}" style="--max-w-mobile: {% if section.settings.max_width_mobile != blank %}{{ section.settings.max_width_mobile }}{% else %}unset{% endif %}; --max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
     {% if section.settings.title != blank %}
       <h1 class="icons__title {{ section.settings.title_style }} mb-lg desktop:mb-xl">{{ section.settings.title }}</h1>
     {% endif %}
@@ -371,6 +371,12 @@
       "unit": "col",
       "label": "Number of Columns - Desktop",
       "default": 4
+    },
+    {
+      "type": "text",
+      "id": "max_width_mobile",
+      "label": "Max Width - Mobile",
+      "info": "Make sure to include units"
     },
     {
       "type": "text",

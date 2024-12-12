@@ -30,7 +30,7 @@
               <div class="swiper-slide content-panels__block content-panels__block--customization w-[80%] tabletp:w-[70%] box-content {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
                 {% if block.settings.image_mobile != blank %}
                   <div class="content-panel__image">
-                    {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+                    {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
                   </div>
                 {% endif %}
                 {% if block.settings.title != blank %}
@@ -59,7 +59,7 @@
           <div class="content-panels__block content-panels__block--customization">
             {% if block.settings.image_mobile != blank %}
               <div class="content-panel__image">
-                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+                {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
               </div>
             {% endif %}
             {% if block.settings.title != blank %}
