@@ -111,13 +111,124 @@
   <div class="account__section">
     <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">Payment Method</h4>
     <div class="mt-md grid gap-md desktop:grid-cols-2">
-      <div class="account-content text-center bg-white p-md flex justify-center items-center gap-xxs min-h-[225px]">
-        <p>[{{ section }} content here]</p>
+      <div class="account-content bg-white min-h-[225px] flex flex-col">
+        <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+          <p class="s1">Primary Method</p>
+          <button class="p1 link">Edit</button>
+        </div>
+        <div class="account__rte h-full p-md p2">
+        </div>
       </div>
       <button class="account-content__add account-conent--bordered text-center text-blue bg-tranparent p-md flex justify-center items-center gap-xxs row-start-1 desktop:row-auto desktop:min-h-[225px]">
-        <p>[Add content here]</p>
+        <p>Add New Payment Method</p>
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
       </button>
+    </div>            
+  </div>
+{% endcapture %}
+
+{% capture filter_subscriptions %}
+  <div class="account__section">
+    <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">Active Filter Subscriptions</h4>
+    <div class="mt-md grid gap-md">
+      <div class="account-content">
+      </div>
+    </div>            
+  </div>
+{% endcapture %}
+
+{% capture order_history_content %}
+  <div class="account__section">
+    <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">Order History</h4>
+    <div class="mt-md grid gap-md">
+      <div class="w-full flex justify-center items-center bg-[#D6E4F3] p-xxs p2">
+        Please allow a few minutes for new orders to populate below.
+      </div>
+      <div class="account-content">
+        {% if customer.orders.size > 0 %}
+          {% paginate customer.orders by 10 %}
+            <s-accordion class="account__orders" js-orders>
+              {% for order in customer.orders %}
+                <div class="account__order" js-order js-accordion-item>
+                  <button class="account-order-accordion__header" aria-controls="order-{{ order.name | handleize }}" aria-expanded="false" js-accordion-header>{{order.name}}</button>
+                  <div id="order-{{order.name | handleize }}" class="account-order-accordion__content accordion-content" aria-hidden="true" js-accordion-content>
+                    <div class="account-order__items">
+                      {% for item in order.line_items %}
+                        <article class="account-order__item">
+                          <div class="account-order__image">{% render 'lazy-image', image: item.image %}</div>
+                          <h1 class="account-order-item__title">{{ item.title }}</h1>
+                          <h2 class="account-order-item__variant">{{ item.variant.title}}</h2>
+                          <p class="account-order-item__quantity">Quantity: {{item.quantity}}</p>
+                          <p class="account-order-item__price">{{item.final_price | money }}</p>
+                          {% if item.fulfillment %}
+                            <p class="account-order-item__fulfillment">
+                              Fulfillment: {{ item.fulfillment.created_at | date: '%m/%d/%y' }} <br />
+                              {% if item.fulfillment.tracking_url %}
+                                <a class="account-order-item__fulfillment-url" href="{{ item.fulfillment.tracking_url }}">{{ item.fulfillment.tracking_company }}{% if item.fulfillment.tracking_number %}: {{ item.fulfillment.tracking_number }}{% endif %}</a>
+                              {% else %}
+                                <span class="account-order-item__fulfillment-details">{{ item.fulfillment.tracking_company }}{% if item.fulfillment.tracking_number %}: {{ item.fulfillment.tracking_number }}{% endif %}</span>
+                              {% endif %}
+                            </p>
+                          {% endif %}
+                        </article>
+                      {% endfor %}
+                    </div>
+                    <div class="account-order__details">
+                      <p>Payment Status: {{order.fulfillment_status_label}}</p>
+                      <p>Fulfillment Status: {{order.fulfillment_status_label}}</p>
+                      <table class="account-order__financial-details w-full">
+                        {% for discount in order.discounts %}
+                          <tr>
+                            <td>{{ discount.code }} Discount</td>
+                            <td class="text-right">{{ discount.savings | money }}</td>
+                          </tr>
+                        {% endfor %}
+                        <tr>
+                          <td>Subtotal</td>
+                          <td class="text-right">{{ order.subtotal_price | money }}</td>
+                        </tr>
+                        {% for shipping_method in order.shipping_methods %}
+                          <tr>
+                            <td>Shipping ({{ shipping_method.title }})</td>
+                            <td class="text-right">{{ order.shipping_method.price | money }}</td>
+                          </tr>
+                        {% endfor %}
+                        {% for tax_line in order.tax_lines %}
+                          <tr>
+                            <td>Tax ({{tax_line.title }} {{tax_line.rate | times: 100 }}%)</td>
+                            <td class="text-right">{{ tax_line.price | money }}</td>
+                          </tr>
+                        {% endfor %}
+                        <tr>
+                          <td>Total</td>
+                          <td class="text-right">{{ order.total_price | money }}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </s-accordion>
+            {% if paginate.next %}
+              <button data-url="{{paginate.next.url}}" js-next-page>View More Orders</button>
+            {% endif %}
+          {% endpaginate %}
+        {% else %}
+          <div class="account__rte h-full p2">
+            <p>You haven't placed any orders yet.</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>            
+  </div>
+{% endcapture %}
+
+{% capture devices_and_warranty %}
+  <div class="account__section">
+    <h4 class="mt-md text-center desktop:mt-0 desktop:text-left">Devices & Warranty</h4>
+    <div class="mt-md grid gap-md">
+      <div class="account-content">
+      </div>
     </div>            
   </div>
 {% endcapture %}
@@ -192,8 +303,11 @@
           {% when 'My Profile' %}
             {{ my_profile_content }}
           {% when 'Filter Subscriptions' %}
+            {{ filter_subscriptions }}
           {% when 'Order History' %}
+            {{ order_history_content }}
           {% when 'Devices & Warranty' %}
+            {{ devices_and_warranty }}
           {% endcase %}
         </div>
       {% endfor %}
@@ -394,151 +508,5 @@
 {% endschema %}
 
 {% comment %}
-  Sign Out
   <a href="{{routes.account_logout_url}}">Sign Out</a>
-{% endcomment %}
-
-{% comment %}
-  Accordions
-  <s-accordion class="account-accordion block w-full" js-accordion>
-    <div class="account-accordion__item" js-accordion-item>
-      <button class="account-accordion__header" aria-controls="accountOrders" aria-expanded="false" js-accordion-header>Order History</button>
-      <div id="accountOrders" class="account-accordion__content accordion-content" aria-hidden="true" js-accordion-content>
-        {% if customer.orders.size > 0 %}
-          {% paginate customer.orders by 10 %}
-            <s-accordion class="account__orders" js-orders>
-              {% for order in customer.orders %}
-                <div class="account__order" js-order js-accordion-item>
-                  <button class="account-order-accordion__header" aria-controls="order-{{ order.name | handleize }}" aria-expanded="false" js-accordion-header>{{order.name}}</button>
-                  <div id="order-{{order.name | handleize }}" class="account-order-accordion__content accordion-content" aria-hidden="true" js-accordion-content>
-                    <div class="account-order__items">
-                      {% for item in order.line_items %}
-                        <article class="account-order__item">
-                          <div class="account-order__image">{% render 'lazy-image', image: item.image %}</div>
-                          <h1 class="account-order-item__title">{{ item.title }}</h1>
-                          <h2 class="account-order-item__variant">{{ item.variant.title}}</h2>
-                          <p class="account-order-item__quantity">Quantity: {{item.quantity}}</p>
-                          <p class="account-order-item__price">{{item.final_price | money }}</p>
-                          {% if item.fulfillment %}
-                            <p class="account-order-item__fulfillment">
-                              Fulfillment: {{ item.fulfillment.created_at | date: '%m/%d/%y' }} <br />
-                              {% if item.fulfillment.tracking_url %}
-                                <a class="account-order-item__fulfillment-url" href="{{ item.fulfillment.tracking_url }}">{{ item.fulfillment.tracking_company }}{% if item.fulfillment.tracking_number %}: {{ item.fulfillment.tracking_number }}{% endif %}</a>
-                              {% else %}
-                                <span class="account-order-item__fulfillment-details">{{ item.fulfillment.tracking_company }}{% if item.fulfillment.tracking_number %}: {{ item.fulfillment.tracking_number }}{% endif %}</span>
-                              {% endif %}
-                            </p>
-                          {% endif %}
-                        </article>
-                      {% endfor %}
-                    </div>
-                    <div class="account-order__details">
-                      <p>Payment Status: {{order.fulfillment_status_label}}</p>
-                      <p>Fulfillment Status: {{order.fulfillment_status_label}}</p>
-                      <table class="account-order__financial-details w-full">
-                        {% for discount in order.discounts %}
-                          <tr>
-                            <td>{{ discount.code }} Discount</td>
-                            <td class="text-right">{{ discount.savings | money }}</td>
-                          </tr>
-                        {% endfor %}
-                        <tr>
-                          <td>Subtotal</td>
-                          <td class="text-right">{{ order.subtotal_price | money }}</td>
-                        </tr>
-                        {% for shipping_method in order.shipping_methods %}
-                          <tr>
-                            <td>Shipping ({{ shipping_method.title }})</td>
-                            <td class="text-right">{{ order.shipping_method.price | money }}</td>
-                          </tr>
-                        {% endfor %}
-                        {% for tax_line in order.tax_lines %}
-                          <tr>
-                            <td>Tax ({{tax_line.title }} {{tax_line.rate | times: 100 }}%)</td>
-                            <td class="text-right">{{ tax_line.price | money }}</td>
-                          </tr>
-                        {% endfor %}
-                        <tr>
-                          <td>Total</td>
-                          <td class="text-right">{{ order.total_price | money }}</td>
-                        </tr>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              {% endfor %}
-            </s-accordion>
-            {% if paginate.next %}
-              <button data-url="{{paginate.next.url}}" js-next-page>View More Orders</button>
-            {% endif %}
-          {% endpaginate %}
-        {% else %}
-          You haven't placed any orders yet.
-        {% endif %}
-      </div>
-    </div>
-    <div class="account-accordion__item" js-accordion-item>
-      <button class="account-accordion__header" aria-controls="accountAddresses" aria-expanded="false" js-accordion-header>Manage Addresses</button>
-      <div id="accountAddresses" class="account-accordion__content accordion-content" aria-hidden="true" js-accordion-content>
-        <div class="account__addresses">
-          <h2 class="account__subtitle">Default Address</h2>
-          {% for address in customer.addresses %}
-            {% if address == customer.default_address %}
-              <div class="account-address__container" data-address-id="{{address.id}}">
-                <div class="account__address">
-                  {{address.first_name}} {{address.last_name}}<br>
-                  {%- if address.company != blank -%}
-                    {{address.company}}<br>
-                  {%- endif -%}
-                  {{address.address1}}<br>
-                  {%- if address.address2 != blank -%}
-                    {{address.address2}}<br>
-                  {%- endif -%}
-                  {{address.city}}, {{address.province_code}} {{address.zip}}<br>
-                  {{address.country}}
-                </div>
-                <button data-form="{{address.id}}" js-edit-address>Edit</button>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-        {% if customer.addresses.size > 1 %}
-          <div class="account__addresses">
-            <h2 class="account__subtitle">Other Saved Addresses</h2>
-            <ul class="account-address__list grid grid-cols-2">
-              {% for address in customer.addresses %}
-                {% unless address == customer.default_address %}
-                  <li class="account-address__container" data-address-id="{{address.id}}">
-                    <div class="account__address">
-                      {{address.first_name}} {{address.last_name}}<br>
-                      {%- if address.company != blank -%}
-                        {{address.company}}<br>
-                      {%- endif -%}
-                      {{address.address1}}<br>
-                      {%- if address.address2 != blank -%}
-                        {{address.address2}}<br>
-                      {%- endif -%}
-                      {{address.city}}, {{address.province_code}} {{address.zip}}<br>
-                      {{address.country}}
-                    </div>
-                    <button data-form="{{address.id}}" js-edit-address>Edit</button>
-                  </li>
-                {% endunless %}
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-        <button js-open-add-address>Add New Address</button>
-      </div>
-    </div>
-    <div class="account-accordion__item" js-accordion-item>
-      <button class="account-accordion__header" aria-controls="accountDetails" aria-expanded="false" js-accordion-header>Account Details</button>
-      <div id="accountDetails" class="account-accordion__content accordion-content" aria-hidden="true" js-accordion-content>
-        <div class="account__details">
-          {{customer.first_name}} {{customer.last_name}}<br/>
-          Email Address: {{customer.email}}<br/>
-        </div>
-      </div>
-    </div>
-  </s-accordion>
 {% endcomment %}
