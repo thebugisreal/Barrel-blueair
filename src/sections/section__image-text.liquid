@@ -1,8 +1,9 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__image-text block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px]">
-  <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
+<div class="section__image-text {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+  <div class="mx-auto flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px] desktop:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }}"">
+    <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
     <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width != blank  %}{{ section.settings.text_max_width }}{% else %}unset{% endif %};">
       {% if section.settings.title != blank %}
         <h2 class="image-text__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
@@ -21,6 +22,8 @@
   <div class="image-text__image {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
     {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop %}
   </div>
+  </div>
+
 </div>
 
 {% schema %}
@@ -620,6 +623,12 @@
       "type": "text",
       "id": "text_max_width",
       "label": "Text Content Max Width - Desktop",
+      "info": "Make sure to include units"
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Section Max Width - Desktop",
       "info": "Make sure to include units"
     }
   ],

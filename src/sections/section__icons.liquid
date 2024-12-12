@@ -6,9 +6,9 @@
     {% if section.settings.title != blank %}
       <h1 class="icons__title {{ section.settings.title_style }} mb-lg desktop:mb-xl">{{ section.settings.title }}</h1>
     {% endif %}
-    <div class="icons__grid grid gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+    <div class="icons__grid grid gap-md {{ section.settings.gap_desktop }}" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
       {% for block in section.blocks %}
-        <div class="icons__block">
+        <div class="icons__block {% if section.settings.enable_borders %} border py-sm rounded-[12px] tabletl:py-md  {% endif %}">
           {% if block.settings.icon != blank %}
             <div class="icon__image inline-block" style="{% if block.settings.icon_fixed_width != blank %}width: {{ block.settings.icon_fixed_width }}px{% else %}width: 100%{% endif %};">
               {% render 'lazy-image' image: block.settings.icon %}
@@ -520,6 +520,51 @@
         }
       ],
       "default": "desktop:text-left"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_borders",
+      "label": "Enable Borders"
+    },
+    {
+      "type": "select",
+      "id": "gap_desktop",
+      "label": "Gap - Desktop",
+      "options": [
+        {
+          "value": "tabletl:gap-0",
+          "label": "None"
+        },
+        {
+          "value": "tabletl:gap-xs",
+          "label": "XS"
+        },
+        {
+          "value": "tabletl:gap-sm",
+          "label": "SM"
+        },
+        {
+          "value": "tabletl:gap-md",
+          "label": "MD"
+        },
+        {
+          "value": "tabletl:gap-lg",
+          "label": "LG"
+        },
+        {
+          "value": "tabletl:gap-xl",
+          "label": "XL"
+        },
+        {
+          "value": "tabletl:gap-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "tabletl:gap-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "tabletl:gap-md"
     }
   ],
   "blocks": [
