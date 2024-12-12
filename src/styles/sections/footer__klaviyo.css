@@ -1,0 +1,52 @@
+.section__klaviyo-div div {
+    @apply !p-0
+}
+
+.section__klaviyo input {
+    @apply !font-gilroy
+    !font-400
+    !text-18
+    !leading-[28px]
+    !border-0
+    !border-b
+    !py-xxxs
+    !mb-md;
+    color: inherit !important;
+}
+
+.section__klaviyo button {
+    @apply !cursor-pointer
+    disabled:!cursor-not-allowed
+    !mt-lg
+    !no-underline
+    !flex
+    !items-center
+    !gap-xs
+    !w-fit
+    !text-16
+    !text-blue
+    !bg-transparent
+    !p-xxs
+    !pl-sm
+    !rounded-[30px]
+    !border
+    !border-blue
+    !bg-white
+    !h-fit;
+}
+
+
+.section__klaviyo button::after {
+    content: url("data:image/svg+xml; utf8,<svg class='icon icon--arrow-right' viewBox='0 0 42 42' xmlns='http://www.w3.org/2000/svg'><path d='M30.2175 22.0869H10.439V20.9414H30.2447L21.7773 11.4716L22.6313 10.708L32.3486 21.5758L22.6093 31.3151L21.7993 30.5051L30.2175 22.0869Z'/></svg>");
+    @apply 
+    !w-[32px]
+    !border
+    !border-[1px]
+    !border-solid
+    !border-blue
+    !rounded-full
+    !overflow-hidden
+    !text-blue
+    !bg-transparent
+    !leading-[0];
+}

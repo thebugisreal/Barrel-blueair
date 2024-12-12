@@ -45,6 +45,9 @@
     </script>
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    {% comment %} should be removed once klaviyo is integrated {% endcomment %}
+    <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WaDDdd'></script>
   </head>
   
   {%- capture body_classes -%}
@@ -65,6 +68,7 @@
       {{ content_for_layout }}
     </main>
 
+    {% section 'footer__klaviyo' %}
     {% section 'footer' %}
 
     <ul hidden>
