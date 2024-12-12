@@ -1,4 +1,4 @@
-.section__klaviyo div {
+.section__klaviyo-div div {
     @apply !p-0
 }
 
@@ -10,7 +10,8 @@
     !border-0
     !border-b
     !py-xxxs
-    !mb-md
+    !mb-md;
+    color: inherit !important;
 }
 
 .section__klaviyo button {
