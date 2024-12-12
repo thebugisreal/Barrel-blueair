@@ -66,6 +66,10 @@
     {% render 'drawer--desktop-search' %}
     {% render 'modal--country-selector' %}
 
+    {% if template.name == 'product' %}
+      {% render 'product-sticky-bar' %}
+    {% endif %}
+
     <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">
       {{ content_for_layout }}
     </main>

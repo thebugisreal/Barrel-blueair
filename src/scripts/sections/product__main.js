@@ -23,7 +23,15 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
-      filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]'
+      filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
+      subscriptionContainer: '[js-subscription-container]',
+      subscriptionOffer: '[js-subscription-offer]',
+      subscriptionCustomization: '[js-subscription-customization]',
+      noSubscriptionBtn: '[js-no-subscription-btn]',
+      stickyBar: '[js-product-sticky-bar]',
+      stickyAtc: '[js-sticky-atc]',
+      stickySelectOptionsBtn: '[js-sticky-select-options]',
+      stickyLoader: '[js-sticky-loader]',
     };
   }
 
@@ -34,6 +42,10 @@ class ProductMain extends HTMLElement {
     this.prices = this.querySelectorAll(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
     this.subscription = this.querySelector(this._selectors.subscription);
+    this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
+    this.addToCart = this.querySelector(this._selectors.addToCart)
+    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this._toggleStickyBar();
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -44,6 +56,50 @@ class ProductMain extends HTMLElement {
     this._handleSubscription();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
+    this._handleSubscription();
+    this._handleStickyBar();
+  }
+
+  _handleStickyBar = () => {
+    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this.stickyAtcBtns = document.querySelectorAll(this._selectors.stickyAtc);
+    this.buttons = [...this.buttons, ...this.stickyAtcBtns];
+    this.stickySelectOptionsBtns = document.querySelectorAll(this._selectors.stickySelectOptionsBtn);
+    const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
+    this.stickyAtcClicked = false;
+
+    this._toggleStickyBar();
+    document.addEventListener('scroll', this._toggleStickyBar);
+    this.stickyAtcBtns.forEach((stickyAtc) => {
+      stickyAtc.addEventListener('click', this._stickyAtcOnClick);
+    });
+    this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
+      selectOptionsBtn.addEventListener('click', () => {
+        this.querySelector('[js-product-info]').scrollIntoView();
+      });
+    });
+  }
+
+  _toggleStickyBar = () => {
+    this.stickyBars.forEach((stickyBar) => {
+      if (this._checkVisible(this.addToCart)) {
+        stickyBar.classList.add('hidden');
+      } else {
+          stickyBar.classList.remove('hidden');
+      }
+    });
+  }
+  
+  _stickyAtcOnClick = (evt) => {
+    evt.preventDefault();
+    this.stickyAtcClicked = true;
+    this.addToCart.click();
+  }
+
+ _checkVisible(elm) {
+    var rect = elm.getBoundingClientRect();
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
   }
 
   _handleSubscription() {
