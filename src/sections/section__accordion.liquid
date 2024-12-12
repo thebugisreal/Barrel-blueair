@@ -16,7 +16,7 @@
     {% endif %}
     <s-accordion class="section__accordion-content" data-manual-collapse="true" js-accordion>
         {% for block in section.blocks %}
-            <div class="accordion-item my-md" js-accordion-item>
+            <div class="accordion-item py-md border-gray {% if forloop.first %} border-t {% endif %} border-b" js-accordion-item>
                 <button class="accordion-header w-full flex justify-between items-center gap-xs" {% if forloop.first %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
                     <p class="{{ block.settings.title_style }} text-left flex-1">{{ block.settings.title }}</p>
                     <div class="icon-container h-[33px] w-[33px] p-xxs">
