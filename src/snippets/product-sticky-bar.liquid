@@ -1,10 +1,5 @@
 {%- liquid 
-  if product.variants.size > 1
-    assign current_variant = product.selected_variant 
-  else
-    assign current_variant = product.variants[0]
-  endif
-
+  assign current_variant = product.selected_or_first_available_variant 
   assign atc_disabled = false
   assign atc_text = ''
   assign options_select_required = false
@@ -31,12 +26,19 @@
         <div class="product-sticky-bar__title s1">
             {{ product.title }}
         </div>
-        <p class="p1 tabletl:hidden">{{ product.price |  money }}</p>
+        <p class="p1 tabletl:hidden">{{ current_variant.price |  money }}</p>
     </div>
 
     <div class="product-sticky-bar__atc-wrapper relative flex gap-md items-center {% if options_select_required %}hidden{% endif %}">
-        <p class="s1 hidden tabletl:block">{{ product.price |  money }}</p>
-        <button class="btn btn--blue-rounded" {% if atc_disabled %} disabled {% endif %} type="button" js-sticky-atc>
+        {% for option in product.options_with_values %}
+          {% if option.values.size > 1 %}
+            <button class="product-sticky-bar__select-options-btn s1 {% unless options_select_required %}hidden{% endunless %}" js-sticky-select-options>
+              Select {{ option.name }}
+            </button>
+          {% endif %}
+        {% endfor %}
+        <p class="s1 hidden tabletl:block">{{ current_variant.price |  money }}</p>
+        <button class="product__atc btn btn--blue-rounded" {% if atc_disabled %} disabled {% endif %} type="button" js-sticky-atc>
             <span class="product-sticky-bar__atc btn__text">{{ atc_text }}</span>
             <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
         </button>
