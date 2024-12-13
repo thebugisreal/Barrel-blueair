@@ -1,36 +1,43 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__image-text-grid block {{ margins_paddings }} {{ section.settings.color }} desktop:px-xl flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px]">
-  <div class="image-text-grid__grid-container px-md desktop:px-0 desktop:flex-1">
-    <div class="image-text-grid__grid-wrapper {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width != blank  %}{{ section.settings.text_max_width }}{% else %}unset{% endif %};">
-      {% if section.settings.title != blank %}
-        <h2 class="image-text-grid__title {{ section.settings.title_style }} mb-lg desktop:pb-xs">{{ section.settings.title }}</h2>
-      {% endif %}
-      <div class="image-text-grid__grid grid grid-cols-2 gap-x-md gap-y-lg">
+{% if section.blocks.size > 0 %}
+  <div class="section__image-tabs {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+    <s-tabs class="image-tabs flex {{ section.settings.image_position_mobile }} {{ section.settings.image_position_desktop }} gap-lg desktop:gap-xxxl ">
+      <div class="image-tabs__tab-triggers-container flex flex-col gap-md justify-center desktop:flex-1 desktop:max-w-[var(--max-w-desktop)] desktop:mx-auto"  style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
+        {% if section.settings.title != blank %}
+          <h1 class="image-tabs__title {{ section.settings.title_style }}">
+            {{ section.settings.title }}
+          </h1>
+        {% endif %}
+        <ul class="tab__triggers flex flex-col gap-sm" role="tablist" aria-orientation="horizontal" js-tablist>
+          {% for block in section.blocks %}
+            <button id="{{ section.id }}-tab-trigger-{{ forloop.index }}" class="tab__trigger w-full text-left py-xxxs px-md border-l border-gray" aria-controls="{{ section.id }}-tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
+              <div class="tab-trigger__title {{ block.settings.subtitle_style }}">{{ block.settings.subtitle }}</div>
+              <div class="tab-trigger__subtext-wrapper {{ block.settings.subtext_style }}">
+                <div class="tab-trigger__subtext">{{ block.settings.subtext }}</div>
+              </div>
+            </button>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="tab__panels relative desktop:w-1/2">
         {% for block in section.blocks %}
-          <div class="image-text-grid__block">
-            {% if block.settings.title != blank %}
-              <h3 class="image-text-grid-block__title {{ block.settings.title_style }} mb-xxs">{{ block.settings.title }}</h3>
-            {% endif %}
-            {% if block.settings.subtext != blank %}
-              <p class="image-text-grid-block__subtext {{ block.settings.subtext_style }}">{{ block.settings.subtext }}</p>
-            {% endif %}
+          <div id="{{ section.id }}-tab-content-{{ forloop.index }}" class="tab__panel absolute top-0 bottom-0 right-0 left-0" role="tabpanel" aria-labelledby="{{ section.id }}-tab-trigger-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
+            <div class="tab-panel__image">
+              {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+            </div>
           </div>
         {% endfor %}
       </div>
-    </div>
+    </s-tabs>
   </div>
-  <div class="image-text-grid__image {% unless section.settings.image_inset_mobile %}px-md desktop:px-0{% endunless %} {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
-    {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop %}
-  </div>
-</div>
+{% endif %}
 
 {% schema %}
 {
-  "name": "Image and Text Grid",
+  "name": "Image Tabs",
   "tag": "section",
-  "max_blocks": 4,
   "settings": [
     {
       "type": "header",
@@ -154,7 +161,7 @@
           "label": "3XL"
         }
       ],
-      "default": "pt-0"
+      "default": "pt-xl"
     },
     {
       "type": "select",
@@ -194,7 +201,7 @@
           "label": "3XL"
         }
       ],
-      "default": "pb-0"
+      "default": "pb-xl"
     },
     {
       "type": "select",
@@ -314,7 +321,7 @@
           "label": "3XL"
         }
       ],
-      "default": "desktop:pt-0"
+      "default": "desktop:pt-xxl"
     },
     {
       "type": "select",
@@ -354,7 +361,7 @@
           "label": "3XL"
         }
       ],
-      "default": "desktop:pb-0"
+      "default": "desktop:pb-xxl"
     },
     {
       "type": "header",
@@ -366,7 +373,7 @@
       "label": "Color",
       "options": [
         {
-          "value": "bg-white text-blue",
+          "value": "text-blue",
           "label": "None (white bg & blue text)"
         },
         {
@@ -390,31 +397,15 @@
           "label": "Brown"
         },
         {
-          "value": "bg-blue-light text-blue",
+          "value": "bg-gray-athans text-blue",
           "label": "Gray"
         }
       ],
-      "default": "bg-white text-blue"
+      "default": "text-blue"
     },
     {
       "type": "header",
-      "content": "Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_mobile",
-      "label": "Image - Mobie"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_desktop",
-      "label": "Image - Desktop"
-    },
-    {
-      "type": "checkbox",
-      "id": "image_inset_mobile",
-      "label": "Image Inset - Mobile",
-      "default": false
+      "content": "Content"
     },
     {
       "type": "select",
@@ -422,15 +413,15 @@
       "label": "Image Position - Mobile",
       "options": [
         {
-          "value": "order-first",
-          "label": "Top"
+          "label": "Top",
+          "value": "flex-col-reverse"
         },
         {
-          "value": "order-last",
-          "label": "Bottom"
+          "label": "Bottom",
+          "value": "flex-col"
         }
       ],
-      "default": "order-last"
+      "default": "flex-col"
     },
     {
       "type": "select",
@@ -438,29 +429,22 @@
       "label": "Image Position - Desktop",
       "options": [
         {
-          "value": "left",
-          "label": "Left"
+          "label": "Left",
+          "value": "desktop:flex-row-reverse"
         },
         {
-          "value": "right",
-          "label": "Right"
+          "label": "Right",
+          "value": "desktop:flex-row"
         }
       ],
-      "default": "right"
+      "default": "desktop:flex-row"
     },
     {
-      "type": "range",
-      "id": "image_width",
-      "min": 20,
-      "max": 80,
-      "step": 5,
-      "unit": "%",
-      "label": "Image Width - Desktop",
-      "default": 50
-    },
-    {
-      "type": "header",
-      "content": "Text Content"
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Text Content Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "70ch"
     },
     {
       "type": "text",
@@ -513,29 +497,27 @@
           "label": "s4"
         }
       ],
-      "default": "h3"
-    },
-    {
-      "type": "text",
-      "id": "text_max_width",
-      "label": "Text Content Max Width - Desktop",
-      "info": "Make sure to include units"
+      "default": "h4"
     }
   ],
   "blocks": [
     {
-      "name": "Text Block",
-      "type": "block",
+      "name": "Tab",
+      "type": "tab",
       "settings": [
         {
+          "type": "header",
+          "content": "Tab Trigger"
+        },
+        {
           "type": "text",
-          "id": "title",
-          "label": "Title"
+          "id": "subtitle",
+          "label": "Subtitle"
         },
         {
           "type": "select",
-          "id": "title_style",
-          "label": "Title Style",
+          "id": "subtitle_style",
+          "label": "Subtitle Style",
           "options": [
             {
               "value": "h1",
@@ -578,7 +560,7 @@
               "label": "s4"
             }
           ],
-          "default": "h2"
+          "default": "s2"
         },
         {
           "type": "textarea",
@@ -655,14 +637,28 @@
               "label": "p6"
             }
           ],
-          "default": "h6"
+          "default": "p4"
+        },
+        {
+          "type": "header",
+          "content": "Tab Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image - Mobile"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image - Desktop"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Image and Text Grid"
+      "name": "Image Tabs"
     }
   ]
 }

@@ -3,12 +3,20 @@
   desktop:pt-[calc(var(--header-height)+64px)];
 }
 
+.hero__content-wrapper.no-image {
+  height: var(--height-mobile, unset);
+}
+
 .hero__content {
-  max-width: var(--max-w-mobile);
+  max-width: var(--max-w-mobile, unset);
 }
 
 @media screen(desktop) {
+  .hero__content-wrapper.no-image {
+    height: var(--height-desktop, unset);
+  }
+
   .hero__content {
-    max-width: var(--max-w-desktop);
+    max-width: var(--max-w-desktop, unset);
   }
 }

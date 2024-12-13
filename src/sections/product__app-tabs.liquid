@@ -5,7 +5,7 @@
 {% if product.metafields.seed.pdp_tabs != blank %}
     <div class="product__app-tabs product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }}">
         <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
-            <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
+            <div class="tab__triggers flex flex-col justify-center tabletl:flex-1 tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto" role="tablist" aria-orientation="horizontal" js-tablist style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
               {% if product.metafields.seed.pdp_tabs_title != blank %}
                 <h4 class="font-900 mb-md ">
                   {{ product.metafields.seed.pdp_tabs_title }}
@@ -365,13 +365,6 @@
       "default": "desktop:pb-xxl"
     },
     {
-      "type": "text",
-      "id": "max_width_desktop",
-      "label": "Text Content - Max Width - Desktop",
-      "info": "Make sure to include units",
-      "default": "109ch"
-    },
-    {
         "type": "header",
         "content": "Color Set"
     },
@@ -412,6 +405,9 @@
         "default": "text-blue"
     },
     {
+        "type": "header",
+        "content": "Content"
+    },{
       "type": "select",
       "id": "image_position_mobile",
       "label": "Image Position - Mobile",
@@ -442,6 +438,13 @@
         }
       ],
       "default": "tabletl:flex-row"
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Text Content Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
     }
   ],
   "enabled_on": {
