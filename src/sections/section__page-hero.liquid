@@ -55,7 +55,7 @@
           {% render 'lazy-image', image: section.settings.image_desktop %}
 
           {% if section.settings.caption != blank %}
-              <p class="hero__image-caption mt-md{{ section.settings.caption_style }}">{{ section.settings.caption }}</p>
+              <p class="hero__image-caption mt-md text-center {{ section.settings.caption_style }}">{{ section.settings.caption }}</p>
           {% endif %}
         </div>
     {% endif %}
