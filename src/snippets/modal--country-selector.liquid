@@ -1,9 +1,9 @@
-<s-modal id="CountryMarketSelectModal" class="country-market-selector-modal py-md bg-gray-athans w-[300px] tabletl:min-w-[500px]" open="[js-open-country-market-selector-modal]" close="[js-close-country-market-selector-modal]">
+<s-modal id="CountryMarketSelectModal" class="!block !opacity-100 country-market-selector-modal py-md bg-gray-athans w-[300px] tabletl:min-w-[500px]" open="[js-open-country-market-selector-modal]" close="[js-close-country-market-selector-modal]" js-country-select-modal>
     <div class="site__logo w-[138px] mx-auto self-center mb-md">{% render 'icon-blueair-logo' %}</div>
     
     <div class="modal__content px-lg tabletl:px-xl">
         <div class="s1 mb-md">
-            <country-select class="block w-full h-full">
+            <country-select-modal class="block w-full h-full">
                 {% capture form_id %}ModalLocalizationForm{% endcapture %}
                 {% capture input_id %}ModalCountryCode{% endcapture %}
                 {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
@@ -22,12 +22,12 @@
                     </div>
                 </div>
                 <p class="s2 mt-md">Select Language</p>
-                <div class="modal__country-select relative bg-white border p-sm border-gray rounded-[4px]">
+                <div class="modal__country-select relative bg-white border p-sm border-gray rounded-[4px]" js-language>
                     <div class="language-name text-[22px] flex-1" js-language-input-label> {{ localization.language.endonym_name | capitalize }} </div>
                     <select id="LanguageList" role="list" class="language-select__selector block absolute inset-0 z-[1] opacity-0 cursor-pointer" js-language-select>
                         {% for language in localization.available_languages %}
-                            <option value="{{ language.iso_code }}" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}" data-value="{{ language.iso_code }}" data-endonym-name="{{ language.endonym_name }}">
-                              {{ language.endonym_name | capitalize }}
+                            <option {% if language.iso_code == localization.language.iso_code | downcase%} selected {% endif %} value="{{ language.iso_code }}"  data-value="{{ language.iso_code }}" data-endonym-name="{{ language.endonym_name }}">
+                                {{ language.endonym_name | capitalize }}
                             </option>
                         {% endfor %}
                     </select>
@@ -37,11 +37,11 @@
                     </div>
                 </div>
                 {%- endform -%} 
-                <button class="modal__submit-btn btn btn--blue-rounded mt-md w-fit mx-auto" js-close-country-market-selector-modal>
+                <button class="modal__submit-btn btn btn--blue-rounded mt-md w-fit mx-auto" js-close-country-market-selector-modal js-localization-submit>
                     <span class="btn__text">Visit Site</span>
                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                 </button>
-            </country-select>
+            </country-select-modal>
         </div>
     </div>
     <p class="modal__disclaimer p1 p-lg text-center font-400">This website uses cookies to improve your experience. By continuing to use our website you are consenting to our cookie policy.</p>
