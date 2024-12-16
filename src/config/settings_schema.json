@@ -196,5 +196,16 @@
         "info": "Will be scaled down to 32 x 32px"
       }
     ]
+  },
+  {
+    "name": "Languages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_modal_popup",
+        "label": "Enable Modal Popup",
+        "default": true
+      }
+    ]
   }
 ]
