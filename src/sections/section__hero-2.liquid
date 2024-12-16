@@ -35,7 +35,7 @@
 
 
     {% if section.settings.background_image_desktop != blank %}
-        <div class="background-image-container__desktop absolute right-[-80px] top-xl">
+        <div class="background-image-container__desktop absolute right-[-80px] top-xl hidden tabletl:block">
             {% render 'lazy-image' image:section.settings.background_image_desktop %}
         </div>
     {% endif %}
@@ -43,7 +43,7 @@
 
 {% schema %}
 {
-  "name": "Hero 2",
+  "name": "App Page Hero 2",
   "tag": "section",
   "settings": [
     {
@@ -553,7 +553,7 @@
   ],
   "presets": [
     {
-      "name": "Hero 2"
+      "name": "App Page Hero 2"
     }
   ]
 }

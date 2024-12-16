@@ -22,7 +22,7 @@
     <ul class="quotes-container tabletl:grid tabletl:grid-cols-2 tabletl:gap-md tabletl:flex-1">
         {% for block in section.blocks %}
           {% if block.settings.quote != blank %}
-            <li class="quote py-md {% unless forloop.last %} border-b border-gray tabletl:border-0{% endunless %}">
+            <li class="quote py-md {% unless forloop.last %} border-b border-gray tabletl:border-0{% endunless %} tabletl:py-0">
               <div class="quote-icon text-[#BAE6FF] w-[24px] mb-sm">
                 {%  render 'icon-quote' %}
               </div>

@@ -41,8 +41,8 @@
 {% endcapture %}
 
 <div class="section__carousel {{ margins_paddings }} tabletl:ml-xl" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
-    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:mx-xl tabletl:items-center {% endif %}">
-        <div class="section__carousel-text-container mx-lg mb-md">
+    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %}">
+        <div class="section__carousel-text-container mx-lg mb-md tabletl:mx-0">
             {% if section.settings.title != blank %}
                 {% liquid
                     assign title_tag = 'p'

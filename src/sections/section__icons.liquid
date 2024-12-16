@@ -8,7 +8,7 @@
     {% endif %}
     <div class="icons__grid grid gap-md {{ section.settings.gap_desktop }}" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
       {% for block in section.blocks %}
-        <div class="icons__block {% if section.settings.enable_borders %} border py-sm rounded-[12px] tabletl:py-md  {% endif %}">
+        <div class="icons__block {% if section.settings.enable_borders %} border border-gray shadow-md py-sm rounded-[12px] tabletl:py-md  {% endif %}">
           {% if block.settings.icon != blank %}
             <div class="icon__image inline-block" style="{% if block.settings.icon_fixed_width != blank %}width: {{ block.settings.icon_fixed_width }}px{% else %}width: 100%{% endif %};">
               {% render 'lazy-image' image: block.settings.icon %}

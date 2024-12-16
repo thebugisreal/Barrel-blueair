@@ -2,8 +2,8 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__page-hero {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:flex tabletl:gap-xxxl">
-    <div class="hero__content-container flex-1">
+<div class="section__page-hero {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl tabletl:flex tabletl:gap-xxxl tabletl:justify-center">
+    <div class="hero__content-container flex-1 tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         {% if section.settings.title != blank %}
             <h1 class="hero__title {{ section.settings.title_style }} mb-md">{{ section.settings.title }}</h1>
         {% endif %}
@@ -53,13 +53,17 @@
     {% if section.settings.image_desktop != blank %}
         <div class="hero__image hidden tabletl:block min-w-[300px]">
           {% render 'lazy-image', image: section.settings.image_desktop %}
+
+          {% if section.settings.caption != blank %}
+              <p class="hero__image-caption mt-md{{ section.settings.caption_style }}">{{ section.settings.caption }}</p>
+          {% endif %}
         </div>
     {% endif %}
 </div>
 
 {% schema %}
 {
-  "name": "Page Hero",
+  "name": "App Page Hero",
   "tag": "section",
   "settings": [
     {
@@ -561,6 +565,13 @@
       "default": "p2"
     },
     {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Max Width of Text Content - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    },
+    {
       "type": "header",
       "content": "Image"
     },
@@ -568,11 +579,88 @@
       "type": "image_picker",
       "id": "image_desktop",
       "label": "Image - Desktop"
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "select",
+      "id": "caption_style",
+      "label": "Caption Style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        },
+        {
+          "value": "p1",
+          "label": "p1"
+        },
+        {
+          "value": "p2",
+          "label": "p2"
+        },
+        {
+          "value": "p3",
+          "label": "p3"
+        },
+        {
+          "value": "p4",
+          "label": "p4"
+        },
+        {
+          "value": "p5",
+          "label": "p5"
+        },
+        {
+          "value": "p6",
+          "label": "p6"
+        }
+      ],
+      "default": "p2"
     }
   ],
   "presets": [
     {
-      "name": "Page Hero"
+      "name": "App Page Hero"
     }
   ]
 }
