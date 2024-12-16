@@ -29,7 +29,7 @@ class Account extends HTMLElement {
     this.accountLabel = this.querySelector(this._selectors.accountLabel);
     this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
 
-    // this._setupCountries();
+    this._setupCountries();
     this._setupEventListeners();
   }
 

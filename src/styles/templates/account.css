@@ -75,6 +75,18 @@
   bg-transparent;
 }
 
+.account input,
+.account select {
+  @apply px-sm
+  py-xxs
+  border
+  border-gray;
+}
+
+.account .form__label {
+  @apply leading-[28px];
+}
+
 input[name="address[default]"] {
   @apply absolute
   overflow-hidden
