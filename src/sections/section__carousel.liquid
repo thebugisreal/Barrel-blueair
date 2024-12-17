@@ -40,16 +40,31 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__carousel {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
-    <header class="section__carousel-header px-md desktop:px-xl {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:mx-xl tabletl:items-center {% endif %}">
-        {% if section.settings.title != blank %}
-            <h1 class="section__carousel-title {{ section.settings.title_style }} mb-md {{ section.settings.title_alignment }}">{{ section.settings.title }}</h1>
-        {% endif %}
+<div class="section__carousel {{ margins_paddings }} tabletl:ml-xl" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
+    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %}">
+        <div class="section__carousel-text-container mx-lg mb-md tabletl:mx-0">
+            {% if section.settings.title != blank %}
+                {% liquid
+                    assign title_tag = 'p'
+                    assign title_options = 'h1,h2,h3,h4,h5,h6'
+    
+                    if title_options contains section.settings.title_style
+                        assign title_tag = section.settings.title_style
+                    endif
+                %}
+                <{{ title_tag }} class="section__carousel-title">{{ section.settings.title }}</{{ title_tag }}>
+            {% endif %}
+            {% if section.settings.subtext != blank %}
+                <p class="section__carousel-subtext {{ section.settings.subtext_style }} mt-xxxs">{{ section.settings.subtext }}</p>
+              {% endif %}
+        </div>
         {% if section.settings.url != blank %}
-            <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mb-md tabletl:mb-lg {% if section.settings.title_alignment == 'text-left' %}mr-auto{% elsif section.settings.title_alignment == 'text-right' %}ml-auto{% else %}mx-auto{% endif %}"> 
-                <p class="p2 btn__text">{{ section.settings.url_text }}</p>
-                <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
-            </a>
+            <div class="mx-lg">
+                <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} {{ section.settings.cta_position_mobile }} mb-md tabletl:pb-xs tabletl:mb-lg"> 
+                    <p class="p2 btn__text">{{ section.settings.url_text }}</p>
+                    <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
+                </a>
+            </div>
         {% endif %}
     </header>
 
@@ -78,14 +93,22 @@
                             {% when 'product' %}
                                 {% if block.settings.product != blank %}
                                     <div class="swiper-slide h-auto" js-carousel-slide>
-                                        {% render 'product-card__carousel' product:block.settings.product %}
+                                        {% if block.settings.product_card_style == 'style1'%}
+                                            {% render 'product-card__carousel' product:block.settings.product %}
+                                        {% elsif block.settings.product_card_style == 'style2' %}
+                                            {% render 'product-card' product:block.settings.product %}
+                                        {% endif %}
                                     </div>
                                 {% endif %}
                             {% when 'collection' %}
                                 {% if block.settings.collection != blank %}
                                     {% for product in block.settings.collection.products limit:block.settings.product_pulled %}
                                         <div class="swiper-slide h-auto" js-carousel-slide>
-                                            {% render 'product-card__carousel' product:product %}
+                                            {% if block.settings.product_card_style == 'style1'%}
+                                                {% render 'product-card__carousel' product:product %}
+                                            {% elsif block.settings.product_card_style == 'style2' %}
+                                                {% render 'product-card' product:product %}
+                                            {% endif %}
                                         </div>
                                     {% endfor %}
                                 {% endif %}
@@ -159,7 +182,8 @@
                 </div>
 
                 {% comment %} Swiper Nav {% endcomment %}
-                {% case section.settings.carousel_nav %}
+                 <div class="carousel_nav-container {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %}">
+                    {% case section.settings.carousel_nav %}
                     {% when 'pagination'%}
                         <div class="swiper-nav-container py-xxs flex justify-between items-center">
                             <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
@@ -175,6 +199,7 @@
                             <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                         </div>
                 {% endcase %}
+                 </div>
                 {% comment %} END Swiper Nav {% endcomment %}
             </div>
         </s-carousel>
@@ -554,6 +579,18 @@
         },
         {
             "type": "checkbox",
+            "id": "enable_carousel_nav_mobile",
+            "label": "Enable Carousel Nav - Mobile",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_carousel_nav_desktop",
+            "label": "Enable Carousel Nav - Desktop",
+            "default": true
+        },
+        {
+            "type": "checkbox",
             "id": "enable_centered_carousel",
             "label": "Enable Centered Carousel - Desktop"
         },
@@ -616,24 +653,81 @@
             "default": "h2"
         },
         {
+            "type": "textarea",
+            "id": "subtext",
+            "label": "Subtext"
+        },
+        {
             "type": "select",
-            "id": "title_alignment",
-            "label": "Title Alignment",
+            "id": "subtext_style",
+            "label": "Subtext Style",
             "options": [
                 {
-                    "value": "text-left",
-                    "label": "Left"
+                "value": "h1",
+                "label": "h1"
                 },
                 {
-                    "value": "text-center",
-                    "label": "Center"
+                "value": "h2",
+                "label": "h2"
                 },
                 {
-                    "value": "text-right",
-                    "label": "Right"
+                "value": "h3",
+                "label": "h3"
+                },
+                {
+                "value": "h4",
+                "label": "h4"
+                },
+                {
+                "value": "h5",
+                "label": "h5"
+                },
+                {
+                "value": "h6",
+                "label": "h6"
+                },
+                {
+                "value": "s1",
+                "label": "s1"
+                },
+                {
+                "value": "s2",
+                "label": "s2"
+                },
+                {
+                "value": "s3",
+                "label": "s3"
+                },
+                {
+                "value": "s4",
+                "label": "s4"
+                },
+                {
+                "value": "p1",
+                "label": "p1"
+                },
+                {
+                "value": "p2",
+                "label": "p2"
+                },
+                {
+                "value": "p3",
+                "label": "p3"
+                },
+                {
+                "value": "p4",
+                "label": "p4"
+                },
+                {
+                "value": "p5",
+                "label": "p5"
+                },
+                {
+                "value": "p6",
+                "label": "p6"
                 }
             ],
-            "default": "text-center"
+            "default": "p2"
         },
         {
             "type": "url",
@@ -668,6 +762,26 @@
             }
             ],
             "default": "btn btn--blue-rounded"
+        },
+        {
+            "type": "select",
+            "id": "cta_position_mobile",
+            "label": "CTA Postion - Mobile",
+            "options": [
+                {
+                    "label": "left",
+                    "value": "mr-auto"
+                },
+                {
+                    "label": "center",
+                    "value": "mx-auto"
+                },
+                {
+                    "label": "left",
+                    "value": "ml-auto"
+                }
+            ],
+            "default": "mx-auto"
         }
         
     ],
@@ -787,6 +901,22 @@
                     "type": "product",
                     "id": "product",
                     "label": "Product"
+                },
+                {
+                    "type": "select",
+                    "id": "product_card_style",
+                    "label": "Product Card Style",
+                    "options": [
+                        {
+                            "label": "Style 1",
+                            "value": "style1"
+                        },
+                        {
+                            "label": "Style 2",
+                            "value": "style2"
+                        }
+                    ],
+                    "default": "style1"
                 }
             ]
         },
@@ -804,6 +934,22 @@
                     "id": "product_pulled",
                     "label": "Product Pulled",
                     "default": 3
+                },
+                {
+                    "type": "select",
+                    "id": "product_card_style",
+                    "label": "Product Card Style",
+                    "options": [
+                        {
+                            "label": "Style 1",
+                            "value": "style1"
+                        },
+                        {
+                            "label": "Style 2",
+                            "value": "style2"
+                        }
+                    ],
+                    "default": "style1"
                 }
             ]
         },

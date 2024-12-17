@@ -21,6 +21,7 @@
 @import '/components/product-card.css';
 @import '/components/filter-sort.css';
 @import '/components/predictive-search.css';
+@import '/components/rating-star.css';
 
 @import '/account/login.css';
 

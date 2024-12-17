@@ -1,0 +1,27 @@
+.star-rating {
+    display: inline-block;
+    font-size: 36px;
+    color: #D8DBDE; /* Gray color for unfilled stars */
+  }
+
+  .star {
+    line-height: 1;
+    font-size: inherit;
+    color: #D8DBDE; /* Default color for unfilled stars */
+    display: inline-block;
+  }
+
+  .star.full {
+    color: #002955; /* Gold color for full stars */
+  }
+
+  .star.partial {
+    color: transparent; /* Hide the default color */
+    background: linear-gradient(to right, #002955 var(--partial-percentage), #D8DBDE calc(100% - var(--partial-percentage)));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .star.empty {
+    color: #D8DBDE; /* Gray color for empty stars */
+  }
