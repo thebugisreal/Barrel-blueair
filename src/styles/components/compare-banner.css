@@ -1,0 +1,6 @@
+.accordion-header[aria-expanded="true"] .compare-products-selected {
+    @apply inline-block
+}
+.accordion-header[aria-expanded="false"] .compare-products-selected {
+    @apply hidden
+}

@@ -28,6 +28,7 @@ window.theme = window.theme || {};
 // =require components/section__image-caption-modal.js
 // =require components/product-card__upsell.js
 // =require components/product-upsell.js
+// =require components/compare-banner.js
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -54,6 +55,7 @@ customElements.define('price-range', PriceRange);
 customElements.define('product-card', ProductCard);
 customElements.define('product-card-upsell', ProductCardUpsell);
 customElements.define('product-upsell', ProductUpsell);
+customElements.define('compare-banner', CompareBanner);
 
 customElements.define('country-select', CountrySelect);
 

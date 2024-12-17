@@ -95,7 +95,13 @@
       {% endif %}
     </div>
 
-    <div class="text-12 mt-sm">Compare (TBD)</div>
+    {% if product.metafields.seed.enable_product_compare %}
+      <div class="text-12 mt-sm flex items-center gap-sm">
+        <input type="checkbox" id="enableProductCompare" js-product-compare-checkbox>
+        <label for="enableProductCompare"> Compare (TBD)</label>
+      </div>
+      <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-data>{{ all_products[product.handle] | json }}</script>
+    {% endif %}
   </div>
 </product-card>
 

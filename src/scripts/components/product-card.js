@@ -8,7 +8,9 @@ class ProductCard extends HTMLElement {
       swatch: '[js-product-card-swatch]',
       currentSwatchLabel: '[js-product-card-current-swatch-label]',
       productLink: '[js-product-link]',
-      price: '[js-product-card-price]'
+      price: '[js-product-card-price]',
+      productCompareCheckbox: '[js-product-compare-checkbox]',
+      productCompareData: '[js-product-compare-data]'
     }
   }
 
@@ -19,6 +21,8 @@ class ProductCard extends HTMLElement {
     this.productLinks = this.querySelectorAll(this._selectors.productLink);
     this.price = this.querySelector(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
+    this.productCompareCheckbox = this.querySelector(this._selectors.productCompareCheckbox)
+    this.productCompareData = JSON.parse(this.querySelector(this._selectors.productCompareData).innerHTML)
 
     this._setListeners();
   }
@@ -27,6 +31,11 @@ class ProductCard extends HTMLElement {
     this.swatches.forEach((swatch) => {
       swatch.addEventListener('click', this._swatchOnClick);
     });
+
+    if (this.productCompareCheckbox) {
+      this._initProductCompare()
+      this.productCompareCheckbox.addEventListener('change', this._handleProductCompareCheckToggle.bind(this))
+    }
   }
 
   _updateImage = (swatchName) => {
@@ -41,6 +50,55 @@ class ProductCard extends HTMLElement {
       this.soldOutTag.classList.add('hidden');
     } else {
       this.soldOutTag.classList.remove('hidden');
+    }
+  }
+
+  _initProductCompare() {
+    console.log('hello world')
+    let compareProductArray
+    if (sessionStorage.getItem('compareProductArray')) {
+      console.log('hello world - yeee')
+      compareProductArray = sessionStorage.getItem('compareProductArray');
+      compareProductArray = JSON.parse(compareProductArray)
+
+      console.log('compareProductArray', compareProductArray)
+
+      for (let i = 0; i < compareProductArray.length ; i++ ) {
+        if (compareProductArray[i].id === this.productCompareData.id) {
+          this.productCompareCheckbox.checked = true
+          return;
+        }
+      }
+    } else {
+      console.log('hello world - nahhh')
+    }
+  }
+
+  _handleProductCompareCheckToggle(e) {
+    let compareProductArray
+    if (sessionStorage.getItem('compareProductArray')) {
+      compareProductArray = sessionStorage.getItem('compareProductArray');
+      compareProductArray = JSON.parse(compareProductArray)
+    } else {
+      compareProductArray = [];
+    }
+
+    if (this.productCompareCheckbox.checked) {
+      // check if obj is in the array
+      for (let i = 0; i < compareProductArray.length ; i++ ) {
+        if (compareProductArray[i].id === this.productCompareData.id) {
+          return true;
+        }
+      }
+      compareProductArray.push(this.productCompareData)
+      sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
+    } else {
+      for (let i = 0; i < compareProductArray.length ; i++ ) {
+        if (compareProductArray[i].id === this.productCompareData.id) {
+          compareProductArray.splice(i, 1)
+        }
+      }
+      sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
     }
   }
 

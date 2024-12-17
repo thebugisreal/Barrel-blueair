@@ -1,0 +1,20 @@
+<compare-banner class="compare-banner fixed bottom-0 right-0 left-0 bg-white z-[2] w-full px-md pt-md tabletl:px-xl">
+    <s-accordion data-manual-collapse="false" js-accordion>
+        <div class="accordion-item" js-accordion-item>
+            <button class="accordion-header s1 pb-md w-full flex justify-between items-center gap-xs" aria-expanded="true" aria-controls="compareBannerContent" js-accordion-header>
+                <div>
+                    Compare up to <span class="tabletl:hidden">2</span> <span class="hidden tabletl:inline">3</span> models <span class="compare-products-selected font-900">(${porductsSelected})</span>
+                </div>
+                <div class="icon-container h-[33px] w-[33px] p-xxs">
+                    {%  render 'icon-plus' %}
+                    {%  render 'icon-minus' %}
+                </div>
+            </button>
+            <div id="compareBannerContent" class="accordion-content" aria-hidden="false" js-accordion-content>
+                <div class="pb-md">
+                    Compare Products here
+                </div>
+            </div>
+        </div>
+    </s-accordion>
+</compare-banner>
