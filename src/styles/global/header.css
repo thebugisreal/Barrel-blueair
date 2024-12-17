@@ -21,20 +21,6 @@
   @apply border-0;
 }
 
-.header-desktop-nav__item--mega-menu::before {
-  @apply content-['']
-  absolute
-  top-[var(--header-height)]
-  left-0
-  w-full
-  h-[calc(100vh-var(--header-height))]
-  bg-white
-  opacity-60
-  z-[-2]
-  pointer-events-none
-  hidden;
-}
-
 .mega-menu__left > div:first-child {
   @apply border-0;
 }
@@ -84,10 +70,23 @@
 
   .header-desktop-nav__item--mega-menu:focus-within .header-desktop-nav__mega-menu-wrapper,
   .header-desktop-nav__item--mega-menu:hover .header-desktop-nav__mega-menu-wrapper {
-    @apply opacity-100
-    pointer-events-auto
+    @apply pointer-events-auto
     z-[1]
-    translate-y-full;
+    max-h-[999px];
+  }
+
+  .header-desktop-nav__item--mega-menu::before {
+    @apply content-['']
+    absolute
+    top-[68px]
+    left-0
+    w-full
+    h-[calc(100vh-var(--header-height))]
+    bg-white
+    opacity-60
+    z-[-2]
+    pointer-events-none
+    hidden;
   }
 
   .header-desktop-nav__item--mega-menu:focus-within::before,

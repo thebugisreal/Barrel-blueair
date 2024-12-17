@@ -1,0 +1,50 @@
+.image-tabs .tab__trigger[aria-selected="true"] {
+  @apply border-blue;
+}
+
+.image-tabs .tab-trigger__subtext-wrapper {
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-property: all;
+  transition-duration: 1s;
+}
+
+.image-tabs .tab__trigger[aria-selected="false"] .tab-trigger__subtext-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 1s ease, opacity .5s ease;
+}
+
+.image-tabs .tab__trigger[aria-selected="true"] .tab-trigger__subtext-wrapper {
+  max-height: 100vh;
+  opacity: 1;
+  transition: max-height 1s ease, opacity .5s ease;
+}
+
+.image-tabs .tab__trigger[aria-selected="false"] .tab-trigger__subtext-wrapper .tab-trigger__subtext {
+  display: none;
+  transition-duration: .5s;
+}
+
+.image-tabs .tab__trigger[aria-selected="true"] .tab-trigger__subtext-wrapper .tab-trigger__subtext {
+  display: block;
+  transition-duration: .5s;
+}
+
+.image-tabs .tab__panel {
+  @apply !block;
+}
+
+.image-tabs .tab__panel:first-child {
+  @apply static;
+}
+
+.image-tabs .tab__panel[aria-hidden="false"] {
+  visibility: visible;
+  transition: opacity .5s ease;
+}
+
+.image-tabs .tab__panel[aria-hidden="true"] {
+  transition: opacity .5s ease;
+  visibility: hidden;
+}

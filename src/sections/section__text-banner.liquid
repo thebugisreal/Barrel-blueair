@@ -4,7 +4,7 @@
 <div class="section__text-banner {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
   <div class="text-banner__wrapper mx-auto desktop:max-w-[var(--max-w-desktop)] {{ section.settings.text_align_mobile }} {{ section.settings.text_align_desktop }} {% if section.settings.image != blank %}desktop:flex desktop:justify-center desktop:items-center desktop:gap-[225px]{% endif %}" style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
     {% if section.settings.image != blank %}
-      <div class="text-banner__image w-[111px] min-w-[111px] inline-block mb-lg desktop:mb-0">
+      <div class="text-banner__image w-[111px] min-w-[111px] inline-block mb-lg desktop:mb-0 {{ section.settings.image_position_desktop }}">
         {% render 'lazy-image' image: section.settings.image %}
       </div>
     {% endif %}
@@ -424,6 +424,22 @@
       "type": "image_picker",
       "id": "image",
       "label": "Small Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position_desktop",
+      "label": "Image Position - Desktop",
+      "options": [
+        {
+          "value": "desktop:order-first",
+          "label": "Left"
+        },
+        {
+          "value": "desktop:order-last",
+          "label": "Right"
+        }
+      ],
+      "default": "desktop:order-first"
     },
     {
       "type": "text",
