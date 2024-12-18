@@ -13,7 +13,8 @@ class Account extends HTMLElement {
       order: '[js-order]',
       accountTriggerAccordionHeader: '[js-account-trigger-accoridon-header]',
       accountLabel: '[js-account-label]',
-      accountTab: '[js-account-tab]'
+      accountTab: '[js-account-tab]',
+      returnButton: '[js-return-button]'
     }
   }
 
@@ -28,9 +29,18 @@ class Account extends HTMLElement {
     this.accountTriggerAccordionHeader = this.querySelector(this._selectors.accountTriggerAccordionHeader);
     this.accountLabel = this.querySelector(this._selectors.accountLabel);
     this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
+    this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
 
+    this._setupKlaviyo();
     this._setupCountries();
     this._setupEventListeners();
+  }
+
+  _setupKlaviyo() {
+    this.querySelector('.klaviyo_form_trigger').addEventListener('click', function () {
+      window._klOnsite = window._klOnsite || []; 
+      window._klOnsite.push(['openForm', this.dataset.formId]);
+    });
   }
 
   _setupCountries() {
@@ -67,6 +77,10 @@ class Account extends HTMLElement {
     this.accountTabs.forEach((button) => {
       button.addEventListener('click', this._setAccountLabel);
     })
+
+    this.returnButtons.forEach((button) => {
+      button.addEventListener('click', this._returnToOrderHistory);
+    })   
 
     document.addEventListener('click', this._closeAccountTriggerAccordion);
   }
@@ -122,8 +136,15 @@ class Account extends HTMLElement {
     });
   }
 
-  _setAccountLabel  = (e) => {
-    this.accountLabel.innerHTML = e.currentTarget.dataset.label;
+  _setAccountLabel = (e) => {
+    let label = e.currentTarget.dataset.label;
+    this.accountLabel.innerHTML = label;
+    this.accountTabs.forEach((button) => {
+      if (button.dataset.label == label) {
+        button.click();
+      }
+    })
+
   }
 
   _closeAccountTriggerAccordion = (e) => {
@@ -138,4 +159,7 @@ class Account extends HTMLElement {
     this.accountTriggerAccordionHeader.click();
   }
 
+  _returnToOrderHistory = (e) => {
+    document.querySelector('label[aria-controls="order-history-content-panel"]').click();
+  }
 }
