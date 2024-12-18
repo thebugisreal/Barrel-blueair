@@ -1,0 +1,22 @@
+.compare__title {
+    @apply py-md
+    border-b
+    border-gray
+}
+
+.compare__item {
+    @apply py-md
+    border-b
+    border-gray
+}
+
+.compare__item .p1 {
+    @apply font-300
+}
+
+
+@media screen(tabletl) {
+    .compare__title {
+        @apply py-lg
+    }
+}

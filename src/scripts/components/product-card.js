@@ -22,7 +22,9 @@ class ProductCard extends HTMLElement {
     this.price = this.querySelector(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
     this.productCompareCheckbox = this.querySelector(this._selectors.productCompareCheckbox)
-    this.productCompareData = JSON.parse(this.querySelector(this._selectors.productCompareData).innerHTML)
+    if (this.querySelector(this._selectors.productCompareData)) {
+      this.productCompareData = JSON.parse(this.querySelector(this._selectors.productCompareData).innerHTML)
+    }
 
     this._setListeners();
   }
@@ -35,6 +37,7 @@ class ProductCard extends HTMLElement {
     if (this.productCompareCheckbox) {
       this._initProductCompare()
       this.productCompareCheckbox.addEventListener('change', this._handleProductCompareCheckToggle.bind(this))
+      window.addEventListener("seed:compare:itemchange", this._handleItemChange.bind(this));
     }
   }
 
@@ -54,23 +57,47 @@ class ProductCard extends HTMLElement {
   }
 
   _initProductCompare() {
-    console.log('hello world')
     let compareProductArray
     if (sessionStorage.getItem('compareProductArray')) {
-      console.log('hello world - yeee')
       compareProductArray = sessionStorage.getItem('compareProductArray');
       compareProductArray = JSON.parse(compareProductArray)
-
-      console.log('compareProductArray', compareProductArray)
 
       for (let i = 0; i < compareProductArray.length ; i++ ) {
         if (compareProductArray[i].id === this.productCompareData.id) {
           this.productCompareCheckbox.checked = true
-          return;
         }
       }
-    } else {
-      console.log('hello world - nahhh')
+
+      if (compareProductArray.length > 2) {
+        for (let i = 0; i < compareProductArray.length ; i++ ) {
+          if (compareProductArray[i].id === this.productCompareData.id ) {
+            this.productCompareCheckbox.disabled = false
+            return
+          }
+        }
+        this.productCompareCheckbox.disabled = true
+      } else {
+        this.productCompareCheckbox.disabled = false
+      }
+    }
+  }
+
+  _handleItemChange(e) {
+    let compareProductArray
+    if (sessionStorage.getItem('compareProductArray')) {
+      compareProductArray = sessionStorage.getItem('compareProductArray');
+      compareProductArray = JSON.parse(compareProductArray)
+      if (compareProductArray.length > 2) {
+        for (let i = 0; i < compareProductArray.length ; i++ ) {
+          if (compareProductArray[i].id === this.productCompareData.id ) {
+            this.productCompareCheckbox.disabled = false
+            return
+          }
+        }
+        this.productCompareCheckbox.disabled = true
+      } else {
+        this.productCompareCheckbox.disabled = false
+      }
     }
   }
 
@@ -100,6 +127,10 @@ class ProductCard extends HTMLElement {
       }
       sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
     }
+
+    window.dispatchEvent(new CustomEvent("seed:compare:itemchange", {
+      detail: { compareProductArray }
+    }))
   }
 
   _updateProductLink = (url) => {

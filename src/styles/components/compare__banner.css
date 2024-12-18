@@ -1,0 +1,28 @@
+.accordion-header[aria-expanded="false"] .compare-products-selected {
+    @apply inline-block
+}
+.accordion-header[aria-expanded="true"] .compare-products-selected {
+    @apply hidden
+}
+
+.compare__btn.disabled {
+    @apply bg-gray
+    border-gray
+    px-sm
+}
+
+.compare__btn.disabled .btn__arrow {
+    @apply hidden
+}
+
+.compare-banner__product {
+    @apply w-auto
+    flex-1
+}
+
+.compare__product-remove .icon--plus {
+    @apply 
+    w-[20px]
+    h-[20px]
+    rotate-45
+}
