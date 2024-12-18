@@ -53,6 +53,7 @@
 
 .product-swatch__label--non-color {
   @apply w-full
+  h-full
   py-xxs
   px-sm
   text-center
@@ -130,93 +131,82 @@
 }
 
 /* subscription */
-.product-subscription__offer[subscribed] {
-  @apply bg-gray-athans
-  !text-blue;
-}
-
-.product-subscription__offer .og-optout-buttons{
-  @apply !m-0;
-}
-
-.product-subscription__offer .og-optout-buttons og-optin-toggle {
-  @apply !s3
-  !font-700;
-}
-
-.product-subscription__offer .og-button-toggle {
-  @apply border
-  border-gray
-  rounded-full
-  !px-xxxs
-  !pt-[5px]
-  !pb-[3px]
-  !bg-transparent
-  !ml-0
-  !mr-xs
-  !mt-0
-  !mb-[3px];
-}
-
-.product-subscription__offer .og-button-toggle svg {
-  @apply w-[12px]
-  h-[12px];
-}
-
-.product-subscription__offer .og-text,
-.product-subscription__offer .og-optin-buttons {
-  @apply !max-h-0
-  overflow-hidden
-  transition-[max-height]
-  duration-300
-  !m-0;
-}
-
-.product-subscription__offer[subscribed] .og-text,
-.product-subscription__offer[subscribed] .og-optin-buttons {
-  @apply !max-h-[1000px];
-}
-
-.product-subscription__offer .og-text {
-  @apply !p3
-  !text-14;
-}
-
-
-
-
-.product-subscription__offer {
-  
-}
-
-.product-subscription__offer {
-  
-}
-
-.product-subscription__offer {
-  
-}
-
-.product-subscription__offer {
-  
-}
-
-.product-subscription__offer {
-  
-}
-
-.product-subscription__offer {
-  
-}
-
-.product-subscription__non-subscription[data-selected="true"] {
+.product__subscription[data-selected="true"],
+.product__non-subscription[data-selected="true"] {
   @apply bg-gray-athans;
 }
 
-.product-subscription__non-subscription[data-selected="true"] .checkbox {
+.product__subscription[data-selected="true"] .checkbox,
+.product__non-subscription[data-selected="true"] .checkbox {
   @apply border-blue;
 }
 
-.product-subscription__non-subscription[data-selected="false"] .checkbox .icon {
+.product__subscription[data-selected="false"] .checkbox .icon,
+.product__non-subscription[data-selected="false"] .checkbox .icon {
   @apply hidden;
+}
+
+
+.product__subscription[data-selected="false"] .product-subscription__content,
+.product__non-subscription[data-selected="false"] .product-non-subscription__content {
+  @apply max-h-0
+  overflow-hidden;
+}
+
+.product__subscription[data-selected="true"] .product-subscription__content,
+.product__non-subscription[data-selected="true"] .product-non-subscription__content {
+  @apply max-h-[999px];
+}
+
+.product-subscription-description__bullet::before {
+  content: '●';
+  @apply text-[8px]
+  px-xs
+  leading-[21px];
+}
+
+/*
+.product-subscription__offer .og-optout-buttons{
+  @apply !hidden;
+}
+  */
+
+.product-subscription__offer .og-text,
+.product-subscription__offer .og-optin-buttons {
+  @apply !m-0;
+}
+
+.product-subscription__offer .og-text {
+  @apply !p6
+  !font-700
+  !text-blue
+  !mb-xxxs;
+}
+
+.product-subscription__offer .og-optin-buttons {
+  @apply gap-xxs;
+}
+
+.product-subscription__offer .og-optin-buttons .og-optin-button-item {
+  @apply flex-1;
+}
+
+.product-subscription__offer .og-optin-buttons og-optin-button {
+  @apply !m-0
+  !rounded-[2px]
+  !border
+  !border-gray
+  !p-xxs
+  !p3
+  !font-500
+  !text-blue
+  !block;
+}
+
+.product-subscription__offer og-optin-button[subscribed][frequency-match] {
+  @apply !border-blue;
+}
+
+.product__option-trigger[data-selected="true"] {
+  @apply border-blue;
 }

@@ -164,29 +164,136 @@
                 </product-options>
                 {% endunless %}
               {% when 'subscription' %}
-                <div class="product__subscription" js-subscription-container>
-                  <div class="product-subscription__customized-element" js-subscription-customization>
-                    
-                  </div>
-
-                  <og-offer product="{{ current_variant.id }}" location="pdp" class="product-subscription__offer border border-blue rounded-[3px] px-xs py-md desktop:px-md" js-subscription-offer>
-                  </og-offer>
-
-                  <button type="button" data-selected="false" class="product-subscription__non-subscription px-xs py-md desktop:px-md flex items-center gap-sm w-full border border-blue rounded-[3px] mt-sm" js-no-subscription-btn>
-                    <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
-                      {% render 'icon-check' %}
-                    </div>
-                    <div class="s3 font-700 flex-1 text-left">{Product} Only</div>
-                    <div class="product__price-wrapper text-16 flex justify-end items-center gap-xs" js-price including-compare-at>
-                      {% if current_variant.compare_at_price > current_variant.price %}
-                        <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-                        <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                      {% else %}
-                        <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                {% if product.metafields.seed.subscription != blank and product.selling_plan_groups.size > 0 %}
+                  {% assign subscription = product.metafields.seed.subscription.value %}
+                  <div class="product__subscription-container">
+                    <div class="product__subscription border border-blue rounded-[3px] relative" data-selected="true" js-subscription>
+                      <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full" js-subscription-toggle>
+                        <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
+                          {% render 'icon-check' %}
+                        </div>
+                        <div class="s3 font-700 flex-1 text-left">
+                          {% if subscription.subscription_type == 'Filter' %}
+                            Filter Subscription
+                          {% else %}
+                            Air Purifier + Filter Subscription
+                          {% endif %}
+                        </div>
+                        <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" js-price js-subscription-price>
+                          {% if current_variant.compare_at_price > current_variant.price %}
+                            <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
+                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                          {% else %}
+                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                          {% endif %}
+                        </div>
+                      </button>
+                      <div class="product-subscription__content px-xs desktop:px-md transition-[max-height] duration-300">
+                        <div>{{ current_variant.selected_selling_plan_allocation }}/{{ current_variant.selling_plan_allocations }}</div>
+                        {% if subscription.description_1_bullets != blank %}
+                          <div class="product-subscription__description-container border-t border-gray py-md flex gap-sm">
+                            {% for i in (1..2) %}
+                              {% assign description_title_handle = 'description_' | append: i | append: '_title' %}
+                              {% assign description_bullets_handle = 'description_' | append: i | append: '_bullets' %}
+                              {% if subscription[description_bullets_handle] != blank %}
+                                <div class="product-subscription__description flex-1">
+                                  {% if subscription[description_title_handle] != blank %}
+                                    <div class="product-subscription-description__title font-500">
+                                      {{ subscription[description_title_handle] }}
+                                    </div>
+                                  {% endif %}
+                                  <ul class="product-subscription-description__bullets mt-xxxs">
+                                    {% for bullet in subscription[description_bullets_handle].value %}
+                                      <li class="product-subscription-description__bullet flex">{{ bullet }}</li>
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              {% endif %}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                        <div class="pt-md pb-sm border-t border-gray p2 font-500">
+                          Customize Your Subscription
+                        </div>
+                        {% if product.variants.size > 1 %}
+                          <div class="product-subscription__option-triggers pb-sm">
+                            <div class="p6 font-700 mb-xxxs">Select Filter</div>
+                            <div class="product__option-triggers flex gap-xxs">
+                              {% for variant in product.variants %}
+                                <button type="button" class="product__option-trigger flex-1 py-xxs px-xs text-center border border-gray rounded-[2px]" data-selected="{% if current_variant == variant %}true{% else %}false{% endif %}" data-value="{{ variant.title | handle }}" js-option-trigger>
+                                  <div class="p4 font-500">{{ variant.title }}</div>
+                                  <div class="flex justify-center gap-xxs p6">
+                                    {% if variant.compare_at_price > variant.price %}
+                                      <s>{{ variant.compare_at_price | money }}</s>
+                                      <span class="font-700">{{ variant.price | money }}</span>
+                                    {% else %}
+                                      <span class="font-700">{{ variant.price | money }}</span>
+                                    {% endif %}
+                                  </div>
+                                </button>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        {% endif %}
+                        <og-offer product="{{ current_variant.id }}" location="pdp" class="product-subscription__offer !pt-0 !pb-md" js-subscription-offer>
+                        </og-offer>
+                      </div>
+                      {% if subscription.tags != blank %}
+                        <ul class="product-subscription__tags flex gap-xxs absolute left-md top-0 -translate-y-1/2">
+                          {% for tag in subscription.tags.value %}
+                            {% capture tag_cycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+                            <li class="product-subscription__tag rounded-[20px] font-500 p6 py-xxxs px-xs {% if tag_cycle == 'odd' %}bg-blue text-white{% else %}bg-blue-darkSky{% endif %}">{{ tag }}</li>
+                          {% endfor %}
+                        </ul>
                       {% endif %}
                     </div>
-                  </button>
-                </div>
+
+                    <div class="product__non-subscription border border-blue rounded-[3px] mt-sm" data-selected="false" js-non-subscription>
+                      <button type="button" class="product-non-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full" js-non-subscription-toggle>
+                        <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
+                          {% render 'icon-check' %}
+                        </div>
+                        <div class="s3 font-700 flex-1 text-left">
+                          {% if subscription.subscription_type == 'Filter' %}
+                            Replacement Filter
+                          {% else %}
+                            Air Purifier Only
+                          {% endif %}
+                        </div>
+                        <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" js-price js-full-price>
+                          {% if current_variant.compare_at_price > current_variant.price %}
+                            <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
+                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                          {% else %}
+                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+                          {% endif %}
+                        </div>
+                      </button>
+                      <div class="product-non-subscription__content px-xs desktop:px-md transition-[max-height] duration-300">
+                        {% if product.variants.size > 1 %}
+                          <div class="product-non-subscription__option-triggers border-t border-gray py-md">
+                            <div class="p6 font-700 mb-xxxs">Select Filter</div>
+                            <div class="product__option-triggers flex gap-xxs">
+                              {% for variant in product.variants %}
+                                <button type="button" class="product__option-trigger flex-1 py-xxs px-xs text-center border border-gray rounded-[2px]" data-selected="{% if current_variant == variant %}true{% else %}false{% endif %}" data-value="{{ variant.title | handle }}" js-option-trigger>
+                                  <div class="p4 font-500">{{ variant.title }}</div>
+                                  <div class="flex justify-center gap-xxs p6">
+                                    {% if variant.compare_at_price > variant.price %}
+                                      <s>{{ variant.compare_at_price | money }}</s>
+                                      <span class="font-700">{{ variant.price | money }}</span>
+                                    {% else %}
+                                      <span class="font-700">{{ variant.price | money }}</span>
+                                    {% endif %}
+                                  </div>
+                                </button>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
               {% when 'atc' %}
                 <button 
                   class="product__atc btn btn--blue-rounded relative"
@@ -279,7 +386,7 @@
                   </s-accordion>
                 {% endif %}
               {% when 'shipping_warranty' %}
-                {% if block.settings.icons != blank %}
+                {% if block.settings.icon_1_image != blank %}
                   <s-accordion data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
@@ -289,10 +396,12 @@
                       </button>
                       <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="false" js-accordion-content>
                         <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
-                          {% for icon_object in block.settings.icons %}
+                          {% for i in (1..3) %}
+                            {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
+                            {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
                             <li class="product-shipping-warranty__icon flex justify-start items-center gap-xxs desktop:flex-col desktop:gap-xs">
-                              <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                              <div class="p4 text-center">{{ icon_object.text }}</div>
+                              <div class="w-[36px]">{% render 'lazy-image' image: block.settings[icon_image_handle] %}</div>
+                              <div class="p4 text-center">{{ block.settings[icon_text_handle] }}</div>
                             </li>
                           {% endfor %}
                         </ul>
@@ -392,7 +501,7 @@
             {% endcase %}
           {% endfor %}
         {%- endform -%}
-        <div class="hidden">
+        <div class="">
           addOnFilters - {{ product.metafields.seed.addOnFilters }}<br>
           applicableFor - {{ product.metafields.seed.applicableFor }}<br>
           availableInCountries - {{ product.metafields.seed.availableInCountries }}<br>
@@ -579,10 +688,46 @@
       "type": "shipping_warranty",
       "settings": [
         {
-          "type": "metaobject_list",
-          "id": "icons",
-          "label": "Icons",
-          "metaobject_type": "icon"
+          "type": "header",
+          "content": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_1_text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_2_text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_3_text",
+          "label": "Text"
         }
       ]
     },

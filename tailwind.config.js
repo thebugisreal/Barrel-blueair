@@ -34,6 +34,7 @@ module.exports = {
       },
       blue: {
         light: "#F0F3F6",
+        darkSky: "#D6E4F3",
         sky: "#BAE6FF",
         medium: "#405D7F",
         DEFAULT: "#002955"

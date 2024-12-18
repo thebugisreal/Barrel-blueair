@@ -13,10 +13,11 @@ class ProductMain extends HTMLElement {
       thumbSlide: '[js-thumb-carousel-slide]',
       price: '[js-price]',
       currentSwatchLabel: '[js-current-swatch-label]',
-      subscriptionContainer: '[js-subscription-container]',
+      subscription: '[js-subscription]',
+      subscriptionToggle: '[js-subscription-toggle]',
       subscriptionOffer: '[js-subscription-offer]',
-      subscriptionCustomization: '[js-subscription-customization]',
-      noSubscriptionBtn: '[js-no-subscription-btn]'
+      nonSubscription: '[js-non-subscription]',
+      nonSubscriptionToggle: '[js-non-subscription-toggle]',
     };
   }
 
@@ -26,7 +27,7 @@ class ProductMain extends HTMLElement {
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
     this.prices = this.querySelectorAll(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
-    this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
+    this.subscription = this.querySelector(this._selectors.subscription);
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -44,42 +45,49 @@ class ProductMain extends HTMLElement {
   }
 
   _handleSubscription() {
-    if (!this.subscriptionContainer) {
+    if (!this.subscription) {
       return;
     }
 
-    this.subscriptionOffer = this.subscriptionContainer.querySelector(this._selectors.subscriptionOffer);
-    this.subscriptionCustomization = this.subscriptionContainer.querySelector(this._selectors.subscriptionCustomization);
+    this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
+    this.subscriptionOffer = this.subscription.querySelector(this._selectors.subscriptionOffer);
     this.offerBtn = this.subscriptionOffer.querySelector('og-optin-toggle');
-    this.noSubscriptionBtn = this.subscriptionContainer.querySelector(this._selectors.noSubscriptionBtn);
-    this.noSubscriptionBtnJustClicked = false;
+    this.nonSubscription = this.querySelector(this._selectors.nonSubscription);
+    this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
+    
+    if (!this.offerBtn.hasAttribute('subscribed')) {
+      this.offerBtn.click();
+    }
 
-    this.offerBtn.addEventListener('click', () => {
-      if (this.noSubscriptionBtnJustClicked) {
-        this.noSubscriptionBtn.dataset.selected = 'false';
-        this.noSubscriptionBtnJustClicked = false;
-      }
-      if (!this.offerBtn.hasAttribute('subscribed')) {
-        this.offerBtn.click();
-      }
-    })
-
-    this.noSubscriptionBtn.addEventListener('click', (evt) => {
+    this.subscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
 
-      console.log(evt.currentTarget.dataset.selected)
-
-      if (evt.currentTarget.dataset.selected == 'true') {
+      if (this.subscription.dataset.selected == 'true') {
         return;
       }
 
-      evt.currentTarget.dataset.selected = 'true';
+      this.subscription.dataset.selected = 'true';
+      this.nonSubscription.dataset.selected = 'false';
+      if (!this.offerBtn.hasAttribute('subscribed')) {
+        this.offerBtn.click();
+      }
+    });
+
+    this.nonSubscriptionToggle.addEventListener('click', (evt) => {
+      evt.preventDefault();
+
+      if (this.nonSubscription.dataset.selected == 'true') {
+        return;
+      }
+
+      this.nonSubscription.dataset.selected = 'true';
+      this.subscription.dataset.selected = 'false';
       if (this.offerBtn.hasAttribute('subscribed')) {
         this.offerBtn.click();
       }
-      this.noSubscriptionBtnJustClicked = true;
     });
-    /*
+    
+/*
     console.log(this.subscriptionOffer.querySelector('.og-text'))
     let array = [];
     array.push(this.dataset.productId);
@@ -259,18 +267,27 @@ class ProductMain extends HTMLElement {
 
   _updatePrice(variant) {
     /*
-    let priceMarkup = '';
-    if (variant.compare_at_price && variant.compare_at_price > variant.price) {
-      priceMarkup = `<span class="product__price product__price--current text-red">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span><s class="product__price product__price--compare ml-3">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s>`;
-    } else {
-      priceMarkup = `<span class="product__price product__price--current">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
-    }
+    
       */
 
     this.prices.forEach((price) => {
-      price.innerHTML = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
+      let priceMarkup;
+
+      if (price.hasAttribute('js-full-price')) {
+        if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+          priceMarkup = `<s class="product__price product__price--compare">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s><span class="product__price product__price--current fomt-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+        } else {
+          priceMarkup = `<span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+        }
+      } else if (price.hasAttribute('js-subscription-price')) {
+
+      } else {
+        priceMarkup = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
+      }
+
+      price.innerHTML = priceMarkup;
     })
-  }
+}
 
   _disableButtons() {
     this.buttons.forEach((button) => {
