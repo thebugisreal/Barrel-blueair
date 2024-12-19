@@ -46,13 +46,13 @@
                         <div class="compare-banner__btns-container flex items-center gap-sm justify-between w-full tabletl:w-fit">
                             <button class="compare-banner__remove-all underline" @click="removeAll" js-remove-all >Remove All</button>
                             <div v-if="porductsSelected > 1">
-                                <a href="https://blueairdev.myshopify.com/pages/data-rights-request-form?view=product-compare" class="compare__btn btn btn--blue-rounded">
+                                <a href="{{url}}" class="compare__btn btn btn--blue-rounded">
                                     <span class="btn__text">Compare</span>
                                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                                 </a>
                             </div>
                             <div v-else>
-                                <a href="https://blueairdev.myshopify.com/pages/data-rights-request-form?view=product-compare" class="compare__btn btn btn--blue-rounded disabled">
+                                <a href="{{url}}" class="compare__btn btn btn--blue-rounded disabled">
                                     <span class="btn__text">Compare</span>
                                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                                 </a>
