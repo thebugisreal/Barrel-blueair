@@ -2,25 +2,22 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="compare__grid {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl">
-    <compare-grid class="grid grid-cols-3 relative tabletl:grid-cols-4">
+<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl">
+    <compare-grid class="compare__grid grid grid-cols-3 relative tabletl:grid-cols-4">
         {% comment %} Compare Grid Info Column {% endcomment %}
         <ul class="compare__grid-info-column border-r border-gray">
-            <li class="product__title sticky bg-white rte">
-                {% if section.settings.back_to_shop_url != blank %}
-                    <a href="{{ section.settings.back_to_shop_url }}" class="underline"> Back to shop </a>
-                {% endif %}
+            <li class="compare-product__title" js-compare-product-title>
+              <a {% if section.settings.back_to_shop_url != blank %} href="{{ section.settings.back_to_shop_url }}" {% endif %} class="underline"> Back to shop </a>
             </li>
-            <li class="compare__image p-xxs">
-                <div class="w-full aspect-square border border-red">
-
+            <li class="compare__image-container invisible">
+                <div class="compare__image">
                 </div>
             </li>
-            <li class="compare__atc py-lg w-fit mx-auto">
-                <button class="btn btn--blue-rounded">
+            <li class="compare__atc py-lg w-fit mx-auto invisible">
+                <a class="btn btn--blue-rounded" js-atc-btn>
                     <span class="btn__text">See Details</span>
                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-                </button>
+                </a>
             </li>
             <li class="compare__title">
                 <p class="s1">Overview</p>
@@ -88,85 +85,83 @@
         </ul>
 
         {% comment %} Compare Grid Additional Item Column {% endcomment %}
-        <ul class="compare__grid-info-column border-r border-gray">
-            <li class="product__title sticky bg-white rte">
-                {% if section.settings.back_to_shop_url != blank %}
-                    <a href="{{ section.settings.back_to_shop_url }}" class="underline"> Back to shop </a>
-                {% endif %}
+        <ul class="compare__grid-additional-column text-center order-[999]" js-additional-column>
+            <li class="compare-product__title invisible" js-compare-product-title>
+              <a {% if section.settings.back_to_shop_url != blank %} href="{{ section.settings.back_to_shop_url }}" {% endif %} class="underline"> Back to shop </a>
             </li>
             <li class="compare__image p-xxs">
-                <div class="w-full aspect-square border border-red">
-
+                <div class="w-full aspect-square flex justify-center items-center">
+                  <p class="p1 font-300">Compare 1 more</p>
                 </div>
             </li>
             <li class="compare__atc py-lg w-fit mx-auto">
-                <button class="btn btn--blue-rounded">
-                    <span class="btn__text">See Details</span>
+                <a {% if section.settings.compare_more_url != blank %} href="{{ section.settings.compare_more_url }}" {% endif %} class="btn btn--transparent-rounded">
+                    <span class="btn__text">Compare More</span>
                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-                </button>
+                </a>
             </li>
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Price</p>
+                <p class="p1">N/A</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Recommended max room size (sq ft) </p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Dimensions h x w x d (in)</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Weight (lbs)</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Wi-Fi Enabled</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__title">
-                <p class="s1">Specifications</p>
+                <p class="s1"></p>
             </li>
             <li class="compare__item">
-                <p class="p1">Energy Consumption (W)</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Sound Level (dB(A))</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Air Changes Per Hour</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Clean Air Delivery Rate</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Pollen</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Dust</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Smoke</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__title">
-                <p class="s1">Features</p>
+                <p class="s1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Air Quality Sensors</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Filter Replacement Indicator</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">On/Off Timer</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Speed Control Options</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Wheels</p>
+                <p class="p1">-</p>
             </li>
             <li class="compare__item">
-                <p class="p1">Max Room Size</p>
+                <p class="p1">-</p>
             </li>
         </ul>
 
@@ -553,6 +548,11 @@
         "type": "url",
         "id": "back_to_shop_url",
         "label": "Back to shop URL"
+    },
+    {
+      "type": "url",
+      "id": "compare_more_url",
+      "label": "Compare More URL"
     }
   ],
   "presets": [

@@ -98,9 +98,13 @@
     {% if product.metafields.seed.enable_product_compare %}
       <div class="text-12 mt-sm flex items-center gap-sm">
         <input type="checkbox" id="enableProductCompare-{{ product.id }}" data-product-id="{{ product.id }}" js-product-compare-checkbox>
-        <label for="enableProductCompare-{{ product.id }}"> Compare (TBD)</label>
+        <label for="enableProductCompare-{{ product.id }}"> Compare </label>
       </div>
-      <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-data>{{ all_products[product.handle] | json }}</script>
+      <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-product>{{ all_products[product.handle] | json }}</script>
+
+      {% if product.metafields.seed.plp_compare_info != blank %}
+        <script type="application/json" id="ProductCompareIndoJSON-{{ product.id }}" js-product-compare-info>{{ product.metafields.seed.plp_compare_info.value | json }}</script>
+      {% endif %}
     {% endif %}
   </div>
 </product-card>

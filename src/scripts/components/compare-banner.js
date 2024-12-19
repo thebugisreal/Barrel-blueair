@@ -3,6 +3,7 @@ class CompareBanner extends HTMLElement {
       super();
   
       this.selectors = {
+        removeAll: '[js-remove-all]'
       }
     }
   
@@ -18,7 +19,6 @@ class CompareBanner extends HTMLElement {
 
       this.app.mount(this);
     }
-  
     /**
      * Returns vue app instance to be passed to create app
      */
@@ -95,12 +95,21 @@ class CompareBanner extends HTMLElement {
                 porductsSelected.value = compareProductArray.length
                 products.value = compareProductArray
             }
+
+            function removeAll() {
+              const compareProductArray = []
+              sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
+              window.dispatchEvent(new CustomEvent("seed:compare:itemchange", {
+                  detail: { compareProductArray }
+              }))
+            }
     
             // export values to be used in template/html
             return {
                 porductsSelected,
                 products,
-                onRemove
+                onRemove,
+                removeAll
             }
           }
         }

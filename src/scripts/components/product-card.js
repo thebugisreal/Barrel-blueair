@@ -10,7 +10,8 @@ class ProductCard extends HTMLElement {
       productLink: '[js-product-link]',
       price: '[js-product-card-price]',
       productCompareCheckbox: '[js-product-compare-checkbox]',
-      productCompareData: '[js-product-compare-data]'
+      productCompareProduct: '[js-product-compare-product]',
+      productCompareInfo:'[js-product-compare-info]'
     }
   }
 
@@ -22,8 +23,14 @@ class ProductCard extends HTMLElement {
     this.price = this.querySelector(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
     this.productCompareCheckbox = this.querySelector(this._selectors.productCompareCheckbox)
-    if (this.querySelector(this._selectors.productCompareData)) {
-      this.productCompareData = JSON.parse(this.querySelector(this._selectors.productCompareData).innerHTML)
+    if (this.querySelector(this._selectors.productCompareProduct)) {
+      this.productCompareProduct = JSON.parse(this.querySelector(this._selectors.productCompareProduct).innerHTML)
+    }
+    if (this.querySelector(this._selectors.productCompareInfo)) {
+      this.productCompareInfo = JSON.parse(this.querySelector(this._selectors.productCompareInfo).innerHTML)
+      if (this.productCompareProduct) {
+        this.productCompareProduct['productCompareInfo'] = this.productCompareInfo
+      }
     }
 
     this._setListeners();
@@ -63,14 +70,14 @@ class ProductCard extends HTMLElement {
       compareProductArray = JSON.parse(compareProductArray)
 
       for (let i = 0; i < compareProductArray.length ; i++ ) {
-        if (compareProductArray[i].id === this.productCompareData.id) {
+        if (compareProductArray[i].id === this.productCompareProduct.id) {
           this.productCompareCheckbox.checked = true
         }
       }
 
       if (compareProductArray.length > 2) {
         for (let i = 0; i < compareProductArray.length ; i++ ) {
-          if (compareProductArray[i].id === this.productCompareData.id ) {
+          if (compareProductArray[i].id === this.productCompareProduct.id ) {
             this.productCompareCheckbox.disabled = false
             return
           }
@@ -87,9 +94,12 @@ class ProductCard extends HTMLElement {
     if (sessionStorage.getItem('compareProductArray')) {
       compareProductArray = sessionStorage.getItem('compareProductArray');
       compareProductArray = JSON.parse(compareProductArray)
-      if (compareProductArray.length > 2) {
+
+      if (compareProductArray.length === 0) {
+        this.productCompareCheckbox.checked = false
+      } else if (compareProductArray.length > 2) {
         for (let i = 0; i < compareProductArray.length ; i++ ) {
-          if (compareProductArray[i].id === this.productCompareData.id ) {
+          if (compareProductArray[i].id === this.productCompareProduct.id ) {
             this.productCompareCheckbox.disabled = false
             return
           }
@@ -113,15 +123,15 @@ class ProductCard extends HTMLElement {
     if (this.productCompareCheckbox.checked) {
       // check if obj is in the array
       for (let i = 0; i < compareProductArray.length ; i++ ) {
-        if (compareProductArray[i].id === this.productCompareData.id) {
+        if (compareProductArray[i].id === this.productCompareProduct.id) {
           return true;
         }
       }
-      compareProductArray.push(this.productCompareData)
+      compareProductArray.push(this.productCompareProduct)
       sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
     } else {
       for (let i = 0; i < compareProductArray.length ; i++ ) {
-        if (compareProductArray[i].id === this.productCompareData.id) {
+        if (compareProductArray[i].id === this.productCompareProduct.id) {
           compareProductArray.splice(i, 1)
         }
       }

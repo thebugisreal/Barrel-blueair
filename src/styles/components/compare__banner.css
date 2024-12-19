@@ -1,3 +1,7 @@
+.compare-banner {
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1)
+}
+
 .accordion-header[aria-expanded="false"] .compare-products-selected {
     @apply inline-block
 }
@@ -9,6 +13,8 @@
     @apply bg-gray
     border-gray
     px-sm
+    pointer-events-none
+    cursor-no-drop
 }
 
 .compare__btn.disabled .btn__arrow {
@@ -25,4 +31,50 @@
     w-[20px]
     h-[20px]
     rotate-45
+}
+
+.compare-banner__product-more[data-selected-products="2"] {
+    @apply hidden
+}
+
+.compare-banner-product__title .icon--plus {
+    @apply w-[12px]
+    h-[12px]
+}
+
+.compare-banner__product[data-index="1"]  {
+    @apply border-0
+    pr-0
+}
+
+.compare-banner__product[data-index="2"]  {
+    @apply hidden
+}
+
+.accordion-header[aria-expanded="true"] .icon-caret-up,
+.accordion-header[aria-expanded="false"] .icon-caret-down {
+  @apply hidden;
+}
+
+.accordion-header[aria-expanded="false"] .icon-caret-up,
+.accordion-header[aria-expanded="true"] .icon-caret-down {
+  @apply block;
+}
+
+
+@media screen(tabletl) {
+    .compare-banner__product-more[data-selected-products="2"] {
+        @apply block
+    }
+    .compare-banner__product-more[data-selected-products="3"] {
+        @apply hidden
+        
+    } 
+    .compare-banner__product[data-index="1"]  {
+        @apply border-r
+        pr-md
+    }
+    .compare-banner__product[data-index="2"]  {
+        @apply flex
+    }
 }
