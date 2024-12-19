@@ -14,7 +14,8 @@ class Account extends HTMLElement {
       accountTriggerAccordionHeader: '[js-account-trigger-accoridon-header]',
       accountLabel: '[js-account-label]',
       accountTab: '[js-account-tab]',
-      returnButton: '[js-return-button]'
+      returnButton: '[js-return-button]',
+      accountSubscription: '[js-account-subscription]'
     }
   }
 

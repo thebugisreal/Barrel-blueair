@@ -10,12 +10,10 @@
       <div class="account-content bg-white min-h-[225px] flex flex-col">
         <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
           <p class="s1">Contact</p>
-          <button class="p1 link">Edit</button>
         </div>
         <div class="account__rte h-full p-md p2">
           <p>{{ customer.first_name }} {{ customer.last_name }}</p>
           <p>{{ customer.email }}</p>
-          <p>Password: password</p>
         </div>
       </div>
       {% if user_subscribed == true %}
@@ -138,6 +136,8 @@
     <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Active Filter Subscriptions</h4>
     <div class="mt-md grid gap-md">
       <div class="account-content">
+        <div id="og-msi"></div>
+        <script type="text/javascript" src="https://static.ordergroove.com/99c2491c92fb11efaa54be77590425ae/msi.js"></script>
       </div>
     </div>            
   </div>
@@ -222,6 +222,7 @@
     <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Devices & Warranty</h4>
     <div class="mt-md grid gap-md">
       <div class="account-content">
+        [TBA]
       </div>
     </div>            
   </div>
@@ -254,6 +255,9 @@
                   {{ section | escape }}
                 </button>
               {% endfor %}
+              {% comment %}
+              <a href="{{routes.account_logout_url}}" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
+              {% endcomment %}
             </div>
           </div>
         </s-accordion>
@@ -286,6 +290,9 @@
             </label>
           </li>                          
         {%- endfor -%}
+        {% comment %}
+        <a href="{{routes.account_logout_url}}" class="account-section__label flex justify-start items-center gap-xs p-sm">Sign Out</a>
+        {% endcomment %}
       </ul>
     </div>
 
@@ -382,7 +389,7 @@
                   <p class="s1 text-blue">Future Shipments</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table class="w-full">
+                  <table>
                     <tr>
                       <td class="p1">Product</td>
                       <td class="p1">Filter Plan Subscription</td>
@@ -407,7 +414,7 @@
                   <p class="s1 text-blue">Contact</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table class="w-full">
+                  <table>
                     <tr>
                       <td class="p1">Email</td>
                     </tr>
@@ -423,7 +430,7 @@
                   <p class="s1 text-blue">Shipping</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table class="w-full">
+                  <table>
                     <tr>
                       <td class="p1">Primary Address</td>
                       <td class="p1">Shipping Method</td>
@@ -443,9 +450,7 @@
                       </td>
                       <td class="p2">
                         {% for shipping_method in order.shipping_methods %}
-                          <tr>
-                            <td>{{ shipping_method.title }}</td>
-                          </tr>
+                          <p>{{ shipping_method.title }}</p>
                         {% endfor %}
                       </td>
                     </tr>
@@ -458,7 +463,7 @@
                   <p class="s1 text-blue">Payment</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table class="w-full">
+                  <table>
                     <tr>
                       <td class="p1">Payment Method</td>
                       <td class="p1">Billing Address</td>
@@ -493,7 +498,7 @@
     <div class="account-address__modal">
       <header class="account-address-modal__header px-md py-sm flex justify-between items-center">
         <p class="account__subtitle h6 font-400 text-blue">New Address</p>
-        <button class="btn p-0 text-blue border-0" js-close-add-address>
+        <button class="account__close btn p-0 text-blue border-0" js-close-add-address>
           <span class="w-[33px]">{% render 'icon-close-no-border' %}</span>
         </button>
       </header>
@@ -582,7 +587,7 @@
     <div class="account-address__modal">
       <header class="account-address-modal__header px-md py-sm flex justify-between items-center">
         <p class="account__subtitle h6 font-400 text-blue">Edit Address</p>
-        <button class="btn p-0 text-blue border-0" js-close-edit-address>
+        <button class="account__close btn p-0 text-blue border-0" js-close-edit-address>
           <span class="w-[33px]">{% render 'icon-close-no-border' %}</span>
         </button>
       </header>
@@ -705,15 +710,3 @@
   ]
 }
 {% endschema %}
-
-
-
-
-
-
-
-
-{% comment %}
-  <a href="{{routes.account_logout_url}}">Sign Out</a>
-{% endcomment %}
-
