@@ -142,7 +142,7 @@
                 {% endif %}
               {% when 'star_rating' %}
                 <div class="product__star-rating mt-sm">reviews</div>
-              {% when 'option_selector' %}
+              {% when 'product_options' %}
                 {%- comment -%} Product Variant Master Select {%- endcomment -%}
                 {% render 'master-variant-select',
                 variants: product.variants,
@@ -150,8 +150,24 @@
                 current_variant: current_variant
                 %}
 
+                {% liquid 
+                  assign enable_subscription = false
+                  if product.metafields.seed.subscription != blank
+                    assign subscription = product.metafields.seed.subscription.value
+                    if subscription.subscription_type == 'Filter'
+                      if product.selling_plan_groups.size > 0
+                        assign enable_subscription = true
+                      endif
+                    else 
+                      assign filter_product = subscription.filter_subscription.value
+                      if filter_product.selling_plan_groups.size > 0 and filter_product != blank
+                        assign enable_subscription = true
+                      endif
+                    endif
+                  endif
+                %}
                 {% unless product.has_only_default_variant %}
-                <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
+                <product-options class="no-js-hidden {% if enable_subscription %}hidden{% endif %}" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
                   {% for option in product.options_with_values %}
                     {% render 'product-option-selector' 
                       option: option
@@ -163,136 +179,9 @@
                   {% endfor %}
                 </product-options>
                 {% endunless %}
-              {% when 'subscription' %}
-                {% if product.metafields.seed.subscription != blank and product.selling_plan_groups.size > 0 %}
-                  {% assign subscription = product.metafields.seed.subscription.value %}
-                  <div class="product__subscription-container">
-                    <div class="product__subscription border border-blue rounded-[3px] relative" data-selected="true" js-subscription>
-                      <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full" js-subscription-toggle>
-                        <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
-                          {% render 'icon-check' %}
-                        </div>
-                        <div class="s3 font-700 flex-1 text-left">
-                          {% if subscription.subscription_type == 'Filter' %}
-                            Filter Subscription
-                          {% else %}
-                            Air Purifier + Filter Subscription
-                          {% endif %}
-                        </div>
-                        <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" js-price js-subscription-price>
-                          {% if current_variant.compare_at_price > current_variant.price %}
-                            <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                          {% else %}
-                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                          {% endif %}
-                        </div>
-                      </button>
-                      <div class="product-subscription__content px-xs desktop:px-md transition-[max-height] duration-300">
-                        <div>{{ current_variant.selected_selling_plan_allocation }}/{{ current_variant.selling_plan_allocations }}</div>
-                        {% if subscription.description_1_bullets != blank %}
-                          <div class="product-subscription__description-container border-t border-gray py-md flex gap-sm">
-                            {% for i in (1..2) %}
-                              {% assign description_title_handle = 'description_' | append: i | append: '_title' %}
-                              {% assign description_bullets_handle = 'description_' | append: i | append: '_bullets' %}
-                              {% if subscription[description_bullets_handle] != blank %}
-                                <div class="product-subscription__description flex-1">
-                                  {% if subscription[description_title_handle] != blank %}
-                                    <div class="product-subscription-description__title font-500">
-                                      {{ subscription[description_title_handle] }}
-                                    </div>
-                                  {% endif %}
-                                  <ul class="product-subscription-description__bullets mt-xxxs">
-                                    {% for bullet in subscription[description_bullets_handle].value %}
-                                      <li class="product-subscription-description__bullet flex">{{ bullet }}</li>
-                                    {% endfor %}
-                                  </ul>
-                                </div>
-                              {% endif %}
-                            {% endfor %}
-                          </div>
-                        {% endif %}
-                        <div class="pt-md pb-sm border-t border-gray p2 font-500">
-                          Customize Your Subscription
-                        </div>
-                        {% if product.variants.size > 1 %}
-                          <div class="product-subscription__option-triggers pb-sm">
-                            <div class="p6 font-700 mb-xxxs">Select Filter</div>
-                            <div class="product__option-triggers flex gap-xxs">
-                              {% for variant in product.variants %}
-                                <button type="button" class="product__option-trigger flex-1 py-xxs px-xs text-center border border-gray rounded-[2px]" data-selected="{% if current_variant == variant %}true{% else %}false{% endif %}" data-value="{{ variant.title | handle }}" js-option-trigger>
-                                  <div class="p4 font-500">{{ variant.title }}</div>
-                                  <div class="flex justify-center gap-xxs p6">
-                                    {% if variant.compare_at_price > variant.price %}
-                                      <s>{{ variant.compare_at_price | money }}</s>
-                                      <span class="font-700">{{ variant.price | money }}</span>
-                                    {% else %}
-                                      <span class="font-700">{{ variant.price | money }}</span>
-                                    {% endif %}
-                                  </div>
-                                </button>
-                              {% endfor %}
-                            </div>
-                          </div>
-                        {% endif %}
-                        <og-offer product="{{ current_variant.id }}" location="pdp" class="product-subscription__offer !pt-0 !pb-md" js-subscription-offer>
-                        </og-offer>
-                      </div>
-                      {% if subscription.tags != blank %}
-                        <ul class="product-subscription__tags flex gap-xxs absolute left-md top-0 -translate-y-1/2">
-                          {% for tag in subscription.tags.value %}
-                            {% capture tag_cycle %}{% cycle 'odd', 'even' %}{% endcapture %}
-                            <li class="product-subscription__tag rounded-[20px] font-500 p6 py-xxxs px-xs {% if tag_cycle == 'odd' %}bg-blue text-white{% else %}bg-blue-darkSky{% endif %}">{{ tag }}</li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                    </div>
 
-                    <div class="product__non-subscription border border-blue rounded-[3px] mt-sm" data-selected="false" js-non-subscription>
-                      <button type="button" class="product-non-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full" js-non-subscription-toggle>
-                        <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
-                          {% render 'icon-check' %}
-                        </div>
-                        <div class="s3 font-700 flex-1 text-left">
-                          {% if subscription.subscription_type == 'Filter' %}
-                            Replacement Filter
-                          {% else %}
-                            Air Purifier Only
-                          {% endif %}
-                        </div>
-                        <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" js-price js-full-price>
-                          {% if current_variant.compare_at_price > current_variant.price %}
-                            <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                          {% else %}
-                            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                          {% endif %}
-                        </div>
-                      </button>
-                      <div class="product-non-subscription__content px-xs desktop:px-md transition-[max-height] duration-300">
-                        {% if product.variants.size > 1 %}
-                          <div class="product-non-subscription__option-triggers border-t border-gray py-md">
-                            <div class="p6 font-700 mb-xxxs">Select Filter</div>
-                            <div class="product__option-triggers flex gap-xxs">
-                              {% for variant in product.variants %}
-                                <button type="button" class="product__option-trigger flex-1 py-xxs px-xs text-center border border-gray rounded-[2px]" data-selected="{% if current_variant == variant %}true{% else %}false{% endif %}" data-value="{{ variant.title | handle }}" js-option-trigger>
-                                  <div class="p4 font-500">{{ variant.title }}</div>
-                                  <div class="flex justify-center gap-xxs p6">
-                                    {% if variant.compare_at_price > variant.price %}
-                                      <s>{{ variant.compare_at_price | money }}</s>
-                                      <span class="font-700">{{ variant.price | money }}</span>
-                                    {% else %}
-                                      <span class="font-700">{{ variant.price | money }}</span>
-                                    {% endif %}
-                                  </div>
-                                </button>
-                              {% endfor %}
-                            </div>
-                          </div>
-                        {% endif %}
-                      </div>
-                    </div>
-                  </div>
+                {% if enable_subscription %}
+                  {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
                 {% endif %}
               {% when 'atc' %}
                 <button 
@@ -501,7 +390,7 @@
             {% endcase %}
           {% endfor %}
         {%- endform -%}
-        <div class="">
+        <div class="hidden">
           addOnFilters - {{ product.metafields.seed.addOnFilters }}<br>
           applicableFor - {{ product.metafields.seed.applicableFor }}<br>
           availableInCountries - {{ product.metafields.seed.availableInCountries }}<br>
@@ -664,12 +553,8 @@
       "type": "star_rating"
     },
     {
-      "name": "Option Selector",
-      "type": "option_selector"
-    },
-    {
-      "name": "Subscription",
-      "type": "subscription"
+      "name": "Product Options",
+      "type": "product_options"
     },
     {
       "name": "ATC Button",

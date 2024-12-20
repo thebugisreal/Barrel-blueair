@@ -16,8 +16,16 @@ class ProductMain extends HTMLElement {
       subscription: '[js-subscription]',
       subscriptionToggle: '[js-subscription-toggle]',
       subscriptionOffer: '[js-subscription-offer]',
+      subscriptionPrice: '[js-subscription-price]',
       nonSubscription: '[js-non-subscription]',
       nonSubscriptionToggle: '[js-non-subscription-toggle]',
+      optionSelector: '[js-product-option-selector]',
+      filterSubscriptionVariant: '[js-fitler-subscription-variant]',
+      filterSubscriptionDescription: '[js-filter-subscription-description]',
+      filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
+      filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
+      filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
+      filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]'
     };
   }
 
@@ -35,13 +43,9 @@ class ProductMain extends HTMLElement {
       this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     }
 
+    this._handleSubscription();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
-    this._handleSubscription();
-  }
-
-  _test() {
-    console.log('test')
   }
 
   _handleSubscription() {
@@ -49,15 +53,33 @@ class ProductMain extends HTMLElement {
       return;
     }
 
+    this.subscriptionType = this.subscription.dataset.type;
     this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
-    this.subscriptionOffer = this.subscription.querySelector(this._selectors.subscriptionOffer);
-    this.offerBtn = this.subscriptionOffer.querySelector('og-optin-toggle');
+    this.subscriptionOfferToggle = this.subscription.querySelector(`${this._selectors.subscriptionOffer} og-optin-toggle`);
     this.nonSubscription = this.querySelector(this._selectors.nonSubscription);
     this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
+    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
+    this.subscriptionPrice = this.querySelector(this._selectors.subscriptionPrice);
     
-    if (!this.offerBtn.hasAttribute('subscribed')) {
-      this.offerBtn.click();
+    if (this.subscriptionType == 'filter') {
+      if (this.subscriptionOfferToggle && !this.subscriptionOfferToggle.hasAttribute('subscribed')) {
+        this.subscriptionOfferToggle.click();
+      }
+    } else {
+      this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
+      this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
+      this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
+      this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
+        sellingPlan.addEventListener('click' , this.filterSubscriptionSellingPlanOnClick);
+      });
+
+      const currentSelectedFilterSubscriptionVariant = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
+      if (currentSelectedFilterSubscriptionVariant) {
+        const filterSubscriptionSellingPlanToClick = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${currentSelectedFilterSubscriptionVariant.dataset.variant}"]`);
+        filterSubscriptionSellingPlanToClick?.click();
+      }
     }
+    
 
     this.subscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
@@ -68,8 +90,8 @@ class ProductMain extends HTMLElement {
 
       this.subscription.dataset.selected = 'true';
       this.nonSubscription.dataset.selected = 'false';
-      if (!this.offerBtn.hasAttribute('subscribed')) {
-        this.offerBtn.click();
+      if (this.subscriptionType == 'filter' && this.subscriptionOfferToggle && !this.subscriptionOfferToggle.hasAttribute('subscribed')) {
+        this.subscriptionOfferToggle.click();
       }
     });
 
@@ -82,39 +104,74 @@ class ProductMain extends HTMLElement {
 
       this.nonSubscription.dataset.selected = 'true';
       this.subscription.dataset.selected = 'false';
-      if (this.offerBtn.hasAttribute('subscribed')) {
-        this.offerBtn.click();
+      if (this.subscriptionType == 'filter' && this.subscriptionOfferToggle && this.subscriptionOfferToggle.hasAttribute('subscribed')) {
+        this.subscriptionOfferToggle.click();
       }
     });
-    
-/*
-    console.log(this.subscriptionOffer.querySelector('.og-text'))
-    let array = [];
-    array.push(this.dataset.productId);
-    console.log(array)
-    const offers = window.og.offers.getOptins([49364636860702])
-    console.log(offers)
-    console.log(this.subscriptionOffer, this.subscriptionCustomization)
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        console.log(mutation)
-        if (mutation.type === 'childList') {
-          console.log('Child node added:');
-          console.log('node')
-          this._test();
-          // Check if the added node is the one you're looking for
-          mutation.addedNodes.forEach(node => {
-            
-            if (node.id === 'specificChildId') {
-              console.log('Specific child node added!');
-            }
-          });
-        }
-      });
+
+    this.filterSubscriptionVariants.forEach((trigger) => {
+      trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
     });
+  }
+
+  _filterSubscriptionVariantOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt.currentTarget;
+    if (triggerTarget.dataset.selected == 'true') {
+      return;
+    }
+
+    if (this.subscription.dataset.type == 'filter') {
+      const optionSelectorTarget = this.querySelector(`${this._selectors.optionSelector}[value="${triggerTarget.dataset.value}"]`);
+      optionSelectorTarget?.click();
+    } else {
+      const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
+      sellingPlanTarget?.click();
+    }
     
-    observer.observe(this.subscriptionOffer, { childList: true, subtree: true });
-    */
+    const prevSelectedTriggers = this.querySelectorAll(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
+    prevSelectedTriggers.forEach((prevSelectedTrigger) => {
+      prevSelectedTrigger.dataset.selected = 'false';
+    });
+    const newSelectedTriggers = this.querySelectorAll(`${this._selectors.filterSubscriptionVariant}[data-variant="${triggerTarget.dataset.variant}"]`);
+    newSelectedTriggers.forEach((newSelectedTrigger) => {
+      newSelectedTrigger.dataset.selected = 'true';
+    });
+
+    const prevFilterDescriptions = this.querySelectorAll(`${this._selectors.filterSubscriptionDescription}:not(.hidden)`);
+    prevFilterDescriptions.forEach((prevFilterDescription) => {
+      prevFilterDescription.classList.add('hidden');
+    });
+    const newFilterDescriptions = this.querySelectorAll(`${this._selectors.filterSubscriptionDescription}[data-variant="${triggerTarget.dataset.variant}"]`);
+    newFilterDescriptions.forEach((newFilterDescription) => {
+      newFilterDescription.classList.remove('hidden');
+    });
+
+    if (this.subscription.dataset.type == 'airpurifier_and_filter') {
+      const prevSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
+      prevSellingPlansGroup?.classList.add('hidden');
+      const newSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
+      newSellingPlansGroup?.classList.remove('hidden');
+    } 
+  }
+
+  filterSubscriptionSellingPlanOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt.currentTarget;
+    if (triggerTarget.dataset.selected == 'true') {
+      return;
+    }
+
+    const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
+    if (prevSelectedTrigger) {
+      prevSelectedTrigger.dataset.selected = 'false';
+    }
+    triggerTarget.dataset.selected = 'true';
+
+    this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
+    this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
   }
 
   _initProductForm() {
@@ -146,6 +203,7 @@ class ProductMain extends HTMLElement {
       this.cart.setActiveElement(document.activeElement);
     }
     config.body = formData;
+    console.log(formData)
 
     fetch(`${window.routes.cart_add_url}`, config)
       .then((response) => response.json())
@@ -191,6 +249,30 @@ class ProductMain extends HTMLElement {
     }
   }
 
+  _confirmSubscriptionOnVariantChange() {
+    if (!this.subscription) {
+      return;
+    }
+
+    if (!this.subscriptionOfferToggle) {
+      return;
+    }
+
+    if (this.subscription.dataset.selected == 'true') {
+      setTimeout(() => {
+        if (!this.subscriptionOfferToggle.hasAttribute('subscribed')) {
+          this.subscriptionOfferToggle.click();
+        }
+      }, 400);
+    } else {
+      setTimeout(() => {
+        if (this.subscriptionOfferToggle.hasAttribute('subscribed')) {
+          this.subscriptionOfferToggle.click();
+        }
+      }, 400);
+    }
+  }
+
   _handleVariantChange = (evt) => {
     const { variant, priceChange } = evt.detail;
 
@@ -206,7 +288,10 @@ class ProductMain extends HTMLElement {
 
     if (variant) {
       if (priceChange) this._updatePrice(variant);
+      if (this.subscriptionPrice) this._updateSubscriptionPrice(variant);
     }
+
+    this._confirmSubscriptionOnVariantChange();
   };
 
   _updateImageCarousel(swatchName) {
@@ -265,22 +350,32 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  _updatePrice(variant) {
-    /*
-    
-      */
+  _updateSubscriptionPrice(variant) {
+    let priceMarkup;
 
+    if (variant.selling_plan_allocations.length > 0) {
+      if (variant.selling_plan_allocations[0].compare_at_price && variant.selling_plan_allocations[0].compare_at_price > variant.selling_plan_allocations[0].price) {
+        priceMarkup = `<s class="product-subscription__price product-subscription__price--compare">${theme.utils.formatMoney(variant.selling_plan_allocations[0].compare_at_price, this.moneyFormat)}</s><span class="product-subscription__price product-subscription__price--current font-700">${theme.utils.formatMoney(variant.selling_plan_allocations[0].price, this.moneyFormat)}</span>`;
+      } else {
+        priceMarkup = `<span class="product-subscription__price product-subscription__price--current font-700">${theme.utils.formatMoney(variant.selling_plan_allocations[0].price, this.moneyFormat)}</span>`;
+      }
+    } else {
+      priceMarkup = '';
+    }
+
+    this.subscriptionPrice.innerHTML = priceMarkup;
+  }
+
+  _updatePrice(variant) {
     this.prices.forEach((price) => {
       let priceMarkup;
 
       if (price.hasAttribute('js-full-price')) {
         if (variant.compare_at_price && variant.compare_at_price > variant.price) {
-          priceMarkup = `<s class="product__price product__price--compare">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s><span class="product__price product__price--current fomt-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+          priceMarkup = `<s class="product__price product__price--compare">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s><span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
         } else {
           priceMarkup = `<span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
         }
-      } else if (price.hasAttribute('js-subscription-price')) {
-
       } else {
         priceMarkup = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
       }

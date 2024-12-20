@@ -165,11 +165,9 @@
   leading-[21px];
 }
 
-/*
 .product-subscription__offer .og-optout-buttons{
   @apply !hidden;
 }
-  */
 
 .product-subscription__offer .og-text,
 .product-subscription__offer .og-optin-buttons {
@@ -204,9 +202,20 @@
 }
 
 .product-subscription__offer og-optin-button[subscribed][frequency-match] {
-  @apply !border-blue;
+  @apply !border-blue
+  !bg-white;
 }
 
-.product__option-trigger[data-selected="true"] {
+.filter-subscription__variant[data-selected="true"] {
+  @apply border-blue
+  bg-white;
+}
+
+.filter-subscription__selling-plan:disabled {
+  @apply cursor-not-allowed
+  text-gray;
+}
+
+.filter-subscription__selling-plan[data-selected="true"] {
   @apply border-blue;
 }
