@@ -14,7 +14,6 @@ class CompareGrid extends HTMLElement {
       this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
       this.additionalColumn = this.querySelector(this.selectors.additionalColumn)
 
-      console.log('HELLO COMPARE GRID')
       this.initCompareGrid()
       this.setListeners()
     }
@@ -108,46 +107,46 @@ class CompareGrid extends HTMLElement {
       const productComparePriceContainer = this._createCompareItem(theme.utils.formatMoney(product.price, this.moneyFormat))
 
       // Compare Max Room Size
-      const productCompareRoomSizeContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.recommended_max_room_size : '-')
+      const productCompareRoomSizeContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_recommendedRoomSize : '-')
   
       // Compare Dimensions
-      const productCompareDimensionContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.dimensions: '-')
+      const productCompareDimensionContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_dimensions: '-')
 
       // Compare Weight
-      const productCompareWeightContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.weight : '-')
+      const productCompareWeightContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_productSpecification_weight : '-')
 
       // Compare Weight
-      const productCompareWifiContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.wifi : '-')
+      const productCompareWifiContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_wifi : '-')
 
       // Specification Title
       const productSpecificationTitle = this._createCompareTitle()
 
       // Energy Consumption
-      const productCompareEnergyConsumptionContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.energy_consumption : '-')
+      const productCompareEnergyConsumptionContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_energyConsumption : '-')
 
       // Sound Level
-      const productCompareSoundLevelContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.sound_level : '-')
+      const productCompareSoundLevelContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_productSpecification_soundlevel : '-')
 
       // Air Changes
-      const productCompareAirChangesContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.air_changes : '-')
+      const productCompareAirChangesContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_productSpecification_airchanges : '-')
 
       // CleanAir Delivery Rate
       const productCompareCleanAirContainer = this._createCompareItem(" ")
 
       // Pollen
-      const productComparePollenContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.pollen : '-')
+      const productComparePollenContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_CADR_pollen : '-')
 
       // Dust
-      const productCompareDustContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.dust: '-')
+      const productCompareDustContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_CADR_dust: '-')
 
       // Smoke
-      const productCompareSmokeContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.smoke: '-')
+      const productCompareSmokeContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_CADR_smoke: '-')
 
       // Features
       const productFeaturesTitle = this._createCompareTitle()
 
       // Air Quality Sensors
-      const productCompareAirQualitySensorContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.air_quality_sensors : '-')
+      const productCompareAirQualitySensorContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_airSensor : '-')
 
       // Filter Replacement Indicator
       const productCompareFilterReplacementIndicatorContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.filter_replacement_indicator : '-')
@@ -156,7 +155,7 @@ class CompareGrid extends HTMLElement {
       const productCompareOnOffTimerContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.on_off_timer : '-')
 
       // Speed Control Options
-      const productCompareSpeedControlOptionsContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.speed_control_options : '-')
+      const productCompareSpeedControlOptionsContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.blair_productSpecification_fanspeed : '-')
 
       // Wheels
       const productCompareWheelsContainer = this._createCompareItem(product.productCompareInfo ? product.productCompareInfo.wheels : '-')
