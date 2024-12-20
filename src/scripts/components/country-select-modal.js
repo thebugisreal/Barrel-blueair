@@ -207,6 +207,11 @@ class CountrySelectModal extends HTMLElement {
         if (this._languagePicker[i].country == selectedValue) {
           this._removeOptions()
           for (let j = 0; j < this._languagePicker[i].languages.length; j++) {
+            if (j === 0) {
+              if (this.languageInputLabel) {
+                this.languageInputLabel.innerHTML = this._languagePicker[i].languages[j].label
+              }
+            }
             const label = this._languagePicker[i].languages[j].label
             const value = this._languagePicker[i].languages[j].code
             this._createOption(value, label, this.languageSelect)
