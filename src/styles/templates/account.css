@@ -1,0 +1,139 @@
+.account__sections .tab__panel[aria-hidden=false] {
+  @apply grid;
+}
+
+.account-conent--bordered {
+  background-image: repeating-linear-gradient(0deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px), 
+                    repeating-linear-gradient(90deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px), 
+                    repeating-linear-gradient(180deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px), 
+                    repeating-linear-gradient(270deg, #002955, #002955 10px, transparent 10px, transparent 20px, #002955 20px);
+  background-size: 1px 100%, 100% 1px, 1px 100% , 100% 1px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+}
+
+.account__rte p {
+  @apply mb-xxs;
+}
+
+.account__rte p:last-child {
+  @apply mb-0;
+}
+
+.account-address__modal .form__element::placeholder {
+  @apply text-gray;
+}
+
+.account-content__add:focus .account-content__icon {
+  @apply text-blue
+  bg-white;
+}
+
+.account-content__add:focus:not(:focus-visible) .account-content__icon {
+  @apply text-white
+  bg-blue;
+}
+
+.account-content__add:focus-visible .account-content__icon  {
+  @apply text-blue
+  bg-white;
+}
+
+.account-section-label__checkbox::after {
+  @apply content-['']
+  absolute
+  block
+  rounded-full
+  h-[16px]
+  w-[16px]
+  left-1/2
+  -translate-x-1/2
+  top-1/2
+  -translate-y-1/2
+  bg-transparent;
+}
+
+.account-section__input:checked + .account-section__label .account-section-label__checkbox {
+  @apply border-gray;
+}
+
+.account-section__input:checked + .account-section__label .account-section-label__checkbox::after {
+  @apply bg-blue;
+}
+
+.account-address-label__checkbox::after {
+  @apply content-['']
+  absolute
+  block
+  h-[12px]
+  w-[12px]
+  rounded-[1px]
+  left-1/2
+  -translate-x-1/2
+  top-1/2
+  -translate-y-1/2
+  bg-transparent;
+}
+
+.account input,
+.account select {
+  @apply px-sm
+  py-xxs
+  border
+  border-gray;
+}
+
+.account .form__label {
+  @apply leading-[28px];
+}
+
+.account-order__shipments td,
+.account-order__contact td,
+.account-order__shipping td,
+.account-order__payment td {
+  display: inline-block;
+  @apply w-[240px]
+  mr-48;
+}
+
+.account__close path {
+  @apply stroke-current
+  stroke-0;
+}
+
+.account__close:focus path,
+.account__close:focus-visible path {
+  @apply stroke-1;
+}
+
+.account__close:focus:not(:focus-visible) path {
+  @apply stroke-0;
+}
+
+input[name="address[default]"] {
+  @apply absolute
+  overflow-hidden
+  whitespace-nowrap !important;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+}
+
+input[name="address[default]"]:checked + .account-address__label .account-address-label__checkbox {
+  @apply border-blue;
+}
+
+input[name="address[default]"]:checked + .account-address__label .account-address-label__checkbox::after {
+  @apply bg-blue;
+}
+
+@media screen(desktop){
+  .account-content__add:hover .account-content__icon {
+    @apply text-blue
+    bg-white;
+  }
+
+  .account__close:hover path {
+    @apply stroke-1;
+  }
+}

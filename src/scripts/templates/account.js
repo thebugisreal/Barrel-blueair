@@ -10,7 +10,12 @@ class Account extends HTMLElement {
       deleteAddressButton: '[js-delete-address]',
       ordersContainer: '[js-orders]',
       ordersPagination: '[js-next-page]',
-      order: '[js-order]'
+      order: '[js-order]',
+      accountTriggerAccordionHeader: '[js-account-trigger-accoridon-header]',
+      accountLabel: '[js-account-label]',
+      accountTab: '[js-account-tab]',
+      returnButton: '[js-return-button]',
+      accountSubscription: '[js-account-subscription]'
     }
   }
 
@@ -22,9 +27,21 @@ class Account extends HTMLElement {
     this.deleteAddressButtons = this.querySelectorAll(this._selectors.deleteAddressButton);
     this.ordersContainer = this.querySelector(this._selectors.ordersContainer);
     this.ordersPagination = this.querySelector(this._selectors.ordersPagination);
+    this.accountTriggerAccordionHeader = this.querySelector(this._selectors.accountTriggerAccordionHeader);
+    this.accountLabel = this.querySelector(this._selectors.accountLabel);
+    this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
+    this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
 
+    this._setupKlaviyo();
     this._setupCountries();
     this._setupEventListeners();
+  }
+
+  _setupKlaviyo() {
+    this.querySelector('.klaviyo_form_trigger').addEventListener('click', function () {
+      window._klOnsite = window._klOnsite || []; 
+      window._klOnsite.push(['openForm', this.dataset.formId]);
+    });
   }
 
   _setupCountries() {
@@ -57,6 +74,16 @@ class Account extends HTMLElement {
     })
 
     this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
+
+    this.accountTabs.forEach((button) => {
+      button.addEventListener('click', this._setAccountLabel);
+    })
+
+    this.returnButtons.forEach((button) => {
+      button.addEventListener('click', this._returnToOrderHistory);
+    })   
+
+    document.addEventListener('click', this._closeAccountTriggerAccordion);
   }
 
   _addOrders = async () => {
@@ -108,5 +135,32 @@ class Account extends HTMLElement {
     this.editAddressForms.forEach((form) => {
       form.classList.add('hidden')
     });
+  }
+
+  _setAccountLabel = (e) => {
+    let label = e.currentTarget.dataset.label;
+    this.accountLabel.innerHTML = label;
+    this.accountTabs.forEach((button) => {
+      if (button.dataset.label == label) {
+        button.click();
+      }
+    })
+
+  }
+
+  _closeAccountTriggerAccordion = (e) => {
+    if (this.accountTriggerAccordionHeader.contains(e.currentTarget)) {
+      return;
+    }
+
+    if (this.accountTriggerAccordionHeader.getAttribute('aria-expanded') == 'false') {
+      return;
+    }
+
+    this.accountTriggerAccordionHeader.click();
+  }
+
+  _returnToOrderHistory = (e) => {
+    document.querySelector('label[aria-controls="order-history-content-panel"]').click();
   }
 }
