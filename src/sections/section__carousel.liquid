@@ -40,8 +40,8 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__carousel {{ margins_paddings }} tabletl:ml-xl" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; background-color: {{ section.settings.bg_color }}">
-    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:pt-xl tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %}">
+<div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% else %} tabletl:pl-xl {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
+    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %}">
         <div class="section__carousel-text-container mx-lg mb-md tabletl:mx-0">
             {% if section.settings.title != blank %}
                 {% liquid
@@ -150,7 +150,7 @@
                                 </div>
                             {% when 'milestone' %}
                                 <div class="swiper-slide h-auto" js-carousel-slide>
-                                    <div class="carousel__milestone desktop:flex" style="background-color: {{ block.settings.bg_color }};">
+                                    <div class="carousel__milestone {{ block.settings.color }} h-full desktop:flex">
                                         <div class="carousel-milestone__content px-sm py-md flex flex-col desktop:justify-between desktop:px-md desktop:pt-28 desktop:flex-1">
                                             <div class="carousel-milestone__title-container">
                                                 {% if block.settings.title != blank %}
@@ -174,6 +174,22 @@
                                             <div class="carousel-milestone__image desktop:w-[58%]">
                                                 {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop picture_classes: 'h-full' img_classes: 'h-full object-cover' %}
                                             </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% when 'testimonial' %}
+                                <div class="swiper-slide h-auto" js-carousel-slide>
+                                    <div class="carousel-testimonial__content text-center tabletl:max-w-[var(--max-width-testimonial-desktop)]" style="--max-width-testimonial-desktop: {{ block.settings.max_width_desktop }};">
+                                        {% if block.settings.image_mobile != blank %}
+                                            <div class="image-container max-w-[200px] mx-auto">
+                                                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop picture_classes: 'h-full' img_classes: 'h-full object-cover' %}
+                                            </div>
+                                        {% endif %}
+                                        {% if block.settings.quote != blank %}
+                                            <h1 class="{{ block.settings.quote_style }} pb-sm tabletl:py-lg">{{ block.settings.quote }}</h1>
+                                        {% endif %}
+                                        {% if block.settings.author != blank %}
+                                            <p class="{{ block.settings.author_style }} pt-sm pb-lg tabletl:py-lg">{{ block.settings.author }}</p>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -543,10 +559,40 @@
             "default": "80ch"
         },
         {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Background Color",
-            "default": "#ffffff"
+            "type": "select",
+            "id": "color",
+            "label": "Color",
+            "options": [
+                {
+                    "value": "bg-white text-blue",
+                    "label": "None (white bg & blue text)"
+                },
+                {
+                    "value": "bg-blue-sky text-blue",
+                    "label": "Blue"
+                },
+                {
+                    "value": "bg-green-light text-green-dark",
+                    "label": "Green"
+                },
+                {
+                    "value": "bg-pink-light text-pink-dark",
+                    "label": "Pink"
+                },
+                {
+                    "value": "bg-yellow-light text-yellow-dark",
+                    "label": "Yellow"
+                },
+                {
+                    "value": "bg-brown-light text-brown-dark",
+                    "label": "Brown"
+                },
+                {
+                    "value": "bg-blue-light text-blue",
+                    "label": "Gray"
+                }
+            ],
+            "default": "bg-white text-blue"
         },
         {
             "type": "text",
@@ -1192,10 +1238,40 @@
                     "content": "Content"
                 },
                 {
-                    "type": "color",
-                    "id": "bg_color",
-                    "label": "Background Color",
-                    "default": "#D5E4F3"
+                    "type": "select",
+                    "id": "color",
+                    "label": "Color",
+                    "options": [
+                        {
+                            "value": "bg-white text-blue",
+                            "label": "None (white bg & blue text)"
+                        },
+                        {
+                            "value": "bg-blue-sky text-blue",
+                            "label": "Blue"
+                        },
+                        {
+                            "value": "bg-green-light text-green-dark",
+                            "label": "Green"
+                        },
+                        {
+                            "value": "bg-pink-light text-pink-dark",
+                            "label": "Pink"
+                        },
+                        {
+                            "value": "bg-yellow-light text-yellow-dark",
+                            "label": "Yellow"
+                        },
+                        {
+                            "value": "bg-brown-light text-brown-dark",
+                            "label": "Brown"
+                        },
+                        {
+                            "value": "bg-blue-light text-blue",
+                            "label": "Gray"
+                        }
+                    ],
+                    "default": "bg-white text-blue"
                 },
                 {
                     "type": "text",
@@ -1365,6 +1441,183 @@
                     "type": "text",
                     "id": "year",
                     "label": "Year"
+                }
+            ]
+        },
+        {
+            "name": "Testimonial",
+            "type": "testimonial",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image_mobile",
+                    "label": "Image - Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Image - Desktop"
+                },
+                {
+                    "type": "text",
+                    "id": "max_width_desktop",
+                    "label": "Text Content - Max Width - Desktop",
+                    "info": "Make sure to include units",
+                    "default": "109ch"
+                },
+                {
+                    "type": "textarea",
+                    "id": "quote",
+                    "label": "Quote"
+                },
+                {
+                    "type": "select",
+                    "id": "quote_style",
+                    "label": "Quote Style",
+                    "options": [
+                        {
+                            "value": "h1",
+                            "label": "h1"
+                        },
+                        {
+                            "value": "h2",
+                            "label": "h2"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "h3"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "h4"
+                        },
+                        {
+                            "value": "h5",
+                            "label": "h5"
+                        },
+                        {
+                            "value": "h6",
+                            "label": "h6"
+                        },
+                        {
+                            "value": "s1",
+                            "label": "s1"
+                        },
+                        {
+                            "value": "s2",
+                            "label": "s2"
+                        },
+                        {
+                            "value": "s3",
+                            "label": "s3"
+                        },
+                        {
+                            "value": "s4",
+                            "label": "s4"
+                        },
+                        {
+                            "value": "p1",
+                            "label": "p1"
+                        },
+                        {
+                            "value": "p2",
+                            "label": "p2"
+                        },
+                        {
+                            "value": "p3",
+                            "label": "p3"
+                        },
+                        {
+                            "value": "p4",
+                            "label": "p4"
+                        },
+                        {
+                            "value": "p5",
+                            "label": "p5"
+                        },
+                        {
+                            "value": "p6",
+                            "label": "p6"
+                        }
+                    ],
+                    "default": "h3"
+                },
+                {
+                    "type": "textarea",
+                    "id": "author",
+                    "label": "Author"
+                },
+                {
+                    "type": "select",
+                    "id": "author_style",
+                    "label": "Author Style",
+                    "options": [
+                        {
+                            "value": "h1",
+                            "label": "h1"
+                        },
+                        {
+                            "value": "h2",
+                            "label": "h2"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "h3"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "h4"
+                        },
+                        {
+                            "value": "h5",
+                            "label": "h5"
+                        },
+                        {
+                            "value": "h6",
+                            "label": "h6"
+                        },
+                        {
+                            "value": "s1",
+                            "label": "s1"
+                        },
+                        {
+                            "value": "s2",
+                            "label": "s2"
+                        },
+                        {
+                            "value": "s3",
+                            "label": "s3"
+                        },
+                        {
+                            "value": "s4",
+                            "label": "s4"
+                        },
+                        {
+                            "value": "p1",
+                            "label": "p1"
+                        },
+                        {
+                            "value": "p2",
+                            "label": "p2"
+                        },
+                        {
+                            "value": "p3",
+                            "label": "p3"
+                        },
+                        {
+                            "value": "p4",
+                            "label": "p4"
+                        },
+                        {
+                            "value": "p5",
+                            "label": "p5"
+                        },
+                        {
+                            "value": "p6",
+                            "label": "p6"
+                        }
+                    ],
+                    "default": "s1"
                 }
             ]
         }
