@@ -1,0 +1,23 @@
+
+{% render 'compare-banner' url:section.settings.url %}
+
+  
+  {% schema %}
+  {
+    "name": "Compare Banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Compare Page Url"
+      }
+    ],
+    "presets": [
+        {
+            "name": "Compare Banner"
+        }
+    ]
+  }
+  {% endschema %}
+  

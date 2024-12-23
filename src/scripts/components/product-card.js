@@ -8,7 +8,10 @@ class ProductCard extends HTMLElement {
       swatch: '[js-product-card-swatch]',
       currentSwatchLabel: '[js-product-card-current-swatch-label]',
       productLink: '[js-product-link]',
-      price: '[js-product-card-price]'
+      price: '[js-product-card-price]',
+      productCompareCheckbox: '[js-product-compare-checkbox]',
+      productCompareProduct: '[js-product-compare-product]',
+      productCompareInfo:'[js-product-compare-info]'
     }
   }
 
@@ -19,6 +22,16 @@ class ProductCard extends HTMLElement {
     this.productLinks = this.querySelectorAll(this._selectors.productLink);
     this.price = this.querySelector(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
+    this.productCompareCheckbox = this.querySelector(this._selectors.productCompareCheckbox)
+    if (this.querySelector(this._selectors.productCompareProduct)) {
+      this.productCompareProduct = JSON.parse(this.querySelector(this._selectors.productCompareProduct).innerHTML)
+    }
+    if (this.querySelector(this._selectors.productCompareInfo)) {
+      this.productCompareInfo = JSON.parse(this.querySelector(this._selectors.productCompareInfo).innerHTML)
+      if (this.productCompareProduct) {
+        this.productCompareProduct['productCompareInfo'] = this.productCompareInfo
+      }
+    }
 
     this._setListeners();
   }
@@ -27,6 +40,12 @@ class ProductCard extends HTMLElement {
     this.swatches.forEach((swatch) => {
       swatch.addEventListener('click', this._swatchOnClick);
     });
+
+    if (this.productCompareCheckbox) {
+      this._initProductCompare()
+      this.productCompareCheckbox.addEventListener('change', this._handleProductCompareCheckToggle.bind(this))
+      window.addEventListener("seed:compare:itemchange", this._handleItemChange.bind(this));
+    }
   }
 
   _updateImage = (swatchName) => {
@@ -42,6 +61,86 @@ class ProductCard extends HTMLElement {
     } else {
       this.soldOutTag.classList.remove('hidden');
     }
+  }
+
+  _initProductCompare() {
+    let compareProductArray
+    if (sessionStorage.getItem('compareProductArray')) {
+      compareProductArray = sessionStorage.getItem('compareProductArray');
+      compareProductArray = JSON.parse(compareProductArray)
+
+      for (let i = 0; i < compareProductArray.length ; i++ ) {
+        if (compareProductArray[i].id === this.productCompareProduct.id) {
+          this.productCompareCheckbox.checked = true
+        }
+      }
+
+      if (compareProductArray.length > 2) {
+        for (let i = 0; i < compareProductArray.length ; i++ ) {
+          if (compareProductArray[i].id === this.productCompareProduct.id ) {
+            this.productCompareCheckbox.disabled = false
+            return
+          }
+        }
+        this.productCompareCheckbox.disabled = true
+      } else {
+        this.productCompareCheckbox.disabled = false
+      }
+    }
+  }
+
+  _handleItemChange(e) {
+    let compareProductArray
+    if (sessionStorage.getItem('compareProductArray')) {
+      compareProductArray = sessionStorage.getItem('compareProductArray');
+      compareProductArray = JSON.parse(compareProductArray)
+
+      if (compareProductArray.length === 0) {
+        this.productCompareCheckbox.checked = false
+      } else if (compareProductArray.length > 2) {
+        for (let i = 0; i < compareProductArray.length ; i++ ) {
+          if (compareProductArray[i].id === this.productCompareProduct.id ) {
+            this.productCompareCheckbox.disabled = false
+            return
+          }
+        }
+        this.productCompareCheckbox.disabled = true
+      } else {
+        this.productCompareCheckbox.disabled = false
+      }
+    }
+  }
+
+  _handleProductCompareCheckToggle(e) {
+    let compareProductArray
+    if (sessionStorage.getItem('compareProductArray')) {
+      compareProductArray = sessionStorage.getItem('compareProductArray');
+      compareProductArray = JSON.parse(compareProductArray)
+    } else {
+      compareProductArray = [];
+    }
+
+    if (this.productCompareCheckbox.checked) {
+      // check if obj is in the array
+      for (let i = 0; i < compareProductArray.length ; i++ ) {
+        if (compareProductArray[i].id === this.productCompareProduct.id) {
+          return true;
+        }
+      }
+      compareProductArray.push(this.productCompareProduct)
+      sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
+    } else {
+      for (let i = 0; i < compareProductArray.length ; i++ ) {
+        if (compareProductArray[i].id === this.productCompareProduct.id) {
+          compareProductArray.splice(i, 1)
+        }
+      }
+      sessionStorage.setItem("compareProductArray", JSON.stringify(compareProductArray));
+    }
+
+    window.dispatchEvent(new CustomEvent("seed:compare:itemchange", {
+      detail: { compareProductArray }
+    }))
   }
 
   _updateProductLink = (url) => {

@@ -1,0 +1,117 @@
+.compare__title {
+    @apply py-md
+    border-b
+    border-gray
+    h-[100px]
+}
+
+.compare-product__title {
+    @apply sticky 
+    bg-white 
+    mb-sm
+    z-[3]
+    rte;
+    height: var(--compare-product-height);
+    top: var(--header-height)
+}
+
+.compare__image-container {
+    @apply p-xxs 
+}
+
+.compare__image-container {
+    @apply aspect-square
+    w-full
+}
+
+.compare-product__title-text {
+    @apply text-[16px]
+    !no-underline
+    font-700
+    tabletl:text-[22px]
+}
+
+.compare__title p.s1 {
+    @apply invisible
+    text-[16px]
+}
+
+.compare__grid-item {
+    @apply text-center
+    border-r
+    border-gray
+}
+
+.compare__atc {
+    @apply py-lg
+    w-fit
+    mx-auto
+}
+
+.compare__grid-info-column p.s1 {
+    @apply visible
+}
+
+.compare__item {
+    @apply py-md
+    border-b
+    border-gray
+    h-[120px]
+}
+
+.compare__item .p1 {
+    @apply font-300
+}
+
+.compare__grid-item .compare__item .p1,
+.compare__grid-additional-column .compare__item .p1 {
+    @apply font-500
+}
+
+.compare__grid ul:nth-child(4) {
+    @apply hidden
+}
+
+.compare__grid-item[data-index="1"] {
+    @apply border-0
+}
+
+.compare__atc .btn {
+    @apply px-xxs
+}
+
+.btn__arrow {
+    @apply hidden
+}
+
+@media screen(tabletp) {
+    .btn__arrow {
+        @apply inline-block
+    }
+
+    .compare__atc .btn {
+        @apply pl-sm
+    }
+}
+
+@media screen(tabletl) {
+    .compare__title {
+        @apply py-lg
+        h-[140px]
+    }
+    .compare__title p.s1 {
+        @apply text-[30px]
+    }
+    .compare__grid ul:nth-child(4) {
+        @apply block
+    }
+    .compare__grid ul:nth-child(5) {
+        @apply hidden
+    }
+    .compare__grid-item[data-index="1"] {
+        @apply border-r
+    }
+    .compare__grid-item[data-index="2"] {
+        @apply border-0
+    }
+}

@@ -95,7 +95,34 @@
       {% endif %}
     </div>
 
-    <div class="text-12 mt-sm">Compare (TBD)</div>
+    {% if product.metafields.seed.enable_product_compare and collection.template_suffix == 'compare' %}
+      <div class="text-12 mt-sm flex items-center gap-sm">
+        <input type="checkbox" id="enableProductCompare-{{ product.id }}" data-product-id="{{ product.id }}" js-product-compare-checkbox>
+        <label for="enableProductCompare-{{ product.id }}"> Compare </label>
+      </div>
+      <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-product>{{ all_products[product.handle] | json }}</script>
+
+      <script type="application/json" id="ProductCompareIndoJSON-{{ product.id }}" js-product-compare-info>
+          {
+            "blair_recommendedRoomSize": "{{ product.metafields.seed.blair_recommendedRoomSize }}",
+            "blair_dimensions":"{{ product.metafields.seed.blair_dimensions }}",
+            "blair_productSpecification_weight":"{{ product.metafields.seed.blair_productSpecification_weight }}",
+            "blair_wifi":"{{ product.metafields.seed.blair_wifi }}",
+            "blair_energyConsumption":"{{ product.metafields.seed.blair_energyConsumption }}",
+            "blair_productSpecification_soundlevel":"{{ product.metafields.seed.blair_productSpecification_soundlevel }}",
+            "blair_productSpecification_airchanges":"{{ product.metafields.seed.blair_productSpecification_airchanges }}",
+            "blair_CADR_pollen":"{{ product.metafields.seed.blair_CADR_pollen }}",
+            "blair_CADR_dust":"{{ product.metafields.seed.blair_CADR_dust }}",
+            "blair_CADR_smoke":"{{ product.metafields.seed.blair_CADR_smoke }}",
+            "blair_airSensor":"{{ product.metafields.seed.blair_airSensor }}",
+            "filter_replacement_indicator":"{{ product.metafields.seed.filter_replacement_indicator }}",
+            "on_off_timer":"{{ product.metafields.seed.on_off_timer }}",
+            "blair_productSpecification_fanspeed":"{{ product.metafields.seed.blair_productSpecification_fanspeed |  metafield_text }}",
+            "wheels":"{{ product.metafields.seed.wheels }}",
+            "max_room_size":"{{ product.metafields.seed.max_room_size }}"
+          }
+      </script>
+    {% endif %}
   </div>
 </product-card>
 

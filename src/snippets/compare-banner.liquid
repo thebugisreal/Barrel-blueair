@@ -1,0 +1,67 @@
+<compare-banner class="compare-banner fixed bottom-0 right-0 left-0 bg-white z-[2] w-full px-md pt-md tabletl:px-xl">
+    <div v-if="porductsSelected > 0">
+        <s-accordion data-manual-collapse="false" js-accordion>
+            <div class="accordion-item" js-accordion-item>
+                <button class="accordion-header s1 pb-md w-full flex justify-between items-center gap-xs" aria-expanded="true" aria-controls="compareBannerContent" js-accordion-header>
+                    <div>
+                        Compare up to <span class="tabletl:hidden">2</span> <span class="hidden tabletl:inline">3</span> models <span class="compare-products-selected font-900">(${porductsSelected})</span>
+                    </div>
+                    <div class="icon-container h-[33px] w-[33px] p-xxs">
+                        {%  render 'icon-caret-down' %}
+                        {%  render 'icon-caret-up' %}
+                    </div>
+                </button>
+                <div id="compareBannerContent" class="accordion-content" aria-hidden="false" js-accordion-content>
+                    <div class="pb-md flex flex-col justify-between items-center gap-md tabletl:gap-sm tabletl:flex-row">
+                        <ul class="compare-banner__products flex gap-md items-center tabletl:gap-lg">
+                            <li 
+                                class="compare-banner__product flex flex-col justify-center items-center gap-xs border-r border-gray pr-md tabletl:flex-row tabletl:pr-lg"
+                                v-for="(product,index) in products"
+                                :data-index='index'
+                            >
+                                <img 
+                                    class="h-[70px]"
+                                    :src="product.featured_image"
+                                    loading="lazy"
+                                    :alt="product.featured_image.alt"
+                                />
+                                <p class="compare-banner-product__title p1 flex text-center justify-center items-center gap-xxxs">
+                                    ${ product.title }
+                                    <button class="compare__product-remove border rounded-full flex p-[2px] tabletl:hidden"
+                                        :data-product-id="product.id"
+                                        @click="onRemove">
+                                        {%  render 'icon-plus' %}
+                                    </button>
+                                </p>
+                                <button class="compare__product-remove border rounded-full flex p-[2px] hidden tabletl:block"
+                                    :data-product-id="product.id"
+                                    @click="onRemove">
+                                    {%  render 'icon-plus' %}
+                                </button>
+                            </li>
+                            <li v-if="porductsSelected < 2" class="compare-banner__product-more" :data-selected-products='porductsSelected'>
+                                <p>Compare 1 more</p>
+                            </li>
+                        </ul>
+                        <div class="compare-banner__btns-container flex items-center gap-sm justify-between w-full tabletl:w-fit">
+                            <button class="compare-banner__remove-all underline" @click="removeAll" js-remove-all >Remove All</button>
+                            <div v-if="porductsSelected > 1">
+                                <a href="{{url}}" class="compare__btn btn btn--blue-rounded">
+                                    <span class="btn__text">Compare</span>
+                                    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                </a>
+                            </div>
+                            <div v-else>
+                                <a href="{{url}}" class="compare__btn btn btn--blue-rounded disabled">
+                                    <span class="btn__text">Compare</span>
+                                    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </s-accordion>
+    </div>
+
+</compare-banner>
