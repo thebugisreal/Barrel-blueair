@@ -26,7 +26,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "max_width_desktop": "",
+        "max_width_desktop": "100ch",
         "color": "bg-white text-blue",
         "image_position_desktop": "desktop:order-first",
         "title": "Designed to bring the freedom to breathe to all.",
@@ -281,7 +281,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "",
-        "bg_color": "#ffffff",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "2.2",
         "slides_per_view_extrawide": "2.2",
@@ -455,7 +455,7 @@
           "type": "milestone",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-modelslaunched.jpg",
-            "bg_color": "#d5e4f3",
+            "color": "bg-blue-sky text-blue",
             "title": "Multi-functional models launched",
             "title_style": "h4",
             "subtext": "The Blue and Pro models are launched at the IFA trade show. They are soon becoming a favorite with consumers worldwide.",
@@ -470,7 +470,7 @@
           "type": "milestone",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-modelslaunched.jpg",
-            "bg_color": "#d5e4f3",
+            "color": "bg-blue-sky text-blue",
             "title": "Blueair releases Protect™",
             "title_style": "h4",
             "subtext": "Blueair releases Protect™, the first air purifier to provide 24\/7 protection against viruses and bacteria.",
@@ -489,14 +489,14 @@
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
+        "padding_top_mobile": "pt-xs",
+        "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
+        "padding_top_desktop": "desktop:pt-xs",
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "",
-        "bg_color": "#f0f3f6",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "1.6",
         "slides_per_view_extrawide": "1.6",
@@ -589,7 +589,7 @@
         "image_position_mobile": "flex-col",
         "image_position_desktop": "desktop:flex-row-reverse",
         "max_width_desktop": "70ch",
-        "title": "",
+        "title": "Clean air is the cornerstone to a healthy life.",
         "title_style": "h4"
       }
     },
@@ -599,16 +599,60 @@
         "customization_8Fd3xb": {
           "type": "customization",
           "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Learn more about Blueair",
             "title_style": "h3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
+          }
+        },
+        "media_content_overlay_WDpUcx": {
+          "type": "media-content-overlay",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-tech-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-whyblueair-tech-desktop.jpg",
+            "title": "",
+            "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "cta_url": "shopify:\/\/pages\/blueair-performance",
+            "cta_text": "Our Technology",
+            "cta_style": "btn btn--white-rounded",
+            "horizontal_position": "justify-end",
+            "vertical_position": "items-end",
+            "text_alignment": "text-left",
+            "color": "bg-white text-blue"
+          }
+        },
+        "media_content_overlay_jb8ey8": {
+          "type": "media-content-overlay",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-careers-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-blueairtech-careers-desktop.jpg",
+            "title": "",
+            "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "cta_url": "https:\/\/careers.usa.blueair.com",
+            "cta_text": "Careers",
+            "cta_style": "btn btn--white-rounded",
+            "horizontal_position": "justify-end",
+            "vertical_position": "items-end",
+            "text_alignment": "text-right",
+            "color": "bg-white text-blue"
           }
         }
       },
       "block_order": [
-        "customization_8Fd3xb"
+        "customization_8Fd3xb",
+        "media_content_overlay_WDpUcx",
+        "media_content_overlay_jb8ey8"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",

@@ -1,14 +1,69 @@
 {
   "sections": {
     "main": {
-      "type": "page__main"
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "80ch"
+      }
     },
-    "form": {
-      "type": "page__contact-form"
+    "section_hero_MWKKLh": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Contact Us",
+        "title_style": "h1",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "hor_align_mobile": "justify-center",
+        "ver_align_mobile": "items-center",
+        "text_align_desktop": "desktop:text-center",
+        "hor_align_desktop": "desktop:justify-center",
+        "ver_align_desktop": "desktop:items-center",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": ""
+      }
+    },
+    "section_embed_GWNkVD": {
+      "type": "section__embed",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "embed": "<iframe scrolling=\"no\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:500px;\"><\/iframe>"
+      }
     }
   },
   "order": [
     "main",
-    "form"
+    "section_hero_MWKKLh",
+    "section_embed_GWNkVD"
   ]
 }

@@ -186,35 +186,44 @@
     "section_carousel_RBqNYc": {
       "type": "section__carousel",
       "blocks": {
-        "image_content_3JHRD3": {
-          "type": "image_content",
+        "testimonial_KUerqh": {
+          "type": "testimonial",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/stars.png",
-            "title": "“Doing tons of research and looking at Consumer Reports as well as consumer reviews I knew Blueair was one of if not the best company to provide clean air...”",
-            "title_style": "h4",
-            "subtext": "Jonathan Nero, Teacher at Githens Middle School, North Carolina",
-            "subtext_style": "s3",
-            "cta_url": "",
-            "cta_text": "",
-            "cta_style": "btn"
+            "image_mobile": "shopify:\/\/shop_images\/stars_e1d1b1aa-7271-4cbb-acd2-5e7a4fbe17d4.png",
+            "max_width_desktop": "",
+            "quote": "“Doing tons of research and looking at Consumer Reports as well as consumer reviews I knew Blueair was one of if not the best company to provide clean air...”",
+            "quote_style": "h4",
+            "author": "Jonathan Nero, Teacher at Githens Middle School, North Carolina",
+            "author_style": "s3"
           }
         },
-        "image_content_Mqbmdp": {
-          "type": "image_content",
+        "testimonial_WMkweH": {
+          "type": "testimonial",
           "settings": {
-            "title": "",
-            "title_style": "s1",
-            "subtext": "",
-            "subtext_style": "p4",
-            "cta_url": "",
-            "cta_text": "",
-            "cta_style": "btn"
+            "image_mobile": "shopify:\/\/shop_images\/stars_e1d1b1aa-7271-4cbb-acd2-5e7a4fbe17d4.png",
+            "max_width_desktop": "",
+            "quote": "“As a business, as a hotel, at the end of the day, we sell sleep. One of the reasons we chose Blueair is not only because it’s one of the best products, but it also has a very silent operating system that allowed our guests to breathe clean air and sleep very peacefully.”",
+            "quote_style": "h4",
+            "author": "Kenji Bourquin- Quéva, Hotel Operations Manager, Page 8 Hotel",
+            "author_style": "s3"
+          }
+        },
+        "testimonial_TdiGfV": {
+          "type": "testimonial",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/stars_e1d1b1aa-7271-4cbb-acd2-5e7a4fbe17d4.png",
+            "max_width_desktop": "",
+            "quote": "\"The addition of air purifiers in every massage treatment room and our common areas (lobby & breakroom) are a visible reminder of how seriously we have taken our commitment to safety.\"",
+            "quote_style": "h4",
+            "author": "Jean Erhardt, Owner, Elements Massage",
+            "author_style": "s3"
           }
         }
       },
       "block_order": [
-        "image_content_3JHRD3",
-        "image_content_Mqbmdp"
+        "testimonial_KUerqh",
+        "testimonial_WMkweH",
+        "testimonial_TdiGfV"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -225,8 +234,8 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "max_width_desktop": "80ch",
-        "bg_color": "#ffffff",
+        "max_width_desktop": "109ch",
+        "color": "bg-white text-blue",
         "slides_per_view": "1",
         "slides_per_view_desktop": "1",
         "slides_per_view_extrawide": "1",
@@ -320,16 +329,58 @@
           "type": "customization",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/ProductTile2-211iMax_ad17281d-050f-4a2e-90e7-96aad4d85213.png",
+            "image_position": "order-last",
+            "enable_padding": true,
+            "content_position": "items-start",
             "title": "Blue Pure 211i Max",
-            "title_style": "h5",
-            "cta_url": "",
-            "cta_text": "",
-            "cta_style": "btn"
+            "title_style": "s1",
+            "subtext": "The Blue Pure 211i Max air purifiers combine powerful air purification for XL spaces, a touch-screen interface with a customizable design.",
+            "subtext_style": "p2",
+            "cta_url": "shopify:\/\/collections\/211i-max",
+            "cta_text": "Shop 211i Max",
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
+          }
+        },
+        "customization_TD8NEJ": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/ProductTile2-311iPlus_c9da075f-58e0-4bbc-a236-ab91411cecbf.png",
+            "image_position": "order-last",
+            "enable_padding": true,
+            "content_position": "items-start",
+            "title": "Blue Pure 311i+ Max",
+            "title_style": "s1",
+            "subtext": "The Blue Pure Max 311i+ Max is perfect for large spaces combining powerful air purification with a customizable, compact design that fits any space.",
+            "subtext_style": "p2",
+            "cta_url": "shopify:\/\/collections\/311i-max-2",
+            "cta_text": "Shop 311i+ Max",
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
+          }
+        },
+        "customization_LnByVR": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/ProductTile2-CP7i.webp",
+            "image_position": "order-last",
+            "enable_padding": true,
+            "content_position": "items-start",
+            "title": "Classic Pro",
+            "title_style": "s1",
+            "subtext": "Reliable, durable, and efficient, it’s the professional-grade solution for healthier, cleaner spaces. Engineered for high-performance air purification.",
+            "subtext_style": "p2",
+            "cta_url": "shopify:\/\/collections\/classic-pro",
+            "cta_text": "Shop Classic Pro",
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
           }
         }
       },
       "block_order": [
-        "customization_ViWCVD"
+        "customization_ViWCVD",
+        "customization_TD8NEJ",
+        "customization_LnByVR"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -382,12 +433,12 @@
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
+        "padding_top_mobile": "pt-xl",
         "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
         "richtext": "<p>¹HBR, Survey: What Employees Want Most from Their Workspaces<\/p><p>²Blueair purifiers remove viruses and bacteria from the air, but no air purifier can offer complete protection against Coronavirus. Blueair does not claim that its air purifiers capture, remove, or kill COVID-19 (SARS-CoV-2).<\/p><p>³CDC, ‘COVID-19 Employer Information for Office Buildings’, April 2021<\/p><p>⁴Harvard T.H. Chan School of Public Health, ‘Green Office Environments Linked with Higher Cognitive Function’, October 2015<\/p><p>⁵Chemical and biological contaminants, along with inadequate ventilation contribute to workplace illnesses, which leads to absenteeism. Indian J Occup Environ Med. 2008 Aug; 12(2): 61–64.<\/p><p>⁶Tested by accredited CAS Test Technical Services Removal rate in 60 minutes according to GB18801-2015<\/p>",
         "richtext_style": "p2"

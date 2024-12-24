@@ -55,33 +55,51 @@
           "type": "customization",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg1.png",
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-center",
             "title": "Easy and flexible",
             "title_style": "h5",
+            "subtext": "Join for free, decide your delivery schedule, and cancel anytime.",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
           }
         },
         "customization_LrVefR": {
           "type": "customization",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg2.png",
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-center",
             "title": "Peace of mind, delivered for free¹",
             "title_style": "h5",
+            "subtext": "Seeing a new filter at your door isa celebration of your choice tobreathe clean air.",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
           }
         },
         "customization_xYLEwj": {
           "type": "customization",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg3.png",
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-center",
             "title": "Exclusive perks",
             "title_style": "h5",
+            "subtext": "Filter subscription members get 15% off on every filter and exclusive product perks.",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
           }
         }
       },
@@ -142,31 +160,49 @@
         "customization_rNPdEw": {
           "type": "customization",
           "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Choose a filter",
-            "title_style": "h5",
+            "title_style": "h4",
+            "subtext": "Select a filter for the air purifier model you own.",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_YHK6bP": {
           "type": "customization",
           "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Set your preferences",
-            "title_style": "h5",
+            "title_style": "h4",
+            "subtext": "Tell us when you want to receive your filters with free shipping¹",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_dxLknE": {
           "type": "customization",
           "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Sit back, we got this",
-            "title_style": "h5",
+            "title_style": "h4",
+            "subtext": "Enjoy clean air regularly, while you're a member.",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         }
       },
@@ -202,22 +238,34 @@
           "type": "customization",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg4.webp",
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-start",
             "title": "Exceptional purifiers, third-party verified",
             "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "shopify:\/\/collections\/air-purifiers",
             "cta_text": "Discover Purifiers",
-            "cta_style": "btn btn--white-rounded"
+            "cta_style": "btn btn--white-rounded",
+            "color": "bg-white text-blue"
           }
         },
         "customization_FjHRnA": {
           "type": "customization",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg5.png",
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-start",
             "title": "Filter and accessories for all your needs",
             "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "shopify:\/\/collections\/air-purifier-filters",
             "cta_text": "Discover Filters and Accessories",
-            "cta_style": "btn btn--white-rounded"
+            "cta_style": "btn btn--white-rounded",
+            "color": "bg-white text-blue"
           }
         }
       },

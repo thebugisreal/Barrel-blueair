@@ -195,7 +195,6 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
-        "bg_color": "#f0f3f6",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3",
         "slides_per_view_extrawide": "3",

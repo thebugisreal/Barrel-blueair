@@ -145,10 +145,10 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/seed-initiatives-carousel2_0ff54604-6c09-4b3a-9fcd-e6357421db52.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-hero-mobile.jpg",
         "image_inset_mobile": false,
-        "image_position_mobile": "order-last",
-        "image_position_desktop": "right",
+        "image_position_mobile": "order-first",
+        "image_position_desktop": "left",
         "image_width": 40,
         "title": "",
         "title_style": "h3",
@@ -248,7 +248,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "",
-        "bg_color": "#ffffff",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "1.6",
         "slides_per_view_extrawide": "1.6",
@@ -443,7 +443,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
-        "bg_color": "#ffffff",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3.2",
         "slides_per_view_extrawide": "3.2",
@@ -468,40 +468,60 @@
         "customization_3RMFAm": {
           "type": "customization",
           "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Learn More about Blueair",
             "title_style": "h4",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
           }
         },
-        "customization_6qrn3j": {
-          "type": "customization",
+        "media_content_overlay_NnnHq7": {
+          "type": "media-content-overlay",
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-careers-mobile.jpg",
             "image_desktop": "shopify:\/\/shop_images\/seed-blueairtech-careers-desktop.jpg",
             "title": "",
             "title_style": "h5",
-            "cta_url": "https:\/\/blueairusa.teamtailor.com\/",
+            "subtext": "",
+            "subtext_style": "p1",
+            "cta_url": "https:\/\/careers.usa.blueair.com",
             "cta_text": "Careers",
-            "cta_style": "btn btn--white-rounded"
+            "cta_style": "btn btn--white-rounded",
+            "horizontal_position": "justify-end",
+            "vertical_position": "items-end",
+            "text_alignment": "text-left",
+            "color": "bg-white text-blue"
           }
         },
-        "customization_hdxG8j": {
-          "type": "customization",
+        "media_content_overlay_FxDEVn": {
+          "type": "media-content-overlay",
           "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-ourstory-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-blueairtech-ourstory-desktop.jpg",
             "title": "",
             "title_style": "h5",
-            "cta_url": "",
-            "cta_text": "",
-            "cta_style": "btn"
+            "subtext": "",
+            "subtext_style": "p1",
+            "cta_url": "shopify:\/\/pages\/blueair-purpose",
+            "cta_text": "Our Story",
+            "cta_style": "btn btn--white-rounded",
+            "horizontal_position": "justify-end",
+            "vertical_position": "items-end",
+            "text_alignment": "text-left",
+            "color": "bg-white text-blue"
           }
         }
       },
       "block_order": [
         "customization_3RMFAm",
-        "customization_6qrn3j",
-        "customization_hdxG8j"
+        "media_content_overlay_NnnHq7",
+        "media_content_overlay_FxDEVn"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",

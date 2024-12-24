@@ -27,7 +27,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/seed-whycleanair-hero.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/seed-whycleanair-hero-mobile.jpg",
+        "image_desktop": "shopify:\/\/shop_images\/seed-whycleanair-hero.jpg",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Clean air for a healthier and happier life",
@@ -42,7 +43,7 @@
         "ver_align_mobile": "items-start",
         "text_align_desktop": "desktop:text-left",
         "hor_align_desktop": "desktop:justify-start",
-        "ver_align_desktop": "desktop:items-start",
+        "ver_align_desktop": "desktop:items-center",
         "content_max_width_mobile": "",
         "content_max_width_desktop": "60%"
       }
@@ -161,16 +162,73 @@
         "customization_nXeXUK": {
           "type": "customization",
           "settings": {
-            "title": "",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "title": "PM 1.0",
             "title_style": "h5",
+            "subtext": "Viruses, tobacco smoke and microplastics.",
+            "subtext_style": "p2",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
+          }
+        },
+        "customization_fDTfLT": {
+          "type": "customization",
+          "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "title": "PM 2.5",
+            "title_style": "h5",
+            "subtext": "Particles from combustion emissions, fine dust, bacteria, viruses, dust mites.",
+            "subtext_style": "p2",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
+          }
+        },
+        "customization_wBT6Ai": {
+          "type": "customization",
+          "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "title": "PM 10",
+            "title_style": "h5",
+            "subtext": "Pollen, mold, dust and pet dander.",
+            "subtext_style": "p2",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
+          }
+        },
+        "customization_6DmPqh": {
+          "type": "customization",
+          "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "title": "VOC and Chemicals",
+            "title_style": "h5",
+            "subtext": "Chemicals and gases released from paint, furniture, flooring, cleaning agents and fossil fuel combustion.",
+            "subtext_style": "p2",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         }
       },
       "block_order": [
-        "customization_nXeXUK"
+        "customization_nXeXUK",
+        "customization_fDTfLT",
+        "customization_wBT6Ai",
+        "customization_6DmPqh"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -205,7 +263,7 @@
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "color": "bg-gray-athans text-blue",
         "title": "Download the Blueair app to track your air quality¹",
-        "title_style": "h1",
+        "title_style": "h2",
         "subtext": "",
         "subtext_style": "p2",
         "max_width_desktop": "",
@@ -283,10 +341,10 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
-        "bg_color": "#ffffff",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3.2",
         "slides_per_view_extrawide": "3.2",
