@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h5>Air pollution<\/h5><p>An air pollutant is any substance in the air that can have a negative effect on humans and the ecosystem<\/p><h5>Health effects of indoor air pollution<\/h5><p>Exposure to indoor air pollution has been linked to the development of everything from infections to asthma to lung cancer. It can also cause less serious side effects such as headaches, nasal congestion, nausea, fatigue and dry eyes. If you suffer from an existing lung condition you will be at a greater risk of experiencing symptoms.<\/p><h5>Poor indoor air quality and its causes<\/h5><p>Air pollution particles can be solid, liquid droplets, or gases. Excess particles can build up indoors due to inadequate ventilation, high temperature, and humidity levels. Ventilation can be challenging, because indoor pollutant levels can increase if not enough outdoor air is brought in to dilute indoor air, but can also be increased by outdoor pollutants traveling indoors and getting trapped.<\/p><h5>Health effects of poor indoor air quality<\/h5><p>The American Lung Association’s annual “State of the Air” report, states that half of Americans still live in counties where ozone or particle pollution levels make the air we breathe unhealthy. The 15th annual national report card shows that while the nation overall continued to reduce particle pollution, poor air quality continues to be a top public health concern. One of the biggest causes for alarm is the increased levels of ozone (smog), which has increase since last year’s report and continues to be one of the most powerful respiratory irritants and the most widespread air pollutant worldwide.<\/p><h5>Key findings from the 2014 State of the Air:<br\/><br\/><\/h5><ul><li>Nearly half of the people in the United States (147.6 million) live in counties with unhealthy levels of either ozone or particle pollution.<\/li><li>More than 27.8 million people (8.9%) in the United States live in 17 counties with unhealthful levels of all pollutants measured in the report.<\/li><li>Twenty-two of the 25 most ozone-polluted cities in the 2014 report (including Los Angeles, New York City, and Chicago) had more high ozone days on average when compared to the 2013 report.<\/li><li>Thirteen of the 25 cities with the worst year-round particle pollution reached their lowest levels yet, including Los Angeles, Atlanta, Pittsburgh and Bakersfield.<\/li><\/ul><h5><br\/>Who is most at risk:<br\/><br\/><\/h5><ul><li>Infants, children, and the elderly<\/li><li>People with lung diseases, such as asthma and COPD<\/li><li>T People with heart disease or diabetes<\/li><li>People with low incomes<\/li><li>People who work or spend a lot of time outdoors<\/li><li>Dangerous levels of air pollution can cause wheezing and coughing, asthma attacks, heart attacks, and premature death<\/li><\/ul><h5><br\/>Indoor-outdoor air balance<\/h5><p>Your best defense against indoor air pollution is to try to avoid having pollutants enter your home or office. According to the American Lung Association, this is known as source control. Creating a well-ventilated space that allows fresh, clean air to flow in is a great start for keeping your indoor air free of outdoor pollutants. The right air purifier can help, but it’s best to avoid indoor air from becoming polluted in the first place.<\/p><h5>Air purifier for pollution<\/h5><p>If your home or office is prone to indoor air pollution, an air purifier can be helpful to remove harmful particles and improve your air quality. In a home that mainly has particle pollutants, such as exhausts, dust, and bacteria, a Blueair Particle filter is recommended. In a home or office that has heavy gaseous pollutants, such as VOCs and smoke, a SmokeStop™ filter is recommended.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_eq8biy": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_zRgeiA": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_zRgeiA"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_eq8biy"
+  ]
+}

@@ -1,21 +1,40 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
- {
-    "sections": {
-      "main": {
-        "type": "page__product-compare",
-        "settings": {}
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width": "80ch"
       }
     },
-    "order": [
-      "main"
-    ]
-  }
-  
+    "section_compare_grid_JtCi4r": {
+      "type": "section__compare-grid",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "color": "text-blue",
+        "back_to_shop_url": "shopify:\/\/collections\/air-purifiers",
+        "compare_more_url": "shopify:\/\/collections\/air-purifiers"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_compare_grid_JtCi4r"
+  ]
+}

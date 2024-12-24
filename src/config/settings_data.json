@@ -1,1 +1,73 @@
-{}
+{
+  "current": {
+    "popular_searches": "seed-popular-searches",
+    "quiz_image": "shopify:\/\/shop_images\/seed-callout-quiz-mobile.png",
+    "quiz_link_url": "shopify:\/\/pages\/guided-selling",
+    "bcorp_link_url": "https:\/\/www.bcorporation.net\/en-us\/",
+    "app_store_url_mobile": "https:\/\/apps.apple.com\/us\/app\/blueair-friend\/id1016299342",
+    "app_store_url_desktop": "https:\/\/apps.apple.com\/us\/app\/blueair-friend\/id1016299342",
+    "google_play_url_mobile": "https:\/\/play.google.com\/store\/apps\/details?id=com.blueair.android&hl=en_US",
+    "google_play_url_desktop": "https:\/\/play.google.com\/store\/apps\/details?id=com.blueair.android",
+    "social_instagram": "https:\/\/www.instagram.com\/blueairus\/",
+    "social_facebook": "https:\/\/www.facebook.com\/BlueairUS",
+    "social_tiktok": "https:\/\/www.tiktok.com\/@blueair",
+    "social_linkedin": "https:\/\/www.linkedin.com\/company\/blueair\/",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "announcement_p7DjCt": {
+            "type": "announcement",
+            "settings": {
+              "announcement": "Free Shipping on orders over +$35",
+              "url": ""
+            }
+          },
+          "announcement_MGNif8": {
+            "type": "announcement",
+            "settings": {
+              "announcement": "60-Day Home Trial | Free Extended Warranty",
+              "url": "shopify:\/\/pages\/warranty"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_p7DjCt",
+          "announcement_MGNif8"
+        ],
+        "settings": {
+          "header_nav_desktop": "seed-desktop-nav",
+          "bg_color": "bg-blue-sky text-blue"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_nav": "seed-footer",
+          "subfooter_nav": "seed-subfooter",
+          "footer_heading_text": "Air designed for your best life",
+          "footer_heading_style": "h3"
+        }
+      },
+      "footer__klaviyo": {
+        "type": "footer__klaviyo",
+        "settings": {
+          "margin_top_mobile": "mt-0",
+          "margin_bottom_mobile": "mb-0",
+          "padding_top_mobile": "pt-xl",
+          "padding_bottom_mobile": "pb-xl",
+          "margin_top_desktop": "desktop:mt-0",
+          "margin_bottom_desktop": "desktop:mb-0",
+          "padding_top_desktop": "desktop:pt-xxl",
+          "padding_bottom_desktop": "desktop:pb-xxl",
+          "max_width_desktop": "109ch",
+          "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"><\/div>",
+          "title": "Sign up to receive exclusive offers, updates, and more",
+          "title_style": "h3",
+          "color": "bg-blue text-white"
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}

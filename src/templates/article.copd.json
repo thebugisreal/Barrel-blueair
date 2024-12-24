@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h6>What is COPD?<\/h6><p>COPD stands for Chronic Obstructive Pulmonary Disease. It is a general term used to describe progressive lung diseases such as emphysema, chronic bronchitis, and refractory (non-reversible) asthma. Although there is no cure, air purifiers help with COPD, which is aggravated by air pollution.<\/p><p>According to the U.S. National Institutes of Health, studies in North America and Western European countries show that people who regularly breathe in polluted air have a higher risk of getting COPD. And for people who already have COPD, air pollution can make COPD progress faster because polluted air contains tiny particles that damage the lungs.<\/p><p>Indoor air pollution is often the biggest problem because people spend most of their time indoors and, according to the U.S. Environmental Protection Agency, indoor air can be up to 5 times more polluted than outdoor air.<\/p><h6>Air pollution and emphysema<\/h6><p>Cigarette smoke and smoke from burning fuel indoors are the biggest issues for COPD sufferers in general and emphysema sufferers specifically. When people smoke indoors, the air becomes filled with harmful particles. Over time, breathing in this polluted indoor air can cause serious problems, such as respiratory infections and asthma. Secondhand smoke can not only make COPD symptoms worse, it can even cause someone who has never smoked to develop COPD.<\/p><p>Also, billions of people around the world burn wood or coal indoors for cooking and heating. Breathing in the smoke from the burning fuel can damage the lungs over time and cause COPD. Women and children who spend a lot of time in the home have the highest risk of getting COPD from burning fuel indoors.<\/p><p>Other risk factors for COPD include occupational dusts and chemicals (such as vapors, irritants, and fumes) and frequent lower respiratory infections during childhood.<\/p><h6>Do air purifiers help with COPD?<\/h6><p>Air purifiers make indoor air much healthier for everyone in your family. That is why an air purifier for lung disease is an important line of defense. One of the key considerations in the management of chronic bronchitis, emphysema asthma and other lung ailments is to choose an air purifier that protects against ultrafine particles. About 90% of particles in the air are classified as ultrafine particles, and these are the most dangerous. They lodge deeply in the lungs.<\/p><p>Fortunately, Blueair air purifiers with HEPASilent™ technology deliver especially high performance and efficiency. Common airborne allergens and lung damaging pollutants trapped by Blueair include bacteria, dust, pollen, smoke, pet dander, dust mites, automotive exhaust, soot, particles from laser printers and copiers, fungi, mold spores, viruses, bacteria VOCs and many other pollutants.<\/p><p><a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/hepasilent-technologies.html\" target=\"_self\">HEPASilent™ technology<\/a> is so effective because it combines electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, achieves a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size*, while delivering high Clean Air Delivery Rate (CADR), whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a lightbulb.<\/p><p>*Tested on particles down to 0.1 micron according to EN1822.<\/p><h6>Three types of COPD<\/h6><p>In <strong>Emphysema<\/strong> the air sacs (alveoli) in your lungs are damaged making it harder to get oxygen in and carbon dioxide out. <strong>Chronic bronchitis<\/strong> is an inflammation of the breathing tubes inside your lungs. These changes limit airflow in and out of your lungs, making it hard to breathe. <strong>Refractory (non-reversible) asthma<\/strong> is a type of asthma that does not respond to usual asthma medications. In this kind of asthma, bronchial airways tighten up and medications cannot reverse the tightening.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_LJDAVq": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_gxi7Xi": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_gxi7Xi"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_LJDAVq"
+  ]
+}

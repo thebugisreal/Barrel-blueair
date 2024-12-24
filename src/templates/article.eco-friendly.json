@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Blueair was founded by man who stood on a beach in the Stockholm Archipelago and thought, “How can I bring this clean and energizing air to my family in the city?” So it should be no surprise that a company inspired by a love of nature designs products to make a minimal impact on our environment.<\/p><h6>No chemical additives<\/h6><p>Since polypropylene fibers are hydrophobic, Blueair’s eco-friendly air filters don’t absorb the moisture in which bacteria thrive. This means they naturally prevent bacteria, <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/air-purifiers-health\/mold.html\" target=\"_self\">mold<\/a> and mildew from reproducing inside the filter and do not require the use of chemical-based bacteriostats or mold inhibitors.<\/p><h6>Energy-efficient air purifiers<\/h6><p>Any appliance that can achieve high efficiency with lower power use helps reduce our overall consumption of fossil fuels. Blueair’s advanced <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/hepasilent-technologies.html\" target=\"_self\">HEPASilent™ technology<\/a> is highly energy efficient, delivering especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/cadr.html\" target=\"_self\">Clean Air Delivery Rate<\/a> (CADR) with high energy efficiency. In fact, our air purifiers use no more power than a single light bulb: from 5 to 20 watts on low to 10 to 120 watts on high, depending on the model.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_pD6hmN": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_hjGFCj": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_hjGFCj"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_pD6hmN"
+  ]
+}

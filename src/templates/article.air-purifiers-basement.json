@@ -1,0 +1,146 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h5>Why you might need a basement air purifier<\/h5><p>“Out of sight, out of mind” can be a questionable proposition, but when it comes to basement air, it can be downright counterproductive. Since most people do not clean their basements as often as the rest of their houses, dust, mold and mildew can easily build up and cause basement air quality problems, including bad odor. Also, most basements don’t have windows, so the less you open the door to go into your basement, the less ventilated it will be and the mustier the air will get.<\/p><p>When you do go into the basement, your nasal passages and lungs are typically assaulted by a higher concentration of allergens than they would be anywhere else in the house. If you store all your cleaning chemicals in the basement, add VOCs to the air you’re breathing.<\/p><p>And, since many heating and ventilation systems draw air from the basement, a certain amount of what you are smelling in the basement may be spreading throughout your house. Mold spores, for example are among the most common allergens in basements and are easily picked up by the ventilation system and spread throughout the house. That makes moldy basement air a health risk for everyone, even small children who don’t go into the basement.<\/p><h5>How to improve air quality in basement?<\/h5><p>Some of the best ways to prevent that dusty basement smell and reduce health risks from moldy bathrooms include:<\/p><ul><li>Eliminating condensation around pipes by insulating them.<\/li><li>Finding and fixing any cracks in basement walls that could allow moisture to come in from outside.<\/li><li>Pouring a mixture of vinegar and water down basement drains once a week to kill mold and mildew.<\/li><\/ul><p><br\/><\/p><h5>Will an air purifier help with basement smell?<br\/><\/h5><p>Definitely. A basement air purifier can not only be a basement odor eliminator, it can trap allergens and other particles at their source, before they spread throughout the house, keeping your air fresher and reducing moldy basement health risks no matter what room you are in.<\/p><h5>The right air purifier size<br\/><\/h5><p>The first consideration is size, so you should measure the size of your basement. An air purifier is designed to purify a certain amount of air per hour. This Clean Air Delivery Rate is where you start: the bigger the basement, the larger air purifier you will need. For best results, an air purifier should have the capacity to provide five changes of air per hour.<\/p><p>Blueair Classic air purifiers come in different sizes to handle rooms from 26 m2 to 72 m2. Blueair Pro air purifiers handle rooms as big as 110 m2. Both Classic and Pro are equipped with Blueair’s <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/hepasilent-technologies.html\" target=\"_self\">HEPASilent™ technology<\/a>.<br\/><br\/><\/p><h5>The right combination to purify air in basements<br\/><\/h5><p>The combination of energy efficiency, long filter life and antibacterial fibers makes Blueair air purifiers the ultimate choice in a room where you should run the air purifier 24\/7, and not have to go check on it very often. They also feature a filter change reminder light, which is helpful for people who do not spend as much time in their basements as in the rest of the house.<\/p><p>Some Blueair models can be connected to your Wi-fi to deliver ongoing updates on air quality to your mobile device. Others automatically adjust to increases in pollution, so you can always feel secure that the air in your home is healthy at all times, with no basement air quality problems.<\/p><p>*Tested on particles down to 0.1 micron according to EN1822.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_content_panels_rVaaQ4": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_6GHTA7": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blog_hotel_air_purifier.png",
+            "image_desktop": "shopify:\/\/shop_images\/Blog_hotel_air_purifier.png",
+            "title": "Hotel air purifiers",
+            "title_style": "h6",
+            "cta_url": "shopify:\/\/blogs\/seed-sample-blog\/vocs-odors-gases",
+            "cta_text": "Read this article",
+            "cta_style": "btn"
+          }
+        },
+        "customization_XkxBMB": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blog_classroom_air_purifiers.png",
+            "image_desktop": "shopify:\/\/shop_images\/Blog_classroom_air_purifiers.png",
+            "title": "Classroom air purifiers: Helping students reach their potential",
+            "title_style": "h6",
+            "cta_url": "shopify:\/\/blogs\/seed-sample-blog\/wildfire-smoke-and-air-purifiers",
+            "cta_text": "Read this article",
+            "cta_style": "btn"
+          }
+        },
+        "customization_iJXbcr": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blog_beauty_salloon.png",
+            "image_desktop": "shopify:\/\/shop_images\/Blog_beauty_salloon.png",
+            "title": "Air purifiers for hair & nail salons",
+            "title_style": "h6",
+            "cta_url": "shopify:\/\/blogs\/seed-sample-blog\/indoor-pollution",
+            "cta_text": "Read this article",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_6GHTA7",
+        "customization_XkxBMB",
+        "customization_iJXbcr"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-lg",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-blue-light text-blue",
+        "title": "Related articles",
+        "title_style": "h4",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    },
+    "section_carousel_CXMGbL": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_mVGPEf": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_mVGPEf"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_content_panels_rVaaQ4",
+    "section_carousel_CXMGbL"
+  ]
+}

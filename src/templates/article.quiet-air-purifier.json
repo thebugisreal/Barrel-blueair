@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Pure, fresh air not only energizes you, makes you more creative and helps you make better decisions in the daytime, it also helps you sleep better at night, so you wake up refreshed. And, since we spend a third of our time in bed, the bedroom is the most important room in the house when it comes to getting rid of allergens and asthma triggers.<\/p><p>But what about fan noise? Who wants to trade allergies for insomnia? Everyone has a different tolerance and preference for noise, but an air purifier for the bedroom that produces too much noise for you can affect your ability to rest, dream and enjoy the full benefits of breathing clean air. That’s why, when choosing an air purifier, one of your first questions should be “how quiet is it?”<\/p><p>This is actually one of the most difficult parameters to compare in the air purifier market since there are a variety of decibel scales used. At Blueair, we use dB(A) values (decibel with A-weighted value) since we believe it to be the best rating for perceived sound level. What is often overlooked is that the absolute value of the noise is just part of the equation.<\/p><h6>How loud is low?<\/h6><p>It is always important to relate sound level to how much clean air you are getting at that particular sound level. Blueair measures performance using the <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/cadr.html\" target=\"_self\">Clean Air Delivery Rate<\/a> (CADR) metric. When you look at the decibel rating for an air purifier you want to determine how much clean air it is delivering at that setting. At times of high pollution, like when you are running your vacuum, Blueair air purifiers may get a little louder, but that comes with a high CADR.<\/p><p>When it comes to noise, the biggest difference between Blueair’s air purifiers and our competitors’ products is at the low-speed setting. Blueair low-noise air purifiers give you a very high CADR and exceptionally low decibel rating. This combination of performance aspects becomes especially important while you are sleeping. Obviously, you’d want to have a quiet air purifier for the bedroom, so compare performance when the air purifier is quiet enough for you to sleep next to.<\/p><h6>The secret to a silent air purifier<\/h6><p>Blueair’s <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/hepasilent-technologies.html\" target=\"_self\">HEPASilent™ technology<\/a> is what makes Blueair air purifiers almost silent. In this technology, pioneered by Blueair, electrostatic filtration first makes airborne particles easier to trap by giving them a negative electrical charge. This negative charge makes the particles adhere to the polypropylene fibers in the filter more easily, which allows the use of a less dense filter, so more air can be pushed through with less noise and less energy.<\/p><p>The lower filter density allowed by the stickiness of the charged particles also reduces clogging. Filtration remains at peak performance levels longer, with high efficiency and longer lasting high airflow.<\/p><h6>Make the right comparison<\/h6><p>In short, remember that when comparing air purifier tech specs for sound levels, always look at dB(A) values. There are also noise apps and decibel meters for smart phones that you can download to easily compare products. Even more important, look for independent reviews done by someone who has tested products without being influenced by advertisers. Consumer Reports is a great resource since they review air purifiers in the US market, testing noise levels and performance at the highest and lowest speed settings.<\/p><p>But the ultimate test of a silent air purifier is to hear the difference for yourself. Find a retailer near you that will allow you to turn on various models at different settings to find an air purifier with both the performance and noise level that is right for you.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_TYiMAx": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_GppwBY": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_GppwBY"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_TYiMAx"
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "80ch"
+      }
+    },
+    "section_text_banner_9pV7Ja": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Refurbished Air Purifiers",
+        "title_style": "h1",
+        "subtext": "The same HEPASilentᵀᴹ dual filtration technology, but for less! <br>\nNot eligible for site wide promotional discounts.\n<br>ALL SALES ARE FINAL.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "section_media_pXUimN": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-xl",
+        "video_embed": "",
+        "enable_autoplay": false,
+        "image_mobile": "shopify:\/\/shop_images\/seed-hero-refurbished.png"
+      }
+    },
+    "section_carousel_8VAzMQ": {
+      "type": "section__carousel",
+      "blocks": {
+        "collection_PHApgM": {
+          "type": "collection",
+          "settings": {
+            "collection": "refurbished-air-purifiers",
+            "product_pulled": 10,
+            "product_card_style": "style2"
+          }
+        }
+      },
+      "block_order": [
+        "collection_PHApgM"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#ffffff",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": false,
+        "title": "Shop Air Purifiers",
+        "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
+      }
+    },
+    "section_image_text_mantBn": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-refurbished-image1.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 50,
+        "title": "What is a Blueair Refurbished air purifier?",
+        "title_style": "h4",
+        "subtext": "Refurbished purifiers have been previously sold by Blueair and returned with minimal or no consumer use.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "80ch",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_th8hhr": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-refurbished-image2.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "How does Blueair refurbish air purifiers?",
+        "title_style": "h4",
+        "subtext": "Blueair follows a carefully designed refurbishment process to ensure only the most qualified units are considered for refurbishment. <br> <br>\nBefore these units are made for sale, they go through an extensive functional, visual, cosmetic assessment, and detailed cleaning process. Only then are they given a brand-new Blueair genuine filter (and pre-filter if applicable) and packaged in our originally certified Blueair packaging.",
+        "subtext_style": "s3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "80ch",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_38cFkg": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-refurbished-image3.webp",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 50,
+        "title": "What is the warranty on refurbished air purifiers?",
+        "title_style": "h4",
+        "subtext": "Blueair warrants that your refurbished air purifier will be free from major defects in material or workmanship for one (1) year from the date of purchase, provided that you have replaced the filter(s) according to the manufacturer recommended filter replacement schedule listed in the Blueair User Manual. <br><br>\nWith proof of purchase within one (1) year from the date of purchase, if a defect exists, Blueair will exchange your refurbished air purifier with a product which has been manufactured from serviceable used parts and is at least functionally equivalent to the original refurbished product, at no charge and will cover any shipping costs.",
+        "subtext_style": "s3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "80ch",
+        "max_width_desktop": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_text_banner_9pV7Ja",
+    "section_media_pXUimN",
+    "section_carousel_8VAzMQ",
+    "section_image_text_mantBn",
+    "section_image_text_th8hhr",
+    "section_image_text_38cFkg"
+  ]
+}

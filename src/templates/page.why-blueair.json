@@ -1,0 +1,653 @@
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "80ch"
+      }
+    },
+    "section_text_banner_zHnweJ": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Designed to bring the freedom to breathe to all.",
+        "title_style": "h1",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "section_media_nUqARM": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-xl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-xl",
+        "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
+        "video_embed": "",
+        "enable_autoplay": false
+      }
+    },
+    "section_hero_4K3iNp": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-xxxl",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-xxxl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-xxxl",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "color": "bg-white text-blue",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "",
+        "title_style": "h1",
+        "subtext": "Over two decades ago, our Swedish founder wanted to ensure his children could breathe the same clean air inside their home as they did out in the pristine Swedish archipelago.",
+        "subtext_style": "h4",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-start",
+        "content_max_width_mobile": "100%",
+        "content_max_width_desktop": "60%"
+      }
+    },
+    "section_image_text_3wawg6": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/whyBlueair-image1.jpg",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 65,
+        "title": "Clean air for a happier, healthier life",
+        "title_style": "h4",
+        "subtext": "It was important to him that his children had the safest environment to learn and grow while their brains and lungs were developing.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_PzqJLM": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/whyblueair-image2-poor.jpg",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "Bringing cleaner air for everyone",
+        "title_style": "h4",
+        "subtext": "We partner with global NGOs, media, academia, and local governments to promote the benefits of clean air for children's health and education and advocate for WHO-recommended air quality standards. By collaborating with schools and hospitals in various countries, we donate air purifiers to improve children's access to clean air.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "85%",
+        "max_width_desktop": "90%"
+      }
+    },
+    "section_image_text_RBWqdk": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/whyblueair-image3.jpg",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 40,
+        "title": "Refurbishing and repairing for a less wasteful tomorrow",
+        "title_style": "h4",
+        "subtext": "In order to minimize waste, Blueair began the a refurbishing program. Blueair follows a carefully designed refurbishment process to ensure only the most qualified units (with minimal or no use) are considered for refurbishment.",
+        "subtext_style": "p2",
+        "cta_url": "shopify:\/\/pages\/refurbished-air-purifiers",
+        "cta_text": "Shop Now",
+        "cta_style": "btn",
+        "text_max_width": "80ch",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_yMx4Yy": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/whyblueair-image4.jpg",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "Freedom to Breathe update September 2023",
+        "title_style": "h4",
+        "subtext": "After several years of campaigning, we are thrilled that for the first time the UN’S “General comment No. 26 (2023) on children’s rights and the environment with a special focus on climate change\" they published explicitly mentions the need to improve air quality.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "Read More",
+        "cta_style": "btn",
+        "text_max_width": "85%",
+        "max_width_desktop": ""
+      }
+    },
+    "section_text_banner_QYaPrn": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image": "shopify:\/\/shop_images\/b-corp-image.png",
+        "image_position_desktop": "desktop:order-last",
+        "title": "Clean air for the next generation is not just our purpose, but the very reason for our existence",
+        "title_style": "h4",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "text_align_desktop": "desktop:text-left"
+      }
+    },
+    "section_carousel_NJzifd": {
+      "type": "section__carousel",
+      "blocks": {
+        "image_content_gjEmy6": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-initiatives-carousel1.jpg",
+            "title": "Clean air for children",
+            "title_style": "s1",
+            "subtext": "With advocacy and donations, we have improved access to clean air for over 1,000,000 children across the world.",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "image_content_rMTYTq": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-initiatives-carousel2.jpg",
+            "title": "Freedom to Breathe",
+            "title_style": "s1",
+            "subtext": "Through the Freedom to Breathe campaign young change-makers joined together to call on the United Nations to acknowledge their fundamental right to clean air.",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "image_content_htKrdK": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-initiative-carousel3.jpg",
+            "title": "Engagement",
+            "title_style": "s1",
+            "subtext": "Every year on the 20th of November, the International Day of the Child, all Blueair employees around the world spend a day improving children’s access to clean air.",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "image_content_gjEmy6",
+        "image_content_rMTYTq",
+        "image_content_htKrdK"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "max_width_desktop": "",
+        "bg_color": "#ffffff",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "2.2",
+        "slides_per_view_extrawide": "2.2",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": false,
+        "title": "Our Initiatives",
+        "title_style": "h6",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
+      }
+    },
+    "section_hero_jjJFKM": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xl",
+        "color": "bg-blue-light text-blue",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "",
+        "title_style": "h1",
+        "subtext": "In 1996, our founder created the \u2028ground-breaking air filtration technology, HEPASilent™. This went on to be trusted \u2028by professionals and leaders and millions in 60 countries.",
+        "subtext_style": "h4",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-start",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "60%"
+      }
+    },
+    "section_media_kBChiC": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-0",
+        "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
+        "video_embed": "",
+        "enable_autoplay": false
+      }
+    },
+    "section_icons_cpNGn7": {
+      "type": "section__icons",
+      "blocks": {
+        "icon_bk9jQj": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/seed-whyblueair-icon2.png",
+            "icon_fixed_width": "",
+            "title": "",
+            "title_style": "s1"
+          }
+        },
+        "icon_rKAHyV": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/seed-whyblueair-icon2.png",
+            "icon_fixed_width": "",
+            "title": "",
+            "title_style": "s1"
+          }
+        },
+        "icon_PqRkmk": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/seed-whyblueair-icon3.png",
+            "icon_fixed_width": "",
+            "title": "",
+            "title_style": "s1"
+          }
+        },
+        "icon_NiLyhN": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/seed-whyblueair-icon3.png",
+            "icon_fixed_width": "",
+            "title": "",
+            "title_style": "s1"
+          }
+        }
+      },
+      "block_order": [
+        "icon_bk9jQj",
+        "icon_rKAHyV",
+        "icon_PqRkmk",
+        "icon_NiLyhN"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "num_cols_mobile": 2,
+        "num_cols_desktop": 4,
+        "max_width_mobile": "",
+        "max_width_desktop": "1024px",
+        "color": "bg-blue-light text-blue",
+        "title": "",
+        "title_style": "h3",
+        "text_align_mobile": "text-left",
+        "text_align_desktop": "desktop:text-left",
+        "enable_borders": false,
+        "gap_desktop": "tabletl:gap-md"
+      }
+    },
+    "section_hero_QcjtTG": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-blue-light text-blue",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Our technology has laid the foundation for 25 years of award-winning innovation in air purification.",
+        "title_style": "h4",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "shopify:\/\/pages\/blueair-performance",
+        "cta_text": "More on Technology",
+        "cta_style": "btn btn--blue-rounded",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-start",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "60%"
+      }
+    },
+    "section_carousel_mG8yR3": {
+      "type": "section__carousel",
+      "blocks": {
+        "milestone_MYEkJB": {
+          "type": "milestone",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-modelslaunched.jpg",
+            "bg_color": "#d5e4f3",
+            "title": "Multi-functional models launched",
+            "title_style": "h4",
+            "subtext": "The Blue and Pro models are launched at the IFA trade show. They are soon becoming a favorite with consumers worldwide.",
+            "subtext_style": "p2",
+            "cta_url": "shopify:\/\/collections\/pro-1",
+            "cta_text": "Shop Now",
+            "cta_style": "btn btn--white-rounded",
+            "year": "2024"
+          }
+        },
+        "milestone_84iq7H": {
+          "type": "milestone",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-modelslaunched.jpg",
+            "bg_color": "#d5e4f3",
+            "title": "Blueair releases Protect™",
+            "title_style": "h4",
+            "subtext": "Blueair releases Protect™, the first air purifier to provide 24\/7 protection against viruses and bacteria.",
+            "subtext_style": "p2",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "year": "2020"
+          }
+        }
+      },
+      "block_order": [
+        "milestone_MYEkJB",
+        "milestone_84iq7H"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "1.6",
+        "slides_per_view_extrawide": "1.6",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": false,
+        "title": "",
+        "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
+      }
+    },
+    "section_image_tabs_gWF9ka": {
+      "type": "section__image-tabs",
+      "blocks": {
+        "tab_qAkLgN": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Asthma & Allergy Relief",
+            "subtitle_style": "s2",
+            "subtext": "Air pollution and asthma are strongly linked. Fortunately, a healthy environment for asthma sufferers can be maintained by the use of an air purifier.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-tabs1.jpg"
+          }
+        },
+        "tab_txVgV7": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Environments For Growth",
+            "subtitle_style": "s2",
+            "subtext": "Air pollution and asthma are strongly linked. Fortunately, a healthy environment for asthma sufferers can be maintained by the use of an air purifier.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-tabs2.jpg"
+          }
+        },
+        "tab_j6hrcA": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Better Sleep",
+            "subtitle_style": "s2",
+            "subtext": "Air pollution and asthma are strongly linked. Fortunately, a healthy environment for asthma sufferers can be maintained by the use of an air purifier.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-tabs1.jpg"
+          }
+        },
+        "tab_pK3J4D": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Better Learning",
+            "subtitle_style": "s2",
+            "subtext": "Air pollution and asthma are strongly linked. Fortunately, a healthy environment for asthma sufferers can be maintained by the use of an air purifier.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-tabs2.jpg"
+          }
+        },
+        "tab_8AYngU": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Higher Productivity",
+            "subtitle_style": "s2",
+            "subtext": "Air pollution and asthma are strongly linked. Fortunately, a healthy environment for asthma sufferers can be maintained by the use of an air purifier.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-whyblueair-tabs1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "tab_qAkLgN",
+        "tab_txVgV7",
+        "tab_j6hrcA",
+        "tab_pK3J4D",
+        "tab_8AYngU"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "desktop:flex-row-reverse",
+        "max_width_desktop": "70ch",
+        "title": "",
+        "title_style": "h4"
+      }
+    },
+    "section_content_panels_Y4MpMz": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_8Fd3xb": {
+          "type": "customization",
+          "settings": {
+            "title": "Learn more about Blueair",
+            "title_style": "h3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_8Fd3xb"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-blue-light text-blue",
+        "title": "",
+        "title_style": "h2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_text_banner_zHnweJ",
+    "section_media_nUqARM",
+    "section_hero_4K3iNp",
+    "section_image_text_3wawg6",
+    "section_image_text_PzqJLM",
+    "section_image_text_RBWqdk",
+    "section_image_text_yMx4Yy",
+    "section_text_banner_QYaPrn",
+    "section_carousel_NJzifd",
+    "section_hero_jjJFKM",
+    "section_media_kBChiC",
+    "section_icons_cpNGn7",
+    "section_hero_QcjtTG",
+    "section_carousel_mG8yR3",
+    "section_image_tabs_gWF9ka",
+    "section_content_panels_Y4MpMz"
+  ]
+}

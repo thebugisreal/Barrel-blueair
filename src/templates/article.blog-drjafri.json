@@ -1,0 +1,218 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_axKfjt": {
+      "type": "article__content",
+      "blocks": {
+        "image_caption_WkYFit": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/wellness_mobile.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Group_1x_0980ea25-254a-4d64-b3e4-ea8973dd69a6.webp",
+            "caption": "<p>Dr. Kamran Jafri ENT Specialist, on Air Wellness<\/p>",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_49yA8z": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-md",
+            "padding_bottom_desktop": "desktop:pb-md",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>In today’s fast-paced world, where environmental factors constantly challenge our repository health, finding ways to breathe better has become a top priority. Dr Kamran Jafri, ENT Specialist and advocate for air wellness, sheds light on the crucial role of air wellness in improving overall health and well-being.  <\/p><p>With over two decades of clinical experience and a passion for holistic approaches to medical care, Dr. Jafri has witnessed firsthand the impact of external factors on patients’ ability to breathe comfortably. From air pollution to allergens and seasonal changes, the quality of the air we breathe plays a significant role in our respiratory health.<\/p>",
+            "richtext_style": "s3"
+          }
+        },
+        "image_text_E6V7Rj": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "",
+            "title_style": "h6",
+            "richtext": "<p>“Many of our patients, despite leading active lifestyles, struggle with breathing comfortably,” Dr. Jafri explains. “They often attribute this discomfort to the quality of air around them, whether indoors or outdoors.”<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Jafri_-_53_1_2.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Jafri_-_53_1_2.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "text_DY3btb": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxl",
+            "margin_bottom_desktop": "desktop:mb-xxl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Traditionally, medical solutions such as nasal sprays and allergy treatments have been recommended to alleviate respiratory symptoms. However, in recent years, Dr. Jafri and his team have integrated air purifiers into their recommendations with remarkable results.<\/p>",
+            "richtext_style": "s3"
+          }
+        },
+        "image_text_VzQbpA": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-xxl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "",
+            "title_style": "h6",
+            "richtext": "<p>“We’ve noticed a significant improvement in patient’s breathing and sleep quality after incorporating air purifiers into their environment,” Dr. Jafri remarks. “It’s a simple, yet effective tool that can make a world of a difference.”<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Rectangle_413.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Rectangle_413.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row"
+          }
+        },
+        "text_hkRfUc": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-xxl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>External factors like wildfire smoke and allergies, pose challenges to respiratory health. Dr. Jafri emphasizes the importance of addressing these issues, especially considering their adverse effects on sleep quality.  <\/p><p>Air purifiers play a crucial role in combating the effects of environmental pollutants and allergens on sleep quality, Dr. Jafri says. “Installing an air purifier in the bedroom can lead to improved breathing and more restful sleep.”  <\/p><p>Regarding seasonal allergies, Dr. Jafri notes a concerning trend of year-round symptoms, blurring the distinction between seasonal and perennial allergies. He emphasizes the need for targeted interventions to address indoor allergens, which can often go undetected through traditional testing methods.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_9ejQfM": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "",
+            "title_style": "h4",
+            "richtext": "<p>“Living in urban environments like NYC, we’re exposed to a myriad of indoor allergens that impact our health. From dust mites to mold spores, these allergens can lead to chronic symptoms and disrupt sleep patterns.” Dr. Jafri explains.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Rectangle_414.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Rectangle_414.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "text_q3wamj": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Dr. Jafri also highlights the financial aspect, noting that many patients can utilize Health Savings Account (HAS) dollars with a Letter of Medical Necessity (LMN) from their doctor to purchase air purifiers.  <\/p><p> His holistic approach and years of experience, reminds us that simple solutions like air purifiers can have a profound impact on our well-being to help us breathe easier and sleep better through air wellness.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "image_caption_WkYFit",
+        "text_49yA8z",
+        "image_text_E6V7Rj",
+        "text_DY3btb",
+        "image_text_VzQbpA",
+        "text_hkRfUc",
+        "image_text_9ejQfM",
+        "text_q3wamj"
+      ],
+      "settings": {}
+    },
+    "section_carousel_bWPNMA": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_NapRE4": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_NapRE4"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_axKfjt",
+    "section_carousel_bWPNMA"
+  ]
+}

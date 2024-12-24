@@ -1,0 +1,541 @@
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "80ch"
+      }
+    },
+    "section_text_banner_J7AbQ6": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Cleaner air, faster & quieter.",
+        "title_style": "h1",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "section_media_TcyypQ": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-xl",
+        "video_embed": "",
+        "enable_autoplay": false,
+        "image_mobile": "shopify:\/\/shop_images\/Frame_605.jpg"
+      }
+    },
+    "section_hero_EYAqac": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Our award winning technology promises cleaner air at a faster rate, delivered whisper quiet, while using less energy than a lightbulb.",
+        "title_style": "h4",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-start",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "69%"
+      }
+    },
+    "section_image_text_grid_zCpNyz": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_KAaQxP": {
+          "type": "block",
+          "settings": {
+            "title": "99.97%",
+            "title_style": "h2",
+            "subtext": "Airborne particles are \u2028captured down to 0.1 \u2028microns in size.",
+            "subtext_style": "h6"
+          }
+        },
+        "block_eFWfkP": {
+          "type": "block",
+          "settings": {
+            "title": "45%",
+            "title_style": "h2",
+            "subtext": "More volume of clean air delivered compared to typical HEPA filtration.",
+            "subtext_style": "h6"
+          }
+        },
+        "block_MWbxMW": {
+          "type": "block",
+          "settings": {
+            "title": "67%",
+            "title_style": "h2",
+            "subtext": "Lower noise produced than competitors purifiers. We’re whisper silent.",
+            "subtext_style": "h6"
+          }
+        },
+        "block_eckUKY": {
+          "type": "block",
+          "settings": {
+            "title": "29%",
+            "title_style": "h2",
+            "subtext": "Lower energy usage, consuming less energy \u2028than a lightbulb.",
+            "subtext_style": "h6"
+          }
+        }
+      },
+      "block_order": [
+        "block_KAaQxP",
+        "block_eFWfkP",
+        "block_MWbxMW",
+        "block_eckUKY"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-initiatives-carousel2_0ff54604-6c09-4b3a-9fcd-e6357421db52.jpg",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 40,
+        "title": "",
+        "title_style": "h3",
+        "text_max_width": ""
+      }
+    },
+    "section_media_QTUHFr": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-0",
+        "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
+        "video_embed": "",
+        "enable_autoplay": false
+      }
+    },
+    "section_hero_6htEqT": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "The genius of HEPASilent™ dual filtration technology combines traditional mechanical filtration with electrostatic charging of particles.",
+        "title_style": "h4",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-start",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "60%"
+      }
+    },
+    "section_carousel_AH8yKV": {
+      "type": "section__carousel",
+      "blocks": {
+        "image_content_tp6Lbm": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueair-tech-carousel1.jpg",
+            "title": "1. The fan draws polluted air into the air purifier",
+            "title_style": "s1",
+            "subtext": "",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "image_content_eHXxq4": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueair-tech-carousel2.jpg",
+            "title": "2. Airborne particles receive an electrostatic charge",
+            "title_style": "s1",
+            "subtext": "",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "image_content_tp6Lbm",
+        "image_content_eHXxq4"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "max_width_desktop": "",
+        "bg_color": "#ffffff",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "1.6",
+        "slides_per_view_extrawide": "1.6",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": false,
+        "title": "",
+        "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
+      }
+    },
+    "section_hotspot_Vq7BWq": {
+      "type": "section__hotspot",
+      "blocks": {
+        "hotspot_7JiLet": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 45,
+            "hotspot_y": 30,
+            "image_mobile": "shopify:\/\/shop_images\/hotspot-kitchendining.png",
+            "image_desktop": "shopify:\/\/shop_images\/hotspot-kitchendining.png",
+            "tags": "Large Room, Medium Room",
+            "title": "Kitchen \/ Dining",
+            "title_style": "s1",
+            "subtext": "Keep the cooking contained and your family breathing easier. Easily clears cooking odors, other cooking irritants and chemicals.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_MHGQtT": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 75,
+            "hotspot_y": 25,
+            "tags": "Medium room, Small Room",
+            "title": "Home Gym",
+            "title_style": "s1",
+            "subtext": "Ensure you are breathing in clear air when you are working out.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_z8J4JA": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 40,
+            "hotspot_y": 72,
+            "tags": "Small Room",
+            "title": "Bathrooms",
+            "title_style": "s1",
+            "subtext": "Keep your bathrooms free of dust and mold.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_pHzRkh": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 80,
+            "hotspot_y": 80,
+            "tags": "Extralarge Room, Large Room",
+            "title": "Basements",
+            "title_style": "s1",
+            "subtext": "Make all spaces comfortable for relaxing, playing, and living.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_UMxVEx": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 18,
+            "hotspot_y": 65,
+            "tags": "Large Room, Medium Room",
+            "title": "Bedrooms",
+            "title_style": "s1",
+            "subtext": "Our multifunctional 3-in-1 device provides heating or cooling for a comfortable sleep. Every device has our HEPASilent technology to ensure noise is kept to a minimum so your sleep is uninterrupted.",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_7JiLet",
+        "hotspot_MHGQtT",
+        "hotspot_z8J4JA",
+        "hotspot_pHzRkh",
+        "hotspot_UMxVEx"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "open_first_hospot_mobile": true,
+        "color": "bg-blue-light text-blue",
+        "image": "shopify:\/\/shop_images\/Cross-section-house_1_f94498d7-487c-4502-a399-43f0c3f44912.png",
+        "image_position": "desktop:order-last",
+        "image_width": 60,
+        "title": "Different room sizes require air purifiers with varying capacities to ensure efficient cleaning.",
+        "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "s3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    },
+    "section_image_tabs_3eCidp": {
+      "type": "section__image-tabs",
+      "blocks": {
+        "tab_qVV3LT": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Cooling",
+            "subtitle_style": "s2",
+            "subtext": "Stay cool and breathe clean air with our latest air purifier that also cools. Ideal for hot summers, it offers refreshing relief while purifying your space, providing a healthier and more comfortable home.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-tabs1.png"
+          }
+        },
+        "tab_P7KdpQ": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Heating",
+            "subtitle_style": "s2",
+            "subtext": "Stay cool and breathe clean air with our latest air purifier that also cools. Ideal for hot summers, it offers refreshing relief while purifying your space, providing a healthier and more comfortable home.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-tabs1.png"
+          }
+        },
+        "tab_ffWMzH": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "Humidifying",
+            "subtitle_style": "s2",
+            "subtext": "Stay cool and breathe clean air with our latest air purifier that also cools. Ideal for hot summers, it offers refreshing relief while purifying your space, providing a healthier and more comfortable home.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-tabs1.png"
+          }
+        }
+      },
+      "block_order": [
+        "tab_qVV3LT",
+        "tab_P7KdpQ",
+        "tab_ffWMzH"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "desktop:flex-row-reverse",
+        "max_width_desktop": "70ch",
+        "title": "",
+        "title_style": "h4"
+      }
+    },
+    "section_carousel_cz4iDK": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_qpr497": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_qpr497"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#ffffff",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": true,
+        "title": "From our Blog",
+        "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "All Blogs",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
+      }
+    },
+    "section_content_panels_8BWLBy": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_3RMFAm": {
+          "type": "customization",
+          "settings": {
+            "title": "Learn More about Blueair",
+            "title_style": "h4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_6qrn3j": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-careers-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-blueairtech-careers-desktop.jpg",
+            "title": "",
+            "title_style": "h5",
+            "cta_url": "https:\/\/blueairusa.teamtailor.com\/",
+            "cta_text": "Careers",
+            "cta_style": "btn btn--white-rounded"
+          }
+        },
+        "customization_hdxG8j": {
+          "type": "customization",
+          "settings": {
+            "title": "",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_3RMFAm",
+        "customization_6qrn3j",
+        "customization_hdxG8j"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-blue-light text-blue",
+        "title": "",
+        "title_style": "h2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_text_banner_J7AbQ6",
+    "section_media_TcyypQ",
+    "section_hero_EYAqac",
+    "section_image_text_grid_zCpNyz",
+    "section_media_QTUHFr",
+    "section_hero_6htEqT",
+    "section_carousel_AH8yKV",
+    "section_hotspot_Vq7BWq",
+    "section_image_tabs_3eCidp",
+    "section_carousel_cz4iDK",
+    "section_content_panels_8BWLBy"
+  ]
+}

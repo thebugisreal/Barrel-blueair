@@ -1,0 +1,350 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_gA8XMg": {
+      "type": "article__content",
+      "blocks": {
+        "image_caption_DKxmM7": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/BLOG-BTS-COVER-MOBILE.png",
+            "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-COVER-DESKTOP.webp",
+            "caption": "<p>Add a Blueair air purifier to your back-to-school list<\/p>",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_cVppfy": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-sm",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Many dorm rooms have air quality issues because of aging buildings¹ with small, underlid rooms and limited airflow. Because interior living spaces harbor moisture, these features create the perfect breeding ground for mold.<\/p><p>Exposure to mold—a common indoor air pollutant found in dormitories—can cause symptoms such as sneezing, stuffy nose, red or itchy eyes or skin, and chest tightness. These symptoms² can be seasonal or long term and more severe, leading to pneumonia, asthma, and other respiratory infections.<\/p>",
+            "richtext_style": "s3"
+          }
+        },
+        "image_text_KwReyX": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Cute and compact",
+            "title_style": "h3",
+            "richtext": "<p>Don't let its small size fool you – this little air purifier works wonders in even the coziest of dorm rooms.<\/p><p>The Blue Pure 511 was designed to fit in tight spaces. Fresh air, more space, and total comfort are now just a tap away.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY1_1.png",
+            "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY1.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "image_text_myAfUX": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Quiet Mark certified",
+            "title_style": "h3",
+            "richtext": "<p>Dorm life can sometimes feel like a never-ending party, with bustling corridors and loud roommates. Amid this chaos, the last thing you need is a noisy appliance adding to the commotion.<\/p><p>Thankfully, our air purifiers are designed to be whisper-quiet, ensuring that you can concentrate on your studies or enjoy a peaceful night's sleep without any disturbances.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY2_1.png",
+            "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY2.png",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "image_text_4K7yPm": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Quickly cleans stuffy dorm rooms",
+            "title_style": "h3",
+            "richtext": "<p>If you are someone who constantly suffers from allergies, life in a confined dorm can quickly turn into a nightmare.<\/p><p>Blueair air purifiers remove at least 99.97%* of tiny airborne particles like pollen, dust and mold allergens. No more red eyes or sneezing fits, just pure comfort, and a clear mind for your studies.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY3_1.png",
+            "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY3.png",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "image_text_tcVA7Q": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Keeps your room stylish",
+            "title_style": "h3",
+            "richtext": "<p>Choose from a variety of washable Scandinavian-inspired pre-filters. Allowing you to choose the one that best suits your personal style.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY4.png",
+            "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY4_1.png",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        }
+      },
+      "block_order": [
+        "image_caption_DKxmM7",
+        "text_cVppfy",
+        "image_text_KwReyX",
+        "image_text_myAfUX",
+        "image_text_4K7yPm",
+        "image_text_tcVA7Q"
+      ],
+      "settings": {}
+    },
+    "section_icons_GymKxV": {
+      "type": "section__icons",
+      "blocks": {
+        "icon_eL8txt": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Icon-RFS1-PIC.webp",
+            "icon_fixed_width": "300",
+            "title": "",
+            "title_style": "s1"
+          }
+        },
+        "icon_NHyJ6E": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Icon-RFS2-PIC.webp",
+            "icon_fixed_width": "300",
+            "title": "",
+            "title_style": "s1"
+          }
+        },
+        "icon_JQ7bJ8": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Icon-RFS3-PIC.png",
+            "icon_fixed_width": "300",
+            "title": "",
+            "title_style": "s1"
+          }
+        }
+      },
+      "block_order": [
+        "icon_eL8txt",
+        "icon_NHyJ6E",
+        "icon_JQ7bJ8"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "max_width_mobile": "",
+        "max_width_desktop": "1800px",
+        "color": "bg-blue-light text-blue",
+        "title": "",
+        "title_style": "h3",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-left"
+      }
+    },
+    "section_icons_4UpHa9": {
+      "type": "section__icons",
+      "blocks": {
+        "icon_EBgNqE": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-QuietMark.png",
+            "icon_fixed_width": "220",
+            "title": "Quiet Mark Certified",
+            "title_style": "h6"
+          }
+        },
+        "icon_cAcEcy": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-California.webp",
+            "icon_fixed_width": "220",
+            "title": "Certified to meet ozone safety standards",
+            "title_style": "h6"
+          }
+        },
+        "icon_TMEaNt": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-AHAM.png",
+            "icon_fixed_width": "220",
+            "title": "Verifide(R) for performance and Clean Air Delivery Rate (CADR).",
+            "title_style": "h6"
+          }
+        },
+        "icon_gzGMxg": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-EnergyStar.webp",
+            "icon_fixed_width": "220",
+            "title": "Rated as energy-efficient air purifiers.",
+            "title_style": "h6"
+          }
+        },
+        "icon_FftAVa": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-Ozone.webp",
+            "icon_fixed_width": "220",
+            "title": "Zero Ozone Verified(<5 ppb) by Intertek Sustainability Program.",
+            "title_style": "h6"
+          }
+        }
+      },
+      "block_order": [
+        "icon_EBgNqE",
+        "icon_cAcEcy",
+        "icon_TMEaNt",
+        "icon_gzGMxg",
+        "icon_FftAVa"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "max_width_mobile": "",
+        "max_width_desktop": "1800px",
+        "color": "bg-white text-blue",
+        "title": "Independently proven performance",
+        "title_style": "h3",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "article_content_xPDzRY": {
+      "type": "article__content",
+      "blocks": {
+        "text_AQDWVJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>* Tested on PM 2.5 up to 90mins<\/p><p>1 Min. reduction 99.9% of S. aureus, K. pneumoniae, P. aeruginosa, MS2, E.Coli, H1N1, A.Niger<\/p><p>2 https:\/\/www.nytimes.com\/2019\/08\/25\/us\/college-dorms-mold-health.html?<\/p><p>3 https:\/\/pubmed.ncbi.nlm.nih.gov\/27869727\/<\/p>",
+            "richtext_style": "p6"
+          }
+        }
+      },
+      "block_order": [
+        "text_AQDWVJ"
+      ],
+      "settings": {}
+    },
+    "section_carousel_bWPNMA": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_fRzyjx": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_fRzyjx"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_gA8XMg",
+    "section_icons_GymKxV",
+    "section_icons_4UpHa9",
+    "article_content_xPDzRY",
+    "section_carousel_bWPNMA"
+  ]
+}

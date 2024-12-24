@@ -1,0 +1,532 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_NcAY76": {
+      "type": "article__content",
+      "blocks": {
+        "text_BFRdqc": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Benefits of better, cleaner air<\/h4><p>Imagine the air you breathe in your home being invigorating and pure, surrounding you with comfort, free from irritating odors or pesky airborne particles. Your presence here, reading these words, reflects a shared understanding: the air we breathe is not just a backdrop to our lives but a vital aspect of our daily well-being.<\/p><p> We're here to honor your commitment to prioritizing your health by guiding you in enhancing your current air purification system or selecting your first air purifier. Whether it's <a href=\"https:\/\/www.blueair.com\/us\/guidedselling\/\" target=\"_self\">choosing a model<\/a> based on room size or tailoring it to a specific type of room, our goal is to ensure you find the perfect solution for achieving optimal air <a href=\"https:\/\/www.blueair.com\/us\/blueair-performance.html\" target=\"_self\">filtration performance<\/a> in your home.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_n8mNgU": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-2_mob.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-2.webp",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_kHArUm": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Matching an air purifier to room size and type<\/h4><p>Matching the performance of an air purifier to the size and type of your room is essential for maximizing its effectiveness. A purifier that's too small may struggle to adequately clean the air in larger spaces, while one that's too powerful for a small room could be unnecessarily loud and consume more energy than needed. Let’s not forget, different types of rooms have different air purification needs depending on what happens in them. By selecting the right purifier for your specific circumstances, you can ensure that every breath you take brings you the clean, refreshing air you deserve.<\/p><h4>What defines a room's size?<\/h4><p>While square footage is an important aspect of assessing room size, air purification requires considering another critical factor: ceiling height. Alongside the room's width and length, its height determines cubic volume, indicating the amount of air within a room. This measurement is essential for determining your needs when it comes to the amount of pollutants and unwanted odors the purifier might encounter there.<\/p><h4>Measuring your room<\/h4><p>If you’re not aware already of the size of the room you’re looking to treat with an air purifier, let’s find out its square footage and cubic volume with these simple steps:<\/p><p><\/p><ul><li>Use a tape measure to determine the length of the longest wall and designate it as the \"length.\"<\/li><li>Repeat the process for the shorter wall, designating it as the \"width.\"<\/li><li>Use the formula LENGTH x WIDTH = SQUARE FEET (or ft²) to find the room's square footage.<\/li><li>Measure from the floor to the ceiling and designate this as the \"height.\"<\/li><\/ul><p>Use the formula LENGTH x WIDTH x HEIGHT = CUBIC FEET (or ft³) to calculate the room's cubic volume.<\/p><p> Irregularly shaped rooms can be measured by breaking them up into rectangles and measuring each part separately using the same method described above. Add the volumes of all the rectangular spaces together to determine the room’s total volume.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_4KaPfF": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-3.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-3.webp",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_jKz7pn": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Air purifiers for small rooms<\/h4><p>Air purifiers for small rooms are essential for the little spaces that have a big place in our lives, but what makes a small room small? Let’s recognize that not everyone has the same opinion when it comes to describing their living space. The geographical and economic diversity of the world we live in can influence our perceptions of room size.<\/p><p> When it comes to air purification, numbers become a more important factor than the labels we put on them. We have Swedish designed air purifiers for spaces that encompass areas between 92 to 250 square feet, and they’re perfect for anything from a storage area to home office or kitchen, even an entire living space that combines them all.<\/p><p>The <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/blue-pure-411i-max\/3538.html\" target=\"_self\">Blue Pure 411i Max<\/a> is a perfect air purifier for the spaces of this size and type. What could be better than getting the entire volume of air in a 250 square foot space in just over 12 minutes? A barely there presence with ultra quiet operation and a compact design that you can customize.  <\/p><p>That’s right, the Blue Pure 411i Max is part of the only line of air purifiers that has a customizable fabric pre-filter, with four different Scandinavian inspired colors that allow you to personalize your air purifier to blend into your home with a compliment to your own taste. A Stockholm Fog pre-filter color is included. But don’t let all this sleekness fool you into thinking it’s not powerful. The Blue Pure 411i Max has a Clean Air Delivery Rate (CADR) of 112 Cubic Feet per Minute for all three of the most common air intruders — smoke, dust, and pollen.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_XUJxYM": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-4.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-4.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-411i-max\/3538.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>Blue Pure 411i Max <\/strong><\/span><\/a>in a children’s bedroom.<\/p>",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_VzVFUD": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Air purifiers for medium to large rooms<\/h4><p>When it comes to elevating the air experience in medium to large spaces, versatility is key. These multifaceted areas that span across zones for living and dining to working, demand air purifiers that can adapt to diverse functions. When looking to place an air purifier in a medium sized or large room, prioritize models equipped with comprehensive filtration systems, remote control and monitoring capabilities, and adjustable settings. All are essential for effectively tackling the range of air challenges present in these dynamic environments. Additionally, the ability of our air purifiers blend into their surroundings ensures that they’ll complement the aesthetics of sizable rooms while delivering superior air quality in them.<\/p><p> Take for example our <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/dustmagnet-5440i\/2420.html\" target=\"_self\">DustMagnet™ 5440i<\/a>. In addition to impressively high filtration ratings for smoke and pollen, the DustMagnet™ 5440i compliments any medium-sized interior space by appearing as an elegant end table, and boasts an impressive CADR rating for dust that literally pulls it from the air at a rate of 255 cubic feet every minute. <\/p><p> If you’re looking to create a big improvement to the air in a big room, look no further than the <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/blue-pure-311i-plus-max\/3540.html\" target=\"_self\">Blue Pure 311i+ Max<\/a> . Designed as an air purifier for a large room, the Blue Pure 311i+ Max delivers impressive cleaning capabilities that can treat spaces up to 1100 square feet with an ability to remove pollen, dust, and smoke out of 300 cubic feet of air every minute.<\/p><p>Like all our Swedish-designed air purifiers, these superheroes of air quality fit seamlessly into your home because of their lightweight, compact design, and flexibility with regards to where you place it. Because we created all our air purifiers with a 360° air intake, you can place them anywhere without compromising performance.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_BFRdqc",
+        "image_caption_n8mNgU",
+        "text_kHArUm",
+        "image_caption_4KaPfF",
+        "text_jKz7pn",
+        "image_caption_XUJxYM",
+        "text_VzVFUD"
+      ],
+      "settings": {}
+    },
+    "section_carousel_T9xPrj": {
+      "type": "section__carousel",
+      "blocks": {
+        "image_caption_w6xDeh": {
+          "type": "image_caption",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-23_mob.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-23.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/dustmagnet-5440i\/2420.html\" target=\"_self\"><strong>DustMagnet 5440i <\/strong><\/a>in a home office<\/p>",
+            "caption_style": "p6",
+            "product": "1342-master-product"
+          }
+        },
+        "image_caption_qgxz6j": {
+          "type": "image_caption",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-24.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-24.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-311i-plus-max\/3540.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>Blue Pure 311i+ Max <\/strong><\/span><\/a>in a living room.<\/p>",
+            "caption_style": "p6",
+            "product": "blue-3610-pre-filter"
+          }
+        },
+        "image_caption_8N7JtU": {
+          "type": "image_caption",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Image_Ratio_Keeper_7.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_mob.png",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-311i-plus-max\/3540.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>Blue Pure 311i+ Max <\/strong><\/span><\/a>in a living room.<\/p>",
+            "caption_style": "p6",
+            "product": "blue-pure-121-pre-filter"
+          }
+        }
+      },
+      "block_order": [
+        "image_caption_w6xDeh",
+        "image_caption_qgxz6j",
+        "image_caption_8N7JtU"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "120ch",
+        "bg_color": "#ffffff",
+        "slides_per_view": "2",
+        "slides_per_view_desktop": "2",
+        "slides_per_view_extrawide": "2",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "",
+        "title_style": "h2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    },
+    "article_content_AQnXni": {
+      "type": "article__content",
+      "blocks": {
+        "text_XcRPAr": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Air purifiers for bedrooms<\/h4><p>Bedrooms are the personal sanctuaries we retreat to for rest and recharge. Maintaining balance across designing calming spaces, creating comfort, and ensuring wellness are all important factors in reaching optimal sleep health. This is where clean air in these intimate spaces can often get overlooked as a silent partner in helping us to sleep better.<\/p><p>An average-sized bedroom is ideal for the <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/blue-pure-311i-max\/3539.html\" target=\"_self\">Blue Pure 311i Max<\/a>. It can completely refresh the air in a stuffy bedroom almost 5 times every hour. When it comes to pollen, dust, and smoke, its impressive Clean Air Delivery Rate will leave you breathing easy with its ability to remove these airborne annoyances from 250 cubic feet of air every minute! And it comes with a simple to use app that offers access to basic functions as well as exclusive features that make control from the comfort of a bed quick and easy.<\/p><p>The Blue Pure 311i Max is ideal as an air purifier for a bedroom, because of its advanced HEPASilent™ filtration system that uses low air draft and electrostatic charging technology to remove germs¹ caught by its filter. This incredible advancement in air purification is available on all Blueair air purifiers, along with a night mode that turns down the fan to its quietest setting and turns off any light that might interfere with a great night’s sleep.<\/p><p>Bedrooms for children are often abundant with toys, fabrics, and other materials that can introduce a need for vigilance against dust, allergens, and other airborne pollutants. Maintaining pristine indoor air quality in these special spaces is best left to an <a href=\"https:\/\/www.blueair.com\/us\/blog-all\/at-home\/baby.html\" target=\"_self\">air purifier for a baby’s room<\/a> that’s up to the task of adapting to the different needs of an active day, from playtime to bedtime.<\/p><p>The <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/3654.html\" target=\"_self\">Blue Pure Mini Max<\/a> is perfect for nurseries or an older child’s bedroom where it can safely be placed on a nightstand or desktop. This tiny but mighty air purifier changes the air in any space it’s placed in more than 4 times every hour.   <\/p><p>Whatever kind of bedroom your Blueair air purifier compliments, you can expect a peaceful, healthy, stress-free rest for you or your loved ones. Our HEPASilent™ technology provides maximum filtration² with minimum noise³, so you can enjoy clean air without any unwanted distractions. Say goodbye to sleep-disturbing annoyances and hello to calm and serene bedrooms and loving nurseries.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_XcRPAr"
+      ],
+      "settings": {}
+    },
+    "section_carousel_UaKGhA": {
+      "type": "section__carousel",
+      "blocks": {
+        "image_caption_ixTxWe": {
+          "type": "image_caption",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-25.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-25.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/3654.html?cgid=air-purifiers\" target=\"_self\"><strong>Blue Pure Mini Max <\/strong><\/a>in a nursery<\/p>",
+            "caption_style": "p6",
+            "product": "1342-master-product"
+          }
+        },
+        "image_caption_YWaPLH": {
+          "type": "image_caption",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-26.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-26.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-311i-plus-max\/3540.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>Blue Pure 311i+ Max <\/strong><\/span><\/a>in a bedroom.<\/p>",
+            "caption_style": "p6",
+            "product": "blue-3610-pre-filter"
+          }
+        },
+        "image_caption_my6LUi": {
+          "type": "image_caption",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Image_Ratio_Keeper_7.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_mob.png",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-311i-plus-max\/3540.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>Blue Pure 311i+ Max <\/strong><\/span><\/a>in a living room.<\/p>",
+            "caption_style": "p6",
+            "product": "blue-pure-121-pre-filter"
+          }
+        }
+      },
+      "block_order": [
+        "image_caption_ixTxWe",
+        "image_caption_YWaPLH",
+        "image_caption_my6LUi"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "120ch",
+        "bg_color": "#ffffff",
+        "slides_per_view": "2",
+        "slides_per_view_desktop": "2",
+        "slides_per_view_extrawide": "2",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "",
+        "title_style": "h2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    },
+    "article_content_TJ4Myc": {
+      "type": "article__content",
+      "blocks": {
+        "text_Ue4RWP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Air purifiers for basements<\/h4><p>Basements are sometimes relegated to the shadows of neglect, but they demand quality air as much as any other space in our homes. Due to their size and environmental conditions, these sub-level spaces can suffer from poor ventilation, high humidity levels, and potential sources of <a href=\"https:\/\/www.blueair.com\/us\/blog-all\/health\/mold-removal.html\" target=\"_self\">mold and mildew<\/a>.<\/p><p> Look for air purifiers that are up to the task of combating elevated levels of moisture and airborne contaminants that can be found in basements. All Blueair air purifiers are capable of removing at least 99.97% of airborne particles down to 0.1 microns¹ in the spaces they’re designed to protect. That’s some amazing science.<\/p><p> When it comes to air purifiers for basements, the <a href=\"https:\/\/www.blueair.com\/us\/shop\/air-purifiers\/blue-pure-211i-max\/3541.html\" target=\"_self\">Blue Pure 211i Max<\/a> is ideal. With its ability to deliver on our particle removing promise in basements up to 1500 square feet in size.<\/p><p>With its “simply smart” quick air quality readings that use an easy to read LED 5-color indicator, or even better, within its app specifically designed to monitor air quality, you’re able to stay connected to the air quality in your basement without having to make lengthy or unnecessary trips there. <\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_wHtFir": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-10_mob.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-10.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-211i-max\/3541.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>Blue Pure 211i Max<\/strong><\/span><\/a><\/p>",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_hbpVNm": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>The downsides of having the wrong purifier<\/h4><p>We love getting into the details of our amazing air purifiers. Considering a room’s size or type is just one of the many ways to explore these amazing devices that can bring so much well-being to our daily lives. By aligning all the details of air purification performance to a room’s size or its daily activities, we can avoid some of the issues that impact indoor air quality if an air purifier is ill suited to the room it’s in. Here are just a few:<\/p><h4>Inadequate coverage:<\/h4><p>A purifier without the proper coverage can leave pockets of stagnant air untouched, allowing pollutants to accumulate and persist.<\/p><h4>Reduced efficiency:<\/h4><p>Purifiers that aren’t suited for the space they’re in may struggle to effectively capture and neutralize airborne pollutants, resulting in reduced purification efficiency and less than ideal performance.<\/p><h4>Increased energy consumption:<\/h4><p>An undersized air purifier may be forced to operate at higher fan speeds or for longer durations, resulting in increased energy consumption and higher utility costs. This not only puts a strain on your finances but it can also contribute to an unwanted impact on the environment.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_nBgRy3": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-11_mob.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-11.webp",
+            "caption": "<p>Above: <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/dustmagnet-5440i\/2420.html?cgid=air-purifiers\" target=\"_self\"><span style=\"text-decoration:underline\"><strong>DustMagnet™ 5440i <\/strong><\/span><\/a>in a living room.<\/p>",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_AtcEaH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>To avoid these pitfalls remember these <br\/>quick tips<br\/><\/h4><h5><strong><br\/>Choose wisely:<\/strong><\/h5><p>Select an air purifier that aligns to the size and air quality needs of your room to maximize purification efficacy.<\/p><h5><strong>Prioritize performance:<\/strong><\/h5><p>Opt for an air purifier equipped with advanced filtration technologies and high Clean Air Delivery Rate ratings to ensure the best possible purification results and Air Changes per Hour for knowing how often its taking place. Both will ensure the ultimate results in your pursuit of well-being.<\/p><h5><strong>Maintain vigilance:<\/strong><\/h5><p>Regularly maintain and replace your air purifier’s filter as recommended to preserve performance and prolong its lifespan. All Blueair air purifiers are designed with a filter replacement reminder that uses an LED light that turns red when it’s time to replace its filter to ensure you’re always getting clean air.<\/p><h5><strong>Breathe beautiful air:<\/strong><\/h5><p>Our Swedish heritage keeps us attuned to the intrinsic beauty of the natural world we inhabit. We invite you to do the same, by incorporating moments into your busy life to reflect upon the benefits of breathing the best air.<\/p><p> We’re so glad you’ve joined us on this exploration of cleaner, better air and lasting comfort through air purifiers for homes of any size, and rooms of any type. Bookmark this page so you can refer to its guidance and helpful information while you chart the course toward the wonders of pure air perfection.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_LWUewW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-12.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Blueair-Complete-Guide-To-Selecting-An-Air-Purifier-Based-On-Room-Size-12.webp",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_fNp9LN": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p><strong>Disclaimer:<\/strong><\/p><p>1. Based on removal testing of PM 2.5 (0.1 - 2.5 microns) and germs (H1N1, E.coli) up to 90min in a 30m3 room. Performance may vary. Not all Blueair air purifiers have been tested against SARS-CoV-2 and Blueair does not claim to kill\/prevent transmission of COVID-19.<\/p><p>2. Comparing CADR performance of Blueair models with mechanical and electrostatic filtration vs same models with only H13 HEPA mechanical filtration.<\/p><p>3. When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_Ue4RWP",
+        "image_caption_wHtFir",
+        "text_hbpVNm",
+        "image_caption_nBgRy3",
+        "text_AtcEaH",
+        "image_caption_LWUewW",
+        "text_fNp9LN"
+      ],
+      "settings": {}
+    },
+    "section_carousel_mxgJpX": {
+      "type": "section__carousel",
+      "blocks": {
+        "product_UXTGhi": {
+          "type": "product",
+          "settings": {
+            "product": "121-particle-carbon-filter"
+          }
+        },
+        "product_JVYrcD": {
+          "type": "product",
+          "settings": {
+            "product": "200-300-series-particle"
+          }
+        },
+        "product_7kVr4J": {
+          "type": "product",
+          "settings": {
+            "product": "3in1-air-purifier-t20i"
+          }
+        }
+      },
+      "block_order": [
+        "product_UXTGhi",
+        "product_JVYrcD",
+        "product_7kVr4J"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-xl",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "180ch",
+        "bg_color": "#ffffff",
+        "slides_per_view": "3",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "none",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
+        "title": "Shop the story",
+        "title_style": "h3",
+        "url": "shopify:\/\/collections",
+        "url_text": "Shop all",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    },
+    "section_carousel_mw4YUJ": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_T8mPaW": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_T8mPaW"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_NcAY76",
+    "section_carousel_T9xPrj",
+    "article_content_AQnXni",
+    "section_carousel_UaKGhA",
+    "article_content_TJ4Myc",
+    "section_carousel_mxgJpX",
+    "section_carousel_mw4YUJ"
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-sm",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-sm",
+            "padding_bottom_desktop": "desktop:pb-sm",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>The air we breathe plays a vital role in maintaining our physical and mental health. Since we spend so much time indoors, it’s crucial to ensure the air is clean and free of pollutants. The need for pristine air can be even more significant for those living with respiratory disease or chronic health conditions. That’s why we’re glad that you're exploring ways in which an air purifier can enhance your air quality, and in turn, your health.<\/p><p>An air purifier can be a trusted ally in the removal of annoying and unhealthy contaminants like dust, pet dander, mold spores, pollen, and volatile organic compounds (VOCs). These pollutants can originate from everyday activities like cooking, cleaning, and using household products. Even outdoor air pollutants such as pollen, vehicle emissions, and industrial pollutants can find their way inside, further degrading the air quality in our homes.<\/p><p>By acknowledging what contributes to bad air, we can be proactive about ensuring common pollutants have less of an impact on our overall well-being. This helpful guide will give you all the information you need to search for an air purifier that can significantly reduce indoor and outdoor air pollutants while contributing to your goal of creating a happy, healthy household.<\/p>",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_4hmA9B": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-md",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper-1.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper-1.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product"
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>How air purifiers work to clear the air<\/h4><p>One of the most important parts of an air purifier is its filtration system. An air purifier’s filter needs to remove as many airborne particles, mold spores, and toxins¹ as quickly as possible. Most of these nuisances are so small they’re invisible to the eye, so when it comes to particle filtration, the size of particles a filter can capture becomes a critical part of determining its ability to clear the air.<\/p><p>However, odors, gasses, and Volatile Organic Compounds (VOCs), are not particles. If your home is especially susceptible to these pollutants, you’ll want to make sure your air purifier filters include a layer of activated carbon. Many of our filters include this added layer of protection against carbon-containing gasses and vapors.<\/p><p>The filtration technology we’ve pioneered for both airborne particles and gasses is truly remarkable. Every Blueair air purifier uses a combination of electrostatic and mechanical filtration that we call HEPAsilent™ technology. This incredible advancement in air purification removes 99.97% of airborne particles1, down to 0.1 microns². This makes Blueair air purifiers among the quietest³, least intrusive air purifiers you can buy, which is important when looking to place one in a home.<\/p><h4>Air purifiers and your health & well-being<\/h4><p>Air purifiers are often used as part of a holistic approach to improved health, wellness, and comfort at home, maintaining clean indoor air.<\/p><p>Allergies are an especially common occurrence for many of us. The ability to filter pollen, pet dander, and other allergens that contribute to allergy symptoms is an obvious benefit. So is an air purifier’s ability to treat the air for bacteria and germs⁴, which is always an added level of assurance during cold and flu season. While no air purifier can guarantee complete protection against COVID-19, according to the Environmental Protection Agency (EPA,) when used properly, they can reduce viruses in a home.⁵<\/p><p>For individuals living with chronic respiratory conditions like asthma or Chronic Obstructive Pulmonary Disease (COPD), an air purifier becomes indispensable because of its ability to maintain an indoor air environment free from dust particles, smoke, and other fumes. All of which are known to affect the overall comfort of those living with these kinds of medical conditions where it matters most, at home.<\/p><p>During wildfire season¹ , maintaining quality indoor air becomes a real challenge when smoke infiltrates our homes. For those in affected regions, an air purifier is essential for for filtering out smoke² and pollutants, so a healthier living environment can be maintained no matter the challenges of the air outside.<\/p><h4>Air purifiers as part of a healthy lifestyle<\/h4><p>In addition to physical health and well-being, air purifiers can also contribute to healthier lifestyles. Enhanced air quality has been known to boost productivity, reduce stress, and promote relaxation. Putting an air purifier in a bedroom¹ can help us maintain better, more restful sleep. Adding one to a small room² where our children might be playing can aid in their concentration, which is always helpful for little lungs and brains that are still developing. Wherever you place an air purifier, its contribution to clean and healthy air will help to create an environment that supports a healthy lifestyle and promotes overall well-being.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_PxA7Eq": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/Guide-Better-Health-Keeper-2.png",
+            "image_desktop": "shopify:\/\/shop_images\/Guide-Better-Health-Keeper-2.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product"
+          }
+        },
+        "text_8WeYnR": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>What to look for in an air purifier<\/h4><p>When choosing an air purifier for health and wellness at home, a few important factors need consideration, starting with room size.<\/p><p>Matching an air purifier for the size of room¹ it will be treating can be determined by its coverage. Look for models that offer sufficient coverage based on the square footage of the space it’s going into so you can be sure the air there will be properly purified according to the way the unit is designed.<\/p><p>The next thing to consider is how often the air will be cleaned and refreshed. This is determined by Air Changes per Hour, also known as ACH. This tells you how many times the purifier can treat all of the air in a given size room within the time frame of one hour.<\/p><p>Lastly, you’ll want to review an air purifier’s Clean Air Delivery Rate, or CADR. Measured in Cubic Feet per Minute, or CFM, Clean Air Delivery Rate determines an air purifier’s ability to treat three specific pollutants within the space of a minute. Each purifier should have three separate CADR ratings: one for smoke, one for pollen, and another for dust. Often, an air purifier will have the same number for all three of these common annoyances, but some models are optimized for specific pollutants and might have a higher rating for one contaminant over another.<\/p><h4>Air purifier features to look for<\/h4><p>The amount of power an air purifier consumes, along with its design and noise levels, are all important factors to consider when shopping for one. However, when looking at an air purifier as a means of supporting your health and a healthy lifestyle, there are a few other features worth looking out for.<\/p><p>For example, consider models with digital connectivity and device support. Knowing the quality of the air in your home is crucial to understanding its ability to support your health goals and concerns, so look for air purifiers that can connect to Wi-Fi and provide real-time air quality updates.<\/p><p>Different fan speeds and quieter modes for discreet operation with less lights are ideal for working or sleeping. Scheduling features that compliment to your daily routine are also beneficial. Even better are air purifiers that automatically adjust their settings to changes in air quality. It’s features like these that make an air purifier a true companion in the pursuit of healthier living, so keep an eye out for them.<\/p><h4>Better air for sleeping well in bedrooms<\/h4><p>The Blue Pure 411i Max is designed for rooms in the range of 200 to 500 square feet. This makes it great for most bedrooms, especially because it’s one of our quietest air purifiers⁶, earning QuietMark⁷ certification.   <\/p><p>Night Mode helps to create the conditions for a great night's sleep. When in Night Mode, the unit is set to its quietest fan speed while turning off any operating lights that might interfere with your rest.<br\/><br\/>What makes both these Blue Pure Max air purifiers top picks for healthier living is that they’re recommended by Allergist Dr. Bansal, who is a Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.⁸<\/p><p>Despite all these powerful features and filtration capabilities, both the Blue Pure 211i Max and the Blue Pure 411i Max air purifiers meet the standards of the Energy Star certification program.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_YQjdW8": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper-3.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper-3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_KgNxW6": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Air purifiers for fighting germs and allergies<\/h4><p>In addition to the high Clean Air Delivery Rate (CADR) rating mentioned earlier, which ensures a high volume of air is processed swiftly and efficiently, the Blueair Classic 605’s filter is incredibly adept at removing allergens from the air. This makes it an effective choice for allergy and asthma sufferers.<\/p><p>In fact, the Classic 605 removes 99.99% of pollen⁹ from every cubic foot of air that passes through it. For dust, pet dander, and mold, 99.97% of these common allergens are removed. You can also add a DualProtection replacement filter, which boosts performance against smoke and odors¹⁰.<\/p><p>For treating the air for germs, the Protect 7470i has an added layer of protection beyond the powerful capabilities of our HEPAsilent™ filtration systems that all Blueair air purifiers come with.<\/p><p>With unique GermShield™ technology that uses low air draft and plasma charging to kill 99%¹¹ of germs caught by its filter, the Protect 7470i provides 24\/7 protection against viruses and bacteria¹² in the large spaces it’s designed to treat. It also features a premium LCD screen that provides quick insights into the air quality of your home.<\/p><p>Using the Blueair app with the Protect 7470i enables it even further as a trusted guardian that provides reports on pollutant levels, estimated times as to when the air will be clean, and control of settings either manually or automatically. The app’s unique Welcome Home feature can prepare the air in your home for your arrival when it senses you’re in the area.*    <\/p><h4>Introducing Classic Pro<\/h4><p>Our latest advancement in the fight against germs and allergens is enhanced with PhotonPure protection, using High-Intensity Narrow-Spectrum (or HINS) light technology that deactivates germs caught by its filter. The new Classic Pro, designed with a premium steel housing and high-quality dual fans, is exceptionally durable and includes a 5-year extended warranty. Engineered for high CADR performance, its advanced sensors detect Particulate Matter (or PM) of 1, 2.5, 10 microns in size. With WiFi and app connectivity, plus an Eco-mode, the Classic Pro offers smart and efficient air purification.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_EYwfFQ": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper-4.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper-4.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "blue-3610-pre-filter"
+          }
+        },
+        "text_p8Y74m": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Supplementing central air with air purification<\/h4><p>While you continue your search for better health at home, there are some things to avoid. One of the most common is assuming your central air system is the same as an air purifier. While a central air system is likely to have an air filter in it, it’s not designed to capture the smallest of particles required for truly clearing the air. Specific pollutants are what air purifiers excel at combatting. To ensure optimal air quality, it's advisable to complement central air systems with dedicated air purifiers.<\/p><h4>Living well with your air purifier<\/h4><p>Once you’ve made your choice and are breathing in the quality air purifiers can deliver, be sure to maintain its ability to create all the health and wellness benefits it’s capable of.<\/p><p>Follow your manufacturer’s guidelines referencing placement. You’ll be happy to know that all Blueair Blue Pure air purifiers are designed with a 360º air intake that minimizes placement concerns, so you’ll be able to seamlessly integrate them into your home's interior without compromising aesthetics.<\/p><p>Over time, filters accumulate dust, allergens, and other particles, which can hinder performance if not addressed promptly. Stay proactive with your air purifier’s maintenance so you can ensure consistent air purification and extend the lifespan of your device.<\/p><p>To simplify filter replacement and ensure timely maintenance, consider enrolling in a filter subscription program. With this convenient service, replacement filters are delivered directly to your doorstep at regular intervals, eliminating the hassle of remembering when to replace them.<\/p><h4>Breathing better, living healthier<\/h4><p>By effectively removing airborne pollutants and enhancing the overall freshness of the air inside a home, air purifiers become an essential addition to any household when looking to improve health and well-being. Your decision to invest in an air purifier signifies a proactive approach to creating a space that promotes increased vitality. Here's to cleaner, fresher, air and a happier, healthier home.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_j7YEkg": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper-5.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper-5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_w3HiMD": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h5><strong>Disclaimer:<\/strong><\/h5><p>1 Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blueair models achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary<\/p><p>2 Tested on PM2.5 (0.1 - 2.5 μm) up to 90min.<\/p><p>3 When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.<\/p><p>4 Deactivation of germs on natural flora (excluding viruses) on filter media under normal temperature & humidity conditions.<\/p><p>5 EPA, ‘Will an air cleaner or air PURIFIER help protect me and my family FROM COVID-19 in my home?’, January 12, 2021 link<\/p><p>6 Sound pressure at max fan. Assuming 219 sq.ft room size and 4.8 air exchanges per hour (AHAM AC-1)<\/p><p>7 Quietest refers to eligibility for Quiet Mark certification, limited to 10-20% of quietest products. See https:\/\/www.quietmark.com\/ for further information<\/p><p>8 Dr. Bansal is a Blueair sponsored partner.<\/p><p>9 Based on testing of noise levels (dB, according to ISO 3743) in a HEPASilent™\/HEPASilent Ultra™ unit with the same particle CADR (GB\/T18801-2015, particle size &gt;0.3µm), compared to using H13 true HEPA filter in the same unit.<\/p><p>10 Tested on A.niger with minimum reduction rate of 99.99% in 60min<\/p><p>11 Tested on E.coli (excluding viruses)<\/p><p>12 24\/7 protection refers to the key function of GermShield™ technology, that is activated when the unit is in standby mode. Tested to deactivate Staphylococcus albus (min. 83%) and MS2 bacteriophage (min. 89%) and prevents &gt;99.99% Ecoli growth on filter. Not proven to kill SARS-CoV-2 or prevent transmission of COVID-19. <\/p><p>*This feature is only available while using the Blueair app<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_4hmA9B",
+        "text_e9yarP",
+        "image_caption_PxA7Eq",
+        "text_8WeYnR",
+        "image_caption_YQjdW8",
+        "text_KgNxW6",
+        "image_caption_EYwfFQ",
+        "text_p8Y74m",
+        "image_caption_j7YEkg",
+        "text_w3HiMD"
+      ],
+      "settings": {}
+    },
+    "section_carousel_HQh9Vb": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_BHqMcp": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_BHqMcp"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "section_carousel_HQh9Vb"
+  ]
+}

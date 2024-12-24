@@ -1,21 +1,18 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
- {
-    "sections": {
-      "product-grid": {
-        "type": "collection__grid",
-        "settings": {}
-      }
+{
+  "sections": {
+    "product-grid": {
+      "type": "collection__grid",
+      "settings": {}
     },
-    "order": [
-      "product-grid"
-    ]
-  }
-  
+    "section_compare_banner_aNPWed": {
+      "type": "section__compare-banner",
+      "settings": {
+        "url": "shopify:\/\/pages\/seed-sample-compare-page"
+      }
+    }
+  },
+  "order": [
+    "product-grid",
+    "section_compare_banner_aNPWed"
+  ]
+}

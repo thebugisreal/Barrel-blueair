@@ -1,0 +1,504 @@
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "80ch"
+      }
+    },
+    "section_page_hero_AHpQD6": {
+      "type": "section__page-hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "text-blue",
+        "title": "Your connection to clean \u2028air, in every room",
+        "title_style": "h1",
+        "subtext": "Discover the  convenience of all your Blueair products, controlled and monitored in one place.",
+        "subtext_style": "p2",
+        "max_width_desktop": "80ch",
+        "image_desktop": "shopify:\/\/shop_images\/blueair-app-qrcode.png",
+        "caption": "Scan to download the app",
+        "caption_style": "p2"
+      }
+    },
+    "section_media_WPtH4j": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-xl",
+        "video_embed": "",
+        "enable_autoplay": false,
+        "image_mobile": "shopify:\/\/shop_images\/app-media.png"
+      }
+    },
+    "section_image_text_M9zJ8t": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/app-split1.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 60,
+        "title": "Easily control all your devices in one spot",
+        "title_style": "h3",
+        "subtext": "Monitor air quality in every room and adjust settings for multiple devices at once, \u2028all from our homepage.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_afQzWQ": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/app-split2.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 60,
+        "title": "Never forget to change your filter again",
+        "title_style": "h3",
+        "subtext": "Stay ahead with automated filter reminders and easily reorder replacements through our app, ensuring peak performance of your air purifier.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_QtcpGy": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/app-split3.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 60,
+        "title": "Filters exactly when you need it",
+        "title_style": "h3",
+        "subtext": "Manage subscriptions effortlessly and access step-by-step instructions for hassle-free filter replacement, keeping your system running smoothly without missing a beat.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_text_banner_PE3LPX": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-lg",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Control all your devices in one place",
+        "title_style": "h3",
+        "subtext": "Get back to breathing easy, explore our features",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "section_icons_haFVbx": {
+      "type": "section__icons",
+      "blocks": {
+        "icon_idHTWc": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Cooling_Mode.png",
+            "icon_fixed_width": "60",
+            "title": "Cooling",
+            "title_style": "s4"
+          }
+        },
+        "icon_VgBfLH": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Eco_Mode.png",
+            "icon_fixed_width": "60",
+            "title": "Eco-Mode",
+            "title_style": "s4"
+          }
+        },
+        "icon_7HJBfM": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Main_Mode_Button.png",
+            "icon_fixed_width": "60",
+            "title": "Auto",
+            "title_style": "s4"
+          }
+        },
+        "icon_PEfqym": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Setting.png",
+            "icon_fixed_width": "60",
+            "title": "Settings",
+            "title_style": "s4"
+          }
+        },
+        "icon_phcMjR": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/On-Off.png",
+            "icon_fixed_width": "60",
+            "title": "Power",
+            "title_style": "s4"
+          }
+        },
+        "icon_QCbBCy": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/FanSpeed.png",
+            "icon_fixed_width": "60",
+            "title": "Fan Modes",
+            "title_style": "s4"
+          }
+        },
+        "icon_WQpPxF": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Brightness.png",
+            "icon_fixed_width": "60",
+            "title": "Brightness",
+            "title_style": "s4"
+          }
+        },
+        "icon_KYcXtp": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Night_Mode.png",
+            "icon_fixed_width": "60",
+            "title": "Night Mode",
+            "title_style": "s4"
+          }
+        },
+        "icon_zWmacc": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Lock.png",
+            "icon_fixed_width": "60",
+            "title": "Lock",
+            "title_style": "s4"
+          }
+        },
+        "icon_FDUPUL": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Home.png",
+            "icon_fixed_width": "60",
+            "title": "Welcome Mode",
+            "title_style": "s4"
+          }
+        }
+      },
+      "block_order": [
+        "icon_idHTWc",
+        "icon_VgBfLH",
+        "icon_7HJBfM",
+        "icon_PEfqym",
+        "icon_phcMjR",
+        "icon_QCbBCy",
+        "icon_WQpPxF",
+        "icon_KYcXtp",
+        "icon_zWmacc",
+        "icon_FDUPUL"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "num_cols_mobile": 2,
+        "num_cols_desktop": 5,
+        "max_width_mobile": "",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "title": "",
+        "title_style": "h3",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center",
+        "enable_borders": true,
+        "gap_desktop": "tabletl:gap-md"
+      }
+    },
+    "section_image_text_4fznTi": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-apppage-image4.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 50,
+        "title": "Monitor and adapt to environmental changes",
+        "title_style": "h3",
+        "subtext": "Gain insights into your environment with real-time indoor and outdoor Air Quality Index (AQI) comparisons, visualized in an easy-to-understand graph. <br><br>\n\nReceive timely notifications prompting adjustments to your air purifier settings, ensuring optimal purification in response to changing air quality conditions both indoors and outdoors.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_gtk74P": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-apppage-image5.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "Build a schedule around your day-to-day life",
+        "title_style": "h3",
+        "subtext": "Utilize 'Welcome Home' technology to automatically switch your air purifier to standby mode when you leave and reactivating it upon your return, ensuring a fresh, clean environment awaits you. <br><br>\n\nAdditionally, manually set your preferred schedule, to seamlessly integrate your air purifier into your day-to-day life.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_carousel_3WLtUq": {
+      "type": "section__carousel",
+      "blocks": {
+        "collection_XFPtwm": {
+          "type": "collection",
+          "settings": {
+            "collection": "shop-all",
+            "product_pulled": 10,
+            "product_card_style": "style2"
+          }
+        }
+      },
+      "block_order": [
+        "collection_XFPtwm"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "max_width_desktop": "",
+        "bg_color": "#ffffff",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": true,
+        "title": "Compatible products",
+        "title_style": "h3",
+        "subtext": "All of our wifi enable products are compatible with the Blueair app.",
+        "subtext_style": "p2",
+        "url": "shopify:\/\/collections\/shop-all",
+        "url_text": "Shop All",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mr-auto"
+      }
+    },
+    "section_quotes_JPrEnr": {
+      "type": "section__quotes",
+      "blocks": {
+        "quote_CKKBVW": {
+          "type": "quote",
+          "settings": {
+            "quote": "Intuitive, simple & fast. Senses cooking odors immediately, changes colors & increases speed before we can think of it",
+            "author": "Aaron"
+          }
+        },
+        "quote_MkLcT4": {
+          "type": "quote",
+          "settings": {
+            "quote": "Love that I can control my device from my phone. Also like that it tells me the outdoor air quality. That's really helpful feature when you live somewhere that has frequent bad air days.",
+            "author": "Diana"
+          }
+        }
+      },
+      "block_order": [
+        "quote_CKKBVW",
+        "quote_MkLcT4"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "color": "bg-gray-athans text-blue",
+        "title": "Our customers \u2028have spoken",
+        "title_style": "h3",
+        "rating": 4.8,
+        "reviews_count": "8,100"
+      }
+    },
+    "section_hero_2_ajgWXh": {
+      "type": "section__hero-2",
+      "blocks": {
+        "text_nkLCLe": {
+          "type": "text",
+          "settings": {
+            "text": "Access filter lifetime & manage subscriptions",
+            "text_style": "s1",
+            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon1.png"
+          }
+        },
+        "text_L3trJn": {
+          "type": "text",
+          "settings": {
+            "text": "Control multiple devices at once",
+            "text_style": "s1",
+            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon2.png"
+          }
+        },
+        "text_NeMRqQ": {
+          "type": "text",
+          "settings": {
+            "text": "Monitor environmental changes with AQI",
+            "text_style": "s1",
+            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon3.png"
+          }
+        },
+        "text_QKkLm7": {
+          "type": "text",
+          "settings": {
+            "text": "Easily build a personalized schedule",
+            "text_style": "s1",
+            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon4.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_nkLCLe",
+        "text_L3trJn",
+        "text_NeMRqQ",
+        "text_QKkLm7"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "max_width_desktop": "",
+        "color": "bg-[#D6E4F3] text-blue",
+        "title": "Download the app and start your clean air journey",
+        "title_style": "h3",
+        "image_desktop": "shopify:\/\/shop_images\/App-Image.png",
+        "background_image_desktop": "shopify:\/\/shop_images\/seed-apppage-hero2-bg.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_page_hero_AHpQD6",
+    "section_media_WPtH4j",
+    "section_image_text_M9zJ8t",
+    "section_image_text_afQzWQ",
+    "section_image_text_QtcpGy",
+    "section_text_banner_PE3LPX",
+    "section_icons_haFVbx",
+    "section_image_text_4fznTi",
+    "section_image_text_gtk74P",
+    "section_carousel_3WLtUq",
+    "section_quotes_JPrEnr",
+    "section_hero_2_ajgWXh"
+  ]
+}

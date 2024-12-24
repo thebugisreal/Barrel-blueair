@@ -1,0 +1,257 @@
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width": "80ch"
+      }
+    },
+    "section_hero_xnfkBi": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-hero-mobile_30d0cdfa-e0a3-43d7-9c51-1b2cdff83ec4.jpg",
+        "image_desktop": "shopify:\/\/shop_images\/seed-subscribe-hero-desktop_67ebf689-c7ac-4fd1-b828-19360cec4a79.jpg",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Fresh filters means fresh air",
+        "title_style": "h1",
+        "subtext": "Genuine Blueair filters delivered to your door, right when you need them.",
+        "subtext_style": "h5",
+        "cta_url": "shopify:\/\/pages\/subscribe-quiz",
+        "cta_text": "Get Started",
+        "cta_style": "btn btn--blue-rounded",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-center",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "60ch"
+      }
+    },
+    "section_content_panels_DLjfCE": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_7Qjxdx": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg1.png",
+            "title": "Easy and flexible",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_LrVefR": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg2.png",
+            "title": "Peace of mind, delivered for free¹",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_xYLEwj": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg3.png",
+            "title": "Exclusive perks",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_7Qjxdx",
+        "customization_LrVefR",
+        "customization_xYLEwj"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "We'll remember to replace your filter for you",
+        "title_style": "h3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    },
+    "section_text_banner_7DNmiw": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
+        "image": "shopify:\/\/shop_images\/Filters.png",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Save 15% on a filter subscription",
+        "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "shopify:\/\/pages\/subscribe-quiz",
+        "cta_text": "Subscribe Now",
+        "cta_style": "btn btn--blue-rounded",
+        "text_align_mobile": "text-left",
+        "text_align_desktop": "desktop:text-left"
+      }
+    },
+    "section_content_panels_9mhd8T": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_rNPdEw": {
+          "type": "customization",
+          "settings": {
+            "title": "Choose a filter",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_YHK6bP": {
+          "type": "customization",
+          "settings": {
+            "title": "Set your preferences",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_dxLknE": {
+          "type": "customization",
+          "settings": {
+            "title": "Sit back, we got this",
+            "title_style": "h5",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_rNPdEw",
+        "customization_YHK6bP",
+        "customization_dxLknE"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "Joining is easy",
+        "title_style": "h3",
+        "cta_url": "shopify:\/\/pages\/subscribe-quiz",
+        "cta_text": "Get Started",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    },
+    "section_content_panels_kyU9Dj": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_BntYbT": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg4.webp",
+            "title": "Exceptional purifiers, third-party verified",
+            "title_style": "h5",
+            "cta_url": "shopify:\/\/collections\/air-purifiers",
+            "cta_text": "Discover Purifiers",
+            "cta_style": "btn btn--white-rounded"
+          }
+        },
+        "customization_FjHRnA": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-contentimg5.png",
+            "title": "Filter and accessories for all your needs",
+            "title_style": "h5",
+            "cta_url": "shopify:\/\/collections\/air-purifier-filters",
+            "cta_text": "Discover Filters and Accessories",
+            "cta_style": "btn btn--white-rounded"
+          }
+        }
+      },
+      "block_order": [
+        "customization_BntYbT",
+        "customization_FjHRnA"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 2,
+        "color": "bg-blue-light text-blue",
+        "title": "",
+        "title_style": "h2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_hero_xnfkBi",
+    "section_content_panels_DLjfCE",
+    "section_text_banner_7DNmiw",
+    "section_content_panels_9mhd8T",
+    "section_content_panels_kyU9Dj"
+  ]
+}

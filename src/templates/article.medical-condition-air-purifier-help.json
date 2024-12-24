@@ -71,7 +71,7 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "",
+            "max_width_desktop": "1000px",
             "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper_mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_7.webp",
             "caption": "<p>Above: Blueair<span style=\"text-decoration:underline\"><strong> ComfortPure™ 3-in-1<\/strong><\/span> Air Purifier in a small sized living room.<\/p>",
@@ -126,10 +126,10 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "",
+            "max_width_desktop": "1000px",
             "image": "shopify:\/\/shop_images\/bluepure-311i-max-medium-room_mob.png",
             "image_desktop": "shopify:\/\/shop_images\/bluepure-311i-max-medium-room_mob.png",
-            "caption": "<p>Above: The<span style=\"text-decoration:underline\"><strong>Blue Pure 311i Max<\/strong><\/span>purifier with Allergenblock filter at use in a medium sized room.<\/p>",
+            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>Blue Pure 311i Max <\/strong><\/span>purifier with Allergenblock filter at use in a medium sized room.<\/p>",
             "caption_style": "p6",
             "product": "1342-master-product"
           }
@@ -158,7 +158,7 @@
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-lg",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-lg",
+            "margin_bottom_desktop": "desktop:mb-md",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-xxxl",
             "max_width_desktop": "80ch",
@@ -181,12 +181,51 @@
             "margin_bottom_desktop": "desktop:mb-md",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
+            "max_width_desktop": "1000px",
             "image": "shopify:\/\/shop_images\/Image_4_3mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Image_4_3.webp",
             "caption": "<p>Above: A visual representation of GermShield™ technology.<\/p>",
             "caption_style": "p6",
             "product": ""
+          }
+        },
+        "product_desc_image_9bh4Ud": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-xs",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-md",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-xxxl",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "Products in this story",
+            "title_style": "p1",
+            "product": "blue-3610-pre-filter",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "image_caption_TPbf8x": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-md",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/protect-7470i-large-room_1mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/protect-7470i-large-room.png",
+            "caption": "<p>Above: Blueair <span style=\"text-decoration:underline\"><strong>Protect 7470i <\/strong><\/span>air purifier at use in a large bedroom<\/p>",
+            "caption_style": "p6",
+            "product": "blue-3610-pre-filter"
           }
         },
         "text_p8Y74m": {
@@ -201,39 +240,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "richtext": "<h4>For protection against germs and bacteria<\/h4><p>The Blueair Protect 7470i is worth a look because of its unique GermShield™ technology, which actively prevents the growth of bacteria and viruses3. It’s an excellent choice for homes where people living there might have compromised immune systems. Its premium LCD display delivers detailed info on a home’s air quality, so you’re always reassured. When used in conjunction with the Blueair app you’re informed from any location about the air quality at home, both indoors and outdoors.<\/p>",
+            "richtext": "<h4>Professional grade air purification<\/h4><p>If you’re looking for an air purifier that’s ideal for combatting pollen, dust, and smoke, the Classic 605 is impressive. It actually has one of the highest CADR ratings among all of our award winning air purifiers, especially for pollen. It’s durable, and has wheels so it can easily be moved from place to place, and comes with Wi-Fi capabilities that allow it to be used with the Blueair app as well, which provides a variety of intuitive app-only features.<\/p>",
             "richtext_style": "p2"
-          }
-        },
-        "quote_PNwfwp": {
-          "type": "quote",
-          "settings": {
-            "margin_top_mobile": "mt-xs",
-            "margin_bottom_mobile": "mb-xs",
-            "padding_top_mobile": "pt-lg",
-            "padding_bottom_mobile": "pb-lg",
-            "margin_top_desktop": "desktop:mt-sm",
-            "margin_bottom_desktop": "desktop:mb-sm",
-            "padding_top_desktop": "desktop:pt-xxxl",
-            "padding_bottom_desktop": "desktop:pb-xxxl",
-            "max_width_desktop": "80ch",
-            "title": "About 75% of people who are allergic to spring plants also have reactions to ragweed and its fine-powder pollen.",
-            "title_style": "h3",
-            "author": "Dr Bansal"
-          }
-        },
-        "divider_line_DtXhA8": {
-          "type": "divider_line",
-          "settings": {
-            "margin_top_mobile": "mt-lg",
-            "margin_bottom_mobile": "mb-lg",
-            "padding_top_mobile": "pt-xs",
-            "padding_bottom_mobile": "pb-xs",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-sm",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-xxxl",
-            "max_width_desktop": "75ch"
           }
         },
         "image_caption_cAUwpE": {
@@ -247,11 +255,133 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/image-caption-2.png",
-            "caption": "<p>Above: The <a href=\"\/products\/blue-pure-311i-max-pre-filter\" title=\"Blue Pure 311i Max Pre-Filter\">Blue Pure 311 <\/a>Auto purifier at use in a medium sized room during pollen season running across<\/p>",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/311iMax-large-kitchen_mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/311iMax-large-kitchen_mob.png",
+            "caption": "<p>Above: <span style=\"text-decoration:underline\"><strong>The Blue Pure 311i+ Max <\/strong><\/span>air purifier at use in a large kitchen refreshes the indoor air from food odors and VOCs.<\/p>",
             "caption_style": "p6",
             "product": "1342-master-product"
+          }
+        },
+        "text_DyBz9C": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Treating gasses, odors, and VOCs<\/h4><p>For large, high-functioning spaces, like kitchens, where a lot of cooking and cleaning takes place, check out the Blue Pure 211i Max. With powerful filtration and activated carbon filters designed to tackle odors and VOCs, the Blue Pure 211i Max can completely refresh the air in a large, 1500 square foot space, every 30 minutes. When placed in a 635 square root room the air can be cleaned every 12.5 minutes. When the kitchen’s closed, auto sensors can adapt fan speeds and settings accordingly, so you’re not wasting energy.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_6Tz647": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/Image_4_3_1_mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_4_3_1_mob.png",
+            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>Blue Pure 411i Max <\/strong><\/span>purifier at use in a small sized bedroom.<\/p>",
+            "caption_style": "p6",
+            "product": "1342-master-product"
+          }
+        },
+        "text_w3HiMD": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Added protection while sleeping<\/h4><p>The Blue Pure 411i Max has many of the same capabilities as its bigger sibling, but is better suited to smaller spaces, like a bedroom. Both come with a night mode that operates quietly and without disruptive lights for a restful night of sleep. Even better, both are certified by QuietMark⁴ for their unintrusive operation.<\/p><p>What’s also great about the Blue Pure 211i and 411i Max for anyone who might be living with a medical condition are the specialized filters we designed for these and other Blue Pure purifiers. AllergenBlock™ and SmokeBlock™ filters provide added protection against irritating allergens or smoke.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_gcBFCK": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/app-real-track_mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/app-real-track.webp",
+            "caption": "<p>Above: A look into Blueair app with RealTrack technology that monitors filter status and remind you when it’s time to change.<\/p>",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_m4RKJx": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Tips for getting the most out of your air purifier<\/h4><p>Once you’ve decided on an air purifier and it arrives in your home, be sure to place it in an unobstructed and centrally located area so it can deliver optimal air cleaning.<\/p><p>Keep your air purifier running efficiently with regular filter replacements. Our RealTrack technology monitors filter status and reminds you when it’s time for a change. Our subscription service sends new filters to your door so that you always get a new one right when you should.<\/p><p>Once you’re breathing easy, be sure to take advantage of your air purifier’s scheduling capabilities so it’s always preparing the air for you based on the times you need it most. You’ll be happy to know that many of our air purifiers come with this intuitive feature.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_Yf9rDV": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1000px",
+            "image": "shopify:\/\/shop_images\/dust-magnet-5440i-office-room.webp",
+            "image_desktop": "shopify:\/\/shop_images\/dust-magnet-5440i-office-room.webp",
+            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>DustMagnet™ 5440i <\/strong><\/span>in office room.<\/p>",
+            "caption_style": "p6",
+            "product": "1342-master-product"
+          }
+        },
+        "text_48bXxB": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Living with the benefits of better air<\/h4><p>We’re glad that you’re pursuing pristine air with an air purifier tailored to your health needs. With an understanding of indoor pollutants and how to choose an air purifier to combat them, you’ve now taken an important, proactive step to better health and well-being.<br\/><br\/><\/p><p><strong>Disclaimer:<\/strong><\/p><p>¹ Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blueair models achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary.<\/p><p>² Tested on PM2.5 (0.1 - 2.5 μm) up to 90min.<\/p><p>³ When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.<\/p><p>* Dr. Bansal is a Blueair sponsored partner<\/p><p>⁴ Dr. Bansal's review pertains to Blue Pure 411i Max and Blue Pure 311i+ Max models<\/p><p>⁵ 24\/7 protection refers to the key function of GermShield technology, activated when the unit is in standby mode. Tested on Staphylococcus Albus, MS2 bacteriophage (deactivation) and E. coli (growth prevention).<\/p><p>⁶ Quietest refers to eligibility for Quiet Mark certification, limited to 10-20% of quietest products. See https:\/\/www.quietmark.com\/ for further information<\/p>",
+            "richtext_style": "p2"
           }
         }
       },
@@ -266,366 +396,55 @@
         "text_KgNxW6",
         "product_desc_image_MjHWAz",
         "image_caption_kCkbJm",
+        "product_desc_image_9bh4Ud",
+        "image_caption_TPbf8x",
         "text_p8Y74m",
-        "quote_PNwfwp",
-        "divider_line_DtXhA8",
-        "image_caption_cAUwpE"
+        "image_caption_cAUwpE",
+        "text_DyBz9C",
+        "image_caption_6Tz647",
+        "text_w3HiMD",
+        "image_caption_gcBFCK",
+        "text_m4RKJx",
+        "image_caption_Yf9rDV",
+        "text_48bXxB"
       ],
       "settings": {}
-    },
-    "section_carousel_NMANUr": {
-      "type": "section__carousel",
-      "blocks": {
-        "image_caption_WEgPaf": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/Screenshot_2024-11-18_at_2.28.04_PM.png",
-            "caption": "<p>Above: <a href=\"\/products\/3in1-air-purifier-t20i\" title=\"ComfortPure™ 3-in-1 T20i Air Purifier\">DustMagnet 5410i <\/a>reducing pollen allergy symptoms.<\/p>",
-            "caption_style": "p6",
-            "product": "3in1-air-purifier-t20i",
-            "product_image_override": "shopify:\/\/shop_images\/Image_1.png"
-          }
-        },
-        "image_caption_A8kYPj": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/carousel2.png",
-            "caption": "<p>Above: <a href=\"\/products\/blue-pure-211i-max-1\" title=\"Blue Pure 211i Max\">Blue 211+ Auto<\/a> reducing pollen allergy symptoms.<\/p>",
-            "caption_style": "p6",
-            "product": ""
-          }
-        },
-        "image_caption_76wFUD": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/carousel3.png",
-            "caption": "<p>Above:<\/p>",
-            "caption_style": "p6",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_caption_WEgPaf",
-        "image_caption_A8kYPj",
-        "image_caption_76wFUD"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-lg",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-lg",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "max_width_desktop": "90vw",
-        "bg_color": "#ffffff",
-        "slides_per_view": "1.2",
-        "slides_per_view_desktop": "1.8",
-        "slides_per_view_extrawide": "3",
-        "carousel_nav": "scrollbar",
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": false,
-        "title": "",
-        "title_style": "h2",
-        "url": "",
-        "url_text": "",
-        "cta_style": "btn btn--blue-rounded"
-      }
-    },
-    "article_content_CXmqDG": {
-      "type": "article__content",
-      "blocks": {
-        "product_desc_image_hapr9i": {
-          "type": "product_desc_image",
-          "settings": {
-            "margin_top_mobile": "mt-md",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-xxxl",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "color": "bg-gray-athans text-blue",
-            "title": "",
-            "title_style": "p1",
-            "product": "1342-master-product",
-            "btn_text": "Shop Now",
-            "btn_style": "btn"
-          }
-        },
-        "text_KU8fxJ": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-lg",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-xl",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "richtext": "<h2>h2 Dust Mites<\/h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:<\/p><h3>H3 Do you have dog, cat or other pet allergies?<\/h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.<\/li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.<\/li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.<\/li><li>Consider replacing wall-to-wall carpet with hardwood floors.<\/li><\/ul>",
-            "richtext_style": "p2"
-          }
-        },
-        "image_caption_TFmW9X": {
-          "type": "image_caption",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-lg",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/image3.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": "1342-master-product",
-            "product_image_override": "shopify:\/\/shop_images\/689122003122_blueair_refurbished_pro_xl.jpg"
-          }
-        },
-        "text_CrfwFz": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "richtext": "<p>h2 Pet allergies<\/p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets off furniture, especially upholstery. <\/li><li>Keep pets away from carpeted areas. <\/li><li>Vacuum carpets and furniture to reduce the amount of dander.<\/li><\/ul>",
-            "richtext_style": "p2"
-          }
-        },
-        "image_caption_BeR79M": {
-          "type": "image_caption",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "image": "shopify:\/\/shop_images\/image5.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
-          }
-        },
-        "text_UAjDQH": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.<\/p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.<\/p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.<\/p>",
-            "richtext_style": "p2"
-          }
-        },
-        "image_text_review_YpRjtU": {
-          "type": "image_text_review",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "color": "bg-gray-athans text-blue",
-            "section_title": "",
-            "section_title_style": "h4",
-            "title": "Dr. Priya Bansal, MD",
-            "title_style": "h4",
-            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.<\/p>",
-            "richtext_style": "p2",
-            "image_mobile": "shopify:\/\/shop_images\/image-review.png"
-          }
-        }
-      },
-      "block_order": [
-        "product_desc_image_hapr9i",
-        "text_KU8fxJ",
-        "image_caption_TFmW9X",
-        "text_CrfwFz",
-        "image_caption_BeR79M",
-        "text_UAjDQH",
-        "image_text_review_YpRjtU"
-      ],
-      "settings": {}
-    },
-    "section_accordion_DgQAah": {
-      "type": "section__accordion",
-      "blocks": {
-        "accordion_item_3tiyCM": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
-            "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
-            "richtext_style": "p2"
-          }
-        },
-        "accordion_item_kGr9zW": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "What is the recommended maintenance for the air purifier & filters?",
-            "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
-            "richtext_style": "p2"
-          }
-        },
-        "accordion_item_EPwcHF": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
-            "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
-            "richtext_style": "p2"
-          }
-        },
-        "accordion_item_6xyc9h": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
-            "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
-            "richtext_style": "p2"
-          }
-        }
-      },
-      "block_order": [
-        "accordion_item_3tiyCM",
-        "accordion_item_kGr9zW",
-        "accordion_item_EPwcHF",
-        "accordion_item_6xyc9h"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-xs",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-lg",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-sm",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "title": "H2 Allergen Frequently Asked Questions",
-        "title_style": "h2",
-        "max_width_desktop": "80ch",
-        "bg_color": "text-blue",
-        "cta_url": "",
-        "cta_text": "",
-        "cta_style": "btn"
-      }
-    },
-    "section_carousel_bWPNMA": {
-      "type": "section__carousel",
-      "blocks": {
-        "product_DArXKM": {
-          "type": "product",
-          "settings": {
-            "product": "1342-master-product"
-          }
-        },
-        "product_9XqKwW": {
-          "type": "product",
-          "settings": {
-            "product": "blue-3610-pre-filter"
-          }
-        },
-        "product_fCPtNH": {
-          "type": "product",
-          "settings": {
-            "product": "blue-pure-121-pre-filter"
-          }
-        }
-      },
-      "block_order": [
-        "product_DArXKM",
-        "product_9XqKwW",
-        "product_fCPtNH"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-xs",
-        "margin_bottom_mobile": "mb-xs",
-        "padding_top_mobile": "pt-lg",
-        "padding_bottom_mobile": "pb-lg",
-        "margin_top_desktop": "desktop:mt-sm",
-        "margin_bottom_desktop": "desktop:mb-sm",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "1080px",
-        "bg_color": "#ffffff",
-        "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
-        "carousel_nav": "pagination",
-        "enable_centered_carousel": true,
-        "enable_title_link_same_link": false,
-        "title": "Shop the story",
-        "title_style": "h2",
-        "url": "shopify:\/\/blogs\/seed-sample-blog\/what-air-purifier-do-i-need-second-line-lorem-ipsum-dolor",
-        "url_text": "Shop Now",
-        "cta_style": "btn btn--blue-rounded"
-      }
     },
     "section_carousel_HQh9Vb": {
       "type": "section__carousel",
       "blocks": {
-        "blog_ez3rJh": {
+        "blog_9ajAQX": {
           "type": "blog",
           "settings": {
-            "blog": "seed-sample-blog",
+            "blog": "news",
             "article_pulled": 3
           }
         }
       },
       "block_order": [
-        "blog_ez3rJh"
+        "blog_9ajAQX"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
+        "padding_top_mobile": "pt-xl",
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-lg",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
         "bg_color": "#f0f3f6",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3",
         "slides_per_view_extrawide": "3",
-        "carousel_nav": "none",
+        "carousel_nav": "scrollbar",
         "enable_centered_carousel": true,
         "enable_title_link_same_link": true,
-        "title": "From our Journal",
+        "title": "From Our Blog",
         "title_style": "h2",
-        "url": "shopify:\/\/blogs\/seed-sample-blog\/what-air-purifier-do-i-need-second-line-lorem-ipsum-dolor",
-        "url_text": "Shop Now",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
         "cta_style": "btn btn--blue-rounded"
       }
     }
@@ -633,10 +452,6 @@
   "order": [
     "main",
     "article_content_zMAJck",
-    "section_carousel_NMANUr",
-    "article_content_CXmqDG",
-    "section_accordion_DgQAah",
-    "section_carousel_bWPNMA",
     "section_carousel_HQh9Vb"
   ]
 }

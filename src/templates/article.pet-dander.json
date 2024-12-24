@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h6>Air cleaners & filters for pollen allergy<\/h6><p>Pollen is a fine, powdery substance, typically yellow, comprised of pollen grains, which are carried through the air. Pollen contributes to cross-pollination of trees, grasses and weeds. Airborne pollen is also a common trigger of seasonal allergies known as allergic rhinitis or, more commonly, as hay fever.<\/p><h6>Pollen allergy symptoms<\/h6><p>Allergic rhinitis affects between 10% and 30% of the world’s population. However, symptoms vary from mild to severe and persistent. Common pollen allergy symptoms include:<\/p><ul><li>Sneezing<\/li><li>Nasal congestion<\/li><li>Irritated eyes, nose and throat<\/li><li>Coughing or wheezing<\/li><li>Fatigue<\/li><li>Irritability<\/li><li>Problems concentrating and\/or sleeping<\/li><\/ul><p><br\/><\/p><h6>More severe pollen allergy symptoms may include:<\/h6><ul><li>Headaches<\/li><li>Sweat<\/li><li>Pain due to blocked sinuses<\/li><li>Loss of smell or taste<\/li><li>Insomnia<\/li><\/ul><p>People who suffer from pollen allergies also have an increased risk of developing asthma.<\/p><h6><br\/>10 ways to manage your pollen allergy<\/h6><p>Fortunately, there are quite a few ways of minimizing allergies. Here are some tips:<br\/>Monitor pollen counts so you can take measures to limit your exposure on days when the counts are high.<br\/>Stay indoors as much as possible when pollen counts are high, especially in the morning when pollen is at its peak. But be aware that peak exposure times can vary due to geographic region, weather conditions and other factors.<br\/>When outdoors, consider wearing glasses or sunglasses to minimize eye irritation due to pollen and a protective mask to filter pollen and other contaminants from the air you breathe.<br\/>When driving, keep your windows closed.<br\/>When you return home, remove your shoes and jacket before going inside. You don’t want to bring any pollen that you’ve picked up outside into your home.<br\/>Keep your windows closed.<br\/>Shower before bed, and wash sheets in hot water to remove allergens brought indoors on your hair in clothes.<br\/>Vacuum carpets and upholstery regularly, and wash your clothes, linens, and curtains regularly. After you’ve washed your clothes, avoid drying them on a line outdoors where they could pick up pollen grains.<br\/>Have pets? Bathe them frequently. Especially dogs and cats that spend time outdoors.<br\/>Place a high performing indoor air purifier certified for pollen removal in your living room and especially in your bedroom.<\/p><h6><br\/>Minimizing allergy triggers at home<\/h6><p>Pollen clings to your clothing, shoes and hair – and even your pet, if you have one. Leave your shoes by the door, change your clothing and take a quick shower to rinse off any pollen. If your pet has been outdoors, rinse or towel off him or her, too. You should vacuum often and may also want to clean floors and other surfaces with a damp cloth or microfiber mop. Better yet, you can improve indoor air quality and reduce pollen allergy triggers by using a pollen air purifier at home.<\/p><h6>Do air purifiers help with pollen allergy?<\/h6><p>Air purifiers do remove pollen and therefore relieve many allergy symptoms. An air purifier from Blueair removes most airborne allergens, such as pollen, from your indoor air. To be precise, Blueair Classic air purifiers remove 99% of pollen in a room in 20 minutes.<\/p><p>Particle filters are recommended for most allergy triggers, but if you are worried about gaseous contaminants, using a filter with activated carbon in your Blueair purifier helps remove airborne chemicals and gases. It is important to consider room size when buying air purifier. Be sure to select the right Blueair air purifier to suit your room size in order to optimize performance and reduce pollen allergy triggers in your home.<\/p><p>Finally, when you are already dealing with chronic sensitivity to pollen and other airborne allergens, you are more susceptible to catching a common cold or flu. Our Blueair purifiers will help with that, too. For example, when the Blueair Classic family was tested by accredited CAS Test Technical Services, it removed 99.99% of H1N1 influenza, as well as more than 99.9% of Staphylococcus aureus, Escherichia coli and Aspergillus Niger.*<\/p><p>*Removal rate in 60 minutes according to GB18801-2015.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_pEMaUH": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_fTYLNY": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_fTYLNY"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_pEMaUH"
+  ]
+}

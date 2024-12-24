@@ -1,0 +1,618 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_dbeDiC": {
+      "type": "article__content",
+      "blocks": {
+        "image_caption_QpCEMG": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/Wildfire2023-HeaderM.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-HeaderD_1_cfce584f-7507-4bb8-92fe-ca081671ede5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_3t7qEr": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>What are the risks of wildfire smoke to you and your family?<\/h4><p>The biggest health concern from wildfires are the fine smoke particles that can enter your respiratory system. Fine particles are defined by the EPA as “…particles generally 2.5 µm in diameter or smaller”.<\/p><p>When wildfires burns heavy concentration of fine smoke particles and gas mixtures are emitted into the atmosphere that then infiltrate into your indoor space. Healthy individuals may experience discomfort, such as burning eyes, runny nose, and respiratory discomfort, mainly due to inhaling fine particles, gases and unpleasant odors. However for at risk groups, such as older adults, children and those with lung and heart diseases, even a slight elevation of smoke pollution could trigger more adverse reactions.<\/p><h4>Air purifiers and wildfire smoke<\/h4><p>EPA recommends using a portable air purifier to help you manage poor indoor air quality caused by wildfire smoke¹. A portable air purifier can help remove fine particle pollutants from the air, reducing your chances of inhaling them. However, not all air purifiers are equipped for the same level of smoke removal and there are several factors to consider. Here are some tips in ensuring the best results from an air purifier:<\/p>",
+            "richtext_style": "s3"
+          }
+        },
+        "image_text_eziJVE": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Base your air purifier’s performance on its Clean Air Delivery Rate (CADR)",
+            "title_style": "h4",
+            "richtext": "<p>CADR measures two critical performance factors: #1 the ability to filter out pollutants (filtration efficiency) and #2 how much volume of clean air (airflow) it can distribute. The higher the CADR the faster the air is being cleaned which is particularly important when high pollution levels are constantly entering your home.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-1mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-1.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "image_text_fxHppF": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Find an AHAM Verifide® air purifier for reassurance²",
+            "title_style": "h4",
+            "richtext": "<p>Air purifiers that are verified by the Association of Home Appliance Manufacturer (AHAM) have gone through rigorous testing in independent labs to certify its Clean Air Delivery Rate (CADR) for tobacco smoke, dust and pollen. Look for the AHAM seal on packaging.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-2_mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-2.png",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "image_text_E6bawR": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "text-blue",
+            "title": "Place the air purifier in the right room size",
+            "title_style": "h4",
+            "richtext": "<p>AHAM recommends the appropriate room size base on 4.8 air exchange per hour (ACH) which means an air purifier is powerful enough to circulate the air in that room every 12.5 minutes to ensure constant clean air. This is particularly important in areas with high pollution levels.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-3mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-3.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "text_TPMzyR": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Recommended air purifiers<\/h4><p>All Blue Pure Max models remove 99.97%* of fine particles (PM2.5) with a high Clean Air Delivery Rate (CADR) and activated carbon in its filter to reduce gases & odor. These are also some of the most energy efficient and quiet air purifiers on the market – meeting Energy Star’s Most Efficient standards and QuietMark certified – which is important when you need to run them 24\/7 during wildfire occurrence.<\/p><p>You can now also easily connect to the app to monitor both indoor and outdoor air quality while conveniently adjusting fan speeds or set it on auto mode.<\/p><p>A 360-degree air intake design means you can place the Blue Pure Auto almost anywhere without compromising performance.<\/p><p>Here are some of our recommendations for wildfire season.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_BjPXHG": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "Blue Pure 211i Max <br> Best Investment",
+            "title_style": "h4",
+            "richtext": "<p>Our fastest cleaning air purifier with smoke CADR 410 cfm, this model is now also recommended by Consumer Reports for its strong performance, reliability, low noise level and advanced air quality sensor that can monitor wider pollutants of PM 1, 2.5 and 10.<\/p><p>A great investment that can help tackle when pollution peaks by quickly cleaning extra large room up to 635ft² in 12.5 minutes. When wildfire smoke is no longer a threat and speed is not essential, the Blue Pure 211i Max can clean an even larger space up to 1,524 ft² in 30 minutes.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-211imob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-211i.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "image_text_jWGwEP": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "Blue Pure 311i Max <br> Great value",
+            "title_style": "h4",
+            "richtext": "<p>Great value option with high smoke CADR 250 cfm so it quickly cleans a medium-large room 387 ft² in 12.5 minutes and up to 928 ft² in 30 minutes.<\/p><p>Simpler interface with just two-button control to turn on\/off, adjust speed and brightness level.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-311i_1_mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-311i.png",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        },
+        "text_WzgfUR": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p><strong>Recommended filter upgrade<\/strong><\/p>",
+            "richtext_style": "h3"
+          }
+        },
+        "image_text_YfTwF7": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "SmokeBlock Filters <br> Available for select Blue models",
+            "title_style": "h4",
+            "richtext": "<p>SmokeBlock filters have additional activated carbon to remove 99.9% of wildfire emissions for extra protection against smoke, toxic gasses, smog and odors.<\/p><p>We recommend replacing your air purifier filter about every 6 months when used 24 hours a day.<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/WildfireBlog-SBFiltersmob.png",
+            "image_desktop": "shopify:\/\/shop_images\/WildfireBlog-SBFilters.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        }
+      },
+      "block_order": [
+        "image_caption_QpCEMG",
+        "text_3t7qEr",
+        "image_text_eziJVE",
+        "image_text_fxHppF",
+        "image_text_E6bawR",
+        "text_TPMzyR",
+        "image_text_BjPXHG",
+        "image_text_jWGwEP",
+        "text_WzgfUR",
+        "image_text_YfTwF7"
+      ],
+      "settings": {}
+    },
+    "section_content_panels_TUtNXt": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_N7eQb6": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square1mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square1.webp",
+            "title": "Run your air purifier 24\/7 <br>Keep the air purifier on 24\/7 during high pollution levels and leave on Auto mode so it adjusts when pollution levels fluctuate.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_dG4JkE": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square2mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square2.webp",
+            "title": "Replace your air purifier filters<br> Replace your air purifier filters before and after wildfire season. Dirty filters clean the air less effectively and use more energy.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_4DGe6M": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square3mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square3.webp",
+            "title": "Close your windows & doors<br> Polluted air can enter through ventilation or poorly sealed windows.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_atQCer": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square4mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square4.webp",
+            "title": "Avoid creating more smoke<br> Activities that add more fine smoke particles indoors include, frying food, burning candles or spraying aerosol products.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_CcE6Rb": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square5mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square5.webp",
+            "title": "Stay hydrated<br> Drink plenty of water to stay hydrated, as the polluted air can cause dryness and irritation in the respiratory system.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_F7cNGQ": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square6.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square6mob.png",
+            "title": "Use damp cloths for cleaning<br> When cleaning surfaces, use damp cloths to capture dust instead of dry methods that can stir up particles in the air.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_N7eQb6",
+        "customization_dG4JkE",
+        "customization_4DGe6M",
+        "customization_atQCer",
+        "customization_CcE6Rb",
+        "customization_F7cNGQ"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "Preparing your home for wildfire smoke",
+        "title_style": "h3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    },
+    "section_content_panels_kdDWCw": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_JijJht": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square7.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square7mob.png",
+            "title": "Test smoke detectors<br> Ensure they are working beforehand and replace batteries if necessary.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_aka4Pd": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square8mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square8.webp",
+            "title": "Purchase a N95 mask<br> Consider purchasing a few particulate respiratory masks to wear outside when needed.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "customization_zcMLTn": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square9mob.png",
+            "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square9.webp",
+            "title": "Be prepared for evacuation<br> Conditions can change quickly. Follow your local news, the AirNow website, or your state air quality website for up-to-date information.",
+            "title_style": "s3",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "customization_JijJht",
+        "customization_aka4Pd",
+        "customization_zcMLTn"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "Preparing for a wildfire",
+        "title_style": "h3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    },
+    "article_content_rzUTmg": {
+      "type": "article__content",
+      "blocks": {
+        "image_text_3LKP7f": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "180ch",
+            "color": "text-blue",
+            "title": "Understandingwildfire smoke",
+            "title_style": "h4",
+            "richtext": "<p>According to Climate Central, “Wildfires burning within 50-100 miles of a city routinely caused air quality to be 5-15 times worse than normal. Smoke generated by forest fires is comprised of water vapor, particulate matter and a variety of gases, including formaldehyde, benzene, toluene, carbon dioxide, sulfur dioxide, nitrogen oxide, carbon monoxide, and volatile organic compounds (VOCs).\"<\/p><p>These materials each fall into one of two different groups of pollutants: particles or gases. Each group requires a different method of filtration to successfully remove it from the air.<\/p><p>Smoke particles: Largest component and most harmful Fine (PM 2.5). Gas : Nitrogen dioxide, sulfur dioxide, formaldehyde, benzene, toluene<\/p><p>As stated by the Environmental Protection Agency (EPA), “Fine particles...particles generally 2.5 µm in diameter or smaller represent a main pollutant emitted from wildfire smoke.. [and] are [the] greatest health concern. This group of particles also includes ultra fine particles, which are generally classified as having diameters less than 0.1 µm.\"<\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/smokemob.png",
+            "image_desktop": "shopify:\/\/shop_images\/smoke.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row-reverse"
+          }
+        }
+      },
+      "block_order": [
+        "image_text_3LKP7f"
+      ],
+      "settings": {}
+    },
+    "section_icons_bkmD6b": {
+      "type": "section__icons",
+      "blocks": {
+        "icon_GMcjt6": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-QuietMark.png",
+            "icon_fixed_width": "220px",
+            "title": "Quiet Mark Certified",
+            "title_style": "s3"
+          }
+        },
+        "icon_zGWkdj": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-EnergyStar.webp",
+            "icon_fixed_width": "220px",
+            "title": "Rated as energy-efficient air purifiers.",
+            "title_style": "s3"
+          }
+        },
+        "icon_QByagJ": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-Ozone.webp",
+            "icon_fixed_width": "220px",
+            "title": "Zero Ozone Verified(<5 ppb) by Intertek Sustainability Program.",
+            "title_style": "s3"
+          }
+        },
+        "icon_q9xicF": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/2023Icon-AHAM.png",
+            "icon_fixed_width": "220px",
+            "title": "Verifide(R) for performance and Clean Air Delivery Rate (CADR).",
+            "title_style": "s3"
+          }
+        }
+      },
+      "block_order": [
+        "icon_GMcjt6",
+        "icon_zGWkdj",
+        "icon_QByagJ",
+        "icon_q9xicF"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-lg",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "num_cols_mobile": 2,
+        "num_cols_desktop": 4,
+        "max_width_mobile": "",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "title": "Independently proven performance",
+        "title_style": "h3",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "section_carousel_gpEKty": {
+      "type": "section__carousel",
+      "blocks": {
+        "product_wTkDTW": {
+          "type": "product",
+          "settings": {
+            "product": "1342-master-product"
+          }
+        },
+        "product_DXqm7d": {
+          "type": "product",
+          "settings": {
+            "product": "blue-3610-pre-filter"
+          }
+        },
+        "product_y8KXLg": {
+          "type": "product",
+          "settings": {
+            "product": "blue-pure-121-pre-filter"
+          }
+        }
+      },
+      "block_order": [
+        "product_wTkDTW",
+        "product_DXqm7d",
+        "product_y8KXLg"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "180ch",
+        "bg_color": "#ffffff",
+        "slides_per_view": "3",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "none",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
+        "title": "Products related to this article",
+        "title_style": "h3",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    },
+    "article_content_nXhPmn": {
+      "type": "article__content",
+      "blocks": {
+        "text_gw8knQ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>¹Tested on ammonia, acetaldehyde, and acetic acid (JEM 1467-2015). Other odors may occur.<\/p><p>²*In 60min. Tested on PM 2.5 (GB\/T 18801-2015).<\/p><p>*Based on removal testing of particles 0.4-0.7um in 60min in a 30m3 room. Performance may vary.<\/p><p>**Tested on benzene, toluene, nitrogen oxide, sulfur dioxide. <\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_gw8knQ"
+      ],
+      "settings": {}
+    },
+    "section_carousel_c8mtdg": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_VTbN6T": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_VTbN6T"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_dbeDiC",
+    "section_content_panels_TUtNXt",
+    "section_content_panels_kdDWCw",
+    "article_content_rzUTmg",
+    "section_icons_bkmD6b",
+    "section_carousel_gpEKty",
+    "article_content_nXhPmn",
+    "section_carousel_c8mtdg"
+  ]
+}

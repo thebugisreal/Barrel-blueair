@@ -1,0 +1,138 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_KaTbhi": {
+      "type": "article__content",
+      "blocks": {
+        "image_caption_EaWdgG": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify:\/\/shop_images\/blue_CLP_redesign_herofeature1_mob.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Mask_group_ba.webp",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_LD4gGt": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>How to choose the right air purifier for you<br\/><br\/>We know it can be confusing, we're here to help!<\/h4><p>There are a lot of options and information out there when it comes to trying to select the best air purifier for your needs and preferences. As trusted experts, we can help take the load off of you and boil it down to the few key steps and questions to ask as you determine the right choice for you.<\/p><h4>Step 1: Make sure your air purifier is third-party tested and AHAM Verifide®.<\/h4><p>Congrats! You've already accomplished this step by visiting our website. At Blueair, we work directly with AHAM, the Association of Home Appliance Manufacturers, and follow necessary guidelines to ensure high air purifier performance and deliver an optimal clean air delivery rate (CADR) based on their AC-1 performance test method.<\/p><p>Surprisingly, air purification isn't a highly regulated industry, and it's not easy to understand which brands self-regulate and which choose to hold themselves to a higher standard through third-party independent testing. At Blueair, this additional product verification is a core step in order to foster transparency and ensure our air purifiers deliver the highest performance for your space. <\/p><h4><br\/>Step 2: Understand the size of the space you're shopping for<\/h4><p>If this is your first air purifier, we recommend starting with the room you sleep in, or if you cook a lot, perhaps your kitchen.  While having an air purifier in every room of the house is a great goal to have in mind, we know it sometimes needs to be gradual, and we're here to help you ease into your clean air journey. <\/p><p>At Blueair, we recommend room size based on AHAM's AC-1 standard of ideally having 4.8 clean air exchanges every hour, which would clean the air in your space every 12.5 minutes. This ensures that the air in your space is continuously rotating clean air to the relative size of the room and keeps up with the incoming pollutants that enter your space. The more air exchanges you have in an hour, the faster your air will be cleaned.  <\/p><p><strong>This chart with an example of our Blue Pure 211+ Auto air purifier's performance, can help break this down:<\/strong><\/p>",
+            "richtext_style": "s3"
+          }
+        },
+        "image_text_jFQVFx": {
+          "type": "image_text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "120ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "Clean air in amatter of minutes",
+            "title_style": "h3",
+            "richtext": "<p><strong>Based on the Blue Pure 211+ Auto's CADR (Clean Air Delivery Rate)<\/strong><\/p>",
+            "image_mobile": "shopify:\/\/shop_images\/Screenshot_2022-09-28_110324.webp",
+            "image_desktop": "shopify:\/\/shop_images\/Screenshot_2022-09-28_110324.webp",
+            "image_placement_mobile": "flex-col",
+            "image_placement_desktop": "tabletl:flex-row"
+          }
+        },
+        "text_NULqkj": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-xl",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h4>Step 3: Narrow down by your needs and preferences<\/h4><p>Once you've landed on the space you're shopping for, it's really about your preferences and needs. Only Blueair air purifiers use HEPASilent™ technology, delivering maximum filtration with minimum noise to remove up to 99.97% of airborne particles down to 0.1 micron.¹ Combining mechanical filtration with electrostatic charging of particles produces clean air, faster, and much more quietly than traditional HEPA filtration alone.² <\/p><h4>Ready to shop?<\/h4><p>Take a look at our all our air purifiers with the link below and sort through the filters on the left-hand panel to customize your search with what you're looking for. You can even use the compare tab on the top right of each air purifier to decide between a few side-by-side.<\/p><p>¹Tested on PM2.5 (0.1 - 2.5 μm) up to 90min <\/p><p> ²Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blue Pure 211+ Auto achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary. <\/p>",
+            "richtext_style": "s3"
+          }
+        }
+      },
+      "block_order": [
+        "image_caption_EaWdgG",
+        "text_LD4gGt",
+        "image_text_jFQVFx",
+        "text_NULqkj"
+      ],
+      "settings": {}
+    },
+    "section_carousel_in6ffk": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_McBKr7": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_McBKr7"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_KaTbhi",
+    "section_carousel_in6ffk"
+  ]
+}

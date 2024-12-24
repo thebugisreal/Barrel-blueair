@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Beauty treatments can be a great way to give oneself a little treat or just refresh after a long week, but the nail salon chemicals and hair salon chemicals used aren’t all that good for you. In fact, exposure to beauty salon chemicals can cause asthma attacks and aggravate other chronic respiratory conditions, which can lead some people to avoid salons entirely.<\/p><p>For salon workers, the impact of chemicals can be especially severe, since they are exposed to many different chemicals all day long. According to the U.S. Government’s Occupational Safety and Health Administration (OSHA), nail polishes, glues, and other nail salon chemicals may contain a variety of chemicals, including toluene, formaldehyde, dibutyl phthalate and methacrylate compounds.<\/p><h5>Beauty salon air purifiers<br\/><\/h5><p>Without taking the correct safety precautions each day, the chemicals in these products can cause breathing problems; red, irritated eyes; dry, cracked skin; and other health problems. A New York Times investigation found that nail salon chemicals can also cause miscarriages and birth defects, which strongly supports using a beauty salon air purifier.<\/p><p>OSHA further cautions, “exposures to these chemicals can also ‘add up,’ especially when many products are being used at the same time, the products are used day after day, or when there is poor ventilation in the salon. When this happens, workers can suffer. Many nail salon workers work long hours, which adds to the amount of time they may be exposed to chemicals. These types of exposures may impact workers’ health immediately or cause effects over time.”<\/p><p>OSHA says that some of the most important ways to keep employees and customers safe include:<\/p><ul><li>Whenever possible, owners and workers should use products with the least hazardous chemicals in them.<\/li><li>Ventilate the room to remove chemicals in the air. This is the best way to lower the level of chemicals in a salon.<\/li><li>Closing bottles tightly when they are not being used so the product does not spill or get into the air.<\/li><li>Using metal trash cans with tight, self-closing lids to keep the nail products soaked on cotton balls and other trash from evaporating and getting into the salon's air.<\/li><li>Using only the amount of product you need to perform services. When possible, do not keep extra product at workstations.<\/li><li>Following instructions for safely disposing of used chemicals.<\/li><li>Keeping food and drink covered at all times.<\/li><li>Keeping products off of skin and out of eyes by wearing gloves and goggles when working with products.<\/li><\/ul><p>Air purifiers for beauty salons can also make a positive impact on health, giving clients and staff fresh, clean, energizing air and a safer, healthier environment. Blueair Classic and Pro models’ galvanized steel construction also makes them durable enough for commercial sites, and both Classic and Pro models are backed by an extended warranty.<\/p><p>The best air purifiers for hair and nail salons are those that remove hazardous chemicals as well as particles from the air. Both Blueair Pro and Classic air purifiers do so when equipped with filters containing activated carbon. And, in Blueair’s activated carbon filters, the high volume and weight of carbon, plus the low-density design and large surface area of the mechanical filter medium, mean the filters last a long time without becoming clogged.<\/p><p>For the ultimate smoke and gas removal (up to four times faster), Blueair DualProtection™ filters with powdered, high-porosity coconut carbon are available on some markets.<\/p><p>*Tested on particles down to 0.1 micron according to EN1822.<\/p><h5>To reduce dust mite allergy symptoms:<br\/><br\/><\/h5><ul><li>Even if dust mites may be more common during the humid summer months, they often get stirred up into the air when you start up your indoor heating in the autumn. So, before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Otherwise, allergens trapped in the vents will fill the air as soon as you start the furnace.<\/li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.<\/li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.<\/li><li>Consider replacing wall-to-wall carpet with hardwood floors.<\/li><\/ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_PcXmh4": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_qK6xaC": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_qK6xaC"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_PcXmh4"
+  ]
+}

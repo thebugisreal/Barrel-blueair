@@ -1,0 +1,138 @@
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "custom_css": [],
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_rVJxjW": {
+      "type": "article__content",
+      "blocks": {
+        "text_iXXH6r": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Ever since humans lived in caves, sharing a meal with family and friends has been one of the great pleasures in life. But now that we don’t live in drafty caves and don’t cook on an open fire beneath the sky, we have to take steps to remove cooking odors from our homes. Bacon fat, fish, and curry are just a few of the cooking odors that overstay their welcome.<\/p><h6>Cooking odors and your health<\/h6><p>No one likes a bad smell in the kitchen – or throughout the house. But beyond being unpleasant, some classes of odors and volatile organic compounds (VOCs) released while cooking can actually be unhealthy to breathe. The level and type of VOCs emitted are strongly affected by ingredients, cooking oils, heating fuels, and how you are cooking the food, but can include sulfurous, nitrogenous, volatile fatty acid, hydrocarbon, and alcohol compounds. Aldehydes, which irritate our eyes and skin, are among the most common pollutants released during cooking.<\/p><p>Once released into the air, they cling to fabrics and surfaces and can linger for days.<\/p><p>These types of compounds can cause everything from headaches to respiratory diseases such as lung cancer in nonsmokers. Repeated exposure especially in an enclosed space with poor ventilation, can bring on headaches, fatigue, dermatitis, and more – many of the same symptoms often used to diagnose Sick Building Syndrome (SBS).<\/p><h6>How to remove cooking odors<br\/><br\/><\/h6><h5><strong>1. Shut your doors<\/strong><\/h5><p>Grease and odors quickly absorb into fabrics making them difficult to clean. Keep bedroom and closet doors closed before and during cooking to avoid bedding that smells like fish.<\/p><h5><strong>2. Purify your air<\/strong><\/h5><p>The best way to avoid odors is to get them out of the air as quickly as possible. In addition to opening windows and using the kitchen vent, you can remove cooking odors and kitchen smoke with a kitchen air purifier fitted with a SmokeStop™ filter. The filters use activated carbon formulated with magnesium dioxide and copper oxide, making your kitchen air smell fresh and clean. The activated carbon comes in the form of hundreds of pellets to absorb odors, smoke and VOCs from your indoor air.<\/p><h5><strong>3. Clean up as you go<\/strong><\/h5><p>A good rule for any home cook is to clean equipment and surfaces as you go to keep bad kitchen smells from building up in the first place. You also avoid creating a depressing sink full of dishes. Wipe up splatters on the stove and countertop and wash greasy cooking pans as soon as possible.<\/p><h5><strong>4. Soak it up<\/strong><\/h5><p>Place a bowl of white vinegar, baking soda or coffee grounds on the counter before you go to bed to wake up to a naturally odor-free home.<\/p><h5><strong>5. Spice things up<\/strong><\/h5><p>Simmer some of your favorite spices like cinnamon sticks, cloves and citrus peels in some water on the stove to freshen your air naturally and cover up any lingering odors.<\/p><p>So, go ahead, invite your friends over and cook up a storm. Since most flavors are actually smells, your fresh, clean air will even make your food taste better.<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_iXXH6r"
+      ],
+      "settings": {}
+    },
+    "section_carousel_TdUTNQ": {
+      "type": "section__carousel",
+      "blocks": {
+        "product_mia49c": {
+          "type": "product",
+          "settings": {
+            "product": "200-series-dualprotection"
+          }
+        },
+        "product_FjtdRq": {
+          "type": "product",
+          "settings": {
+            "product": "classic-301-particle"
+          }
+        },
+        "product_ggezpC": {
+          "type": "product",
+          "settings": {
+            "product": "200-series-dualprotection"
+          }
+        },
+        "product_e3mKCF": {
+          "type": "product",
+          "settings": {
+            "product": "classic-301-particle"
+          }
+        }
+      },
+      "block_order": [
+        "product_mia49c",
+        "product_FjtdRq",
+        "product_ggezpC",
+        "product_e3mKCF"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "150ch",
+        "bg_color": "#f5f5f5",
+        "slides_per_view": "4",
+        "slides_per_view_desktop": "4",
+        "slides_per_view_extrawide": "4",
+        "carousel_nav": "none",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "Products related to this article",
+        "title_style": "h4",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--transparent-rounded"
+      }
+    },
+    "section_carousel_rrDkNp": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_e33Cth": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_e33Cth"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "",
+        "bg_color": "#f0f3f6",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "title": "From Our Blog",
+        "title_style": "h2",
+        "url": "shopify:\/\/blogs\/news",
+        "url_text": "See  All",
+        "cta_style": "btn btn--blue-rounded"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_rVJxjW",
+    "section_carousel_TdUTNQ",
+    "section_carousel_rrDkNp"
+  ]
+}
