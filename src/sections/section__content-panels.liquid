@@ -109,7 +109,7 @@
             {% render 'article-card' article: block.settings.article %}
           </div>
         {% elsif block.type == 'media-content-overlay' %}
-          <div class="swiper-slide content-panels__block content-panels__block--media-overlay w-[80%] tabletp:w-[70%] box-content {{ block.settings.color }} {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border">
+          <div class="swiper-slide content-panels__block content-panels__block--media-overlay box-content {{ block.settings.color }} desktop:px-0 desktop:w-full desktop:box-border">
             <div class="relative h-full w-full">
               <div class="content-container-layout flex {{ block.settings.horizontal_position }} {{ block.settings.vertical_position }} p-xs absolute top-xs bottom-xs right-xs left-xs z-[1]">
                 <div class="content-container {{ block.settings.text_alignment }}">
