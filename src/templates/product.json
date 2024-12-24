@@ -20,16 +20,16 @@
           "disabled": true,
           "settings": {}
         },
-        "option_selector_cYbcwk": {
-          "type": "option_selector",
-          "settings": {}
-        },
         "spacing_QPxbGT": {
           "type": "spacing",
           "settings": {
             "spacing_mobile": 36,
             "spacing_desktop": 36
           }
+        },
+        "product_options_GLfTKf": {
+          "type": "product_options",
+          "settings": {}
         },
         "atc_BURfeB": {
           "type": "atc",
@@ -53,11 +53,9 @@
         "shipping_warranty_Rg4jpP": {
           "type": "shipping_warranty",
           "settings": {
-            "icons": [
-              "shipping",
-              "trial",
-              "warranty"
-            ]
+            "icon_1_text": "",
+            "icon_2_text": "",
+            "icon_3_text": ""
           }
         },
         "upsells_ndPfKj": {
@@ -70,8 +68,8 @@
         "title_bjfNAe",
         "short_description_FGhrqT",
         "star_rating_rYzLXJ",
-        "option_selector_cYbcwk",
         "spacing_QPxbGT",
+        "product_options_GLfTKf",
         "atc_BURfeB",
         "spacing_UJDzai",
         "experience_NzTf78",
@@ -111,6 +109,23 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "100%",
         "enable_autoplay": false
+      }
+    },
+    "product_custom_tabs_acewb9": {
+      "type": "product__custom-tabs",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "109ch",
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "tabletl:flex-row"
       }
     },
     "product_tabs_3V9e7L": {
@@ -221,6 +236,7 @@
     "main",
     "product_slideshow_f7BaaR",
     "product_video_WFRqMh",
+    "product_custom_tabs_acewb9",
     "product_tabs_3V9e7L",
     "product_filters_bNXTik",
     "product_image_text_6MPkRA",
