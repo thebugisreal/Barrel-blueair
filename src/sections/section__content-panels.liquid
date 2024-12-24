@@ -24,10 +24,10 @@
     {%- endcapture -%}
     <s-carousel data-options='{{ carousel_options }}' data-init="belowDesktop" class="content-panels__carousel grid desktop:px-xl">
       <div id="ContentPanels-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-        <div class="swiper-wrapper content-panels__blocks desktop:!grid desktop:gap-0">
+        <div class="swiper-wrapper content-panels__blocks desktop:!grid desktop:gap-md">
           {% for block in section.blocks %}
             {% if block.type == 'customization' %}
-              <div class="swiper-slide content-panels__block content-panels__block--customization flex flex-col justify-between {{ block.settings.content_position }} p-xs pb-0 w-[80%] tabletp:w-[70%] box-content {{ block.settings.color }} {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
+              <div class="swiper-slide content-panels__block content-panels__block--customization flex flex-col justify-between {% if block.settings.enable_padding %} p-xs pb-0 {% endif %} {{ block.settings.content_position }} w-[80%] tabletp:w-[70%] box-content {{ block.settings.color }} {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
                 {% if block.settings.image_mobile != blank %}
                   <div class="content-panel__image w-full {{ block.settings.image_position }}">
                     {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
@@ -52,7 +52,7 @@
               </div>
             {% elsif block.type == 'media-content-overlay' %}
               <div class="swiper-slide content-panels__block content-panels__block--media-overlay w-[80%] tabletp:w-[70%] box-content {{ block.settings.color }} {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border" js-carousel-slide>
-                <div class="relative h-full w-full p-xs">
+                <div class="relative h-full w-full">
                   <div class="content-container-layout flex {{ block.settings.horizontal_position }} {{ block.settings.vertical_position }} p-xs absolute top-xs bottom-xs right-xs left-xs z-[1]">
                     <div class="content-container {{ block.settings.text_alignment }}">
                       {% if block.settings.title != blank %}
@@ -82,10 +82,10 @@
       </div>
     </s-carousel>
   {% else %}
-    <div class="content-panels__grid grid gap-x-sm gap-y-md px-md desktop:px-xl desktop:gap-0">
+    <div class="content-panels__grid grid gap-x-sm gap-y-md px-md desktop:px-xl desktop:gap-md">
       {% for block in section.blocks %}
         {% if block.type == 'customization' %}
-          <div class="content-panels__block content-panels__block--customization flex flex-col justify-between {{ block.settings.content_position }} {{ block.settings.color }} p-xs pb-0">
+          <div class="content-panels__block content-panels__block--customization flex flex-col justify-between {% if block.settings.enable_padding %} p-xs pb-0 {% endif %} {{ block.settings.content_position }} {{ block.settings.color }}">
             {% if block.settings.image_mobile != blank %}
               <div class="content-panel__image w-full {{ block.settings.image_position }}">
                 {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
@@ -105,12 +105,12 @@
             {% endif %}
           </div>
         {% elsif block.type == 'article' %}
-          <div class="content-panels__block content-panels__block--article p-xs pb-0">
+          <div class="content-panels__block content-panels__block--article">
             {% render 'article-card' article: block.settings.article %}
           </div>
         {% elsif block.type == 'media-content-overlay' %}
           <div class="swiper-slide content-panels__block content-panels__block--media-overlay w-[80%] tabletp:w-[70%] box-content {{ block.settings.color }} {% if forloop.first %}pl-md pr-xxs{%  elsif forloop.last %}pl-xxs pr-md{% else %}px-xxs{% endif %} desktop:px-0 desktop:w-full desktop:box-border">
-            <div class="relative h-full w-full p-xs">
+            <div class="relative h-full w-full">
               <div class="content-container-layout flex {{ block.settings.horizontal_position }} {{ block.settings.vertical_position }} p-xs absolute top-xs bottom-xs right-xs left-xs z-[1]">
                 <div class="content-container {{ block.settings.text_alignment }}">
                   {% if block.settings.title != blank %}
@@ -128,8 +128,8 @@
                 </div>
               </div>
               {% if block.settings.image_mobile != blank %}
-                <div class="background-image">
-                  {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+                <div class="background-image h-full">
+                  {% render 'lazy-image' breakpoint: 'desktop' image: block.settings.image_mobile image_desktop: block.settings.image_desktop, picture_classes: 'h-full', img_classes:"h-full object-cover"%}
                 </div>
               {% endif %}
             </div>
@@ -649,9 +649,15 @@
           "label": "Image Position",
           "options": [
             {"label": "top", "value": "order-first"},
-            {"label": "bottom", "value": "order-last"}
+            {"label": "bottom", "value": "order-last pb-sm"},
+            {"label": "bottom (no padding)", "value": "order-last"}
           ],
           "default": "order-first"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_padding",
+          "label": "Enable Padding"
         },
         {
           "type": "select",

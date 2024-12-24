@@ -80,12 +80,12 @@
     @apply px-xxs
 }
 
-.btn__arrow {
+.compare__grid .btn__arrow {
     @apply hidden
 }
 
 @media screen(tabletp) {
-    .btn__arrow {
+    .compare__grid .btn__arrow {
         @apply inline-block
     }
 
