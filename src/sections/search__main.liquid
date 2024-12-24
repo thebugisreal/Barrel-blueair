@@ -1,69 +1,70 @@
 <div class="template-search {% unless search.performed and search.results.size > 0 %} template-search--empty{% endunless %}">
   <div class="template-search__layout">
     {%- if search.performed -%}
-      <h1 class="h2">{{ 'templates.search.title' | t }}</h1>
-    {%- else -%}
-      <h1 class="h2">{{ 'general.search.search' | t }}</h1>
+      {% liquid
+        assign article_results = search.results | where: "object_type", "article"
+        assign product_results = search.results | where: "object_type", "product"
+        assign product_results_count = product_results.size
+        assign article_results_count = article_results.size
+
+        assign no_results = true
+        if product_results_count > 0 or article_results_count > 0
+          assign no_results = false
+        endif
+
+        assign popular_searches_linklist = linklists[settings.popular_searches]
+        assign article_count = 0
+        assign support_count = 0
+        for article in article_results
+          if article.tags contains 'support'
+            assign support_count = support_count | plus: 1
+          else 
+            assign article_count = article_count | plus: 1
+          endif
+        endfor
+      %}
     {%- endif -%}
-    <div class="template-search__search">
-      <form action="{{ routes.search_url }}" method="get" role="search" class="search">
-        <div class="field">
-          <input
-            class="search__input field__input"
-            id="Search-In-Template"
-            type="search"
-            name="q"
-            value="{{ search.terms | escape }}"
-            {% if search.performed %}autofocus{% endif %}
-            placeholder="{{ 'general.search.search' | t }}"
-          >
-          <label class="field__label" for="Search-In-Template" aria-hidden="true">{{ 'general.search.search' | t }}</label>
-          <input name="options[prefix]" type="hidden" value="last">
-          <button type="submit" class="search__button" aria-label="{{ 'general.search.search' | t }}">
-            <svg class="icon icon-search">
-              <use xlink:href="#icon-search">
-            </svg>
-          </button>
-        </div>
-      </form>
+
+    <div class="search-grid__header bg-blue-light px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
+      <div class="search-grid__title-container flex justify-start items-center gap-sm">
+        <p class="template-search__status h3" role="status">
+          {% if no_results %}
+            No Search Results Found for "{{ search.terms }}"
+          {% else %}
+            Search Results for "{{ search.terms }}"
+          {% endif %}
+        </p>
+        <div class="search-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs">{{ search.results.size }} results</div>
+      </div>
     </div>
-    {%- if search.performed -%}
-      <p class="element-margin" role="status">
-        {%- if search.results_count == 0 -%}
-          {{ 'templates.search.no_results' | t: terms: search.terms }}
-        {%- else -%}
-          {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
-        {%- endif -%}
-      </p>
+
+    {%- if search.performed and search.results.size > 0 -%}
+      <div class="template-search__results mt-md px-lg tabletl:px-xl">
+        <s-tabs class="search-results__tabs h-full flex flex-col">
+          <div class="tab__triggers flex justify-center gap-xxs border-b border-gray-athans tabletl:justify-start" role="tablist" aria-orientation="horizontal" js-tablist>
+            <button id="search-product-tab" class="tab__trigger s2 font-500 pb-xxs px-xxxs relative" aria-controls="search-product-content-panel" role="tab" aria-selected="true" js-tab>
+              Products ({{product_results_count}})
+            </button>
+            <button id="search-article-tab" class="tab__trigger s2 font-500 pb-xxs px-xxxs relative" aria-controls="search-article-content-panel" role="tab" aria-selected="false" js-tab>
+              Articles ({{ article_count }})
+            </button>
+            <button id="search-support-tab" class="tab__trigger s2 font-500 pb-xxs px-xxxs relative" aria-controls="search-support-content-panel" role="tab" aria-selected="false" js-tab>
+              Support ({{ support_count }})
+            </button>
+          </div>
+          <div id="search-product-content-panel" class="tab__panel py-md flex-1 max-h-full desktop:py-lg" role="tabpanel" aria-labelledby="search-product-tab" aria-hidden="false">
+            {% render 'search__main-results' search_result: product_results, type: 'product' %}
+          </div>
+          <div id="search-article-content-panel" class="tab__panel py-md flex-1 max-h-full desktop:py-lg" role="tabpanel" aria-labelledby="search-article-tab" aria-hidden="true">
+            {% render 'search__main-results' search_result: article_results, type: 'article' %}
+          </div>
+          <div id="search-support-content-panel" class="tab__panel py-md flex-1 max-h-full desktop:py-lg" role="tabpanel" aria-labelledby="search-support-tab" aria-hidden="true">
+            {% render 'search__main-results' search_result: article_results, type: 'support' %}
+          </div>
+        </s-tabs>
+      </div>
     {%- endif -%}
   </div>
-  {%- if search.performed and search.results.size > 0 -%}
-    {% paginate search.results by 16 %}
-      <div class="template-search__results ">
-        <ul class="template-search__results-grid" role="list">
-          {%- for item in search.results -%}
-            <li class="grid__item{% unless item.object_type == 'product' %} grid__item--small{% endunless %}">
-              {%- case item.object_type -%}
-                {%- when 'product' -%}
-                  {% render 'product-card', product: item, section_id: section.id %}
-                {%- when 'article' -%}
-                  {% render 'article-card', article: item %}
-                {%- when 'page' -%}
-                  <a href="{{ item.url }}" class="search-card">
-                    <div class="search-card__inner">
-                      <div class="search-card__content"><h2 class="search-card__heading">{{ item.title | truncate: 50 | escape }}</h2></div>
-                    </div>
-                  </a>
-              {%- endcase -%}
-            </li>
-          {%- endfor -%}
-        </ul>
-        {%- if paginate.pages > 1 -%}
-          {% render 'pagination', paginate: paginate, class: 'pagination-wrapper-small' %}
-        {%- endif -%}
-      </div>
-    {% endpaginate %}
-  {%- endif -%}
 </div>
 
 {% schema %}

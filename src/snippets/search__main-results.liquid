@@ -1,0 +1,33 @@
+{%- comment -%}
+ * Snippet: search__main-results.liquid
+ * --------------------------------------------
+ * Used to display search results; such as products and articles.
+ * @param type - required
+ * @param search_result - required
+{%- endcomment -%}
+<ul class="search__main-results grid grid-cols-2 gap-md tabletl:grid-cols-3 tabletl:gap-y-lg">
+    {% case type %}
+        {% when 'product' %}
+            {% for product in search_result %}
+                <li>
+                    {% render 'product-card' product: product %}
+                </li>
+            {% endfor %}
+        {% when 'article' %}
+            {% for article in search_result %}
+                {% unless article.tags contains 'support' %}
+                    <li>
+                        {% render 'article-card' article: article %}
+                    </li>
+                {% endunless %}
+            {% endfor %}
+        {% when 'support' %}
+            {% for article in search_result %}
+                {% if article.tags contains 'support' %}
+                    <li>
+                        {% render 'article-card' article: article %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+    {% endcase %}
+</ul>

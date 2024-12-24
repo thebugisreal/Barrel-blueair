@@ -1,0 +1,14 @@
+.search-results__tabs .tab__trigger::after {
+    @apply content-['']
+    absolute
+    bottom-[-1px]
+    left-0
+    w-full
+    h-[1px]
+    bg-blue
+    hidden;
+  }
+  
+  .search-results__tabs .tab__trigger[aria-selected="true"]::after {
+    @apply block;
+  }
