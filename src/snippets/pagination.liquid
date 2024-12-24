@@ -30,9 +30,10 @@
       <div class="pagination-parts__desktop gap-xxs hidden tabletl:flex">
         {%- for part in paginate.parts -%}
           {%- if part.is_link -%}
-            <a href="{{ part.url }}" class="pagination__item link s3 px-sm py-xxxs">{{ part.title }}</a>
+            <a href="{{ part.url }}" class="pagination__item underline-offset-[12px] link s3 px-sm py-xxxs">{{ part.title }}</a>
           {%- else -%}
-            <span class="pagination__item pagination__item--current s2  border-b px-sm py-xxxs">{{ part.title }}</span>
+            {% assign part_title = part.title | json %}
+            <span class="pagination__item pagination__item--current px-sm s2 py-xxxs {% unless part_title contains '"' %}  border-b {% endunless %}">{{ part.title }}</span>
           {%- endif -%}
         {%- endfor -%}
       </div>
