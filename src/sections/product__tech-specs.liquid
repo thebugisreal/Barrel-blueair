@@ -2,12 +2,28 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="product__tech-specs {{ margins_paddings }}">
-    <div class="image-container">
+<div class="product__tech-specs flex flex-col gap-lg px-lg {{ margins_paddings }} {{ section.settings.color }} tabletl:px-xl tabletl:flex-row">
+    <div class="image-container order-last tabletl:order-first">
+      {% if product.featured_image != blank %}
+        <div>
+          {% render 'lazy-image' image:product.featured_image %}
+        </div>
+        <div class="flex gap-sm justify-center items-center mt-md tabletl:mt-xl">
+          <div class="icon-container">
+            <div class="w-[32px] h-[32px]">
+              {% render 'icon-arrows-left-right' %}
+            </div>
+          </div>
+          <p class="p3 font-700">Click and Drag to Rotate 360°</p>
+        </div>
+      {% endif %}
 
     </div>
     <div class="text-container">
-        <h1 class="h3 font-900">Technical Specifications</h1>
+        <h1 class="h3 font-900 mb-md tabletl:mb-lg">Technical Specifications</h1>
+        <div>
+          {% render 'product__spec' %}
+        </div>
     </div>
 </div>
 
@@ -341,22 +357,44 @@
       "default": "desktop:pb-xxl"
     },
     {
-      "type": "text",
-      "id": "max_width_desktop",
-      "label": "Text Content - Max Width - Desktop",
-      "info": "Make sure to include units",
-      "default": "100%"
-    },
-    {
       "type": "header",
-      "content": "Video Controls"
+      "content": "Color Set"
     },
     {
-      "type": "checkbox",
-      "id": "enable_autoplay",
-      "label": "Enable Autoplay",
-      "info": "Uploaded video only",
-      "default": false
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "bg-white text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-white text-blue"
     }
   ],
   "enabled_on": {
