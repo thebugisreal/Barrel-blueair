@@ -386,6 +386,7 @@
             {% endcase %}
           {% endfor %}
         {%- endform -%}
+        {% comment %}
         <div class="hidden">
           addOnFilters - {{ product.metafields.seed.addOnFilters }}<br>
           applicableFor - {{ product.metafields.seed.applicableFor }}<br>
@@ -469,6 +470,7 @@
           variationContentReload - {{ product.metafields.seed.variationContentReload }}<br>
           variationReload - {{ product.metafields.seed.variationReload }}<br>
         </div>
+        {% endcomment %}
       </div>
     </div><!-- .product__info-container -->
   </div><!-- .product__layout -->
