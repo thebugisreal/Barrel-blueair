@@ -15,11 +15,9 @@ class ProductMain extends HTMLElement {
       currentSwatchLabel: '[js-current-swatch-label]',
       subscription: '[js-subscription]',
       subscriptionToggle: '[js-subscription-toggle]',
-      subscriptionOffer: '[js-subscription-offer]',
-      subscriptionPrice: '[js-subscription-price]',
-      nonSubscription: '[js-non-subscription]',
       nonSubscriptionToggle: '[js-non-subscription-toggle]',
-      optionSelector: '[js-product-option-selector]',
+      subscriptionPrice: '[js-subscription-price]',
+      priceCopy: '[js-price-copy]',
       filterSubscriptionVariant: '[js-fitler-subscription-variant]',
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
@@ -55,32 +53,21 @@ class ProductMain extends HTMLElement {
 
     this.subscriptionType = this.subscription.dataset.type;
     this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
-    this.subscriptionOfferToggle = this.subscription.querySelector(`${this._selectors.subscriptionOffer} og-optin-toggle`);
-    this.nonSubscription = this.querySelector(this._selectors.nonSubscription);
     this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
-    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
     this.subscriptionPrice = this.querySelector(this._selectors.subscriptionPrice);
-    
-    if (this.subscriptionType == 'filter') {
-      if (this.subscriptionOfferToggle && !this.subscriptionOfferToggle.hasAttribute('subscribed')) {
-        this.subscriptionOfferToggle.click();
-      }
-    } else {
-      this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
-      this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
-      this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
-      this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
-        sellingPlan.addEventListener('click' , this.filterSubscriptionSellingPlanOnClick);
-      });
+    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
+    this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
+    this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
+    this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
 
-      const currentSelectedFilterSubscriptionVariant = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
-      if (currentSelectedFilterSubscriptionVariant) {
-        const filterSubscriptionSellingPlanToClick = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${currentSelectedFilterSubscriptionVariant.dataset.variant}"]`);
-        filterSubscriptionSellingPlanToClick?.click();
-      }
-    }
+    this.filterSubscriptionVariants.forEach((trigger) => {
+      trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
+    });
     
-
+    this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
+      sellingPlan.addEventListener('click' , this.filterSubscriptionSellingPlanOnClick);
+    });
+    
     this.subscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
 
@@ -89,28 +76,69 @@ class ProductMain extends HTMLElement {
       }
 
       this.subscription.dataset.selected = 'true';
-      this.nonSubscription.dataset.selected = 'false';
-      if (this.subscriptionType == 'filter' && this.subscriptionOfferToggle && !this.subscriptionOfferToggle.hasAttribute('subscribed')) {
-        this.subscriptionOfferToggle.click();
+      this.nonSubscriptionToggle.dataset.selected = 'false';
+
+      const selectedFilterSubscriptionVariant = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
+      if (selectedFilterSubscriptionVariant) {
+        if (selectedFilterSubscriptionVariant.dataset.available == 'true') {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        if (this.subscriptionType == 'filter') {
+          this._updateAtcStateOnFilterChange(selectedFilterSubscriptionVariant);
+        }
       }
     });
 
     this.nonSubscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
 
-      if (this.nonSubscription.dataset.selected == 'true') {
+      if (evt.currentTarget.dataset.selected == 'true') {
         return;
       }
 
-      this.nonSubscription.dataset.selected = 'true';
+      evt.currentTarget.dataset.selected = 'true';
       this.subscription.dataset.selected = 'false';
-      if (this.subscriptionType == 'filter' && this.subscriptionOfferToggle && this.subscriptionOfferToggle.hasAttribute('subscribed')) {
-        this.subscriptionOfferToggle.click();
+
+      this._toggleFilterSubscriptionFormInputs(false);
+      if (this.subscriptionType == 'filter') {
+        this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
       }
     });
 
-    this.filterSubscriptionVariants.forEach((trigger) => {
-      trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
+    const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+    filterSubscriptionVariantToBeSelectedOnLoad?.click();
+  }
+
+  _toggleFilterSubscriptionFormInputs = (enable) => {
+    if (enable) {
+      this.filterSubscriptionSelectedVariantInput.removeAttribute('disabled');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.removeAttribute('disabled');
+    } else {
+      this.filterSubscriptionSelectedVariantInput.setAttribute('disabled', '');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('disabled', '');
+    }
+  }
+
+  _updateAtcStateOnFilterChange = (selectedFilter) => {
+    const btnPrice = selectedFilter.querySelector(`${this._selectors.priceCopy} span`).textContent;
+    let btnDisabled;
+    if (selectedFilter.dataset.available == 'true') {
+      btnDisabled = false;
+    } else {
+      btnDisabled = true;
+    }
+
+    this.buttons.forEach((btn) => {
+      if (btn.querySelector(this._selectors.price)) {
+        btn.querySelector(this._selectors.price).textContent = btnPrice;
+      }
+      if (btnDisabled) {
+        btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+        btn.setAttribute('disabled', '');
+      } else {
+        btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+        btn.removeAttribute('disabled');
+      }
     });
   }
 
@@ -122,38 +150,28 @@ class ProductMain extends HTMLElement {
       return;
     }
 
-    if (this.subscription.dataset.type == 'filter') {
-      const optionSelectorTarget = this.querySelector(`${this._selectors.optionSelector}[value="${triggerTarget.dataset.value}"]`);
-      optionSelectorTarget?.click();
-    } else {
-      const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
-      sellingPlanTarget?.click();
-    }
+    const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
+    sellingPlanTarget?.click();
     
-    const prevSelectedTriggers = this.querySelectorAll(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
-    prevSelectedTriggers.forEach((prevSelectedTrigger) => {
-      prevSelectedTrigger.dataset.selected = 'false';
-    });
-    const newSelectedTriggers = this.querySelectorAll(`${this._selectors.filterSubscriptionVariant}[data-variant="${triggerTarget.dataset.variant}"]`);
-    newSelectedTriggers.forEach((newSelectedTrigger) => {
-      newSelectedTrigger.dataset.selected = 'true';
-    });
+    const prevSelectedTrigger = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
+    if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+    triggerTarget.dataset.selected = 'true';
 
-    const prevFilterDescriptions = this.querySelectorAll(`${this._selectors.filterSubscriptionDescription}:not(.hidden)`);
-    prevFilterDescriptions.forEach((prevFilterDescription) => {
-      prevFilterDescription.classList.add('hidden');
-    });
-    const newFilterDescriptions = this.querySelectorAll(`${this._selectors.filterSubscriptionDescription}[data-variant="${triggerTarget.dataset.variant}"]`);
-    newFilterDescriptions.forEach((newFilterDescription) => {
-      newFilterDescription.classList.remove('hidden');
-    });
+    const prevSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
+    prevSellingPlansGroup?.classList.add('hidden');
+    const newSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
+    newSellingPlansGroup?.classList.remove('hidden');
 
-    if (this.subscription.dataset.type == 'airpurifier_and_filter') {
-      const prevSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
-      prevSellingPlansGroup?.classList.add('hidden');
-      const newSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
-      newSellingPlansGroup?.classList.remove('hidden');
-    } 
+    if (triggerTarget.dataset.available == 'true') {
+      this._toggleFilterSubscriptionFormInputs(true);
+    } else {
+      this._toggleFilterSubscriptionFormInputs(false);
+    }
+
+    if (this.subscriptionType == 'filter') {
+      this.subscriptionPrice.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML;
+      this._updateAtcStateOnFilterChange(triggerTarget);
+    }
   }
 
   filterSubscriptionSellingPlanOnClick = (evt) => {
@@ -165,11 +183,16 @@ class ProductMain extends HTMLElement {
     }
 
     const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
-    if (prevSelectedTrigger) {
-      prevSelectedTrigger.dataset.selected = 'false';
-    }
+    if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
     triggerTarget.dataset.selected = 'true';
 
+    if (this.subscriptionType == 'filter') {
+      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'id');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'selling_plan');
+    } else {
+      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'items[1][id]');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'items[1][selling_plan]');
+    }
     this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
     this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
   }
@@ -203,7 +226,6 @@ class ProductMain extends HTMLElement {
       this.cart.setActiveElement(document.activeElement);
     }
     config.body = formData;
-    console.log(formData)
 
     fetch(`${window.routes.cart_add_url}`, config)
       .then((response) => response.json())
@@ -249,34 +271,8 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  _confirmSubscriptionOnVariantChange() {
-    if (!this.subscription) {
-      return;
-    }
-
-    if (!this.subscriptionOfferToggle) {
-      return;
-    }
-
-    if (this.subscription.dataset.selected == 'true') {
-      setTimeout(() => {
-        if (!this.subscriptionOfferToggle.hasAttribute('subscribed')) {
-          this.subscriptionOfferToggle.click();
-        }
-      }, 400);
-    } else {
-      setTimeout(() => {
-        if (this.subscriptionOfferToggle.hasAttribute('subscribed')) {
-          this.subscriptionOfferToggle.click();
-        }
-      }, 400);
-    }
-  }
-
   _handleVariantChange = (evt) => {
     const { variant, priceChange } = evt.detail;
-
-    console.log(variant)
 
     this._updateAddToCartState(variant);
 
@@ -288,10 +284,7 @@ class ProductMain extends HTMLElement {
 
     if (variant) {
       if (priceChange) this._updatePrice(variant);
-      if (this.subscriptionPrice) this._updateSubscriptionPrice(variant);
     }
-
-    this._confirmSubscriptionOnVariantChange();
   };
 
   _updateImageCarousel(swatchName) {
@@ -348,22 +341,6 @@ class ProductMain extends HTMLElement {
         btn.setAttribute('disabled', '');
       });
     }
-  }
-
-  _updateSubscriptionPrice(variant) {
-    let priceMarkup;
-
-    if (variant.selling_plan_allocations.length > 0) {
-      if (variant.selling_plan_allocations[0].compare_at_price && variant.selling_plan_allocations[0].compare_at_price > variant.selling_plan_allocations[0].price) {
-        priceMarkup = `<s class="product-subscription__price product-subscription__price--compare">${theme.utils.formatMoney(variant.selling_plan_allocations[0].compare_at_price, this.moneyFormat)}</s><span class="product-subscription__price product-subscription__price--current font-700">${theme.utils.formatMoney(variant.selling_plan_allocations[0].price, this.moneyFormat)}</span>`;
-      } else {
-        priceMarkup = `<span class="product-subscription__price product-subscription__price--current font-700">${theme.utils.formatMoney(variant.selling_plan_allocations[0].price, this.moneyFormat)}</span>`;
-      }
-    } else {
-      priceMarkup = '';
-    }
-
-    this.subscriptionPrice.innerHTML = priceMarkup;
   }
 
   _updatePrice(variant) {

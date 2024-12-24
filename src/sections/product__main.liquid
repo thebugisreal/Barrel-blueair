@@ -150,24 +150,8 @@
                 current_variant: current_variant
                 %}
 
-                {% liquid 
-                  assign enable_subscription = false
-                  if product.metafields.seed.subscription != blank
-                    assign subscription = product.metafields.seed.subscription.value
-                    if subscription.subscription_type == 'Filter'
-                      if product.selling_plan_groups.size > 0
-                        assign enable_subscription = true
-                      endif
-                    else 
-                      assign filter_product = subscription.filter_subscription.value
-                      if filter_product.selling_plan_groups.size > 0 and filter_product != blank
-                        assign enable_subscription = true
-                      endif
-                    endif
-                  endif
-                %}
                 {% unless product.has_only_default_variant %}
-                <product-options class="no-js-hidden {% if enable_subscription %}hidden{% endif %}" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
+                <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
                   {% for option in product.options_with_values %}
                     {% render 'product-option-selector' 
                       option: option
@@ -180,6 +164,18 @@
                 </product-options>
                 {% endunless %}
 
+                {% liquid 
+                  assign enable_subscription = false
+                  if product.metafields.seed.subscription != blank
+                    assign subscription = product.metafields.seed.subscription.value
+                    for filter_subscription in subscription.filter_subscriptions.value
+                      if filter_subscription.variants[0].selling_plan_allocations.size > 0
+                        assign enable_subscription = true
+                        break
+                      endif
+                    endfor
+                  endif
+                %}
                 {% if enable_subscription %}
                   {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
                 {% endif %}
