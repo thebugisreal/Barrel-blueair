@@ -20,6 +20,17 @@
           "disabled": true,
           "settings": {}
         },
+        "option_selector_cYbcwk": {
+          "type": "option_selector",
+          "settings": {}
+        },
+        "spacing_QPxbGT": {
+          "type": "spacing",
+          "settings": {
+            "spacing_mobile": 36,
+            "spacing_desktop": 36
+          }
+        },
         "product_options_GLfTKf": {
           "type": "product_options",
           "settings": {}
