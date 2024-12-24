@@ -13,10 +13,17 @@ class ProductMain extends HTMLElement {
       thumbSlide: '[js-thumb-carousel-slide]',
       price: '[js-price]',
       currentSwatchLabel: '[js-current-swatch-label]',
-      subscriptionContainer: '[js-subscription-container]',
-      subscriptionOffer: '[js-subscription-offer]',
-      subscriptionCustomization: '[js-subscription-customization]',
-      noSubscriptionBtn: '[js-no-subscription-btn]'
+      subscription: '[js-subscription]',
+      subscriptionToggle: '[js-subscription-toggle]',
+      nonSubscriptionToggle: '[js-non-subscription-toggle]',
+      subscriptionPrice: '[js-subscription-price]',
+      priceCopy: '[js-price-copy]',
+      filterSubscriptionVariant: '[js-fitler-subscription-variant]',
+      filterSubscriptionDescription: '[js-filter-subscription-description]',
+      filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
+      filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
+      filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
+      filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]'
     };
   }
 
@@ -26,7 +33,7 @@ class ProductMain extends HTMLElement {
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
     this.prices = this.querySelectorAll(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
-    this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
+    this.subscription = this.querySelector(this._selectors.subscription);
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -34,79 +41,160 @@ class ProductMain extends HTMLElement {
       this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     }
 
+    this._handleSubscription();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
-    this._handleSubscription();
-  }
-
-  _test() {
-    console.log('test')
   }
 
   _handleSubscription() {
-    if (!this.subscriptionContainer) {
+    if (!this.subscription) {
       return;
     }
 
-    this.subscriptionOffer = this.subscriptionContainer.querySelector(this._selectors.subscriptionOffer);
-    this.subscriptionCustomization = this.subscriptionContainer.querySelector(this._selectors.subscriptionCustomization);
-    this.offerBtn = this.subscriptionOffer.querySelector('og-optin-toggle');
-    this.noSubscriptionBtn = this.subscriptionContainer.querySelector(this._selectors.noSubscriptionBtn);
-    this.noSubscriptionBtnJustClicked = false;
+    this.subscriptionType = this.subscription.dataset.type;
+    this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
+    this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
+    this.subscriptionPrice = this.querySelector(this._selectors.subscriptionPrice);
+    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
+    this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
+    this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
+    this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
 
-    this.offerBtn.addEventListener('click', () => {
-      if (this.noSubscriptionBtnJustClicked) {
-        this.noSubscriptionBtn.dataset.selected = 'false';
-        this.noSubscriptionBtnJustClicked = false;
-      }
-      if (!this.offerBtn.hasAttribute('subscribed')) {
-        this.offerBtn.click();
-      }
-    })
-
-    this.noSubscriptionBtn.addEventListener('click', (evt) => {
+    this.filterSubscriptionVariants.forEach((trigger) => {
+      trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
+    });
+    
+    this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
+      sellingPlan.addEventListener('click' , this.filterSubscriptionSellingPlanOnClick);
+    });
+    
+    this.subscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
 
-      console.log(evt.currentTarget.dataset.selected)
+      if (this.subscription.dataset.selected == 'true') {
+        return;
+      }
+
+      this.subscription.dataset.selected = 'true';
+      this.nonSubscriptionToggle.dataset.selected = 'false';
+
+      const selectedFilterSubscriptionVariant = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
+      if (selectedFilterSubscriptionVariant) {
+        if (selectedFilterSubscriptionVariant.dataset.available == 'true') {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        if (this.subscriptionType == 'filter') {
+          this._updateAtcStateOnFilterChange(selectedFilterSubscriptionVariant);
+        }
+      }
+    });
+
+    this.nonSubscriptionToggle.addEventListener('click', (evt) => {
+      evt.preventDefault();
 
       if (evt.currentTarget.dataset.selected == 'true') {
         return;
       }
 
       evt.currentTarget.dataset.selected = 'true';
-      if (this.offerBtn.hasAttribute('subscribed')) {
-        this.offerBtn.click();
+      this.subscription.dataset.selected = 'false';
+
+      this._toggleFilterSubscriptionFormInputs(false);
+      if (this.subscriptionType == 'filter') {
+        this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
       }
-      this.noSubscriptionBtnJustClicked = true;
     });
-    /*
-    console.log(this.subscriptionOffer.querySelector('.og-text'))
-    let array = [];
-    array.push(this.dataset.productId);
-    console.log(array)
-    const offers = window.og.offers.getOptins([49364636860702])
-    console.log(offers)
-    console.log(this.subscriptionOffer, this.subscriptionCustomization)
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        console.log(mutation)
-        if (mutation.type === 'childList') {
-          console.log('Child node added:');
-          console.log('node')
-          this._test();
-          // Check if the added node is the one you're looking for
-          mutation.addedNodes.forEach(node => {
-            
-            if (node.id === 'specificChildId') {
-              console.log('Specific child node added!');
-            }
-          });
-        }
-      });
+
+    const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+    filterSubscriptionVariantToBeSelectedOnLoad?.click();
+  }
+
+  _toggleFilterSubscriptionFormInputs = (enable) => {
+    if (enable) {
+      this.filterSubscriptionSelectedVariantInput.removeAttribute('disabled');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.removeAttribute('disabled');
+    } else {
+      this.filterSubscriptionSelectedVariantInput.setAttribute('disabled', '');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('disabled', '');
+    }
+  }
+
+  _updateAtcStateOnFilterChange = (selectedFilter) => {
+    const btnPrice = selectedFilter.querySelector(`${this._selectors.priceCopy} span`).textContent;
+    let btnDisabled;
+    if (selectedFilter.dataset.available == 'true') {
+      btnDisabled = false;
+    } else {
+      btnDisabled = true;
+    }
+
+    this.buttons.forEach((btn) => {
+      if (btn.querySelector(this._selectors.price)) {
+        btn.querySelector(this._selectors.price).textContent = btnPrice;
+      }
+      if (btnDisabled) {
+        btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+        btn.setAttribute('disabled', '');
+      } else {
+        btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+        btn.removeAttribute('disabled');
+      }
     });
+  }
+
+  _filterSubscriptionVariantOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt.currentTarget;
+    if (triggerTarget.dataset.selected == 'true') {
+      return;
+    }
+
+    const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
+    sellingPlanTarget?.click();
     
-    observer.observe(this.subscriptionOffer, { childList: true, subtree: true });
-    */
+    const prevSelectedTrigger = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
+    if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+    triggerTarget.dataset.selected = 'true';
+
+    const prevSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
+    prevSellingPlansGroup?.classList.add('hidden');
+    const newSellingPlansGroup = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
+    newSellingPlansGroup?.classList.remove('hidden');
+
+    if (triggerTarget.dataset.available == 'true') {
+      this._toggleFilterSubscriptionFormInputs(true);
+    } else {
+      this._toggleFilterSubscriptionFormInputs(false);
+    }
+
+    if (this.subscriptionType == 'filter') {
+      this.subscriptionPrice.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML;
+      this._updateAtcStateOnFilterChange(triggerTarget);
+    }
+  }
+
+  filterSubscriptionSellingPlanOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt.currentTarget;
+    if (triggerTarget.dataset.selected == 'true') {
+      return;
+    }
+
+    const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
+    if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+    triggerTarget.dataset.selected = 'true';
+
+    if (this.subscriptionType == 'filter') {
+      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'id');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'selling_plan');
+    } else {
+      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'items[1][id]');
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'items[1][selling_plan]');
+    }
+    this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
+    this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
   }
 
   _initProductForm() {
@@ -186,8 +274,6 @@ class ProductMain extends HTMLElement {
   _handleVariantChange = (evt) => {
     const { variant, priceChange } = evt.detail;
 
-    console.log(variant)
-
     this._updateAddToCartState(variant);
 
     if (this.currentSwatch && variant.options[this.swatchOption] != this.currentSwatch) {
@@ -258,19 +344,22 @@ class ProductMain extends HTMLElement {
   }
 
   _updatePrice(variant) {
-    /*
-    let priceMarkup = '';
-    if (variant.compare_at_price && variant.compare_at_price > variant.price) {
-      priceMarkup = `<span class="product__price product__price--current text-red">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span><s class="product__price product__price--compare ml-3">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s>`;
-    } else {
-      priceMarkup = `<span class="product__price product__price--current">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
-    }
-      */
-
     this.prices.forEach((price) => {
-      price.innerHTML = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
+      let priceMarkup;
+
+      if (price.hasAttribute('js-full-price')) {
+        if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+          priceMarkup = `<s class="product__price product__price--compare">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s><span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+        } else {
+          priceMarkup = `<span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+        }
+      } else {
+        priceMarkup = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
+      }
+
+      price.innerHTML = priceMarkup;
     })
-  }
+}
 
   _disableButtons() {
     this.buttons.forEach((button) => {

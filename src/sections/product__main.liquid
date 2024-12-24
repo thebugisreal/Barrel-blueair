@@ -142,7 +142,7 @@
                 {% endif %}
               {% when 'star_rating' %}
                 <div class="product__star-rating mt-sm">reviews</div>
-              {% when 'option_selector' %}
+              {% when 'product_options' %}
                 {%- comment -%} Product Variant Master Select {%- endcomment -%}
                 {% render 'master-variant-select',
                 variants: product.variants,
@@ -163,30 +163,22 @@
                   {% endfor %}
                 </product-options>
                 {% endunless %}
-              {% when 'subscription' %}
-                <div class="product__subscription" js-subscription-container>
-                  <div class="product-subscription__customized-element" js-subscription-customization>
-                    
-                  </div>
 
-                  <og-offer product="{{ current_variant.id }}" location="pdp" class="product-subscription__offer border border-blue rounded-[3px] px-xs py-md desktop:px-md" js-subscription-offer>
-                  </og-offer>
-
-                  <button type="button" data-selected="false" class="product-subscription__non-subscription px-xs py-md desktop:px-md flex items-center gap-sm w-full border border-blue rounded-[3px] mt-sm" js-no-subscription-btn>
-                    <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
-                      {% render 'icon-check' %}
-                    </div>
-                    <div class="s3 font-700 flex-1 text-left">{Product} Only</div>
-                    <div class="product__price-wrapper text-16 flex justify-end items-center gap-xs" js-price including-compare-at>
-                      {% if current_variant.compare_at_price > current_variant.price %}
-                        <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-                        <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                      {% else %}
-                        <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
-                      {% endif %}
-                    </div>
-                  </button>
-                </div>
+                {% liquid 
+                  assign enable_subscription = false
+                  if product.metafields.seed.subscription != blank
+                    assign subscription = product.metafields.seed.subscription.value
+                    for filter_subscription in subscription.filter_subscriptions.value
+                      if filter_subscription.variants[0].selling_plan_allocations.size > 0
+                        assign enable_subscription = true
+                        break
+                      endif
+                    endfor
+                  endif
+                %}
+                {% if enable_subscription %}
+                  {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
+                {% endif %}
               {% when 'atc' %}
                 <button 
                   class="product__atc btn btn--blue-rounded relative"
@@ -279,7 +271,7 @@
                   </s-accordion>
                 {% endif %}
               {% when 'shipping_warranty' %}
-                {% if block.settings.icons != blank %}
+                {% if block.settings.icon_1_image != blank %}
                   <s-accordion data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
@@ -289,10 +281,12 @@
                       </button>
                       <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="false" js-accordion-content>
                         <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
-                          {% for icon_object in block.settings.icons %}
+                          {% for i in (1..3) %}
+                            {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
+                            {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
                             <li class="product-shipping-warranty__icon flex justify-start items-center gap-xxs desktop:flex-col desktop:gap-xs">
-                              <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                              <div class="p4 text-center">{{ icon_object.text }}</div>
+                              <div class="w-[36px]">{% render 'lazy-image' image: block.settings[icon_image_handle] %}</div>
+                              <div class="p4 text-center">{{ block.settings[icon_text_handle] }}</div>
                             </li>
                           {% endfor %}
                         </ul>
@@ -555,12 +549,8 @@
       "type": "star_rating"
     },
     {
-      "name": "Option Selector",
-      "type": "option_selector"
-    },
-    {
-      "name": "Subscription",
-      "type": "subscription"
+      "name": "Product Options",
+      "type": "product_options"
     },
     {
       "name": "ATC Button",
@@ -579,10 +569,46 @@
       "type": "shipping_warranty",
       "settings": [
         {
-          "type": "metaobject_list",
-          "id": "icons",
-          "label": "Icons",
-          "metaobject_type": "icon"
+          "type": "header",
+          "content": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_1_text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_2_text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_3_text",
+          "label": "Text"
         }
       ]
     },
