@@ -83,9 +83,7 @@ class ProductMain extends HTMLElement {
         if (selectedFilterSubscriptionVariant.dataset.available == 'true') {
           this._toggleFilterSubscriptionFormInputs(true);
         }
-        if (this.subscriptionType == 'filter') {
-          this._updateAtcStateOnFilterChange(selectedFilterSubscriptionVariant);
-        }
+        this._updateAtcStateOnFilterChange(selectedFilterSubscriptionVariant);
       }
     });
 
@@ -100,9 +98,7 @@ class ProductMain extends HTMLElement {
       this.subscription.dataset.selected = 'false';
 
       this._toggleFilterSubscriptionFormInputs(false);
-      if (this.subscriptionType == 'filter') {
-        this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
-      }
+      this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
     });
 
     const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
@@ -119,10 +115,16 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  _updateAtcStateOnFilterChange = (selectedFilter) => {
-    const btnPrice = selectedFilter.querySelector(`${this._selectors.priceCopy} span`).textContent;
+  _updateAtcStateOnFilterChange = (selectedTrigger) => {
+    console.log(selectedTrigger)
+    let btnPrice;
     let btnDisabled;
-    if (selectedFilter.dataset.available == 'true') {
+    if (selectedTrigger.hasAttribute('js-non-subscription-toggle') || this.subscriptionType == 'filter') {
+      btnPrice = selectedTrigger.querySelector(`${this._selectors.priceCopy} span`).textContent;
+    } else {
+      btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(`${this._selectors.priceCopy} span`).dataset.price) + parseInt(this.nonSubscriptionToggle.querySelector(`${this._selectors.priceCopy} span`).dataset.price), this.moneyFormat);
+    }
+    if (selectedTrigger.dataset.available == 'true') {
       btnDisabled = false;
     } else {
       btnDisabled = true;
@@ -170,8 +172,9 @@ class ProductMain extends HTMLElement {
 
     if (this.subscriptionType == 'filter') {
       this.subscriptionPrice.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML;
-      this._updateAtcStateOnFilterChange(triggerTarget);
     }
+
+    this._updateAtcStateOnFilterChange(triggerTarget);
   }
 
   filterSubscriptionSellingPlanOnClick = (evt) => {
