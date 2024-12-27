@@ -30,6 +30,7 @@ class ProductMain extends HTMLElement {
       noSubscriptionBtn: '[js-no-subscription-btn]',
       stickyBar: '[js-product-sticky-bar]',
       stickyAtc: '[js-sticky-atc]',
+      stickyPrice: '[js-sticky-price]',
       stickySelectOptionsBtn: '[js-sticky-select-options]',
       stickyLoader: '[js-sticky-loader]',
     };
@@ -37,6 +38,7 @@ class ProductMain extends HTMLElement {
 
   connectedCallback() {
     this.buttons = this.querySelectorAll(this._selectors.addToCart);
+    this.stickyPrice = document.querySelector(this._selectors.stickyPrice);
     this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
     this.prices = this.querySelectorAll(this._selectors.price);
@@ -340,11 +342,32 @@ class ProductMain extends HTMLElement {
       this.currentSwatchLabel.textContent = this.currentSwatch;
       this._updateImageCarousel(this.currentSwatch);
     }
-
+    this._updateStickyBar(variant)
     if (variant) {
       if (priceChange) this._updatePrice(variant);
     }
   };
+
+  _updateStickyBar(variant) {
+    if (variant) {
+      this.stickyAtcBtns.forEach((stickyAtc) => {
+        stickyAtc.classList.remove('hidden')
+      });
+      this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
+        selectOptionsBtn.classList.add('hidden')
+      });
+      this.stickyPrice.innerHTML = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`
+    } else {
+      this.stickyAtcBtns.forEach((stickyAtc) => {
+        stickyAtc.classList.add('hidden')
+      });
+      this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
+        selectOptionsBtn.classList.remove('hidden')
+      });
+      this.stickyPrice.innerHTML = ''
+    }
+
+  }
 
   _updateImageCarousel(swatchName) {
     let current_thumb_slides_count = 0
@@ -385,18 +408,24 @@ class ProductMain extends HTMLElement {
     if (variant) {
       if (variant.available) {
         this.buttons.forEach((btn) => {
-          btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+          if (btn.querySelector(this._selectors.atcText).textContent) {
+            btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+          }
           btn.removeAttribute('disabled');
         });
       } else {
         this.buttons.forEach((btn) => {
-          btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+          if (btn.querySelector(this._selectors.atcText)) {
+            btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+          }
           btn.setAttribute('disabled', '');
         });
       }
     } else {
       this.buttons.forEach((btn) => {
-        btn.querySelector(this._selectors.atcText).textContent = 'Unavailable';
+        if (btn.querySelector(this._selectors.atcText).textContent ) {
+          btn.querySelector(this._selectors.atcText).textContent = 'Unavailable';
+        }
         btn.setAttribute('disabled', '');
       });
     }
@@ -415,7 +444,6 @@ class ProductMain extends HTMLElement {
       } else {
         priceMarkup = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
       }
-
       price.innerHTML = priceMarkup;
     })
 }
