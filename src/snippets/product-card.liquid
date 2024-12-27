@@ -95,7 +95,7 @@
       {% endif %}
     </div>
 
-    {% if product.metafields.seed.enable_product_compare and collection.template_suffix == 'compare' %}
+    {% if collection.template_suffix == 'compare' %}
       <div class="text-12 mt-sm flex items-center gap-sm">
         <input type="checkbox" id="enableProductCompare-{{ product.id }}" data-product-id="{{ product.id }}" js-product-compare-checkbox>
         <label for="enableProductCompare-{{ product.id }}"> Compare </label>
