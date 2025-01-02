@@ -137,6 +137,7 @@
         "image_position_desktop": "tabletl:flex-row"
       }
     },
+
     "product_filters_bNXTik": {
       "type": "product__filters",
       "settings": {
@@ -229,6 +230,7 @@
     "product_slideshow_f7BaaR",
     "product_video_WFRqMh",
     "product_custom_tabs_acewb9",
+    "product_tabs_3V9e7L",
     "product_filters_bNXTik",
     "product_image_text_6MPkRA",
     "product_related_products_8Pzzge",
