@@ -174,7 +174,6 @@ class ProductMain extends HTMLElement {
   }
 
   _updateAtcStateOnFilterChange = (selectedTrigger) => {
-    console.log(selectedTrigger)
     let btnPrice;
     let btnDisabled;
     if (selectedTrigger.hasAttribute('js-non-subscription-toggle') || this.subscriptionType == 'filter') {
