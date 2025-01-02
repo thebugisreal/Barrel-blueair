@@ -29,7 +29,7 @@ class CompareBanner extends HTMLElement {
             delimiters: ["${", "}"],
             setup: () => {
             // State =========================================
-            const porductsSelected = ref(0)
+            const productsSelected = ref(0)
             const products = ref(0)
 
             // Life Cycle Hooks
@@ -78,7 +78,7 @@ class CompareBanner extends HTMLElement {
             }
 
             function _handleItemChange(e) {
-                porductsSelected.value = e.detail.compareProductArray.length
+                productsSelected.value = e.detail.compareProductArray.length
                 products.value = e.detail.compareProductArray
             };
 
@@ -92,7 +92,7 @@ class CompareBanner extends HTMLElement {
                     compareProductArray = [];
                 }
 
-                porductsSelected.value = compareProductArray.length
+                productsSelected.value = compareProductArray.length
                 products.value = compareProductArray
             }
 
@@ -106,7 +106,7 @@ class CompareBanner extends HTMLElement {
     
             // export values to be used in template/html
             return {
-                porductsSelected,
+                productsSelected,
                 products,
                 onRemove,
                 removeAll
