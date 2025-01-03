@@ -4,8 +4,8 @@
   assign filter_type_option = false
   if product.options_by_name['color'] != blank
     assign color_option = product.options_by_name['color'].position | minus: 1
-  elsif product.options_by_name['filter type'] != blank
-    assign filter_type_option = product.options_by_name['filter type'].position | minus: 1
+  elsif product.metafields.seed.product_card_filter_products != blank
+    assign filter_type_option = true
   endif
 %}
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
@@ -14,6 +14,13 @@
       {% for variant in product.variants %}
         <div class="product-card__image {% unless variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ variant.options[color_option] }}" js-product-card-image>
           {% assign image = variant.featured_image | default: product.featured_image %}
+          {% render 'lazy-image' image: image %}
+        </div>
+      {% endfor %}
+      {% comment %} Filter Swatch Images {% endcomment %}
+      {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
+        <div class="product-card__image {% unless swatch_product.metafields.seed.product_card_filter_title == current_variant.metafields.seed.product_card_filter_title %}hidden{% endunless %}" data-swatch="{{ swatch_product.metafields.seed.product_card_filter_title }}" js-product-card-image>
+          {% assign image = swatch_product.featured_image | default: product.featured_image %}
           {% render 'lazy-image' image: image %}
         </div>
       {% endfor %}
@@ -30,10 +37,23 @@
         <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
       {% endfor %}
     </div>
-    <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>{{ product.title }}</a>
-    {% if filter_type_option != false %}
-      <div class="text-20"><span js-product-card-current-swatch-label>{{ current_variant.options[filter_type_option] }}</span><span> Filter</span></div>
-    {% endif %}
+
+
+    <div class="product-card__title-layout flex gap-sm justify-between">
+      <div class="product-card__title-container">
+        <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>{{ product.title }}</a>
+        {% if filter_type_option != false %}
+          <div class="text-20"><span js-product-card-current-swatch-label>{{ product.metafields.seed.product_card_filter_title }}</span><span> Filter</span></div>
+        {% endif %}
+      </div>
+      {% if product.metafields.seed.product_card_filter_image != blank %}
+        <div class="product-card__filter-swatch-image w-[72px] h-[72px]">
+          {% render 'lazy-image' image: product.metafields.seed.product_card_filter_image, picture_classes: 'rounded-full overflow-hidden' %}
+        </div>
+      {% endif %}
+    </div>
+
+    
     {% if product.metafields.seed.blair_plpShortDescription != blank %}
       <div class="product-card__short-description p2 mt-xxxs">{{ product.metafields.seed.blair_plpShortDescription }}</div>
     {% endif %}
@@ -66,20 +86,19 @@
       </div>
     {% elsif filter_type_option != false %}
       <div class="product-card__swatches-container mt-sm">
-        <p class="font-700">Choose from various filter tyes</p>
+        <p class="font-700">Choose from various filter types</p>
         <div class="product-card__swatches flex flex-wrap gap-sm mt-xxs">
-          {% for variant in product.variants %}
+          {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
             <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
-              data-swatch="{{ variant.options[filter_type_option] }}"  
-              data-available="{{ variant.available }}"
-              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
-              data-selected="{% if variant.options[filter_type_option] == current_variant.options[filter_type_option] %}true{% else %}false{% endif %}"
-              data-url="{{ variant.url }}"
-              js-product-card-swatch>
+              data-swatch="{{ swatch_product.metafields.seed.product_card_filter_title }}"  
+              data-available="{{ swatch_product.available }}"
+              data-price="{{ swatch_product.compare_at_price }}|{{ swatch_product.price }}" 
+              data-url="{{ swatch_product.url }}"
+              js-product-card-filter-swatch>
               <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
                 <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>
               </span>
-              <span class="font-700">{{ variant.options[filter_type_option] }}</span>
+              <span class="font-700">{{ swatch_product.metafields.seed.product_card_filter_title }}</span>
             </button>
           {% endfor %}
         </div>
