@@ -90,6 +90,7 @@ class Accordion extends HTMLElement {
 
   _expandSection(element) {
     // mark the section as "currently not hidden"
+    element.style.setProperty('--content-height', `${element.scrollHeight}px`);
     element.setAttribute('aria-hidden', false);
 
     const buttons = element.querySelectorAll('button');

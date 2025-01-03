@@ -1,3 +1,4 @@
+.product__accordion .rte p,
 .section__accordion .rte p {
     @apply my-24
 }
@@ -17,6 +18,7 @@
 }
 
 @media screen(tabletl) {
+    .product__accordion,
     .section__accordion {
         max-width: var(--max-width-desktop)
     }
