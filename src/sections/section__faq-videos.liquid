@@ -1,35 +1,47 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__image-text {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="mx-auto flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px] desktop:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }}">
-    <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
-    <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width != blank  %}{{ section.settings.text_max_width }}{% else %}unset{% endif %};">
-      {% if section.settings.title != blank %}
-        <h2 class="image-text__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
-      {% endif %}
-      {% if section.settings.subtext != blank %}
-        <p class="image-text__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
-      {% endif %}
-      {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
-        <a href="{{ section.settings.cta_url }}" class="image-text__cta {{ section.settings.cta_style }}">
-          <span class="btn__text">{{ section.settings.cta_text }}</span>
-          <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-        </a>
-      {% endif %}
+<div class="section__faq-videos {{ margins_paddings }} {{ section.settings.color }}">
+  {% if section.settings.title != blank %}
+    <h2 class="faq-videos__title {{ section.settings.title_style }} mb-md text-center px-md desktop:px-xl">{{ section.settings.title }}</h2>
+  {% endif %}
+  
+  {%- capture carousel_options -%}
+    {
+      "loop": false,
+      "autoHeight": false
+    }
+  {%- endcapture -%}
+  <s-carousel data-options='{{ carousel_options }}' class="faq-videos__carousel grid">
+    <div id="FaqVideos-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
+            {% if block.settings.youtube_id != blank %}
+              <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+              <div class='embed-container'><iframe src='https://www.youtube.com/embed/{{ block.settings.youtube_id }}' frameborder='0' allowfullscreen></iframe></div>
+            {% elsif block.settings.video != blank %}
+              <s-video data-playing="false" data-controls="true" class="faq-videos__video block relative">
+                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
+                <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
+                  <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
+                </button>
+              </s-video>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-  <div class="image-text__image {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
-    {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop %}
-  </div>
-  </div>
-
+  </s-carousel>
 </div>
 
 {% schema %}
 {
-  "name": "Image and Text",
+  "name": "FAQ Videos",
   "tag": "section",
+  "enabled_on": {
+    "templates": ["page", "blog"]
+  },
   "settings": [
     {
       "type": "header",
@@ -397,63 +409,7 @@
     },
     {
       "type": "header",
-      "content": "Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_mobile",
-      "label": "Image - Mobile"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_desktop",
-      "label": "Image - Desktop"
-    },
-    {
-      "type": "select",
-      "id": "image_position_mobile",
-      "label": "Image Position - Mobile",
-      "options": [
-        {
-          "value": "order-first",
-          "label": "Top"
-        },
-        {
-          "value": "order-last",
-          "label": "Bottom"
-        }
-      ],
-      "default": "order-last"
-    },
-    {
-      "type": "select",
-      "id": "image_position_desktop",
-      "label": "Image Position - Desktop",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "right"
-    },
-    {
-      "type": "range",
-      "id": "image_width",
-      "min": 20,
-      "max": 80,
-      "step": 5,
-      "unit": "%",
-      "label": "Image Width - Desktop",
-      "default": 50
-    },
-    {
-      "type": "header",
-      "content": "Text Content"
+      "content": "Content"
     },
     {
       "type": "text",
@@ -506,135 +462,31 @@
           "label": "s4"
         }
       ],
-      "default": "h3"
-    },
+      "default": "h4"
+    }
+  ],
+  "blocks": [
     {
-      "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "select",
-      "id": "subtext_style",
-      "label": "Subtext Style",
-      "options": [
+      "name": "Video",
+      "type": "video",
+      "settings": [
         {
-          "value": "h1",
-          "label": "h1"
+          "type": "video",
+          "id": "video",
+          "label": "Video"
         },
         {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        },
-        {
-          "value": "p1",
-          "label": "p1"
-        },
-        {
-          "value": "p2",
-          "label": "p2"
-        },
-        {
-          "value": "p3",
-          "label": "p3"
-        },
-        {
-          "value": "p4",
-          "label": "p4"
-        },
-        {
-          "value": "p5",
-          "label": "p5"
-        },
-        {
-          "value": "p6",
-          "label": "p6"
+          "type": "text",
+          "id": "youtube_id",
+          "label": "Youtube ID",
+          "info": "Overrides video input"
         }
-      ],
-      "default": "s3"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "CTA URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text"
-    },
-    {
-      "type": "select",
-      "id": "cta_style",
-      "label": "CTA Style",
-      "options": [
-        {
-          "value": "btn",
-          "label": "Default"
-        },
-        {
-          "value": "btn btn--blue-rounded",
-          "label": "Blue Rounded"
-        },
-        {
-          "value": "btn btn--white-rounded",
-          "label": "White Rounded"
-        },
-        {
-          "value": "btn btn--transparent-rounded",
-          "label": "Transparent Rounded"
-        }
-      ],
-      "default": "btn"
-    },
-    {
-      "type": "text",
-      "id": "text_max_width",
-      "label": "Text Content Max Width - Desktop",
-      "info": "Make sure to include units"
-    },
-    {
-      "type": "text",
-      "id": "max_width_desktop",
-      "label": "Section Max Width - Desktop",
-      "info": "Make sure to include units"
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Image and Text"
+      "name": "FAQ Videos"
     }
   ]
 }

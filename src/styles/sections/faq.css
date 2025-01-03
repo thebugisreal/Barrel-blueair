@@ -1,0 +1,46 @@
+/* faq topics */
+.faq-topics__grid {
+  grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
+}
+
+.faq-topics__block:focus, 
+.faq-topics__block:focus-visible {
+  @apply bg-blue
+  text-white;
+}
+
+.faq-topics__block:focus:not(:focus-visible) {
+  @apply bg-blue-light
+  text-blue;
+}
+
+@media screen(desktop) {
+  .faq-topics__grid {
+    grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
+  }
+
+  .faq-topics__block:hover {
+    @apply bg-blue
+    text-white;
+  }
+}
+
+/* faq posts */
+.faq-post__title[aria-expanded="false"]:focus,
+.faq-post__title[aria-expanded="false"]:focus-visible,
+.faq-post__title[aria-expanded="true"] {
+  @apply text-white
+  bg-blue;
+}
+
+.faq-post__title[aria-expanded="false"]:focus:not(:focus-visible) {
+  @apply text-blue
+  bg-blue-light;
+}
+
+@media screen(desktop) {
+  .faq-post__title[aria-expanded="false"]:hover {
+    @apply text-white
+    bg-blue;
+  }
+}

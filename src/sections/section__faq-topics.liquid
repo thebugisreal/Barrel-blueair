@@ -1,35 +1,32 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__image-text {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="mx-auto flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px] desktop:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }}">
-    <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
-    <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width != blank  %}{{ section.settings.text_max_width }}{% else %}unset{% endif %};">
-      {% if section.settings.title != blank %}
-        <h2 class="image-text__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
-      {% endif %}
-      {% if section.settings.subtext != blank %}
-        <p class="image-text__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
-      {% endif %}
-      {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
-        <a href="{{ section.settings.cta_url }}" class="image-text__cta {{ section.settings.cta_style }}">
-          <span class="btn__text">{{ section.settings.cta_text }}</span>
-          <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+<div class="section__faq-topics {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+  {% if section.settings.title != blank %}
+    <h2 class="faq-topics__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="faq-topics__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+    {% for block in section.blocks %}
+      {% if block.settings.topic != blank %}
+        {% assign topic_metaobject = block.settings.topic %}
+        <a href="{{ topic_metaobject.link }}" class="faq-topics__block px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
+          <div class="faq-topic__title p1 text-center">{{ topic_metaobject.title }}</div>
+          <div class="faq-topic__image">
+            {% render 'lazy-image' image: topic_metaobject.icon_image img_classes: 'h-48 w-auto' %}
+          </div>
         </a>
       {% endif %}
-    </div>
+    {% endfor %}
   </div>
-  <div class="image-text__image {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
-    {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop %}
-  </div>
-  </div>
-
 </div>
 
 {% schema %}
 {
-  "name": "Image and Text",
+  "name": "FAQ Topics",
   "tag": "section",
+  "enabled_on": {
+    "templates": ["page", "blog"]
+  },
   "settings": [
     {
       "type": "header",
@@ -356,6 +353,26 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "range",
+      "id": "num_cols_mobile",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Mobile",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "num_cols_desktop",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Desktop",
+      "default": 6
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -397,63 +414,7 @@
     },
     {
       "type": "header",
-      "content": "Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_mobile",
-      "label": "Image - Mobile"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_desktop",
-      "label": "Image - Desktop"
-    },
-    {
-      "type": "select",
-      "id": "image_position_mobile",
-      "label": "Image Position - Mobile",
-      "options": [
-        {
-          "value": "order-first",
-          "label": "Top"
-        },
-        {
-          "value": "order-last",
-          "label": "Bottom"
-        }
-      ],
-      "default": "order-last"
-    },
-    {
-      "type": "select",
-      "id": "image_position_desktop",
-      "label": "Image Position - Desktop",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "right"
-    },
-    {
-      "type": "range",
-      "id": "image_width",
-      "min": 20,
-      "max": 80,
-      "step": 5,
-      "unit": "%",
-      "label": "Image Width - Desktop",
-      "default": 50
-    },
-    {
-      "type": "header",
-      "content": "Text Content"
+      "content": "Content"
     },
     {
       "type": "text",
@@ -506,135 +467,26 @@
           "label": "s4"
         }
       ],
-      "default": "h3"
-    },
+      "default": "h4"
+    }
+  ],
+  "blocks": [
     {
-      "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "select",
-      "id": "subtext_style",
-      "label": "Subtext Style",
-      "options": [
+      "name": "Topic",
+      "type": "topic",
+      "settings": [
         {
-          "value": "h1",
-          "label": "h1"
-        },
-        {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        },
-        {
-          "value": "p1",
-          "label": "p1"
-        },
-        {
-          "value": "p2",
-          "label": "p2"
-        },
-        {
-          "value": "p3",
-          "label": "p3"
-        },
-        {
-          "value": "p4",
-          "label": "p4"
-        },
-        {
-          "value": "p5",
-          "label": "p5"
-        },
-        {
-          "value": "p6",
-          "label": "p6"
+          "type": "metaobject",
+          "metaobject_type": "faq_topic",
+          "id": "topic",
+          "label": "Topic"
         }
-      ],
-      "default": "s3"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "CTA URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text"
-    },
-    {
-      "type": "select",
-      "id": "cta_style",
-      "label": "CTA Style",
-      "options": [
-        {
-          "value": "btn",
-          "label": "Default"
-        },
-        {
-          "value": "btn btn--blue-rounded",
-          "label": "Blue Rounded"
-        },
-        {
-          "value": "btn btn--white-rounded",
-          "label": "White Rounded"
-        },
-        {
-          "value": "btn btn--transparent-rounded",
-          "label": "Transparent Rounded"
-        }
-      ],
-      "default": "btn"
-    },
-    {
-      "type": "text",
-      "id": "text_max_width",
-      "label": "Text Content Max Width - Desktop",
-      "info": "Make sure to include units"
-    },
-    {
-      "type": "text",
-      "id": "max_width_desktop",
-      "label": "Section Max Width - Desktop",
-      "info": "Make sure to include units"
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Image and Text"
+      "name": "FAQ Topics"
     }
   ]
 }
