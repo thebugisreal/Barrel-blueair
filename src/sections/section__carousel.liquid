@@ -3,8 +3,9 @@
       "spaceBetween": 12,
       "runCallbacksOnInit": true,
       "slidesPerView": {{section.settings.slides_per_view}},
-      "cssMode": true,
       "loop": false,
+      "slidesOffsetAfter": 36,
+      "slidesOffsetBefore": 36,
       "scrollbar": {
         "el": "[js-scrollbar-{{section.id}}]",
         "hide": false,
@@ -21,6 +22,10 @@
       },
       "breakpoints": {
         "1024": {
+        {% if section.settings.enable_centered_carousel %}
+          "slidesOffsetAfter": 80,
+          "slidesOffsetBefore": 80,
+        {% endif %}
           "slidesPerView": {{section.settings.slides_per_view_desktop}},
           "spaceBetween": 24,
           "navigation": {
@@ -40,8 +45,8 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% else %} tabletl:pl-xl {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
-    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %}">
+<div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
+    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
         <div class="section__carousel-text-container mx-lg mb-md tabletl:mx-0">
             {% if section.settings.title != blank %}
                 {% liquid
@@ -59,7 +64,7 @@
               {% endif %}
         </div>
         {% if section.settings.url != blank %}
-            <div class="mx-lg">
+            <div class="mx-lg tabletl:mx-0">
                 <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} {{ section.settings.cta_position_mobile }} mb-md tabletl:pb-xs tabletl:mb-lg"> 
                     <p class="p2 btn__text">{{ section.settings.url_text }}</p>
                     <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
@@ -68,7 +73,7 @@
         {% endif %}
     </header>
 
-    <div class="section__carousel-content grid grid-cols-1 ml-lg {% if section.settings.enable_centered_carousel %} tabletl:px-xl tabletl:mx-auto {% else %} tabletl:ml-auto {% endif %}">
+    <div class="section__carousel-content mx-auto grid grid-cols-1">
         <s-carousel class="block" data-options='{{carousel_options}}'>
             <div id="{{section.id}}" class="swiper" js-carousel>
                 <div class="swiper-wrapper">
@@ -198,7 +203,7 @@
                 </div>
 
                 {% comment %} Swiper Nav {% endcomment %}
-                 <div class="carousel_nav-container {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %}">
+                 <div class="carousel_nav-container mx-auto {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %} tabletl:px-xl">
                     {% case section.settings.carousel_nav %}
                     {% when 'pagination'%}
                         <div class="swiper-nav-container py-xxs flex justify-between items-center">
@@ -209,7 +214,7 @@
                             </div>
                         </div>
                     {% when 'scrollbar'%}
-                        <div class="swiper-nav-container py-xxs flex gap-md items-center">
+                        <div class="swiper-nav-container mx-auto py-xxs flex gap-md items-center">
                             <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
                             <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                             <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
@@ -829,7 +834,6 @@
             ],
             "default": "mx-auto"
         }
-        
     ],
     "blocks": [
         {

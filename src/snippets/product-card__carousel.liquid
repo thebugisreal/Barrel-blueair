@@ -1,8 +1,8 @@
-<div class="product-card__carousel h-full text-center bg-gray-athans px-30 pt-24 tabletl:pt-[50px]">
+<div class="product-card__carousel h-full text-center bg-gray-athans px-md pt-md tabletl:pt-[50px]">
     {% if product.metafields.seed.product_tags != blank %}
     <ul class="product-card__carousel-tags mb-[22px] flex justify-center">
         {% for tag in product.metafields.seed.product_tags.value %}
-            <li class="tag-small border bg-white border-gray py-[6px] px-[10px] rounded-[9999px] w-fit">{{ tag }}</li>
+            <li class="tag-small border bg-white border-gray py-xxs rounded-[9999px] w-fit">{{ tag }}</li>
         {% endfor %}
     </ul>
     {% endif %}

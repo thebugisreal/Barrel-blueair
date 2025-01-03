@@ -48,8 +48,8 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "mx-0",
-        "gutter_desktop": "tabletl:mx-xl",
+        "gutter_mobile": "px-0",
+        "gutter_desktop": "tabletl:px-xl",
         "video_embed": "",
         "enable_autoplay": false,
         "image_mobile": "shopify:\/\/shop_images\/app-media.png"

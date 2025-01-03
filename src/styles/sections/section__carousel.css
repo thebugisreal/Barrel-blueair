@@ -9,7 +9,7 @@
 .section__carousel-content .swiper-scrollbar-drag {
     @apply rounded-[0]
     bg-blue;
-  }
+}
 
 @media screen(tabletl) {
     .section__carousel-content {
@@ -17,5 +17,8 @@
     }
     .section__carousel-content .swiper-nav-container {
         @apply w-[90%]
+    }
+    .section__carousel.carousel-centered {
+        @apply px-xl
     }
 }

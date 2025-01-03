@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__hero {{ margins_paddings }} {{ section.settings.color }}">
+<div class="section__hero {{ margins_paddings }} {{ section.settings.color }}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
   <div class="hero__wrapper relative">
     {% if section.settings.image_mobile != blank %}
       <div class="hero__image">
@@ -740,6 +740,18 @@
       "type": "text",
       "id": "content_max_width_desktop",
       "label": "Content Max Width - Desktop",
+      "info": "Make sure to include units"
+    },
+    {
+      "type": "text",
+      "id": "content_max_height_mobile",
+      "label": "Content Max Height - Mobile",
+      "info": "Make sure to include units"
+    },
+    {
+      "type": "text",
+      "id": "content_max_height_desktop",
+      "label": "Content Max Height - Desktop",
       "info": "Make sure to include units"
     }
   ],
