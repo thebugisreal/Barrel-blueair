@@ -94,6 +94,7 @@
               data-available="{{ swatch_product.available }}"
               data-price="{{ swatch_product.compare_at_price }}|{{ swatch_product.price }}" 
               data-url="{{ swatch_product.url }}"
+              data-selected="{% if swatch_product.metafields.seed.product_card_filter_title == product.metafields.seed.product_card_filter_title %}true{% else %}false{% endif %}"
               js-product-card-filter-swatch>
               <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
                 <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>
