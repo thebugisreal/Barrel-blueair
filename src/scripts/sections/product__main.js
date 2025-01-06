@@ -23,17 +23,31 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
-      filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]'
+      filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
+      subscriptionContainer: '[js-subscription-container]',
+      subscriptionOffer: '[js-subscription-offer]',
+      subscriptionCustomization: '[js-subscription-customization]',
+      noSubscriptionBtn: '[js-no-subscription-btn]',
+      stickyBar: '[js-product-sticky-bar]',
+      stickyAtc: '[js-sticky-atc]',
+      stickyPrice: '[js-sticky-price]',
+      stickySelectOptionsBtn: '[js-sticky-select-options]',
+      stickyLoader: '[js-sticky-loader]',
     };
   }
 
   connectedCallback() {
     this.buttons = this.querySelectorAll(this._selectors.addToCart);
+    this.stickyPrice = document.querySelector(this._selectors.stickyPrice);
     this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
     this.prices = this.querySelectorAll(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
     this.subscription = this.querySelector(this._selectors.subscription);
+    this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
+    this.addToCart = this.querySelector(this._selectors.addToCart)
+    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this._toggleStickyBar();
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -44,6 +58,50 @@ class ProductMain extends HTMLElement {
     this._handleSubscription();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
+    this._handleSubscription();
+    this._handleStickyBar();
+  }
+
+  _handleStickyBar = () => {
+    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this.stickyAtcBtns = document.querySelectorAll(this._selectors.stickyAtc);
+    this.buttons = [...this.buttons, ...this.stickyAtcBtns];
+    this.stickySelectOptionsBtns = document.querySelectorAll(this._selectors.stickySelectOptionsBtn);
+    const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
+    this.stickyAtcClicked = false;
+
+    this._toggleStickyBar();
+    document.addEventListener('scroll', this._toggleStickyBar);
+    this.stickyAtcBtns.forEach((stickyAtc) => {
+      stickyAtc.addEventListener('click', this._stickyAtcOnClick);
+    });
+    this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
+      selectOptionsBtn.addEventListener('click', () => {
+        this.querySelector('[js-product-info]').scrollIntoView();
+      });
+    });
+  }
+
+  _toggleStickyBar = () => {
+    this.stickyBars.forEach((stickyBar) => {
+      if (this._checkVisible(this.addToCart)) {
+        stickyBar.classList.add('hidden');
+      } else {
+          stickyBar.classList.remove('hidden');
+      }
+    });
+  }
+  
+  _stickyAtcOnClick = (evt) => {
+    evt.preventDefault();
+    this.stickyAtcClicked = true;
+    this.addToCart.click();
+  }
+
+ _checkVisible(elm) {
+    var rect = elm.getBoundingClientRect();
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
   }
 
   _handleSubscription() {
@@ -284,11 +342,32 @@ class ProductMain extends HTMLElement {
       this.currentSwatchLabel.textContent = this.currentSwatch;
       this._updateImageCarousel(this.currentSwatch);
     }
-
+    this._updateStickyBar(variant)
     if (variant) {
       if (priceChange) this._updatePrice(variant);
     }
   };
+
+  _updateStickyBar(variant) {
+    if (variant) {
+      this.stickyAtcBtns.forEach((stickyAtc) => {
+        stickyAtc.classList.remove('hidden')
+      });
+      this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
+        selectOptionsBtn.classList.add('hidden')
+      });
+      this.stickyPrice.innerHTML = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`
+    } else {
+      this.stickyAtcBtns.forEach((stickyAtc) => {
+        stickyAtc.classList.add('hidden')
+      });
+      this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
+        selectOptionsBtn.classList.remove('hidden')
+      });
+      this.stickyPrice.innerHTML = ''
+    }
+
+  }
 
   _updateImageCarousel(swatchName) {
     let current_thumb_slides_count = 0
@@ -329,18 +408,24 @@ class ProductMain extends HTMLElement {
     if (variant) {
       if (variant.available) {
         this.buttons.forEach((btn) => {
-          btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+          if (btn.querySelector(this._selectors.atcText).textContent) {
+            btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+          }
           btn.removeAttribute('disabled');
         });
       } else {
         this.buttons.forEach((btn) => {
-          btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+          if (btn.querySelector(this._selectors.atcText)) {
+            btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+          }
           btn.setAttribute('disabled', '');
         });
       }
     } else {
       this.buttons.forEach((btn) => {
-        btn.querySelector(this._selectors.atcText).textContent = 'Unavailable';
+        if (btn.querySelector(this._selectors.atcText).textContent ) {
+          btn.querySelector(this._selectors.atcText).textContent = 'Unavailable';
+        }
         btn.setAttribute('disabled', '');
       });
     }
@@ -359,7 +444,6 @@ class ProductMain extends HTMLElement {
       } else {
         priceMarkup = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
       }
-
       price.innerHTML = priceMarkup;
     })
 }

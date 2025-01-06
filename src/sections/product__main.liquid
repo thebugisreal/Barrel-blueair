@@ -1,5 +1,5 @@
 {%- liquid 
-  assign current_variant = product.selected_or_first_available_variant 
+  assign current_variant = product.selected_variant 
   assign product_form_id = 'ProductForm-' | append: section.id | append: product.id
   assign master_select_id = 'MasterSelect-' | append: section.id
   assign current_swatch = ''
@@ -119,7 +119,7 @@
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information p-md desktop:px-xl" id="ProductInfo-{{ section.id }}">
+    <div class="product__information p-md desktop:px-xl" id="ProductInfo-{{ section.id }}" js-product-info>
       <div class="desktop:max-w-[var(--max-w-desktop)] desktop:mx-auto" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
         {%- comment -%}
           * Product Form
