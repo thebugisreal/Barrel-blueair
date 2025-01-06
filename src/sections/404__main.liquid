@@ -1,11 +1,14 @@
-<div class="template-404">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="link body-large">
-    {{ 'general.continue_shopping' | t }}
-  </a>
+<div class="template-404 flex justify-center mt-lg px-md tabletl:px-lg tabletl:mt-xl">
+  <div class="layout-container text-center">
+    <h1 class="h2 font-500 mb-md">
+      {{ 'templates.404.subtext' | t }}
+    </h1>
+    <h1 class="title mb-md">Oops!</h1>
+    <p class="p1 mb-md font-300">We can't seem to find the page you're looking for.</p>
+  
+    <a href="/" class="btn btn--white-rounded mx-auto">
+      <span class="btn__text">Go to Homepage</span>
+      <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+    </a>
+  </div>
 </div>
