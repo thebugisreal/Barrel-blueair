@@ -5,7 +5,7 @@
   <div class="hero__wrapper relative">
     {% if section.settings.image_mobile != blank %}
       <div class="hero__image">
-        {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop %}
+        {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover'%}
       </div>
     {% endif %}
 
