@@ -3,9 +3,26 @@
     "main": {
       "type": "product__main",
       "blocks": {
+<<<<<<< HEAD
+=======
+        "room_tag_UqfcUw": {
+          "type": "room_tag",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
+        },
+>>>>>>> c86fb88 (PDP - Finished)
         "title_bjfNAe": {
           "type": "title",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "room_tag_UqfcUw": {
           "type": "room_tag",
@@ -13,23 +30,30 @@
         },
         "short_description_FGhrqT": {
           "type": "short_description",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "star_rating_rYzLXJ": {
           "type": "star_rating",
-          "disabled": true,
-          "settings": {}
-        },
-        "spacing_QPxbGT": {
-          "type": "spacing",
           "settings": {
-            "spacing_mobile": 36,
-            "spacing_desktop": 36
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg"
           }
         },
         "product_options_GLfTKf": {
           "type": "product_options",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "spacing_e3fiec": {
           "type": "spacing",
@@ -40,22 +64,30 @@
         },
         "atc_BURfeB": {
           "type": "atc",
-          "settings": {}
-        },
-        "spacing_UJDzai": {
-          "type": "spacing",
           "settings": {
-            "spacing_mobile": 24,
-            "spacing_desktop": 40
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg"
           }
         },
         "experience_NzTf78": {
           "type": "experience",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "additional_features_H7XdFi": {
           "type": "additional_features",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "shipping_warranty_Rg4jpP": {
           "type": "shipping_warranty",
@@ -70,7 +102,12 @@
         },
         "upsells_ndPfKj": {
           "type": "upsells",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         }
       },
       "block_order": [
@@ -78,11 +115,9 @@
         "room_tag_UqfcUw",
         "short_description_FGhrqT",
         "star_rating_rYzLXJ",
-        "spacing_QPxbGT",
         "product_options_GLfTKf",
         "spacing_e3fiec",
         "atc_BURfeB",
-        "spacing_UJDzai",
         "experience_NzTf78",
         "additional_features_H7XdFi",
         "shipping_warranty_Rg4jpP",

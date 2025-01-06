@@ -78,4 +78,8 @@
   visibility: hidden;
 }
 
+.product__tabs .tab__text-content.rte p {
+  @apply my-sm
+}
+
 /* END Product__tabs Styling */

@@ -26,10 +26,16 @@
           "autoHeight": false,
           "spaceBetween": 8,
           "watchSlidesProgress": true,
+          "slidesPerView": 5,
           "navigation": {
             "enabled": true,
             "prevEl": "[js-pdp-thumb-prev]",
             "nextEl": "[js-pdp-thumb-next]"
+          },
+          "breakpoints": {
+            "1024": {
+              "slidesPerView": 10
+            }
           }
         }
       {%- endcapture -%}
@@ -57,15 +63,15 @@
               {% endunless %}
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
                   </div>
                 {% when 'video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
                   </div>
                 {% when 'external_video' %}              
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] h-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | external_video_tag }}
                   </div>
               {% endcase %}
@@ -132,23 +138,41 @@
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'room_tag' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
                 {% if product.metafields.seed.applicableFor != blank %}
-                  <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs">{{ product.metafields.seed.applicableFor }}</div>
+                  <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
                 {% endif %}
               {% when 'title' %}
+<<<<<<< HEAD
                 <h1 class="product__title h3">{{ product.title }}</h1>
                 {% if product.variants[0].title != 'Default Title' and product.options contains 'Filter'%}
                   <p class="product__short-description h5 desktop:my-xxs">{{ product.variants[0].title }} </p>
                 {% endif %}
+=======
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
+                <h1 class="product__title h3 {{ spacing }}">{{ product.title }}</h1>
+>>>>>>> c86fb88 (PDP - Finished)
               {% when 'short_description' %}
-                {% if product.metafields.seed.productHeadline1 != blank %}
-                  <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.productHeadline1 }}</p>
-                {% endif %}
-                {% if product.metafields.seed.blair_filterSupportModels != blank %}
-                  <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
-                {% endif %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
+                <div class="{{ spacing }}">
+                  {% if product.metafields.seed.productHeadline1 != blank %}
+                    <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.productHeadline1 }}</p>
+                  {% endif %}
+                  {% if product.metafields.seed.blair_filterSupportModels != blank %}
+                    <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
+                  {% endif %}
+                </div>
               {% when 'star_rating' %}
-                <div class="product__star-rating mt-sm">reviews</div>
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
+                <div class="product__star-rating mt-sm {{ spacing }}">reviews</div>
               {% when 'filter_options' %}
                 {% if product.metafields.seed.product_card_filter_products != blank %}
                   <div class="product__filter-options my-sm">
@@ -164,45 +188,53 @@
                   </div>
                 {% endif %}
               {% when 'product_options' %}
-                {%- comment -%} Product Variant Master Select {%- endcomment -%}
-                {% render 'master-variant-select',
-                variants: product.variants,
-                id: master_select_id,
-                current_variant: current_variant
-                %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
+                <div class="{{ spacing }}">
+                  {%- comment -%} Product Variant Master Select {%- endcomment -%}
+                  {% render 'master-variant-select',
+                  variants: product.variants,
+                  id: master_select_id,
+                  current_variant: current_variant
+                  %}
 
-                {% unless product.has_only_default_variant %}
-                <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
-                  {% for option in product.options_with_values %}
-                    {% render 'product-option-selector' 
-                      option: option
-                      type: 'swatch'
-                      section_id: section.id
-                      product_id: product.id
-                      current_variant: current_variant
-                    %}
-                  {% endfor %}
-                </product-options>
-                {% endunless %}
+                  {% unless product.has_only_default_variant %}
+                  <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
+                    {% for option in product.options_with_values %}
+                      {% render 'product-option-selector' 
+                        option: option
+                        type: 'swatch'
+                        section_id: section.id
+                        product_id: product.id
+                        current_variant: current_variant
+                      %}
+                    {% endfor %}
+                  </product-options>
+                  {% endunless %}
 
-                {% liquid 
-                  assign enable_subscription = false
-                  if product.metafields.seed.subscription != blank
-                    assign subscription = product.metafields.seed.subscription.value
-                    for filter_subscription in subscription.filter_subscriptions.value
-                      if filter_subscription.variants[0].selling_plan_allocations.size > 0
-                        assign enable_subscription = true
-                        break
-                      endif
-                    endfor
-                  endif
-                %}
-                {% if enable_subscription %}
-                  {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
-                {% endif %}
+                  {% liquid 
+                    assign enable_subscription = false
+                    if product.metafields.seed.subscription != blank
+                      assign subscription = product.metafields.seed.subscription.value
+                      for filter_subscription in subscription.filter_subscriptions.value
+                        if filter_subscription.variants[0].selling_plan_allocations.size > 0
+                          assign enable_subscription = true
+                          break
+                        endif
+                      endfor
+                    endif
+                  %}
+                  {% if enable_subscription %}
+                    {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
+                  {% endif %}
+                </div>
               {% when 'atc' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
                 <button 
-                  class="product__atc btn btn--blue-rounded relative"
+                  class="product__atc btn btn--blue-rounded relative {{ spacing }}"
                   type="submit" 
                   {% unless current_variant.available %} disabled {% endunless %}
                   js-add-to-cart>
@@ -221,33 +253,45 @@
                 </button>
                 <p class="hidden p2" js-error-message></p>
               {% when 'experience' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
                 {% if product.metafields.seed.experience_icons != blank or product.metafields.seed.experience_description != blank %}
-                  <div class="product__experience py-md border-t border-gray">
-                    {% if product.metafields.seed.experience_heading != blank %}
-                      <div class="product-experience__heading s2 mb-sm desktop:mb-md">
-                        {{ product.metafields.seed.experience_heading }}
+                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
+                    <div class="accordion-item accordion-item product__experience border-t border-gray" js-accordion-item>
+                      <button class="accordion-header py-md w-full flex justify-between items-center" type="button" aria-expanded="true" aria-controls="accordionID" js-accordion-header>
+                        {% if product.metafields.seed.experience_heading != blank %}
+                          <span class="s2">{{ product.metafields.seed.experience_heading }}</span>
+                        {% endif %}
+                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
+                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
+                      </button>
+                      <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
+                        {% if product.metafields.seed.experience_description != blank %}
+                          <div class="product-experience__description rte p4">
+                            {{ product.metafields.seed.experience_description | metafield_tag }}
+                          </div>
+                        {% endif %}
+                        {% if product.metafields.seed.experience_icons != blank %}
+                          <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md desktop:gap-x-sm">
+                            {% for icon_object in product.metafields.seed.experience_icons.value %}
+                              <li class="product-experience__icon flex flex-col items-center gap-xs">
+                                <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                                <div class="p4 text-center">{{ icon_object.text }}</div>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
                       </div>
-                    {% endif %}
-                    {% if product.metafields.seed.experience_description != blank %}
-                      <div class="product-experience__description rte p4">
-                        {{ product.metafields.seed.experience_description | metafield_tag }}
-                      </div>
-                    {% endif %}
-                    {% if product.metafields.seed.experience_icons != blank %}
-                      <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md desktop:gap-x-sm">
-                        {% for icon_object in product.metafields.seed.experience_icons.value %}
-                          <li class="product-experience__icon flex flex-col items-center gap-xs">
-                            <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                            <div class="p4 text-center">{{ icon_object.text }}</div>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% endif %}
-                  </div>
+                    </div>
+                  </s-accordion>
                 {% endif %}
               {% when 'additional_features' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
                 {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifiConnectivity != blank %}
-                  <s-accordion data-manual-collapse="true" js-accordion>
+                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductAdditionalFeatures" js-accordion-header>
                         <span class="s2">Additional Features</span>
@@ -292,8 +336,11 @@
                   </s-accordion>
                 {% endif %}
               {% when 'shipping_warranty' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
                 {% if block.settings.icon_1_image != blank %}
-                  <s-accordion data-manual-collapse="true" js-accordion>
+                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
                         <span class="s2">Shipping & Warranty</span>
@@ -316,8 +363,11 @@
                   </s-accordion>
                 {% endif %}
               {% when 'upsells' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {% endcapture %}
                 {% if product.metafields.seed.upsells != blank %}
-                  <div class="product__upsells py-md border-t border-gray">
+                  <div class="product__upsells py-md border-t border-gray {{ spacing }}">
                     {% if product.metafields.seed.upsells_heading != blank %}
                       <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
                     {% endif %}
@@ -402,8 +452,6 @@
                     </div>
                   </div>
                 {% endif %}
-              {% when 'spacing' %}
-                <div class="product__spacing w-full h-[var(--spacing-mobile)] desktop:h-[var(--spacing-desktop)]" style="--spacing-mobile: {{ block.settings.spacing_mobile | default: 0 }}px; --spacing-desktop: {{ block.settings.spacing_desktop | default: 0 }}px;"></div>
             {% endcase %}
           {% endfor %}
         {%- endform -%}
@@ -557,23 +605,853 @@
   "blocks": [
     {
       "name": "Room Size Tag",
-      "type": "room_tag"
+      "type": "room_tag",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Title",
-      "type": "title"
+      "type": "title",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Short Description",
-      "type": "short_description"
+      "type": "short_description",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Star Rating",
-      "type": "star_rating"
+      "type": "star_rating",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Product Options",
-      "type": "product_options"
+      "type": "product_options",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Filter Options",
@@ -581,20 +1459,682 @@
     },
     {
       "name": "ATC Button",
-      "type": "atc"
+      "type": "atc",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Experience",
-      "type": "experience"
+      "type": "experience",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Additional Features",
-      "type": "additional_features"
+      "type": "additional_features",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
     },
     {
       "name": "Shipping & Warranty",
       "type": "shipping_warranty",
       "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        },
         {
           "type": "header",
           "content": "Icon 1"
@@ -641,21 +2181,171 @@
     },
     {
       "name": "Upsells",
-      "type": "upsells"
-    },
-    {
-      "name": "Spacing",
-      "type": "spacing",
+      "type": "upsells",
       "settings": [
         {
-          "type": "number",
-          "id": "spacing_mobile",
-          "label": "Spacing (px) - Mobile"
+          "type": "header",
+          "content": "Layout"
         },
         {
-          "type": "number",
-          "id": "spacing_desktop",
-          "label": "Spacing (px) - Desktop"
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
         }
       ]
     }
