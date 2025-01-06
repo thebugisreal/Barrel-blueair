@@ -255,6 +255,7 @@
                   {{ section | escape }}
                 </button>
               {% endfor %}
+              
               {% comment %}
               <a href="{{routes.account_logout_url}}" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
               {% endcomment %}
@@ -290,6 +291,7 @@
             </label>
           </li>                          
         {%- endfor -%}
+
         {% comment %}
         <a href="{{routes.account_logout_url}}" class="account-section__label flex justify-start items-center gap-xs p-sm">Sign Out</a>
         {% endcomment %}
