@@ -7,26 +7,36 @@
   {% endif %}
   <s-accordion class="faq-tagged-posts__accordion block" data-manual-collapse="true"  js-accordion>
     {% if template.name == 'page' %}
-      {% for article in section.settings.blog.articles %}
-        {% if article.tags contains section.settings.tag %}
-          <div class="accordion-item faq-tagged-posts__post" js-accordion-item>
-            <button class="accordion-header faq-post__title bg-blue-light mt-[1px] p1 p-sm w-full flex justify-between items-center gap-md" aria-expanded="false" aria-controls="accordion-{{ section.id }}-{{ forloop.index0 }}" js-accordion-header>
-              <span>{{ article.title }}</span>
-              <span class="accordion-icon--plus p-xxxs">+</span>
-              <span class="accordion-icon--minus p-xxxs">-</span>
-            </button>
-            <div id="accordion-{{ section.id }}-{{ forloop.index0 }}" class="accordion-content faq-post__content" aria-hidden="true" js-accordion-content>
-              <div class="rte p-md">
-                {{ article.content }}
-              </div>  
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+      {% assign blog_articles = section.settings.blog.articles %}
     {% else %}
-
+      {% assign blog_articles = blog.articles %}
     {% endif %}
-  </s-accordion>  
+    {% assign articles_count = 0 %}
+    {% for article in blog_articles %}
+      {% if article.tags contains section.settings.tag %}
+        {% assign articles_count = articles_count | plus: 1 %}
+        <div class="accordion-item faq-tagged-posts__post {% if articles_count > 5 %}hidden{% endif %}" js-accordion-item>
+          <button class="accordion-header faq-post__title bg-blue-light mt-[1px] p1 p-sm w-full flex justify-between items-center gap-md" aria-expanded="false" aria-controls="accordion-{{ section.id }}-{{ articles_count }}" js-accordion-header>
+            <span>{{ article.title }}</span>
+            <span class="accordion-icon--plus p-xxxs">+</span>
+            <span class="accordion-icon--minus p-xxxs">-</span>
+          </button>
+          <div id="accordion-{{ section.id }}-{{ articles_count }}" class="accordion-content faq-post__content" aria-hidden="true" js-accordion-content>
+            <div class="rte p-md">
+              {{ article.content }}
+            </div>  
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </s-accordion>
+
+  {% if articles_count > 5 %}
+    <button class="faq-tagged-posts__load-more-btn btn btn--blue-rounded mx-auto mt-lg" js-load-more-btn>
+      <span class="btn__text">Load More Questions</span>
+      <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+    </button>
+  {% endif %}
 </faq-posts>
 
 {% schema %}

@@ -16,7 +16,7 @@
     <div id="FaqVideos-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
       <div class="swiper-wrapper">
         {% for block in section.blocks %}
-          <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
+          <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[21%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
             {% if block.settings.youtube_id != blank %}
               <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
               <div class='embed-container'><iframe src='https://www.youtube.com/embed/{{ block.settings.youtube_id }}' frameborder='0' allowfullscreen></iframe></div>
@@ -40,7 +40,7 @@
   "name": "FAQ Videos",
   "tag": "section",
   "enabled_on": {
-    "templates": ["page", "blog"]
+    "templates": ["blog"]
   },
   "settings": [
     {

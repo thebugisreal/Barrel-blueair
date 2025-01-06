@@ -1,43 +1,24 @@
-{% paginate blog.articles by 5 %}
-  {% capture margins_paddings %}
-    {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
-  {% endcapture %}
-  <faq-posts class="section__faq-all-posts block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl" data-type="all">
-    {% if section.settings.title != blank %}
-      <h2 class="faq-all-posts__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
-    {% endif %}
-    <s-accordion class="faq-all-posts__accordion block" data-manual-collapse="true"  js-accordion>
-      {% for article in blog.articles %}
-        <div class="accordion-item faq-all-posts__post" js-accordion-item>
-          <button class="accordion-header faq-post__title bg-blue-light mt-[1px] p1 p-sm w-full flex justify-between items-center gap-md" aria-expanded="false" aria-controls="accordion-{{ section.id }}-{{ paginate.current_page }}-{{ forloop.index0 }}" js-accordion-header>
-            <span>{{ article.title }}</span>
-            <span class="accordion-icon--plus p-xxxs">+</span>
-            <span class="accordion-icon--minus p-xxxs">-</span>
-          </button>
-          <div id="accordion-{{ section.id }}-{{ paginate.current_page }}-{{ forloop.index0 }}" class="accordion-content faq-post__content" aria-hidden="true" js-accordion-content>
-            <div class="rte p-md">
-              {{ article.content }}
-            </div>  
-          </div>
-        </div>
-      {% endfor %}
-    </s-accordion>
-
-    {% if paginate.next.url %}
-      <button class="faq-all-posts__load-more-btn btn btn--blue-rounded mx-auto mt-lg" data-url="{{ paginate.next.url }}" js-load-more-btn>
-        <span class="btn__text">Load More Questions</span>
-        <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-      </button>
-    {% endif %}
-  </faq-posts>
-{% endpaginate %}
+{% capture margins_paddings %}
+  {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+<div class="section__faq-cta {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.side_margins %}mx-md px-md desktop:mx-xl desktop:px-[56px]{% else %}px-md desktop:px-xl{% endif %}">
+  {% if section.settings.title != blank %}
+    <h2 class="faq-cta__title {{ section.settings.title_style }} mb-32 text-center">{{ section.settings.title }}</h2>
+  {% endif %}
+  {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
+    <a href="{{ section.settings.cta_url }}" class="faq-cta__cta-button mx-auto {{ section.settings.cta_style }}">
+      <span class="btn__text">{{ section.settings.cta_text }}</span>
+      <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+    </a>
+  {% endif %}
+</div>
 
 {% schema %}
 {
-  "name": "FAQ All Posts",
+  "name": "FAQ CTA",
   "tag": "section",
   "enabled_on": {
-    "templates": ["blog"]
+    "templates": ["page", "blog", "search"]
   },
   "settings": [
     {
@@ -365,6 +346,11 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "checkbox",
+      "id": "side_margins",
+      "label": "Show side margins"
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -376,6 +362,10 @@
         {
           "value": "bg-white text-blue",
           "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue text-white none-color-revert",
+          "label": "Revert (blue bg & white text)"
         },
         {
           "value": "bg-blue-sky text-blue",
@@ -402,7 +392,7 @@
           "label": "Gray"
         }
       ],
-      "default": "bg-white text-blue"
+      "default": "bg-blue text-white none-color-revert"
     },
     {
       "type": "header",
@@ -460,11 +450,45 @@
         }
       ],
       "default": "h4"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "value": "btn",
+          "label": "Default"
+        },
+        {
+          "value": "btn btn--blue-rounded",
+          "label": "Blue Rounded"
+        },
+        {
+          "value": "btn btn--white-rounded",
+          "label": "White Rounded"
+        },
+        {
+          "value": "btn btn--transparent-rounded",
+          "label": "Transparent Rounded"
+        }
+      ],
+      "default": "btn btn--transparent-rounded"
     }
   ],
   "presets": [
     {
-      "name": "FAQ All Posts"
+      "name": "FAQ CTA"
     }
   ]
 }
