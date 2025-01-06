@@ -71,7 +71,8 @@
 
   .btn--blue-rounded:focus {
     @apply text-blue
-    bg-white;
+    bg-white
+    border-white;
   }
 
   .btn--white-rounded:focus {
@@ -92,12 +93,14 @@
 
   .btn--blue-rounded:focus:not(:focus-visible) {
     @apply text-white
-    bg-blue;
+    bg-blue
+    border-blue;
   }
 
   .btn--blue-rounded:focus:not(:focus-visible) .btn__arrow {
     @apply text-blue
-    bg-white;
+    bg-white
+    border-white;
   }
 
   .btn--white-rounded:focus:not(:focus-visible) {
@@ -118,7 +121,8 @@
 
   .btn--blue-rounded:focus-visible {
     @apply text-blue
-    bg-white;
+    bg-white
+    border-white;
   }
 
   .btn--white-rounded:focus-visible {
@@ -176,7 +180,8 @@
 
     .btn--blue-rounded:hover {
       @apply text-blue
-      bg-white;
+      bg-white
+      border-white;
     }
 
     .btn--white-rounded:hover {
