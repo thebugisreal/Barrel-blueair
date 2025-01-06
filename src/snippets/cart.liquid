@@ -145,116 +145,111 @@
             </div>
             {% comment %} END Cart Items  {% endcomment %}
 
-            {% comment %} Gift with Purchases {% endcomment %}
-            {% if settings.gwp1 != blank or settings.gwp2 != blank %}
-              {% assign gwp_1_variant = settings.gwp1.variants[0] %}
-              {% assign gwp_2_variant = settings.gwp2.variants[0] %}
-
-              
-              {% unless cart_variants contains gwp_1_variant.id and cart_variants contains gwp_2_variant.id %}
-                {%- capture gwp_carousel_options -%}
-                  {
-                    "slidesPerView": 1,
-                    "pagination": {
-                      "el": ".swiper-gwp-pagination",
-                      "type": "fraction"
-                    },
-                    "navigation": {
-                      "nextEl": ".swiper-gwp-next",
-                      "prevEl": ".swiper-gwp-prev"
-                    }
-                  }
-                {%- endcapture -%}
-                <div class="cart-drawer__gwp-container my-lg">
-                  <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
-                      <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
-                        <div class="flex justify-between items-center mb-md">
-                          <h1 class="cart-drawer-gwp__title s1 font-900">Select Your Free Gift</h1>
-                          <div class="swiper-nav-container flex gap-xxs items-center">
-                            <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
-                            <div class="swiper-gwp-pagination w-fit p6"></div>
-                            <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
-                          </div>
-                        </div>
-
-                        <div class="swiper-wrapper">
-                          {% unless cart_variants contains gwp_1_variant.id %}
-                            {% if settings.gwp1 != blank %}
-                              <div class="swiper-slide" js-carousel-slide>
-                                {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-
-                          {% unless cart_variants contains gwp_2_variant.id %}
-                            {% if settings.gwp2 != blank %}
-                              <div class="swiper-slide" js-carousel-slide>
-                                {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-                        </div>
-                      </div>
-                  </s-carousel>
-                </div>
-              {% endunless %}
-            {% endif %}
-            {% comment %} END Gift with Purchases {% endcomment %}
-
             {% comment %} Upsell Products {% endcomment %}
-            {% if settings.upsell_1 != blank or settings.upsell_2 != blank %}
-              {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
-              {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
+            {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
+            {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
 
-              {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}   
-                {%- capture upsell_carousel_options -%}
-                  {
-                    "slidesPerView": 1,
-                    "pagination": {
-                      "el": ".swiper-upsell-pagination",
-                      "type": "fraction"
-                    },
-                    "navigation": {
-                      "nextEl": ".swiper-upsell-next",
-                      "prevEl": ".swiper-upsell-prev"
-                    }
+            {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}   
+              {%- capture upsell_carousel_options -%}
+                {
+                  "slidesPerView": 1,
+                  "pagination": {
+                    "el": ".swiper-upsell-pagination",
+                    "type": "fraction"
+                  },
+                  "navigation": {
+                    "nextEl": ".swiper-upsell-next",
+                    "prevEl": ".swiper-upsell-prev"
                   }
-                {%- endcapture -%}
-                <div class="cart-drawer__upsell-container my-lg">
-                  <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
-                      <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
-                        <div class="flex justify-between items-center mb-md">
-                          <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
-                          <div class="swiper-nav-container flex gap-xxs items-center">
-                            <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
-                            <div class="swiper-upsell-pagination w-fit p6"></div>
-                            <div class="swiper-upsell-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
-                          </div>
-                        </div>
-
-                        <div class="swiper-wrapper">
-                          {% unless cart_variants contains upsell_1_variant.id %}
-                            {% if settings.upsell_1 != blank %}
-                              <div class="swiper-slide" js-carousel-slide>
-                                {% render 'product-card__upsell' product:settings.upsell_1, section_id: section.id %}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-
-                          {% unless cart_variants contains upsell_2_variant.id %}
-                            {% if settings.upsell_2 != blank %}
-                              <div class="swiper-slide" js-carousel-slide>
-                                {% render 'product-card__upsell' product:settings.upsell_2, section_id: section.id%}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
+                }
+              {%- endcapture -%}
+              <div class="cart-drawer__upsell-container my-lg">
+                <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
+                    <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
+                      <div class="flex justify-between items-center mb-md">
+                        <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
+                        <div class="swiper-nav-container flex gap-xxs items-center">
+                          <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                          <div class="swiper-upsell-pagination w-fit p6"></div>
+                          <div class="swiper-upsell-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
                         </div>
                       </div>
-                  </s-carousel>
-                </div>
-              {% endunless %}
-            {% endif %}
+
+                      <div class="swiper-wrapper">
+                        {% unless cart_variants contains upsell_1_variant.id %}
+                          {% if settings.upsell_1 != blank %}
+                            <div class="swiper-slide" js-carousel-slide>
+                              {% render 'product-card__upsell' product:settings.upsell_1, section_id: section.id %}
+                            </div>
+                          {% endif %}
+                        {% endunless %}
+
+                        {% unless cart_variants contains upsell_2_variant.id %}
+                          {% if settings.upsell_2 != blank %}
+                            <div class="swiper-slide" js-carousel-slide>
+                              {% render 'product-card__upsell' product:settings.upsell_2, section_id: section.id%}
+                            </div>
+                          {% endif %}
+                        {% endunless %}
+                      </div>
+                    </div>
+                </s-carousel>
+              </div>
+            {% endunless %}
             {% comment %} END Upsell Products {% endcomment %}
+
+            {% comment %} Gift with Purchases {% endcomment %}
+            {% assign gwp_1_variant = settings.gwp1.variants[0] %}
+            {% assign gwp_2_variant = settings.gwp2.variants[0] %}
+
+            {% unless cart_variants contains gwp_1_variant.id and cart_variants contains gwp_2_variant.id %}
+              {%- capture gwp_carousel_options -%}
+                {
+                  "slidesPerView": 1,
+                  "pagination": {
+                    "el": ".swiper-gwp-pagination",
+                    "type": "fraction"
+                  },
+                  "navigation": {
+                    "nextEl": ".swiper-gwp-next",
+                    "prevEl": ".swiper-gwp-prev"
+                  }
+                }
+              {%- endcapture -%}
+              <div class="cart-drawer__gwp-container my-lg">
+                <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
+                    <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
+                      <div class="flex justify-between items-center mb-md">
+                        <h1 class="cart-drawer-gwp__title s1 font-900">Select Your Free Gift</h1>
+                        <div class="swiper-nav-container flex gap-xxs items-center">
+                          <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                          <div class="swiper-gwp-pagination w-fit p6"></div>
+                          <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-wrapper">
+                        {% unless cart_variants contains gwp_1_variant.id %}
+                          {% if settings.gwp1 != blank %}
+                            <div class="swiper-slide" js-carousel-slide>
+                              {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
+                            </div>
+                          {% endif %}
+                        {% endunless %}
+
+                        {% unless cart_variants contains gwp_2_variant.id %}
+                          {% if settings.gwp2 != blank %}
+                            <div class="swiper-slide" js-carousel-slide>
+                              {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
+                            </div>
+                          {% endif %}
+                        {% endunless %}
+                      </div>
+                    </div>
+                </s-carousel>
+              </div>
+            {% endunless %}
+            {% comment %} END Gift with Purchases {% endcomment %}
           {% endif %}
         </div>
         <div id="CartDrawer-CartErrors" role="alert"></div>

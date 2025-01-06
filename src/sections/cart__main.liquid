@@ -7,7 +7,7 @@
   <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
     <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}" js-cart-page-contents> 
       <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl">
-        <h2 class="font-900 text-center mb-sm">Your Cart</h2>
+        <h2 class="font-900 text-center mb-sm tabletl:mb-lg">Your Cart</h2>
             {% comment %} Shipping Threshold {% endcomment %}
             {% if cart != empty and settings.shipping_threshold_enabled %}
               {% render 'cart--shipping-threshold' %}
@@ -20,7 +20,7 @@
         {%- else -%}
           <div class="tabletl:flex tabletl:gap-xxxl">
             {% comment %} Cart Items  {% endcomment %}
-              <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-1/2">
+              <div class="cart__items-wrapper flex flex-col gap-md tabletl:gap-xxl tabletl:w-1/2">
                 {%- for item in cart.items -%}
                   <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between" js-cart-item>
                     <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
