@@ -4,7 +4,6 @@ class ProductRecommendations extends HTMLElement {
     const handleIntersection = (entries, observer) => {
       if (!entries[0].isIntersecting) return;
       observer.unobserve(this);
-      console.log('this.dataset.url', this.dataset.url)
       fetch(this.dataset.url)
         .then(response => response.text())
         .then(text => {
