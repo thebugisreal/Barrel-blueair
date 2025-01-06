@@ -38,10 +38,12 @@ class Account extends HTMLElement {
   }
 
   _setupKlaviyo() {
-    this.querySelector('.klaviyo_form_trigger').addEventListener('click', function () {
-      window._klOnsite = window._klOnsite || []; 
-      window._klOnsite.push(['openForm', this.dataset.formId]);
-    });
+    if (this.querySelector('.klaviyo_form_trigger')) {
+      this.querySelector('.klaviyo_form_trigger').addEventListener('click', function () {
+        window._klOnsite = window._klOnsite || [];
+        window._klOnsite.push(['openForm', 'UhyuJV']);
+      });
+    }
   }
 
   _setupCountries() {

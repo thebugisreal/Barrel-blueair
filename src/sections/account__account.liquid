@@ -108,24 +108,6 @@
       </button>
     </div>            
   </div>
-
-  <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Payment Method</h4>
-    <div class="mt-md grid gap-md desktop:grid-cols-2">
-      <div class="account-content bg-white min-h-[225px] flex flex-col">
-        <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-          <p class="s1">Primary Method</p>
-          <button class="p1 link">Edit</button>
-        </div>
-        <div class="account__rte h-full p-md p2">
-        </div>
-      </div>
-      <button class="account-content__add account-conent--bordered text-center text-blue bg-tranparent p-md flex justify-center items-center gap-xxs row-start-1 desktop:row-auto desktop:min-h-[225px]">
-        <p>Add New Payment Method</p>
-        <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
-      </button>
-    </div>            
-  </div>
 {% endcapture %}
 
 {% comment %} 
@@ -228,7 +210,7 @@
   </div>
 {% endcapture %}
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md">
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-id="{{ customer.id }}">
   <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl">
     <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
       <div class="bg-blue text-white text-center p-sm">
@@ -663,6 +645,9 @@
   </s-modal>
 </s-account>
 
+{% if section.settings.klaviyo_popup != blank %}
+  {{ section.settings.klaviyo_popup }}
+{% endif %}
 
 {% schema %}
 {
@@ -674,31 +659,26 @@
     },
     {
       "type": "text",
-      "id": "form_id",
-      "label": "Klaviyo Form ID",
-      "default": "X7WGfn"
-    },
-    {
-      "type": "text",
       "id": "newsletter_heading",
       "label": "Newsletter Heading",
-      "default": "Join Our Newsletter"
+      "info": "Replaces current heading when user is subscribed"
     },
     {
       "type": "textarea",
       "id": "newsletter_text",
       "label": "Newsletter Text",
-      "default": "Hit subscribe, if you would like to receive marketing communications about Blueair via email."
+      "info": "Replaces current text when user is subscribed"
     },
     {
       "type": "url",
       "id": "newsletter_cta_url",
-      "label": "CTA URL"
+      "label": "CTA URL",
+      "info": "Replaces current CTA when user is subscribed"
     },
     {
       "type": "text",
       "id": "newsletter_cta_text",
-      "label": "CTA Text"
+      "label": "CTA Text",
     },
     {
       "type": "header",
