@@ -1,5 +1,5 @@
 {%- liquid 
-  assign current_variant = product.selected_variant 
+  assign current_variant = product.selected_or_first_available_variant
   assign atc_disabled = false
   assign atc_text = ''
   assign options_select_required = false
