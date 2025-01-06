@@ -23,6 +23,9 @@
       "breakpoints": {
         "1024": {
         {% if section.settings.enable_centered_carousel %}
+          "slidesOffsetAfter": 0,
+          "slidesOffsetBefore": 0,
+        {% else %}
           "slidesOffsetAfter": 80,
           "slidesOffsetBefore": 80,
         {% endif %}
@@ -57,15 +60,15 @@
                         assign title_tag = section.settings.title_style
                     endif
                 %}
-                <{{ title_tag }} class="section__carousel-title">{{ section.settings.title }}</{{ title_tag }}>
+                <{{ title_tag }} class="section__carousel-title {{ section.settings.title_alignment_mobile }} {{ section.settings.title_alignment_desktop }}">{{ section.settings.title }}</{{ title_tag }}>
             {% endif %}
             {% if section.settings.subtext != blank %}
                 <p class="section__carousel-subtext {{ section.settings.subtext_style }} mt-xxxs">{{ section.settings.subtext }}</p>
               {% endif %}
         </div>
         {% if section.settings.url != blank %}
-            <div class="mx-lg tabletl:mx-0">
-                <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} {{ section.settings.cta_position_mobile }} mb-md tabletl:pb-xs tabletl:mb-lg"> 
+            <div class="flex mx-lg {{ section.settings.cta_position_mobile }} tabletl:mx-0 {{ section.settings.cta_position_desktop }}">
+                <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mb-md tabletl:mb-lg"> 
                     <p class="p2 btn__text">{{ section.settings.url_text }}</p>
                     <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
                 </a>
@@ -73,7 +76,7 @@
         {% endif %}
     </header>
 
-    <div class="section__carousel-content mx-auto grid grid-cols-1">
+    <div class="section__carousel-content mx-auto grid grid-cols-1 {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% endif %}">
         <s-carousel class="block" data-options='{{carousel_options}}'>
             <div id="{{section.id}}" class="swiper" js-carousel>
                 <div class="swiper-wrapper">
@@ -704,6 +707,46 @@
             "default": "h2"
         },
         {
+            "type": "select",
+            "id": "title_alignment_mobile",
+            "label": "Title Alignment - Mobile",
+            "options": [
+                {
+                    "label": "left",
+                    "value": "text-left"
+                },
+                {
+                    "label": "center",
+                    "value": "text-center"
+                },
+                {
+                    "label": "right",
+                    "value": "text-right"
+                }
+            ],
+            "default": "text-left"
+        },
+        {
+            "type": "select",
+            "id": "title_alignment_desktop",
+            "label": "Title Alignment - Desktop",
+            "options": [
+                {
+                    "label": "left",
+                    "value": "tabletl:text-left"
+                },
+                {
+                    "label": "center",
+                    "value": "tabletl:text-center"
+                },
+                {
+                    "label": "right",
+                    "value": "tabletl:text-right"
+                }
+            ],
+            "default": "tabletl:text-center"
+        },
+        {
             "type": "textarea",
             "id": "subtext",
             "label": "Subtext"
@@ -821,18 +864,38 @@
             "options": [
                 {
                     "label": "left",
-                    "value": "mr-auto"
+                    "value": "justify-start"
                 },
                 {
                     "label": "center",
-                    "value": "mx-auto"
+                    "value": "justify-center"
                 },
                 {
-                    "label": "left",
-                    "value": "ml-auto"
+                    "label": "right",
+                    "value": "justify-end"
                 }
             ],
-            "default": "mx-auto"
+            "default": "justify-center"
+        },
+        {
+            "type": "select",
+            "id": "cta_position_desktop",
+            "label": "CTA Postion - Desktop",
+            "options": [
+                {
+                    "label": "left",
+                    "value": "tabletl:justify-start"
+                },
+                {
+                    "label": "center",
+                    "value": "tabletl:justify-center"
+                },
+                {
+                    "label": "right",
+                    "value": "tabletl:justify-end"
+                }
+            ],
+            "default": "tabletl:justify-center"
         }
     ],
     "blocks": [
