@@ -11,10 +11,6 @@ a.article-card__content .article-card__image img{
         @apply scale-110
     }
 
-    a.article-card__content:hover .article-card__title {
-        @apply underline
-    }
-
     .article__header-content {
         max-width: var(--max-width-desktop)
     }

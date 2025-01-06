@@ -2,7 +2,7 @@
   {% assign first_article = articles[blog.metafields.seed.featured_article] %}
 
   <div class="blog mb-xl tabletl:px-xl">
-    <h1 class="blog__title text-center mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
+    <h1 class="blog__title text-center h2 mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
     {% if first_article != blank %}
       <div class="blog__first-article py-xs my-lg tabletl:py-0 tabletl:my-xxl">
         <p class="s1 hidden tabletl:block tabletl:mb-sm">Featured</p>
