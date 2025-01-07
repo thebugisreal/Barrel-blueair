@@ -1,27 +1,29 @@
-{%- capture recommendation_carousel_options -%}
-  {
-    "slidesPerView": 1.4,
-    "spaceBetween": 16,
-    "cssMode": true,
-    "loop": false,
-    "breakpoints": {
-      "1024": {
-        "spaceBetween": 24
-      }
-    }
-  }
-{%- endcapture -%}
-
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
 <product-recommendations class="product-recommendations {{ margins_paddings }} block {{ section.settings.color }} tabletl:px-xl"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent={{ section.settings.intent }}">
   {% if recommendations.performed and recommendations.products_count > 0 %}
+    {%- capture recommendation_carousel_options -%}
+      {
+        "slidesPerView": 1.4,
+        "spaceBetween": 16,
+        "loop": false,
+        "slidesOffsetAfter": 36,
+        "slidesOffsetBefore": 36,
+        "breakpoints": {
+          "1024": {
+            "slidesOffsetAfter": 80,
+            "slidesOffsetBefore": 80,
+            "spaceBetween": 24
+          }
+        }
+      }
+    {%- endcapture -%}
       {% if section.settings.title != blank %}
         <h1 class="product-recommendations__title h3 text-center mb-lg tabletl:mb-xxl">{{ section.settings.title }}</h1>
       {% endif %}
-      <s-carousel class="product-recommendations__products grid pl-lg" data-options='{{recommendation_carousel_options}}' data-init="belowDesktop">
+      <s-carousel class="product-recommendations__products grid" data-options='{{recommendation_carousel_options}}' data-init="belowDesktop">
         <div id="ProductRecommendation-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
           <div class="product-recommendations__products swiper-wrapper tabletl:grid tabletl:grid-cols-3 tabletl:gap-md">
             {% for recommendation in recommendations.products %}
