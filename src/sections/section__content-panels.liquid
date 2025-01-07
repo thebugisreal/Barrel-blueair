@@ -85,6 +85,16 @@
     <div class="content-panels__grid grid gap-x-sm gap-y-md px-md desktop:px-xl desktop:gap-md">
       {% for block in section.blocks %}
         {% if block.type == 'customization' %}
+          {%  liquid 
+            case block.settings.content_position
+              when 'items-start'
+                assign title_alignment = 'text-left'
+              when 'items-center'
+                assign title_alignment = 'text-center'
+              when 'items-end'
+                assign title_alignment = 'text-right'
+            endcase
+          %}
           <div class="content-panels__block content-panels__block--customization flex flex-col {{ block.settings.content_spacing }} {% if block.settings.enable_padding %} p-xs {% endif %} {% if block.settings.image_position == 'order-last' %} pb-0 {% endif %} {{ block.settings.content_position }} {{ block.settings.color }}">
             {% if block.settings.image_mobile != blank %}
               <div class="content-panel__image w-full {{ block.settings.image_position }}">
@@ -92,7 +102,7 @@
               </div>
             {% endif %}
             {% if block.settings.title != blank %}
-              <div class="content-panel__title {{ block.settings.title_style }} mt-sm">{{ block.settings.title }}</div>
+              <div class="content-panel__title {{ title_alignment }} {{ block.settings.title_style }} mt-sm">{{ block.settings.title }}</div>
             {% endif %}
             {% if block.settings.subtext != blank %}
               <div class="content-panel__subtext {{ block.settings.subtext_alignment }} {{ block.settings.subtext_style }} mt-sm">{{ block.settings.subtext }}</div>
