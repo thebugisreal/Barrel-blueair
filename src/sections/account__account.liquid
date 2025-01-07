@@ -115,7 +115,13 @@
 {% endcomment %}
 {% capture filter_subscriptions %}
   <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Active Filter Subscriptions</h4>
+    <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
+      <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Active Filter Subscriptions</h4>
+      <a href="{{ section.settings.add_subscription_url }}" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop: p-0 desktop:bg-none">
+        Add a Subscription
+        <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
+      </a>
+    </div>
     <div class="mt-md grid gap-md">
       <div class="account-content">
         <div id="og-msi"></div>
@@ -204,7 +210,6 @@
     <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Devices & Warranty</h4>
     <div class="mt-md grid gap-md">
       <div class="account-content">
-        [TBA]
       </div>
     </div>            
   </div>
@@ -225,7 +230,7 @@
               <span js-account-label>{{ sections[0] }}</span>
               <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
             </button>
-            <div id="AccountSectionsAccordion" class="accordion-content bg-white" role="tablist" aria-hidden="true" aria-orientation="horizontal" js-accordion-content js-tablist>
+            <div id="AccountSectionsAccordion" class="accordion-content bg-white shadow-md" role="tablist" aria-hidden="true" aria-orientation="horizontal" js-accordion-content js-tablist>
               {% for section in sections %}
                 <button id="{{ section | handleize }}-tab" class="tab__trigger block w-full p2 px-xs pb-xs link text-left" 
                   role="tab" 
@@ -441,35 +446,6 @@
                   </table>
                 </div>
               </div>
-
-              <div class="account-order__payment bg-white">
-                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-                  <p class="s1 text-blue">Payment</p>
-                </div>
-                <div class="px-md py-sm">
-                  <table>
-                    <tr>
-                      <td class="p1">Payment Method</td>
-                      <td class="p1">Billing Address</td>
-                    </tr>
-                    <tr>
-                      <td class="p2"></td>
-                      <td class="p2">
-                        <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
-                        {%- if order.billing_address.company != blank -%}
-                          <p>{{ order.billing_address.company }}</p>
-                        {%- endif -%}
-                        <p>{{ order.billing_address.address1 }}</p>
-                        {%- if order.billing_address.address2 != blank -%}
-                          <p>{{ order.billing_address.address2 }}</p>
-                        {%- endif -%}
-                        <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
-                        <p>{{ order.billing_address.country }}</p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -679,6 +655,15 @@
       "type": "text",
       "id": "newsletter_cta_text",
       "label": "CTA Text",
+    },
+    {
+      "type": "header",
+      "content": "Add a Subscription"
+    },
+    {
+      "type": "url",
+      "id": "add_subscription_url",
+      "label": "Page URL"
     },
     {
       "type": "header",

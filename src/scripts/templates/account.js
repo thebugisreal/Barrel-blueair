@@ -44,6 +44,21 @@ class Account extends HTMLElement {
         window._klOnsite.push(['openForm', 'UhyuJV']);
       });
     }
+
+    // const options = {
+    //   method: 'GET',
+    //   headers: {
+    //     accept: 'application/vnd.api+json',
+    //     revision: '2024-10-15',
+    //     Authorization: 'Klaviyo-API-Key your-private-api-key'
+    //   }
+    // };
+
+    // fetch('https://a.klaviyo.com/api/profiles?filter=equals(email,"don@seedcms.com")', options)
+    //   .then(res => res.json())
+    //   .then(res => console.log(res))
+    //   .catch(err => console.error(err));
+
   }
 
   _setupCountries() {
