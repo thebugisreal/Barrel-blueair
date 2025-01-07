@@ -2,7 +2,7 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__media {{ margins_paddings }} {{ section.settings.gutter_mobile }} {{ section.settings.gutter_desktop }}">
+<div class="section__media {{ margins_paddings }} {{ section.settings.color }} {{ section.settings.gutter_mobile }} {{ section.settings.gutter_desktop }}">
     {% if section.settings.video != blank %}
     <div class="video__upload  block relative overflow-hidden">
         {{ section.settings.video | video_tag: class: 'block w-full h-full object-cover object-center', image_size: '1280x', autoplay: section.settings.enable_autoplay, loop: true, muted: true, controls: true }}
@@ -358,15 +358,15 @@
       "label": "Gutter - Mobile",
       "options": [
         {
-            "value": "mx-0",
+            "value": "px-0",
             "label":"No Gutter"
         },
         {
-            "value": "mx-lg",
+            "value": "px-lg",
             "label":"Enable Gutter"
         }
       ],
-      "default": "mx-0"
+      "default": "px-0"
     },
     {
       "type": "select",
@@ -374,15 +374,15 @@
       "label": "Gutter - Desktop",
       "options": [
         {
-            "value": "tabletl:mx-0",
+            "value": "tabletl:px-0",
             "label":"No Gutter"
         },
         {
-            "value": "tabletl:mx-xl",
+            "value": "tabletl:px-xl",
             "label":"Enable Gutter"
         }
       ],
-      "default": "tabletl:mx-xl"
+      "default": "tabletl:px-xl"
     },
     {
       "type": "header",
@@ -418,6 +418,46 @@
       "type": "image_picker",
       "id": "image_desktop",
       "label": "Image - Desktop"
+    },
+    {
+      "type": "header",
+      "content": "Color Set"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "bg-white text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-white text-blue"
     }
   ],
   "presets": [

@@ -51,8 +51,8 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-lg",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "mx-0",
-        "gutter_desktop": "tabletl:mx-xl",
+        "gutter_mobile": "px-0",
+        "gutter_desktop": "tabletl:px-xl",
         "video_embed": "",
         "enable_autoplay": false,
         "image_mobile": "shopify:\/\/shop_images\/Frame_605.jpg"
@@ -166,8 +166,8 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "mx-0",
-        "gutter_desktop": "tabletl:mx-0",
+        "gutter_mobile": "px-0",
+        "gutter_desktop": "tabletl:px-0",
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
         "enable_autoplay": false
