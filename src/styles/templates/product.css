@@ -178,6 +178,23 @@
   bg-white;
 }
 
+.product__filter-link:focus {
+  @apply border-black
+}
+.product__filter-link:focus:not(:focus-visible) {
+  @apply border-gray
+}
+.product__filter-link:focus-visible {
+  @apply border-black
+}
+
+@media screen(desktop) {
+  .product__filter-link:hover {
+    @apply border-black
+  }
+}
+
+
 /* ordergroove
 .product-subscription__offer .og-optout-buttons{
   @apply !hidden;

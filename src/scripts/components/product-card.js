@@ -11,13 +11,15 @@ class ProductCard extends HTMLElement {
       price: '[js-product-card-price]',
       productCompareCheckbox: '[js-product-compare-checkbox]',
       productCompareProduct: '[js-product-compare-product]',
-      productCompareInfo:'[js-product-compare-info]'
+      productCompareInfo:'[js-product-compare-info]',
+      filterSwatch: '[js-product-card-filter-swatch]'
     }
   }
 
   connectedCallback() {
     this.soldOutTag = this.querySelector(this._selectors.soldOutTag);
     this.swatches = this.querySelectorAll(this._selectors.swatch);
+    this.filterSwatches = this.querySelectorAll(this._selectors.filterSwatch)
     this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     this.productLinks = this.querySelectorAll(this._selectors.productLink);
     this.price = this.querySelector(this._selectors.price);
@@ -39,6 +41,10 @@ class ProductCard extends HTMLElement {
   _setListeners() {
     this.swatches.forEach((swatch) => {
       swatch.addEventListener('click', this._swatchOnClick);
+    });
+
+    this.filterSwatches.forEach((swatch) => {
+      swatch.addEventListener('click', this._filterSwatchOnClick);
     });
 
     if (this.productCompareCheckbox) {
@@ -183,5 +189,25 @@ class ProductCard extends HTMLElement {
     this._toggleSoldOutTag(swatchTarget.dataset.available == 'true');
     this._updateProductLink(swatchTarget.dataset.url);
     this._updatePrice(swatchTarget.dataset.price);
+  }
+
+  _filterSwatchOnClick = (evt) => {
+    evt.preventDefault();
+
+    const swatchTarget = evt.currentTarget;
+    
+    if (swatchTarget.dataset.selected == 'true') {
+      return;
+    }
+
+    const prevSelectedSwatch = this.querySelector(`${this._selectors.filterSwatch}[data-selected="true"]`);
+    if (prevSelectedSwatch) prevSelectedSwatch.dataset.selected = 'false';
+    swatchTarget.dataset.selected = 'true';
+
+    this.currentSwatchLabel.textContent = swatchTarget.dataset.swatch;
+    this._toggleSoldOutTag(swatchTarget.dataset.available == 'true');
+    this._updateProductLink(swatchTarget.dataset.url);
+    this._updatePrice(swatchTarget.dataset.price);
+    this._updateImage(swatchTarget.dataset.swatch);
   }
 }
