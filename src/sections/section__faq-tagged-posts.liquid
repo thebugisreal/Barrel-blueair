@@ -17,7 +17,7 @@
         {% assign articles_count = articles_count | plus: 1 %}
         <div class="accordion-item faq-tagged-posts__post {% if articles_count > 5 %}hidden{% endif %}" js-accordion-item>
           <button class="accordion-header faq-post__title bg-blue-light mt-[1px] p1 p-sm w-full flex justify-between items-center gap-md" aria-expanded="false" aria-controls="accordion-{{ section.id }}-{{ articles_count }}" js-accordion-header>
-            <span>{{ article.title }}</span>
+            <span class="text-left">{{ article.title }}</span>
             <span class="accordion-icon--plus p-xxxs">+</span>
             <span class="accordion-icon--minus p-xxxs">-</span>
           </button>

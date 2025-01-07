@@ -1,37 +1,58 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__faq-topics {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+<div class="section__faq-specs-instructions {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
   {% if section.settings.title != blank %}
-    <h2 class="faq-topics__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
+    <h2 class="faq-specs-instructions__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
   {% endif %}
-  <div class="faq-topics__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+  <div class="faq-specs-instructions__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
     {% for block in section.blocks %}
-      {% if block.settings.topic != blank %}
-        {% assign topic_metaobject = block.settings.topic %}
-        <a href="{{ topic_metaobject.link }}" class="faq-topics__block px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
-          <div class="faq-topic__title p1 text-center">{{ topic_metaobject.title }}</div>
-          {% if topic_metaobject.svg_html != blank %}
-            <div class="faq-topic__svg">
-              {{ topic_metaobject.svg_html }}
-            </div>
-          {% elsif topic_metaobject.image != blank %}
-            <div class="faq-topic__image">
-              {% render 'lazy-image' image: topic_metaobject.image img_classes: 'h-48 w-auto' %}
+      <div class="faq-specs-instructions__block rounded-[8px] bg-blue-light p-sm pb-0">
+        {% if block.settings.title != blank %}
+          <div class="faq-specs-instructions-block__title s1 mb-xs">{{ block.settings.title }}</div>
+        {% endif %}
+        <div class="faq-specs-instructions-block__content flex justify-between items-end gap-sm">
+          <ul class="faq-specs-instructions-block__links flex-1">
+            {% assign links = 'video,manual,product' |  split: ',' %}
+            {% for link in links %}
+              {% assign link_text_handle = link | append: '_link_text' %}
+              {% assign link_url_handle = link | append: '_link_url' %}
+              {% if block.settings[link_text_handle] != blank and block.settings[link_url_handle] != blank %}
+                <li class="faq-specs-instructions-block__link-wrapper flex justify-start items-start gap-xs mb-sm">
+                  <span class="faq-specs-instructions-block__link-icon w-[16px] leading-[0px]">
+                    {% case link %}
+                      {% when 'video' %}
+                        {% render 'icon-faq-video' %}
+                      {% when 'manual' %}
+                        {% render 'icon-faq-user-manual' %}
+                      {% when 'product' %}
+                        {% render 'icon-faq-product-details' %}
+                    {% endcase %}
+                  </span>
+                  <a href="{{ block.settings[link_url_handle] }}" class="faq-specs-instructions-block__link p2 leading-[1.1] flex-1">
+                    {{ block.settings[link_text_handle] }}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          {% if block.settings.image != blank %}
+            <div class="faq-specs-instructions-block__image w-1/2 max-w-[150px] desktop:max-w-[200px]">
+              {% render 'lazy-image' image: block.settings.image %}
             </div>
           {% endif %}
-        </a>
-      {% endif %}
+        </div>
+      </div>
     {% endfor %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "FAQ Topics",
+  "name": "FAQ Specs & Instructions",
   "tag": "section",
   "enabled_on": {
-    "templates": ["page", "blog"]
+    "templates": ["blog"]
   },
   "settings": [
     {
@@ -366,7 +387,7 @@
       "step": 1,
       "unit": "col",
       "label": "Number of Columns - Mobile",
-      "default": 2
+      "default": 1
     },
     {
       "type": "range",
@@ -376,7 +397,7 @@
       "step": 1,
       "unit": "col",
       "label": "Number of Columns - Desktop",
-      "default": 6
+      "default": 3
     },
     {
       "type": "header",
@@ -478,21 +499,70 @@
   ],
   "blocks": [
     {
-      "name": "Topic",
-      "type": "topic",
+      "name": "Block",
+      "type": "block",
       "settings": [
         {
-          "type": "metaobject",
-          "metaobject_type": "faq_topic",
-          "id": "topic",
-          "label": "Topic"
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Video Link"
+        },
+        {
+          "type": "text",
+          "id": "video_link_text",
+          "label": "Link Text",
+          "default": "How it works"
+        },
+        {
+          "type": "url",
+          "id": "video_link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "header",
+          "content": "Manual Link"
+        },
+        {
+          "type": "text",
+          "id": "manual_link_text",
+          "label": "Link Text",
+          "default": "User manual"
+        },
+        {
+          "type": "url",
+          "id": "manual_link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "header",
+          "content": "Product Link"
+        },
+        {
+          "type": "text",
+          "id": "product_link_text",
+          "label": "Link Text",
+          "default": "Product details"
+        },
+        {
+          "type": "url",
+          "id": "product_link_url",
+          "label": "Link URL"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "FAQ Topics"
+      "name": "FAQ Specs & Instructions"
     }
   ]
 }

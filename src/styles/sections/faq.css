@@ -14,6 +14,12 @@
   text-blue;
 }
 
+.faq-topic__svg svg {
+  @apply block
+  h-[48px]
+  w-auto;
+}
+
 @media screen(desktop) {
   .faq-topics__grid {
     grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
@@ -42,6 +48,17 @@
   .faq-post__title[aria-expanded="false"]:hover {
     @apply text-white
     bg-blue;
+  }
+}
+
+/* faq specs & instructions */
+.faq-specs-instructions__grid {
+  grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
+}
+
+@media screen(desktop) {
+  .faq-specs-instructions__grid {
+    grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
   }
 }
 
