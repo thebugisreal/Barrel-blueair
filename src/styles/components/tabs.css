@@ -79,7 +79,8 @@
 }
 
 .product__tabs .tab__text-content.rte p {
-  @apply my-sm
+  @apply mt-xs
+  mb-sm
 }
 
 /* END Product__tabs Styling */

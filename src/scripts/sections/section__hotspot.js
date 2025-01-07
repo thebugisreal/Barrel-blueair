@@ -14,21 +14,20 @@ class Hotspot extends HTMLElement {
     this._audjustDesktopTriggerContentsPosition();
     window.addEventListener('resize', this._audjustDesktopTriggerContentsPosition);
 
-    if (this.dataset.displayControl == 'hover-display' ) {
+    if (this.dataset.displayControl == 'hover-display' && document.documentElement.clientWidth > 1024) {
       this.triggerBtns.forEach((btn) => {
-        console.log('btn', btn)
         btn.addEventListener('mouseenter', this._toggleTriggerContent);
+        btn.addEventListener('mouseleave', this._toggleTriggerContent);
+      });
+    } else {
+      this.triggerBtns.forEach((btn) => {
+        btn.addEventListener('click', this._toggleTriggerContent);
       });
     }
-
-    this.triggerBtns.forEach((btn) => {
-      btn.addEventListener('click', this._toggleTriggerContent);
-    });
 
     if (this.hasAttribute('open-first-hotspot-mobile') && window.innerWidth <= 1024) {
       this._clickFirstTriggerBtn();
     }
-    console.log('this.dataset.displayControl', this.dataset.displayControl)
   }
 
   _clickFirstTriggerBtn = () => {

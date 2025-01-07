@@ -22,7 +22,7 @@
             {% comment %} Cart Items  {% endcomment %}
               <div class="cart__items-wrapper flex flex-col gap-md tabletl:gap-xxl tabletl:w-1/2">
                 {%- for item in cart.items -%}
-                  <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between" js-cart-item>
+                  <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between gap-sm tabletl:gap-md" js-cart-item>
                     <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                     <div class="flex gap-md w-full">
                       <a href="{{item.url}}" class="block w-1/2" js-cart-item-image>
