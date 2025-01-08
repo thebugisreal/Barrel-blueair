@@ -267,3 +267,6 @@
   @apply cursor-not-allowed
   opacity-30;
 }
+.product-viewer--js-press-active {
+  @apply cursor-grabbing
+}

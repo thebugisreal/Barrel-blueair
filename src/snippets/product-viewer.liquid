@@ -1,0 +1,25 @@
+<product-viewer class="cursor-grab">
+    <div class="product-viewer__images-container select-none">
+        <div js-360-image-container>
+        </div>
+    </div>
+    <div class="flex gap-sm justify-center items-center mt-md tabletl:mt-xl">
+        <div class="icon-container">
+          <div class="w-[32px] h-[32px]">
+            {% render 'icon-arrows-left-right' %}
+          </div>
+        </div>
+        <p class="p3 font-700">Click and Drag to Rotate 360°</p>
+    </div>
+    <script type="application/json" id="ProductViewerImageJSON-{{ product.id }}" js-product-viewer-image-json>
+    {
+        "image_urls": [
+            {% for image in product.metafields.seed.pdp_tech_spec_360_images.value %}
+                "{{ image | image_url: width: max_width }}"{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+        ]
+    }
+</script>
+</product-viewer>
+
+

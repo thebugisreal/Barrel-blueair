@@ -3,20 +3,14 @@
 {% endcapture %}
 
 <div class="product__tech-specs flex flex-col gap-lg px-lg {{ margins_paddings }} {{ section.settings.color }} tabletl:px-xl tabletl:flex-row">
-    <div class="image-container order-last tabletl:order-first">
-      {% if product.featured_image != blank %}
-        <div>
+    <div class="image-container order-last tabletl:order-first tabletl:w-1/2">
+      <div class="product__text-spec-360 relative">
+        {% if product.metafields.seed.pdp_tech_spec_360_images != blank %}
+          {%  render 'product-viewer' %}
+        {% else %}
           {% render 'lazy-image' image:product.featured_image %}
-        </div>
-        <div class="flex gap-sm justify-center items-center mt-md tabletl:mt-xl">
-          <div class="icon-container">
-            <div class="w-[32px] h-[32px]">
-              {% render 'icon-arrows-left-right' %}
-            </div>
-          </div>
-          <p class="p3 font-700">Click and Drag to Rotate 360°</p>
-        </div>
-      {% endif %}
+        {% endif %}
+      </div>
     </div>
     <div class="text-container">
         <h1 class="h3 font-900 mb-md tabletl:mb-lg">Technical Specifications</h1>
