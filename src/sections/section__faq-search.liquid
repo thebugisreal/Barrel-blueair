@@ -11,6 +11,8 @@
     <div class="faq-search__content w-full max-w-screen-tabletp">
       {% if section.settings.title != blank %}
         <h1 class="faq-search__title {{ section.settings.title_style }} mb-sm">{{ section.settings.title }}</h1>
+      {% elsif template.name == 'blog' %}
+        <h1 class="faq-search__title {{ section.settings.title_style }} mb-sm">{{ blog.title }}</h1>
       {% endif %}
       <form action="{{ routes.search_url }}" method="get" role="search" class="faq-search__search-form w-full tabletp:w-[520px] mx-auto rounded-[4px] overflow-hidden flex">
         <label for="FaqSearch" class="visually-hidden">Search</label>
