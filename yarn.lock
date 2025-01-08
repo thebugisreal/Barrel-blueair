@@ -47,10 +47,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@madebyseed/seed-cli-tools@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@madebyseed/seed-cli-tools/-/seed-cli-tools-2.0.1.tgz#8050949891022c2eb3d879a2ee3c3c0596b76611"
-  integrity sha512-F7GzLZgTh9+6rZBdfo6U4+FSnW6n6YCr4OOE7+ovDPIikZsyQ16EIhZ3I4OQlVcPixDMPClrg65AMKHsFgMgdQ==
+"@madebyseed/seed-cli-tools@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@madebyseed/seed-cli-tools/-/seed-cli-tools-2.1.1.tgz#58f15e9e88cdf31220197d1cd1e79ee234fee4d0"
+  integrity sha512-NyS0UKQvhCd+Ox78OQtbHER6xgb5EuEOaACTR9MadAtV9z/dz9ySmprrijRnUn18JjGSpCSQjybYqHLvtoNxhg==
   dependencies:
     autoprefixer "^10.3.1"
     bluebird "^3.7.2"
