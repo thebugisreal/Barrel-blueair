@@ -42,8 +42,8 @@
               {% assign media_swatch = '' %}
               {% assign hide_media = false %}
               {% assign active_thumb = false %}
+              {% assign media_swatch = media.alt | strip %}
               {% if current_swatch != blank %}
-                {% assign media_swatch = media.alt | strip %}
                 {% if media_swatch != current_swatch %}
                   {% assign hide_media = true %}
                 {% endif %}
@@ -95,11 +95,11 @@
             {% for media in product.media %}
               {% assign media_swatch = '' %}
               {% assign hide_media = false %}
+              {% assign media_swatch = media.alt | strip %}
               {% if current_swatch != blank %}
-                {% assign media_swatch = media.alt | strip %}
                 {% if media_swatch != current_swatch %}
                   {% assign hide_media = true %}
-                {% endif %}
+                {% endif %}    
               {% endif %}
               {% case media.media_type %}
                 {% when 'image' %}
