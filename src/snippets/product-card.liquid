@@ -1,5 +1,5 @@
 {% liquid
-  assign current_variant = product.selected_or_first_available_variant
+  assign current_variant = product.selected_or_variants[0]
   assign color_option = false
   assign filter_type_option = false
   if product.options_by_name['color'] != blank
@@ -19,14 +19,18 @@
       {% endfor %}
       {% comment %} Filter Swatch Images {% endcomment %}
       {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
-        <div class="product-card__image {% unless swatch_product.metafields.seed.product_card_filter_title == current_variant.metafields.seed.product_card_filter_title %}hidden{% endunless %}" data-swatch="{{ swatch_product.metafields.seed.product_card_filter_title }}" js-product-card-image>
+        <div class="product-card__image {% unless swatch_product.variants[0].title == current_variant.variants[0].title %}hidden{% endunless %}" data-swatch="{{ swatch_product.variants[0].title }}" js-product-card-image>
           {% assign image = swatch_product.featured_image | default: product.featured_image %}
           {% render 'lazy-image' image: image %}
         </div>
       {% endfor %}
     {% else %}
       <div class="product-card__image">
-        {% render 'lazy-image' image: product.featured_image %}
+        {% if product.metafields.seed.product_card_image != blank %}
+          {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+        {% else %}
+          {% render 'lazy-image' image: product.featured_image %}
+        {% endif %}
       </div>
     {% endif %}
   </a>
@@ -43,7 +47,7 @@
       <div class="product-card__title-container">
         <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>{{ product.title }}</a>
         {% if filter_type_option != false %}
-          <div class="text-20"><span js-product-card-current-swatch-label>{{ product.metafields.seed.product_card_filter_title }}</span><span> Filter</span></div>
+          <div class="text-20"><span js-product-card-current-swatch-label>{{ product.variants[0].title }}</span><span> Filter</span></div>
         {% endif %}
       </div>
       {% if product.metafields.seed.product_card_filter_image != blank %}
@@ -90,16 +94,16 @@
         <div class="product-card__swatches flex flex-wrap gap-sm mt-xxs">
           {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
             <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
-              data-swatch="{{ swatch_product.metafields.seed.product_card_filter_title }}"  
+              data-swatch="{{ swatch_product.variants[0].title }}"  
               data-available="{{ swatch_product.available }}"
               data-price="{{ swatch_product.compare_at_price }}|{{ swatch_product.price }}" 
               data-url="{{ swatch_product.url }}"
-              data-selected="{% if swatch_product.metafields.seed.product_card_filter_title == product.metafields.seed.product_card_filter_title %}true{% else %}false{% endif %}"
+              data-selected="{% if swatch_product.variants[0].title == product.variants[0].title %}true{% else %}false{% endif %}"
               js-product-card-filter-swatch>
               <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
                 <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>
               </span>
-              <span class="font-700">{{ swatch_product.metafields.seed.product_card_filter_title }}</span>
+              <span class="font-700">{{ swatch_product.variants[0].title}}</span>
             </button>
           {% endfor %}
         </div>

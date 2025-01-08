@@ -141,6 +141,9 @@
                 {% if product.metafields.seed.productHeadline1 != blank %}
                   <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.productHeadline1 }}</p>
                 {% endif %}
+                {% if product.variants[0] != blank %}
+                  <p class="product__short-description p2 desktop:mt-xxs">{{ product.variants[0].title}} </p>
+                {% endif %}
                 {% if product.metafields.seed.blair_filterSupportModels != blank %}
                   <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
                 {% endif %}
@@ -152,7 +155,7 @@
                     <p class="s1 mb-sm">Customize your filter</p>
                     <div class="product__filters flex gap-xs mb-xs">
                       {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
-                        <a href="{{swatch_product.url}}" class="product__filter-link block h-xl w-xl border {% if swatch_product.metafields.seed.product_card_filter_title == product.metafields.seed.product_card_filter_title %} border-black {% else %} border-gray {% endif %} tabletl:h-xxl tabletl:w-xxl">
+                        <a href="{{swatch_product.url}}" class="product__filter-link block h-xl w-xl border {% if swatch_product.variants[0].title == product.variants[0].title %} border-black {% else %} border-gray {% endif %} tabletl:h-xxl tabletl:w-xxl">
                           {% assign image = swatch_product.featured_image | default: product.featured_image %}
                           {% render 'lazy-image' image: image %}
                         </a>
@@ -329,7 +332,7 @@
                           {% endif %}
                           <div class="product-upsell__buybox mt-md flex-1 flex flex-col justify-between gap-md">
                             {% assign upsell_product = upsell_object.product.value %}
-                            {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
+                            {% assign upsell_current_variant = upsell_product.selected_or_variants[0] %}
                             {% if upsell_product.variants.size > 1 %}
                               {% liquid
                                 assign color_option = false
@@ -498,8 +501,8 @@
 </s-product>
 
 {%- liquid
-  if product.selected_or_first_available_variant.featured_media
-    assign seo_media = product.selected_or_first_available_variant.featured_media
+  if product.selected_or_variants[0].featured_media
+    assign seo_media = product.selected_or_variants[0].featured_media
   else
     assign seo_media = product.featured_media
   endif
@@ -516,8 +519,8 @@
       ],
     {%- endif %}
     "description": {{ product.description | strip_html | json }},
-    {%- if product.selected_or_first_available_variant.sku != blank -%}
-      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- if product.selected_or_variants[0].sku != blank -%}
+      "sku": {{ product.selected_or_variants[0].sku | json }},
     {%- endif -%}
     "brand": {
       "@type": "Brand",
