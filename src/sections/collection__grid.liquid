@@ -6,7 +6,7 @@
 {% paginate collection.products by 48 %}
 <s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}" data-handle="{{ collection.handle }}">
   <div class="collection-grid__layout">
-    <div class="collection-grid__header px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
+    <div class="collection-grid__header bg-blue-light px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
       <div class="collection-grid__breadcrumb mb-md flex gap-xxs items-center">
         {% assign shop_all_collection = collections['shop-all'] %}
         <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>

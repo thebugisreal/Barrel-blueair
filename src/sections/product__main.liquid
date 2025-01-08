@@ -137,12 +137,12 @@
                 {% endif %}
               {% when 'title' %}
                 <h1 class="product__title h3">{{ product.title }}</h1>
+                {% if product.variants[0] != blank and product.variants[0].title != 'Default Title' %}
+                  <p class="product__short-description p2 desktop:mt-xxs">{{ product.variants[0].title}} </p>
+                {% endif %}
               {% when 'short_description' %}
                 {% if product.metafields.seed.productHeadline1 != blank %}
                   <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.productHeadline1 }}</p>
-                {% endif %}
-                {% if product.variants[0] != blank %}
-                  <p class="product__short-description p2 desktop:mt-xxs">{{ product.variants[0].title}} </p>
                 {% endif %}
                 {% if product.metafields.seed.blair_filterSupportModels != blank %}
                   <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
