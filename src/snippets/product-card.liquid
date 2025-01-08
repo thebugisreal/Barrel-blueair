@@ -1,5 +1,5 @@
 {% liquid
-  assign current_variant = product.selected_or_variants[0]
+  assign current_variant = product.variants[0]
   assign color_option = false
   assign filter_type_option = false
   if product.options_by_name['color'] != blank

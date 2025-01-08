@@ -58,10 +58,7 @@ class ProductMain extends HTMLElement {
       this.currentSwatch = 'Default Swatch'
       this.swatchOption = 0
     }
-
-    console.log('this.currentSwatch', this.currentSwatch)
-
-
+    
     this._handleSubscription();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
@@ -343,12 +340,8 @@ class ProductMain extends HTMLElement {
 
     this._updateAddToCartState(variant);
 
-    console.log('this.currentSwatch', this.currentSwatch)
-    console.log('variant.options[this.swatchOption]', variant.options[this.swatchOption])
-
     if (this.currentSwatch && variant.options[this.swatchOption] != this.currentSwatch) {
       this.currentSwatch = variant.options[this.swatchOption];
-      console.log('new this.currentSwatch', this.currentSwatch)
       this.currentSwatchLabel.textContent = this.currentSwatch;
       this._updateImageCarousel(this.currentSwatch);
     }
@@ -383,10 +376,8 @@ class ProductMain extends HTMLElement {
     let current_thumb_slides_count = 0
     this.thumbSlides.forEach((slide) => {
       slide.classList.remove('hidden', 'swiper-slide', 'swiper-slide-thumb', 'swiper-slide-thumb-active');
-      console.log('slide.dataset.swatch', slide.dataset.swatch, 'swatchName', swatchName, slide.dataset.swatch != swatchName)
       if (slide.dataset.swatch && slide.dataset.swatch != swatchName) {
         slide.classList.add('hidden');
-        console.log('slide.dataset.swatch -hidden', slide.dataset.swatch)
       } else {
         slide.classList.add('swiper-slide', 'swiper-slide-thumb');
         current_thumb_slides_count++;
