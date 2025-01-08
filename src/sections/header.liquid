@@ -1,4 +1,4 @@
-<s-header class="site-header fixed top-0 left-0 right-0 {% if template.name == 'index' %}transition-colors duration-300 bg-transparent{% elsif template.name == 'collection' %}bg-blue-light{% else %}bg-white{% endif %}" data-template="{{ template }}">
+<s-header class="site-header fixed top-0 left-0 right-0 {% if template.name == 'index' %}transition-colors duration-300 bg-transparent{% elsif template.name == 'collection' %}bg-white{% else %}bg-white{% endif %}" data-template="{{ template }}">
   {% if section.blocks.size > 0 %}
     <div class="section__announcement-bar hidden relative py-[5px] tabletl:py-[10px] {{ section.settings.bg_color }}" js-announcement-bar>
       {%- capture carousel_options -%}
