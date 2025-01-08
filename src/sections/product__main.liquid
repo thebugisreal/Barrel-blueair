@@ -138,7 +138,7 @@
               {% when 'title' %}
                 <h1 class="product__title h3">{{ product.title }}</h1>
                 {% if product.variants[0] != blank and product.variants[0].title != 'Default Title' %}
-                  <p class="product__short-description p2 desktop:mt-xxs">{{ product.variants[0].title}} </p>
+                  <p class="product__short-description p2 desktop:my-xxs">{{ product.variants[0].title}} </p>
                 {% endif %}
               {% when 'short_description' %}
                 {% if product.metafields.seed.productHeadline1 != blank %}
