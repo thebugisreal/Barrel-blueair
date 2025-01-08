@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__faq-specs-instructions {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+<div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %} class="section__faq-specs-instructions {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
   {% if section.settings.title != blank %}
     <h2 class="faq-specs-instructions__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
   {% endif %}
@@ -55,6 +55,12 @@
     "templates": ["blog"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Case sensitive"
+    },
     {
       "type": "header",
       "content": "Layout"

@@ -1,11 +1,11 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<faq-posts class="section__faq-tagged-posts block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl" data-type="tagged">
+<faq-posts {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %} class="section__faq-tagged-posts block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl" data-type="tagged">
   {% if section.settings.title != blank %}
     <h2 class="faq-tagged-posts__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
   {% endif %}
-  <s-accordion class="faq-tagged-posts__accordion block" data-manual-collapse="true"  js-accordion>
+  <s-accordion class="faq-tagged-posts__accordion block w-[calc(100vw-48px)] tabletp:w-full" data-manual-collapse="true"  js-accordion>
     {% if template.name == 'page' %}
       {% assign blog_articles = section.settings.blog.articles %}
     {% else %}
@@ -47,6 +47,12 @@
     "templates": ["page", "blog"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Case sensitive"
+    },
     {
       "type": "header",
       "content": "Layout"

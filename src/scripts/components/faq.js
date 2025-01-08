@@ -84,8 +84,10 @@ class FaqSearchResults extends HTMLElement {
     super();
 
     this._selectors = {
+      supportTaggedArticlesTitle: '[js-support-tagged-articles-title]',
       supportTaggedArticle: '[js-support-tagged-article]',
       supportTaggedShowMoreBtn: '[js-support-tagged-show-more-btn]',
+      nonSupportTaggedArticlesTitle: '[js-non-support-tagged-articles-title]',
       nonSupportTaggedArticle: '[js-non-support-tagged-article]',
       nonSupportTaggedShowMoreBtn: '[js-non-support-tagged-show-more-btn]',
     }
@@ -109,8 +111,15 @@ class FaqSearchResults extends HTMLElement {
     });
   }
 
-  _showArticles = (supportTagged = true) => {
+  _showArticles = (supportTagged = true, init = false) => {
     const hiddenArticles = this.querySelectorAll(`${supportTagged ? this._selectors.supportTaggedArticle : this._selectors.nonSupportTaggedArticle}${this.blog ? `[data-blog="${this.blog}"]` : ''}.hidden`);
+
+    if (hiddenArticles.length == 0 && init) {
+      const articlesTitle = this.querySelector(`${supportTagged ? this._selectors.supportTaggedArticlesTitle : this._selectors.nonSupportTaggedArticlesTitle}`);
+      articlesTitle.classList.add('hidden');
+      return;
+    }
+
     const firstFiveHiddenArticles = Array.from(hiddenArticles).slice(0, 5); 
     firstFiveHiddenArticles.forEach((article) => {
       article.classList.remove('hidden');
@@ -125,8 +134,8 @@ class FaqSearchResults extends HTMLElement {
     }
   }
   _initArticles = () => {
-    this._showArticles(true);
-    this._showArticles(false);
+    this._showArticles(true, true);
+    this._showArticles(false, true);
   }
 
   _checkBlog = () => {

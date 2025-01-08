@@ -31,7 +31,45 @@
   }
 }
 
+/* faq nav */
+.faq-nav__links {
+  grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
+}
+
+.faq-nav__link:focus, 
+.faq-nav__link:focus-visible {
+  @apply bg-blue
+  text-white;
+}
+
+.faq-nav__link:focus:not(:focus-visible) {
+  @apply bg-blue-light
+  text-blue;
+}
+
+.faq-nav-link__svg svg {
+  @apply block
+  h-[48px]
+  w-auto;
+}
+
+@media screen(desktop) {
+  .faq-nav__links {
+    grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
+  }
+
+  .faq-nav__link:hover {
+    @apply bg-blue
+    text-white;
+  }
+}
+
 /* faq posts */
+.section__faq-all-posts[id],
+.section__faq-tagged-posts[id] {
+  scroll-margin-top: var(--header-height);
+}
+
 .faq-post__title[aria-expanded="false"]:focus,
 .faq-post__title[aria-expanded="false"]:focus-visible,
 .faq-post__title[aria-expanded="true"] {
@@ -52,6 +90,10 @@
 }
 
 /* faq specs & instructions */
+.section__faq-specs-instructions[id] {
+  scroll-margin-top: var(--header-height);
+}
+
 .faq-specs-instructions__grid {
   grid-template-columns: repeat(var(--cols-mobile), minmax(0, 1fr));
 }
@@ -60,6 +102,11 @@
   .faq-specs-instructions__grid {
     grid-template-columns: repeat(var(--cols-desktop), minmax(0, 1fr));
   }
+}
+
+/* faq videos */
+.section__faq-videos[id] {
+  scroll-margin-top: var(--header-height);
 }
 
 /* faq cta */

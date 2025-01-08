@@ -1,77 +1,37 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %} class="section__faq-videos {{ margins_paddings }} {{ section.settings.color }}">
-  {% if section.settings.title != blank %}
-    <h2 class="faq-videos__title {{ section.settings.title_style }} mb-md text-center px-md desktop:px-xl">{{ section.settings.title }}</h2>
-  {% endif %}
-  
-  {%- capture carousel_options -%}
-    {
-      "cssMode": true,
-      "loop": false,
-      "autoHeight": false,{% if section.settings.enable_nav_scrollbar %}
-      "scrollbar": {
-        "enabled": true,
-        "el": "[js-scrollbar-{{ section.id }}]",
-        "draggable": true
-      },
-      "navigation": {
-        "enabled": true,
-        "prevEl": "[js-prev-{{ section.id }}]",
-        "nextEl": "[js-next-{{ section.id }}]"
-      },{% endif %}
-      "breakpoints": {
-        "1025": {
-          "cssMode": {% if section.settings.enable_nav_scrollbar %}true{% else %}false{% endif %}
-        }
-      }
-    }
-  {%- endcapture -%}
-  <s-carousel data-options='{{ carousel_options }}' class="faq-videos__carousel grid">
-    <div id="FaqVideos-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[21%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
-            {% if block.settings.youtube_id != blank %}
-              <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
-              <div class='embed-container'><iframe src='https://www.youtube.com/embed/{{ block.settings.youtube_id }}' frameborder='0' allowfullscreen></iframe></div>
-            {% elsif block.settings.video != blank %}
-              <s-video data-playing="false" data-controls="true" class="faq-videos__video block relative">
-                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
-                <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
-                  <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
-                </button>
-              </s-video>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% if section.settings.enable_nav_scrollbar %}
-      <div class="hidden desktop:flex gap-md items-center mt-lg px-xl z-0">
-        <div class="swiper-button-prev !static !w-[40px] !block after:!content-none !text-blue" js-prev-{{ section.id }}>{% render 'icon-arrow-left' %}</div>
-        <div class="swiper-scrollbar !static flex-1" js-scrollbar-{{ section.id }}></div>
-        <div class="swiper-button-next !static !w-[40px] !block after:!content-none !text-blue" js-next-{{ section.id }}>{% render 'icon-arrow-right' %}</div>
-      </div>
-    {% endif %}
-  </s-carousel>
+<div class="section__faq-nav {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
+  <div class="faq-nav__links grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+    {% for block in section.blocks %}
+      {% if block.settings.link_anchor_id != blank %}
+        <a href="#{{ block.settings.link_anchor_id }}" class="faq-nav__link px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
+          {% if block.settings.title != blank %}
+            <div class="faq-nav-link__title p1 text-center">{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.svg_html != blank %}
+            <div class="faq-nav-link__svg">
+              {{ block.settings.svg_html }}
+            </div>
+          {% elsif block.settings.image != blank %}
+            <div class="faq-nav-link__image">
+              {% render 'lazy-image' image: block.settings.image img_classes: 'h-48 w-auto' %}
+            </div>
+          {% endif %}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
 {
-  "name": "FAQ Videos",
+  "name": "FAQ Nav",
   "tag": "section",
   "enabled_on": {
     "templates": ["blog"]
   },
   "settings": [
-    {
-      "type": "text",
-      "id": "anchor_id",
-      "label": "Anchor ID",
-      "info": "Case sensitive"
-    },
     {
       "type": "header",
       "content": "Layout"
@@ -397,6 +357,26 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "range",
+      "id": "num_cols_mobile",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Mobile",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "num_cols_desktop",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns - Desktop",
+      "default": 3
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -435,97 +415,41 @@
         }
       ],
       "default": "bg-white text-blue"
-    },
-    {
-      "type": "header",
-      "content": "Carousel"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_nav_scrollbar",
-      "label": "Enable nav and scrollbar",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    },
-    {
-      "type": "select",
-      "id": "title_style",
-      "label": "Title Style",
-      "options": [
-        {
-          "value": "h1",
-          "label": "h1"
-        },
-        {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        }
-      ],
-      "default": "h4"
     }
   ],
   "blocks": [
     {
-      "name": "Video",
-      "type": "video",
+      "name": "Link",
+      "type": "link",
       "settings": [
         {
-          "type": "video",
-          "id": "video",
-          "label": "Video"
+          "type": "text",
+          "id": "link_anchor_id",
+          "label": "Anchor ID",
+          "info": "Case sensitive"
         },
         {
           "type": "text",
-          "id": "youtube_id",
-          "label": "Youtube ID",
-          "info": "Overrides video input"
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "svg_html",
+          "label": "SVG (HTML)",
+          "info": "Overrides image"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "FAQ Videos"
+      "name": "FAQ Nav"
     }
   ]
 }
