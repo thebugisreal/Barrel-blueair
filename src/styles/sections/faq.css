@@ -63,31 +63,59 @@
 }
 
 /* faq cta */
-.section__faq-cta.none-color-revert .btn.btn--transparent-rounded {
+.section__faq-cta.non-color-revert .btn.btn--transparent-rounded {
   @apply border-white
   text-white;
 }
 
-.section__faq-cta.none-color-revert .btn.btn--transparent-rounded .btn__arrow {
+.section__faq-cta.non-color-revert .btn.btn--transparent-rounded .btn__arrow {
   @apply border-white
   bg-white;
 }
 
-.section__faq-cta.none-color-revert .btn.btn--transparent-rounded:focus .btn__arrow,
-.section__faq-cta.none-color-revert .btn.btn--transparent-rounded:focus-visible .btn__arrow {
+.section__faq-cta.non-color-revert .btn.btn--transparent-rounded:focus .btn__arrow,
+.section__faq-cta.non-color-revert .btn.btn--transparent-rounded:focus-visible .btn__arrow {
   @apply bg-blue
   text-white;
 }
 
-.section__faq-cta.none-color-revert .btn.btn--transparent-rounded:focus:not(:focus-visible) .btn__arrow {
+.section__faq-cta.non-color-revert .btn.btn--transparent-rounded:focus:not(:focus-visible) .btn__arrow {
   @apply border-white
   bg-white
   text-blue;
 }
 
 @media screen(desktop) {
-  .section__faq-cta.none-color-revert .btn.btn--transparent-rounded:hover .btn__arrow {
+  .section__faq-cta.non-color-revert .btn.btn--transparent-rounded:hover .btn__arrow {
     @apply bg-blue
     text-white;
   }
+}
+
+/* faq search results */
+.faq-seearch-results__category::before {
+  @apply hidden
+  desktop:block
+  absolute
+  content-['']
+  top-0
+  left-0
+  h-full
+  w-[calc(100%+24px)]
+  bg-blue-darkSky
+  z-[-1];
+}
+
+.faq-seearch-results__category::after {
+  @apply absolute
+  content-['']
+  block
+  bottom-[-2px]
+  left-0
+  w-full
+  h-[2px]
+  bg-blue
+  desktop:bottom-0
+  desktop:w-[4px]
+  desktop:h-full;
 }

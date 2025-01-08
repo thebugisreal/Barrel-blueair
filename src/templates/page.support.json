@@ -1,10 +1,10 @@
 {
   "sections": {
-    "main": {
-      "type": "section__faq-hero"
+    "search": {
+      "type": "section__faq-search"
     }
   },
   "order": [
-    "main"
+    "search"
   ]
 }

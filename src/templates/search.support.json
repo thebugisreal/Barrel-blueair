@@ -2,9 +2,13 @@
   "sections": {
     "search": {
       "type": "section__faq-search"
+    },
+    "main": {
+      "type": "section__faq-search-results"
     }
   },
   "order": [
-    "search"
+    "search",
+    "main"
   ]
 }

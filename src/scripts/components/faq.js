@@ -77,3 +77,64 @@ class FaqPosts extends HTMLElement {
     return results;
   }
 }
+
+
+class FaqSearchResults extends HTMLElement {
+  constructor() {
+    super();
+
+    this._selectors = {
+      supportTaggedArticle: '[js-support-tagged-article]',
+      supportTaggedShowMoreBtn: '[js-support-tagged-show-more-btn]',
+      nonSupportTaggedArticle: '[js-non-support-tagged-article]',
+      nonSupportTaggedShowMoreBtn: '[js-non-support-tagged-show-more-btn]',
+    }
+  }
+
+  connectedCallback() {
+    this.supportTaggedShowMoreBtn = this.querySelector(this._selectors.supportTaggedShowMoreBtn);
+    this.nonSupportTaggedShowMoreBtn = this.querySelector(this._selectors.nonSupportTaggedShowMoreBtn);
+
+    this._checkBlog();
+    this._initArticles();
+    this._setListeners();
+  }
+
+  _setListeners() {
+    this.supportTaggedShowMoreBtn.addEventListener('click', () => {
+      this._showArticles(true);
+    });
+    this.nonSupportTaggedShowMoreBtn.addEventListener('click', () => {
+      this._showArticles(false);
+    });
+  }
+
+  _showArticles = (supportTagged = true) => {
+    const hiddenArticles = this.querySelectorAll(`${supportTagged ? this._selectors.supportTaggedArticle : this._selectors.nonSupportTaggedArticle}${this.blog ? `[data-blog="${this.blog}"]` : ''}.hidden`);
+    const firstFiveHiddenArticles = Array.from(hiddenArticles).slice(0, 5); 
+    firstFiveHiddenArticles.forEach((article) => {
+      article.classList.remove('hidden');
+    });
+
+    const showMoreBtn = supportTagged ? this.supportTaggedShowMoreBtn : this.nonSupportTaggedShowMoreBtn;
+    const anyHiddenArticle = this.querySelector(`${supportTagged ? this._selectors.supportTaggedArticle : this._selectors.nonSupportTaggedArticle}${this.blog ? `[data-blog="${this.blog}"]` : ''}.hidden`);
+    if (anyHiddenArticle) {
+      showMoreBtn.classList.remove('hidden');
+    } else {
+      showMoreBtn.classList.add('hidden');
+    }
+  }
+  _initArticles = () => {
+    this._showArticles(true);
+    this._showArticles(false);
+  }
+
+  _checkBlog = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const blog = searchParams.get('blog');
+
+    if (blog) {
+      this.blog = blog;
+    }
+  }
+}

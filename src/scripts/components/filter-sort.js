@@ -42,7 +42,7 @@ class FilterSort extends HTMLElement {
   _setListeners() {
     window.addEventListener('popstate', this._onHistoryChange);
     this._form.addEventListener('input', this._debouncedOnSubmit);
-    this._clearAll.addEventListener('click', this._onClearAllHandler);
+    this._clearAll?.addEventListener('click', this._onClearAllHandler);
     document.addEventListener('filter:change', this._onFilterChange);
     document.addEventListener('filter:clearAll', this._onClearAllHandler);
   }
