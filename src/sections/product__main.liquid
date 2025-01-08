@@ -156,7 +156,7 @@
                     <div class="product__filters flex gap-xs mb-xs">
                       {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
                         <a href="{{swatch_product.url}}" class="product__filter-link block h-xl w-xl border {% if swatch_product.variants[0].title == product.variants[0].title %} border-black {% else %} border-gray {% endif %} tabletl:h-xxl tabletl:w-xxl">
-                          {% assign image = swatch_product.featured_image | default: product.featured_image %}
+                          {% assign image = swatch_product.product_card_image | default: product.featured_image %}
                           {% render 'lazy-image' image: image %}
                         </a>
                       {% endfor %}
