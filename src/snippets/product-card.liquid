@@ -1,5 +1,5 @@
 {% liquid
-  assign current_variant = product.variants[0]
+  assign current_variant = product.selected_or_first_available_variant
   assign color_option = false
   assign filter_type_option = false
   if product.options_by_name['color'] != blank
@@ -20,7 +20,7 @@
       {% comment %} Filter Swatch Images {% endcomment %}
       {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
         <div class="product-card__image {% unless swatch_product.variants[0].title == current_variant.variants[0].title %}hidden{% endunless %}" data-swatch="{{ swatch_product.variants[0].title }}" js-product-card-image>
-          {% assign image = swatch_product.featured_image | default: product.featured_image %}
+          {% assign image = swatch_product.metafields.seed.product_card_image | default: product.featured_image %}
           {% render 'lazy-image' image: image %}
         </div>
       {% endfor %}

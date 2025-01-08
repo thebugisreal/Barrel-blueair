@@ -47,16 +47,12 @@ class ProductMain extends HTMLElement {
     this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
     this.addToCart = this.querySelector(this._selectors.addToCart)
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
-    this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
-
     this._toggleStickyBar();
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
       this.currentSwatch = this.dataset.currentSwatch;
-    } else {
-      this.currentSwatch = 'Default Swatch'
-      this.swatchOption = 0
+      this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     }
     
     this._handleSubscription();
