@@ -137,7 +137,7 @@
                 {% endif %}
               {% when 'title' %}
                 <h1 class="product__title h3">{{ product.title }}</h1>
-                {% if product.variants[0] != blank and product.variants[0].title != 'Default Title' %}
+                {% if product.variants[0] != blank and product.variants[0].title != 'Default Title' and product.options contains 'Filter'%}
                   <p class="product__short-description h5 desktop:my-xxs">{{ product.variants[0].title}} </p>
                 {% endif %}
               {% when 'short_description' %}
