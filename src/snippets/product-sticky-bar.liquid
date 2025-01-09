@@ -6,7 +6,6 @@
   if product.available
     if current_variant
       if current_variant.available 
-        assign current_price = current_variant.price | money
         assign atc_text = 'Add To Cart '
       else 
         assign atc_disabled = true
@@ -30,6 +29,7 @@
     </div>
 
     <div class="product-sticky-bar__atc-wrapper relative flex gap-md items-center">
+      {% if current_variant == blank %}
         {% for option in product.options_with_values %}
           {% if option.values.size > 1 %}
             <button class="product-sticky-bar__select-options-btn s1 btn btn--transparent-rounded px-sm {% if options_select_required %}hidden{% endif %}" js-sticky-select-options>
@@ -37,6 +37,7 @@
             </button>
           {% endif %}
         {% endfor %}
+      {% endif %}
         <p class="s1 hidden tabletl:block" js-sticky-price>{{ current_variant.price |  money }}</p>
         <button class="product__atc btn btn--blue-rounded {% unless options_select_required %}hidden{% endunless %}" {% if atc_disabled %} disabled {% endif %} type="button" js-sticky-atc>
             <span class="product-sticky-bar__atc btn__text">{{ atc_text }}</span>

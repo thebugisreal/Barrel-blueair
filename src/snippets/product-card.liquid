@@ -7,6 +7,10 @@
   elsif product.metafields.seed.product_card_filter_products != blank
     assign filter_type_option = true
   endif
+  assign hide_price_and_tag = false
+  if localization.country.iso_code != 'CA' and localization.country.iso_code != 'US'
+    assign hide_price_and_tag = true
+  endif
 %}
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
   <a href="{{ product.url }}" class="product-card__image-link-wrapper block !no-underline" js-product-link>
@@ -36,7 +40,7 @@
     {% endif %}
   </a>
   <div class="product-card__info px-sm py-md desktop:p-md">
-    <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+    <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xs gap-y-xxs flex-wrap {% if hide_price_and_tag %}!hidden{% endif %}">
       <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>Out of Stock</span>
       {% for tag in product.metafields.seed.product_tags.value %}
         <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
@@ -45,7 +49,7 @@
 
 
     <div class="product-card__title-layout flex gap-sm justify-between">
-      <div class="product-card__title-container">
+      <div class="product-card__title-container flex-1">
         <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>{{ product.title }}</a>
         {% if filter_type_option != false %}
           <div class="text-20"><span js-product-card-current-swatch-label>{{ product.variants[0].title }}</span><span> Filter</span></div>
@@ -111,7 +115,7 @@
       </div>
     {% endif %}
       
-    <div class="product-card__price-wrapper text-16 mt-md flex justify-start items-center gap-sm" js-product-card-price>
+    <div class="product-card__price-wrapper text-16 mt-md flex justify-start items-center gap-sm {% if hide_price_and_tag %}!hidden{% endif %}" js-product-card-price>
       {% if current_variant.compare_at_price > current_variant.price %}
         <s class="product-card__price product-card__price--compare">{{ current_variant.compare_at_price | money }}</s>
         <span class="product-card__price product-card__price--current font-700">{{ current_variant.price | money }}</span>
