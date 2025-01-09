@@ -32,49 +32,10 @@ class Account extends HTMLElement {
     this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
     this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
 
-    // this._setupOrderGroove();
     this._setupKlaviyo();
     this._setupCountries();
     this._setupEventListeners();
   }
-
-  // _setupOrderGroove() {
-  //   const axios = require("axios"); // npm install axios
-  //   const CryptoJS = require("crypto-js"); // npm install crypto-js
-
-  //   // Constants
-  //   const MERCHANT_ID = "a88731cecd3411efba354edbd60076c2";
-  //   const STOREFRONT_API_KEY = "<REPLACE_ME_WITH_STOREFRONT_API_KEY>";
-
-  //   // This function generates the OG Authorization header for a given customer
-  //   const generateOGAuthorization = (customerId) => {
-  //     const ts = Math.floor(new Date().getTime() / 1000);
-  //     const hash = CryptoJS.HmacSHA256(`${customerId}|${ts}`, STOREFRONT_API_KEY);
-  //     const sig = CryptoJS.enc.Base64.stringify(hash);
-  //     return JSON.stringify({
-  //       public_id: MERCHANT_ID,
-  //       sig_field: customerId,
-  //       ts,
-  //       sig,
-  //     });
-  //   };
-
-  //   // Test the header generation
-  //   const customerId = "<REPLACE_ME_WITH_CUSTOMER_ID>";
-  //   const url = "https://restapi.ordergroove.com/subscriptions/";
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: generateOGAuthorization(customerId),
-  //   };
-  //   axios
-  //     .get(url, { headers: headers })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   _setupKlaviyo() {
     if (this.querySelector('.klaviyo_form_trigger')) {

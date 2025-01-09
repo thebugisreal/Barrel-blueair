@@ -91,7 +91,10 @@
 .account-order__contact tr,
 .account-order__shipping tr,
 .account-order__payment tr {
-  @apply flex;
+  @apply grid
+  gap-md
+  desktop:gap-0
+  desktop:grid-cols-2;
 }
 
 .account-order__shipments td,
@@ -99,9 +102,10 @@
 .account-order__shipping td,
 .account-order__payment td {
   display: inline-block;
-  @apply w-[240px]
-  mr-48
-  mt-xxs;
+  @apply w-auto
+  desktop:mr-48
+  desktop:mt-xxs
+  desktop:w-[240px];
 }
 
 .account__close path {

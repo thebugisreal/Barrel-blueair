@@ -215,7 +215,7 @@
   </div>
 {% endcapture %}
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-email="{{ customer.email }}">
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-id="{{ customer.id }}">
   <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl">
     <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
       <div class="bg-blue text-white text-center p-sm">
@@ -225,7 +225,7 @@
       <!-- Mobile Navigation -->
       <div class="flex justify-start relative h-[56px] desktop:hidden">
         <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0" js-accordion>
-          <div class="accordion-item border border-[#F0F3F6]" js-accordion-item>
+          <div class="accordion-item" js-accordion-item>
             <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header js-account-trigger-accoridon-header>
               <span js-account-label>{{ sections[0] }}</span>
               <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
@@ -325,7 +325,7 @@
           <div class="account__section">
             <div class="mt-md grid gap-md">
               <div class="account-order__details bg-white">
-                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                <div class="px-md py-sm grid justify-between items-center border-b border-[#F0F3F6] gap-xxs desktop:flex">
                   <p class="s1 text-blue">Order Details</p>
                   <p class="p1 text-blue">Order No. {{ order.id }}</p>
                 </div>
@@ -378,7 +378,21 @@
                   <p class="s1 text-blue">Future Shipments</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table>
+                  <table class="block desktop:hidden">
+                    <tr>
+                      {% for item in order.line_items %}
+                        <td class="account-order-item__title">
+                          <p class="p1 mb-xxs">Product</p>
+                          <p class="p2">{{ item.title }}</p>
+                        </td>
+                        <td class="account-order-item__title">
+                          <p class="p1 mb-xxs">Filter Plan Subscription</p>
+                          <p class="p2">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</p>
+                        </td>
+                      {% endfor %}
+                    </tr>
+                  </table>
+                  <table class="hidden desktop:block">
                     <tr>
                       <td class="p1">Product</td>
                       <td class="p1">Filter Plan Subscription</td>
@@ -387,7 +401,6 @@
                       {% for item in order.line_items %}
                         <td class="account-order-item__title">
                           <p class="p2">{{ item.title }}</p>
-                          <p class="p2">{{ item.variant.title }}</p>
                         </td>
                         <td class="account-order-item__title">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</td>
                       {% endfor %}
@@ -417,7 +430,38 @@
                   <p class="s1 text-blue">Shipping</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table>
+                  <table class="block desktop:hidden">
+                    <tr>
+                      <td>
+                        <p class="p1 mb-xxs">Primary Address</p>
+                        <div class="p2">
+                          <p>{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</p>
+                          {%- if order.shipping_address.company != blank -%}
+                            <p>{{ order.shipping_address.company }}</p>
+                          {%- endif -%}
+                          <p>{{ order.shipping_address.address1 }}</p>
+                          {%- if order.shipping_address.address2 != blank -%}
+                            <p>{{ order.shipping_address.address2 }}</p>
+                          {%- endif -%}
+                          <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</p>
+                          <p>{{ order.shipping_address.country }}</p>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="p1 mb-xxs">Shipping Method</p>
+                        <div class="p2">
+                          {% if order.shipping_methods.length > 0 %}
+                            {% for shipping_method in order.shipping_methods limit: 1 %}
+                              <p>{{ shipping_method.title }}</p>
+                            {% endfor %}
+                          {% else %}
+                          -
+                          {% endif %}
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <table class="hidden desktop:block">
                     <tr>
                       <td class="p1">Primary Address</td>
                       <td class="p1">Shipping Method</td>
@@ -455,7 +499,33 @@
                   <p class="s1 text-blue">Payment</p>
                 </div>
                 <div class="px-md py-sm">
-                  <table>
+                  <table class="block desktop:hidden">
+                    <tr>
+                      <td>
+                        <p class="p1 mb-xxs">Payment Method</p>
+                        <div>
+                          [here]
+                        </div>
+                      </td>
+                      <td>
+                        <p class="p1 mb-xxs">Billing Address</p>
+                        <div class="p2">
+                          <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
+                          {%- if order.billing_address.company != blank -%}
+                            <p>{{ order.billing_address.company }}</p>
+                          {%- endif -%}
+                          <p>{{ order.billing_address.address1 }}</p>
+                          {%- if order.billing_address.address2 != blank -%}
+                            <p>{{ order.billing_address.address2 }}</p>
+                          {%- endif -%}
+                          <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
+                          <p>{{ order.billing_address.country }}</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <table class="hidden desktop:block">
                     <tr>
                       <td class="p1">Payment Method</td>
                       <td class="p1">Billing Address</td>
