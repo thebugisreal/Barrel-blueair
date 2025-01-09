@@ -1,0 +1,20 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "klaviyo": {
+      "type": "footer__klaviyo",
+      "settings": {
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "klaviyo",
+    "footer"
+  ]
+}
