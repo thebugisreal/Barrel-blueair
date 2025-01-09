@@ -54,7 +54,7 @@ class ProductMain extends HTMLElement {
       this.currentSwatch = this.dataset.currentSwatch;
       this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     }
-
+    
     this._handleSubscription();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
