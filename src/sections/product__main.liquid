@@ -135,17 +135,13 @@
                   <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
                 {% endif %}
               {% when 'title' %}
-<<<<<<< HEAD
-                <h1 class="product__title h3">{{ product.title }}</h1>
-                {% if product.variants[0].title != 'Default Title' and product.options contains 'Filter'%}
-                  <p class="product__short-description h5 desktop:my-xxs">{{ product.variants[0].title }} </p>
-                {% endif %}
-=======
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
                 <h1 class="product__title h3 {{ spacing }}">{{ product.title }}</h1>
->>>>>>> c86fb88 (PDP - Finished)
+                {% if product.variants[0].title != 'Default Title' and product.options contains 'Filter'%}
+                  <p class="product__short-description h5 desktop:my-xxs">{{ product.variants[0].title }} </p>
+                {% endif %}
               {% when 'short_description' %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
