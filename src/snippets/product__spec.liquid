@@ -70,10 +70,42 @@
                 </li>
             {% endif %}
         {% when 'air-purifier-filters' %}
-            {% comment %} NO FILTER TYPE {% endcomment %}
-            {% comment %} NO DIMENSIONS {% endcomment %}
-            {% comment %} NO Weight {% endcomment %}
-            {% comment %} NO Recommended filter change {% endcomment %}
+            {% if product.metafields.seed.blair_filterSpecification_filterType != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Filter Type</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_filterSpecification_filterType}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.blair_dimensions != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Dimensions(HxWxD)</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_dimensions}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.blair_productSpecification_weight != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Product Weight</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.filter_frame_material != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Filter Frame Material</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.filter_frame_material}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.filter_recycling != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Filter Recycling</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.filter_recycling}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.blair_filterSpecification_lifetime != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Recommended filter change</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_filterSpecification_lifetime}}</p>
+                </li>
+            {% endif %}
             {% if product.metafields.seed.blair_filterSpecification_filterNumber != blank %}
                 <li class="flex gap-md">
                     <p class="p3 w-1/2">Number of filters</p>
@@ -99,8 +131,6 @@
                     <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
                 </li>
             {% endif %}
-            {% comment %} NO Filter frame material{% endcomment %}
-            {% comment %} NO Filter recycling {% endcomment %}
             {% if product.metafields.seed.blair_filterSpecification_lifetime != blank %}
                 <li class="flex gap-md">
                     <p class="p3 w-1/2">Recommended filter change</p>
@@ -132,7 +162,6 @@
                     <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
                 </li>
             {% endif %}
-            {% comment %} NO MAX WATTAGE {% endcomment %}
             {% if product.metafields.seed.blair_productSpecification_soundlevel != blank %}
                 <li class="flex gap-md">
                     <p class="p3 w-1/2">Sound level</p>
@@ -200,7 +229,12 @@
                     <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
                 </li>
             {% endif %}
-            {% comment %} NO MAX WATTAGE {% endcomment %}
+            {% if product.metafields.seed.max_wattage_heat != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Max Wattage (Heat)</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.max_wattage_heat}}</p>
+                </li>
+            {% endif %}
             {% if product.metafields.seed.blair_productSpecification_soundlevel != blank %}
                 <li class="flex gap-md">
                     <p class="p3 w-1/2">Sound level</p>
@@ -256,9 +290,24 @@
                     <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_tankcapacity}}</p>
                 </li>
             {% endif %}
-            {% comment %} NO ENERGY CONSUMPTION {% endcomment %}
-            {% comment %} NO SOUND LEVEL {% endcomment %}
-            {% comment %} NO AIR OUTLET {% endcomment %}
+            {% if product.metafields.seed.blair_energyConsumption != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Energy consumption</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.blair_productSpecification_soundlevel != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Sound level</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_soundlevel}}</p>
+                </li>
+            {% endif %}
+            {% if product.metafields.seed.blair_airOutlet != blank %}
+                <li class="flex gap-md">
+                    <p class="p3 w-1/2">Air outlet</p>
+                    <p class="p4 w-1/2">{{ product.metafields.seed.blair_airOutlet}}</p>
+                </li>
+            {% endif %}
             {% if product.metafields.seed.blair_recommendedRoomSize != blank %}
                 <li class="flex gap-md">
                     <p class="p3 w-1/2">Recommended room size</p>
