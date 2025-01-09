@@ -148,17 +148,19 @@
       </div>
       <div class="account-content block">
         {% if customer.orders.size > 0 %}
+          <table class="hidden desktop:w-full desktop:bg-white desktop:table">
+            <tr class="account__order w-full border-b border-[#F0F3F6]">
+              <th class="p1 px-md py-sm text-left">Date of Purchase</th> 
+              <th class="p1 px-md py-sm text-left">Status</th> 
+              <th class="p1 px-md py-sm text-left">Total</th> 
+              <th class="p1 px-md py-sm text-left">Order Number</th>
+              <th class="p1 px-md py-sm text-right"></th>
+            </tr>
+          </table>
           {% paginate customer.orders by 10 %}
-            <table class="hidden desktop:w-full desktop:bg-white desktop:table">
-              <tr class="account__order w-full border-b border-[#F0F3F6]" js-order>
-                <th class="p1 px-md py-sm text-left">Date of Purchase</th> 
-                <th class="p1 px-md py-sm text-left">Status</th> 
-                <th class="p1 px-md py-sm text-left">Total</th> 
-                <th class="p1 px-md py-sm text-left">Order Number</th>
-                <th class="p1 px-md py-sm text-right"></th>
-              </tr>
+            <table class="hidden desktop:w-full desktop:bg-white desktop:table" js-orders-desktop>
               {% for order in customer.orders %}
-                <tr class="account__order w-full border-b border-[#F0F3F6]" js-order>
+                <tr class="account__order w-full border-b border-[#F0F3F6]" js-order-desktop>
                   <td class="p2 px-md py-sm text-left">{{ order.created_at | date: "%B %d, %y" }}</td> 
                   <td class="p2 px-md py-sm text-left">{{ order.fulfillment_status_label }}</td> 
                   <td class="p2 px-md py-sm text-left">{{ order.total_price | money }}</td> 
@@ -171,9 +173,9 @@
                 </tr>
               {% endfor %}
             </table>
-            <div class="grid gap-sm desktop:hidden">
+            <div class="grid gap-sm desktop:hidden" js-orders-mobile>
               {% for order in customer.orders %}
-                <div class="account__order bg-white" js-order>
+                <div class="account__order bg-white" js-order-mobile>
                   <div class="flex justify-between items-center">
                     <p class="p2 px-sm py-xs">{{ order.created_at | date: "%B %d, %y" }}</p>
                     <button id="{{ order.id }}-tab" class="tab__trigger link link--underline p2 px-sm py-xs" aria-controls="{{ order.id }}-content-panel" role="tab" aria-selected="true" js-tab>
@@ -189,7 +191,11 @@
               {% endfor %}
             </div>
             {% if paginate.next %}
-              <button data-url="{{ paginate.next.url }}" js-next-page>View More Orders</button>
+              <button class="p2 w-full px-md py-sm bg-white mt-sm text-left link link--underline text-center desktop:mt-0 desktop:text-left" 
+                data-url="{{ paginate.next.url }}" 
+                js-next-page>
+                Load More
+              </button>
             {% endif %}
           {% endpaginate %}
         {% else %}
@@ -216,7 +222,7 @@
 {% endcapture %}
 
 <s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-id="{{ customer.id }}">
-  <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl">
+  <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
     <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
       <div class="bg-blue text-white text-center p-sm">
         <p class="account__title s1">Hello {{customer.first_name}}</p>
@@ -306,253 +312,257 @@
       {% endfor %}
 
       <!-- Account Orders -->
-      {% for order in customer.orders %}
-        <div id="{{ order.id }}-content-panel" class="tab__panel" 
-          role="tabpanel" 
-          aria-labelledby="{{ order.id }}-tab" 
-          aria-hidden="true">
-          <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-            <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
-            <div class="flex flex-col-reverse gap-md items-center desktop:flex-row">
-              <button class="btn flex justify-center items-center gap-xxs" js-return-button>
-                <span class="btn__arrow">{% render 'icon-arrow-left' %}</span>Go Back
-              </button>
-              <a href="{{ section.settings.start_return_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
-                Start a Return<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-              </a>
-            </div>
-          </div>
-          <div class="account__section">
-            <div class="mt-md grid gap-md">
-              <div class="account-order__details bg-white">
-                <div class="px-md py-sm grid justify-between items-center border-b border-[#F0F3F6] gap-xxs desktop:flex">
-                  <p class="s1 text-blue">Order Details</p>
-                  <p class="p1 text-blue">Order No. {{ order.id }}</p>
+      <div js-orders-tabs>
+        {% paginate customer.orders by 10 %}
+          {% for order in customer.orders %}
+            <div id="{{ order.id }}-content-panel" class="tab__panel" 
+              role="tabpanel" 
+              aria-labelledby="{{ order.id }}-tab" 
+              aria-hidden="true">
+              <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
+                <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
+                <div class="flex flex-col-reverse gap-md items-center desktop:flex-row">
+                  <button class="btn flex justify-center items-center gap-xxs" js-return-button>
+                    <span class="btn__arrow">{% render 'icon-arrow-left' %}</span>Go Back
+                  </button>
+                  <a href="{{ section.settings.start_return_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
+                    Start a Return<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                  </a>
                 </div>
-                <div class="px-md py-sm">
-                  <table class="w-full">
-                    <tr>
-                      <td class="p1">Subtotal</td>
-                      <td class="text-right">{{ order.subtotal_price | money }}</td>
-                    </tr>
-                    {% if order.discounts.size > 0 %}
-                      {% for discount in order.discounts %}
+              </div>
+              <div class="account__section">
+                <div class="mt-md grid gap-md">
+                  <div class="account-order__details bg-white">
+                    <div class="px-md py-sm grid justify-between items-center border-b border-[#F0F3F6] gap-xxs desktop:flex">
+                      <p class="s1 text-blue">Order Details</p>
+                      <p class="p1 text-blue">Order No. {{ order.id }}</p>
+                    </div>
+                    <div class="px-md py-sm">
+                      <table class="w-full">
                         <tr>
-                          <td>Promo ({{ discount.code }})</td>
-                          <td class="text-right">{{ discount.savings | money }}</td>
+                          <td class="p1">Subtotal</td>
+                          <td class="text-right">{{ order.subtotal_price | money }}</td>
                         </tr>
-                      {% endfor %}
-                    {% else %}
-                      <tr>
-                        <td class="p1">Promo</td>
-                        <td class="text-right">{{ 0 | money }}</td>
-                      </tr>
-                    {% endif %}
-                    <tr>
-                      <td class="p1">Shipping</td>
-                      <td class="text-right">{{ order.shipping_price | money }}</td>
-                    </tr>
-                    {% if order.tax_lines.size > 0 %}
-                      {% for tax_line in order.tax_lines %}
-                        <tr>
-                          <td class="p1">{{ tax_line.title }}</td>
-                          <td class="text-right">{{ tax_line.price | money }}</td>
-                        </tr>
-                      {% endfor %}
-                    {% else %}
-                      <tr>
-                        <td class="p1">Tax</td>
-                        <td class="text-right">{{ 0 | money }}</td>
-                      </tr>          
-                    {% endif %}
-                    <tr>
-                      <td class="p1">Total</td>
-                      <td class="text-right">{{ order.total_price | money }}</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-
-              <div class="account-order__shipments bg-white">
-                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-                  <p class="s1 text-blue">Future Shipments</p>
-                </div>
-                <div class="px-md py-sm">
-                  <table class="block desktop:hidden">
-                    <tr>
-                      {% for item in order.line_items %}
-                        <td class="account-order-item__title">
-                          <p class="p1 mb-xxs">Product</p>
-                          <p class="p2">{{ item.title }}</p>
-                        </td>
-                        <td class="account-order-item__title">
-                          <p class="p1 mb-xxs">Filter Plan Subscription</p>
-                          <p class="p2">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</p>
-                        </td>
-                      {% endfor %}
-                    </tr>
-                  </table>
-                  <table class="hidden desktop:block">
-                    <tr>
-                      <td class="p1">Product</td>
-                      <td class="p1">Filter Plan Subscription</td>
-                    </tr>
-                    <tr>
-                      {% for item in order.line_items %}
-                        <td class="account-order-item__title">
-                          <p class="p2">{{ item.title }}</p>
-                        </td>
-                        <td class="account-order-item__title">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</td>
-                      {% endfor %}
-                    </tr>
-                  </table>
-                </div>
-              </div>
-
-              <div class="account-order__contact bg-white">
-                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-                  <p class="s1 text-blue">Contact</p>
-                </div>
-                <div class="px-md py-sm">
-                  <table>
-                    <tr>
-                      <td class="p1">Email</td>
-                    </tr>
-                    <tr>
-                      <td class="p2">{{ order.customer.email }}</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-
-              <div class="account-order__shipping bg-white">
-                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-                  <p class="s1 text-blue">Shipping</p>
-                </div>
-                <div class="px-md py-sm">
-                  <table class="block desktop:hidden">
-                    <tr>
-                      <td>
-                        <p class="p1 mb-xxs">Primary Address</p>
-                        <div class="p2">
-                          <p>{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</p>
-                          {%- if order.shipping_address.company != blank -%}
-                            <p>{{ order.shipping_address.company }}</p>
-                          {%- endif -%}
-                          <p>{{ order.shipping_address.address1 }}</p>
-                          {%- if order.shipping_address.address2 != blank -%}
-                            <p>{{ order.shipping_address.address2 }}</p>
-                          {%- endif -%}
-                          <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</p>
-                          <p>{{ order.shipping_address.country }}</p>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="p1 mb-xxs">Shipping Method</p>
-                        <div class="p2">
-                          {% if order.shipping_methods.length > 0 %}
-                            {% for shipping_method in order.shipping_methods limit: 1 %}
-                              <p>{{ shipping_method.title }}</p>
-                            {% endfor %}
-                          {% else %}
-                          -
-                          {% endif %}
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                  <table class="hidden desktop:block">
-                    <tr>
-                      <td class="p1">Primary Address</td>
-                      <td class="p1">Shipping Method</td>
-                    </tr>
-                    <tr>
-                      <td class="p2">
-                        <p>{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</p>
-                        {%- if order.shipping_address.company != blank -%}
-                          <p>{{ order.shipping_address.company }}</p>
-                        {%- endif -%}
-                        <p>{{ order.shipping_address.address1 }}</p>
-                        {%- if order.shipping_address.address2 != blank -%}
-                          <p>{{ order.shipping_address.address2 }}</p>
-                        {%- endif -%}
-                        <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</p>
-                        <p>{{ order.shipping_address.country }}</p>
-                      </td>
-                      <td class="p2">
-                        {% if order.shipping_methods.length > 0 %}
-                          {% for shipping_method in order.shipping_methods limit: 1 %}
-                            <p>{{ shipping_method.title }}</p>
+                        {% if order.discounts.size > 0 %}
+                          {% for discount in order.discounts %}
+                            <tr>
+                              <td>Promo ({{ discount.code }})</td>
+                              <td class="text-right">{{ discount.savings | money }}</td>
+                            </tr>
                           {% endfor %}
                         {% else %}
-                        -
+                          <tr>
+                            <td class="p1">Promo</td>
+                            <td class="text-right">{{ 0 | money }}</td>
+                          </tr>
                         {% endif %}
-                      </td>
-                    </tr>
-                  </table>
+                        <tr>
+                          <td class="p1">Shipping</td>
+                          <td class="text-right">{{ order.shipping_price | money }}</td>
+                        </tr>
+                        {% if order.tax_lines.size > 0 %}
+                          {% for tax_line in order.tax_lines %}
+                            <tr>
+                              <td class="p1">{{ tax_line.title }}</td>
+                              <td class="text-right">{{ tax_line.price | money }}</td>
+                            </tr>
+                          {% endfor %}
+                        {% else %}
+                          <tr>
+                            <td class="p1">Tax</td>
+                            <td class="text-right">{{ 0 | money }}</td>
+                          </tr>          
+                        {% endif %}
+                        <tr>
+                          <td class="p1">Total</td>
+                          <td class="text-right">{{ order.total_price | money }}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="account-order__shipments bg-white">
+                    <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                      <p class="s1 text-blue">Future Shipments</p>
+                    </div>
+                    <div class="px-md py-sm">
+                      <table class="block desktop:hidden">
+                        <tr>
+                          {% for item in order.line_items %}
+                            <td class="account-order-item__title">
+                              <p class="p1 mb-xxs">Product</p>
+                              <p class="p2">{{ item.title }}</p>
+                            </td>
+                            <td class="account-order-item__title">
+                              <p class="p1 mb-xxs">Filter Plan Subscription</p>
+                              <p class="p2">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</p>
+                            </td>
+                          {% endfor %}
+                        </tr>
+                      </table>
+                      <table class="hidden desktop:block">
+                        <tr>
+                          <td class="p1">Product</td>
+                          <td class="p1">Filter Plan Subscription</td>
+                        </tr>
+                        <tr>
+                          {% for item in order.line_items %}
+                            <td class="account-order-item__title">
+                              <p class="p2">{{ item.title }}</p>
+                            </td>
+                            <td class="account-order-item__title">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</td>
+                          {% endfor %}
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="account-order__contact bg-white">
+                    <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                      <p class="s1 text-blue">Contact</p>
+                    </div>
+                    <div class="px-md py-sm">
+                      <table>
+                        <tr>
+                          <td class="p1">Email</td>
+                        </tr>
+                        <tr>
+                          <td class="p2">{{ order.customer.email }}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="account-order__shipping bg-white">
+                    <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                      <p class="s1 text-blue">Shipping</p>
+                    </div>
+                    <div class="px-md py-sm">
+                      <table class="block desktop:hidden">
+                        <tr>
+                          <td>
+                            <p class="p1 mb-xxs">Primary Address</p>
+                            <div class="p2">
+                              <p>{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</p>
+                              {%- if order.shipping_address.company != blank -%}
+                                <p>{{ order.shipping_address.company }}</p>
+                              {%- endif -%}
+                              <p>{{ order.shipping_address.address1 }}</p>
+                              {%- if order.shipping_address.address2 != blank -%}
+                                <p>{{ order.shipping_address.address2 }}</p>
+                              {%- endif -%}
+                              <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</p>
+                              <p>{{ order.shipping_address.country }}</p>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="p1 mb-xxs">Shipping Method</p>
+                            <div class="p2">
+                              {% if order.shipping_methods.length > 0 %}
+                                {% for shipping_method in order.shipping_methods limit: 1 %}
+                                  <p>{{ shipping_method.title }}</p>
+                                {% endfor %}
+                              {% else %}
+                              -
+                              {% endif %}
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                      <table class="hidden desktop:block">
+                        <tr>
+                          <td class="p1">Primary Address</td>
+                          <td class="p1">Shipping Method</td>
+                        </tr>
+                        <tr>
+                          <td class="p2">
+                            <p>{{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}</p>
+                            {%- if order.shipping_address.company != blank -%}
+                              <p>{{ order.shipping_address.company }}</p>
+                            {%- endif -%}
+                            <p>{{ order.shipping_address.address1 }}</p>
+                            {%- if order.shipping_address.address2 != blank -%}
+                              <p>{{ order.shipping_address.address2 }}</p>
+                            {%- endif -%}
+                            <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</p>
+                            <p>{{ order.shipping_address.country }}</p>
+                          </td>
+                          <td class="p2">
+                            {% if order.shipping_methods.length > 0 %}
+                              {% for shipping_method in order.shipping_methods limit: 1 %}
+                                <p>{{ shipping_method.title }}</p>
+                              {% endfor %}
+                            {% else %}
+                            -
+                            {% endif %}
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+                  {% comment %}
+                  <div class="account-order__payment bg-white">
+                    <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                      <p class="s1 text-blue">Payment</p>
+                    </div>
+                    <div class="px-md py-sm">
+                      <table class="block desktop:hidden">
+                        <tr>
+                          <td>
+                            <p class="p1 mb-xxs">Payment Method</p>
+                            <div>
+                              [here]
+                            </div>
+                          </td>
+                          <td>
+                            <p class="p1 mb-xxs">Billing Address</p>
+                            <div class="p2">
+                              <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
+                              {%- if order.billing_address.company != blank -%}
+                                <p>{{ order.billing_address.company }}</p>
+                              {%- endif -%}
+                              <p>{{ order.billing_address.address1 }}</p>
+                              {%- if order.billing_address.address2 != blank -%}
+                                <p>{{ order.billing_address.address2 }}</p>
+                              {%- endif -%}
+                              <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
+                              <p>{{ order.billing_address.country }}</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <table class="hidden desktop:block">
+                        <tr>
+                          <td class="p1">Payment Method</td>
+                          <td class="p1">Billing Address</td>
+                        </tr>
+                        <tr>
+                          <td class="p2"></td>
+                          <td class="p2">
+                            <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
+                            {%- if order.billing_address.company != blank -%}
+                              <p>{{ order.billing_address.company }}</p>
+                            {%- endif -%}
+                            <p>{{ order.billing_address.address1 }}</p>
+                            {%- if order.billing_address.address2 != blank -%}
+                              <p>{{ order.billing_address.address2 }}</p>
+                            {%- endif -%}
+                            <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
+                            <p>{{ order.billing_address.country }}</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  {% endcomment %}
                 </div>
               </div>
-
-              {% comment %}
-              <div class="account-order__payment bg-white">
-                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-                  <p class="s1 text-blue">Payment</p>
-                </div>
-                <div class="px-md py-sm">
-                  <table class="block desktop:hidden">
-                    <tr>
-                      <td>
-                        <p class="p1 mb-xxs">Payment Method</p>
-                        <div>
-                          [here]
-                        </div>
-                      </td>
-                      <td>
-                        <p class="p1 mb-xxs">Billing Address</p>
-                        <div class="p2">
-                          <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
-                          {%- if order.billing_address.company != blank -%}
-                            <p>{{ order.billing_address.company }}</p>
-                          {%- endif -%}
-                          <p>{{ order.billing_address.address1 }}</p>
-                          {%- if order.billing_address.address2 != blank -%}
-                            <p>{{ order.billing_address.address2 }}</p>
-                          {%- endif -%}
-                          <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
-                          <p>{{ order.billing_address.country }}</p>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-
-                  <table class="hidden desktop:block">
-                    <tr>
-                      <td class="p1">Payment Method</td>
-                      <td class="p1">Billing Address</td>
-                    </tr>
-                    <tr>
-                      <td class="p2"></td>
-                      <td class="p2">
-                        <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
-                        {%- if order.billing_address.company != blank -%}
-                          <p>{{ order.billing_address.company }}</p>
-                        {%- endif -%}
-                        <p>{{ order.billing_address.address1 }}</p>
-                        {%- if order.billing_address.address2 != blank -%}
-                          <p>{{ order.billing_address.address2 }}</p>
-                        {%- endif -%}
-                        <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
-                        <p>{{ order.billing_address.country }}</p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-              {% endcomment %}
             </div>
-          </div>
-        </div>
-      {% endfor %}
+          {% endfor %}
+        {% endpaginate %}
+      </div>
     </div>
   </s-tabs>
 

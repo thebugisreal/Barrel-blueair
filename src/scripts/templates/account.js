@@ -8,11 +8,15 @@ class Account extends HTMLElement {
       editAddressOpen: '[js-edit-address]',
       editAddressForm: '[js-edit-address-form]',
       deleteAddressButton: '[js-delete-address]',
-      ordersContainer: '[js-orders]',
+      ordersContainerMobile: '[js-orders-mobile]',
+      ordersContainerDesktop: '[js-orders-desktop]',
+      ordersContainerTabs: '[js-orders-tabs]',
       ordersPagination: '[js-next-page]',
-      order: '[js-order]',
+      orderMobile: '[js-order-mobile]',
+      orderDesktop: '[js-order-desktop]',
       accountTriggerAccordionHeader: '[js-account-trigger-accoridon-header]',
       accountLabel: '[js-account-label]',
+      accountTabsContainer: '[js-account-tabs-container]',
       accountTab: '[js-account-tab]',
       returnButton: '[js-return-button]',
       accountSubscription: '[js-account-subscription]'
@@ -25,10 +29,13 @@ class Account extends HTMLElement {
     this.openEditAddress = this.querySelectorAll(this._selectors.editAddressOpen);
     this.editAddressForms = this.querySelectorAll(this._selectors.editAddressForm);
     this.deleteAddressButtons = this.querySelectorAll(this._selectors.deleteAddressButton);
-    this.ordersContainer = this.querySelector(this._selectors.ordersContainer);
+    this.ordersContainerMobile = this.querySelector(this._selectors.ordersContainerMobile);
+    this.ordersContainerDesktop = this.querySelector(this._selectors.ordersContainerDesktop);
+    this.ordersContainerTabs = this.querySelector(this._selectors.ordersContainerTabs);
     this.ordersPagination = this.querySelector(this._selectors.ordersPagination);
     this.accountTriggerAccordionHeader = this.querySelector(this._selectors.accountTriggerAccordionHeader);
     this.accountLabel = this.querySelector(this._selectors.accountLabel);
+    this.accountTabsContainer = this.querySelector(this._selectors.accountTabsContainer);
     this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
     this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
 
@@ -91,10 +98,14 @@ class Account extends HTMLElement {
   _addOrders = async () => {
     const url = this.ordersPagination.dataset.url;
     const parsedHTML = await this._getOrders(url);
-    const newOrders = parsedHTML.querySelector(this._selectors.ordersContainer).innerHTML;
+    const newOrdersMobile = parsedHTML.querySelector(this._selectors.ordersContainerMobile).innerHTML;
+    const newOrdersDesktop = parsedHTML.querySelector(this._selectors.ordersContainerDesktop).innerHTML;
+    const newOrdersTabs = parsedHTML.querySelector(this._selectors.ordersContainerTabs).innerHTML;
     const newPagination = parsedHTML.querySelector(this._selectors.ordersPagination);
 
-    this.ordersContainer.insertAdjacentHTML('beforeend', newOrders)
+    this.ordersContainerMobile.insertAdjacentHTML('beforeend', newOrdersMobile);
+    this.ordersContainerDesktop.insertAdjacentHTML('beforeend', newOrdersDesktop);
+    this.ordersContainerTabs.insertAdjacentHTML('beforeend', newOrdersTabs);
 
     if (newPagination) {
       this.ordersPagination.dataset.url = newPagination.dataset.url;
@@ -102,7 +113,13 @@ class Account extends HTMLElement {
       this.ordersPagination.remove();
     }
 
-    this.ordersContainer.connectedCallback();
+    this.connectedCallback();
+
+    this._elements = {
+      tabs: this.querySelectorAll('[js-tab]')
+    };
+
+    this._tabEventListener();
   }
 
   _getOrders(url) {
@@ -147,7 +164,6 @@ class Account extends HTMLElement {
         button.click();
       }
     })
-
   }
 
   _closeAccountTriggerAccordion = (e) => {
@@ -164,5 +180,45 @@ class Account extends HTMLElement {
 
   _returnToOrderHistory = (e) => {
     document.querySelector('label[aria-controls="order-history-content-panel"]').click();
+  }
+
+  _tabEventListener = () => {
+    const { tabs } = this._elements;
+    tabs.forEach((tab) =>
+      tab.addEventListener("click", this._showTabPanel)
+    );
+  }
+
+  _showTabPanel = (el) => {
+    const { tabs } = this._elements;
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].setAttribute('aria-selected', 'false');
+    }
+    el.currentTarget.setAttribute('aria-selected', 'true');
+    var tabPanelToOpen = el.currentTarget.getAttribute('aria-controls');
+    var tabPanels = this.querySelectorAll('[role=tabpanel]');
+    for (let i = 0; i < tabPanels.length; i++) {
+      tabPanels[i].setAttribute('aria-hidden', 'true');
+    }
+    this.querySelector(`[id="${tabPanelToOpen}"]`).setAttribute('aria-hidden', 'false');
+  }
+
+  _tabListKeydown = (e) => {
+    if (e.keyCode == 37) {
+      $("[aria-selected=true]").prev().click().focus();
+      e.preventDefault();
+    }
+    if (e.keyCode == 38) {
+      $("[aria-selected=true]").prev().click().focus();
+      e.preventDefault();
+    }
+    if (e.keyCode == 39) {
+      $("[aria-selected=true]").next().click().focus();
+      e.preventDefault();
+    }
+    if (e.keyCode == 40) {
+      $("[aria-selected=true]").next().click().focus();
+      e.preventDefault();
+    }
   }
 }
