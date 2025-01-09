@@ -23,7 +23,7 @@
           </div>
           <div class="account__rte h-full p-md p2">
             <p>{{ section.settings.newsletter_text }}</p>
-            <a href="{{ section.settings.newsletter_cta_url | default: '/' }}" class="btn btn--blue-rounded mt-sm flex justify-center items-center gap-xxs">
+            <a href="{{ section.settings.newsletter_cta_url | default: '/' }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded mt-sm flex justify-center items-center gap-xxs">
               {{ section.settings.newsletter_cta_text | default: 'Unsubscribe' }}<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
             </a>
           </div>
@@ -117,7 +117,7 @@
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
       <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Active Filter Subscriptions</h4>
-      <a href="{{ section.settings.add_subscription_url }}" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
+      <a href="{{ section.settings.add_subscription_url }}" target="_blank" rel="noopener noreferrer" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
         Add a Subscription
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
       </a>
@@ -138,7 +138,7 @@
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
       <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
-      <a href="{{ section.settings.start_return_url }}" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
+      <a href="{{ section.settings.start_return_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
         Start a Return<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
       </a>
     </div>
@@ -317,7 +317,7 @@
               <button class="btn flex justify-center items-center gap-xxs" js-return-button>
                 <span class="btn__arrow">{% render 'icon-arrow-left' %}</span>Go Back
               </button>
-              <a href="{{ section.settings.start_return_url }}" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
+              <a href="{{ section.settings.start_return_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
                 Start a Return<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
               </a>
             </div>
