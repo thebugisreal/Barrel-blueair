@@ -87,13 +87,21 @@
   @apply leading-[28px];
 }
 
+.account-order__shipments tr,
+.account-order__contact tr,
+.account-order__shipping tr,
+.account-order__payment tr {
+  @apply flex;
+}
+
 .account-order__shipments td,
 .account-order__contact td,
 .account-order__shipping td,
 .account-order__payment td {
   display: inline-block;
   @apply w-[240px]
-  mr-48;
+  mr-48
+  mt-xxs;
 }
 
 .account__close path {

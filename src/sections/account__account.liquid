@@ -5,7 +5,7 @@
 {% endcomment %}
 {% capture my_profile_content %}
   <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">My Profile</h4>
+    <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">My Profile</h4>
     <div class="mt-md grid gap-md desktop:grid-cols-2">
       <div class="account-content bg-white min-h-[225px] flex flex-col">
         <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
@@ -45,7 +45,7 @@
   </div>
 
   <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Address Book</h4>
+    <h4 class="mt-md mb-xxs text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:mb-0 desktop:text-left desktop:justify-start">Address Book</h4>
     <p class="p2 mt-xss text-black text-center px-sm desktop:mt-sm desktop:text-left desktop:px-0">
       Please note: To update your address for filter subscriptions, go to your "Filter Subscription" settings, edit my plan, and update the address details.
     </p>
@@ -106,7 +106,7 @@
         <p>New Address</p>
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
       </button>
-    </div>            
+    </div>
   </div>
 {% endcapture %}
 
@@ -116,18 +116,18 @@
 {% capture filter_subscriptions %}
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Active Filter Subscriptions</h4>
-      <a href="{{ section.settings.add_subscription_url }}" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop: p-0 desktop:bg-none">
+      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Active Filter Subscriptions</h4>
+      <a href="{{ section.settings.add_subscription_url }}" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
         Add a Subscription
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
       </a>
     </div>
-    <div class="mt-md grid gap-md">
+    <div class="grid gap-md">
       <div class="account-content">
-        <div id="og-msi"></div>
-        <script type="text/javascript" src="https://static.ordergroove.com/99c2491c92fb11efaa54be77590425ae/msi.js"></script>
+        <div id="og-msi" ng-jq></div>
+        <script type="text/javascript" src="https://static.ordergroove.com/a88731cecd3411efba354edbd60076c2/msi.js"></script>
       </div>
-    </div>            
+    </div>
   </div>
 {% endcapture %}
 
@@ -137,7 +137,7 @@
 {% capture order_history_content %}
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Order History</h4>
+      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
       <a href="{{ section.settings.start_return_url }}" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
         Start a Return<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
       </a>
@@ -207,7 +207,7 @@
 {% endcomment %}
 {% capture devices_and_warranty %}
   <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Devices & Warranty</h4>
+    <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
     <div class="mt-md grid gap-md">
       <div class="account-content">
       </div>
@@ -215,7 +215,7 @@
   </div>
 {% endcapture %}
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-id="{{ customer.id }}">
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-email="{{ customer.email }}">
   <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl">
     <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
       <div class="bg-blue text-white text-center p-sm">
@@ -312,7 +312,7 @@
           aria-labelledby="{{ order.id }}-tab" 
           aria-hidden="true">
           <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-            <h4 class="mt-md text-center min-h-[50px] flex items-center desktop:mt-0 desktop:text-left">Order History</h4>
+            <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
             <div class="flex flex-col-reverse gap-md items-center desktop:flex-row">
               <button class="btn flex justify-center items-center gap-xxs" js-return-button>
                 <span class="btn__arrow">{% render 'icon-arrow-left' %}</span>Go Back
@@ -355,7 +355,7 @@
                     {% if order.tax_lines.size > 0 %}
                       {% for tax_line in order.tax_lines %}
                         <tr>
-                          <td class="p1">Tax</td>
+                          <td class="p1">{{ tax_line.title }}</td>
                           <td class="text-right">{{ tax_line.price | money }}</td>
                         </tr>
                       {% endfor %}
@@ -384,15 +384,13 @@
                       <td class="p1">Filter Plan Subscription</td>
                     </tr>
                     <tr>
-                      <td class="p2">
-                        {% for item in order.line_items %}
-                          <article class="account-order__item">
-                            <p class="account-order-item__title">{{ item.title }}</p>
-                            <p class="account-order-item__variant">{{ item.variant.title }}</p>
-                          </article>
-                        {% endfor %}
-                      </td>
-                      <td class="p2"></td>
+                      {% for item in order.line_items %}
+                        <td class="account-order-item__title">
+                          <p class="p2">{{ item.title }}</p>
+                          <p class="p2">{{ item.variant.title }}</p>
+                        </td>
+                        <td class="account-order-item__title">{{ item.selling_plan_allocation.selling_plan.name | default: "-" }}</td>
+                      {% endfor %}
                     </tr>
                   </table>
                 </div>
@@ -438,14 +436,49 @@
                         <p>{{ order.shipping_address.country }}</p>
                       </td>
                       <td class="p2">
-                        {% for shipping_method in order.shipping_methods %}
-                          <p>{{ shipping_method.title }}</p>
-                        {% endfor %}
+                        {% if order.shipping_methods.length > 0 %}
+                          {% for shipping_method in order.shipping_methods limit: 1 %}
+                            <p>{{ shipping_method.title }}</p>
+                          {% endfor %}
+                        {% else %}
+                        -
+                        {% endif %}
                       </td>
                     </tr>
                   </table>
                 </div>
               </div>
+
+              {% comment %}
+              <div class="account-order__payment bg-white">
+                <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                  <p class="s1 text-blue">Payment</p>
+                </div>
+                <div class="px-md py-sm">
+                  <table>
+                    <tr>
+                      <td class="p1">Payment Method</td>
+                      <td class="p1">Billing Address</td>
+                    </tr>
+                    <tr>
+                      <td class="p2"></td>
+                      <td class="p2">
+                        <p>{{ order.billing_address.first_name }} {{ order.billing_address.last_name }}</p>
+                        {%- if order.billing_address.company != blank -%}
+                          <p>{{ order.billing_address.company }}</p>
+                        {%- endif -%}
+                        <p>{{ order.billing_address.address1 }}</p>
+                        {%- if order.billing_address.address2 != blank -%}
+                          <p>{{ order.billing_address.address2 }}</p>
+                        {%- endif -%}
+                        <p>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</p>
+                        <p>{{ order.billing_address.country }}</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              {% endcomment %}
             </div>
           </div>
         </div>
