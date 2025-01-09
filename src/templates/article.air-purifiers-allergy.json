@@ -183,13 +183,15 @@
         "product_DArXKM": {
           "type": "product",
           "settings": {
-            "product": "1342-master-product"
+            "product": "1342-master-product",
+            "product_card_style": "style1"
           }
         },
         "product_9XqKwW": {
           "type": "product",
           "settings": {
-            "product": "blue-3610-pre-filter"
+            "product": "blue-3610-pre-filter",
+            "product_card_style": "style1"
           }
         }
       },
@@ -207,17 +209,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1400px",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "2",
         "slides_per_view_extrawide": "2",
         "carousel_nav": "pagination",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "",
         "url_text": "",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     },
     "section_icons_yWG7a7": {
@@ -227,7 +235,7 @@
           "type": "icon",
           "settings": {
             "icon": "shopify:\/\/shop_images\/2023Icon-QuietMark.png",
-            "icon_fixed_width": "220px",
+            "icon_fixed_width": "220",
             "title": "Quiet Mark Certified",
             "title_style": "s4"
           }
@@ -236,7 +244,7 @@
           "type": "icon",
           "settings": {
             "icon": "shopify:\/\/shop_images\/2023Icon-California.webp",
-            "icon_fixed_width": "220px",
+            "icon_fixed_width": "220",
             "title": "Certified to meet ozone safety standards",
             "title_style": "s4"
           }
@@ -245,16 +253,24 @@
           "type": "icon",
           "settings": {
             "icon": "shopify:\/\/shop_images\/2023Icon-EnergyStar.webp",
-            "icon_fixed_width": "220px",
+            "icon_fixed_width": "220",
             "title": "Rated as energy-efficient air purifiers",
             "title_style": "s4"
+          }
+        },
+        "icon_YAPNLL": {
+          "type": "icon",
+          "settings": {
+            "icon_fixed_width": "",
+            "title": "",
+            "title_style": "s1"
           }
         },
         "icon_W7FMaA": {
           "type": "icon",
           "settings": {
             "icon": "shopify:\/\/shop_images\/2023Icon-Ozone.webp",
-            "icon_fixed_width": "220px",
+            "icon_fixed_width": "220",
             "title": "Zero Ozone Verified(<5ppb) by Intertek Sustainability Program",
             "title_style": "s4"
           }
@@ -263,7 +279,7 @@
           "type": "icon",
           "settings": {
             "icon": "shopify:\/\/shop_images\/2023Icon-AHAM.png",
-            "icon_fixed_width": "220px",
+            "icon_fixed_width": "220",
             "title": "Verifie(R) for performance and Clean Air Delivery Rate (CADR)",
             "title_style": "s4"
           }
@@ -273,6 +289,7 @@
         "icon_3mCFeH",
         "icon_rVnjNM",
         "icon_yRTXPX",
+        "icon_YAPNLL",
         "icon_W7FMaA",
         "icon_VnDVmq"
       ],
@@ -293,7 +310,9 @@
         "title": "Independently proven performance",
         "title_style": "h3",
         "text_align_mobile": "text-center",
-        "text_align_desktop": "desktop:text-center"
+        "text_align_desktop": "desktop:text-center",
+        "enable_borders": false,
+        "gap_desktop": "tabletl:gap-md"
       }
     },
     "section_carousel_fjQnFX": {
@@ -316,21 +335,27 @@
         "padding_top_mobile": "pt-xl",
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-xxl",
+        "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
-        "enable_title_link_same_link": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mr-auto"
       }
     }
   },

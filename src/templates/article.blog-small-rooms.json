@@ -17,7 +17,7 @@
             "margin_bottom_mobile": "mb-0",
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-sm",
+            "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
@@ -188,19 +188,22 @@
         "product_7MMjkn": {
           "type": "product",
           "settings": {
-            "product": "1342-master-product"
+            "product": "1342-master-product",
+            "product_card_style": "style1"
           }
         },
         "product_wfMCqB": {
           "type": "product",
           "settings": {
-            "product": "blue-3610-pre-filter"
+            "product": "blue-3610-pre-filter",
+            "product_card_style": "style1"
           }
         },
         "product_VEMBQw": {
           "type": "product",
           "settings": {
-            "product": "blue-pure-121-pre-filter"
+            "product": "blue-pure-121-pre-filter",
+            "product_card_style": "style1"
           }
         }
       },
@@ -219,17 +222,23 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "180ch",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3",
         "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "Shop the story",
         "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/collections",
         "url_text": "Shop all",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     },
     "section_carousel_LDENwL": {
@@ -256,17 +265,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     }
   },

@@ -51,11 +51,12 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-lg",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "px-0",
-        "gutter_desktop": "tabletl:px-xl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-xl",
         "video_embed": "",
         "enable_autoplay": false,
-        "image_mobile": "shopify:\/\/shop_images\/Frame_605.jpg"
+        "image_mobile": "shopify:\/\/shop_images\/Frame_605.jpg",
+        "color": "bg-white text-blue"
       }
     },
     "section_hero_EYAqac": {
@@ -86,7 +87,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "69%"
+        "content_max_width_desktop": "69%",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": ""
       }
     },
     "section_image_text_grid_zCpNyz": {
@@ -166,11 +169,12 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "px-0",
-        "gutter_desktop": "tabletl:px-0",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-0",
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
-        "enable_autoplay": false
+        "enable_autoplay": false,
+        "color": "bg-white text-blue"
       }
     },
     "section_hero_6htEqT": {
@@ -201,7 +205,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "60%"
+        "content_max_width_desktop": "60%",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": ""
       }
     },
     "section_carousel_AH8yKV": {
@@ -259,12 +265,15 @@
         "enable_title_link_same_link": false,
         "title": "",
         "title_style": "h2",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "mx-auto",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_hotspot_Vq7BWq": {
@@ -445,21 +454,24 @@
         "max_width_desktop": "",
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
         "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
+        "enable_centered_carousel": true,
         "enable_title_link_same_link": true,
         "title": "From our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "All Blogs",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_content_panels_8BWLBy": {
@@ -471,10 +483,12 @@
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Learn More about Blueair",
             "title_style": "h4",
             "subtext": "",
             "subtext_style": "p1",
+            "subtext_alignment": "text-left",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",

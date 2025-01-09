@@ -38,25 +38,29 @@
         "product_mia49c": {
           "type": "product",
           "settings": {
-            "product": "200-series-dualprotection"
+            "product": "200-series-dualprotection",
+            "product_card_style": "style1"
           }
         },
         "product_FjtdRq": {
           "type": "product",
           "settings": {
-            "product": "classic-301-particle"
+            "product": "classic-301-particle",
+            "product_card_style": "style1"
           }
         },
         "product_ggezpC": {
           "type": "product",
           "settings": {
-            "product": "200-series-dualprotection"
+            "product": "200-series-dualprotection",
+            "product_card_style": "style1"
           }
         },
         "product_e3mKCF": {
           "type": "product",
           "settings": {
-            "product": "classic-301-particle"
+            "product": "classic-301-particle",
+            "product_card_style": "style1"
           }
         }
       },
@@ -76,17 +80,23 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "150ch",
+        "color": "bg-white text-blue",
         "slides_per_view": "4",
         "slides_per_view_desktop": "4",
         "slides_per_view_extrawide": "4",
         "carousel_nav": "none",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": true,
         "title": "Products related to this article",
         "title_style": "h4",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "",
         "url_text": "",
-        "cta_style": "btn btn--transparent-rounded"
+        "cta_style": "btn btn--transparent-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     },
     "section_carousel_rrDkNp": {
@@ -113,17 +123,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See  All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     }
   },

@@ -120,13 +120,15 @@
         "product_DArXKM": {
           "type": "product",
           "settings": {
-            "product": "blue-pure-121-pre-filter"
+            "product": "blue-pure-121-pre-filter",
+            "product_card_style": "style1"
           }
         },
         "product_9XqKwW": {
           "type": "product",
           "settings": {
-            "product": "blue-pure-121-particle-and-carbon"
+            "product": "blue-pure-121-particle-and-carbon",
+            "product_card_style": "style1"
           }
         }
       },
@@ -144,17 +146,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1400px",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "2",
         "slides_per_view_extrawide": "2",
         "carousel_nav": "pagination",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "Products related to this article",
         "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "",
         "url_text": "",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     },
     "section_icons_yWG7a7": {
@@ -230,7 +238,9 @@
         "title": "Independently proven performance",
         "title_style": "h3",
         "text_align_mobile": "text-center",
-        "text_align_desktop": "desktop:text-center"
+        "text_align_desktop": "desktop:text-center",
+        "enable_borders": false,
+        "gap_desktop": "tabletl:gap-md"
       }
     },
     "section_carousel_xT7H4G": {
@@ -257,17 +267,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     }
   },

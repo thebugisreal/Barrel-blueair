@@ -228,19 +228,22 @@
         "product_UXTGhi": {
           "type": "product",
           "settings": {
-            "product": "blue-pure-211i-max-1"
+            "product": "blue-pure-211i-max-1",
+            "product_card_style": "style1"
           }
         },
         "product_JVYrcD": {
           "type": "product",
           "settings": {
-            "product": "200-series-dualprotection"
+            "product": "200-series-dualprotection",
+            "product_card_style": "style1"
           }
         },
         "product_7kVr4J": {
           "type": "product",
           "settings": {
-            "product": "200-300-series-particle"
+            "product": "200-300-series-particle",
+            "product_card_style": "style1"
           }
         }
       },
@@ -259,17 +262,23 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "180ch",
+        "color": "bg-white text-blue",
         "slides_per_view": "3",
         "slides_per_view_desktop": "3",
         "slides_per_view_extrawide": "3",
         "carousel_nav": "none",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "Shop the story",
         "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/collections",
         "url_text": "Shop all",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     },
     "section_carousel_YG4HCn": {
@@ -296,17 +305,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     }
   },

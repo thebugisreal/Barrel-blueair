@@ -30,7 +30,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "400px",
-        "content_max_width_desktop": "500px"
+        "content_max_width_desktop": "500px",
+        "content_max_height_mobile": "90vh",
+        "content_max_height_desktop": "90vh"
       }
     },
     "section_icons_BHyffr": {
@@ -109,11 +111,19 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/homepage-purifiers-mobile.jpg",
             "image_desktop": "shopify:\/\/shop_images\/seed-homepage-purifiers.jpg",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Purifiers",
             "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-left",
             "cta_url": "shopify:\/\/collections\/air-purifiers",
             "cta_text": "Shop now",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_AnNMyD": {
@@ -121,11 +131,19 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/homepage-multifunctional-mobile.jpg",
             "image_desktop": "shopify:\/\/shop_images\/seed-homepage-multifunctional.jpg",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Multifunctional",
             "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-left",
             "cta_url": "shopify:\/\/collections\/comfortpure™-3-in-1",
             "cta_text": "Shop now",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_hcRJgQ": {
@@ -133,11 +151,19 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/homepage-filters-mobile.jpg",
             "image_desktop": "shopify:\/\/shop_images\/seed-homepage-filters.jpg",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Filters",
             "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-left",
             "cta_url": "shopify:\/\/collections\/filters-accessories",
             "cta_text": "Shop now",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         }
       },
@@ -155,7 +181,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxxl",
-        "carousel_mobile": false,
+        "carousel_mobile": true,
         "num_cols_mobile": 1,
         "num_cols_desktop": 3,
         "color": "text-blue",
@@ -180,7 +206,7 @@
         "tab_BxmkPU": {
           "type": "tab",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/wirecutter.png",
+            "logo": "shopify:\/\/shop_images\/seed-goodhouskeeping-logo-cropped.png",
             "text": "\"AAA Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
             "text_style": "h5"
           }
@@ -188,7 +214,7 @@
         "tab_i3jmYc": {
           "type": "tab",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/wirecutter.png",
+            "logo": "shopify:\/\/shop_images\/seed-wirecutter-logo.png",
             "text": "\"BBB Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
             "text_style": "h5"
           }
@@ -196,7 +222,7 @@
         "tab_4aKxxr": {
           "type": "tab",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/wirecutter.png",
+            "logo": "shopify:\/\/shop_images\/seed-goodhouskeeping-logo-cropped.png",
             "text": "\"CCC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
             "text_style": "h5"
           }
@@ -219,27 +245,27 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "text-blue",
         "image": "shopify:\/\/shop_images\/seed-mostawarded.png",
-        "tab_content_max_width_mobile": "414px",
+        "tab_content_max_width_mobile": "",
         "tab_content_max_width_desktop": "700px"
       }
     },
-    "section_video_PCKfyT": {
-      "type": "section__video",
+    "section_media_8mGCqR": {
+      "type": "section__media",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xxl",
-        "padding_bottom_mobile": "pb-xxl",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "max_width_mobile": "80%",
-        "max_width_desktop": "600px",
-        "color": "bg-pink-light text-pink-dark",
-        "title": "Meet our award-winning technology",
-        "title_style": "h2",
-        "video": "shopify:\/\/files\/videos\/video-sample.mp4"
+        "padding_bottom_desktop": "desktop:pb-0",
+        "gutter_mobile": "px-lg",
+        "gutter_desktop": "tabletl:px-xl",
+        "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
+        "video_embed": "",
+        "enable_autoplay": true,
+        "color": "bg-pink-light text-pink-dark"
       }
     },
     "section_icons_UWxQ9i": {
@@ -480,7 +506,7 @@
         "subtext_style": "s3",
         "cta_url": "shopify:\/\/pages\/subscribe",
         "cta_text": "Learn more",
-        "cta_style": "btn",
+        "cta_style": "btn btn--white-rounded",
         "text_max_width": "80ch",
         "max_width_desktop": ""
       }
@@ -557,19 +583,19 @@
         "product_RVC3Ri": {
           "type": "product",
           "settings": {
-            "product": "3in1-air-purifier-t20i"
+            "product": "3in1-air-purifier-t10i"
           }
         },
         "product_LhFdEk": {
           "type": "product",
           "settings": {
-            "product": "blue-pure-211i-max-1"
+            "product": "2in1-purify-humidify-dh3i"
           }
         },
         "product_gK4U7z": {
           "type": "product",
           "settings": {
-            "product": "121-particle-carbon-filter"
+            "product": "blue-pure-211i-max"
           }
         }
       },
@@ -618,7 +644,7 @@
         "subtext_style": "s3",
         "cta_url": "shopify:\/\/pages\/why-clean-air",
         "cta_text": "Read our story",
-        "cta_style": "btn",
+        "cta_style": "btn btn--transparent-rounded",
         "text_align_mobile": "text-left",
         "text_align_desktop": "desktop:text-left"
       }
@@ -653,7 +679,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": ""
+        "content_max_width_desktop": "",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": ""
       }
     },
     "section_content_panels_y3B4Jf": {
@@ -767,7 +795,7 @@
     "section_icons_BHyffr",
     "section_content_panels_RLhBrA",
     "section_testimonial_tabs_Rtbxp9",
-    "section_video_PCKfyT",
+    "section_media_8mGCqR",
     "section_icons_UWxQ9i",
     "section_text_banner_KfBBEr",
     "section_hotspot_67Pgmf",

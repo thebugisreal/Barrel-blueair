@@ -139,7 +139,7 @@
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "120ch",
             "color": "bg-gray-athans text-blue",
-            "title": "Blue Pure 211i Max <br> Best Investment",
+            "title": "Blue Pure 211i Max  Best Investment",
             "title_style": "h4",
             "richtext": "<p>Our fastest cleaning air purifier with smoke CADR 410 cfm, this model is now also recommended by Consumer Reports for its strong performance, reliability, low noise level and advanced air quality sensor that can monitor wider pollutants of PM 1, 2.5 and 10.<\/p><p>A great investment that can help tackle when pollution peaks by quickly cleaning extra large room up to 635ft² in 12.5 minutes. When wildfire smoke is no longer a threat and speed is not essential, the Blue Pure 211i Max can clean an even larger space up to 1,524 ft² in 30 minutes.<\/p>",
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-211imob.png",
@@ -231,11 +231,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square1mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square1.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Run your air purifier 24\/7 <br>Keep the air purifier on 24\/7 during high pollution levels and leave on Auto mode so it adjusts when pollution levels fluctuate.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_dG4JkE": {
@@ -243,11 +249,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square2mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square2.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Replace your air purifier filters<br> Replace your air purifier filters before and after wildfire season. Dirty filters clean the air less effectively and use more energy.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_4DGe6M": {
@@ -255,11 +267,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square3mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square3.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Close your windows & doors<br> Polluted air can enter through ventilation or poorly sealed windows.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_atQCer": {
@@ -267,11 +285,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square4mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square4.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Avoid creating more smoke<br> Activities that add more fine smoke particles indoors include, frying food, burning candles or spraying aerosol products.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_CcE6Rb": {
@@ -279,11 +303,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square5mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square5.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Stay hydrated<br> Drink plenty of water to stay hydrated, as the polluted air can cause dryness and irritation in the respiratory system.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_F7cNGQ": {
@@ -291,11 +321,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square6.webp",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square6mob.png",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Use damp cloths for cleaning<br> When cleaning surfaces, use damp cloths to capture dust instead of dry methods that can stir up particles in the air.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         }
       },
@@ -335,11 +371,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square7.webp",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square7mob.png",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Test smoke detectors<br> Ensure they are working beforehand and replace batteries if necessary.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_aka4Pd": {
@@ -347,11 +389,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square8mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square8.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Purchase a N95 mask<br> Consider purchasing a few particulate respiratory masks to wear outside when needed.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_zcMLTn": {
@@ -359,11 +407,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Wildfire2023-Square9mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Wildfire2023-Square9.webp",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Be prepared for evacuation<br> Conditions can change quickly. Follow your local news, the AirNow website, or your state air quality website for up-to-date information.",
             "title_style": "s3",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "",
             "cta_text": "",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         }
       },
@@ -486,7 +540,9 @@
         "title": "Independently proven performance",
         "title_style": "h3",
         "text_align_mobile": "text-center",
-        "text_align_desktop": "desktop:text-center"
+        "text_align_desktop": "desktop:text-center",
+        "enable_borders": false,
+        "gap_desktop": "tabletl:gap-md"
       }
     },
     "section_carousel_gpEKty": {
@@ -495,19 +551,22 @@
         "product_wTkDTW": {
           "type": "product",
           "settings": {
-            "product": "1342-master-product"
+            "product": "1342-master-product",
+            "product_card_style": "style1"
           }
         },
         "product_DXqm7d": {
           "type": "product",
           "settings": {
-            "product": "blue-3610-pre-filter"
+            "product": "blue-3610-pre-filter",
+            "product_card_style": "style1"
           }
         },
         "product_y8KXLg": {
           "type": "product",
           "settings": {
-            "product": "blue-pure-121-pre-filter"
+            "product": "blue-pure-121-pre-filter",
+            "product_card_style": "style1"
           }
         }
       },
@@ -526,17 +585,23 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "180ch",
+        "color": "bg-white text-blue",
         "slides_per_view": "3",
         "slides_per_view_desktop": "3",
         "slides_per_view_extrawide": "3",
         "carousel_nav": "none",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "Products related to this article",
         "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "",
         "url_text": "",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     },
     "article_content_nXhPmn": {
@@ -588,17 +653,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     }
   },

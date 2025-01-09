@@ -40,11 +40,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Blog_hotel_air_purifier.png",
             "image_desktop": "shopify:\/\/shop_images\/Blog_hotel_air_purifier.png",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Hotel air purifiers",
             "title_style": "h6",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "shopify:\/\/blogs\/seed-sample-blog\/vocs-odors-gases",
             "cta_text": "Read this article",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_XkxBMB": {
@@ -52,11 +58,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Blog_classroom_air_purifiers.png",
             "image_desktop": "shopify:\/\/shop_images\/Blog_classroom_air_purifiers.png",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Classroom air purifiers: Helping students reach their potential",
             "title_style": "h6",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "shopify:\/\/blogs\/seed-sample-blog\/wildfire-smoke-and-air-purifiers",
             "cta_text": "Read this article",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         },
         "customization_iJXbcr": {
@@ -64,11 +76,17 @@
           "settings": {
             "image_mobile": "shopify:\/\/shop_images\/Blog_beauty_salloon.png",
             "image_desktop": "shopify:\/\/shop_images\/Blog_beauty_salloon.png",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
             "title": "Air purifiers for hair & nail salons",
             "title_style": "h6",
+            "subtext": "",
+            "subtext_style": "p1",
             "cta_url": "shopify:\/\/blogs\/seed-sample-blog\/indoor-pollution",
             "cta_text": "Read this article",
-            "cta_style": "btn"
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
           }
         }
       },
@@ -122,17 +140,23 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
+        "slides_per_view_desktop": "3.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
-        "enable_centered_carousel": true,
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
         "title": "From Our Blog",
         "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "mx-auto"
       }
     }
   },

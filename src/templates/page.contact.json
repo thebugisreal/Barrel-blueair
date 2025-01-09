@@ -57,7 +57,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<iframe scrolling=\"no\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:500px;\"><\/iframe>"
+        "embed": "<iframe scrolling=\"no\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"><\/iframe>"
       }
     }
   },

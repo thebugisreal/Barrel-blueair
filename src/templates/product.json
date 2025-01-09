@@ -1,23 +1,14 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
- {
+{
   "sections": {
     "main": {
       "type": "product__main",
       "blocks": {
-        "room_tag_UqfcUw": {
-          "type": "room_tag",
-          "settings": {}
-        },
         "title_bjfNAe": {
           "type": "title",
+          "settings": {}
+        },
+        "room_tag_UqfcUw": {
+          "type": "room_tag",
           "settings": {}
         },
         "short_description_FGhrqT": {
@@ -39,6 +30,13 @@
         "product_options_GLfTKf": {
           "type": "product_options",
           "settings": {}
+        },
+        "spacing_e3fiec": {
+          "type": "spacing",
+          "settings": {
+            "spacing_mobile": 36,
+            "spacing_desktop": 36
+          }
         },
         "atc_BURfeB": {
           "type": "atc",
@@ -62,9 +60,12 @@
         "shipping_warranty_Rg4jpP": {
           "type": "shipping_warranty",
           "settings": {
-            "icon_1_text": "",
-            "icon_2_text": "",
-            "icon_3_text": ""
+            "icon_1_image": "shopify:\/\/shop_images\/icon-shipping.png",
+            "icon_1_text": "Free and fast shipping",
+            "icon_2_image": "shopify:\/\/shop_images\/icon-trial.png",
+            "icon_2_text": "60 day home trial",
+            "icon_3_image": "shopify:\/\/shop_images\/icon-warranty.png",
+            "icon_3_text": "Free extended warranty"
           }
         },
         "upsells_ndPfKj": {
@@ -73,12 +74,13 @@
         }
       },
       "block_order": [
-        "room_tag_UqfcUw",
         "title_bjfNAe",
+        "room_tag_UqfcUw",
         "short_description_FGhrqT",
         "star_rating_rYzLXJ",
         "spacing_QPxbGT",
         "product_options_GLfTKf",
+        "spacing_e3fiec",
         "atc_BURfeB",
         "spacing_UJDzai",
         "experience_NzTf78",
@@ -110,12 +112,12 @@
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "100%",
         "enable_autoplay": false
       }
@@ -131,13 +133,12 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "109ch",
+        "max_width_desktop": "80ch",
         "color": "text-blue",
         "image_position_mobile": "flex-col",
         "image_position_desktop": "tabletl:flex-row"
       }
     },
-
     "product_filters_bNXTik": {
       "type": "product__filters",
       "settings": {
@@ -167,8 +168,8 @@
         "color": "text-blue"
       }
     },
-    "product_related_products_8Pzzge": {
-      "type": "product__related-products",
+    "product_tabs_3V9e7L": {
+      "type": "product__tabs",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -178,7 +179,10 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "100%"
+        "max_width_desktop": "80ch",
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "tabletl:flex-row"
       }
     },
     "product_perks_FacAhx": {
@@ -223,6 +227,20 @@
         "max_width_desktop": "",
         "color": "text-blue"
       }
+    },
+    "product_related_products_8Pzzge": {
+      "type": "product__related-products",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "100%"
+      }
     }
   },
   "order": [
@@ -230,12 +248,12 @@
     "product_slideshow_f7BaaR",
     "product_video_WFRqMh",
     "product_custom_tabs_acewb9",
-    "product_tabs_3V9e7L",
     "product_filters_bNXTik",
     "product_image_text_6MPkRA",
-    "product_related_products_8Pzzge",
+    "product_tabs_3V9e7L",
     "product_perks_FacAhx",
     "product_brands_3gV3EU",
-    "product_image_text_product_EitePb"
+    "product_image_text_product_EitePb",
+    "product_related_products_8Pzzge"
   ]
 }

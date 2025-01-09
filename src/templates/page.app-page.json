@@ -48,11 +48,12 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "px-0",
-        "gutter_desktop": "tabletl:px-xl",
+        "gutter_mobile": "mx-0",
+        "gutter_desktop": "tabletl:mx-xl",
         "video_embed": "",
         "enable_autoplay": false,
-        "image_mobile": "shopify:\/\/shop_images\/app-media.png"
+        "image_mobile": "shopify:\/\/shop_images\/app-media.png",
+        "color": "bg-white text-blue"
       }
     },
     "section_image_text_M9zJ8t": {
@@ -368,6 +369,7 @@
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3.2",
         "slides_per_view_extrawide": "3.2",
@@ -378,12 +380,15 @@
         "enable_title_link_same_link": true,
         "title": "Compatible products",
         "title_style": "h3",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "All of our wifi enable products are compatible with the Blueair app.",
         "subtext_style": "p2",
-        "url": "shopify:\/\/collections\/shop-all",
+        "url": "shopify:\/\/collections\/air-purifiers",
         "url_text": "Shop All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mr-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_quotes_JPrEnr": {

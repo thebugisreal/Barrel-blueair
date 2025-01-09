@@ -1,5 +1,10 @@
 {
   "current": {
+    "shipping_threshold_enabled": true,
+    "shipping_threshold": 5000,
+    "gwp_threshold": 5000,
+    "gwp1": "",
+    "upsell_1": "",
     "popular_searches": "seed-popular-searches",
     "quiz_image": "shopify:\/\/shop_images\/seed-callout-quiz-mobile.png",
     "quiz_link_url": "shopify:\/\/pages\/guided-selling",
@@ -60,11 +65,11 @@
           "margin_bottom_desktop": "desktop:mb-0",
           "padding_top_desktop": "desktop:pt-xxl",
           "padding_bottom_desktop": "desktop:pb-xxl",
-          "max_width_desktop": "109ch",
+          "max_width_desktop": "",
           "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"><\/div>",
           "title": "Sign up to receive exclusive offers, updates, and more",
           "title_style": "h3",
-          "color": "bg-blue text-white"
+          "color": "bg-blue-light text-blue"
         }
       }
     },
