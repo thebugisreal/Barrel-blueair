@@ -2,27 +2,29 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 <div class="section__faq-topics {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  {% if section.settings.title != blank %}
-    <h2 class="faq-topics__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
-  {% endif %}
-  <div class="faq-topics__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
-    {% for block in section.blocks %}
-      {% if block.settings.topic != blank %}
-        {% assign topic_metaobject = block.settings.topic %}
-        <a href="{{ topic_metaobject.link }}" class="faq-topics__block px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
-          <div class="faq-topic__title p1 text-center">{{ topic_metaobject.title }}</div>
-          {% if topic_metaobject.svg_html != blank %}
-            <div class="faq-topic__svg">
-              {{ topic_metaobject.svg_html }}
-            </div>
-          {% elsif topic_metaobject.image != blank %}
-            <div class="faq-topic__image">
-              {% render 'lazy-image' image: topic_metaobject.image img_classes: 'h-48 w-auto' %}
-            </div>
-          {% endif %}
-        </a>
-      {% endif %}
-    {% endfor %}
+  <div class="faq-topics__wrapper mx-auto max-w-[var(--max-width)]" style="--max-width: {% if section.settings.max_width != blank %}{{ section.settings.max_width }}{% else %}unset{% endif %};">
+    {% if section.settings.title != blank %}
+      <h2 class="faq-topics__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="faq-topics__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+      {% for block in section.blocks %}
+        {% if block.settings.topic != blank %}
+          {% assign topic_metaobject = block.settings.topic %}
+          <a href="{{ topic_metaobject.link }}" class="faq-topics__block px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
+            <div class="faq-topic__title p1 text-center">{{ topic_metaobject.title }}</div>
+            {% if topic_metaobject.svg_html != blank %}
+              <div class="faq-topic__svg">
+                {{ topic_metaobject.svg_html }}
+              </div>
+            {% elsif topic_metaobject.image != blank %}
+              <div class="faq-topic__image">
+                {% render 'lazy-image' image: topic_metaobject.image img_classes: 'h-48 w-auto' %}
+              </div>
+            {% endif %}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -377,6 +379,12 @@
       "unit": "col",
       "label": "Number of Columns - Desktop",
       "default": 6
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Max Width",
+      "info": "Make sure to include units"
     },
     {
       "type": "header",

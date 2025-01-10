@@ -2,48 +2,50 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 <div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %} class="section__faq-specs-instructions {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  {% if section.settings.title != blank %}
-    <h2 class="faq-specs-instructions__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
-  {% endif %}
-  <div class="faq-specs-instructions__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
-    {% for block in section.blocks %}
-      <div class="faq-specs-instructions__block rounded-[8px] bg-blue-light p-sm pb-0">
-        {% if block.settings.title != blank %}
-          <div class="faq-specs-instructions-block__title s1 mb-xs">{{ block.settings.title }}</div>
-        {% endif %}
-        <div class="faq-specs-instructions-block__content flex justify-between items-end gap-sm">
-          <ul class="faq-specs-instructions-block__links flex-1">
-            {% assign links = 'video,manual,product' |  split: ',' %}
-            {% for link in links %}
-              {% assign link_text_handle = link | append: '_link_text' %}
-              {% assign link_url_handle = link | append: '_link_url' %}
-              {% if block.settings[link_text_handle] != blank and block.settings[link_url_handle] != blank %}
-                <li class="faq-specs-instructions-block__link-wrapper flex justify-start items-start gap-xs mb-sm">
-                  <span class="faq-specs-instructions-block__link-icon w-[16px] leading-[0px]">
-                    {% case link %}
-                      {% when 'video' %}
-                        {% render 'icon-faq-video' %}
-                      {% when 'manual' %}
-                        {% render 'icon-faq-user-manual' %}
-                      {% when 'product' %}
-                        {% render 'icon-faq-product-details' %}
-                    {% endcase %}
-                  </span>
-                  <a href="{{ block.settings[link_url_handle] }}" class="faq-specs-instructions-block__link p2 leading-[1.1] flex-1">
-                    {{ block.settings[link_text_handle] }}
-                  </a>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-          {% if block.settings.image != blank %}
-            <div class="faq-specs-instructions-block__image w-1/2 max-w-[150px] desktop:max-w-[200px]">
-              {% render 'lazy-image' image: block.settings.image %}
-            </div>
+  <div class="faq-specs-instructions__wrapper mx-auto max-w-[var(--max-width)]" style="--max-width: {% if section.settings.max_width != blank %}{{ section.settings.max_width }}{% else %}unset{% endif %};">
+    {% if section.settings.title != blank %}
+      <h2 class="faq-specs-instructions__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="faq-specs-instructions__grid grid gap-sm desktop:gap-md" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+      {% for block in section.blocks %}
+        <div class="faq-specs-instructions__block rounded-[8px] bg-blue-light p-sm pb-0">
+          {% if block.settings.title != blank %}
+            <div class="faq-specs-instructions-block__title s1 mb-xs">{{ block.settings.title }}</div>
           {% endif %}
+          <div class="faq-specs-instructions-block__content flex justify-between items-end gap-sm">
+            <ul class="faq-specs-instructions-block__links flex-1">
+              {% assign links = 'video,manual,product' |  split: ',' %}
+              {% for link in links %}
+                {% assign link_text_handle = link | append: '_link_text' %}
+                {% assign link_url_handle = link | append: '_link_url' %}
+                {% if block.settings[link_text_handle] != blank and block.settings[link_url_handle] != blank %}
+                  <li class="faq-specs-instructions-block__link-wrapper flex justify-start items-start gap-xs mb-sm">
+                    <span class="faq-specs-instructions-block__link-icon w-[16px] leading-[0px]">
+                      {% case link %}
+                        {% when 'video' %}
+                          {% render 'icon-faq-video' %}
+                        {% when 'manual' %}
+                          {% render 'icon-faq-user-manual' %}
+                        {% when 'product' %}
+                          {% render 'icon-faq-product-details' %}
+                      {% endcase %}
+                    </span>
+                    <a href="{{ block.settings[link_url_handle] }}" class="faq-specs-instructions-block__link p2 leading-[1.1] flex-1">
+                      {{ block.settings[link_text_handle] }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+            {% if block.settings.image != blank %}
+              <div class="faq-specs-instructions-block__image w-1/2 max-w-[150px] desktop:max-w-[200px]">
+                {% render 'lazy-image' image: block.settings.image %}
+              </div>
+            {% endif %}
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
@@ -404,6 +406,12 @@
       "unit": "col",
       "label": "Number of Columns - Desktop",
       "default": 3
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Max Width",
+      "info": "Make sure to include units"
     },
     {
       "type": "header",

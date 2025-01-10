@@ -110,30 +110,30 @@
 }
 
 /* faq cta */
-.section__faq-cta.non-color-revert .btn.btn--transparent-rounded {
+.faq-cta__wrapper.non-color-revert .btn.btn--transparent-rounded {
   @apply border-white
   text-white;
 }
 
-.section__faq-cta.non-color-revert .btn.btn--transparent-rounded .btn__arrow {
+.faq-cta__wrapper.non-color-revert .btn.btn--transparent-rounded .btn__arrow {
   @apply border-white
   bg-white;
 }
 
-.section__faq-cta.non-color-revert .btn.btn--transparent-rounded:focus .btn__arrow,
-.section__faq-cta.non-color-revert .btn.btn--transparent-rounded:focus-visible .btn__arrow {
+.faq-cta__wrapper.non-color-revert .btn.btn--transparent-rounded:focus .btn__arrow,
+.faq-cta__wrapper.non-color-revert .btn.btn--transparent-rounded:focus-visible .btn__arrow {
   @apply bg-blue
   text-white;
 }
 
-.section__faq-cta.non-color-revert .btn.btn--transparent-rounded:focus:not(:focus-visible) .btn__arrow {
+.faq-cta__wrapper.non-color-revert .btn.btn--transparent-rounded:focus:not(:focus-visible) .btn__arrow {
   @apply border-white
   bg-white
   text-blue;
 }
 
 @media screen(desktop) {
-  .section__faq-cta.non-color-revert .btn.btn--transparent-rounded:hover .btn__arrow {
+  .faq-cta__wrapper.non-color-revert .btn.btn--transparent-rounded:hover .btn__arrow {
     @apply bg-blue
     text-white;
   }
