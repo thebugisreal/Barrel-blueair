@@ -1,72 +1,49 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__custom-instagram-feed {{ margins_paddings }} {{ section.settings.color }}">
-  <div class="custom-instagram-feed__title-container text-center px-md desktop:px-xl flex flex-col gap-xxs desktop:gap-xs mb-lg desktop:mb-xl">
-    {% if section.settings.title != blank %}
-      <h1 class="custom-instagram-feed__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>
-    {% endif %}
-    {% if section.settings.subtext != blank %}
-      <div class="custom-instagram-feed__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
-    {% endif %}
-    {% if settings.social_instagram != blank and section.settings.instagram_tag != blank %}
-      <a href="{{ settings.social_instagram }}" class="custom-instagram-feed__instagram-tag flex items-center gap-xs w-fit mx-auto bg-blue-light p-xxs desktop:p-xs" target="_blank" rel="noopener noreferrer">
-        <span class="w-[20px] leading-[0px]">{% render 'icon-social-ig' %}</span>
-        <span class="s2">{{ section.settings.instagram_tag }}</span>
-      </a>
-    {% endif %}
+<div class="section__faq-search {{ margins_paddings }} {{ section.settings.color }} relative">
+  {% if section.settings.image_mobile != blank %}
+    <div class="faq-search__image">
+      {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop %}
+    </div>
+  {% endif %} 
+  <div class="faq-search__content-wrapper {% if section.settings.image_mobile != blank %}absolute inset-0{% else %}h-[var(--height-mobile)] desktop:h-[var(--height-desktop)]{% endif %} flex justify-center items-center text-center p-md" style="--height-mobile: {% if section.settings.content_height_mobile != blank %}{{ section.settings.content_height_mobile }}{% else %}unset{% endif %}; --height-desktop: {% if section.settings.content_height_desktop != blank %}{{ section.settings.content_height_desktop }}{% else %}unset{% endif %};">
+    <div class="faq-search__content w-full max-w-screen-tabletp">
+      {% if section.settings.title != blank %}
+        <h1 class="faq-search__title {{ section.settings.title_style }} mb-sm">{{ section.settings.title }}</h1>
+      {% elsif template.name == 'blog' %}
+        <h1 class="faq-search__title {{ section.settings.title_style }} mb-sm">{{ blog.title }}</h1>
+      {% endif %}
+      <form action="{{ routes.search_url }}" method="get" role="search" class="faq-search__search-form w-full tabletp:w-[520px] mx-auto rounded-[4px] overflow-hidden flex">
+        <label for="FaqSearch" class="visually-hidden">Search</label>
+        <input 
+          id="FaqSearch"
+          type="text" 
+          name="q"
+          {% if template.name == 'search' %}value="{{ search.terms }}"{% endif %}
+          class="faq-search-form__input rounded-l-[4px] rounded-r-none border border-gray bg-blue-light flex-1 px-sm py-xxs text-black placeholder:text-black"
+          placeholder="Search by topic or keyword" />
+          <input type="hidden" name="view" value="support" />
+          <input type="hidden" name="type" value="article" />
+          {% if template.name == 'blog' %}
+            <input type="hidden" name="blog" value="{{ blog.handle }}" />
+          {% endif %}
+          <input name="options[prefix]" type="hidden" value="last">
+        <button type="submit" class="faq-search-form__submit bg-blue flex justify-center items-center w-[40px]">
+          <span class="w-[32px] leading-[0px] text-white">{% render 'icon-search' %}</span>
+        </button>
+      </form>
+    </div>
   </div>
-  
-  {%- capture carousel_options -%}
-    {
-      "cssMode": true,
-      "loop": false,
-      "autoHeight": false,
-      "scrollbar": {
-        "enabled": true,
-        "el": "[js-scrollbar-{{ section.id }}]",
-        "draggable": true
-      },
-      "navigation": {
-        "enabled": true,
-        "prevEl": "[js-prev-{{ section.id }}]",
-        "nextEl": "[js-next-{{ section.id }}]"
-      }
-    }
-  {%- endcapture -%}
-  <s-carousel data-options='{{ carousel_options }}' class="custom-instagram-feed__carousel grid">
-    <div id="CustomInstagramFeed-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          <div class="swiper-slide custom-instagram-feed__slide w-[40%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
-            {% if block.type == 'image' %}
-              <div class="custom-instagram-feed__image">
-                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
-              </div>
-            {% elsif block.type == 'video' %}
-              <s-video data-playing="false" data-controls="true" class="custom-instagram-feed__video block relative">
-                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
-                <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
-                  <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
-                </button>
-              </s-video>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="hidden desktop:flex gap-md items-center mt-xl px-xl z-0">
-      <div class="swiper-button-prev !static !w-[40px] !block after:!content-none !text-blue" js-prev-{{ section.id }}>{% render 'icon-arrow-left' %}</div>
-      <div class="swiper-scrollbar !static flex-1" js-scrollbar-{{ section.id }}></div>
-      <div class="swiper-button-next !static !w-[40px] !block after:!content-none !text-blue" js-next-{{ section.id }}>{% render 'icon-arrow-right' %}</div>
-    </div>
-  </s-carousel>
 </div>
 
 {% schema %}
 {
-  "name": "Custom Instagram Feed",
+  "name": "FAQ Search",
   "tag": "section",
+  "enabled_on": {
+    "templates": ["page", "blog", "search"]
+  },
   "settings": [
     {
       "type": "header",
@@ -434,7 +411,33 @@
     },
     {
       "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image - Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Desktop"
+    },
+    {
+      "type": "header",
       "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "content_height_mobile",
+      "label": "Content Container Height - Mobile",
+      "info": "Only if there's no background image. Make sure to include units."
+    },
+    {
+      "type": "text",
+      "id": "content_height_desktop",
+      "label": "Content Container Height - Desktop",
+      "info": "Only if there's no background image. Make sure to include units."
     },
     {
       "type": "text",
@@ -488,122 +491,11 @@
         }
       ],
       "default": "h2"
-    },
-    {
-      "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "select",
-      "id": "subtext_style",
-      "label": "Subtext Style",
-      "options": [
-        {
-          "value": "h1",
-          "label": "h1"
-        },
-        {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        },
-        {
-          "value": "p1",
-          "label": "p1"
-        },
-        {
-          "value": "p2",
-          "label": "p2"
-        },
-        {
-          "value": "p3",
-          "label": "p3"
-        },
-        {
-          "value": "p4",
-          "label": "p4"
-        },
-        {
-          "value": "p5",
-          "label": "p5"
-        },
-        {
-          "value": "p6",
-          "label": "p6"
-        }
-      ],
-      "default": "s2"
-    },
-    {
-      "type": "text",
-      "id": "instagram_tag",
-      "label": "Instagram Tag"
-    }
-  ],
-  "blocks": [
-    {
-      "name": "Image",
-      "type": "image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image_mobile",
-          "label": "Image - Mobile"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_desktop",
-          "label": "Image - Desktop"
-        }
-      ]
-    },
-    {
-      "name": "Video",
-      "type": "video",
-      "settings": [
-        {
-          "type": "video",
-          "id": "video",
-          "label": "Video"
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "Custom Instagram Feed"
+      "name": "FAQ Search"
     }
   ]
 }

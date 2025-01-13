@@ -2,7 +2,7 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 <div class="section__image-text {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
-  <div class="mx-auto flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px] desktop:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }}"">
+  <div class="mx-auto flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px] desktop:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }}">
     <div class="image-text__text-content-wrapper desktop:flex-1 {% if section.settings.image_position_desktop == 'left' %}widescreen:pr-xl{% else %}widescreen:pl-xl{% endif %}">
     <div class="image-text__text-content flex flex-col gap-sm {% if section.settings.image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if section.settings.text_max_width != blank  %}{{ section.settings.text_max_width }}{% else %}unset{% endif %};">
       {% if section.settings.title != blank %}

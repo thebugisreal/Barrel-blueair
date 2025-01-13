@@ -1,73 +1,79 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__custom-instagram-feed {{ margins_paddings }} {{ section.settings.color }}">
-  <div class="custom-instagram-feed__title-container text-center px-md desktop:px-xl flex flex-col gap-xxs desktop:gap-xs mb-lg desktop:mb-xl">
+<div {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id }}"{% endif %} class="section__faq-videos {{ margins_paddings }} {{ section.settings.color }}">
+  <div class="faq-videos__wrapper mx-auto max-w-[var(--max-width)]" style="--max-width: {% if section.settings.max_width != blank %}{{ section.settings.max_width }}{% else %}unset{% endif %};">
     {% if section.settings.title != blank %}
-      <h1 class="custom-instagram-feed__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>
+      <h2 class="faq-videos__title {{ section.settings.title_style }} mb-md text-center px-md desktop:px-xl">{{ section.settings.title }}</h2>
     {% endif %}
-    {% if section.settings.subtext != blank %}
-      <div class="custom-instagram-feed__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
-    {% endif %}
-    {% if settings.social_instagram != blank and section.settings.instagram_tag != blank %}
-      <a href="{{ settings.social_instagram }}" class="custom-instagram-feed__instagram-tag flex items-center gap-xs w-fit mx-auto bg-blue-light p-xxs desktop:p-xs" target="_blank" rel="noopener noreferrer">
-        <span class="w-[20px] leading-[0px]">{% render 'icon-social-ig' %}</span>
-        <span class="s2">{{ section.settings.instagram_tag }}</span>
-      </a>
-    {% endif %}
-  </div>
-  
-  {%- capture carousel_options -%}
-    {
-      "cssMode": true,
-      "loop": false,
-      "autoHeight": false,
-      "scrollbar": {
-        "enabled": true,
-        "el": "[js-scrollbar-{{ section.id }}]",
-        "draggable": true
-      },
-      "navigation": {
-        "enabled": true,
-        "prevEl": "[js-prev-{{ section.id }}]",
-        "nextEl": "[js-next-{{ section.id }}]"
+    
+    {%- capture carousel_options -%}
+      {
+        "cssMode": true,
+        "loop": false,
+        "autoHeight": false,{% if section.settings.enable_nav_scrollbar %}
+        "scrollbar": {
+          "enabled": true,
+          "el": "[js-scrollbar-{{ section.id }}]",
+          "draggable": true
+        },
+        "navigation": {
+          "enabled": true,
+          "prevEl": "[js-prev-{{ section.id }}]",
+          "nextEl": "[js-next-{{ section.id }}]"
+        },{% endif %}
+        "breakpoints": {
+          "1025": {
+            "cssMode": {% if section.settings.enable_nav_scrollbar %}true{% else %}false{% endif %}
+          }
+        }
       }
-    }
-  {%- endcapture -%}
-  <s-carousel data-options='{{ carousel_options }}' class="custom-instagram-feed__carousel grid">
-    <div id="CustomInstagramFeed-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          <div class="swiper-slide custom-instagram-feed__slide w-[40%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
-            {% if block.type == 'image' %}
-              <div class="custom-instagram-feed__image">
-                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
-              </div>
-            {% elsif block.type == 'video' %}
-              <s-video data-playing="false" data-controls="true" class="custom-instagram-feed__video block relative">
-                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
-                <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
-                  <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
-                </button>
-              </s-video>
-            {% endif %}
-          </div>
-        {% endfor %}
+    {%- endcapture -%}
+    <s-carousel data-options='{{ carousel_options }}' class="faq-videos__carousel grid">
+      <div id="FaqVideos-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[21%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
+              {% if block.settings.youtube_id != blank %}
+                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+                <div class='embed-container'><iframe src='https://www.youtube.com/embed/{{ block.settings.youtube_id }}' frameborder='0' allowfullscreen></iframe></div>
+              {% elsif block.settings.video != blank %}
+                <s-video data-playing="false" data-controls="true" class="faq-videos__video block relative">
+                  {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
+                  <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
+                    <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
+                  </button>
+                </s-video>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
-    </div>
-    <div class="hidden desktop:flex gap-md items-center mt-xl px-xl z-0">
-      <div class="swiper-button-prev !static !w-[40px] !block after:!content-none !text-blue" js-prev-{{ section.id }}>{% render 'icon-arrow-left' %}</div>
-      <div class="swiper-scrollbar !static flex-1" js-scrollbar-{{ section.id }}></div>
-      <div class="swiper-button-next !static !w-[40px] !block after:!content-none !text-blue" js-next-{{ section.id }}>{% render 'icon-arrow-right' %}</div>
-    </div>
-  </s-carousel>
+      {% if section.settings.enable_nav_scrollbar %}
+        <div class="hidden desktop:flex gap-md items-center mt-lg px-xl z-0">
+          <div class="swiper-button-prev !static !w-[40px] !block after:!content-none !text-blue" js-prev-{{ section.id }}>{% render 'icon-arrow-left' %}</div>
+          <div class="swiper-scrollbar !static flex-1" js-scrollbar-{{ section.id }}></div>
+          <div class="swiper-button-next !static !w-[40px] !block after:!content-none !text-blue" js-next-{{ section.id }}>{% render 'icon-arrow-right' %}</div>
+        </div>
+      {% endif %}
+    </s-carousel>
+  </div>
 </div>
 
 {% schema %}
 {
-  "name": "Custom Instagram Feed",
+  "name": "FAQ Videos",
   "tag": "section",
+  "enabled_on": {
+    "templates": ["blog"]
+  },
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Case sensitive"
+    },
     {
       "type": "header",
       "content": "Layout"
@@ -393,6 +399,12 @@
       "default": "desktop:pb-0"
     },
     {
+      "type": "text",
+      "id": "max_width",
+      "label": "Max Width",
+      "info": "Make sure to include units"
+    },
+    {
       "type": "header",
       "content": "Color Set"
     },
@@ -431,6 +443,16 @@
         }
       ],
       "default": "bg-white text-blue"
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_nav_scrollbar",
+      "label": "Enable nav and scrollbar",
+      "default": true
     },
     {
       "type": "header",
@@ -487,108 +509,10 @@
           "label": "s4"
         }
       ],
-      "default": "h2"
-    },
-    {
-      "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext"
-    },
-    {
-      "type": "select",
-      "id": "subtext_style",
-      "label": "Subtext Style",
-      "options": [
-        {
-          "value": "h1",
-          "label": "h1"
-        },
-        {
-          "value": "h2",
-          "label": "h2"
-        },
-        {
-          "value": "h3",
-          "label": "h3"
-        },
-        {
-          "value": "h4",
-          "label": "h4"
-        },
-        {
-          "value": "h5",
-          "label": "h5"
-        },
-        {
-          "value": "h6",
-          "label": "h6"
-        },
-        {
-          "value": "s1",
-          "label": "s1"
-        },
-        {
-          "value": "s2",
-          "label": "s2"
-        },
-        {
-          "value": "s3",
-          "label": "s3"
-        },
-        {
-          "value": "s4",
-          "label": "s4"
-        },
-        {
-          "value": "p1",
-          "label": "p1"
-        },
-        {
-          "value": "p2",
-          "label": "p2"
-        },
-        {
-          "value": "p3",
-          "label": "p3"
-        },
-        {
-          "value": "p4",
-          "label": "p4"
-        },
-        {
-          "value": "p5",
-          "label": "p5"
-        },
-        {
-          "value": "p6",
-          "label": "p6"
-        }
-      ],
-      "default": "s2"
-    },
-    {
-      "type": "text",
-      "id": "instagram_tag",
-      "label": "Instagram Tag"
+      "default": "h4"
     }
   ],
   "blocks": [
-    {
-      "name": "Image",
-      "type": "image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image_mobile",
-          "label": "Image - Mobile"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_desktop",
-          "label": "Image - Desktop"
-        }
-      ]
-    },
     {
       "name": "Video",
       "type": "video",
@@ -597,13 +521,19 @@
           "type": "video",
           "id": "video",
           "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "youtube_id",
+          "label": "Youtube ID",
+          "info": "Overrides video input"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Custom Instagram Feed"
+      "name": "FAQ Videos"
     }
   ]
 }
