@@ -7,16 +7,18 @@
 }
 
 .accordion-content{
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.2s ease-in-out;
   overflow: hidden;
 }
 
 .accordion-content[aria-hidden="true"]{
   max-height: 0;
+  transition: max-height 0.75s cubic-bezier(.215, .61, .355, 1);
 }
 
 .accordion-content[aria-hidden="false"]{
-  max-height: 999px;
+  max-height: var(--content-height, 5000px);
+  transition: max-height 0.75s cubic-bezier(.215, .61, .355, 1);
 }
 
 .accordion-header[aria-expanded="true"] .accordion-icon--caret-down {
