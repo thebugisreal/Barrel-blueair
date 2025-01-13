@@ -78,4 +78,9 @@
   visibility: hidden;
 }
 
+.product__tabs .tab__text-content.rte p {
+  @apply mt-xs
+  mb-sm
+}
+
 /* END Product__tabs Styling */

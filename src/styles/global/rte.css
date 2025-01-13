@@ -1,10 +1,10 @@
 .rte ul li::before {
     content: '●';
-    @apply pr-20;
+    @apply pr-md;
 }
 
 .rte p {
-    @apply my-24
+    @apply my-md
 }
 
 .rte a {
@@ -41,7 +41,7 @@
 .rte ol li::before {
     content: counter(list-counter) ". ";
     counter-increment: list-counter;
-    @apply mr-12
+    @apply mr-xs
     p6;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .rte ul li::before {
-  @apply mr-12
+  @apply mr-xs
   text-12
   p-0;
 }

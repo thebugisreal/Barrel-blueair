@@ -18,7 +18,7 @@ class SiteHeader extends HTMLElement {
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
 
-    if (this.dataset.template == 'index') {
+    if (this.dataset.template == 'index' && false) { // Remove false condition to add back in scroll effect
       document.addEventListener('scroll', this._headerOnScroll);
     }
 

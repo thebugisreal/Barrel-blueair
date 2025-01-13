@@ -17,6 +17,7 @@ module.exports = {
     screens: {
       landscape: { raw: "(orientation: landscape), (min-width: 768px)" },
       "landscape-all": { raw: "(orientation: landscape)" },
+      mobile: "400px",
       tabletp: "768px",
       tabletl: "1024px",
       desktop: "1025px",

@@ -4,20 +4,30 @@
 
 .hotspot-trigger__btn[data-active="false"] {
   @apply bg-blue
-  text-white;
+  text-white
+  opacity-100
+  duration-300;
+  transition-behavior: allow-discrete;
 }
 
 .hotspot-trigger__btn[data-active="true"] {
   @apply bg-blue-sky
-  text-blue;
+  text-blue
+  opacity-100
+  duration-300;
+  transition-behavior: allow-discrete;
 }
 
 .hotspot-trigger__btn[data-active="false"] .minus {
-  @apply hidden;
+  @apply hidden
+  opacity-0
+  duration-300;
 }
 
 .hotspot-trigger__btn[data-active="true"] .plus {
-  @apply hidden;
+  @apply hidden
+  opacity-0
+  duration-300;
 }
 
 .hotspot-trigger__btn[data-active="true"] + .hotspot-trigger__content--desktop {

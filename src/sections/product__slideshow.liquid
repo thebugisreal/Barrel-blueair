@@ -22,8 +22,8 @@
 
 {% if product.metafields.seed.pdp_slideshow_slides != blank %}
     <div class="product__slideshow {{ margins_paddings }} px-[30px] {{ section.settings.color }}">
-        <div class="mx-auto tabletl:max-w-[var(--max-width-desktop)]"  style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-            <s-carousel data-options='{{carousel_options}}'>
+        <div class="mx-auto grid grid-cols-1 tabletl:max-w-[var(--max-width-desktop)]"  style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+            <s-carousel class="block" data-options='{{carousel_options}}'>
                 <div id="Slideshow-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
                     <div class="swiper-wrapper">
                         {% for slide in product.metafields.seed.pdp_slideshow_slides.value %}

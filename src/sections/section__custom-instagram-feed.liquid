@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__custom-instagram-feed {{ margins_paddings }} {{ section.settings.color }}">
+<div class="section__custom-instagram-feed relative z-[1] {{ margins_paddings }} {{ section.settings.color }}">
   <div class="custom-instagram-feed__title-container text-center px-md desktop:px-xl flex flex-col gap-xxs desktop:gap-xs mb-lg desktop:mb-xl">
     {% if section.settings.title != blank %}
       <h1 class="custom-instagram-feed__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>

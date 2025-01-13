@@ -1,5 +1,6 @@
 .section__klaviyo-div div {
     @apply !p-0
+    !m-0
 }
 
 .section__klaviyo input {
@@ -12,6 +13,12 @@
     !py-xxxs
     !mb-md;
     color: inherit !important;
+    border-color: inherit !important;
+}
+
+.section__klaviyo input::placeholder {
+    color: inherit !important;
+    border-color: inherit !important;
 }
 
 .section__klaviyo button {
@@ -24,14 +31,14 @@
     !gap-xs
     !w-fit
     !text-16
-    !text-blue
+    !text-white
     !bg-transparent
     !p-xxs
     !pl-sm
     !rounded-[30px]
     !border
     !border-blue
-    !bg-white
+    !bg-blue
     !h-fit;
 }
 
@@ -48,5 +55,12 @@
     !overflow-hidden
     !text-blue
     !bg-transparent
-    !leading-[0];
+    !leading-[0]
+    !bg-white;
+}
+
+@media screen(desktop) {
+    .section__klaviyo input:hover {
+        @apply !border-blue
+    }
 }

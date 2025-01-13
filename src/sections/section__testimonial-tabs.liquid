@@ -3,7 +3,7 @@
 {% endcapture %}
 <div class="section__testimonial-tabs {{ margins_paddings }} {{ section.settings.color }}">
   {% if section.settings.image != blank %}
-    <div class="testimonial-tabs__image w-[94px] desktop:w-[150px] mx-auto mb-xl desktop:mb-xxl">
+    <div class="testimonial-tabs__image w-[150px] mx-auto mb-xl desktop:mb-xxl">
       {% render 'lazy-image' image: section.settings.image %}
     </div>
   {% endif %}

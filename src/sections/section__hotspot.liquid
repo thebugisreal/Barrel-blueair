@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<s-hotspot {% if section.settings.open_first_hospot_mobile %}open-first-hotspot-mobile {% endif %}class="section__hotspot block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl desktop:flex desktop:items-center desktop:gap-[136px]">
+<s-hotspot {% if section.settings.open_first_hospot_mobile %}open-first-hotspot-mobile {% endif %}class="section__hotspot block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl desktop:flex desktop:items-center desktop:gap-[136px]" {% if section.settings.enable_hover_display != blank %} data-display-control="{{ section.settings.enable_hover_display }}" {% endif %}>
   <div class="hotspot__text-content flex flex-col gap-sm desktop:flex-1 mb-xxl desktop:mb-0">
     {% if section.settings.title != blank %}
       <h2 class="hotspot__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
@@ -692,6 +692,22 @@
         }
       ],
       "default": "btn"
+    },
+    {
+      "type": "select",
+      "id": "enable_hover_display",
+      "label": "Enable Hover Display",
+      "options": [
+        {
+          "value": "hover-display",
+          "label": "Hover"
+        },
+        {
+          "value": "click-display",
+          "label": "Click"
+        }
+      ],
+      "default": "click-display"
     }
   ],
   "blocks": [
