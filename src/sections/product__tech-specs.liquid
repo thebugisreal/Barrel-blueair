@@ -1,12 +1,11 @@
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-
 <div class="product__tech-specs flex flex-col gap-lg px-lg {{ margins_paddings }} {{ section.settings.color }} tabletl:px-xl tabletl:flex-row">
     <div class="image-container order-last tabletl:order-first tabletl:w-1/2">
       <div class="product__text-spec-360 relative">
         {% if product.metafields.seed.pdp_tech_spec_360_images != blank %}
-          {%  render 'product-viewer' %}
+          {% render 'product-viewer' %}
         {% else %}
           {% render 'lazy-image' image:product.featured_image %}
         {% endif %}

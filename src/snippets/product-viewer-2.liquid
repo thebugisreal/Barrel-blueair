@@ -1,0 +1,28 @@
+{%- capture product_viewer_carousel_options -%}
+    {
+        "slidesPerView": 1,
+        "loop": true,
+        "scrollbar": {
+            "el": "[js-scrollbar-{{section.id}}]",
+            "hide": false,
+            "draggable": true
+          }
+    }
+{%- endcapture -%}
+
+
+<div>
+
+</div>
+<s-carousel class="grid" data-options='{{product_viewer_carousel_options}}'>
+    <div id="ProductViewer-{{product.id}}" class="swiper w-full max-w-full" js-carousel>
+        <div class="swiper-wrapper">
+            {% for image in product.metafields.seed.pdp_tech_spec_360_images.value %}
+                <div class="swiper-slide" js-carousel-slide>
+                    {% render 'lazy-image' image: image %}
+                </div>
+            {% endfor %}
+        </div>
+    <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
+    </div>
+</s-carousel>

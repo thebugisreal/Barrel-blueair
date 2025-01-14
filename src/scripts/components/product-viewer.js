@@ -12,7 +12,8 @@ class ProductViewer extends HTMLElement {
         index: 0,
         animateInterval: null,
         pressMouseX: null,
-        pressIndex: 0
+        pressIndex: 0,
+        difference: 0
       }
     }
   
@@ -61,12 +62,14 @@ class ProductViewer extends HTMLElement {
         if (!this.states.dragging) return true
         const offsetX = this._getPageXByEvent(e) - (this.states.pressMouseX || 0)
         const indexPerPixel = this.productViewerJSON.image_urls.length / this.offsetWidth
-        let offsetIndex = this._mod( Math.round(offsetX * indexPerPixel), this.productViewerJSON.image_urls.length)
-
-        let newIndex = this._mod((this.states.pressIndex + offsetIndex), this.productViewerJSON.image_urls.length)
+        let offsetIndex = Math.round(offsetX * indexPerPixel)
+        let newIndex = this._mod((Number(this.states.pressIndex) + offsetIndex), this.productViewerJSON.image_urls.length)
 
         newIndex = newIndex < 0 ? this.productViewerJSON.image_urls.length - Math.abs(newIndex) : newIndex
-        this._updateIndex(newIndex)
+        const difference = Math.abs(this.states.index - newIndex)
+        if (this.states.index != newIndex && (difference == 1 || difference == (this.productViewerJSON.image_urls.length - 1)) ) {
+          this._updateIndex(newIndex)
+        }
     }
 
     // Helper Functions
@@ -84,7 +87,7 @@ class ProductViewer extends HTMLElement {
     }
 
     _updateIndex(index) {
-        if (this.states.index === index) return false
+        if (this.states.pressIndex === index) return false
         if (index == this.productViewerJSON.image_urls.length ) {
             index = 0
         }

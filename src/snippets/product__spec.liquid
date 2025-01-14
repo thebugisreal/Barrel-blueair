@@ -23,10 +23,10 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_tankcapacity}}</p>
         </li>
     {% endif %}
-    {% if product.metafields.seed.blair_productSpecification_soundlevel != blank %}
+    {% if product.metafields.seed.blair_energyConsumption != blank %}
         <li class="flex gap-md">
-            <p class="p3 w-1/2">Sound level</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_soundlevel}}</p>
+            <p class="p3 w-1/2">Energy Consumption</p>
+            <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
         </li>
     {% endif %}
     {% if product.metafields.seed.max_wattage_heat != blank %}
@@ -71,22 +71,20 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_run_time}}</p>
         </li>
     {% endif %}
-    {% if product.metafields.seed.blair_CADR_pollen != blank %}
+    {% if product.metafields.seed.blair_CADR_pollen != blank or product.metafields.seed.blair_CADR_dust != blank or product.metafields.seed.blair_CADR_smoke != blank %}
         <li class="flex gap-md">
-            <p class="p3 w-1/2">Clean air delivery rate (CADR) - Pollen</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_CADR_pollen}}</p>
-        </li>
-    {% endif %}
-    {% if product.metafields.seed.blair_CADR_dust != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Clean air delivery rate (CADR) - Dust</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_CADR_dust}}</p>
-        </li>
-    {% endif %}
-    {% if product.metafields.seed.blair_CADR_smoke != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Clean air delivery rate (CADR) - Smoke</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_CADR_smoke}}</p>
+            <p class="p3 w-1/2">Clean air delivery rate (CADR)</p>
+            <p class="p4 w-1/2">
+                {% if product.metafields.seed.blair_CADR_pollen != blank %}
+                    Pollen {{ product.metafields.seed.blair_CADR_pollen}} <br>
+                {% endif %}
+                {% if product.metafields.seed.blair_CADR_dust != blank %}
+                    Dust {{ product.metafields.seed.blair_CADR_dust}} <br>
+                {% endif %}
+                {% if product.metafields.seed.blair_CADR_smoke != blank %}
+                    Smoke {{ product.metafields.seed.blair_CADR_smoke}} <br>
+                {% endif %}
+            </p>
         </li>
     {% endif %}
     {% if product.metafields.seed.operating_power != blank %}
