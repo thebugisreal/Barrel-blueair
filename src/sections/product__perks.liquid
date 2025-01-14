@@ -3,7 +3,7 @@
 {% endcapture %}
 
 {% if product.metafields.seed.pdp_perks != blank %}
-    <div class="product__perks {{ margins_paddings }} bg-[#D6E4F3] px-lg tabletl:px-xl">
+    <div class="product__perks {{ margins_paddings }} bg-[#D6E4F3] px-md tabletl:px-xl">
         <ul class="product__perks-container flex flex-col gap-lg tabletl:grid tabletl:grid-cols-3 tabletl:gap-xl tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
           {% for filter in product.metafields.seed.pdp_perks.value %}
               <li class="product__filter text-center flex flex-col justify-center items-center gap-xxxs tabletl:gap-sm tabletl:flex-row">

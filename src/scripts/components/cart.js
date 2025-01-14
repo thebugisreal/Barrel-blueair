@@ -148,8 +148,14 @@ class CartItems extends HTMLElement {
 
   updateLiveRegions(line, message) {
     const lineItemError = document.getElementById(`Line-item-error-${line}`) || document.getElementById(`CartDrawer-LineItemError-${line}`);
-    if (lineItemError)
+    if (lineItemError) {
       lineItemError.innerHTML = message;
+    }
+
+    const CartPageLineItemError = document.getElementById(`CartMain-LineItemError-${line}`);
+    if (CartPageLineItemError) {
+      CartPageLineItemError.innerHTML = message;
+    }
   }
 
   getSectionInnerHTML(html, selector) {

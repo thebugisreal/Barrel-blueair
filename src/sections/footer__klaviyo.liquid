@@ -2,13 +2,13 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__klaviyo {{ margins_paddings }} px-lg {{ section.settings.color }}">
+<div class="section__klaviyo {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl">
     <div class="tabletl:grid tabletl:grid-cols-2 tabletl:gap-xxl tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         {% if section.settings.title != blank %}
           <h1 class="hero__title flex items-center {{ section.settings.title_style }} mb-sm tabletl:mb-0">{{ section.settings.title }}</h1>
         {% endif %}
         {% if section.settings.klaviyo_embed != blank %}
-            <div class="section__klaviyo-div p-md {{ section.settings.color }}">
+            <div class="section__klaviyo-div py-md {{ section.settings.color }} tabletl:p-md">
                 {{ section.settings.klaviyo_embed }}
             </div>
         {% endif %}

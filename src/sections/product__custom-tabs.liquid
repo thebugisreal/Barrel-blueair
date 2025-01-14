@@ -3,7 +3,7 @@
 {% endcapture %}
 
 {% if product.metafields.seed.pdp_custom_tabs != blank %}
-    <div class="product__custom-tabs product__tabs {{ margins_paddings }} text-left px-lg {{ section.settings.color }} tabletl:px-xl">
+    <div class="product__custom-tabs product__tabs {{ margins_paddings }} text-left px-md {{ section.settings.color }} tabletl:px-xl">
         <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
             <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
               {% if product.metafields.seed.pdp_custom_tab_title != blank %}
