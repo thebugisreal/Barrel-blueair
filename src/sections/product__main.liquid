@@ -402,8 +402,13 @@
                                 assign filter_type_option = false
                                 if upsell_product.options_by_name['color'] != blank
                                   assign color_option = upsell_product.options_by_name['color'].position | minus: 1
-                                elsif upsell_product.metafields.seed.product_card_filter_products != blank
+                                elsif upsell_object.filter_products != blank
                                   assign filter_type_option = true
+                                  for swatch_product in upsell_object.filter_products.value
+                                    if forloop.first
+                                      assign upsell_current_variant = swatch_product
+                                    endif
+                                  endfor
                                 endif
                               %}
                               {% if color_option != false %}
@@ -431,13 +436,13 @@
                                 </div>
                               {% elsif filter_type_option != false %}
                                 <div class="product-upsell__variants grid grid-cols-1 gap-xxs">
-                                  {% for swatch_product in upsell_product.metafields.seed.product_card_filter_products.value %}
+                                  {% for swatch_product in upsell_object.filter_products.value %}
                                     <button type="button" 
                                       class="product-upsell__variant product-upsell__variant--filter-type p3 border border-gray p-xxs text-center rounded-[2px]" 
                                       data-variant-id="{{ swatch_product.id }}"
                                       data-available="{{ swatch_product.available }}"
                                       data-price="{{ swatch_product.price | money }}"
-                                      data-selected="{% if swatch_product.variants[0].title == upsell_current_variant.title %}true{% else %}false{% endif %}"
+                                      data-selected="{% if swatch_product.variants[0].title == upsell_current_variant.variants[0].title %}true{% else %}false{% endif %}"
                                       js-product-upsell-variant>
                                       {{ swatch_product.variants[0].title}}
                                     </button>

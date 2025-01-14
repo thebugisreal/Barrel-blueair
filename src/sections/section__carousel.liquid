@@ -4,8 +4,8 @@
       "runCallbacksOnInit": true,
       "slidesPerView": {{section.settings.slides_per_view}},
       "loop": false,
-      "slidesOffsetAfter": 36,
-      "slidesOffsetBefore": 36,
+      "slidesOffsetAfter": 24,
+      "slidesOffsetBefore": 24,
       "scrollbar": {
         "el": "[js-scrollbar-{{section.id}}]",
         "hide": false,
@@ -26,8 +26,8 @@
           "slidesOffsetAfter": 0,
           "slidesOffsetBefore": 0,
         {% else %}
-          "slidesOffsetAfter": 80,
-          "slidesOffsetBefore": 80,
+          "slidesOffsetAfter": 64,
+          "slidesOffsetBefore": 64,
         {% endif %}
           "slidesPerView": {{section.settings.slides_per_view_desktop}},
           "spaceBetween": 24,
@@ -50,7 +50,7 @@
 
 <div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
     <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
-        <div class="section__carousel-text-container mx-lg mb-md tabletl:mx-0">
+        <div class="section__carousel-text-container mx-md mb-md tabletl:mx-0">
             {% if section.settings.title != blank %}
                 {% liquid
                     assign title_tag = 'p'
@@ -67,7 +67,7 @@
               {% endif %}
         </div>
         {% if section.settings.url != blank %}
-            <div class="flex mx-lg {{ section.settings.cta_position_mobile }} tabletl:mx-0 {{ section.settings.cta_position_desktop }}">
+            <div class="flex mx-md {{ section.settings.cta_position_mobile }} tabletl:mx-0 {{ section.settings.cta_position_desktop }}">
                 <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mb-md tabletl:mb-lg"> 
                     <p class="p2 btn__text">{{ section.settings.url_text }}</p>
                     <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>

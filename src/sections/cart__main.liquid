@@ -18,9 +18,9 @@
             Your cart is empty, <a href="/collections/all">continue shopping</a>.
           </p>
         {%- else -%}
-          <div class="tabletl:flex tabletl:gap-xxxl">
+          <div class="tabletl:flex tabletl:gap-xl">
             {% comment %} Cart Items  {% endcomment %}
-              <div class="cart__items-wrapper flex flex-col gap-md tabletl:gap-xl tabletl:w-1/2">
+              <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-1/2">
                 {%- for item in cart.items -%}
                   <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between gap-sm tabletl:gap-md" js-cart-item>
                     <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
