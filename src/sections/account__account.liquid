@@ -160,7 +160,7 @@
                 <tr class="account__order w-full border-b border-[#F0F3F6]" js-order-desktop>
                   <td class="p2 px-md py-sm text-left">{{ order.created_at | date: "%B %d, %y" }}</td> 
                   <td class="p2 px-md py-sm text-left">
-                    <div class="flex justify-start items-center gap-xxs">
+                    <div class="px-sm py-xs flex justify-start items-center gap-xxs">
                       {% case order.fulfillment_status %}
                         {% when 'complete' %}
                           <span class="w-[12px] h-[12px] bg-[#40C1AC] border border-[#40C1AC] rounded-full"></span>
