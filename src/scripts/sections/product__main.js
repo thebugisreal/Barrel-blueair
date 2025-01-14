@@ -33,12 +33,13 @@ class ProductMain extends HTMLElement {
       stickyPrice: '[js-sticky-price]',
       stickySelectOptionsBtn: '[js-sticky-select-options]',
       stickyLoader: '[js-sticky-loader]',
+      qunatityOption: '[js-quantity-option]',
+      quantityVariant: '[js-quantity-variant]'
     };
   }
 
   connectedCallback() {
     this.buttons = this.querySelectorAll(this._selectors.addToCart);
-    this.stickyPrice = document.querySelector(this._selectors.stickyPrice);
     this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
     this.prices = this.querySelectorAll(this._selectors.price);
@@ -54,18 +55,72 @@ class ProductMain extends HTMLElement {
       this.currentSwatch = this.dataset.currentSwatch;
       this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
     }
+
+    this.currentQuantity = 1;
+    this.currentPrice = parseInt(this.dataset.currentPrice);
+    this.currentPriceCompareAt = parseInt(this.dataset.currentPriceCompareAt);
     
+    this._handleStickyBar();
     this._handleSubscription();
+    this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
-    this._handleSubscription();
-    this._handleStickyBar();
+  }
+
+  _handleQuantityVariant = () => {
+    this.qunatityOption = this.querySelector(this._selectors.qunatityOption);
+
+    if (!this.qunatityOption) {
+      return;
+    }
+
+    this.qunatityOption.addEventListener('change', (evt) => {
+      const selectedQuantity = parseInt(evt.target.value);
+      if (selectedQuantity != this.currentQuantity) {
+        this.currentQuantity = parseInt(evt.target.value);
+        this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
+      }
+      
+      if (this.subscription) {
+        if (this.selectedFilterSubscriptionVariant) {
+          if (this.subscriptionType == 'filter') {
+            this.updateSubscriptionPrice(this.selectedFilterSubscriptionVariant);
+          }
+
+          if (this.subscription.dataset.selected == 'true') {
+            this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
+          }
+        }
+        
+        if (evt.target.dataset.pack == 'true') {
+          if (selectedQuantity == 1) {
+            if (this.subscription.dataset.selected == 'true') {
+              this.nonSubscriptionToggle.click();
+            }
+            if (this.subscriptionType == 'filter') {
+              this.subscriptionToggle.setAttribute('disabled', '');
+            }
+            if (this.subscriptionPrice) this.subscriptionPrice.innerHTML = '';
+          } else {
+            this.subscriptionToggle?.removeAttribute('disabled');
+          }
+        }
+      }
+    });
+
+    if (this.qunatityOption.querySelector(`${this._selectors.quantityVariant}[data-pack="true"]`)) {
+      this.qunatityOption.querySelector(`${this._selectors.quantityVariant}[value="2"]`).click();
+    } else {
+      this.qunatityOption.querySelector(this._selectors.quantityVariant).click();
+    }
   }
 
   _handleStickyBar = () => {
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
     this.stickyAtcBtns = document.querySelectorAll(this._selectors.stickyAtc);
     this.buttons = [...this.buttons, ...this.stickyAtcBtns];
+    this.stickyPrice = document.querySelector(this._selectors.stickyPrice);
+    this.prices = [...this.prices, this.stickyPrice]
     this.stickySelectOptionsBtns = document.querySelectorAll(this._selectors.stickySelectOptionsBtn);
     const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
     this.stickyAtcClicked = false;
@@ -98,7 +153,7 @@ class ProductMain extends HTMLElement {
     this.addToCart.click();
   }
 
- _checkVisible(elm) {
+  _checkVisible(elm) {
     var rect = elm.getBoundingClientRect();
     var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
     return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
@@ -136,12 +191,20 @@ class ProductMain extends HTMLElement {
       this.subscription.dataset.selected = 'true';
       this.nonSubscriptionToggle.dataset.selected = 'false';
 
-      const selectedFilterSubscriptionVariant = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
-      if (selectedFilterSubscriptionVariant) {
-        if (selectedFilterSubscriptionVariant.dataset.available == 'true') {
+      if (this.selectedFilterSubscriptionVariant) {
+        if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
           this._toggleFilterSubscriptionFormInputs(true);
         }
-        this._updateAtcStateOnFilterChange(selectedFilterSubscriptionVariant);
+        this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
+      }
+
+      if (this.subscriptionType == 'airpurifier_and_filter') {
+        this.querySelectorAll(this._selectors.quantityVariant).forEach((quantityInput, index) => {
+          quantityInput.removeAttribute('disabled');
+          if (index == 1) {
+            quantityInput.click();
+          }
+        });
       }
     });
 
@@ -157,6 +220,12 @@ class ProductMain extends HTMLElement {
 
       this._toggleFilterSubscriptionFormInputs(false);
       this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
+
+      if (this.subscriptionType == 'airpurifier_and_filter') {
+        this.querySelectorAll(this._selectors.quantityVariant).forEach((quantityInput) => {
+          quantityInput.setAttribute('disabled', '');
+        });
+      }
     });
 
     const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
@@ -176,15 +245,27 @@ class ProductMain extends HTMLElement {
   _updateAtcStateOnFilterChange = (selectedTrigger) => {
     let btnPrice;
     let btnDisabled;
-    if (selectedTrigger.hasAttribute('js-non-subscription-toggle') || this.subscriptionType == 'filter') {
+
+    if (selectedTrigger.hasAttribute('js-non-subscription-toggle')) {
       btnPrice = selectedTrigger.querySelector(`${this._selectors.priceCopy} span`).textContent;
+    } else if (this.subscriptionType == 'filter') {
+      btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(this._selectors.priceCopy).dataset.price * this.currentQuantity), this.moneyFormat);
     } else {
-      btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(`${this._selectors.priceCopy} span`).dataset.price) + parseInt(this.nonSubscriptionToggle.querySelector(`${this._selectors.priceCopy} span`).dataset.price), this.moneyFormat);
+      btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(this._selectors.priceCopy).dataset.price * this.currentQuantity) + parseInt(this.nonSubscriptionToggle.querySelector(this._selectors.priceCopy).dataset.price), this.moneyFormat);
     }
-    if (selectedTrigger.dataset.available == 'true') {
-      btnDisabled = false;
+    
+    if (selectedTrigger.hasAttribute('js-non-subscription-toggle') || this.subscriptionType == 'filter') {
+      if (selectedTrigger.dataset.available == 'true') {
+        btnDisabled = false;
+      } else {
+        btnDisabled = true;
+      }
     } else {
-      btnDisabled = true;
+      if (selectedTrigger.dataset.available == 'true' && this.nonSubscriptionToggle.dataset.available == 'true') {
+        btnDisabled = false;
+      } else {
+        btnDisabled = true;
+      }
     }
 
     this.buttons.forEach((btn) => {
@@ -199,6 +280,22 @@ class ProductMain extends HTMLElement {
         btn.removeAttribute('disabled');
       }
     });
+    if (this.stickyPrice) {
+      this.stickyPrice.textContent = btnPrice;
+    }
+  }
+
+  updateSubscriptionPrice = (selectedFilterSubscriptionVariant) => {
+    const subscriptionPrice = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.price;
+    const subscriptionPriceCompareAt = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.priceCompareAt;
+
+    let subscriptionPriceMarkup;
+    if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
+      subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
+    } else {
+      subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
+    }
+    this.subscriptionPrice.innerHTML = subscriptionPriceMarkup;
   }
 
   _filterSubscriptionVariantOnClick = (evt) => {
@@ -228,10 +325,12 @@ class ProductMain extends HTMLElement {
     }
 
     if (this.subscriptionType == 'filter') {
-      this.subscriptionPrice.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML;
+      this.updateSubscriptionPrice(triggerTarget);
     }
 
     this._updateAtcStateOnFilterChange(triggerTarget);
+
+    this.selectedFilterSubscriptionVariant = triggerTarget;
   }
 
   filterSubscriptionSellingPlanOnClick = (evt) => {
@@ -343,7 +442,11 @@ class ProductMain extends HTMLElement {
     }
     this._updateStickyBar(variant)
     if (variant) {
-      if (priceChange) this._updatePrice(variant);
+      if (priceChange) {
+        this.currentPrice = variant.price;
+        this.currentPriceCompareAt = variant.compare_at_price;
+        this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
+      }
     }
   };
 
@@ -355,7 +458,6 @@ class ProductMain extends HTMLElement {
       this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
         selectOptionsBtn.classList.add('hidden')
       });
-      this.stickyPrice.innerHTML = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`
     } else {
       this.stickyAtcBtns.forEach((stickyAtc) => {
         stickyAtc.classList.add('hidden')
@@ -363,7 +465,6 @@ class ProductMain extends HTMLElement {
       this.stickySelectOptionsBtns.forEach((selectOptionsBtn) => {
         selectOptionsBtn.classList.remove('hidden')
       });
-      this.stickyPrice.innerHTML = ''
     }
 
   }
@@ -430,22 +531,22 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  _updatePrice(variant) {
+  _updatePrice(currentPrice, currentCompareAtPrice, quantity) {
     this.prices.forEach((price) => {
       let priceMarkup;
 
       if (price.hasAttribute('js-full-price')) {
-        if (variant.compare_at_price && variant.compare_at_price > variant.price) {
-          priceMarkup = `<s class="product__price product__price--compare">${theme.utils.formatMoney(variant.compare_at_price, this.moneyFormat)}</s><span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+        if (currentCompareAtPrice && currentCompareAtPrice > currentPrice) {
+          priceMarkup = `<s class="product__price product__price--compare">${theme.utils.formatMoney(currentCompareAtPrice * quantity, this.moneyFormat)}</s><span class="product__price product__price--current font-700">${theme.utils.formatMoney(currentPrice * quantity, this.moneyFormat)}</span>`;
         } else {
-          priceMarkup = `<span class="product__price product__price--current font-700">${theme.utils.formatMoney(variant.price, this.moneyFormat)}</span>`;
+          priceMarkup = `<span class="product__price product__price--current font-700">${theme.utils.formatMoney(currentPrice * quantity, this.moneyFormat)}</span>`;
         }
       } else {
-        priceMarkup = `${theme.utils.formatMoney(variant.price, this.moneyFormat)}`;
+        priceMarkup = `${theme.utils.formatMoney(currentPrice * quantity, this.moneyFormat)}`;
       }
       price.innerHTML = priceMarkup;
     })
-}
+  }
 
   _disableButtons() {
     this.buttons.forEach((button) => {

@@ -12,7 +12,7 @@
   endif
 -%}
 
-<s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %}>
+<s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
   <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
     <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)]">
@@ -216,21 +216,25 @@
                   {% endif %}
 
                   {% if product.metafields.seed.quantity_option != blank %}
-                    <div class="product__quantity-option border-t border-gray py-sm px-xs flex justify-start flex-wrap gap-x-md gap-y-xs {% if enable_subscription or product.variants.size > 1 %}mt-md{% endif %}">
+                    <div class="product__quantity-option border-t border-gray py-sm px-xs flex justify-start flex-wrap gap-x-md gap-y-xs {% if enable_subscription or product.variants.size > 1 %}mt-md{% endif %}" js-quantity-option>
                       {% for quantity_variant in product.metafields.seed.quantity_option.value %}
+                        {% assign quantity_variant_value = quantity_variant | split: '|' | last | strip %}
+                        {% assign quantity_variant_label = quantity_variant | split: '|' | first | strip %}
                         <div class="product__quantity-variant">
                           <input 
                             id="Product{{ product.id }}-QuantityVariant-{{ quantity_variant | handle }}" 
                             class="product-quantity-variant__input visually-hidden"
                             type="radio" 
-                            name="quantity" 
-                            value="{{ quantity_variant | split: '|' | last | strip }}"
-                            {% if forloop.first %}checked{% endif %}>
+                            name="{% if subscription.pdp_type == 'Air Purifier + Filter' and enable_subscription %}items[1][quantity]{% else %}quantity{% endif %}" 
+                            value="{{ quantity_variant_value }}"
+                            data-pack="{% if quantity_variant_label contains 'Pack' %}true{% else %}false{% endif %}"
+                            autocomplete="off"
+                            js-quantity-variant>
                           <label
                             for="Product{{ product.id }}-QuantityVariant-{{ quantity_variant | handle }}"
                             class="product-quantity-variant__label text-18 flex justify-start items-center gap-xs">
                               <span class="product-quantity-variant__checkbox w-[22px] h-[22px] rounded-full border border-blue relative"></span>
-                              <span class="flex-1">{{ quantity_variant | split: '|' | first | strip }}</span>
+                              <span class="flex-1">{{ quantity_variant_label }}</span>
                           </label>
                         </div>
                       {% endfor %}
@@ -247,7 +251,10 @@
                   {% unless current_variant.available %} disabled {% endunless %}
                   js-add-to-cart>
                   <div class="btn__text">
-                    <span js-price>{{ current_variant.price | money }}</span><span>&nbsp;-&nbsp;</span>
+                    <span js-price>
+                      {{ current_variant.price | money }}
+                    </span>
+                    <span>&nbsp;-&nbsp;</span>
                     <span js-atc-text>
                       {% if current_variant.available %}
                         Add to Cart

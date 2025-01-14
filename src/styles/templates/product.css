@@ -262,3 +262,8 @@
 .product-quantity-variant__input:checked + .product-quantity-variant__label .product-quantity-variant__checkbox::after {
   @apply bg-blue;
 }
+
+.product-quantity-variant__input:disabled + .product-quantity-variant__label {
+  @apply cursor-not-allowed
+  opacity-30;
+}

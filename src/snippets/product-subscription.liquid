@@ -7,7 +7,7 @@
 
 <div class="product__subscription-container {% if product.variants.size > 1 %}mt-md{% endif %}">
   <div class="product__subscription border border-blue rounded-[3px] relative mt-sm" data-type="{{ pdp_type }}" data-selected="true" js-subscription>
-    <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full" js-subscription-toggle>
+    <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle>
       <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
         {% render 'icon-check' %}
       </div>
@@ -21,7 +21,7 @@
       {% if pdp_type == 'filter' %}
         <div class="product-subscription__price-wrapper s3 flex justify-end items-center gap-xs" js-subscription-price></div>
       {% else %}
-        <div class="product-subscription__price-wrapper s3 flex justify-end items-center gap-xs" js-price js-full-price>
+        <div class="product-subscription__price-wrapper s3 flex justify-end items-center gap-xs">
           {% if current_variant.compare_at_price > current_variant.price %}
             <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
             <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
@@ -89,11 +89,11 @@
                       {{ filter_variant.title }}
                     {% endif %}
                   </div>
-                  <div class="flex justify-center gap-xxs p6" js-price-copy>
+                  <div class="flex justify-center gap-xxs p6" js-price-copy data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
                     {% if filter_variant.selling_plan_allocations[0].compare_at_price > filter_variant.selling_plan_allocations[0].price %}
                       <s>{{ filter_variant.selling_plan_allocations[0].compare_at_price | money }}</s>
                     {% endif %}
-                    <span class="font-700" data-price="{{ filter_variant.selling_plan_allocations[0].price }}">{{ filter_variant.selling_plan_allocations[0].price | money }}</span>
+                    <span class="font-700">{{ filter_variant.selling_plan_allocations[0].price | money }}</span>
                   </div>
                 </button>
               {% endif %}
@@ -147,12 +147,12 @@
         Air Purifier Only
       {% endif %}
     </div>
-    <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" js-price js-full-price js-price-copy>
+    <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" {% if pdp_type == 'filter' %}js-price js-full-price {% endif %} js-price-copy data-price="{{ current_variant.price }}">
       {% if current_variant.compare_at_price > current_variant.price %}
         <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-        <span class="product__price product__price--current font-700" data-price="{{ current_variant.price }}">{{ current_variant.price | money }}</span>
+        <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
       {% else %}
-        <span class="product__price product__price--current font-700" data-price="{{ current_variant.price }}">{{ current_variant.price | money }}</span>
+        <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
       {% endif %}
     </div>
   </button>
