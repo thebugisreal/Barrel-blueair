@@ -10,6 +10,16 @@
     assign swatch_option = product.options_by_name['filter type'].position | minus: 1
     assign current_swatch = current_variant.options[swatch_option]
   endif
+  assign enable_subscription = false
+  if product.metafields.seed.subscription != blank
+    assign subscription = product.metafields.seed.subscription.value
+    for filter_subscription in subscription.filter_subscriptions.value
+      if filter_subscription.variants[0].selling_plan_allocations.size > 0
+        assign enable_subscription = true
+        break
+      endif
+    endfor
+  endif
 -%}
 
 <s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
@@ -160,7 +170,7 @@
                 {% endcapture %}
                 <div class="product__star-rating mt-sm {{ spacing }}">reviews</div>
               {% when 'filter_options' %}
-                {% if product.metafields.seed.product_card_filter_products != blank %}
+                {% if enable_subscription == false and product.metafields.seed.product_card_filter_products != blank %}
                   <div class="product__filter-options my-sm">
                     <p class="s1 mb-sm">Customize your filter</p>
                     <div class="product__filters flex gap-xs mb-xs">
@@ -199,18 +209,6 @@
                   </product-options>
                   {% endunless %}
 
-                  {% liquid 
-                    assign enable_subscription = false
-                    if product.metafields.seed.subscription != blank
-                      assign subscription = product.metafields.seed.subscription.value
-                      for filter_subscription in subscription.filter_subscriptions.value
-                        if filter_subscription.variants[0].selling_plan_allocations.size > 0
-                          assign enable_subscription = true
-                          break
-                        endif
-                      endfor
-                    endif
-                  %}
                   {% if enable_subscription %}
                     {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
                   {% endif %}
