@@ -2,24 +2,15 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-{% if product.metafields.seed.pdp_brands != blank %}
-    <div class="product__brands {{ margins_paddings }} px-md tabletl:px-xl">
-        <h3 class="font-900 text-center mb-lg pb-xs tabletl:mb-xxl tabletl:pb-0">Independently proven performance</h3>
-        <ul class="product__brands-container grid grid-cols-2 gap-x-md gap-y-lg tabletl:flex tabletl:justify-center tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
-          {% for image in product.metafields.seed.pdp_brands.value %}
-              <li class="product__brands text-center">
-                <div class="image-container h-[110px] tabletl:w-[200px] tabletl:h-[100px]">
-                    {% render 'lazy-image' image:image, picture_classes:'object-scale-down h-full w-full', img_classes: 'object-scale-down h-full w-full'%}
-                </div>
-              </li>
-          {% endfor %}
-        </ul>
-    </div>
+{% if product.metafields.seed.footnotes != blank %}
+    <div class="product__footnotes rte {{ margins_paddings }} {{ section.settings.color }} px-md tabletl:px-xl tabletl:max-w-[var(--max-width-desktop)]"  style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+        {{ product.metafields.seed.footnotes |  metafield_tag }}
+    </div> 
 {% endif %}
 
 {% schema %}
 {
-  "name": "Product - Brands",
+  "name": "Product - Footnotes",
   "tag": "section",
   "settings": [
     {
@@ -352,6 +343,46 @@
       "label": "Text Content - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "100%"
+    },
+    {
+      "type": "header",
+      "content": "Color Set"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "bg-white text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-white text-blue"
     }
   ],
   "enabled_on": {
@@ -359,7 +390,7 @@
   },
   "presets": [
     {
-      "name": "Product - Brands"
+      "name": "Product - Footnotes"
     }
   ]
 }
