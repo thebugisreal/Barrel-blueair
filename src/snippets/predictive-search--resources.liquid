@@ -14,7 +14,9 @@
       <li class="predictive-search__list-item predictive-search__list-item--product mb-xs" role="option">
         <a href="{{ resource.url }}" class="predictive-search__item flex items-center gap-sm" tabindex="-1">
           <div class="predictive-search__item-image w-[65px] h-[65px] desktop:w-[88px] desktop:h-[88px]">
-            {% if resource.featured_image != blank %}            
+            {% if resource.metafields.seed.product_card_image != blank %}
+              {% render 'lazy-image', image: resource.metafields.seed.product_card_image.value.preview_image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
+            {% elsif resource.featured_image != blank %}
               {% render 'lazy-image', image: resource.featured_image, picture_classes: 'h-full', img_classes: 'h-full object-cover' %}
             {% endif %}
           </div>

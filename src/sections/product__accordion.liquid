@@ -4,7 +4,7 @@
 
 {% if product.metafields.seed.pdp_faq != blank %}
     <div class="{{ section.settings.bg_color }}">
-        <div class="product__accordion mx-lg tabletl:mx-auto {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+        <div class="product__accordion mx-md tabletl:mx-auto {{ margins_paddings }}" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
             {% if section.settings.title != blank %}
                 {% liquid
                     assign title_tag = 'p'
@@ -46,7 +46,7 @@
 
 {% schema %}
     {
-      "name": "Product - Accordion",
+      "name": "Product - FAQ",
       "tag": "section",
       "settings": [
         {
@@ -533,7 +533,7 @@
       },
       "presets": [
         {
-          "name": "Product - Accordion"
+          "name": "Product - FAQ"
         }
       ]
     }

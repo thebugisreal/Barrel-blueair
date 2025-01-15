@@ -18,9 +18,9 @@
             Your cart is empty, <a href="/collections/all">continue shopping</a>.
           </p>
         {%- else -%}
-          <div class="tabletl:flex tabletl:gap-xxxl">
+          <div class="tabletl:flex tabletl:gap-xl">
             {% comment %} Cart Items  {% endcomment %}
-              <div class="cart__items-wrapper flex flex-col gap-md tabletl:gap-xxl tabletl:w-1/2">
+              <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-1/2">
                 {%- for item in cart.items -%}
                   <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative flex justify-between gap-sm tabletl:gap-md" js-cart-item>
                     <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
@@ -87,7 +87,7 @@
                           </cart-remove-button>
                           
         
-                          <div id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
+                          <div id="CartMain-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
                           </div>
                         </div>
                       </div>
@@ -253,10 +253,11 @@
                   {% endunless %}
                 {% endif %}
                 {% comment %} END Upsell Products {% endcomment %}
+                <div id="CartPage-CartErrors" role="alert"></div>
               </div>
             {% comment %} END Cart Items  {% endcomment %}
             {% comment %} Cart Footer {% endcomment %}
-              <div class="cart__footer bg-blue-light p-md h-fit tabletl:w-1/2">
+              <div class="cart__footer bg-blue-light p-md h-fit mt-lg tabletl:mt-0 tabletl:w-1/2">
                 {%- if settings.show_cart_note -%}
                   <details id="Details-CartDrawer">
                     <summary>

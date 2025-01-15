@@ -1,6 +1,6 @@
 .template-index .main > .shopify-section:first-child .hero__content-wrapper {
-  @apply pt-[calc(var(--header-height)+36px)]
-  desktop:pt-[calc(var(--header-height)+64px)];
+  @apply pt-lg
+  desktop:pt-xl
 }
 
 .hero__content-wrapper.no-image {
@@ -11,7 +11,7 @@
   max-width: var(--max-w-mobile, unset);
 }
 .hero__image img {
-  max-height: var(--max-w-mobile, unset);
+  max-height: var(--max-h-mobile, unset);
 }
 
 @media screen(desktop) {

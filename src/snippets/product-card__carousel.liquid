@@ -2,7 +2,7 @@
     {% if product.metafields.seed.product_tags != blank %}
     <ul class="product-card__carousel-tags mb-[22px] flex justify-center">
         {% for tag in product.metafields.seed.product_tags.value %}
-            <li class="tag-small border bg-white border-gray py-xxs rounded-[9999px] w-fit">{{ tag }}</li>
+            <li class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</li>
         {% endfor %}
     </ul>
     {% endif %}
@@ -13,6 +13,10 @@
         <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
     </a>
     <div class="product-card__carousel-image">
-        {% render 'lazy-image' image:product.featured_image %}
+        {% if product.metafields.seed.product_card_image != blank %}
+            {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+          {% else %}
+            {% render 'lazy-image' image: product.featured_image %}
+          {% endif %}
     </div>
 </div>

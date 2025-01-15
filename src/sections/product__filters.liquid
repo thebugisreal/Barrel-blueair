@@ -3,7 +3,7 @@
 {% endcapture %}
 
 {% if product.metafields.seed.pdp_filters != blank %}
-    <div class="product__filters {{ margins_paddings }} mx-lg tabletl:mx-xl">
+    <div class="product__filters {{ margins_paddings }} mx-md tabletl:mx-xl">
         <h3 class="font-900 mb-xl text-center tabletl:pb-xs tabletl:mb-xxl">Meet our filters</h3>
         <ul class="product__filters-container flex flex-col gap-xl tabletl:grid tabletl:grid-cols-3 tabletl:gap-lg">
           {% for filter in product.metafields.seed.pdp_filters.value %}

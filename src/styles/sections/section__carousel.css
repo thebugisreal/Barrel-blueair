@@ -18,7 +18,4 @@
     .section__carousel-content .swiper-nav-container {
         @apply w-[90%]
     }
-    .section__carousel.carousel-centered {
-        @apply px-xl
-    }
 }
