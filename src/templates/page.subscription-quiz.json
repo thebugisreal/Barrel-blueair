@@ -1,36 +1,10 @@
 {
   "sections": {
     "main": {
-      "type": "page__main",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-md",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-lg",
-        "padding_bottom_desktop": "desktop:pb-lg",
-        "max_width": "80ch"
-      }
-    },
-    "section_embed_7kEtKx": {
-      "type": "section__embed",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<?xml version=\"1.0\"?>\n<form xmlns=\"http:\/\/www.demandware.com\/xml\/form\/2008-04-19\">\n\n    <field formid=\"firstname\" label=\"contactus.label.firstname\" type=\"string\" mandatory=\"true\" binding=\"firstName\" max-length=\"50\" parse-error=\"validate.parse-error\" missing-error=\"validate.required\"><\/field>\n    <field formid=\"lastname\" label=\"contactus.label.lastname\" type=\"string\" mandatory=\"true\" binding=\"lastName\" max-length=\"50\" parse-error=\"validate.parse-error\" missing-error=\"validate.required\"><\/field>\n    <field formid=\"email\" label=\"bulkpurchases.label.email\" type=\"string\" mandatory=\"true\" parse-error=\"contactus.email.parse-error\" missing-error=\"validate.required\" binding=\"email\" max-length=\"50\" regexp=\"^[\\w.%+-]+@[\\w.-]+\\.[\\w]{2,6}$\" validation=\"${require('*\/cartridge\/scripts\/forms\/validator').validateEmail(formfield, 'contactus.email.parse-error')}\"><\/field>\n    <field formid=\"phonenumber\" label=\"bulkpurchases.label.phonenumber\" type=\"string\" mandatory=\"false\" binding=\"orderNumber\" missing-error=\"ordertrack.orderNumber.missing-error\"><\/field>\n    <field formid=\"desiredunit\" label=\"bulkpurchases.label.desiredunit\" type=\"string\" mandatory=\"false\" binding=\"productModel\"><\/field>\n    <field formid=\"desiredquantity\" label=\"bulkpurchases.label.desiredquantity\" type=\"string\" mandatory=\"false\" binding=\"emailSubject\" missing-error=\"ordertrack.orderNumber.missing-error\"><\/field>\n    <field formid=\"comment\" label=\"bulkpurchases.label.comment\" type=\"string\" mandatory=\"false\" binding=\"comment\" max-length=\"500\"><\/field>\n    <field formid=\"companyname\" label=\"bulkpurchases.label.companyname\" type=\"string\" mandatory=\"false\" max-length=\"500\"><\/field>\n    <field formid=\"consent\" label=\"bulkpurchases.label.consent\" type=\"boolean\" mandatory=\"true\"><\/field>\n\n    <field formid=\"response\" type=\"string\" mandatory=\"true\" missing-error=\"validate.required\" value-error=\"recaptcha.fail\" validation=\"${require('*\/utils\/form').validate(formfield);}\"><\/field>\n\n    <action formid=\"send\" valid-form=\"true\"><\/action>\n<\/form>"
-      }
+      "type": "section__subscription-quiz"
     }
   },
   "order": [
-    "main",
-    "section_embed_7kEtKx"
+    "main"
   ]
 }

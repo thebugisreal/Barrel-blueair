@@ -1,0 +1,140 @@
+<subscription-quiz class="section__subscription-quiz block p-md desktop:px-xl desktop:pt-sm">
+  <div class="subscription-quiz__nav flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg">
+    <button class="subscription-quiz-nav__btn w-[32px] p-xxxs" js-quiz-nav-prev>
+      {% render 'icon-arrow-left' %}
+    </button>
+    <div class="subscription-quiz__current-step p3 pt-[1px]">
+      <span>Step 0</span><span js-quiz-current-step>1</span><span> / 04</span>
+    </div>
+    <button class="subscription-quiz-nav__btn w-[32px] p-xxxs" js-quiz-nav-next>
+      {% render 'icon-arrow-right' %}
+    </button>
+  </div>
+  <div class="subscription-quiz__step max-w-[900px] mx-auto" data-step="1" js-quiz-step>
+    <div class="subscription-quiz__heading h2 text-center">
+      {{ section.settings.step_1_heading }}
+    </div>
+    <s-tabs class="subscription-quiz__tabs block mt-md desktop:mt-lg">
+      <div class="tab__triggers flex justify-center items-center rounded-[100px] bg-blue-light p-xxs max-w-max mx-auto" role="tablist" aria-orientation="horizontal" js-tablist>
+        <button id="subscription-quiz-tab1-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab1-content-panel" role="tab" aria-selected="true" js-tab>
+          By Serial Number
+        </button>
+        <button id="subscription-quiz-tab2-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab2-content-panel" role="tab" aria-selected="false" js-tab>
+          By Family
+        </button>
+      </div>
+      <div id="subscription-quiz-tab1-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab1-tab" aria-hidden="false">
+        <p class="p1 text-center mb-sm">Enter your model number and we'll find compatible replacement filters</p>
+        <form class="subscription-quiz__search-form flex items-center gap-sm">
+          <div class="flex items-center gap-sm rounded-[24px] border border-gray bg-blue-light overflow-hidden pl-xs pr-lg relative flex-1">
+            <span class="w-[36px]">{% render 'icon-search' %}</span>
+            <input type="text" class="flex-1 py-xs bg-transparent" required />
+            <button class="w-[20px] absolute right-[12px] top-1/2 -translate-y-1/2 hidden" js-quiz-search-clear>{% render 'icon-close' %}</button>
+          </div>
+          <button type="submit" class="w-[32px] rounded-full overflow-hidden border border-blue">
+            {% render 'icon-arrow-right' %}
+          </button>
+        </form>
+      </div>
+      <div id="subscription-quiz-tab2-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab2-tab" aria-hidden="true">
+        <div class="subscription-quiz__family-grid grid grid-cols-3 gap-xs desktop:grid-col-4 desktop:gap-md">
+          {% for block in section.blocks %}
+            <button class="subscription-quiz__family border border-gray flex flex-col">
+              {% if block.settings.image != blank %}
+                <div class="subscription-quiz-family__image">
+                  {% render 'lazy-image' image: block.settings.image %}
+                </div>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <div class="subscription-quiz-family__title w-full font-500 leading-[18px] desktop:text-16 text-center p-xs desktop:pb-md flex-1">
+                  {{ block.settings.title }}
+                </div>
+              {% endif %}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    </s-tabs>
+  </div>
+  <div class="subscription-quiz__step" data-step="2" js-quiz-step>
+
+  </div>
+  <div class="subscription-quiz__step" data-step="3" js-quiz-step>
+
+  </div>
+  <div class="subscription-quiz__step" data-step="4" js-quiz-step>
+
+  </div>
+</subscription-quiz>
+
+{% schema %}
+{
+  "name": "Subscription Quiz",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "text",
+      "id": "step_1_heading",
+      "label": "Heading",
+      "default": "How to choose the right replacement filter"
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "text",
+      "id": "step_2_heading",
+      "label": "Heading",
+      "default": "Select Your Air Purifier"
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "text",
+      "id": "step_3_heading",
+      "label": "Heading",
+      "default": "Select a Filter"
+    },
+    {
+      "type": "header",
+      "content": "Step 4"
+    },
+    {
+      "type": "text",
+      "id": "step_4_heading",
+      "label": "Heading",
+      "default": "Select a Shipment Frequency"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Family",
+      "type": "family",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "product_list",
+          "id": "air_purifiers",
+          "label": "Air Purifiers"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

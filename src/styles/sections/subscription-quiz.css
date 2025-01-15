@@ -1,0 +1,10 @@
+.subscription-quiz-nav__btn svg path {
+  @apply
+  stroke-blue
+  stroke-1;
+}
+
+.subscription-quiz__tab-trigger[aria-selected="true"] {
+  @apply bg-blue
+  text-white;
+}
