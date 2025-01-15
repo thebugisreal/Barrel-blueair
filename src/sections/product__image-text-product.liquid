@@ -21,8 +21,6 @@
                     </div>
                 {% endif %}
             </div>
-
-
             <div class="image-container relative">
                 <div class="flex h-full flex-col gap-xl mt-[30vh]">
                     {% if product.metafields.seed.pdp_image_text_prod.value.video != blank %}
@@ -38,7 +36,7 @@
                 {% comment %} Assoicated Product {% endcomment %}
                 {% if product.metafields.seed.pdp_image_text_prod.value.product != blank %}
                     {% assign associated_prod = all_products[product.metafields.seed.pdp_image_text_prod.value.product] %}
-                    <div class="absolute top-[-20vh] right-0 left-0 flex justify-center">
+                    <div class="absolute top-[-20vh] right-lg left-lg flex justify-center">
                         <div class="product__image-text-associated_prod-container bg-blue-light max-h-[512px] max-w-[312px]">
                             {% if associated_prod.featured_image != blank %}
                                {%  render 'lazy-image' image:associated_prod.featured_image, picture_classes: 'h-fit', img_classes: 'h-full'%}
@@ -95,7 +93,7 @@
         {% if product.metafields.seed.pdp_image_text_prod.value.product != blank %}
             {% assign associated_prod = all_products[product.metafields.seed.pdp_image_text_prod.value.product] %}
             <div class="absolute top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-                <div class="product__image-text-associated_prod-container bg-blue-light tabletl:max-h-[512px] tabletl:max-w-[312px]">
+                <div class="product__image-text-associated_prod-container bg-blue-light max-h-[512px] max-w-[312px]">
                     {% if associated_prod.featured_image != blank %}
                        {%  render 'lazy-image' image:associated_prod.featured_image, picture_classes: 'h-full', img_classes: 'h-full'%}
                     {% endif %}

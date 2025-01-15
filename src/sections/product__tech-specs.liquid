@@ -1,0 +1,401 @@
+{% capture margins_paddings %}
+    {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+<div class="product__tech-specs flex flex-col gap-lg px-lg {{ margins_paddings }} {{ section.settings.color }} tabletl:px-xl tabletl:flex-row">
+    <div class="image-container order-last tabletl:order-first tabletl:w-1/2">
+      <div class="product__text-spec-360 relative">
+        {% if product.metafields.seed.pdp_tech_spec_360_images != blank %}
+          {% render 'product-viewer' %}
+        {% else %}
+          {% render 'lazy-image' image:product.featured_image %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="text-container">
+        <h1 class="h3 font-900 mb-md tabletl:mb-lg">Technical Specifications</h1>
+        <div>
+          {% render 'product__spec' %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product - Tech Spec",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top - Mobile",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom - Mobile",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pt-xl"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pb-xl"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:mt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:mb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pt-xxl"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pb-xxl"
+    },
+    {
+      "type": "header",
+      "content": "Color Set"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "bg-white text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-white text-blue"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "presets": [
+    {
+      "name": "Product - Tech Spec"
+    }
+  ]
+}
+{% endschema %}
