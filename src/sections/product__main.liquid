@@ -396,7 +396,7 @@
                           <div class="product-upsell__buybox mt-md flex-1 flex flex-col justify-between gap-md">
                             {% assign upsell_product = upsell_object.product.value %}
                             {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
-                            {% if upsell_product != blank %}
+                            {% if upsell_product != blank or upsell_object.filter_products != blank %}
                               {% liquid
                                 assign color_option = false
                                 assign filter_type_option = false
