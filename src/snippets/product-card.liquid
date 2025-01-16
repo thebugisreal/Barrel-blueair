@@ -131,7 +131,10 @@
       <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-product>{{ all_products[product.handle] | json }}</script>
 
       <script type="application/json" id="ProductCompareIndoJSON-{{ product.id }}" js-product-compare-info>
-          {
+          { 
+            {% if product.metafields.seed.product_card_image != blank %}
+              "product_card_image": "{{ product.metafields.seed.product_card_image.value.src |  image_url: width: '1920px'}}",
+            {% endif %}
             "blair_recommendedRoomSize": "{{ product.metafields.seed.blair_recommendedRoomSize }}",
             "blair_dimensions":"{{ product.metafields.seed.blair_dimensions }}",
             "blair_productSpecification_weight":"{{ product.metafields.seed.blair_productSpecification_weight }}",

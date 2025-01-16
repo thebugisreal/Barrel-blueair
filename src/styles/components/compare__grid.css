@@ -1,8 +1,8 @@
 .compare__title {
     @apply py-md
     border-b
-    border-gray
     h-[100px]
+    border-gray
 }
 
 .compare-product__title {
@@ -56,7 +56,7 @@
     @apply py-md
     border-b
     border-gray
-    h-[120px]
+    h-[80px]
 }
 
 .compare__item .p1 {
@@ -97,7 +97,6 @@
 @media screen(tabletl) {
     .compare__title {
         @apply py-lg
-        h-[140px]
     }
     .compare__title p.s1 {
         @apply text-[30px]
