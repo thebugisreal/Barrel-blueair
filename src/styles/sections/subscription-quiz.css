@@ -8,3 +8,38 @@
   @apply bg-blue
   text-white;
 }
+
+.subscription-quiz__step[data-active="false"] {
+  @apply hidden;
+}
+
+.subscription-quiz__selection-group[data-active="false"] {
+  @apply hidden;
+}
+
+.subscription-quiz__selection--frequency[data-selected="true"] {
+  @apply border-blue;
+}
+
+.subscription-quiz__selection--frequency[data-selected="true"] .subscription-quiz-frequency__heading {
+  @apply bg-blue-darkSky
+  border-blue;
+}
+
+.subscription-quiz-frequency__checkbox::after {
+  @apply content-['']
+  block
+  absolute
+  w-[12px]
+  h-[12px]
+  top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  rounded-full
+  bg-transparent;
+}
+
+.subscription-quiz__selection--frequency[data-selected="true"] .subscription-quiz-frequency__checkbox::after {
+  @apply bg-blue;
+}

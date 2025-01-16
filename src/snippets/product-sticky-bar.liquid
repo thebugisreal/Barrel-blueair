@@ -31,7 +31,7 @@
     <div class="product-sticky-bar__atc-wrapper relative flex gap-md items-center">
         <p class="s1 hidden tabletl:block" js-sticky-price>{{ current_variant.price |  money }}</p>
         <button class="product__atc btn btn--blue-rounded" {% if atc_disabled %} disabled {% endif %} type="button" js-sticky-atc>
-            <span class="product-sticky-bar__atc btn__text">{{ atc_text }}</span>
+            <span class="product-sticky-bar__atc btn__text" js-atc-text>{{ atc_text }}</span>
             <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
         </button>
         <loading-spinner js-sticky-loader style="--width: 24px; --height: 24px; --background: #F5F5F580; --color: #002955;"></loading-spinner>
