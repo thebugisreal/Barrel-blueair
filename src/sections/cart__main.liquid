@@ -15,8 +15,22 @@
             {% comment %} END Shipping Threshold {% endcomment %}
         {% if cart == empty %}
           <p class="text-center">
-            Your cart is empty, <a href="/collections/all">continue shopping</a>.
+            Your cart is empty, <a href="/collections/all">start shopping</a>.
           </p>
+          {% if settings.cart_cta_url_1 != blank or settings.cart_cta_url_2 != blank %}
+            <div class="cart-empty__cta-container flex flex-col mt-lg gap-sm items-center">
+              <a href="{{ settings.cart_cta_url_1 }}" class="cart-empty__cta btn btn--blue-rounded text-center">
+                <span class="btn__text">{{ settings.cart_cta_text_1 }}</span>
+                <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+              </a>
+              {% if settings.cart_cta_url_2 != blank %}
+                <a href="{{ settings.cart_cta_url_2 }}" class="cart-empty__cta btn btn--blue-rounded text-center">
+                  <span class="btn__text">{{ settings.cart_cta_text_2 }}</span>
+                  <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
         {%- else -%}
           <div class="tabletl:flex tabletl:gap-xl">
             {% comment %} Cart Items  {% endcomment %}
