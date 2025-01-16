@@ -87,5 +87,7 @@ customElements.define('s-hotspot', Hotspot);
 
 /*================ Templates ================*/
 // =require templates/account.js
+// =require templates/login.js
 
 customElements.define("s-account", Account);
+customElements.define("s-login", Login);

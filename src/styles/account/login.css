@@ -1,7 +1,80 @@
-#recover:target .account-login__forgot{
+.template-login .gigya-screen-dialog {
+  @apply w-full
+  border-0
+  static
+  min-h-screen;
+}
+
+.template-login .gigya-screen-dialog-content {
+  @apply !w-full
+  p-0;
+}
+
+.template-login .gigya-screen-dialog-inner {
+  @apply border-0;
+}
+
+.template-login .gigya-screen-dialog-top {
+  @apply hidden;
+}
+
+.template-login .gigya-loginID-availability-progress,
+.template-login .gigya-loginID-availability-not-available {
+  @apply mt-xxs;
+}
+
+.template-login .gigya-screen .gigya-terms-error, 
+.template-login .gigya-screen input.gigya-error, 
+.template-login .gigya-screen input[type="text"].gigya-error, 
+.template-login .gigya-screen input[type="password"].gigya-error, 
+.template-login .gigya-screen input[type="email"].gigya-error, 
+.template-login .gigya-screen select.gigya-error {
+  @apply rounded-none
+  px-xs
+  py-xxs;
+}
+
+.template-login #gigya-reset-password-form:target .account-login__forgot{
   @apply block;
 }
 
-#recover:target .account-login__forgot ~ .account-login__login {
+.template-login #gigya-reset-password-form:target .account-login__forgot ~ .account-login__login {
   @apply hidden;
+}
+
+.template-login .gigya-input-checkbox, 
+.template-login .gigya-input-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  display: inline-block;
+  vertical-align: middle;
+  background-origin: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 22px;
+  width: 22px;
+  color: #002955;
+  background-color: #fff;
+  border-color: #667381;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  margin-right: 15px;
+  margin-top: 2px;
+}
+
+.template-login .gigya-input-checkbox:checked, 
+.template-login .gigya-input-checkbox:checked {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 22 22'%3e%3cpath fill='none' stroke='white' d='M5 12l4.2 3.5 7.1-9'/%3e%3c/svg%3e");
+  border-color: transparent;
+  background-color: currentColor;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }

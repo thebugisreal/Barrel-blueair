@@ -31,6 +31,7 @@
     {% endif %}
   
     <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=o1ztgcec0jdq8wblwfstya" async="true"></script>
+
     <!-- Affirm -->
     <script>
       _affirm_config = {
@@ -41,6 +42,8 @@
       // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
     </script>
     <!-- End Affirm -->
+
+    <script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey=3_ySPsrsHSXFGBAm5bIySMyifZ29wt6LFIsiaU4QLEVlaz5MOEhi5cEJrKaWn_Glcv"></script>
     
     {{ content_for_header }}
   
@@ -80,7 +83,7 @@
       {% render 'product-sticky-bar' %}
     {% endif %}
 
-    <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">
+    <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">
       {{ content_for_layout }}
     </main>
 
