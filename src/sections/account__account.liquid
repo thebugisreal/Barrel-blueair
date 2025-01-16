@@ -294,7 +294,7 @@
     <div class="account__sections desktop:col-span-9">
       <!-- Account Sections -->
       {% for section in sections %}
-        <div id="{{ section | handleize }}-content-panel" class="tab__panel pt-md grid gap-y-md desktop:pt-0 desktop:gap-y-xxl" 
+        <div id="{{ section | handleize }}-content-panel" class="tab__panel pt-md grid gap-y-md desktop:pt-0 desktop:gap-y-lg" 
           role="tabpanel" 
           aria-labelledby="{{ section | handleize }}-tab" 
           aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
