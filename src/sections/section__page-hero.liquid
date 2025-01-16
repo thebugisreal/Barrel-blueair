@@ -51,7 +51,7 @@
     </div>
 
     {% if section.settings.image_desktop != blank %}
-        <div class="hero__image hidden tabletl:block min-w-[300px]">
+        <div class="hero__image hidden tabletl:block min-w-[300px] tabletl:max-w-[400px]">
           {% render 'lazy-image', image: section.settings.image_desktop %}
 
           {% if section.settings.caption != blank %}

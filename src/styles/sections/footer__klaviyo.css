@@ -59,6 +59,10 @@
     !bg-white;
 }
 
+.section__klaviyo span {
+    color: var(--confirmation-text-color) !important;
+}
+
 @media screen(desktop) {
     .section__klaviyo input:hover {
         @apply !border-blue

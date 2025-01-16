@@ -41,7 +41,7 @@ class ImageCaptionModal extends HTMLElement {
 
       if (window.innerWidth > 1025) {
         this.style.width='250px';
-        this.style.height='318px';
+        this.style.height='450px';
       } else {
         let closestImageContainer = this.parentElement.parentElement
         let width =  closestImageContainer.getBoundingClientRect().width - 48

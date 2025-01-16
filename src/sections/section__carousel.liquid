@@ -48,7 +48,7 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
+<div class="section__carousel mx-auto {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
     <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
         <div class="section__carousel-text-container mx-md mb-md tabletl:mx-0">
             {% if section.settings.title != blank %}
@@ -76,7 +76,7 @@
         {% endif %}
     </header>
 
-    <div class="section__carousel-content mx-auto grid grid-cols-1 {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% endif %}">
+    <div class="section__carousel-content grid grid-cols-1 {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% endif %} {{ section.settings.carousel_content_top_spacing_mobile }} {{ section.settings.carousel_content_top_spacing_desktop }}">
         <s-carousel class="block" data-options='{{carousel_options}}'>
             <div id="{{section.id}}" class="swiper" js-carousel>
                 <div class="swiper-wrapper">
@@ -209,7 +209,7 @@
                  <div class="carousel_nav-container mx-auto {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %} tabletl:px-xl">
                     {% case section.settings.carousel_nav %}
                     {% when 'pagination'%}
-                        <div class="swiper-nav-container py-xxs flex justify-between items-center">
+                        <div class="swiper-nav-container py-xxs flex justify-between items-center {{ section.settings.scrollbar_top_spacing_mobile }} {{ section.settings.scrollbar_top_spacing_desktop }}">
                             <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                             <div class="nav-button-container flex gap-md">
                                 <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
@@ -217,7 +217,7 @@
                             </div>
                         </div>
                     {% when 'scrollbar'%}
-                        <div class="swiper-nav-container mx-auto py-xxs flex gap-md items-center">
+                        <div class="swiper-nav-container mx-auto flex gap-md items-center {{ section.settings.scrollbar_top_spacing_mobile }} {{ section.settings.scrollbar_top_spacing_desktop }}">
                             <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
                             <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                             <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
@@ -226,7 +226,7 @@
                  </div>
                 {% comment %} END Swiper Nav {% endcomment %}
             </div>
-        </s-carousel>
+        </s-carousel> 
     </div>
 </div>
 
@@ -558,6 +558,166 @@
             }
             ],
             "default": "desktop:pb-0"
+        },
+        {
+            "type": "select",
+            "id": "carousel_content_top_spacing_mobile",
+            "label": "Carousel Content Top Spacing - Mobile",
+            "options": [
+            {
+                "value": "mt-0",
+                "label": "None"
+            },
+            {
+                "value": "mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "mt-md"
+        },
+        {
+            "type": "select",
+            "id": "carousel_content_top_spacing_desktop",
+            "label": "Carousel Content Top Spacing - Desktop",
+            "options": [
+            {
+                "value": "tabletl:mt-0",
+                "label": "None"
+            },
+            {
+                "value": "tabletl:mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "tabletl:mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "tabletl:mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "tabletl:mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "tabletl:mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "tabletl:mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "tabletl:mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "tabletl:mt-md"
+        },
+        {
+            "type": "select",
+            "id": "scrollbar_top_spacing_mobile",
+            "label": "Scroll Bar Top Spacing - Mobile",
+            "options": [
+            {
+                "value": "mt-0",
+                "label": "None"
+            },
+            {
+                "value": "mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "mt-md"
+        },
+        {
+            "type": "select",
+            "id": "scrollbar_top_spacing_desktop",
+            "label": "Scroll Bar Top Spacing - Desktop",
+            "options": [
+            {
+                "value": "tabletl:mt-0",
+                "label": "None"
+            },
+            {
+                "value": "tabletl:mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "tabletl:mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "tabletl:mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "tabletl:mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "tabletl:mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "tabletl:mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "tabletl:mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "tabletl:mt-md"
         },
         {
             "type": "text",
