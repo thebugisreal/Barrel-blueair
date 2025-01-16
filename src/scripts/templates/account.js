@@ -58,21 +58,20 @@ class Account extends HTMLElement {
       headers: {
         "Content-Type": "application/json"
       }
-    });
-
-    const data = await response.json();
-    const { success, found } = data
-
-    if (found) {
-      console.log('found')
-      this.accountSubscribed.classList.remove('hidden');
-    } else if (!found) {
-      console.log('not found')
-      this.accountNotSubscribed.classList.remove('hidden');
-    } else {
-      console.log('something went wrong')
-      this.accountNotSubscribed.classList.remove('hidden');
-    }
+    })
+      .then((response) => response.json())
+      .then(({ success, found }) => {
+        if (!success) throw new Error('Failed to query klaviyo customer');
+        
+        if (found) {
+          this.accountSubscribed.classList.remove('hidden');
+        } else {
+          this.accountNotSubscribed.classList.remove('hidden');
+        }
+      }).catch((err) => {
+        console.log(err)
+        this.accountNotSubscribed.classList.remove('hidden');
+      })
   }
 
   _setupKlaviyoFormTrigger() {
