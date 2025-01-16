@@ -270,3 +270,9 @@
 .product-viewer--js-press-active {
   @apply cursor-grabbing
 }
+
+@media screen(desktop) {
+  .product .btn:hover {
+    @apply border-blue
+  }
+}

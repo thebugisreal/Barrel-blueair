@@ -34,6 +34,7 @@
 .compare__title p.s1 {
     @apply invisible
     text-[16px]
+    h-[140px]
 }
 
 .compare__grid-item {
