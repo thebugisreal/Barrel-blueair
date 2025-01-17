@@ -80,7 +80,8 @@
                 image_placement_desktop: block.settings.image_placement_desktop,
                 image_placement_mobile: block.settings.image_placement_mobile,
                 color: block.settings.color,
-                gutter_desktop: block.settings.gutter_desktop,
+                text_padding_right_desktop: block.settings.text_padding_right_desktop,
+                text_padding_left_desktop: block.settings.text_padding_left_desktop
                 cta_url: block.settings.cta_url,
                 cta_text: block.settings.cta_text,
                 cta_style: block.settings.cta_style
@@ -2087,43 +2088,83 @@
             },
             {
                 "type": "select",
-                "id": "gutter_desktop",
-                "label": "Gutter - Desktop",
+                "id": "text_padding_left_desktop",
+                "label": "Text Padding Left - Desktop",
                 "options": [
                 {
-                    "value": "desktop:px-0",
+                    "value": "desktop:pl-0",
                     "label": "None"
                 },
                 {
-                    "value": "desktop:px-xs",
+                    "value": "desktop:pl-xs",
                     "label": "XS"
                 },
                 {
-                    "value": "desktop:px-sm",
+                    "value": "desktop:pl-sm",
                     "label": "SM"
                 },
                 {
-                    "value": "desktop:px-md",
+                    "value": "desktop:pl-md",
                     "label": "MD"
                 },
                 {
-                    "value": "desktop:px-lg",
+                    "value": "desktop:pl-lg",
                     "label": "LG"
                 },
                 {
-                    "value": "desktop:px-xl",
+                    "value": "desktop:pl-xl",
                     "label": "XL"
                 },
                 {
-                    "value": "desktop:px-xxl",
+                    "value": "desktop:pl-xxl",
                     "label": "2XL"
                 },
                 {
-                    "value": "desktop:px-xxxl",
+                    "value": "desktop:pl-xxxl",
                     "label": "3XL"
                 }
                 ],
-                "default": "desktop:px-0"
+                "default": "desktop:pl-0"
+            },
+            {
+                "type": "select",
+                "id": "text_padding_right_desktop",
+                "label": "Text Padding Right - Desktop",
+                "options": [
+                {
+                    "value": "desktop:pr-0",
+                    "label": "None"
+                },
+                {
+                    "value": "desktop:pr-xs",
+                    "label": "XS"
+                },
+                {
+                    "value": "desktop:pr-sm",
+                    "label": "SM"
+                },
+                {
+                    "value": "desktop:pr-md",
+                    "label": "MD"
+                },
+                {
+                    "value": "desktop:pr-lg",
+                    "label": "LG"
+                },
+                {
+                    "value": "desktop:pr-xl",
+                    "label": "XL"
+                },
+                {
+                    "value": "desktop:pr-xxl",
+                    "label": "2XL"
+                },
+                {
+                    "value": "desktop:pr-xxxl",
+                    "label": "3XL"
+                }
+                ],
+                "default": "desktop:pr-0"
             },
             {
                 "type": "text",

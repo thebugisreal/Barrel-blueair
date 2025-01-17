@@ -244,6 +244,14 @@
   box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
 }
 
+@media screen(desktop) {
+  .product__sticky-bar .btn--blue-rounded:hover {
+    @apply border-blue
+  }
+}
+
+
+
 /* product quantity opption */
 .product-quantity-variant__checkbox::after {
   @apply block
@@ -272,7 +280,7 @@
 }
 
 @media screen(desktop) {
-  .product .btn:hover {
+  .product .btn--blue-rounded:hover {
     @apply border-blue
   }
 }

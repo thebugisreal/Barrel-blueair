@@ -46,7 +46,6 @@
     @apply p-xxs
     pl-sm
     rounded-[30px]
-    border
     border-blue
     bg-white;
   }
