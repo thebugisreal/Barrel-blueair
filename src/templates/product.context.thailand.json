@@ -1,0 +1,33 @@
+{
+  "parent": "product.json",
+  "context": {
+    "market": "thailand"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "filter_options_XPQVUh": {
+          "disabled": true,
+          "settings": {}
+        },
+        "product_options_GLfTKf": {
+          "disabled": true,
+          "settings": {}
+        },
+        "atc_BURfeB": {
+          "disabled": true,
+          "settings": {}
+        },
+        "shipping_warranty_Rg4jpP": {
+          "disabled": true,
+          "settings": {}
+        },
+        "upsells_ndPfKj": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    }
+  }
+}

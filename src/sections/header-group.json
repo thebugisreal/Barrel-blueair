@@ -5,6 +5,8 @@
     "header": {
       "type": "header",
       "settings": {
+        "header_nav_desktop": "seed-desktop-nav",
+        "bg_color": "bg-white text-blue"
       }
     }
   },

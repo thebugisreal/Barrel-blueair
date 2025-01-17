@@ -45,7 +45,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-center",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "60%"
+        "content_max_width_desktop": "60%",
+        "content_max_height_mobile": "80vh",
+        "content_max_height_desktop": "80vh"
       }
     },
     "section_image_text_kczWp3": {
@@ -57,8 +59,8 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
         "image_mobile": "shopify:\/\/shop_images\/whycleanair-image1.jpg",
         "image_position_mobile": "order-last",
@@ -71,8 +73,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_n66rYa": {
@@ -84,8 +86,8 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
         "image_mobile": "shopify:\/\/shop_images\/whycleanair-image2.jpg",
         "image_position_mobile": "order-last",
@@ -98,8 +100,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_tUW8Ub": {
@@ -111,12 +113,12 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
         "image_mobile": "shopify:\/\/shop_images\/whycleanair-image3.jpg",
         "image_position_mobile": "order-last",
-        "image_position_desktop": "right",
+        "image_position_desktop": "left",
         "image_width": 50,
         "title": "Take control of your indoor air",
         "title_style": "h3",
@@ -125,8 +127,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_tn7UjM": {
@@ -138,8 +140,8 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
         "image_mobile": "shopify:\/\/shop_images\/whycleanair-image4.jpg",
         "image_position_mobile": "order-last",
@@ -152,8 +154,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_content_panels_zY3mqV": {
@@ -165,10 +167,12 @@
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
+            "content_spacing": "",
             "title": "PM 1.0",
             "title_style": "h5",
             "subtext": "Viruses, tobacco smoke and microplastics.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
@@ -181,10 +185,12 @@
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
+            "content_spacing": "",
             "title": "PM 2.5",
             "title_style": "h5",
             "subtext": "Particles from combustion emissions, fine dust, bacteria, viruses, dust mites.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
@@ -197,10 +203,12 @@
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
+            "content_spacing": "",
             "title": "PM 10",
             "title_style": "h5",
             "subtext": "Pollen, mold, dust and pet dander.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
@@ -213,10 +221,12 @@
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "VOC and Chemicals",
             "title_style": "h5",
             "subtext": "Chemicals and gases released from paint, furniture, flooring, cleaning agents and fossil fuel combustion.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
@@ -355,12 +365,15 @@
         "enable_title_link_same_link": false,
         "title": "Meet the Blueair families of air purifiers",
         "title_style": "h3",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "mx-auto",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_text_48JrX8": {

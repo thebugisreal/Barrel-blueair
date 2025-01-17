@@ -79,8 +79,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_afQzWQ": {
@@ -106,8 +106,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_QtcpGy": {
@@ -133,8 +133,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_text_banner_PE3LPX": {
@@ -148,7 +148,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "max_width_desktop": "",
+        "max_width_desktop": "1440px",
         "color": "bg-white text-blue",
         "image_position_desktop": "desktop:order-first",
         "title": "Control all your devices in one place",
@@ -280,7 +280,7 @@
         "num_cols_mobile": 2,
         "num_cols_desktop": 5,
         "max_width_mobile": "",
-        "max_width_desktop": "",
+        "max_width_desktop": "1440px",
         "color": "bg-white text-blue",
         "title": "",
         "title_style": "h3",
@@ -313,8 +313,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_gtk74P": {
@@ -340,8 +340,8 @@
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_max_width": "",
-        "max_width_desktop": ""
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
       }
     },
     "section_carousel_3WLtUq": {
@@ -488,6 +488,90 @@
         "image_desktop": "shopify:\/\/shop_images\/App-Image.png",
         "background_image_desktop": "shopify:\/\/shop_images\/seed-apppage-hero2-bg.png"
       }
+    },
+    "section_accordion_TU8wif": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_pR4fFz": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Need content.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_m6KYby": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is warranty process?",
+            "title_style": "s1",
+            "richtext": "<p>need content.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_R8bdbq": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "How do Blueair purifiers compare with the competitors?",
+            "title_style": "s1",
+            "richtext": "<p>need content<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_B9EaXX": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "How to manage your subscription",
+            "title_style": "s1",
+            "richtext": "<p>need content.<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_QKbUpV": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "How to change the filter and reset the filter warning light?",
+            "title_style": "s1",
+            "richtext": "<p>need content<\/p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_QxHWxJ": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Where do I find the model name of my air purifier and filter?",
+            "title_style": "s1",
+            "richtext": "<p>need content<\/p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_pR4fFz",
+        "accordion_item_m6KYby",
+        "accordion_item_R8bdbq",
+        "accordion_item_B9EaXX",
+        "accordion_item_QKbUpV",
+        "accordion_item_QxHWxJ"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "title": "FAQ",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "shopify:\/\/pages\/support",
+        "cta_text": "Read all FAQs",
+        "cta_style": "btn"
+      }
     }
   },
   "order": [
@@ -503,6 +587,7 @@
     "section_image_text_gtk74P",
     "section_carousel_3WLtUq",
     "section_quotes_JPrEnr",
-    "section_hero_2_ajgWXh"
+    "section_hero_2_ajgWXh",
+    "section_accordion_TU8wif"
   ]
 }

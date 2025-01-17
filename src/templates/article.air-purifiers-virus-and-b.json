@@ -15,13 +15,13 @@
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
+            "padding_top_mobile": "pt-md",
+            "padding_bottom_mobile": "pb-md",
             "margin_top_desktop": "desktop:mt-sm",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>When colds and flu are going around, an air purifier for viruses and bacteria is one way to improve indoor air quality and help keep you and your family healthy.⁰ Blueair purifiers remove viruses and bacteria from the air and kill germs,¹ but no air purifier can offer complete protection against Coronavirus.² Blueair does not claim that its air purifiers capture, remove, or kill COVID-19 (SARS-CoV-2). Keep reading to learn more about air purifiers for viruses.<br\/><br\/><strong>See Blueair's Response to COVID-19 for more<\/strong><br\/><\/p>",
             "richtext_style": "p2"
           }
@@ -50,13 +50,13 @@
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
+            "padding_top_mobile": "pt-md",
+            "padding_bottom_mobile": "pb-md",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h6>How airborne viruses and bacteria spread<\/h6><p>Viruses and bacteria can both be spread through airborne transmission. Bacterial infections with airborne transmission include Strep throat, tuberculosis, and other illnesses. While viral infections include chickenpox, the common cold, and the flu. <\/p><p>Humans are commonly responsible for spreading viruses and diseases to others in the home, workplace, and any other area with crowded conditions and poor air circulation.³ When someone sneezes or coughs, tiny water or mucous droplets (commonly called respiratory droplets) filled with viruses or bacteria scatter in the air. Depending on the droplets' size (5-10 µm), germs can stay suspended in the air for a few minutes or even hours. For this reason, infections are more likely to spread in stagnant air. Improved ventilation and clean air circulation can dilute airborne contaminants to make a meaningful impact on the indoor spread of diseases.⁴<\/p>",
             "richtext_style": "p2"
           }
@@ -85,13 +85,13 @@
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
+            "padding_top_mobile": "pt-md",
+            "padding_bottom_mobile": "pb-md",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h4><strong>Improved ventilation and clean air circulation can dilute airborne contaminants to make a meaningful impact on the indoor spread of airborne viruses and bacteria.⁵<\/strong><\/h4>",
             "richtext_style": "h4"
           }
@@ -120,13 +120,13 @@
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
+            "padding_top_mobile": "pt-md",
+            "padding_bottom_mobile": "pb-md",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h4><strong>﻿Blueair air purifiers for viruses and bacteria<\/strong> <\/h4><p>Blueair air purifiers can help reduce airborne contaminants, like viruses and bacteria, in your home or office with efficient particle removal and increased air circulation(airflow).<\/p><p>All Blueair purifiers are AHAM Verified® with a recommended room size measured in square feet (assume 8 ft ceiling height). When selecting an air purifier for viruses and bacteria, it is important to select a model that can accommodate the volume of air in the room where you will place it. This ensures there is enough airflow (measured in air changes per hour or ACH) to reduce pollutants levels consistently and over a period of time.<\/p>",
             "richtext_style": "p2"
           }
@@ -161,7 +161,7 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>To help reduce the risks of airborne transmission, The EPA recommends positioning your air purifier for viruses with a clear path to each person in the room. This ensures clean air can reach each person in the space.⁵ <\/p>",
             "richtext_style": "p2"
           }
@@ -177,7 +177,7 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h5>24\/7 protection against viruses and bacteria<\/h5><p>While all Blueair purifiers feature HEPASilent™ filtration technology to efficiently remove 99.97% of airborne virus and bacteria particles, only our Protect air purifiers provide 24\/7 protection against viruses and bacteria with GermShield technology.⁶ <\/p><h4>protect kills germs and prevents growth with GermShield technology.<\/h4><p>Even when Protect is on standby, the patent pending GermShield technology proactively monitors room conditions and kills viruses and bacteria on the filters using low air draft and plasma charging. A gentle stream of air then ensures no new growth of germs.⁷ <strong>Learn more about Protect and shop our best air purifiers for viruses and bacteria.  <\/strong><\/p>",
             "richtext_style": "p2"
           }
@@ -211,7 +211,7 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>*Tested to reduce E.coli (min 99.9%) and H1N1 (min 99.99%) in 60min<\/p><p>⁰EPA, <a href=\"https:\/\/www.epa.gov\/coronavirus\/will-air-cleaner-or-air-purifier-help-protect-me-and-my-family-covid-19-my-home\" target=\"_blank\" title=\"opens in new window\">‘Will an air cleaner or air PURIFIER help protect me and my family FROM COVID-19 in my home?’<\/a>, January 12, 2021 <\/p><p>¹Deactivation of germs on natural flora (excluding viruses) on filter media under normal temperature & humidity conditions. <\/p><p>²Blueair does not claim to capture, remove, or kill COVID-19 (SARS-CoV-2) <\/p><p>³Berkley Lab, ‘Ventilation Rates and Respiratory Illness', Indoor Air Quality (IAQ) Scientific Findings Resource Bank <\/p><p>⁴CDC, <a href=\"https:\/\/www.cdc.gov\/coronavirus\/2019-ncov\/community\/ventilation.html\" target=\"_blank\" title=\"opens in new window\">‘Ventilation in Buildings’<\/a>, December 21, 2020  <\/p><p>⁵EPA, ‘<a href=\"https:\/\/www.epa.gov\/coronavirus\/indoor-air-homes-and-coronavirus-covid-19\" target=\"_blank\" title=\"opens in new window\">Indoor Air in Homes and Coronavirus (COVID-19)<\/a>’ <\/p><p>⁶24\/7 protection refers to the key function of GermShield technology, activated when the unit is in standby mode. Tested on Staphylococcus Albus, MS2 bacteriophage (deactivation) and E. coli (growth prevention). <\/p><p>⁷Deactivation of bacteria (Staphylococcus Albus) and virus (MS2 bacteriophage) and E. coli (growth prevention). <\/p>",
             "richtext_style": "p2"
           }
@@ -248,21 +248,24 @@
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": true,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     }
   },

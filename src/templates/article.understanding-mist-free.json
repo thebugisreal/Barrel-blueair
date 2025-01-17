@@ -20,9 +20,9 @@
             "margin_bottom_desktop": "desktop:mb-xl",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>Dry air can wreak havoc on your nose and lungs, making breathing uncomfortable. If you are someone with pre-existing conditions, dry air can make those circumstances even worse. Without proper humidification, the air can be anywhere from discomfited to downright unbearable.<\/p><p>So, humidifiers really are a preventative measure. Maintaining and improving your health through humidification means taking care of the air in your home.<\/p>",
-            "richtext_style": "s3"
+            "richtext_style": "p2"
           }
         },
         "image_caption_YQjdW8": {
@@ -55,7 +55,7 @@
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h4>When should a humidifier be used?<br\/><br\/><\/h4><h6>For relief:<br\/><\/h6><ul><li>Chronic runny nose<\/li><li>Hay fever symptoms<\/li><li>Nose bleeds<\/li><li>Asthma and allergy flare-ups<\/li><li>Sinus congestion<\/li><li>Dry throat<\/li><\/ul><p><\/p><h6>For every day:<\/h6><ul><li>To create a balance home environment <\/li><li>As an overall preventative measure<\/li><li>During particularly hot or dry seasons<\/li><\/ul><h4><br\/>Common concerns with humidifiers<\/h4><p>Despite the many benefits humidification can provide, humidifiers can create concern. Mold or bacteria can grow within dirty humidifiers, creating problems for those with asthma or allergies. Similarly, when humidity levels get too high, especially with mist releasing from the product, homeowners can start to experience moisture problems. These include signs that include mold, mildew, condensation on windows, and stains on the walls and ceiling.<\/p>",
             "richtext_style": "p2"
           }
@@ -76,7 +76,7 @@
             "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_6.png",
             "caption": "",
             "caption_style": "p6",
-            "product": "1342-master-product"
+            "product": "h35i-humidifier"
           }
         },
         "text_KgNxW6": {
@@ -90,7 +90,7 @@
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h4>Blueair Invisible, Mist-Free Technology<\/h4><p>Blueair’s InvisibleMist™ technology provides clean, balanced moisture without stickiness, water residue, or white dust, thanks to a wick filter that traps minerals and pollutants. The humidifier emits up to 48 hours of clean moisture by trapping water impurities in the wick filter, releasing pure water vapor into the air.<\/p><p>This lack of mist from the product reduces concern over moisture problems, while the UV-powered water pump recirculates water, helping to inhibit the risk of bacteria growth that thrives in still water. Our Blueair Humidifier provides all the benefits of humidification while preventing common issues through its advanced, superior design. <\/p>",
             "richtext_style": "p2"
           }
@@ -131,21 +131,24 @@
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": true,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     }
   },

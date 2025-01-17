@@ -5,51 +5,88 @@
       "blocks": {
         "title_bjfNAe": {
           "type": "title",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "room_tag_UqfcUw": {
           "type": "room_tag",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-xs",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-xs",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "short_description_FGhrqT": {
           "type": "short_description",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-md"
+          }
         },
         "star_rating_rYzLXJ": {
           "type": "star_rating",
           "disabled": true,
-          "settings": {}
-        },
-        "option_selector_cYbcwk": {
-          "type": "option_selector",
-          "settings": {}
-        },
-        "spacing_QPxbGT": {
-          "type": "spacing",
           "settings": {
-            "spacing_mobile": 36,
-            "spacing_desktop": 36
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
           }
+        },
+        "filter_options_XPQVUh": {
+          "type": "filter_options",
+          "settings": {}
         },
         "product_options_GLfTKf": {
           "type": "product_options",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "atc_BURfeB": {
           "type": "atc",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-sm",
+            "margin_bottom_mobile": "mb-md",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg"
+          }
         },
         "experience_NzTf78": {
           "type": "experience",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "additional_features_H7XdFi": {
           "type": "additional_features",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         },
         "shipping_warranty_Rg4jpP": {
           "type": "shipping_warranty",
           "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
             "icon_1_image": "shopify:\/\/shop_images\/icon-shipping.png",
             "icon_1_text": "Free and fast shipping",
             "icon_2_image": "shopify:\/\/shop_images\/icon-trial.png",
@@ -60,7 +97,12 @@
         },
         "upsells_ndPfKj": {
           "type": "upsells",
-          "settings": {}
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
         }
       },
       "block_order": [
@@ -68,6 +110,7 @@
         "room_tag_UqfcUw",
         "short_description_FGhrqT",
         "star_rating_rYzLXJ",
+        "filter_options_XPQVUh",
         "product_options_GLfTKf",
         "atc_BURfeB",
         "experience_NzTf78",
@@ -77,36 +120,6 @@
       ],
       "settings": {
         "buybox_max_width": "80ch"
-      }
-    },
-    "product_slideshow_f7BaaR": {
-      "type": "product__slideshow",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "80ch",
-        "color": "bg-gray-athans text-blue"
-      }
-    },
-    "product_video_WFRqMh": {
-      "type": "product__video",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "max_width_desktop": "100%",
-        "enable_autoplay": false
       }
     },
     "product_custom_tabs_acewb9": {
@@ -126,20 +139,6 @@
         "image_position_desktop": "tabletl:flex-row"
       }
     },
-    "product_filters_bNXTik": {
-      "type": "product__filters",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "100%"
-      }
-    },
     "product_image_text_6MPkRA": {
       "type": "product__image-text",
       "settings": {
@@ -155,8 +154,8 @@
         "color": "text-blue"
       }
     },
-    "product_perks_FacAhx": {
-      "type": "product__perks",
+    "product_app_tabs_BzryrE": {
+      "type": "product__app-tabs",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -166,7 +165,54 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "100ch"
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "tabletl:flex-row",
+        "max_width_desktop": "109ch"
+      }
+    },
+    "product_video_WFRqMh": {
+      "type": "product__video",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "100%",
+        "enable_autoplay": false
+      }
+    },
+    "product_slideshow_f7BaaR": {
+      "type": "product__slideshow",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "80ch",
+        "color": "bg-gray-athans text-blue"
+      }
+    },
+    "product_filters_bNXTik": {
+      "type": "product__filters",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "100%"
       }
     },
     "product_brands_3gV3EU": {
@@ -183,6 +229,20 @@
         "max_width_desktop": "80ch"
       }
     },
+    "product_perks_FacAhx": {
+      "type": "product__perks",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "100ch"
+      }
+    },
     "product_image_text_product_EitePb": {
       "type": "product__image-text-product",
       "settings": {
@@ -196,6 +256,40 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
         "color": "text-blue"
+      }
+    },
+    "product_tech_specs_jEUNXD": {
+      "type": "product__tech-specs",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue"
+      }
+    },
+    "product_accordion_6QWP9F": {
+      "type": "product__accordion",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "title": "FAQ",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "bg-white text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
       }
     },
     "product_related_products_8Pzzge": {
@@ -215,14 +309,17 @@
   },
   "order": [
     "main",
-    "product_slideshow_f7BaaR",
-    "product_video_WFRqMh",
     "product_custom_tabs_acewb9",
-    "product_filters_bNXTik",
     "product_image_text_6MPkRA",
-    "product_perks_FacAhx",
+    "product_app_tabs_BzryrE",
+    "product_video_WFRqMh",
+    "product_slideshow_f7BaaR",
+    "product_filters_bNXTik",
     "product_brands_3gV3EU",
+    "product_perks_FacAhx",
     "product_image_text_product_EitePb",
+    "product_tech_specs_jEUNXD",
+    "product_accordion_6QWP9F",
     "product_related_products_8Pzzge"
   ]
 }

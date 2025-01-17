@@ -21,7 +21,7 @@
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>The Clean Air Delivery Rate (CADR) is an established standard defined by the independent Association of Home Appliance Manufacturers (AHAM) in the U.S. Certified and verified by an independent laboratory, AHAM uses CADR to assure consumers that an air purifier will perform according to the manufacturer’s product claims and helps shoppers easily identify which air cleaners work better than others.<\/p><p>CADR measures an air cleaner's effectiveness based on room space and the volume of clean air produced per minute. This shows how well dust, pollen and smoke, the three most common indoor air pollutants are removed from the air you breathe.<\/p><h6>The higher the CADR, the better<\/h6><p>Once tested, results are converted to cubic meters per hour (m3\/h). The higher the CADR test numbers, the better the unit’s overall ability to clean indoor air. For example, if an air purifier has a CADR of 388 for tobacco smoke particles, it will reduce smoke particle levels to the same concentration as would be achieved by adding 380 cubic feet of 100% clean air per minute.<\/p><p>Providing a direct comparison between top-rated air purifiers, CADR is the only air purifier standard that is recognized as an American National Standard, since it allows for consistent comparison between AHAM certified products. CADR is also endorsed by the U.S. Food and Drug Administration and the Environmental Protection Agency.<\/p><h6>High CADR and more, with HEPASilent™ technology<\/h6><p>Blueair <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/hepasilent-technologies.html\" target=\"_self\">HEPASilent™ technology<\/a> delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high CADR with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.<\/p><p>No other air purifiers deliver such high performance on so many parameters at the same time.<\/p><h6>CADR takes into account:<\/h6><ul><li>Size of the particle removed<\/li><li>Percentage of particles removed<\/li><li>Volume of air passing through unit<\/li><\/ul>",
             "richtext_style": "p2"
           }
@@ -58,21 +58,24 @@
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": true,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     }
   },

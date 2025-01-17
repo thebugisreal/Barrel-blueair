@@ -87,7 +87,7 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "69%",
+        "content_max_width_desktop": "80ch",
         "content_max_height_mobile": "",
         "content_max_height_desktop": ""
       }
@@ -257,7 +257,7 @@
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "1.6",
-        "slides_per_view_extrawide": "1.6",
+        "slides_per_view_extrawide": "2.2",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
         "enable_carousel_nav_desktop": true,
@@ -369,7 +369,8 @@
         "subtext_style": "s3",
         "cta_url": "",
         "cta_text": "",
-        "cta_style": "btn"
+        "cta_style": "btn",
+        "enable_hover_display": "hover-display"
       }
     },
     "section_image_tabs_3eCidp": {

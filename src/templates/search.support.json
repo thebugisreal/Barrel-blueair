@@ -1,14 +1,52 @@
 {
   "sections": {
     "search": {
-      "type": "section__faq-search"
+      "type": "section__faq-search",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/faq-hero-mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/faq-hero-desktop.png",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Humidifier Selection",
+        "title_style": "h2"
+      }
     },
     "main": {
-      "type": "section__faq-search-results"
+      "type": "section__faq-search-results",
+      "settings": {}
+    },
+    "section_faq_cta_Xm4YFU": {
+      "type": "section__faq-cta",
+      "settings": {
+        "margin_top_mobile": "mt-lg",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-xl",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "color": "bg-blue text-white non-color-revert",
+        "title": "Not finding what you need? We can help.",
+        "title_style": "h4",
+        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_text": "Contact Support",
+        "cta_style": "btn btn--transparent-rounded"
+      }
     }
   },
   "order": [
     "search",
-    "main"
+    "main",
+    "section_faq_cta_Xm4YFU"
   ]
 }

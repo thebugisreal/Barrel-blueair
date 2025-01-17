@@ -4,7 +4,7 @@
       "type": "article__main",
       "custom_css": [],
       "settings": {
-        "max_width_desktop": "80ch"
+        "max_width_desktop": "95ch"
       }
     },
     "article_content_rVJxjW": {
@@ -15,13 +15,13 @@
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
+            "padding_top_mobile": "pt-md",
+            "padding_bottom_mobile": "pb-md",
             "margin_top_desktop": "desktop:mt-sm",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>Our founder was inspired by the clean, fresh, and healthy air of the Stockholm archipelago. As he stood on the beach taking deep breaths, he asked himself, “How can I bring this clean air to my family in the city?” Breathing clean, fresh air is good for the health of mind and body. In fact, it is the next frontier in wellness. After all, if you eat bad food, you get sick. If you drink dirty water you get sick. The trickiest thing about air is that it usually takes longer to develop issues than if you drink bad water, when you will have a pretty instant reaction. But common sense would indicate that since the average person breathes 13,000 liters of air each day, your health will benefit tremendously from breathing clean air.<\/p><h6>Do air purifiers improve health?<\/h6><p>According to a <a href=\"https:\/\/www.weforum.org\/agenda\/2018\/11\/deadly-air-pollution-shortens-lives-by-nearly-2-years-researchers\" target=\"_self\">study by the University of Chicago<\/a>, air pollution caused largely by burning fossil fuels, is cutting global life expectancy by an average of 1.8 years per person. This makes it the world’s biggest threat to human health, shortening lives even more than first-hand cigarette smoke, which can reduce it by 1.6 years and more than other public health threats such as war and HIV\/AIDS. The University of Chicago’s Air Quality Life Index (AQLI) shows people in parts of India may live 11 years less due to air pollution. Microscopic particles in the air also cut life expectancies of residents of China by as much as seven years and residents of Indonesia by as much as five years. The question: “Is an air purifier good for health?” therefore has a clear answer: Yes. There are no air purifier health risks or harmful effects whatsoever.<\/p><h6>Microplastics in indoor air<\/h6><p>Meanwhile, microplastics have been found in both indoor and outdoor air, with higher concentrations in indoor air according to <a href=\"https:\/\/www.sciencedirect.com\/science\/article\/pii\/S2468584417300119\" target=\"_self\">research by École Nationales des Ponts et Chaussées<\/a>. These tiny particles come off plastic objects found in our homes, such as toys, furniture, plastic bags, cosmetics and toothpaste. Most microplastic particles in the indoor air, however, come from plastic fibers from synthetic clothing and textiles used in home furnishings. These microplastic fibers tend to be longer and therefore more harmful when inhaled. Today, synthetic materials, such as acrylic, nylon, polyester, make up some <a href=\"https:\/\/www.weforum.org\/agenda\/2018\/06\/microplastic-pollution-in-air-pollutes-our-lungs\" target=\"_self\">60% of global textile production<\/a>. Other air quality issues include <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/air-purifiers-allergies\/pollen.html\" target=\"_self\">pollen<\/a>, <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/air-purifiers-allergies\/dust.html\" target=\"_self\">dust mite allergens<\/a>, <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/air-purifiers-allergies\/pet-dander.html\" target=\"_self\">pet allergens<\/a> and <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/air-purifiers-health\/mold.html\" target=\"_self\">mold spores<\/a>. These are among the most common triggers of allergic rhinitis. Symptoms of allergic rhinitis include a runny nose, watery eyes, and sneezing, also known as allergic rhinitis. In severe cases, the condition is ongoing, or chronic, resulting in persistent sneezing, cough, congestion, facial pressure or severe asthma attacks. During flu season, people all around you are releasing flu virus into the air when sneezing. Since most people spend 90% of their time indoors, and 65% of that time in their home, air quality is important for health and well-being. Yet, the United States Environmental Protection Agency (EPA) says the level of indoor air pollution can be 100 times worse than outside air.<\/p><h6>Children and air quality<\/h6><p>The issue of air quality is especially important for children, because their lungs are more sensitive and because they breathe higher volumes of air in proportion to their size than adults. Even babies in the womb are affected by air quality, which can affect a baby’s lungs and respiratory system. There’s also evidence bad air can harm brain development and cause behavioral and cognitive problems. That’s why parents who live in cities or near busy roads should think about an air purifier to improve their children’s health, because studies show that children in cities develop allergies and have less lung capacity than those from the countryside, partly due to pollution. And air pollution increases during winter due to the use of spiked snow tires, which create tiny particles that can be inhaled deep into the lungs.<\/p><h6>High performance, whisper silent<\/h6><p>Blueair air purifiers with <a href=\"https:\/\/www.blueair.com\/us\/blueair-life\/about-air-purifiers\/hepasilent-technologies.html\" target=\"_self\">HEPASilent™ technology<\/a> deliver especially high performance and efficiency. Common airborne allergens and lung damaging pollutants include bacteria, dust, pollen, smoke, pet dander, dust mites, automotive exhaust, soot, particles from laser printers and copiers, fungi, mold spores, viruses, bacteria VOCs and many other pollutants. HEPASilent™ technology combines electrostatic and mechanical filtration technologies. This technology, pioneered by Blueair, achieves a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size*, while delivering high Clean Air Delivery Rate (CADR), whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a lightbulb.<\/p><p>Using an air purifier is a healthier way to breathe. And, as Blueair’s founder realized, when air is truly clean, it can do so much more than simply prevent disease. Clean air improves sleep, energizes both your body and mind, makes it easier for you to focus and even boosts your creativity.<\/p><p>*Tested on particles down to 0.1 micron according to EN1822.<\/p>",
             "richtext_style": "p2"
           }
@@ -58,21 +58,24 @@
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": true,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     }
   },

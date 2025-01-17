@@ -11,6 +11,7 @@
       "blocks": {
         "image_caption_EaWdgG": {
           "type": "image_caption",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-md",
@@ -35,11 +36,11 @@
             "margin_bottom_mobile": "mb-md",
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-lg",
+            "margin_top_desktop": "desktop:mt-xl",
             "margin_bottom_desktop": "desktop:mb-xl",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<h3>Do air purifiers help allergies?<\/h3><p>Allergies can be triggered by many sources including, seasonal pollens, indoor ventilation, and environmental conditions in your home, like the presence of pet dander and dust mite matter allergen. With a wide range of sources, allergy symptoms can appear in varying degrees year-round, and using an air purifier to filter out airborne allergens is one way to help manage your allergen exposure indoors.⁰<\/p><p>Fortunately, air purifiers can be a solution to reduce indoor exposure to airborne allergens.<\/p>",
             "richtext_style": "p2"
           }
@@ -110,38 +111,22 @@
             "image_placement_desktop": "tabletl:flex-row-reverse"
           }
         },
-        "text_kxJVYg": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-xl",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "richtext": "<p><strong>Allergist Reviewed<\/strong><\/p>",
-            "richtext_style": "h3"
-          }
-        },
         "image_text_EDr4NG": {
           "type": "image_text",
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-lg",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "180ch",
-            "color": "text-blue",
-            "title": "Dr. Priya Bansal, MD",
+            "color": "bg-gray-athans text-blue",
+            "title": "Allergist Reviewed",
             "title_style": "h3",
-            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.<\/p><p>Dr. Priya Bansal pulls back the curtain on why she recommends Blue Pure Max* air purifiers as part of a whole home solution to clear the air.<\/p>",
+            "richtext": "<h5>Dr. Priya Bansal, MD<\/h5><p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.<\/p><p>Dr. Priya Bansal pulls back the curtain on why she recommends Blue Pure Max* air purifiers as part of a whole home solution to clear the air.<\/p>",
             "image_mobile": "shopify:\/\/shop_images\/Blog-FallAllergy-5_mob.png",
             "image_desktop": "shopify:\/\/shop_images\/Blog-FallAllergy-5_1.png",
             "image_placement_mobile": "flex-col",
@@ -159,8 +144,8 @@
             "margin_bottom_desktop": "desktop:mb-xl",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
-            "richtext": "<p>“Air purifiers remove dust, pollen, pet dander and other pollutants from the air, making it cleaner and healthier to breathe. This is especially important as part of a whole house strategy for people with allergies and\/or asthma, as they can help to reduce the number of triggers that can cause symptoms.<\/p><p>I recommend Blueair air purifiers to my patients because of their strong performance and their commitment to third party testing, which gives me peace of mind that the airborne particles that commonly exacerbate allergy and asthma symptoms are being captured.”<\/p><p>*Dr. Bansal is a Blueair sponsored partner<\/p>",
+            "max_width_desktop": "95ch",
+            "richtext": "<p>Air purifiers remove dust, pollen, pet dander and other pollutants from the air, making it cleaner and healthier to breathe. This is especially important as part of a whole house strategy for people with allergies and\/or asthma, as they can help to reduce the number of triggers that can cause symptoms.<\/p><p>I recommend Blueair air purifiers to my patients because of their strong performance and their commitment to third party testing, which gives me peace of mind that the airborne particles that commonly exacerbate allergy and asthma symptoms are being captured.<\/p><p>*Dr. Bansal is a Blueair sponsored partner<\/p>",
             "richtext_style": "p2"
           }
         }
@@ -171,7 +156,6 @@
         "image_text_XrfKKW",
         "image_text_bhcAHF",
         "image_text_7VpNir",
-        "text_kxJVYg",
         "image_text_EDr4NG",
         "text_deCBnn"
       ],
@@ -183,14 +167,14 @@
         "product_DArXKM": {
           "type": "product",
           "settings": {
-            "product": "1342-master-product",
+            "product": "blue-pure-311i-plus-max",
             "product_card_style": "style1"
           }
         },
         "product_9XqKwW": {
           "type": "product",
           "settings": {
-            "product": "blue-3610-pre-filter",
+            "product": "blue-pure-411i-max",
             "product_card_style": "style1"
           }
         }
@@ -206,7 +190,7 @@
         "padding_bottom_mobile": "pb-lg",
         "margin_top_desktop": "desktop:mt-sm",
         "margin_bottom_desktop": "desktop:mb-sm",
-        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_top_desktop": "desktop:pt-md",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1400px",
         "color": "bg-white text-blue",
@@ -215,17 +199,20 @@
         "slides_per_view_extrawide": "2",
         "carousel_nav": "pagination",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
+        "enable_carousel_nav_desktop": false,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "",
         "title_style": "h2",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     },
     "section_icons_yWG7a7": {
@@ -258,14 +245,6 @@
             "title_style": "s4"
           }
         },
-        "icon_YAPNLL": {
-          "type": "icon",
-          "settings": {
-            "icon_fixed_width": "",
-            "title": "",
-            "title_style": "s1"
-          }
-        },
         "icon_W7FMaA": {
           "type": "icon",
           "settings": {
@@ -289,7 +268,6 @@
         "icon_3mCFeH",
         "icon_rVnjNM",
         "icon_yRTXPX",
-        "icon_YAPNLL",
         "icon_W7FMaA",
         "icon_VnDVmq"
       ],
@@ -301,7 +279,7 @@
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-lg",
         "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "padding_bottom_desktop": "desktop:pb-xl",
         "num_cols_mobile": 1,
         "num_cols_desktop": 3,
         "max_width_mobile": "",
@@ -341,21 +319,24 @@
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
         "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mr-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     }
   },

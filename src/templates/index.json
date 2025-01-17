@@ -31,8 +31,8 @@
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "400px",
         "content_max_width_desktop": "500px",
-        "content_max_height_mobile": "90vh",
-        "content_max_height_desktop": "90vh"
+        "content_max_height_mobile": "100%",
+        "content_max_height_desktop": "80vh"
       }
     },
     "section_icons_BHyffr": {
@@ -84,12 +84,12 @@
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
         "num_cols_mobile": 2,
         "num_cols_desktop": 4,
         "max_width_mobile": "",
@@ -109,13 +109,13 @@
         "customization_kjnCLm": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/homepage-purifiers-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-purifiers.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-airpurifiers-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-airpurifiers-desktop.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Purifiers",
+            "content_spacing": "",
+            "title": "Air Purifiers",
             "title_style": "h5",
             "subtext": "",
             "subtext_style": "p1",
@@ -129,18 +129,18 @@
         "customization_AnNMyD": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/homepage-multifunctional-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-multifunctional.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-heatcoolpurify-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-heatcoolpurify-desktop.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Multifunctional",
+            "content_spacing": "",
+            "title": "Heat, Cool, Purify",
             "title_style": "h5",
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-left",
-            "cta_url": "shopify:\/\/collections\/comfortpure™-3-in-1",
+            "cta_url": "shopify:\/\/collections\/heat-cool-purify",
             "cta_text": "Shop now",
             "cta_style": "btn",
             "color": "bg-white text-blue"
@@ -149,19 +149,39 @@
         "customization_hcRJgQ": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/homepage-filters-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-filters.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-humidify2in1-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-humidify2in1-desktop.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
             "content_spacing": "justify-between",
+            "title": "Humidify + 2-in-1",
+            "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-left",
+            "cta_url": "shopify:\/\/collections\/humidifier",
+            "cta_text": "Shop now",
+            "cta_style": "btn",
+            "color": "bg-white text-blue"
+          }
+        },
+        "customization_JmCjcD": {
+          "type": "customization",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-filters-mobile.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-filters-desktop.jpg",
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "content_spacing": "",
             "title": "Filters",
             "title_style": "h5",
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-left",
-            "cta_url": "shopify:\/\/collections\/filters-accessories",
-            "cta_text": "Shop now",
+            "cta_url": "shopify:\/\/collections\/air-purifier-filters",
+            "cta_text": "Shop Now",
             "cta_style": "btn",
             "color": "bg-white text-blue"
           }
@@ -170,7 +190,8 @@
       "block_order": [
         "customization_kjnCLm",
         "customization_AnNMyD",
-        "customization_hcRJgQ"
+        "customization_hcRJgQ",
+        "customization_JmCjcD"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -179,13 +200,13 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "carousel_mobile": true,
         "num_cols_mobile": 1,
-        "num_cols_desktop": 3,
+        "num_cols_desktop": 4,
         "color": "text-blue",
-        "title": "Air designed for your best life",
+        "title": "A perfect solution for all your air care needs",
         "title_style": "h2",
         "cta_url": "",
         "cta_text": "",
@@ -254,13 +275,13 @@
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
+        "padding_top_mobile": "pt-xl",
         "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "gutter_mobile": "px-lg",
+        "gutter_mobile": "px-md",
         "gutter_desktop": "tabletl:px-xl",
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
@@ -454,7 +475,8 @@
         "subtext_style": "s3",
         "cta_url": "\/",
         "cta_text": "Shop by room size",
-        "cta_style": "btn btn--white-rounded"
+        "cta_style": "btn btn--white-rounded",
+        "enable_hover_display": "hover-display"
       }
     },
     "section_image_text_xm7pgF": {
@@ -561,7 +583,7 @@
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-0",
+        "padding_bottom_mobile": "pb-md",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",

@@ -39,9 +39,9 @@
             "margin_bottom_desktop": "desktop:mb-xl",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-sm",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>Many dorm rooms have air quality issues because of aging buildings¹ with small, underlid rooms and limited airflow. Because interior living spaces harbor moisture, these features create the perfect breeding ground for mold.<\/p><p>Exposure to mold—a common indoor air pollutant found in dormitories—can cause symptoms such as sneezing, stuffy nose, red or itchy eyes or skin, and chest tightness. These symptoms² can be seasonal or long term and more severe, leading to pneumonia, asthma, and other respiratory infections.<\/p>",
-            "richtext_style": "s3"
+            "richtext_style": "p2"
           }
         },
         "image_text_KwReyX": {
@@ -142,6 +142,60 @@
         "image_text_tcVA7Q"
       ],
       "settings": {}
+    },
+    "section_carousel_dwaJU4": {
+      "type": "section__carousel",
+      "blocks": {
+        "product_KPEiyn": {
+          "type": "product",
+          "settings": {
+            "product": "blue-pure-511",
+            "product_card_style": "style1"
+          }
+        },
+        "product_gkQmkq": {
+          "type": "product",
+          "settings": {
+            "product": "refurbished-blue-pure-411a-max",
+            "product_card_style": "style1"
+          }
+        }
+      },
+      "block_order": [
+        "product_KPEiyn",
+        "product_gkQmkq"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-lg",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width_desktop": "180ch",
+        "color": "bg-white text-blue",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "2",
+        "slides_per_view_extrawide": "2",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
+        "title": "Shop now",
+        "title_style": "h3",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-center",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-center"
+      }
     },
     "section_icons_GymKxV": {
       "type": "section__icons",
@@ -262,7 +316,7 @@
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
         "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
+        "margin_top_desktop": "desktop:mt-lg",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
@@ -293,9 +347,9 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "80ch",
+            "max_width_desktop": "95ch",
             "richtext": "<p>* Tested on PM 2.5 up to 90mins<\/p><p>1 Min. reduction 99.9% of S. aureus, K. pneumoniae, P. aeruginosa, MS2, E.Coli, H1N1, A.Niger<\/p><p>2 https:\/\/www.nytimes.com\/2019\/08\/25\/us\/college-dorms-mold-health.html?<\/p><p>3 https:\/\/pubmed.ncbi.nlm.nih.gov\/27869727\/<\/p>",
-            "richtext_style": "p6"
+            "richtext_style": "p2"
           }
         }
       },
@@ -330,27 +384,31 @@
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": true,
+        "enable_carousel_nav_desktop": false,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": false,
         "title": "From Our Blog",
         "title_style": "h2",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-start"
       }
     }
   },
   "order": [
     "main",
     "article_content_gA8XMg",
+    "section_carousel_dwaJU4",
     "section_icons_GymKxV",
     "section_icons_4UpHa9",
     "article_content_xPDzRY",

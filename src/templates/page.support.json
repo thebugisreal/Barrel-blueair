@@ -1,10 +1,201 @@
 {
   "sections": {
     "search": {
-      "type": "section__faq-search"
+      "type": "section__faq-search",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/faq-hero-mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/faq-hero-desktop.png",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Blueair Support",
+        "title_style": "h2"
+      }
+    },
+    "section_faq_topics_tQKBzn": {
+      "type": "section__faq-topics",
+      "blocks": {
+        "topic_cjkpCM": {
+          "type": "topic",
+          "settings": {
+            "topic": "air-care-basics"
+          }
+        },
+        "topic_PkrQAq": {
+          "type": "topic",
+          "settings": {
+            "topic": "blueair-app"
+          }
+        },
+        "topic_tzqW7R": {
+          "type": "topic",
+          "settings": {
+            "topic": "wildfire"
+          }
+        },
+        "topic_xtULW6": {
+          "type": "topic",
+          "settings": {
+            "topic": "filters"
+          }
+        },
+        "topic_P7cRRr": {
+          "type": "topic",
+          "settings": {
+            "topic": "order-shipping"
+          }
+        },
+        "topic_44CjVw": {
+          "type": "topic",
+          "settings": {
+            "topic": "account-warranty"
+          }
+        }
+      },
+      "block_order": [
+        "topic_cjkpCM",
+        "topic_PkrQAq",
+        "topic_tzqW7R",
+        "topic_xtULW6",
+        "topic_P7cRRr",
+        "topic_44CjVw"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "num_cols_mobile": 2,
+        "num_cols_desktop": 6,
+        "max_width": "",
+        "color": "bg-white text-blue",
+        "title": "Help by Topic",
+        "title_style": "h4"
+      }
+    },
+    "section_faq_topics_k8RQpD": {
+      "type": "section__faq-topics",
+      "blocks": {
+        "topic_dPNDxQ": {
+          "type": "topic",
+          "settings": {
+            "topic": "blue"
+          }
+        },
+        "topic_7ijgjd": {
+          "type": "topic",
+          "settings": {
+            "topic": "3-in-1"
+          }
+        },
+        "topic_DedYi7": {
+          "type": "topic",
+          "settings": {
+            "topic": "humidifier-2-in-1"
+          }
+        },
+        "topic_HADU7f": {
+          "type": "topic",
+          "settings": {
+            "topic": "protect"
+          }
+        },
+        "topic_nKazPq": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic"
+          }
+        },
+        "topic_VaK6Ty": {
+          "type": "topic",
+          "settings": {
+            "topic": "other-products"
+          }
+        }
+      },
+      "block_order": [
+        "topic_dPNDxQ",
+        "topic_7ijgjd",
+        "topic_DedYi7",
+        "topic_HADU7f",
+        "topic_nKazPq",
+        "topic_VaK6Ty"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "num_cols_mobile": 2,
+        "num_cols_desktop": 6,
+        "max_width": "",
+        "color": "bg-white text-blue",
+        "title": "Help by Product",
+        "title_style": "h4"
+      }
+    },
+    "section_faq_tagged_posts_8tKFhr": {
+      "type": "section__faq-tagged-posts",
+      "settings": {
+        "anchor_id": "",
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "109ch",
+        "color": "bg-white text-blue",
+        "title": "Top Questions",
+        "title_style": "h4",
+        "blog": "air-care-basics",
+        "tag": "support"
+      }
+    },
+    "section_faq_cta_VDUHzV": {
+      "type": "section__faq-cta",
+      "settings": {
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width": "",
+        "color": "bg-blue text-white non-color-revert",
+        "title": "Not finding what you need? We can help.",
+        "title_style": "h4",
+        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_text": "Contact Support",
+        "cta_style": "btn btn--transparent-rounded"
+      }
     }
   },
   "order": [
-    "search"
+    "search",
+    "section_faq_topics_tQKBzn",
+    "section_faq_topics_k8RQpD",
+    "section_faq_tagged_posts_8tKFhr",
+    "section_faq_cta_VDUHzV"
   ]
 }

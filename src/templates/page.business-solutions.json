@@ -45,7 +45,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-center",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "60%"
+        "content_max_width_desktop": "60%",
+        "content_max_height_mobile": "80vh",
+        "content_max_height_desktop": "80vh"
       }
     },
     "section_icons_QkRQb4": {
@@ -246,12 +248,15 @@
         "enable_title_link_same_link": false,
         "title": "",
         "title_style": "h2",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "mx-auto",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_icons_Vi8dWA": {
@@ -332,10 +337,12 @@
             "image_position": "order-last",
             "enable_padding": true,
             "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Blue Pure 211i Max",
             "title_style": "s1",
             "subtext": "The Blue Pure 211i Max air purifiers combine powerful air purification for XL spaces, a touch-screen interface with a customizable design.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "shopify:\/\/collections\/211i-max",
             "cta_text": "Shop 211i Max",
             "cta_style": "btn",
@@ -349,10 +356,12 @@
             "image_position": "order-last",
             "enable_padding": true,
             "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Blue Pure 311i+ Max",
             "title_style": "s1",
             "subtext": "The Blue Pure Max 311i+ Max is perfect for large spaces combining powerful air purification with a customizable, compact design that fits any space.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "shopify:\/\/collections\/311i-max-2",
             "cta_text": "Shop 311i+ Max",
             "cta_style": "btn",
@@ -366,10 +375,12 @@
             "image_position": "order-last",
             "enable_padding": true,
             "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Classic Pro",
             "title_style": "s1",
             "subtext": "Reliable, durable, and efficient, it’s the professional-grade solution for healthier, cleaner spaces. Engineered for high-performance air purification.",
             "subtext_style": "p2",
+            "subtext_alignment": "text-left",
             "cta_url": "shopify:\/\/collections\/classic-pro",
             "cta_text": "Shop Classic Pro",
             "cta_style": "btn",

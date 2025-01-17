@@ -55,20 +55,21 @@
         "gutter_desktop": "tabletl:mx-xl",
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
-        "enable_autoplay": false
+        "enable_autoplay": false,
+        "color": "bg-white text-blue"
       }
     },
     "section_hero_4K3iNp": {
       "type": "section__hero",
       "settings": {
         "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-xxxl",
+        "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-xxxl",
+        "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-xxxl",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
         "color": "bg-white text-blue",
         "content_height_mobile": "",
         "content_height_desktop": "",
@@ -86,7 +87,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "100%",
-        "content_max_width_desktop": "60%"
+        "content_max_width_desktop": "80ch",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": ""
       }
     },
     "section_image_text_3wawg6": {
@@ -284,20 +287,23 @@
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "2.2",
-        "slides_per_view_extrawide": "2.2",
+        "slides_per_view_extrawide": "3.2",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
         "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": false,
         "enable_title_link_same_link": false,
         "title": "Our Initiatives",
-        "title_style": "h6",
+        "title_style": "h3",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "mx-auto",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_hero_jjJFKM": {
@@ -328,7 +334,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "60%"
+        "content_max_width_desktop": "60%",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": ""
       }
     },
     "section_media_kBChiC": {
@@ -346,7 +354,8 @@
         "gutter_desktop": "tabletl:mx-0",
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
-        "enable_autoplay": false
+        "enable_autoplay": false,
+        "color": "bg-white text-blue"
       }
     },
     "section_icons_cpNGn7": {
@@ -445,7 +454,9 @@
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-start",
         "content_max_width_mobile": "",
-        "content_max_width_desktop": "60%"
+        "content_max_width_desktop": "60%",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": ""
       }
     },
     "section_carousel_mG8yR3": {
@@ -507,12 +518,15 @@
         "enable_title_link_same_link": false,
         "title": "",
         "title_style": "h2",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "mx-auto",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_image_tabs_gWF9ka": {
@@ -602,10 +616,12 @@
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
+            "content_spacing": "justify-between",
             "title": "Learn more about Blueair",
             "title_style": "h3",
             "subtext": "",
             "subtext_style": "p1",
+            "subtext_alignment": "text-left",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",

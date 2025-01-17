@@ -55,7 +55,8 @@
         "gutter_desktop": "tabletl:mx-xl",
         "video_embed": "",
         "enable_autoplay": false,
-        "image_mobile": "shopify:\/\/shop_images\/seed-hero-refurbished.png"
+        "image_mobile": "shopify:\/\/shop_images\/seed-hero-refurbished.png",
+        "color": "bg-white text-blue"
       }
     },
     "section_carousel_8VAzMQ": {
@@ -83,6 +84,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "",
+        "color": "bg-white text-blue",
         "slides_per_view": "1.2",
         "slides_per_view_desktop": "3.2",
         "slides_per_view_extrawide": "3.2",
@@ -93,12 +95,15 @@
         "enable_title_link_same_link": false,
         "title": "Shop Air Purifiers",
         "title_style": "h2",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "",
         "url_text": "",
         "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "mx-auto"
+        "cta_position_mobile": "mx-auto",
+        "cta_position_desktop": "tabletl:justify-center"
       }
     },
     "section_image_text_mantBn": {
@@ -125,7 +130,7 @@
         "cta_text": "",
         "cta_style": "btn",
         "text_max_width": "80ch",
-        "max_width_desktop": ""
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_th8hhr": {
@@ -147,12 +152,12 @@
         "title": "How does Blueair refurbish air purifiers?",
         "title_style": "h4",
         "subtext": "Blueair follows a carefully designed refurbishment process to ensure only the most qualified units are considered for refurbishment. <br> <br>\nBefore these units are made for sale, they go through an extensive functional, visual, cosmetic assessment, and detailed cleaning process. Only then are they given a brand-new Blueair genuine filter (and pre-filter if applicable) and packaged in our originally certified Blueair packaging.",
-        "subtext_style": "s3",
+        "subtext_style": "p2",
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
         "text_max_width": "80ch",
-        "max_width_desktop": ""
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_38cFkg": {
@@ -174,12 +179,12 @@
         "title": "What is the warranty on refurbished air purifiers?",
         "title_style": "h4",
         "subtext": "Blueair warrants that your refurbished air purifier will be free from major defects in material or workmanship for one (1) year from the date of purchase, provided that you have replaced the filter(s) according to the manufacturer recommended filter replacement schedule listed in the Blueair User Manual. <br><br>\nWith proof of purchase within one (1) year from the date of purchase, if a defect exists, Blueair will exchange your refurbished air purifier with a product which has been manufactured from serviceable used parts and is at least functionally equivalent to the original refurbished product, at no charge and will cover any shipping costs.",
-        "subtext_style": "s3",
+        "subtext_style": "p2",
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
         "text_max_width": "80ch",
-        "max_width_desktop": ""
+        "max_width_desktop": "1440px"
       }
     }
   },
