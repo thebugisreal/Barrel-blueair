@@ -89,13 +89,13 @@
             <li class="compare-product__title invisible" js-compare-product-title>
               <a {% if section.settings.back_to_shop_url != blank %} href="{{ section.settings.back_to_shop_url }}" {% endif %} class="underline"> Back to shop </a>
             </li>
-            <li class="compare__image p-xxs">
+            <li class="compare__image-container p-xxs">
                 <div class="w-full aspect-square flex justify-center items-center">
                   <p class="p1 font-300">Compare 1 more</p>
                 </div>
             </li>
             <li class="compare__atc py-lg w-fit mx-auto">
-                <a {% if section.settings.compare_more_url != blank %} href="{{ section.settings.compare_more_url }}" {% endif %} class="btn">
+                <a {% if section.settings.compare_more_url != blank %} href="{{ section.settings.compare_more_url }}" {% endif %} class="btn py-[9px]">
                     <span class="btn__text">Compare More</span>
                     <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                 </a>

@@ -22,6 +22,7 @@
 .compare__image-container {
     @apply aspect-square
     w-full
+    h-[270px]
 }
 
 .compare-product__title-text {
@@ -34,7 +35,7 @@
 .compare__title p.s1 {
     @apply invisible
     text-[16px]
-    h-[140px]
+    h-[100px]
 }
 
 .compare__grid-item {
@@ -51,6 +52,7 @@
 
 .compare__grid-info-column p.s1 {
     @apply visible
+    h-[80px]
 }
 
 .compare__item {
@@ -85,6 +87,22 @@
     @apply hidden
 }
 
+.compare-item-true:after {
+    content: url('data:image/svg+xml; wtf8, <svg class="icon" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"> <title>checkmarkLarge</title><path fill-rule="evenodd" d="M19.4309 2.00228L18.7925 2.60072L8.12585 12.6007L7.5274 13.1618L6.92895 12.6007L1.59562 7.60072L0.957275 7.00228L2.15417 5.72559L2.79252 6.32403L7.5274 10.763L17.5956 1.32403L18.234 0.725586L19.4309 2.00228Z"/></svg>');
+    @apply 
+    w-[20px]
+    mx-auto
+    block
+}
+
+.compare-item-false:after {
+    content: url('data:image/svg+xml; wtf8, <svg class="icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><title>closeLarge</title><path d="M9.2979 7.94376L15.7902 14.4361L14.5528 15.6735L8.06046 9.1812L1.568 15.6737L0.330566 14.4362L6.82303 7.94376L0.330566 1.4513L1.568 0.213867L8.06046 6.70633L14.5528 0.213999L15.7902 1.45144L9.2979 7.94376Z"/></svg>');
+    @apply 
+    w-[20px]
+    mx-auto
+    block
+}
+
 @media screen(tabletp) {
     .compare__grid .btn__arrow {
         @apply inline-block
@@ -98,6 +116,7 @@
 @media screen(tabletl) {
     .compare__title {
         @apply py-lg
+        h-[100px]
     }
     .compare__title p.s1 {
         @apply text-[30px]

@@ -209,9 +209,9 @@ class CompareGrid extends HTMLElement {
       const compareItem = document.createElement('p')
       compareItem.classList.add('p1')
       if (data === 'true') {
-        compareItem.textContent = '✓'
+        compareItem.classList.add('compare-item-true')
       } else if (data === 'false') {
-        compareItem.textContent = 'X'
+        compareItem.classList.add('compare-item-false')
       } else {
         compareItem.textContent = data ? data : '-'
       }
