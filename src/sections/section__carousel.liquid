@@ -49,184 +49,186 @@
 {% endcapture %}
 
 <div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
-    <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
-        <div class="section__carousel-text-container mx-md mb-md tabletl:mx-0">
-            {% if section.settings.title != blank %}
-                {% liquid
-                    assign title_tag = 'p'
-                    assign title_options = 'h1,h2,h3,h4,h5,h6'
-    
-                    if title_options contains section.settings.title_style
-                        assign title_tag = section.settings.title_style
-                    endif
-                %}
-                <{{ title_tag }} class="section__carousel-title {{ section.settings.title_alignment_mobile }} {{ section.settings.title_alignment_desktop }}">{{ section.settings.title }}</{{ title_tag }}>
-            {% endif %}
-            {% if section.settings.subtext != blank %}
-                <p class="section__carousel-subtext {{ section.settings.subtext_style }} mt-xxxs">{{ section.settings.subtext }}</p>
-              {% endif %}
-        </div>
-        {% if section.settings.url != blank %}
-            <div class="flex mx-md {{ section.settings.cta_position_mobile }} tabletl:mx-0 {{ section.settings.cta_position_desktop }}">
-                <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mb-md tabletl:mb-lg"> 
-                    <p class="p2 btn__text">{{ section.settings.url_text }}</p>
-                    <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
-                </a>
+    <div class="section__carousel-container mx-auto">
+        <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
+            <div class="section__carousel-text-container mx-md mb-md tabletl:mx-0">
+                {% if section.settings.title != blank %}
+                    {% liquid
+                        assign title_tag = 'p'
+                        assign title_options = 'h1,h2,h3,h4,h5,h6'
+        
+                        if title_options contains section.settings.title_style
+                            assign title_tag = section.settings.title_style
+                        endif
+                    %}
+                    <{{ title_tag }} class="section__carousel-title {{ section.settings.title_alignment_mobile }} {{ section.settings.title_alignment_desktop }}">{{ section.settings.title }}</{{ title_tag }}>
+                {% endif %}
+                {% if section.settings.subtext != blank %}
+                    <p class="section__carousel-subtext {{ section.settings.subtext_style }} mt-xxxs">{{ section.settings.subtext }}</p>
+                {% endif %}
             </div>
-        {% endif %}
-    </header>
+            {% if section.settings.url != blank %}
+                <div class="flex mx-md {{ section.settings.cta_position_mobile }} tabletl:mx-0 {{ section.settings.cta_position_desktop }}">
+                    <a href="{{ section.settings.url }}" class="section__carousel-button {{ section.settings.cta_style }} mb-md tabletl:mb-lg"> 
+                        <p class="p2 btn__text">{{ section.settings.url_text }}</p>
+                        <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>
+                    </a>
+                </div>
+            {% endif %}
+        </header>
 
-    <div class="section__carousel-content mx-auto grid grid-cols-1 {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% endif %}">
-        <s-carousel class="block" data-options='{{carousel_options}}'>
-            <div id="{{section.id}}" class="swiper" js-carousel>
-                <div class="swiper-wrapper">
-                    {% for block in section.blocks %}
-                        {% case block.type %}
-                            {% when 'image_caption' %}
-                                {% if block.settings.image_mobile != blank %}
-                                    <div class="swiper-slide h-auto" js-carousel-slide>
-                                        <div class="section__image-caption image-container flex flex-col relative h-full mb-xs">
-                                            {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full object-cover' %}
-                                            {% if block.settings.product != blank %}
-                                                <div class="absolute bg-gray-athans top-xs left-xs overflow-hidden tabletl:top-md tabletl:left-md">
-                                                    {%  render 'section__image-caption-modal' product:block.settings.product, product_image_override:block.settings.product_image_override%}
-                                                </div>
-                                            {% endif %}
-                                            {% if block.settings.caption != blank %}
-                                                <div class="{{ block.settings.caption_style }} rte">{{ block.settings.caption }}</div>
-                                            {% endif %}
+        <div class="section__carousel-content grid grid-cols-1 {% if section.settings.enable_centered_carousel %} tabletl:px-xl {% endif %} {{ section.settings.carousel_content_top_spacing_mobile }} {{ section.settings.carousel_content_top_spacing_desktop }}">
+            <s-carousel class="block" data-options='{{carousel_options}}'>
+                <div id="{{section.id}}" class="swiper" js-carousel>
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            {% case block.type %}
+                                {% when 'image_caption' %}
+                                    {% if block.settings.image_mobile != blank %}
+                                        <div class="swiper-slide h-auto" js-carousel-slide>
+                                            <div class="section__image-caption image-container flex flex-col relative h-full mb-xs">
+                                                {% render 'lazy-image' image:block.settings.image_mobile, image_desktop:block.settings.image_desktop, picture_classes:'h-full', img_classes:'h-full object-cover' %}
+                                                {% if block.settings.product != blank %}
+                                                    <div class="absolute bg-gray-athans top-xs left-xs overflow-hidden tabletl:top-md tabletl:left-md">
+                                                        {%  render 'section__image-caption-modal' product:block.settings.product, product_image_override:block.settings.product_image_override%}
+                                                    </div>
+                                                {% endif %}
+                                                {% if block.settings.caption != blank %}
+                                                    <div class="{{ block.settings.caption_style }} rte">{{ block.settings.caption }}</div>
+                                                {% endif %}
+                                            </div>
                                         </div>
-                                    </div>
-                                {% endif %}
-                            {% when 'product' %}
-                                {% if block.settings.product != blank %}
-                                    <div class="swiper-slide h-auto" js-carousel-slide>
-                                        {% if block.settings.product_card_style == 'style1'%}
-                                            {% render 'product-card__carousel' product:block.settings.product %}
-                                        {% elsif block.settings.product_card_style == 'style2' %}
-                                            {% render 'product-card' product:block.settings.product %}
-                                        {% endif %}
-                                    </div>
-                                {% endif %}
-                            {% when 'collection' %}
-                                {% if block.settings.collection != blank %}
-                                    {% for product in block.settings.collection.products limit:block.settings.product_pulled %}
+                                    {% endif %}
+                                {% when 'product' %}
+                                    {% if block.settings.product != blank %}
                                         <div class="swiper-slide h-auto" js-carousel-slide>
                                             {% if block.settings.product_card_style == 'style1'%}
-                                                {% render 'product-card__carousel' product:product %}
+                                                {% render 'product-card__carousel' product:block.settings.product %}
                                             {% elsif block.settings.product_card_style == 'style2' %}
-                                                {% render 'product-card' product:product %}
+                                                {% render 'product-card' product:block.settings.product %}
                                             {% endif %}
                                         </div>
-                                    {% endfor %}
-                                {% endif %}
-                            {% when 'article' %}
-                                {% if block.settings.article != blank %}
-                                    <div class="swiper-slide h-auto" js-carousel-slide>
-                                        {% render 'article-card' article:block.settings.article %}
-                                    </div>
-                                {% endif %}
-                            {% when 'blog' %}
-                                {% if block.settings.blog != blank %}
-                                    {% for article in block.settings.blog.articles limit:block.settings.article_pulled%}
+                                    {% endif %}
+                                {% when 'collection' %}
+                                    {% if block.settings.collection != blank %}
+                                        {% for product in block.settings.collection.products limit:block.settings.product_pulled %}
+                                            <div class="swiper-slide h-auto" js-carousel-slide>
+                                                {% if block.settings.product_card_style == 'style1'%}
+                                                    {% render 'product-card__carousel' product:product %}
+                                                {% elsif block.settings.product_card_style == 'style2' %}
+                                                    {% render 'product-card' product:product %}
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% when 'article' %}
+                                    {% if block.settings.article != blank %}
                                         <div class="swiper-slide h-auto" js-carousel-slide>
-                                            {% render 'article-card' article:article %}
+                                            {% render 'article-card' article:block.settings.article %}
                                         </div>
-                                    {% endfor %}
-                                {% endif %}
-                            {% when 'image_content' %}
-                                <div class="swiper-slide h-auto" js-carousel-slide>
-                                    <div class="carousel__image-content">
-                                        {% if block.settings.image_mobile != blank %}
-                                            <div class="carousel-image-content__image">
-                                                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+                                    {% endif %}
+                                {% when 'blog' %}
+                                    {% if block.settings.blog != blank %}
+                                        {% for article in block.settings.blog.articles limit:block.settings.article_pulled%}
+                                            <div class="swiper-slide h-auto" js-carousel-slide>
+                                                {% render 'article-card' article:article %}
                                             </div>
-                                        {% endif %}
-                                        {% if block.settings.title != blank %}
-                                            <div class="carousel-image-content__title {{ block.settings.title_style }} mt-sm">{{ block.settings.title }}</div>
-                                        {% endif %}
-                                        {% if block.settings.subtext != blank %}
-                                            <p class="carousel-image-content__subtext {{ block.settings.subtext_style }} mt-xxxs">{{ block.settings.subtext }}</p>
-                                        {% endif %}
-                                        {% if block.settings.cta_url != blank and block.settings.cta_text != blank %}
-                                            <a href="{{ block.settings.cta_url }}" class="carousel-image-content__cta {{ block.settings.cta_style }} mt-xs">
-                                                <span class="btn__text">{{ block.settings.cta_text }}</span>
-                                                <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-                                            </a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% when 'milestone' %}
-                                <div class="swiper-slide h-auto" js-carousel-slide>
-                                    <div class="carousel__milestone {{ block.settings.color }} h-full flex flex-col justify-between desktop:flex-row">
-                                        <div class="carousel-milestone__content px-sm py-md flex flex-col desktop:justify-between desktop:px-md desktop:pt-28 desktop:flex-1">
-                                            <div class="carousel-milestone__title-container">
-                                                {% if block.settings.title != blank %}
-                                                    <div class="carousel-milestone__title {{ block.settings.title_style }}">{{ block.settings.title }}</div>
-                                                {% endif %}
-                                                {% if block.settings.subtext != blank %}
-                                                    <p class="carousel-milestone__subtext {{ block.settings.subtext_style }} mt-xxxs">{{ block.settings.subtext }}</p>
-                                                {% endif %}
-                                                {% if block.settings.cta_url != blank and block.settings.cta_text != blank %}
-                                                    <a href="{{ block.settings.cta_url }}" class="carousel-milestone__cta {{ block.settings.cta_style }} mt-xs">
-                                                        <span class="btn__text">{{ block.settings.cta_text }}</span>
-                                                        <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-                                                    </a>
-                                                {% endif %}
-                                            </div>
-                                            {% if block.settings.year != blank %}
-                                                <div class="carousel-milestone__year h1 mt-48 desktop:mt-xl">{{ block.settings.year }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% when 'image_content' %}
+                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                        <div class="carousel__image-content">
+                                            {% if block.settings.image_mobile != blank %}
+                                                <div class="carousel-image-content__image">
+                                                    {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+                                                </div>
+                                            {% endif %}
+                                            {% if block.settings.title != blank %}
+                                                <div class="carousel-image-content__title {{ block.settings.title_style }} mt-sm">{{ block.settings.title }}</div>
+                                            {% endif %}
+                                            {% if block.settings.subtext != blank %}
+                                                <p class="carousel-image-content__subtext {{ block.settings.subtext_style }} mt-xxxs">{{ block.settings.subtext }}</p>
+                                            {% endif %}
+                                            {% if block.settings.cta_url != blank and block.settings.cta_text != blank %}
+                                                <a href="{{ block.settings.cta_url }}" class="carousel-image-content__cta {{ block.settings.cta_style }} mt-xs">
+                                                    <span class="btn__text">{{ block.settings.cta_text }}</span>
+                                                    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                                </a>
                                             {% endif %}
                                         </div>
-                                        {% if block.settings.image_mobile != blank %}
-                                            <div class="carousel-milestone__image desktop:w-[58%]">
-                                                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop picture_classes: 'h-full' img_classes: 'h-full object-cover' %}
-                                            </div>
-                                        {% endif %}
                                     </div>
-                                </div>
-                            {% when 'testimonial' %}
-                                <div class="swiper-slide h-auto" js-carousel-slide>
-                                    <div class="carousel-testimonial__content text-center tabletl:max-w-[var(--max-width-testimonial-desktop)]" style="--max-width-testimonial-desktop: {{ block.settings.max_width_desktop }};">
-                                        {% if block.settings.image_mobile != blank %}
-                                            <div class="image-container max-w-[200px] mx-auto">
-                                                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop picture_classes: 'h-full' img_classes: 'h-full object-cover' %}
+                                {% when 'milestone' %}
+                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                        <div class="carousel__milestone {{ block.settings.color }} h-full flex flex-col justify-between desktop:flex-row">
+                                            <div class="carousel-milestone__content px-sm py-md flex flex-col desktop:justify-between desktop:px-md desktop:pt-28 desktop:flex-1">
+                                                <div class="carousel-milestone__title-container">
+                                                    {% if block.settings.title != blank %}
+                                                        <div class="carousel-milestone__title {{ block.settings.title_style }}">{{ block.settings.title }}</div>
+                                                    {% endif %}
+                                                    {% if block.settings.subtext != blank %}
+                                                        <p class="carousel-milestone__subtext {{ block.settings.subtext_style }} mt-xxxs">{{ block.settings.subtext }}</p>
+                                                    {% endif %}
+                                                    {% if block.settings.cta_url != blank and block.settings.cta_text != blank %}
+                                                        <a href="{{ block.settings.cta_url }}" class="carousel-milestone__cta {{ block.settings.cta_style }} mt-xs">
+                                                            <span class="btn__text">{{ block.settings.cta_text }}</span>
+                                                            <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                                        </a>
+                                                    {% endif %}
+                                                </div>
+                                                {% if block.settings.year != blank %}
+                                                    <div class="carousel-milestone__year h1 mt-48 desktop:mt-xl">{{ block.settings.year }}</div>
+                                                {% endif %}
                                             </div>
-                                        {% endif %}
-                                        {% if block.settings.quote != blank %}
-                                            <h1 class="{{ block.settings.quote_style }} pb-sm tabletl:py-lg">{{ block.settings.quote }}</h1>
-                                        {% endif %}
-                                        {% if block.settings.author != blank %}
-                                            <p class="{{ block.settings.author_style }} pt-sm pb-lg tabletl:py-lg">{{ block.settings.author }}</p>
-                                        {% endif %}
+                                            {% if block.settings.image_mobile != blank %}
+                                                <div class="carousel-milestone__image desktop:w-[58%]">
+                                                    {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop picture_classes: 'h-full' img_classes: 'h-full object-cover' %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                        {% endcase %}
-                    {% endfor %}
-                </div>
+                                {% when 'testimonial' %}
+                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                        <div class="carousel-testimonial__content text-center tabletl:max-w-[var(--max-width-testimonial-desktop)]" style="--max-width-testimonial-desktop: {{ block.settings.max_width_desktop }};">
+                                            {% if block.settings.image_mobile != blank %}
+                                                <div class="image-container max-w-[200px] mx-auto">
+                                                    {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop picture_classes: 'h-full' img_classes: 'h-full object-cover' %}
+                                                </div>
+                                            {% endif %}
+                                            {% if block.settings.quote != blank %}
+                                                <h1 class="{{ block.settings.quote_style }} pb-sm tabletl:py-lg">{{ block.settings.quote }}</h1>
+                                            {% endif %}
+                                            {% if block.settings.author != blank %}
+                                                <p class="{{ block.settings.author_style }} pt-sm pb-lg tabletl:py-lg">{{ block.settings.author }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                            {% endcase %}
+                        {% endfor %}
+                    </div>
 
-                {% comment %} Swiper Nav {% endcomment %}
-                 <div class="carousel_nav-container mx-auto {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %} tabletl:px-xl">
-                    {% case section.settings.carousel_nav %}
-                    {% when 'pagination'%}
-                        <div class="swiper-nav-container py-xxs flex justify-between items-center">
-                            <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
-                            <div class="nav-button-container flex gap-md">
+                    {% comment %} Swiper Nav {% endcomment %}
+                    <div class="carousel_nav-container mx-auto {% unless section.settings.enable_carousel_nav_mobile %} hidden {% endunless %} {% if section.settings.enable_carousel_nav_desktop %} tabletl:block {% else %} tabletl:hidden {% endif %} tabletl:px-xl">
+                        {% case section.settings.carousel_nav %}
+                        {% when 'pagination'%}
+                            <div class="swiper-nav-container py-xxs flex justify-between items-center {{ section.settings.scrollbar_top_spacing_mobile }} {{ section.settings.scrollbar_top_spacing_desktop }}">
+                                <div class="swiper-pagination w-fit !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
+                                <div class="nav-button-container flex gap-md">
+                                    <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                                    <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
+                                </div>
+                            </div>
+                        {% when 'scrollbar'%}
+                            <div class="swiper-nav-container mx-auto flex gap-md items-center {{ section.settings.scrollbar_top_spacing_mobile }} {{ section.settings.scrollbar_top_spacing_desktop }}">
                                 <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
+                                <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
                                 <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
                             </div>
-                        </div>
-                    {% when 'scrollbar'%}
-                        <div class="swiper-nav-container mx-auto py-xxs flex gap-md items-center">
-                            <div class="swiper-button-prev--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--prev">{% render 'icon-arrow-left' %}</span></div>
-                            <div class="swiper-scrollbar !relative !left-0 !bottom-0" js-scrollbar-{{section.id}}></div>
-                            <div class="swiper-button-next--{{ section.id }} w-[40px] btn"><span class="swiper-button-icon btn__arrow border-0 swiper-button-icon--next">{% render 'icon-arrow-right' %}</span></div>
-                        </div>
-                {% endcase %}
-                 </div>
-                {% comment %} END Swiper Nav {% endcomment %}
-            </div>
-        </s-carousel>
+                    {% endcase %}
+                    </div>
+                    {% comment %} END Swiper Nav {% endcomment %}
+                </div>
+            </s-carousel> 
+        </div>
     </div>
 </div>
 
@@ -558,6 +560,166 @@
             }
             ],
             "default": "desktop:pb-0"
+        },
+        {
+            "type": "select",
+            "id": "carousel_content_top_spacing_mobile",
+            "label": "Carousel Content Top Spacing - Mobile",
+            "options": [
+            {
+                "value": "mt-0",
+                "label": "None"
+            },
+            {
+                "value": "mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "mt-md"
+        },
+        {
+            "type": "select",
+            "id": "scrollbar_top_spacing_mobile",
+            "label": "Scroll Bar Top Spacing - Mobile",
+            "options": [
+            {
+                "value": "mt-0",
+                "label": "None"
+            },
+            {
+                "value": "mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "mt-md"
+        },
+        {
+            "type": "select",
+            "id": "carousel_content_top_spacing_desktop",
+            "label": "Carousel Content Top Spacing - Desktop",
+            "options": [
+            {
+                "value": "tabletl:mt-0",
+                "label": "None"
+            },
+            {
+                "value": "tabletl:mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "tabletl:mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "tabletl:mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "tabletl:mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "tabletl:mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "tabletl:mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "tabletl:mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "tabletl:mt-md"
+        },
+        {
+            "type": "select",
+            "id": "scrollbar_top_spacing_desktop",
+            "label": "Scroll Bar Top Spacing - Desktop",
+            "options": [
+            {
+                "value": "tabletl:mt-0",
+                "label": "None"
+            },
+            {
+                "value": "tabletl:mt-xs",
+                "label": "XS"
+            },
+            {
+                "value": "tabletl:mt-sm",
+                "label": "SM"
+            },
+            {
+                "value": "tabletl:mt-md",
+                "label": "MD"
+            },
+            {
+                "value": "tabletl:mt-lg",
+                "label": "LG"
+            },
+            {
+                "value": "tabletl:mt-xl",
+                "label": "XL"
+            },
+            {
+                "value": "tabletl:mt-xxl",
+                "label": "2XL"
+            },
+            {
+                "value": "tabletl:mt-xxxl",
+                "label": "3XL"
+            }
+            ],
+            "default": "tabletl:mt-md"
         },
         {
             "type": "text",

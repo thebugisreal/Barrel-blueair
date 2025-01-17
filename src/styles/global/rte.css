@@ -1,8 +1,3 @@
-.rte ul li::before {
-    content: '●';
-    @apply pr-md;
-}
-
 .rte p {
     @apply my-md
 }
@@ -45,14 +40,9 @@
     p6;
 }
 
-.rte ul li {
-  @apply flex;
-}
-
-.rte ul li::before {
-  @apply mr-xs
-  text-12
-  p-0;
+.rte ul {
+  @apply list-disc
+  pl-lg;
 }
 
 .rte ul {

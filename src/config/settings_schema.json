@@ -63,6 +63,30 @@
         "type": "product",
         "id": "upsell_2",
         "label": "Upsell Product 2"
+      },
+      {
+        "type": "header",
+        "content": "Empty Cart"
+      },
+      {
+        "type": "url",
+        "id": "cart_cta_url_1",
+        "label": "Empty Cart CTA 1 URL"
+      },
+      {
+        "type": "text",
+        "id": "cart_cta_text_1",
+        "label": "Empty Cart CTA 1 Text"
+      },
+      {
+        "type": "url",
+        "id": "cart_cta_url_2",
+        "label": "Empty Cart CTA 2 URL"
+      },
+      {
+        "type": "text",
+        "id": "cart_cta_text_2",
+        "label": "Empty Cart CTA 2 Text"
       }
     ]
   },

@@ -61,7 +61,7 @@
 }
 
 @media screen(tabletl) {
-  .section__carousel-content {
+  .section__carousel-container {
       max-width: var(--max-width-desktop)
   }
   .section__carousel-content .swiper-nav-container {

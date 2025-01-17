@@ -3,6 +3,7 @@
 {% endcapture %}
 
 <div class="section__media {{ margins_paddings }} {{ section.settings.color }} {{ section.settings.gutter_mobile }} {{ section.settings.gutter_desktop }}">
+  <div class="desktop:mx-auto desktop:max-w-[var(--section-max-width-desktop)]" style="--section-max-width-desktop: {{ section.settings.section_max_width_desktop}}">
     {% if section.settings.video != blank %}
     <div class="video__upload  block relative overflow-hidden">
         {{ section.settings.video | video_tag: class: 'block w-full h-full object-cover object-center', image_size: '1280x', autoplay: section.settings.enable_autoplay, loop: true, muted: true, controls: true }}
@@ -17,6 +18,7 @@
         {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop %}
         </div>
     {% endif %}
+  </div>
 </div>
 
 {% schema %}
@@ -458,6 +460,12 @@
         }
       ],
       "default": "bg-white text-blue"
+    },
+    {
+      "type": "text",
+      "id": "section_max_width_desktop",
+      "label": "Section Max Width - Desktop",
+      "info": "Make sure to include units"
     }
   ],
   "presets": [

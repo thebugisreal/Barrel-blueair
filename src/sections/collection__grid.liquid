@@ -6,19 +6,31 @@
 {% paginate collection.products by 48 %}
 <s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}" data-handle="{{ collection.handle }}">
   <div class="collection-grid__layout">
-    <div class="collection-grid__header bg-blue-light px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl">
-      <div class="collection-grid__breadcrumb mb-md flex gap-xxs items-center">
-        {% assign shop_all_collection = collections['shop-all'] %}
-        <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>
-        {% if collection.handle != 'shop-all' %}
-          <span class="w-[4px] h-[4px] rounded-full bg-blue"></span>
-          <span>{{ collection.title }}</span>
+    <div class="collection-grid__header bg-blue-light flex flex-col desktop:gap-md desktop:flex-row">
+      <div class="collection-grid__header-text-container w-full px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl desktop:flex desktop:flex-col desktop:justify-center {% if  section.settings.enable_collection_image %} tabletl:w-1/2 {% endif %}">
+        <div class="collection-grid__breadcrumb mb-md flex gap-xxs items-center">
+          {% assign shop_all_collection = collections['shop-all'] %}
+          <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>
+          {% if collection.handle != 'shop-all' %}
+            <span class="w-[4px] h-[4px] rounded-full bg-blue"></span>
+            <span>{{ collection.title }}</span>
+          {% endif %}
+        </div>
+        <div class="collection-grid__title-container flex justify-start items-center gap-sm">
+          <h1 class="collection-grid__title h3">{{ collection.title }}</h1>
+          <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
+        </div>
+        {% if section.settings.enable_collection_description and collection.description != blank %}
+          <div class="collection-grid__description-container mt-md">
+            <p class="s3">{{ collection.description }}</p>
+          </div>
         {% endif %}
       </div>
-      <div class="collection-grid__title-containe flex justify-start items-center gap-sm">
-        <h1 class="collection-grid__title h3">{{ collection.title }}</h1>
-        <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
-      </div>
+      {% if section.settings.enable_collection_image and collection.image != blank %}
+        <div class="collection-grid__header-image-container tabletl:w-1/2">
+          {%  render 'lazy-image' image:collection.image, picture_classes:'w-full', img_classes:'w-full object-cover' %}
+        </div>
+      {% endif %}
     </div>
 
     {% if collection.products.size > 0 %}
@@ -161,6 +173,16 @@
 {
   "name": "Product Grid",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_collection_image",
+      "label": "Enable Collection Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_collection_description",
+      "label": "Enable Collection Description"
+    }
   ]
 }
 {% endschema %}

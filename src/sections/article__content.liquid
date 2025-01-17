@@ -43,7 +43,8 @@
                 padding_bottom_desktop: block.settings.padding_bottom_desktop,
                 max_width_desktop: block.settings.max_width_desktop,
                 richtext: block.settings.richtext,
-                richtext_style: block.settings.richtext_style
+                richtext_style: block.settings.richtext_style,
+                richtext_alignment: block.settings.richtext_alignment
             %}
           {% when 'quote' %}
             {% render 'quote'
@@ -78,7 +79,12 @@
                 image_desktop: block.settings.image_desktop,
                 image_placement_desktop: block.settings.image_placement_desktop,
                 image_placement_mobile: block.settings.image_placement_mobile,
-                color: block.settings.color
+                color: block.settings.color,
+                text_padding_right_desktop: block.settings.text_padding_right_desktop,
+                text_padding_left_desktop: block.settings.text_padding_left_desktop
+                cta_url: block.settings.cta_url,
+                cta_text: block.settings.cta_text,
+                cta_style: block.settings.cta_style
             %}
           {% when 'image_text_review' %}
             {%  render 'image-text-review' 
@@ -1250,6 +1256,17 @@
             },
             {
                 "type": "select",
+                "id": "richtext_alignment",
+                "label": "Richtext Alignment",
+                "options": [
+                    { "value": "text-left", "label": "left"},
+                    { "value": "text-center", "label": "middle"},
+                    { "value": "text-right", "label": "right"}
+                ],
+                "default": "text-left"
+            },
+            {
+                "type": "select",
                 "id": "richtext_style",
                 "label": "Richtext Style",
                 "options": [
@@ -2197,6 +2214,120 @@
                 "type": "richtext",
                 "id": "richtext",
                 "label": "Richtext"
+            },
+            {
+                "type": "url",
+                "id": "cta_url",
+                "label": "CTA URL"
+            },
+            {
+                "type": "text",
+                "id": "cta_text",
+                "label": "CTA Text"
+            },
+            {
+                "type": "select",
+                "id": "cta_style",
+                "label": "CTA Style",
+                "options": [
+                    {
+                    "value": "btn",
+                    "label": "Default"
+                    },
+                    {
+                    "value": "btn btn--blue-rounded",
+                    "label": "Blue Rounded"
+                    },
+                    {
+                    "value": "btn btn--white-rounded",
+                    "label": "White Rounded"
+                    },
+                    {
+                    "value": "btn btn--transparent-rounded",
+                    "label": "Transparent Rounded"
+                    }
+                ],
+                "default": "btn"
+            },
+            {
+                "type": "select",
+                "id": "text_padding_left_desktop",
+                "label": "Text Padding Left - Desktop",
+                "options": [
+                {
+                    "value": "desktop:pl-0",
+                    "label": "None"
+                },
+                {
+                    "value": "desktop:pl-xs",
+                    "label": "XS"
+                },
+                {
+                    "value": "desktop:pl-sm",
+                    "label": "SM"
+                },
+                {
+                    "value": "desktop:pl-md",
+                    "label": "MD"
+                },
+                {
+                    "value": "desktop:pl-lg",
+                    "label": "LG"
+                },
+                {
+                    "value": "desktop:pl-xl",
+                    "label": "XL"
+                },
+                {
+                    "value": "desktop:pl-xxl",
+                    "label": "2XL"
+                },
+                {
+                    "value": "desktop:pl-xxxl",
+                    "label": "3XL"
+                }
+                ],
+                "default": "desktop:pl-0"
+            },
+            {
+                "type": "select",
+                "id": "text_padding_right_desktop",
+                "label": "Text Padding Right - Desktop",
+                "options": [
+                {
+                    "value": "desktop:pr-0",
+                    "label": "None"
+                },
+                {
+                    "value": "desktop:pr-xs",
+                    "label": "XS"
+                },
+                {
+                    "value": "desktop:pr-sm",
+                    "label": "SM"
+                },
+                {
+                    "value": "desktop:pr-md",
+                    "label": "MD"
+                },
+                {
+                    "value": "desktop:pr-lg",
+                    "label": "LG"
+                },
+                {
+                    "value": "desktop:pr-xl",
+                    "label": "XL"
+                },
+                {
+                    "value": "desktop:pr-xxl",
+                    "label": "2XL"
+                },
+                {
+                    "value": "desktop:pr-xxxl",
+                    "label": "3XL"
+                }
+                ],
+                "default": "desktop:pr-0"
             },
             {
                 "type": "image_picker",

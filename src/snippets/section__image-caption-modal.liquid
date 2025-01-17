@@ -4,7 +4,7 @@ Params:
 product: Product Object
 {% endcomment %}
 
-<image-caption-modal class="bg-white py-8 px-12 block">
+<image-caption-modal class="bg-white py-8 px-12 block tabletl:pb-0">
     <header class="flex justify-end">
         <button class="modal-open btn" js-modal-open>
             <p class="btn__text p2">View Product </p>
@@ -19,7 +19,7 @@ product: Product Object
         <div class="flex tabletl:gap-0 tabletl:h-auto tabletl:flex-col">
             <div class="product-body px-24 flex-1 tabletl:text-center">
                 <h4 class="h4">{{ product.title }}</h4>
-                <p class="p1 my-12 font-400">{{ product.price | money}}</p>
+                <h5 class="my-12">{{ product.price | money}}</h5>
                 <a href="{{ product.url }}" class="btn w-fit mb-16 tabletl:mx-auto">
                     <p class="btn__text p2">Shop Now </p>
                     <div class="btn__arrow">{%  render 'icon-arrow-right' %}</div>

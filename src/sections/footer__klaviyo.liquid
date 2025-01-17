@@ -1,14 +1,34 @@
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
+{% liquid
+  case section.settings.color
+    when 'bg-white text-blue"'
+      assign confirmation_text_color = '#002955'
+    when 'bg-blue-sky text-blue'
+      assign confirmation_text_color = '#002955'
+    when 'bg-blue text-white'
+      assign confirmation_text_color = '#ffffff'
+    when 'bg-green-light text-green-dark'
+      assign confirmation_text_color = '#558080'
+    when 'bg-pink-light text-pink-dark'
+      assign confirmation_text_color = '#80556F'
+    when 'bg-yellow-light text-yellow-dark'
+    assign confirmation_text_color = '#807955'
+    when 'bg-brown-light text-brown-dark'
+    assign confirmation_text_color = '#805F55'
+    when 'bg-blue-light text-blue'
+    assign confirmation_text_color = '#002955'
+  endcase
+%}
 
-<div class="section__klaviyo {{ margins_paddings }} px-md {{ section.settings.color }} tabletl:px-xl">
+<div class="section__klaviyo {{ margins_paddings }} px-md {{ section.settings.color }} tabletl:px-xl" style="--confirmation-text-color:{{confirmation_text_color}}">
     <div class="tabletl:grid tabletl:grid-cols-2 tabletl:gap-xxl tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         {% if section.settings.title != blank %}
           <h1 class="hero__title flex items-center {{ section.settings.title_style }} mb-sm tabletl:mb-0">{{ section.settings.title }}</h1>
         {% endif %}
         {% if section.settings.klaviyo_embed != blank %}
-            <div class="section__klaviyo-div py-md {{ section.settings.color }} tabletl:p-md">
+            <div class="section__klaviyo-div py-md  max-w-[400px] {{ section.settings.color }} tabletl:p-md">
                 {{ section.settings.klaviyo_embed }}
             </div>
         {% endif %}
@@ -428,14 +448,6 @@
           "label": "None (white bg & blue text)"
         },
         {
-          "value": "bg-blue-sky text-blue",
-          "label": "Blue"
-        },
-        {
-          "value": "bg-blue text-white",
-          "label": "Dark blue"
-        },
-        {
           "value": "bg-green-light text-green-dark",
           "label": "Green"
         },
@@ -456,7 +468,7 @@
           "label": "Gray"
         }
       ],
-      "default": "bg-blue text-white"
+      "default": "bg-white text-blue"
     }
   ],
   "presets": [

@@ -3,7 +3,7 @@
 {% endcapture %}
 <div class="page px-md desktop:px-xl {{ margins_paddings }}">
   <div class="page__wrapper mx-auto max-w-[var(--max-width)]" style="--max-width: {% if section.settings.max_width != blank %}{{ section.settings.max_width }}{% else %}unset{% endif %};">
-    <h1 class="page__title mb-md">
+    <h1 class="page__title h2 mb-md">
       {{ page.title | escape }}
     </h1>
     <div class="rte">

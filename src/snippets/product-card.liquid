@@ -13,7 +13,18 @@
   endif
 %}
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a href="{{ product.url }}" class="product-card__image-link-wrapper block !no-underline" js-product-link>
+  <a href="{{ product.url }}" class="product-card__image-link-wrapper block relative !no-underline" js-product-link>
+    {% comment %} Product Card Top Tag {% endcomment %}
+     {% if product.metafields.seed.product_card_top_tags != blank %}
+      <div class="product-card__top-tag absolute top-sm left-sm">
+        <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xxxs gap-y-xxs flex-wrap">
+          {% for tag in product.metafields.seed.product_card_top_tags.value %}
+            <span class="product-card__tag product-card__tag--blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% comment %} Product Card Top Tag {% endcomment %}
     {% if color_option != false %}
       {% for variant in product.variants %}
         <div class="product-card__image {% unless variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ variant.options[color_option] }}" js-product-card-image>
@@ -41,12 +52,11 @@
   </a>
   <div class="product-card__info px-sm py-md desktop:p-md">
     <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xs gap-y-xxs flex-wrap {% if hide_price_and_tag %}!hidden{% endif %}">
-      <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>Out of Stock</span>
+      <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available or true %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>Out of Stock</span>
       {% for tag in product.metafields.seed.product_tags.value %}
         <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
       {% endfor %}
     </div>
-
 
     <div class="product-card__title-layout flex gap-sm justify-between">
       <div class="product-card__title-container flex-1">
@@ -132,7 +142,10 @@
       <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-product>{{ all_products[product.handle] | json }}</script>
 
       <script type="application/json" id="ProductCompareIndoJSON-{{ product.id }}" js-product-compare-info>
-          {
+          { 
+            {% if product.metafields.seed.product_card_image != blank %}
+              "product_card_image": "{{ product.metafields.seed.product_card_image.value.src |  image_url: width: '1920px'}}",
+            {% endif %}
             "blair_recommendedRoomSize": "{{ product.metafields.seed.blair_recommendedRoomSize }}",
             "blair_dimensions":"{{ product.metafields.seed.blair_dimensions }}",
             "blair_productSpecification_weight":"{{ product.metafields.seed.blair_productSpecification_weight }}",

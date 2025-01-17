@@ -4,8 +4,8 @@
 
 {% if product.metafields.seed.pdp_filters != blank %}
     <div class="product__filters {{ margins_paddings }} mx-md tabletl:mx-xl">
-        <h3 class="font-900 mb-xl text-center tabletl:pb-xs tabletl:mb-xxl">Meet our filters</h3>
-        <ul class="product__filters-container flex flex-col gap-xl tabletl:grid tabletl:grid-cols-3 tabletl:gap-lg">
+        <h3 class="font-900 mb-md text-center tabletl:pb-xs tabletl:mb-xxl">Meet our filters</h3>
+        <ul class="product__filters-container flex flex-col gap-md tabletl:grid tabletl:grid-cols-3 tabletl:gap-lg">
           {% for filter in product.metafields.seed.pdp_filters.value %}
               <li class="product__filter text-center flex flex-col justify-center items-center">
                 <div class="filter-icon w-[64px] mb-xs tabletl:w-[80px]">

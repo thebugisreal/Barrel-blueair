@@ -1,7 +1,7 @@
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="section__content-panels {{ margins_paddings }} {{ section.settings.color }}" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};">
+<div class="section__content-panels {{ margins_paddings }} {{ section.settings.color }} tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--cols-mobile: {{ section.settings.num_cols_mobile }}; --cols-desktop: {{ section.settings.num_cols_desktop }};  {% if section.settings.content_max_width_desktop != blank %}--max-width-desktop: {{ section.settings.content_max_width_desktop }};{% endif %}">
   <div class="content-panels__title-container flex flex-col items-center gap-md px-md desktop:px-xl {% if section.settings.title != blank and section.settings.cta_url != blank and section.settings.cta_text != blank %}desktop:flex-row desktop:justify-between mb-lg{% endif %}">
     {% if section.settings.title != blank %}
       <h1 class="content-panels__title {{ section.settings.title_style }} text-center {% unless section.settings.cta_url != blank and section.settings.cta_text != blank %}mb-lg desktop:mb-xl{% endunless %}">{{ section.settings.title }}</h1>
@@ -636,6 +636,12 @@
         }
       ],
       "default": "btn"
+    },
+    {
+      "type": "text",
+      "id": "content_max_width_desktop",
+      "label": "Content Max Width - Desktop",
+      "info": "Make sure to include units"
     }
   ],
   "blocks": [

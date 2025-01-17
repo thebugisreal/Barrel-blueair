@@ -4,7 +4,7 @@
 
 <div class="hero_2 {{ margins_paddings }} relative px-md overflow-hidden {{ section.settings.color }} tabletl:px-xl">
     <div class="flex mx-auto gap-xxxxl justify-between items-center tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-        <div class="hero_content-container z-[1] flex-1">
+        <div class="hero_content-container z-[1] flex-1 tabletl:max-w-[var(--max-width-content-desktop)]"  style="--max-width-content-desktop: {{ section.settings.max_width_content_desktop }};">
             {% if section.settings.title != blank %}
                 <h1 class="hero__title {{ section.settings.title_style }} mb-lg text-center tabletl:text-left">{{ section.settings.title }}</h1>
             {% endif %}
@@ -373,10 +373,17 @@
     {
       "type": "text",
       "id": "max_width_desktop",
-      "label": "Text Content - Max Width - Desktop",
+      "label": "Whole Content - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "109ch"
     },
+    {
+      "type": "text",
+      "id": "max_width_content_desktop",
+      "label": "Text Content - Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    },    
     {
         "type": "header",
         "content": "Color Set"

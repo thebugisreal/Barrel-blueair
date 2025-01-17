@@ -19,7 +19,13 @@
                                 v-for="(product,index) in products"
                                 :data-index='index'
                             >
-                                <img 
+                                <img v-if="product.productCompareInfo.product_card_image" 
+                                    class="h-[70px]"
+                                    :src="product.productCompareInfo.product_card_image"
+                                    loading="lazy"
+                                    :alt="product.featured_image.alt"
+                                />
+                                <img v-else 
                                     class="h-[70px]"
                                     :src="product.featured_image"
                                     loading="lazy"

@@ -86,7 +86,11 @@ class CompareGrid extends HTMLElement {
       productImageContainer.classList.add('compare__image-container')
       const productImage = document.createElement('img')
       productImage.classList.add('compare__image')
-      productImage.src = product.featured_image
+      if (product.productCompareInfo.product_card_image) {
+        productImage.src = product.productCompareInfo.product_card_image
+      } else {
+        productImage.src = product.featured_image
+      }
       productImage.alt = product.featured_image.alt
       productImage.setAttribute('loading', "lazy")
       productImageContainer.appendChild(productImage)
@@ -204,7 +208,13 @@ class CompareGrid extends HTMLElement {
       compareItemContainer.classList.add('compare__item')
       const compareItem = document.createElement('p')
       compareItem.classList.add('p1')
-      compareItem.textContent = data ? data : '-'
+      if (data === 'true') {
+        compareItem.classList.add('compare-item-true')
+      } else if (data === 'false') {
+        compareItem.classList.add('compare-item-false')
+      } else {
+        compareItem.textContent = data ? data : '-'
+      }
       compareItemContainer.appendChild(compareItem)
       return compareItemContainer
     }
