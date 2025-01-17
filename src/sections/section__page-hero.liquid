@@ -2,7 +2,7 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="section__page-hero {{ margins_paddings }} px-md {{ section.settings.color }} tabletl:px-xl tabletl:flex tabletl:gap-xxxl tabletl:justify-center tabletl:max-w-[var(--max-width-section-desktop)]" style="--max-width-section-desktop: {{ section.settings.max_width_desktop }};">
+<div class="section__page-hero {{ margins_paddings }} px-md {{ section.settings.color }} tabletl:px-xl tabletl:flex tabletl:gap-xxxl tabletl:justify-center tabletl:max-w-[var(--max-width-section-desktop)]" style="--max-width-section-desktop: {{ section.settings.max_width_section_desktop }};">
     <div class="hero__content-container flex-1 tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         {% if section.settings.title != blank %}
             <h1 class="hero__title {{ section.settings.title_style }} mb-md">{{ section.settings.title }}</h1>
