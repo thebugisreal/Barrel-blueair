@@ -6,22 +6,30 @@ class PredictiveSearch extends HTMLElement {
     this.predictiveSearchResults = this.querySelector('[js-predictive-search-results]');
     this.popularSearches = this.querySelector('[js-popular-searches]');
     this.clearBtn = this.querySelector('[js-clear]');
+    this.searchSubmit = this.querySelector('[js-search-submit]');
 
     this.input.addEventListener('focus', this.open);
     this.input.addEventListener('input', theme.utils.debounce((event) => {
       this.onChange(event);
     }, 300).bind(this));
+
     this.clearBtn.addEventListener('click', this.clearSearch);
+
     document.addEventListener('MobileNavDrawer:close', () => {
       this.close();
       this.clearSearch();
     });
+
     document.addEventListener('DesktopSearchDrawer:open', () => {
       if (this.dataset.scope == 'mobile') {
         return;
       }
       this.input.focus();
     });
+  }
+
+  submitSearch = () => {
+    this.searchSubmit.click();
   }
 
   clearSearch = () => {
@@ -51,7 +59,7 @@ class PredictiveSearch extends HTMLElement {
   }
 
   getSearchResults(searchTerm) {
-    fetch(`${routes.predictive_search_url}?q=${searchTerm}&resources[type]=product,article&resources[limit]=10&section_id=predictive-search`)
+    fetch(`/search?q=${searchTerm}`)
       .then((response) => {
         if (!response.ok) {
           var error = new Error(response.status);
@@ -62,8 +70,13 @@ class PredictiveSearch extends HTMLElement {
         return response.text();
       })
       .then((text) => {
-        const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
+        const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#fetchSearch').innerHTML;
         this.predictiveSearchResults.innerHTML = resultsMarkup;
+
+        document.querySelectorAll('[js-view-more]').forEach(button => {
+          button.addEventListener('click', this.submitSearch);
+        });
+
         this.open();
       })
       .catch((error) => {
