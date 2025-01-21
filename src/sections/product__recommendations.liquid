@@ -3,38 +3,40 @@
 {% endcapture %}
 
 <product-recommendations class="product-recommendations {{ margins_paddings }} block {{ section.settings.color }} tabletl:px-xl"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.limit }}&intent={{ section.settings.intent }}">
-  {% if recommendations.performed and recommendations.products_count > 0 %}
-    {%- capture recommendation_carousel_options -%}
-      {
-        "slidesPerView": 1.4,
-        "spaceBetween": 16,
-        "loop": false,
-        "slidesOffsetAfter": 36,
-        "slidesOffsetBefore": 36,
-        "breakpoints": {
-          "1024": {
-            "slidesOffsetAfter": 80,
-            "slidesOffsetBefore": 80,
-            "spaceBetween": 24
+  <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    {% if recommendations.performed and recommendations.products_count > 0 %}
+      {%- capture recommendation_carousel_options -%}
+        {
+          "slidesPerView": 1.4,
+          "spaceBetween": 16,
+          "loop": false,
+          "slidesOffsetAfter": 36,
+          "slidesOffsetBefore": 36,
+          "breakpoints": {
+            "1024": {
+              "slidesOffsetAfter": 80,
+              "slidesOffsetBefore": 80,
+              "spaceBetween": 24
+            }
           }
         }
-      }
-    {%- endcapture -%}
-      {% if section.settings.title != blank %}
-        <h1 class="product-recommendations__title h3 text-center mb-lg tabletl:mb-xxl">{{ section.settings.title }}</h1>
-      {% endif %}
-      <s-carousel class="product-recommendations__products grid" data-options='{{recommendation_carousel_options}}' data-init="belowDesktop">
-        <div id="ProductRecommendation-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-          <div class="product-recommendations__products swiper-wrapper tabletl:grid tabletl:grid-cols-3 tabletl:gap-md">
-            {% for recommendation in recommendations.products %}
-              <div class="swiper-slide" js-carousel-slide>
-                {% render 'product-card' product: recommendation %}
-              </div>
-            {% endfor %}
+      {%- endcapture -%}
+        {% if section.settings.title != blank %}
+          <h1 class="product-recommendations__title h3 text-center mb-lg tabletl:mb-xxl">{{ section.settings.title }}</h1>
+        {% endif %}
+        <s-carousel class="product-recommendations__products grid" data-options='{{recommendation_carousel_options}}' data-init="belowDesktop">
+          <div id="ProductRecommendation-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
+            <div class="product-recommendations__products swiper-wrapper tabletl:grid tabletl:grid-cols-3 tabletl:gap-md">
+              {% for recommendation in recommendations.products %}
+                <div class="swiper-slide" js-carousel-slide>
+                  {% render 'product-card' product: recommendation %}
+                </div>
+              {% endfor %}
+            </div>
           </div>
-        </div>
-      </s-carousel>
-  {% endif %}
+        </s-carousel>
+    {% endif %}
+  </div>
 </product-recommendations>
 
 {% schema %}
@@ -400,6 +402,13 @@
         }
       ],
       "default": "related"
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Text Content - Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "100%"
     },
     {
       "type": "header",

@@ -4,34 +4,34 @@
 
 {% if product.metafields.seed.pdp_custom_tabs != blank %}
     <div class="product__custom-tabs product__tabs {{ margins_paddings }} text-left px-md {{ section.settings.color }} tabletl:px-xl">
-        <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
-            <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
-              {% if product.metafields.seed.pdp_custom_tab_title != blank %}
-                <h4 class="font-900 mb-md ">
-                  {{ product.metafields.seed.pdp_custom_tab_title }}
-                </h4>
-              {% endif %}
-              <ul class="flex flex-col gap-sm">
-                {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
-                    <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
-                        <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
-                        <div class="tab__text-content rte text-left">
-                            {{ tab.richtext |  metafield_tag }}
-                        </div>
-                    </li>
-                {% endfor %}
-              </ul>
-            </div>
-            <div class="image-container relative tabletl:mt-0 tabletl:w-1/2">
-                {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
-                    <div id="product__tab-content-{{ forloop.index }}" class="product-tab__panel absolute top-0 bottom-0 right-0 left-0" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
-                        <div>
-                            {% render 'lazy-image' image:tab.image %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </s-tabs>
+      <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }} tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+          <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
+            {% if product.metafields.seed.pdp_custom_tab_title != blank %}
+              <h4 class="font-900 mb-md ">
+                {{ product.metafields.seed.pdp_custom_tab_title }}
+              </h4>
+            {% endif %}
+            <ul class="flex flex-col gap-sm">
+              {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
+                  <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
+                      <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
+                      <div class="tab__text-content rte text-left">
+                          {{ tab.richtext |  metafield_tag }}
+                      </div>
+                  </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="image-container relative tabletl:mt-0 tabletl:w-1/2">
+              {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
+                  <div id="product__tab-content-{{ forloop.index }}" class="product-tab__panel absolute top-0 bottom-0 right-0 left-0" role="tabpanel" aria-labelledby="tab-{{ forloop.index }}" {% if forloop.first %} aria-hidden="false" {% else %} aria-hidden="true" {% endif %}>
+                      <div>
+                          {% render 'lazy-image' image:tab.image %}
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+      </s-tabs>
     </div>
 {% endif %}
 

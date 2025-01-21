@@ -3,7 +3,8 @@
 {% endcapture %}
 
 {% if product.metafields.seed.pdp_filters != blank %}
-    <div class="product__filters {{ margins_paddings }} mx-md tabletl:mx-xl">
+    <div class="product__filters {{ margins_paddings }} {{ section.settings.color }} px-md tabletl:px-xl">
+      <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         <h3 class="font-900 mb-md text-center tabletl:pb-xs tabletl:mb-xxl">Meet our filters</h3>
         <ul class="product__filters-container flex flex-col gap-md tabletl:grid tabletl:grid-cols-3 tabletl:gap-lg">
           {% for filter in product.metafields.seed.pdp_filters.value %}
@@ -16,6 +17,7 @@
               </li>
           {% endfor %}
         </ul>
+      </div>
     </div>
 {% endif %}
 
@@ -354,6 +356,42 @@
       "label": "Text Content - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "100%"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-gray-athans text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-gray-athans text-blue"
     }
   ],
   "enabled_on": {

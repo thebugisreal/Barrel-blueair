@@ -2,17 +2,20 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
+<div class="product__video {{ margins_paddings }} {{ section.settings.color }}">
+  <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    {% if product.metafields.seed.pdp_video != blank %}
+      <div class="product__video-container block relative overflow-hidden">
+        {{ product.metafields.seed.pdp_video.value | video_tag: class: 'block w-full h-full object-cover object-center', image_size: '1280x', autoplay: section.settings.enable_autoplay, loop: true, muted: true, controls: true }}
+      </div>
 
-{% if product.metafields.seed.pdp_video != blank %}
-  <div class="product__video {{ margins_paddings }} block relative overflow-hidden">
-    {{ product.metafields.seed.pdp_video.value | video_tag: class: 'block w-full h-full object-cover object-center', image_size: '1280x', autoplay: section.settings.enable_autoplay, loop: true, muted: true, controls: true }}
+    {% elsif product.metafields.seed.pdp_video_embed != blank %}
+      <div class="product__video-container">
+          {{  product.metafields.seed.pdp_video_embed.value }}
+      </div>
+    {% endif %}
   </div>
-
-{% elsif product.metafields.seed.pdp_video_embed != blank %}
-  <div class="product__video {{ margins_paddings }}">
-      {{  product.metafields.seed.pdp_video_embed.value }}
-  </div>
-{% endif %}
+</div>
 
 {% schema %}
 {
@@ -346,9 +349,45 @@
     {
       "type": "text",
       "id": "max_width_desktop",
-      "label": "Text Content - Max Width - Desktop",
+      "label": "Section - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "100%"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-gray-athans text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-gray-athans text-blue"
     },
     {
       "type": "header",

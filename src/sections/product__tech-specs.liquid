@@ -1,22 +1,24 @@
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
-<div class="product__tech-specs flex flex-col gap-lg px-lg {{ margins_paddings }} {{ section.settings.color }} tabletl:px-xl tabletl:flex-row">
-    <div class="image-container order-last tabletl:order-first tabletl:w-1/2">
-      <div class="product__text-spec-360 relative">
-        {% if product.metafields.seed.pdp_tech_spec_360_images != blank %}
-          {% render 'product-viewer' %}
-        {% else %}
-          {% render 'lazy-image' image:product.featured_image %}
-        {% endif %}
-      </div>
-    </div>
-    <div class="text-container">
-        <h1 class="h3 font-900 mb-md tabletl:mb-lg">Technical Specifications</h1>
-        <div>
-          {% render 'product__spec' %}
+<div class="product__tech-specs {{ margins_paddings }} {{ section.settings.color }} ">
+  <div class="product__tech-specs-container flex flex-col gap-lg px-lg tabletl:px-xl tabletl:flex-row tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+      <div class="image-container order-last tabletl:order-first tabletl:w-1/2">
+        <div class="product__text-spec-360 relative">
+          {% if product.metafields.seed.pdp_tech_spec_360_images != blank %}
+            {% render 'product-viewer' %}
+          {% else %}
+            {% render 'lazy-image' image:product.featured_image %}
+          {% endif %}
         </div>
-    </div>
+      </div>
+      <div class="text-container">
+          <h1 class="h3 font-900 mb-md tabletl:mb-lg">Technical Specifications</h1>
+          <div>
+            {% render 'product__spec' %}
+          </div>
+      </div>
+  </div>
 </div>
 
 {% schema %}
@@ -347,6 +349,13 @@
         }
       ],
       "default": "desktop:pb-xxl"
+    },
+    {
+      "type": "text",
+      "id": "max_width_desktop",
+      "label": "Section - Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "100%"
     },
     {
       "type": "header",
