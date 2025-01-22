@@ -110,6 +110,7 @@
                 {% if filter_object.product != blank %}
                   {% assign filter_product = filter_object.product.value %}
                   {% assign filter_product_variant = filter_product.variants[0] %}
+                  {% assign fitler_quantity = filter_object.quantity | default: 1 | plus: 0 %}
                   {% if filter_product_variant.selling_plan_allocations.size > 0 %}
                     {% assign serial_numbers = '' %}
                     {% for number in filter_product.metafields.seed.product_serial_number.value %}
@@ -132,9 +133,9 @@
                         <div class="subscription-quiz-filter__title s3 leading-[22px]">{{ filter_object.name }}</div>
                         <div class="subscription-quiz-filter__price p1 mt-md">
                           {% if filter_product_variant.selling_plan_allocations[0].compare_at_price > filter_product_variant.selling_plan_allocations[0].price %}
-                            <s class="font-400 mr-xs">{{ filter_product_variant.selling_plan_allocations[0].compare_at_price | money }}</s>
+                            <s class="font-400 mr-xs">{{ filter_product_variant.selling_plan_allocations[0].compare_at_price | times: fitler_quantity | money }}</s>
                           {% endif %}
-                          <span>{{ filter_product_variant.selling_plan_allocations[0].price | money }}</span>
+                          <span>{{ filter_product_variant.selling_plan_allocations[0].price | times: fitler_quantity | money }}</span>
                         </div>
                         <div class="mt-xxxs">
                           Filter Subscription Savings
