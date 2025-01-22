@@ -3,30 +3,53 @@ class SubscriptionQuiz extends HTMLElement {
     super();
 
     this._selectors = {
+      searchNav: '[js-quiz-search-nav]',
+      familyNav: '[js-quiz-family-nav]',
       navBtn: '[js-quiz-nav-btn]',
       currentStepLabel: '[js-quiz-current-step]',
+      tab: '[js-tab]',
       stepSection: '[js-quiz-step]',
       selectionGroup: '[js-quiz-selection-group]',
       selection: '[js-quiz-selection]',
       frequencySelection: '[js-quiz-subscription-frequency]',
       frequencyForm: '[js-quiz-subscription-frequncy-form]',
       frequencyFormSubmitBtn: '[js-quiz-subscription-frequncy-form-submit-btn]',
-      error: '[js-quiz-subscription-submit-error]'
+      error: '[js-quiz-subscription-submit-error]',
+      searchForm: '[js-quiz-search-form]',
+      searchClear: '[js-quiz-search-clear]',
+      searchNoResults: '[js-quiz-search-no-results]',
+      searchResults: '[js-quiz-search-results]',
+      filterSelection: '[js-quiz-filter-selection]'
     }
   }
 
   connectedCallback() {
+    this.tabs = this.querySelectorAll(this._selectors.tab);
     this.navBtns = this.querySelectorAll(this._selectors.navBtn);
-    this.navPrevBtn = this.querySelector(`${this._selectors.navBtn}[data-type="prev"]`);
-    this.navNextBtn = this.querySelector(`${this._selectors.navBtn}[data-type="next"]`);
-    this.currentStepLabel = this.querySelector(this._selectors.currentStepLabel);
+
+    this.searchNav = this.querySelector(this._selectors.searchNav);
+    this.searchNavPrevBtn = this.searchNav.querySelector(`${this._selectors.navBtn}[data-type="prev"]`);
+    this.searchNavNextBtn = this.searchNav.querySelector(`${this._selectors.navBtn}[data-type="next"]`);
+    this.searchCurrentStepLabel = this.searchNav.querySelector(this._selectors.currentStepLabel);
+
+    this.familyNav = this.querySelector(this._selectors.familyNav);
+    this.familyNavPrevBtn = this.familyNav.querySelector(`${this._selectors.navBtn}[data-type="prev"]`);
+    this.familyNavNextBtn = this.familyNav.querySelector(`${this._selectors.navBtn}[data-type="next"]`);
+    this.familyCurrentStepLabel = this.familyNav.querySelector(this._selectors.currentStepLabel);
+
     this.selections = this.querySelectorAll(this._selectors.selection);
     this.frequencySelections = this.querySelectorAll(this._selectors.frequencySelection);
     this.frequencyForm = this.querySelector(this._selectors.frequencyForm);
     this.frequencyFormSubmitBtn = this.frequencyForm.querySelector(this._selectors.frequencyFormSubmitBtn);
     this.error = this.querySelector(this._selectors.error);
+    this.searchForm = this.querySelector(this._selectors.searchForm);
+    this.searchInput = this.searchForm.querySelector('input[type="text"]');
+    this.searchClear = this.searchForm.querySelector(this._selectors.searchClear);
+    this.searchNoResults = this.querySelector(this._selectors.searchNoResults);
+    this.searchResults = this.querySelector(this._selectors.searchResults);
+    this.filterSelections = this.querySelectorAll(this._selectors.filterSelection);
 
-    this.mode = this.dataset.mode;
+    this.mode = 'search';
     this.currentStep = 1;
     this.currentStepSection = this.querySelector(`${this._selectors.stepSection}[data-step="${this.currentStep}"]`);
     
@@ -34,9 +57,17 @@ class SubscriptionQuiz extends HTMLElement {
   }
 
   _setListeners() {
+    this.tabs.forEach((tab) => {
+      tab.addEventListener('click', this._changeMode);
+    });
     this.navBtns.forEach((navBtn) => {
       navBtn.addEventListener('click', this._navBtnOnClick);
     });
+    this.searchForm.addEventListener('submit', this._searchSerialNumber);
+    this.searchInput.addEventListener('input', theme.utils.debounce(() => {
+      this._toggleSearchClearBtn();
+    }, 300).bind(this));
+    this.searchClear.addEventListener('click', this._clearSearchInput);
     this.selections.forEach((selection) => {
       selection.addEventListener('click', this._selectionOnClick);
     });
@@ -44,6 +75,99 @@ class SubscriptionQuiz extends HTMLElement {
       selection.addEventListener('click', this._frequencySelectionOnClick);
     });
     this.frequencyForm.addEventListener('submit', this._addToCart);
+  }
+
+  _changeMode = (evt) => {
+    const newMode = evt.currentTarget.dataset.mode;
+
+    if (this.mode == newMode) {
+      return;
+    }
+
+    this.mode = newMode;
+
+    const prevSelected = this.querySelectorAll(`${this._selectors.selection}[data-selected="true"]`);
+    prevSelected.forEach((selection) => {
+      selection.dataset.selected = 'false';
+    });
+
+    const prevActiveSelectionGroups = this.querySelectorAll(`${this._selectors.selectionGroup}[data-active="true"]`);
+    prevActiveSelectionGroups.forEach((selectionGroup) => {
+      selectionGroup.dataset.active = 'false';
+    });
+
+    const prevSelectedFrequency = this.querySelectorAll(`${this._selectors.frequencySelection}[data-selected="true"]`);
+    prevSelectedFrequency.forEach((selection) => {
+      selection.dataset.selected = 'false';
+    });
+
+    if (this.mode == 'search') {
+      this.searchNav.classList.remove('hidden');
+      this.familyNav.classList.add('hidden');
+      this.searchResults.classList.remove('hidden');
+    } else {
+      this.searchNav.classList.add('hidden');
+      this.familyNav.classList.remove('hidden');
+      this.familyNavPrevBtn.setAttribute('disabled', '');
+      this.familyNavNextBtn.setAttribute('disabled', '');
+      this.searchResults.classList.add('hidden');
+    }
+  }
+
+  _clearSearchInput = (evt) => {
+    evt.preventDefault();
+    this.searchInput.value = '';
+    this.searchNoResults.classList.add('hidden');
+    this.searchClear.classList.add('hidden');
+  }
+
+  _toggleSearchClearBtn = () => {
+    const search = this.searchInput.value.trim();
+    if (!search.length) {
+      this.searchClear.classList.add('hidden');
+    } else {
+      this.searchClear.classList.remove('hidden');
+    }
+
+    this.searchNoResults.classList.add('hidden');
+  }
+
+  _searchSerialNumber = (evt) => {
+    evt.preventDefault();
+
+    const formData = new FormData(this.searchForm);
+    const serialSearchNumber = formData.get('serialNumber').toLowerCase().trim();
+
+    let filterResults = [];
+    let fitlerResultsMarkup = '';
+    this.filterSelections.forEach((filterSelection) => {
+      const serialIds = filterSelection.dataset.serialNumbers.split(',');
+      const filterId = filterSelection.dataset.groupTarget;
+
+      if (serialIds.includes(serialSearchNumber) && !filterResults.includes(filterId)) {
+        filterResults.push(filterId);
+        fitlerResultsMarkup = fitlerResultsMarkup + filterSelection.outerHTML;
+      }
+    });
+
+    if (filterResults.length > 0) {
+      this.searchNoResults.classList.add('hidden');
+      this.searchResults.innerHTML = '';
+      this.searchResultSelections?.forEach((searchResultSelection) => {
+        searchResultSelection.removeEventListener('click', this._selectionOnClick);
+      });
+
+      this.searchResults.innerHTML = fitlerResultsMarkup;
+      this.searchResultSelections = this.searchResults.querySelectorAll(this._selectors.filterSelection);
+      this.searchResultSelections.forEach((searchResultSelection) => {
+        searchResultSelection.addEventListener('click', this._selectionOnClick);
+      });
+
+      this._changeSearchModeQuizStep('next');
+    } else {
+      this.searchNoResults.textContent = `No Results Found for "${serialSearchNumber}"`;
+      this.searchNoResults.classList.remove('hidden');
+    }
   }
 
   _handleErrorMessage(errorMessage = false) {
@@ -62,6 +186,7 @@ class SubscriptionQuiz extends HTMLElement {
 
     const selectedFrequency = this.currentStepSection.querySelector(`${this._selectors.selectionGroup}[data-active="true"] ${this._selectors.frequencySelection}[data-selected="true"]`);
     if (!selectedFrequency) {
+      this._handleErrorMessage('Select a frequency.');
       return;
     }
 
@@ -71,7 +196,6 @@ class SubscriptionQuiz extends HTMLElement {
     const sellingPlanId = selectedFrequency.dataset.sellingPlanId;
     const quantity = parseInt(selectedFrequency.dataset.quantity);
     
-    console.log(variantId, sellingPlanId, quantity)
     let data = {
       items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId }]
     };
@@ -104,6 +228,8 @@ class SubscriptionQuiz extends HTMLElement {
   _frequencySelectionOnClick = (evt) => {
     evt.preventDefault();
 
+    this._handleErrorMessage();
+
     const currentTarget = evt.currentTarget;
     if (currentTarget.dataset.selected == 'true') {
       return;
@@ -122,6 +248,12 @@ class SubscriptionQuiz extends HTMLElement {
 
     const currentTarget = evt.currentTarget;
     if (currentTarget.dataset.selected == 'true') {
+      if (this.mode == 'search') {
+        this._changeSearchModeQuizStep('next');
+      } else {
+        this._changeFamilyModeQuizStep('next');
+      }
+
       return;
     }
 
@@ -134,8 +266,12 @@ class SubscriptionQuiz extends HTMLElement {
 
     currentTarget.dataset.selected = 'true';
 
-    this._changeQuizStep('next');
-
+    if (this.mode == 'search') {
+      this._changeSearchModeQuizStep('next');
+    } else {
+      this._changeFamilyModeQuizStep('next');
+    }
+    
     const prevActiveSelectionGroups = this.currentStepSection.querySelectorAll(`${this._selectors.selectionGroup}[data-active="true"]`);
     prevActiveSelectionGroups.forEach((selectionGroup) => {
       selectionGroup.dataset.active = 'false';
@@ -153,6 +289,8 @@ class SubscriptionQuiz extends HTMLElement {
           this.frequencyFormSubmitBtn.removeAttribute('disabled');
           this.frequencyFormSubmitBtn.querySelector('.btn__text').textContent = 'Go to Checkout';
         }
+
+        this._handleErrorMessage();
       }
     }
 
@@ -163,10 +301,58 @@ class SubscriptionQuiz extends HTMLElement {
     evt.preventDefault();
 
     const type = evt.currentTarget.dataset.type;
-    this._changeQuizStep(type);
+
+    if (this.mode == 'search') {
+      this._changeSearchModeQuizStep(type);
+    } else {
+      this._changeFamilyModeQuizStep(type);
+    }
   }
 
-  _changeQuizStep = (type) => {
+  _changeSearchModeQuizStep = (type) => {
+    let stepTarget;
+    if (type == 'next') {
+      if (this.currentStep == 1) {
+        stepTarget = this.currentStep + 2;
+      } else {
+        stepTarget = this.currentStep + 1;
+      }
+    } else {
+      if (this.currentStep == 3) {
+        stepTarget = this.currentStep - 2;
+      } else {
+        stepTarget = this.currentStep - 1;
+      }
+    }
+
+    // hide old current section
+    this.currentStepSection.dataset.active = 'false';
+
+    // set new current section
+    this.currentStepSection = this.querySelector(`${this._selectors.stepSection}[data-step="${stepTarget}"]`);
+    this.currentStepSection.dataset.active = 'true';
+
+    this.searchCurrentStepLabel.textContent = `${stepTarget != 1 ? stepTarget - 1 : stepTarget}`;
+    this.currentStep = stepTarget;
+
+    if (stepTarget == 4) {
+      this.searchNavNextBtn.setAttribute('disabled', '');
+    } else if (stepTarget == 1) {
+      this.searchNavPrevBtn.setAttribute('disabled', '');
+      this.searchNavNextBtn.setAttribute('disabled', '');
+    } else {
+      const currentStepSelectedSelection = this.searchResults.querySelector(`${this._selectors.filterSelection}[data-selected="true"]`);
+      if (currentStepSelectedSelection) {
+        this.searchNavNextBtn.removeAttribute('disabled');
+      } else {
+        this.searchNavNextBtn.setAttribute('disabled', '');
+      }
+
+      this.searchNavPrevBtn.removeAttribute('disabled');
+    }
+  }
+
+  _changeFamilyModeQuizStep = (type) => {
     let stepTarget;
     if (type == 'next') {
       stepTarget = this.currentStep + 1;
@@ -181,23 +367,23 @@ class SubscriptionQuiz extends HTMLElement {
     this.currentStepSection = this.querySelector(`${this._selectors.stepSection}[data-step="${stepTarget}"]`);
     this.currentStepSection.dataset.active = 'true';
 
-    this.currentStepLabel.textContent = stepTarget;
+    this.familyCurrentStepLabel.textContent = stepTarget;
     this.currentStep = stepTarget;
 
     if (stepTarget == 4) {
-      this.navNextBtn.setAttribute('disabled', '');
+      this.familyNavNextBtn.setAttribute('disabled', '');
     } else {
       const currentStepSelectedSelection = this.currentStepSection.querySelector(`${this._selectors.selection}[data-selected="true"]`);
       if (currentStepSelectedSelection) {
-        this.navNextBtn.removeAttribute('disabled');
+        this.familyNavNextBtn.removeAttribute('disabled');
       } else {
-        this.navNextBtn.setAttribute('disabled', '');
+        this.familyNavNextBtn.setAttribute('disabled', '');
       }
 
       if (stepTarget == 1) {
-        this.navPrevBtn.setAttribute('disabled', '');
+        this.familyNavPrevBtn.setAttribute('disabled', '');
       } else {
-        this.navPrevBtn.removeAttribute('disabled');
+        this.familyNavPrevBtn.removeAttribute('disabled');
       }
     }
   }

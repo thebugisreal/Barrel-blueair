@@ -1,5 +1,16 @@
-<subscription-quiz class="section__subscription-quiz block p-md desktop:px-xl desktop:pt-sm" data-mode="search">
-  <div class="subscription-quiz__nav flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg">
+<subscription-quiz class="section__subscription-quiz block p-md desktop:px-xl desktop:pt-sm">
+  <div class="subscription-quiz__nav subscription-quiz__nav--search flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg" js-quiz-search-nav>
+    <button class="subscription-quiz-nav__btn w-[32px] p-xxxs disabled:opacity-30" disabled data-type="prev" js-quiz-nav-btn>
+      {% render 'icon-arrow-left' %}
+    </button>
+    <div class="subscription-quiz__current-step p3 pt-[1px]">
+      <span>Step 0</span><span js-quiz-current-step>1</span><span> / 03</span>
+    </div>
+    <button class="subscription-quiz-nav__btn w-[32px] p-xxxs disabled:opacity-30" disabled data-type="next" js-quiz-nav-btn>
+      {% render 'icon-arrow-right' %}
+    </button>
+  </div>
+  <div class="subscription-quiz__nav subscription-quiz__nav--family flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg hidden" js-quiz-family-nav>
     <button class="subscription-quiz-nav__btn w-[32px] p-xxxs disabled:opacity-30" disabled data-type="prev" js-quiz-nav-btn>
       {% render 'icon-arrow-left' %}
     </button>
@@ -19,34 +30,35 @@
       {% endif %}
       <s-tabs class="subscription-quiz__tabs block mt-md desktop:mt-lg">
         <div class="tab__triggers flex justify-center items-center rounded-[100px] bg-blue-light p-xxs max-w-max mx-auto" role="tablist" aria-orientation="horizontal" js-tablist>
-          <button id="subscription-quiz-tab1-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab1-content-panel" role="tab" aria-selected="true" js-tab>
+          <button id="subscription-quiz-tab1-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab1-content-panel" role="tab" aria-selected="true" data-mode="search" js-tab>
             By Serial Number
           </button>
-          <button id="subscription-quiz-tab2-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab2-content-panel" role="tab" aria-selected="false" js-tab>
+          <button id="subscription-quiz-tab2-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab2-content-panel" role="tab" aria-selected="false" data-mode="family" js-tab>
             By Family
           </button>
         </div>
         <div id="subscription-quiz-tab1-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab1-tab" aria-hidden="false">
-          <form class="subscription-quiz__search-form">
+          <form class="subscription-quiz__search-form" js-quiz-search-form>
             <label for="SubscriptionQuizSearch" class="block p1 text-center mb-sm">Enter your model number and we'll find compatible replacement filters</label>
             <div class="flex items-center gap-sm">
               <div class="flex items-center gap-sm rounded-[24px] border border-gray bg-blue-light overflow-hidden pl-xs pr-lg relative flex-1">
                 <span class="w-[36px]">{% render 'icon-search' %}</span>
-                <input type="text" id="SubscriptionQuizSearch" class="flex-1 py-xs bg-transparent" required />
-                <button class="w-[20px] absolute right-[12px] top-1/2 -translate-y-1/2 hidden" js-quiz-search-clear>{% render 'icon-close' %}</button>
+                <input type="text" name="serialNumber" id="SubscriptionQuizSearch" class="flex-1 py-xs bg-transparent" required autocomplete="off" />
+                <button type="button" class="w-[20px] absolute right-[12px] top-1/2 -translate-y-1/2 hidden" js-quiz-search-clear>{% render 'icon-close' %}</button>
               </div>
-              <button type="submit" class="w-[32px] rounded-full overflow-hidden border border-blue">
+              <button type="submit" class="subscription-quiz__search-submit w-[32px] rounded-full overflow-hidden border border-blue">
                 {% render 'icon-arrow-right' %}
               </button>
             </div>
           </form>
+          <div class="subscription-quiz__search-no-results text-center mt-md" js-quiz-search-no-results></div>
         </div>
         <div id="subscription-quiz-tab2-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab2-tab" aria-hidden="true">
           <div class="subscription-quiz__selection-group subscription-quiz__selection-group--family grid grid-cols-3 gap-xs desktop:grid-col-4 desktop:gap-md">
             {% for block in section.blocks %}
               <button class="subscription-quiz__selection subscription-quiz__selection--family border border-gray flex flex-col" data-selected="false" data-group-target="{{ block.settings.title | handleize }}" js-quiz-selection>
                 {% if block.settings.image != blank %}
-                  <div class="subscription-quiz-selection__image">
+                  <div class="subscription-quiz-selection__image w-full">
                     {% render 'lazy-image' image: block.settings.image %}
                   </div>
                 {% endif %}
@@ -72,7 +84,7 @@
           <div class="subscription-quiz__selection-group subscription-quiz__selection-group--series py-48 desktop:py-xxl grid grid-cols-3 gap-xs desktop:grid-col-4 desktop:gap-md" data-active="false" data-group-id="{{ block.settings.title | handleize }}" js-quiz-selection-group>
             {% for series in block.settings.series %}
               <button class="subscription-quiz__selection subscription-quiz__selection--series border border-gray flex flex-col" data-selected="false" data-group-target="{{ series.system.id }}" js-quiz-selection>
-                <div class="subscription-quiz-selection__image">
+                <div class="subscription-quiz-selection__image w-full">
                   {% render 'lazy-image' image: series.image %}
                 </div>
                 <div class="subscription-quiz-selection__title w-full font-500 leading-[18px] desktop:text-16 text-center p-xs desktop:pb-md flex-1">
@@ -99,12 +111,24 @@
                   {% assign filter_product = filter_object.product.value %}
                   {% assign filter_product_variant = filter_product.variants[0] %}
                   {% if filter_product_variant.selling_plan_allocations.size > 0 %}
-                    <button class="subscription-quiz__selection subscription-quiz__selection--filter border border-gray" data-selected="false" data-group-target="{{ filter_object.system.id }}" js-quiz-selection>
-                      <div class="subscription-quiz-filter__image">
+                    {% assign serial_numbers = '' %}
+                    {% for number in filter_product.metafields.seed.product_serial_number.value %}
+                      {% assign serial_numbers = serial_numbers | append: number %}
+                      {% unless forloop.last %}
+                        {% assign serial_numbers = serial_numbers | append: ',' %}
+                      {% endunless %}
+                    {% endfor %}
+                    <button class="subscription-quiz__selection subscription-quiz__selection--filter flex flex-col border border-gray" 
+                      data-selected="false" 
+                      data-group-target="{{ filter_object.system.id }}" 
+                      data-serial-numbers="{{ serial_numbers }}"
+                      js-quiz-selection 
+                      js-quiz-filter-selection>
+                      <div class="subscription-quiz-filter__image w-full">
                         {% assign filter_image = filter_object.image | default: filter_product.featured_image %}
                         {% render 'lazy-image' image: filter_image %}
                       </div>
-                      <div class="subscription-quiz-filter__info text-left p-sm desktop:p-md">
+                      <div class="subscription-quiz-filter__info w-full flex-1 text-left p-sm desktop:p-md">
                         <div class="subscription-quiz-filter__title s3 leading-[22px]">{{ filter_object.name }}</div>
                         <div class="subscription-quiz-filter__price p1 mt-md">
                           {% if filter_product_variant.selling_plan_allocations[0].compare_at_price > filter_product_variant.selling_plan_allocations[0].price %}
@@ -124,6 +148,7 @@
           {% endif %}
         {% endfor %}
       {% endfor %}
+      <div class="subscription-quiz__search-results py-48 desktop:py-xxl grid grid-cols-1 gap-xs desktop:grid-cols-3 desktop:gap-md" js-quiz-search-results></div>
     </div>
     <div class="subscription-quiz__step" data-step="4" data-active="false" js-quiz-step>
       {% if section.settings.step_4_heading != blank %}
@@ -164,7 +189,7 @@
                           {% endif %}
                         </span>
                       </div>
-                      <div class="subscription-quiz-frequency__description w-full p-md text-left">
+                      <div class="subscription-quiz-frequency__description w-full p-md text-left flex-1">
                         {% assign description_handle = forloop.index | prepend: 'frequency_option_' | append: '_description' %}
                         {% if filter_object[description_handle] != blank %}
                           {% assign description_list = filter_object[description_handle] %}
@@ -209,7 +234,6 @@
       </form>
     </div>
   </div>
-  
 </subscription-quiz>
 
 {% schema %}

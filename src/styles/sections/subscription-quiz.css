@@ -13,6 +13,17 @@
   @apply hidden;
 }
 
+.subscription-quiz__search-submit:focus,
+.subscription-quiz__search-submit:focus-visible {
+  @apply bg-blue
+  text-white;
+}
+
+.subscription-quiz__search-submit:focus:not(:focus-visible) {
+  @apply bg-transparent
+  text-blue;
+}
+
 .subscription-quiz__selection-group[data-active="false"] {
   @apply hidden;
 }
@@ -74,6 +85,11 @@
 }
 
 @media screen(desktop){
+  .subscription-quiz__search-submit:hover {
+    @apply bg-blue
+    text-white;
+  }
+
   .subscription-quiz__selection:hover {
     @apply border-blue;
   }
