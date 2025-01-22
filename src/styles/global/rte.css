@@ -6,6 +6,10 @@
     @apply underline
 }
 
+.rte h3 {
+  @apply mb-xxxs
+}
+
 .rte a:focus,
 .rte .link:focus {
   @apply underline

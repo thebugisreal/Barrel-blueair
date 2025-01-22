@@ -6,7 +6,7 @@
 {% else %}
   <div class="section__hero {{ margins_paddings }} {{ section.settings.color }}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
 {% endif %}
-  <div class="hero__wrapper relative">
+  <div class="hero__wrapper relative desktop:mx-auto desktop:max-w-[var(--section-max-width-desktop)]"  style="--section-max-width-desktop: {{ section.settings.section_max_width_desktop}}">
     {% if section.settings.image_mobile != blank %}
       <div class="hero__image">
         {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover'%}
@@ -767,6 +767,12 @@
       "type": "text",
       "id": "content_max_height_desktop",
       "label": "Image Background Max Height - Desktop",
+      "info": "Make sure to include units"
+    },
+    {
+      "type": "text",
+      "id": "section_max_width_desktop",
+      "label": "Section Max Width - Desktop",
       "info": "Make sure to include units"
     },
     {

@@ -3,7 +3,7 @@
 {% endcapture %}
 
 <div class="section__page-hero {{ margins_paddings }} px-md {{ section.settings.color }} tabletl:px-0">
-  <div class="tabletl:flex tabletl:gap-xxxl tabletl:justify-center tabletl:mx-auto tabletl:max-w-[var(--max-width-section-desktop)]" style="--max-width-section-desktop: {{ section.settings.max_width_section_desktop }};">
+  <div class="tabletl:flex tabletl:gap-xxxl tabletl:justify-between tabletl:mx-auto tabletl:max-w-[var(--max-width-section-desktop)]" style="--max-width-section-desktop: {{ section.settings.max_width_section_desktop }};">
     <div class="hero__content-container flex-1 tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         {% if section.settings.title != blank %}
             <h1 class="hero__title {{ section.settings.title_style }} mb-md">{{ section.settings.title }}</h1>
