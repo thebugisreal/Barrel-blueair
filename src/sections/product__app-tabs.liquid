@@ -4,6 +4,7 @@
 
 {% if product.metafields.seed.pdp_tabs != blank %}
     <div class="product__app-tabs product__tabs {{ margins_paddings }} text-left px-md {{ section.settings.color }} tabletl:px-xl">
+      <div class="tabletl:max-w-[var(--section-max-width-desktop)] tabletl:mx-auto" style="--section-max-width-desktop: {{ section.settings.section_max_width_desktop }};">
         <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }}">
             <div class="tab__triggers flex flex-col justify-center tabletl:flex-1 tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto" role="tablist" aria-orientation="horizontal" js-tablist style="--max-w-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};">
               {% if product.metafields.seed.pdp_tabs_title != blank %}
@@ -32,6 +33,7 @@
                 {% endfor %}
             </div>
         </s-tabs>
+      </div>
     </div>
 {% endif %}
 
@@ -443,6 +445,13 @@
       "type": "text",
       "id": "max_width_desktop",
       "label": "Text Content Max Width - Desktop",
+      "info": "Make sure to include units",
+      "default": "109ch"
+    },
+    {
+      "type": "text",
+      "id": "section_max_width_desktop",
+      "label": "Section Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "109ch"
     }

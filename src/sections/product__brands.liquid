@@ -3,17 +3,17 @@
 {% endcapture %}
 
 {% if product.metafields.seed.pdp_brands != blank %}
-    <div class="product__brands {{ margins_paddings }} px-md tabletl:px-xl">
-        <h3 class="font-900 text-center mb-lg pb-xs tabletl:mb-xxl tabletl:pb-0">Independently proven performance</h3>
-        <ul class="product__brands-container grid grid-cols-2 gap-x-md gap-y-lg tabletl:flex tabletl:justify-center tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
-          {% for image in product.metafields.seed.pdp_brands.value %}
-              <li class="product__brands text-center">
-                <div class="image-container h-[110px] tabletl:w-[200px] tabletl:h-[100px]">
-                    {% render 'lazy-image' image:image, picture_classes:'object-scale-down h-full w-full', img_classes: 'object-scale-down h-full w-full'%}
-                </div>
-              </li>
-          {% endfor %}
-        </ul>
+    <div class="product__brands {{ margins_paddings }} {{ section.settings.color }} px-md tabletl:px-xl">
+      <h3 class="font-900 text-center mb-lg pb-xs tabletl:mb-xxl tabletl:pb-0">Independently proven performance</h3>
+      <ul class="product__brands-container grid grid-cols-2 gap-x-md gap-y-lg tabletl:flex tabletl:justify-between tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
+        {% for image in product.metafields.seed.pdp_brands.value %}
+            <li class="product__brands text-center">
+              <div class="image-container h-[110px] tabletl:h-[100px]">
+                  {% render 'lazy-image' image:image, picture_classes:'object-scale-down h-full w-full', img_classes: 'object-scale-down h-full w-full'%}
+              </div>
+            </li>
+        {% endfor %}
+      </ul>
     </div>
 {% endif %}
 
@@ -352,6 +352,42 @@
       "label": "Text Content - Max Width - Desktop",
       "info": "Make sure to include units",
       "default": "100%"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-gray-athans text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "text-blue"
     }
   ],
   "enabled_on": {

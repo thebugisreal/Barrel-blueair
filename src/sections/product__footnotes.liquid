@@ -3,8 +3,10 @@
 {% endcapture %}
 
 {% if product.metafields.seed.footnotes != blank %}
-    <div class="product__footnotes rte {{ margins_paddings }} {{ section.settings.color }} px-md tabletl:px-xl tabletl:max-w-[var(--max-width-desktop)]"  style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    <div class="product__footnotes rte {{ margins_paddings }} {{ section.settings.color }} px-md tabletl:px-xl">
+      <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto"  style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
         {{ product.metafields.seed.footnotes |  metafield_tag }}
+      </div>
     </div> 
 {% endif %}
 
