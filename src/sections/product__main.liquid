@@ -243,27 +243,30 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <button 
-                  class="product__atc btn btn--blue-rounded relative {{ spacing }}"
-                  type="submit" 
-                  {% unless current_variant.available %} disabled {% endunless %}
-                  js-add-to-cart>
-                  <div class="btn__text">
-                    <span js-price>
-                      {{ current_variant.price | money }}
-                    </span>
-                    <span>&nbsp;-&nbsp;</span>
-                    <span js-atc-text>
-                      {% if current_variant.available %}
-                        Add to Cart
-                      {% else %}
-                        Out of Stock
-                      {% endif %}
-                    </span>
-                  </div>
-                  <div class="btn__arrow">{% render 'icon-arrow-right' %}</div>
-                  <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
-                </button>
+                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:flex-row tabletl:gap-lg">          
+                  <button 
+                    class="product__atc btn btn--blue-rounded relative mx-auto"
+                    type="submit" 
+                    {% unless current_variant.available %} disabled {% endunless %}
+                    js-add-to-cart>
+                    <div class="btn__text">
+                      <span js-price>
+                        {{ current_variant.price | money }}
+                      </span>
+                      <span>&nbsp;-&nbsp;</span>
+                      <span js-atc-text>
+                        {% if current_variant.available %}
+                          Add to Cart
+                        {% else %}
+                          Out of Stock
+                        {% endif %}
+                      </span>
+                    </div>
+                    <div class="btn__arrow">{% render 'icon-arrow-right' %}</div>
+                    <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
+                  </button>
+                  <p class="affirm-as-low-as mx-auto tabletl:order-first" data-page-type="product" data-amount="{{current_variant.price}}"></p>
+                </div>
                 <p class="hidden p2" js-error-message></p>
               {% when 'experience' %}
                 {% capture spacing %}
