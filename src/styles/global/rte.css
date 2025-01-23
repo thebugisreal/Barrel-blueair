@@ -1,9 +1,13 @@
 .rte p {
-    @apply my-md
+    @apply mb-md
 }
 
 .rte a {
     @apply underline
+}
+
+.rte h3 {
+  @apply mb-xxxs
 }
 
 .rte a:focus,

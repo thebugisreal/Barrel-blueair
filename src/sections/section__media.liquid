@@ -3,7 +3,7 @@
 {% endcapture %}
 
 <div class="section__media {{ margins_paddings }} {{ section.settings.color }} {{ section.settings.gutter_mobile }} {{ section.settings.gutter_desktop }}">
-  <div class="desktop:mx-auto desktop:max-w-[var(--section-max-width-desktop)]" style="--section-max-width-desktop: {{ section.settings.section_max_width_desktop}}">
+  <div class="tabletl:mx-auto tabletl:max-w-[var(--section-max-width-desktop)]" style="--section-max-width-desktop: {{ section.settings.section_max_width_desktop}}">
     {% if section.settings.video != blank %}
     <div class="video__upload  block relative overflow-hidden">
         {{ section.settings.video | video_tag: class: 'block w-full h-full object-cover object-center', image_size: '1280x', autoplay: section.settings.enable_autoplay, loop: true, muted: true, controls: true }}
