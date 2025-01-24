@@ -63,10 +63,8 @@ class SubscriptionQuiz extends HTMLElement {
     this.navBtns.forEach((navBtn) => {
       navBtn.addEventListener('click', this._navBtnOnClick);
     });
-    this.searchForm.addEventListener('submit', this._searchSerialNumber);
-    this.searchInput.addEventListener('input', theme.utils.debounce(() => {
-      this._toggleSearchClearBtn();
-    }, 300).bind(this));
+    this.searchForm.addEventListener('submit', this._searchModelNumber);
+    this.searchInput.addEventListener('input', this._toggleSearchClearBtn);
     this.searchClear.addEventListener('click', this._clearSearchInput);
     this.selections.forEach((selection) => {
       selection.addEventListener('click', this._selectionOnClick);
@@ -132,19 +130,19 @@ class SubscriptionQuiz extends HTMLElement {
     this.searchNoResults.classList.add('hidden');
   }
 
-  _searchSerialNumber = (evt) => {
+  _searchModelNumber = (evt) => {
     evt.preventDefault();
 
     const formData = new FormData(this.searchForm);
-    const serialSearchNumber = formData.get('serialNumber').toLowerCase().trim();
+    const modelSearchNumber = formData.get('modelNumber').toLowerCase().trim();
 
     let filterResults = [];
     let fitlerResultsMarkup = '';
     this.filterSelections.forEach((filterSelection) => {
-      const serialIds = filterSelection.dataset.serialNumbers.split(',');
+      const modelNumbers = filterSelection.dataset.modelNumbers.toLowerCase().split(',');
       const filterId = filterSelection.dataset.groupTarget;
 
-      if (serialIds.includes(serialSearchNumber) && !filterResults.includes(filterId)) {
+      if (modelNumbers.includes(modelSearchNumber) && !filterResults.includes(filterId)) {
         filterResults.push(filterId);
         fitlerResultsMarkup = fitlerResultsMarkup + filterSelection.outerHTML;
       }
@@ -165,7 +163,7 @@ class SubscriptionQuiz extends HTMLElement {
 
       this._changeSearchModeQuizStep('next');
     } else {
-      this.searchNoResults.textContent = `No Results Found for "${serialSearchNumber}"`;
+      this.searchNoResults.textContent = `No Results Found for "${modelSearchNumber}"`;
       this.searchNoResults.classList.remove('hidden');
     }
   }

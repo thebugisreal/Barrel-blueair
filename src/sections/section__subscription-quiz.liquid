@@ -31,7 +31,7 @@
       <s-tabs class="subscription-quiz__tabs block mt-md desktop:mt-lg">
         <div class="tab__triggers flex justify-center items-center rounded-[100px] bg-blue-light p-xxs max-w-max mx-auto" role="tablist" aria-orientation="horizontal" js-tablist>
           <button id="subscription-quiz-tab1-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab1-content-panel" role="tab" aria-selected="true" data-mode="search" js-tab>
-            By Serial Number
+            By Model Number
           </button>
           <button id="subscription-quiz-tab2-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab2-content-panel" role="tab" aria-selected="false" data-mode="family" js-tab>
             By Family
@@ -43,7 +43,7 @@
             <div class="flex items-center gap-sm">
               <div class="flex items-center gap-sm rounded-[24px] border border-gray bg-blue-light overflow-hidden pl-xs pr-lg relative flex-1">
                 <span class="w-[36px]">{% render 'icon-search' %}</span>
-                <input type="text" name="serialNumber" id="SubscriptionQuizSearch" class="flex-1 py-xs bg-transparent" required autocomplete="off" />
+                <input type="text" name="modelNumber" id="SubscriptionQuizSearch" class="flex-1 py-xs bg-transparent" required autocomplete="off" />
                 <button type="button" class="w-[20px] absolute right-[12px] top-1/2 -translate-y-1/2 hidden" js-quiz-search-clear>{% render 'icon-close' %}</button>
               </div>
               <button type="submit" class="subscription-quiz__search-submit w-[32px] rounded-full overflow-hidden border border-blue">
@@ -112,17 +112,17 @@
                   {% assign filter_product_variant = filter_product.variants[0] %}
                   {% assign fitler_quantity = filter_object.quantity | default: 1 | plus: 0 %}
                   {% if filter_product_variant.selling_plan_allocations.size > 0 %}
-                    {% assign serial_numbers = '' %}
-                    {% for number in filter_product.metafields.seed.product_serial_number.value %}
-                      {% assign serial_numbers = serial_numbers | append: number %}
+                    {% assign model_numbers = '' %}
+                    {% for number in filter_product.metafields.seed.product_model_number.value %}
+                      {% assign model_numbers = model_numbers | append: number %}
                       {% unless forloop.last %}
-                        {% assign serial_numbers = serial_numbers | append: ',' %}
+                        {% assign model_numbers = model_numbers | append: ',' %}
                       {% endunless %}
                     {% endfor %}
                     <button class="subscription-quiz__selection subscription-quiz__selection--filter flex flex-col border border-gray" 
                       data-selected="false" 
                       data-group-target="{{ filter_object.system.id }}" 
-                      data-serial-numbers="{{ serial_numbers }}"
+                      data-model-numbers="{{ model_numbers }}"
                       js-quiz-selection 
                       js-quiz-filter-selection>
                       <div class="subscription-quiz-filter__image w-full">
