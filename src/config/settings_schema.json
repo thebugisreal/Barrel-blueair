@@ -8,6 +8,56 @@
     "theme_documentation_url": "https:\/\/www.seedcms.com"
   },
   {
+    "name": "Account",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_heading",
+        "label": "Newsletter Heading",
+        "info": "Replaces current heading when user is subscribed"
+      },
+      {
+        "type": "textarea",
+        "id": "newsletter_text",
+        "label": "Newsletter Text",
+        "info": "Replaces current text when user is subscribed"
+      },
+      {
+        "type": "url",
+        "id": "newsletter_cta_url",
+        "label": "CTA URL",
+        "info": "Replaces current CTA when user is subscribed"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_cta_text",
+        "label": "CTA Text",
+      },
+      {
+        "type": "header",
+        "content": "Add a Subscription"
+      },
+      {
+        "type": "url",
+        "id": "add_subscription_url",
+        "label": "Page URL"
+      },
+      {
+        "type": "header",
+        "content": "Start a Return"
+      },
+      {
+        "type": "url",
+        "id": "start_return_url",
+        "label": "Page URL"
+      }
+    ]
+  },
+  {
     "name": "Cart",
     "settings": [
       {
