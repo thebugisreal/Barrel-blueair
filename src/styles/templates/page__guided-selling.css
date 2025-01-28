@@ -42,7 +42,15 @@
     !bg-white;
 }
 
+.octane-ai-quiz-rendered .oct-quiz-result-actions-wrapper {
+    @apply pb-md
+}
+
 @media screen(desktop) {
+
+    .octane-ai-quiz-rendered .oct-quiz-products__item:hover {
+        @apply bg-blue-light;
+    }
     .octane-ai-quiz-rendered .oct-quiz-btn--primary:hover {
         @apply !text-blue
         !bg-white
