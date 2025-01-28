@@ -87,10 +87,13 @@
                       </span>
                     {%- endif -%}
 
-
+                    {% assign disable_quantity_selector = false %}
+                    {% if item.product.metafields.seed.two_pack_filter_subscription_disable_quantity_selector_in_cart == true and item.selling_plan_allocation != blank and item.quantity > 1 %}
+                      {% assign disable_quantity_selector = true %}
+                    {% endif %}
                     <div class="cart-item__quantity-wrapper mt-xxs">
                       <quantity-input class="quantity cart-quantity p3 flex justify-center border border-blue p-xxs gap-md rounded-[2px]">
-                        <button class="quantity__button no-js-hidden" name="minus" type="button">
+                        <button class="quantity__button no-js-hidden disabled:opacity-20 disabled:cursor-not-allowed" name="minus" type="button" {% if disable_quantity_selector %}disabled{% endif %}>
                           <span class="visually-hidden">
                             {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
                           </span>
@@ -113,8 +116,9 @@
                           aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                           id="Drawer-quantity-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
+                          {% if disable_quantity_selector %}readonly disabled{% endif %}
                         >
-                        <button class="quantity__button no-js-hidden" name="plus" type="button">
+                        <button class="quantity__button no-js-hidden disabled:opacity-20 disabled:cursor-not-allowed" name="plus" type="button" {% if disable_quantity_selector %}disabled{% endif %}>
                           <span class="visually-hidden">
                             {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
                           </span>
