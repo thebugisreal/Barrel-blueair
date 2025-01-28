@@ -1,0 +1,57 @@
+.octane-ai-quiz-rendered a {
+    @apply !font-roboto
+    !font-700
+    !text-20
+    !leading-[28px]
+}
+
+.octane-ai-quiz-rendered div {
+    @apply !font-700
+}
+
+.octane-ai-quiz-rendered .oct-quiz-btn--primary {
+    @apply !cursor-pointer
+    disabled:cursor-not-allowed
+    !no-underline
+    !flex
+    !items-center
+    !gap-xs
+    !w-fit
+    !text-16
+    !text-blue
+    !bg-transparent
+    !p-xxs
+    !pl-sm
+    !rounded-[30px]
+    !border
+    !border-blue
+    !text-white
+    !bg-blue;
+}
+
+.octane-ai-quiz-rendered .oct-quiz-btn--primary:after {
+    content: url('data:image/svg+xml; wtf8, <svg class="icon icon--arrow-right" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><title>Arrow - Right</title><path d="M30.2175 22.0869H10.439V20.9414H30.2447L21.7773 11.4716L22.6313 10.708L32.3486 21.5758L22.6093 31.3151L21.7993 30.5051L30.2175 22.0869Z"/></svg>');
+    @apply 
+    !w-[32px]
+    !h-[32px]
+    !border
+    !border-blue
+    !rounded-full
+    !overflow-hidden
+    !text-blue
+    !bg-white;
+}
+
+@media screen(desktop) {
+    .octane-ai-quiz-rendered .oct-quiz-btn--primary:hover {
+        @apply !text-blue
+        !bg-white
+        !border-white
+        !transform-none
+        !shadow-none
+    }
+    .octane-ai-quiz-rendered .oct-quiz-btn--primary:hover::after {
+        content: url('data:image/svg+xml,%3Csvg%20class%3D%22icon%20icon--arrow-right%22%20style%3D%22background-color%3A%20%23002955%22%20viewBox%3D%220%200%2042%2042%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3EArrow%20-%20Right%3C%2Ftitle%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M30.2175%2022.0869H10.439V20.9414H30.2447L21.7773%2011.4716L22.6313%2010.708L32.3486%2021.5758L22.6093%2031.3151L21.7993%2030.5051L30.2175%2022.0869Z%22%2F%3E%3C%2Fsvg%3E');
+        @apply !bg-blue
+    }
+}

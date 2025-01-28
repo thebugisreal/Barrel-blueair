@@ -35,6 +35,7 @@
 @import '/templates/product.css';
 @import '/templates/account.css';
 @import '/templates/search__main.css';
+@import '/templates/page__guided-selling.css';
 
 @import '/sections/hero.css';
 @import '/sections/icons.css';
