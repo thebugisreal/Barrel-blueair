@@ -7,7 +7,7 @@
       <h2 class="faq-tagged-posts__title {{ section.settings.title_style }} mb-md text-center">{{ section.settings.title }}</h2>
     {% endif %}
     <s-accordion class="faq-tagged-posts__accordion block w-[calc(100vw-48px)] tabletp:w-full" data-manual-collapse="true"  js-accordion>
-      {% if template.name == 'page' %}
+      {% if section.settings.blog.articles != blank %}
         {% assign blog_articles = section.settings.blog.articles %}
       {% else %}
         {% assign blog_articles = blog.articles %}
