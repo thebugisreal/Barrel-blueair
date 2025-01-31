@@ -8,12 +8,13 @@
     {% endif %}
     <s-accordion class="faq-tagged-posts__accordion block w-[calc(100vw-48px)] tabletp:w-full" data-manual-collapse="true"  js-accordion>
       {% if section.settings.blog.articles != blank %}
-        {% assign blog_articles = section.settings.blog.articles %}
+        {% assign faq_blog = section.settings.blog %}
       {% else %}
-        {% assign blog_articles = blog.articles %}
+        {% assign faq_blog = blog %}
       {% endif %}
       {% assign articles_count = 0 %}
-      {% for article in blog_articles %}
+      {% paginate faq_blog.articles by 500 %}
+      {% for article in faq_blog.articles %}
         {% if article.tags contains section.settings.tag %}
           {% assign articles_count = articles_count | plus: 1 %}
           <div class="accordion-item faq-tagged-posts__post {% if articles_count > 5 %}hidden{% endif %}" js-accordion-item>
@@ -30,6 +31,7 @@
           </div>
         {% endif %}
       {% endfor %}
+      {% endpaginate %}
     </s-accordion>
 
     {% if articles_count > 5 %}
