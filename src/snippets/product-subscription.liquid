@@ -40,7 +40,7 @@
             {% if subscription[description_bullets_handle] != blank %}
               <div class="product-subscription__description flex-1">
                 {% if subscription[description_title_handle] != blank %}
-                  <div class="product-subscription-description__title font-500">
+                  <div class="product-subscription-description__title font-700">
                     {{ subscription[description_title_handle] }}
                   </div>
                 {% endif %}
@@ -57,12 +57,12 @@
       <div class="product-subscription__filter-subscriptions py-md border-t border-gray">
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-input>
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-selling-plan-input>
-        <div class="pb-sm p2 font-500">
+        <div class="p2 font-700">
           Customize Your Subscription
         </div>
         <div class="filter-subscriptions">
-          <div class="p6 font-700 mb-xxxs">Select Filter</div>
-          <div class="filter-subscriptions__filters flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs">
+          <div class="p6 font-700 mb-xxxs mt-sm {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">Select Filter</div>
+          <div class="filter-subscriptions__filters flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">
             {% assign filter_count = 0 %}
             {% for filter_product in filter_subscriptions %}
               {% assign filter_variant = filter_product.variants[0] %}

@@ -54,7 +54,7 @@
           <div class="subscription-quiz__search-no-results text-center mt-md" js-quiz-search-no-results></div>
         </div>
         <div id="subscription-quiz-tab2-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab2-tab" aria-hidden="true">
-          <div class="subscription-quiz__selection-group subscription-quiz__selection-group--family grid grid-cols-3 gap-xs desktop:grid-col-4 desktop:gap-md">
+          <div class="subscription-quiz__selection-group subscription-quiz__selection-group--family grid grid-cols-3 gap-xs desktop:grid-cols-4 desktop:gap-md">
             {% for block in section.blocks %}
               <button class="subscription-quiz__selection subscription-quiz__selection--family border border-gray flex flex-col" data-selected="false" data-group-target="{{ block.settings.title | handleize }}" js-quiz-selection>
                 {% if block.settings.image != blank %}
@@ -81,7 +81,7 @@
       {% endif %}
       {% for block in section.blocks %}
         {% if block.settings.series != blank %}
-          <div class="subscription-quiz__selection-group subscription-quiz__selection-group--series py-48 desktop:py-xxl grid grid-cols-3 gap-xs desktop:grid-col-4 desktop:gap-md" data-active="false" data-group-id="{{ block.settings.title | handleize }}" js-quiz-selection-group>
+          <div class="subscription-quiz__selection-group subscription-quiz__selection-group--series py-48 desktop:py-xxl grid grid-cols-3 gap-xs desktop:grid-cols-4 desktop:gap-md" data-active="false" data-group-id="{{ block.settings.title | handleize }}" js-quiz-selection-group>
             {% for series in block.settings.series %}
               <button class="subscription-quiz__selection subscription-quiz__selection--series border border-gray flex flex-col" data-selected="false" data-group-target="{{ series.system.id }}" js-quiz-selection>
                 <div class="subscription-quiz-selection__image w-full">
