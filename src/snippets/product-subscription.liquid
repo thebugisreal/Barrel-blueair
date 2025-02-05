@@ -15,7 +15,11 @@
         {% if pdp_type == 'filter' %}
           Filter Subscription
         {% else %}
-          Air Purifier + Filter Subscription
+          {% if subscription.name contains 'Humidifier' %}
+            Humidifier + Filter Subscription
+          {% else %}
+            Air Purifier + Filter Subscription
+          {% endif %}
         {% endif %}
       </div>
       {% if pdp_type == 'filter' %}
@@ -144,7 +148,11 @@
       {% if pdp_type == 'filter' %}
         Replacement Filter
       {% else %}
-        Air Purifier Only
+        {% if subscription.name contains 'Humidifier' %}
+          Humidifier Only
+        {% else %}
+          Air Purifier Only
+        {% endif %}
       {% endif %}
     </div>
     <div class="product__price-wrapper s3 flex justify-end items-center gap-xs" {% if pdp_type == 'filter' %}js-price js-full-price {% endif %} js-price-copy data-price="{{ current_variant.price }}">
