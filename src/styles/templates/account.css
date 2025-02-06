@@ -61,6 +61,10 @@
   @apply bg-blue;
 }
 
+.account-section__input:focus + .account-section__label {
+  @apply underline;
+}
+
 .account-address-label__checkbox::after {
   @apply content-['']
   absolute
@@ -147,5 +151,9 @@ input[name="address[default]"]:checked + .account-address__label .account-addres
 
   .account__close:hover path {
     @apply stroke-1;
+  }
+
+  .account-section__label:hover {
+    @apply underline;
   }
 }
