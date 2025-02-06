@@ -9,6 +9,10 @@
     @apply !font-700
 }
 
+.octane-ai-quiz-rendered .oct-quiz-title {
+    @apply h3
+}
+
 .octane-ai-quiz-rendered .oct-quiz-btn--primary {
     @apply !cursor-pointer
     disabled:cursor-not-allowed
@@ -16,6 +20,7 @@
     !flex
     !items-center
     !gap-xs
+    !flex-row
     !w-fit
     !text-16
     !text-blue
@@ -24,12 +29,33 @@
     !pl-sm
     !rounded-[30px]
     !border
+    !mx-auto
     !border-blue
     !text-white
     !bg-blue;
 }
 
-.octane-ai-quiz-rendered .oct-quiz-btn--primary:after {
+.octane-ai-quiz-rendered .oct-quiz-btn--small:after {
+    content: url('data:image/svg+xml; wtf8,<svg viewBox="0 0 42 42" class="icon icon--arrow-left" xmlns="http://www.w3.org/2000/svg"><title>Arrow - Left</title><path d="M11.7825 22.0869H31.561V20.9414H11.7553L20.2227 11.4716L19.3687 10.708L9.65137 21.5758L19.3907 31.3151L20.2007 30.5051L11.7825 22.0869Z"/></svg>');
+    @apply 
+    !w-[32px]
+    !h-[32px]
+    !border
+    !border-blue
+    !rounded-full
+    !overflow-hidden
+    !text-blue
+    !bg-white;
+}
+
+.octane-ai-quiz-rendered .oct-quiz-btn--small {
+    @apply flex
+    gap-xs
+    flex-row-reverse
+    items-center
+}
+
+.octane-ai-quiz-rendered .oct-quiz-btn--small.oct-quiz-btn--primary:after {
     content: url('data:image/svg+xml; wtf8, <svg class="icon icon--arrow-right" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><title>Arrow - Right</title><path d="M30.2175 22.0869H10.439V20.9414H30.2447L21.7773 11.4716L22.6313 10.708L32.3486 21.5758L22.6093 31.3151L21.7993 30.5051L30.2175 22.0869Z"/></svg>');
     @apply 
     !w-[32px]
@@ -39,6 +65,7 @@
     !rounded-full
     !overflow-hidden
     !text-blue
+    !flex-row
     !bg-white;
 }
 
@@ -51,14 +78,17 @@
     .octane-ai-quiz-rendered .oct-quiz-products__item:hover {
         @apply bg-blue-light;
     }
-    .octane-ai-quiz-rendered .oct-quiz-btn--primary:hover {
+    .octane-ai-quiz-rendered .oct-quiz-btn--small.oct-quiz-btn--primary:hover {
         @apply !text-blue
         !bg-white
         !border-white
         !transform-none
         !shadow-none
     }
-    .octane-ai-quiz-rendered .oct-quiz-btn--primary:hover::after {
+    .octane-ai-quiz-rendered .oct-quiz-btn--small:hover::after {
+        content: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2042%2042%22%20class%3D%22icon%20icon--arrow-left%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20style%3D%22background-color%3A%20%23002955%3B%22%3E%3Ctitle%3EArrow%20-%20Left%3C%2Ftitle%3E%3Cpath%20d%3D%22M11.7825%2022.0869H31.561V20.9414H11.7553L20.2227%2011.4716L19.3687%2010.708L9.65137%2021.5758L19.3907%2031.3151L20.2007%2030.5051L11.7825%2022.0869Z%22%20fill%3D%22white%22%2F%3E%3C%2Fsvg%3E');
+    }
+    .octane-ai-quiz-rendered .oct-quiz-btn--small.oct-quiz-btn--primary:hover::after {
         content: url('data:image/svg+xml,%3Csvg%20class%3D%22icon%20icon--arrow-right%22%20style%3D%22background-color%3A%20%23002955%22%20viewBox%3D%220%200%2042%2042%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3EArrow%20-%20Right%3C%2Ftitle%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M30.2175%2022.0869H10.439V20.9414H30.2447L21.7773%2011.4716L22.6313%2010.708L32.3486%2021.5758L22.6093%2031.3151L21.7993%2030.5051L30.2175%2022.0869Z%22%2F%3E%3C%2Fsvg%3E');
         @apply !bg-blue
     }
