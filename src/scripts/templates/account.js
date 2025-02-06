@@ -19,7 +19,8 @@ class Account extends HTMLElement {
       accountTabsContainer: '[js-account-tabs-container]',
       accountTab: '[js-account-tab]',
       returnButton: '[js-return-button]',
-      accountSubscription: '[js-account-subscription]'
+      accountSubscribed: '[js-account-subscribed]',
+      accountNotSubscribed: '[js-account-not-subscribed]'
     }
   }
 
@@ -38,13 +39,42 @@ class Account extends HTMLElement {
     this.accountTabsContainer = this.querySelector(this._selectors.accountTabsContainer);
     this.accountTabs = this.querySelectorAll(this._selectors.accountTab);
     this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
+    this.accountSubscribed = this.querySelector(this._selectors.accountSubscribed);
+    this.accountNotSubscribed = this.querySelector(this._selectors.accountNotSubscribed);
 
-    this._setupKlaviyo();
+    this._setupKlaviyoNewsletter();
+    this._setupKlaviyoFormTrigger();
     this._setupCountries();
     this._setupEventListeners();
   }
 
-  _setupKlaviyo() {
+  async _setupKlaviyoNewsletter() {
+    let customerEmail = this.dataset.customerEmail;
+    let response = await fetch("https://us-central1-blueair-shopify.cloudfunctions.net/app/klaviyo/customer", { 
+      method: "POST",
+      body: JSON.stringify({
+        "email": customerEmail
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => response.json())
+      .then(({ success, found }) => {
+        if (!success) throw new Error('Failed to query klaviyo customer');
+        
+        if (found) {
+          this.accountSubscribed.classList.remove('hidden');
+        } else {
+          this.accountNotSubscribed.classList.remove('hidden');
+        }
+      }).catch((err) => {
+        console.log(err)
+        this.accountNotSubscribed.classList.remove('hidden');
+      })
+  }
+
+  _setupKlaviyoFormTrigger() {
     if (this.querySelector('.klaviyo_form_trigger')) {
       this.querySelector('.klaviyo_form_trigger').addEventListener('click', function () {
         window._klOnsite = window._klOnsite || [];
@@ -99,12 +129,14 @@ class Account extends HTMLElement {
     const url = this.ordersPagination.dataset.url;
     const parsedHTML = await this._getOrders(url);
     const newOrdersMobile = parsedHTML.querySelector(this._selectors.ordersContainerMobile).innerHTML;
-    const newOrdersDesktop = parsedHTML.querySelector(this._selectors.ordersContainerDesktop).innerHTML;
+    const newOrdersDesktop = parsedHTML.querySelectorAll(this._selectors.orderDesktop);
     const newOrdersTabs = parsedHTML.querySelector(this._selectors.ordersContainerTabs).innerHTML;
     const newPagination = parsedHTML.querySelector(this._selectors.ordersPagination);
 
     this.ordersContainerMobile.insertAdjacentHTML('beforeend', newOrdersMobile);
-    this.ordersContainerDesktop.insertAdjacentHTML('beforeend', newOrdersDesktop);
+    newOrdersDesktop.forEach(order => {
+      this.ordersContainerDesktop.insertAdjacentHTML('beforeend', order.innerHTML);
+    });
     this.ordersContainerTabs.insertAdjacentHTML('beforeend', newOrdersTabs);
 
     if (newPagination) {
