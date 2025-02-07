@@ -123,7 +123,7 @@
                           <p>{{ property.first }}: {{ property.last }}</p>
                         {%- endif -%}
                       {%- endfor -%}
-                      {% if product.selling_plan_allocation != null %}
+                      {% if item.selling_plan_allocation != null %}
                         <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
                       {% endif %}
                       {% if item.discounts != empty %}

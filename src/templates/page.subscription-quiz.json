@@ -1,7 +1,161 @@
 {
   "sections": {
     "main": {
-      "type": "section__subscription-quiz"
+      "type": "section__subscription-quiz",
+      "blocks": {
+        "family_L3JALd": {
+          "type": "family",
+          "settings": {
+            "title": "Blue Pure Max",
+            "image": "shopify:\/\/shop_images\/subscription-blue-pure-max.png",
+            "series": [
+              "211-i-max",
+              "311-i-max",
+              "311-i-max-1",
+              "411-a-max",
+              "411-i-max",
+              "511-i-max",
+              "mini-max"
+            ]
+          }
+        },
+        "family_QPxRnA": {
+          "type": "family",
+          "settings": {
+            "title": "Blue Pure",
+            "image": "shopify:\/\/shop_images\/subscription-blue-pure.png",
+            "series": [
+              "121",
+              "211-211",
+              "211-auto",
+              "311",
+              "311-auto",
+              "411-series",
+              "511",
+              "fan-1-0",
+              "fan-2-0"
+            ]
+          }
+        },
+        "family_tr3yic": {
+          "type": "family",
+          "settings": {
+            "title": "DustMagnet",
+            "image": "shopify:\/\/shop_images\/subscription-dustmagnet.png",
+            "series": [
+              "5200-series",
+              "5400-series"
+            ]
+          }
+        },
+        "family_FtHDkV": {
+          "type": "family",
+          "settings": {
+            "title": "Protect",
+            "image": "shopify:\/\/shop_images\/subscription-protect.png",
+            "series": [
+              "7400-series",
+              "7700-series"
+            ]
+          }
+        },
+        "family_8BtPdh": {
+          "type": "family",
+          "settings": {
+            "title": "Classic",
+            "image": "shopify:\/\/shop_images\/subscription-classic.png",
+            "series": [
+              "100-series",
+              "200-300-series",
+              "400-series",
+              "500-600-series"
+            ]
+          }
+        },
+        "family_JkthnG": {
+          "type": "family",
+          "settings": {
+            "title": "Sense+",
+            "image": "shopify:\/\/shop_images\/subscription-sense.png",
+            "series": [
+              "sense-sense"
+            ]
+          }
+        },
+        "family_xdJUcm": {
+          "type": "family",
+          "settings": {
+            "title": "Pro",
+            "image": "shopify:\/\/shop_images\/subscription-pro.png",
+            "series": [
+              "m",
+              "l",
+              "xl"
+            ]
+          }
+        },
+        "family_U8aPgi": {
+          "type": "family",
+          "settings": {
+            "title": "Classic Pro",
+            "image": "shopify:\/\/shop_images\/subscription-classic-pro.png",
+            "series": [
+              "cp-7-i"
+            ]
+          }
+        },
+        "family_6bYH8d": {
+          "type": "family",
+          "settings": {
+            "title": "2in1",
+            "image": "shopify:\/\/shop_images\/subscription-2in1.png",
+            "series": [
+              "dh-3-i"
+            ]
+          }
+        },
+        "family_P9q8gj": {
+          "type": "family",
+          "settings": {
+            "title": "3in1",
+            "image": "shopify:\/\/shop_images\/subscription-3in1.png",
+            "series": [
+              "t-10-i",
+              "t-20-i"
+            ]
+          }
+        },
+        "family_bxPLaU": {
+          "type": "family",
+          "settings": {
+            "title": "Humidifier",
+            "image": "shopify:\/\/shop_images\/subscription-humidifier.png",
+            "series": [
+              "h-35-i"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "family_L3JALd",
+        "family_QPxRnA",
+        "family_tr3yic",
+        "family_FtHDkV",
+        "family_8BtPdh",
+        "family_JkthnG",
+        "family_xdJUcm",
+        "family_U8aPgi",
+        "family_6bYH8d",
+        "family_P9q8gj",
+        "family_bxPLaU"
+      ],
+      "settings": {
+        "step_1_heading": "How to choose the right replacement filter",
+        "step_2_heading": "Select Your Air Purifier",
+        "step_3_heading": "Select a Filter",
+        "step_4_heading": "Select a Shipment Frequency",
+        "policy_link": ""
+      }
     }
   },
   "order": [
