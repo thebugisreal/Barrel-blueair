@@ -59,7 +59,7 @@
               <button class="subscription-quiz__selection subscription-quiz__selection--family border border-gray flex flex-col" data-selected="false" data-group-target="{{ block.settings.title | handleize }}" js-quiz-selection>
                 {% if block.settings.image != blank %}
                   <div class="subscription-quiz-selection__image w-full">
-                    {% render 'lazy-image' image: block.settings.image %}
+                    {% render 'lazy-image' image: block.settings.image loading: 'easy' %}
                   </div>
                 {% endif %}
                 {% if block.settings.title != blank %}
@@ -85,7 +85,7 @@
             {% for series in block.settings.series %}
               <button class="subscription-quiz__selection subscription-quiz__selection--series border border-gray flex flex-col" data-selected="false" data-group-target="{{ series.system.id }}" js-quiz-selection>
                 <div class="subscription-quiz-selection__image w-full">
-                  {% render 'lazy-image' image: series.image %}
+                  {% render 'lazy-image' image: series.image loading: 'easy' %}
                 </div>
                 <div class="subscription-quiz-selection__title w-full font-500 leading-[18px] desktop:text-16 text-center p-xs desktop:pb-md flex-1">
                   {{ series.name }}
@@ -127,7 +127,7 @@
                       js-quiz-filter-selection>
                       <div class="subscription-quiz-filter__image w-full">
                         {% assign filter_image = filter_object.image | default: filter_product.featured_image %}
-                        {% render 'lazy-image' image: filter_image %}
+                        {% render 'lazy-image' image: filter_image loading: 'easy' %}
                       </div>
                       <div class="subscription-quiz-filter__info w-full flex-1 text-left p-sm desktop:p-md">
                         <div class="subscription-quiz-filter__title s3 leading-[22px]">{{ filter_object.name }}</div>
@@ -169,52 +169,95 @@
                   {% if filter_object.recommended_frequency != blank %}
                     {% assign recommended_frequency_option = filter_object.recommended_frequency %}
                   {% endif %}
-                  {% for selling_plan_allocation in filter_product_variant.selling_plan_allocations %}
-                    {% assign frequency_option = forloop.index | prepend: 'Option ' %}
-                    <button
-                      data-selected="false" 
-                      data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" 
-                      data-variant="{{ filter_product_variant.id }}" 
-                      data-quantity="{% if filter_object.quantity != blank %}{{ filter_object.quantity }}{% else %}1{% endif %}"
-                      {% if filter_product_variant.available == false %}disabled{% endif %} 
-                      class="subscription-quiz__selection subscription-quiz__selection--frequency flex flex-col border border-blue-darkSky relative {% if frequency_option == recommended_frequency_option %}recommended{% endif %} disabled:opacity-50 disabled:cursor-not-allowed" 
-                      js-quiz-subscription-frequency>
-                      <div class="subscription-quiz-frequency__heading w-full p-md flex justify-center items-center gap-xxs border-b border-blue-darkSky">
-                        <span class="subscription-quiz-frequency__checkbox w-[18px] min-w-[18px] h-[18px] border border-blue rounded-full relative"></span>
-                        <span class="subscription-quiz-frequency__title p1">
-                          every&nbsp;
-                          {% if selling_plan_allocation.selling_plan.options[0].value == 'month' %}
-                            1 month
-                          {% else %}
-                            {{ selling_plan_allocation.selling_plan.options[0].value }}
-                          {% endif %}
-                        </span>
-                      </div>
-                      <div class="subscription-quiz-frequency__description w-full p-md text-left flex-1">
-                        {% assign description_handle = forloop.index | prepend: 'frequency_option_' | append: '_description' %}
-                        {% if filter_object[description_handle] != blank %}
-                          {% assign description_list = filter_object[description_handle] %}
-                          <div class="p3">This option is great for:</div>
-                          <ul class="subscription-quiz-frequency__description-list">
-                            {% for description_line in description_list.value %}
-                              {% assign description = description_line %}
-                              <li class="mt-sm flex justify-start items-center gap-xxxs">
-                                {% if description_line contains '|' %}
-                                  {% assign description = description_line | split: '|' | last | strip %}
-                                  {% assign description_icon_file = description_line | split: '|' | first | strip %}
-                                  {% assign description_icon_file_object = images[description_icon_file] %}
-                                  {% if description_icon_file_object != blank %}
-                                    <div class="w-[24px]">{% render 'lazy-image' image: description_icon_file_object %}</div>
-                                  {% endif %}
-                                {% endif %}
-                                <div class="flex-1">{{ description }}</div>
-                              </li>
-                            {% endfor %}
-                          </ul>
+                  {% if filter_product.metafields.seed.subscription_frequency_options != blank %}
+                    {% for frequency_option in filter_product.metafields.seed.subscription_frequency_options.value %}
+                      {% assign frequency_option_name = forloop.index | prepend: 'Option ' %}
+                      {% for selling_plan_allocation in filter_product_variant.selling_plan_allocations %}
+                        {% if frequency_option == selling_plan_allocation.selling_plan.options[0].value %}
+                          <button
+                            data-selected="false" 
+                            data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" 
+                            data-variant="{{ filter_product_variant.id }}" 
+                            data-quantity="{% if filter_object.quantity != blank %}{{ filter_object.quantity }}{% else %}1{% endif %}"
+                            {% if filter_product_variant.available == false %}disabled{% endif %} 
+                            class="subscription-quiz__selection subscription-quiz__selection--frequency flex flex-col border border-blue-darkSky relative {% if frequency_option_name == recommended_frequency_option %}recommended{% endif %} disabled:opacity-50 disabled:cursor-not-allowed" 
+                            js-quiz-subscription-frequency>
+                            <div class="subscription-quiz-frequency__heading w-full p-md flex justify-center items-center gap-xxs border-b border-blue-darkSky">
+                              <span class="subscription-quiz-frequency__checkbox w-[18px] min-w-[18px] h-[18px] border border-blue rounded-full relative"></span>
+                              <span class="subscription-quiz-frequency__title p1">
+                                every {{ selling_plan_allocation.selling_plan.options[0].value }}
+                              </span>
+                            </div>
+                            <div class="subscription-quiz-frequency__description w-full p-md text-left flex-1">
+                              {% assign description_handle = forloop.parentloop.index | prepend: 'frequency_option_' | append: '_description' %}
+                              {% if filter_object[description_handle] != blank %}
+                                {% assign description_list = filter_object[description_handle] %}
+                                <div class="p3">This option is great for:</div>
+                                <ul class="subscription-quiz-frequency__description-list">
+                                  {% for description_line in description_list.value %}
+                                    {% assign description = description_line %}
+                                    <li class="mt-sm flex justify-start items-center gap-xxxs">
+                                      {% if description_line contains '|' %}
+                                        {% assign description = description_line | split: '|' | last | strip %}
+                                        {% assign description_icon_file = description_line | split: '|' | first | strip %}
+                                        {% assign description_icon_file_object = images[description_icon_file] %}
+                                        {% if description_icon_file_object != blank %}
+                                          <div class="w-[24px]">{% render 'lazy-image' image: description_icon_file_object loading: 'easy' %}</div>
+                                        {% endif %}
+                                      {% endif %}
+                                      <div class="flex-1">{{ description }}</div>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+                            </div>
+                          </button>
                         {% endif %}
-                      </div>
-                    </button>
-                  {% endfor %}
+                      {% endfor %}
+                    {% endfor %}
+                  {% else %}{% comment %}remove once subscription frequency options metafield entries are complete{% endcomment %}
+                    {% for selling_plan_allocation in filter_product_variant.selling_plan_allocations %}
+                      {% assign frequency_option_name = forloop.index | prepend: 'Option ' %}
+                      <button
+                        data-selected="false" 
+                        data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" 
+                        data-variant="{{ filter_product_variant.id }}" 
+                        data-quantity="{% if filter_object.quantity != blank %}{{ filter_object.quantity }}{% else %}1{% endif %}"
+                        {% if filter_product_variant.available == false %}disabled{% endif %} 
+                        class="subscription-quiz__selection subscription-quiz__selection--frequency flex flex-col border border-blue-darkSky relative {% if frequency_option_name == recommended_frequency_option %}recommended{% endif %} disabled:opacity-50 disabled:cursor-not-allowed" 
+                        js-quiz-subscription-frequency>
+                        <div class="subscription-quiz-frequency__heading w-full p-md flex justify-center items-center gap-xxs border-b border-blue-darkSky">
+                          <span class="subscription-quiz-frequency__checkbox w-[18px] min-w-[18px] h-[18px] border border-blue rounded-full relative"></span>
+                          <span class="subscription-quiz-frequency__title p1">
+                            every {{ selling_plan_allocation.selling_plan.options[0].value }}
+                          </span>
+                        </div>
+                        <div class="subscription-quiz-frequency__description w-full p-md text-left flex-1">
+                          {% assign description_handle = forloop.index | prepend: 'frequency_option_' | append: '_description' %}
+                          {% if filter_object[description_handle] != blank %}
+                            {% assign description_list = filter_object[description_handle] %}
+                            <div class="p3">This option is great for:</div>
+                            <ul class="subscription-quiz-frequency__description-list">
+                              {% for description_line in description_list.value %}
+                                {% assign description = description_line %}
+                                <li class="mt-sm flex justify-start items-center gap-xxxs">
+                                  {% if description_line contains '|' %}
+                                    {% assign description = description_line | split: '|' | last | strip %}
+                                    {% assign description_icon_file = description_line | split: '|' | first | strip %}
+                                    {% assign description_icon_file_object = images[description_icon_file] %}
+                                    {% if description_icon_file_object != blank %}
+                                      <div class="w-[24px]">{% render 'lazy-image' image: description_icon_file_object loading: 'easy' %}</div>
+                                    {% endif %}
+                                  {% endif %}
+                                  <div class="flex-1">{{ description }}</div>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </div>
+                      </button>
+                    {% endfor %}{% comment %}remove once subscription frequency options metafield entries are complete{% endcomment %}
+                  {% endif %}
                 </div>
               {% endif %}
             {% endif %}
