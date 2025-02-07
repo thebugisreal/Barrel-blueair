@@ -1,36 +1,164 @@
 {
   "sections": {
     "main": {
-      "type": "page__main",
+      "type": "section__subscription-quiz",
+      "blocks": {
+        "family_L3JALd": {
+          "type": "family",
+          "settings": {
+            "title": "Blue Pure Max",
+            "image": "shopify:\/\/shop_images\/subscription-blue-pure-max.png",
+            "series": [
+              "211-i-max",
+              "311-i-max",
+              "311-i-max-1",
+              "411-a-max",
+              "411-i-max",
+              "511-i-max",
+              "mini-max"
+            ]
+          }
+        },
+        "family_QPxRnA": {
+          "type": "family",
+          "settings": {
+            "title": "Blue Pure",
+            "image": "shopify:\/\/shop_images\/subscription-blue-pure.png",
+            "series": [
+              "121",
+              "211-211",
+              "211-auto",
+              "311",
+              "311-auto",
+              "411-series",
+              "511",
+              "fan-1-0",
+              "fan-2-0"
+            ]
+          }
+        },
+        "family_tr3yic": {
+          "type": "family",
+          "settings": {
+            "title": "DustMagnet",
+            "image": "shopify:\/\/shop_images\/subscription-dustmagnet.png",
+            "series": [
+              "5200-series",
+              "5400-series"
+            ]
+          }
+        },
+        "family_FtHDkV": {
+          "type": "family",
+          "settings": {
+            "title": "Protect",
+            "image": "shopify:\/\/shop_images\/subscription-protect.png",
+            "series": [
+              "7400-series",
+              "7700-series"
+            ]
+          }
+        },
+        "family_8BtPdh": {
+          "type": "family",
+          "settings": {
+            "title": "Classic",
+            "image": "shopify:\/\/shop_images\/subscription-classic.png",
+            "series": [
+              "100-series",
+              "200-300-series",
+              "400-series",
+              "500-600-series"
+            ]
+          }
+        },
+        "family_JkthnG": {
+          "type": "family",
+          "settings": {
+            "title": "Sense+",
+            "image": "shopify:\/\/shop_images\/subscription-sense.png",
+            "series": [
+              "sense-sense"
+            ]
+          }
+        },
+        "family_xdJUcm": {
+          "type": "family",
+          "settings": {
+            "title": "Pro",
+            "image": "shopify:\/\/shop_images\/subscription-pro.png",
+            "series": [
+              "m",
+              "l",
+              "xl"
+            ]
+          }
+        },
+        "family_U8aPgi": {
+          "type": "family",
+          "settings": {
+            "title": "Classic Pro",
+            "image": "shopify:\/\/shop_images\/subscription-classic-pro.png",
+            "series": [
+              "cp-7-i"
+            ]
+          }
+        },
+        "family_6bYH8d": {
+          "type": "family",
+          "settings": {
+            "title": "2in1",
+            "image": "shopify:\/\/shop_images\/subscription-2in1.png",
+            "series": [
+              "dh-3-i"
+            ]
+          }
+        },
+        "family_P9q8gj": {
+          "type": "family",
+          "settings": {
+            "title": "3in1",
+            "image": "shopify:\/\/shop_images\/subscription-3in1.png",
+            "series": [
+              "t-10-i",
+              "t-20-i"
+            ]
+          }
+        },
+        "family_bxPLaU": {
+          "type": "family",
+          "settings": {
+            "title": "Humidifier",
+            "image": "shopify:\/\/shop_images\/subscription-humidifier.png",
+            "series": [
+              "h-35-i"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "family_L3JALd",
+        "family_QPxRnA",
+        "family_tr3yic",
+        "family_FtHDkV",
+        "family_8BtPdh",
+        "family_JkthnG",
+        "family_xdJUcm",
+        "family_U8aPgi",
+        "family_6bYH8d",
+        "family_P9q8gj",
+        "family_bxPLaU"
+      ],
       "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-md",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-lg",
-        "padding_bottom_desktop": "desktop:pb-lg",
-        "max_width": "80ch"
-      }
-    },
-    "section_embed_7kEtKx": {
-      "type": "section__embed",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<?xml version=\"1.0\"?>\n<form xmlns=\"http:\/\/www.demandware.com\/xml\/form\/2008-04-19\">\n\n    <field formid=\"firstname\" label=\"contactus.label.firstname\" type=\"string\" mandatory=\"true\" binding=\"firstName\" max-length=\"50\" parse-error=\"validate.parse-error\" missing-error=\"validate.required\"><\/field>\n    <field formid=\"lastname\" label=\"contactus.label.lastname\" type=\"string\" mandatory=\"true\" binding=\"lastName\" max-length=\"50\" parse-error=\"validate.parse-error\" missing-error=\"validate.required\"><\/field>\n    <field formid=\"email\" label=\"bulkpurchases.label.email\" type=\"string\" mandatory=\"true\" parse-error=\"contactus.email.parse-error\" missing-error=\"validate.required\" binding=\"email\" max-length=\"50\" regexp=\"^[\\w.%+-]+@[\\w.-]+\\.[\\w]{2,6}$\" validation=\"${require('*\/cartridge\/scripts\/forms\/validator').validateEmail(formfield, 'contactus.email.parse-error')}\"><\/field>\n    <field formid=\"phonenumber\" label=\"bulkpurchases.label.phonenumber\" type=\"string\" mandatory=\"false\" binding=\"orderNumber\" missing-error=\"ordertrack.orderNumber.missing-error\"><\/field>\n    <field formid=\"desiredunit\" label=\"bulkpurchases.label.desiredunit\" type=\"string\" mandatory=\"false\" binding=\"productModel\"><\/field>\n    <field formid=\"desiredquantity\" label=\"bulkpurchases.label.desiredquantity\" type=\"string\" mandatory=\"false\" binding=\"emailSubject\" missing-error=\"ordertrack.orderNumber.missing-error\"><\/field>\n    <field formid=\"comment\" label=\"bulkpurchases.label.comment\" type=\"string\" mandatory=\"false\" binding=\"comment\" max-length=\"500\"><\/field>\n    <field formid=\"companyname\" label=\"bulkpurchases.label.companyname\" type=\"string\" mandatory=\"false\" max-length=\"500\"><\/field>\n    <field formid=\"consent\" label=\"bulkpurchases.label.consent\" type=\"boolean\" mandatory=\"true\"><\/field>\n\n    <field formid=\"response\" type=\"string\" mandatory=\"true\" missing-error=\"validate.required\" value-error=\"recaptcha.fail\" validation=\"${require('*\/utils\/form').validate(formfield);}\"><\/field>\n\n    <action formid=\"send\" valid-form=\"true\"><\/action>\n<\/form>"
+        "step_1_heading": "How to choose the right replacement filter",
+        "step_2_heading": "Select Your Air Purifier",
+        "step_3_heading": "Select a Filter",
+        "step_4_heading": "Select a Shipment Frequency",
+        "policy_link": ""
       }
     }
   },
   "order": [
-    "main",
-    "section_embed_7kEtKx"
+    "main"
   ]
 }

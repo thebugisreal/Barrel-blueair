@@ -1,0 +1,96 @@
+.subscription-quiz-nav__btn svg path {
+  @apply
+  stroke-blue
+  stroke-1;
+}
+
+.subscription-quiz__tab-trigger[aria-selected="true"] {
+  @apply bg-blue
+  text-white;
+}
+
+.subscription-quiz__step[data-active="false"] {
+  @apply hidden;
+}
+
+.subscription-quiz__search-submit:focus,
+.subscription-quiz__search-submit:focus-visible {
+  @apply bg-blue
+  text-white;
+}
+
+.subscription-quiz__search-submit:focus:not(:focus-visible) {
+  @apply bg-transparent
+  text-blue;
+}
+
+.subscription-quiz__selection-group[data-active="false"] {
+  @apply hidden;
+}
+
+.subscription-quiz__selection[data-selected="true"] {
+  @apply !border-blue;
+}
+
+.subscription-quiz__selection:focus,
+.subscription-quiz__selection:focus-visible {
+  @apply border-blue;
+}
+
+.subscription-quiz__selection:focus:not(:focus-visible) {
+  @apply border-gray;
+}
+
+.subscription-quiz__selection--frequency.recommended::after {
+  @apply content-['Recommended']
+  absolute
+  block
+  top-0
+  -translate-y-1/2
+  left-1/2
+  -translate-x-1/2
+  bg-[#40C1AC]
+  rounded-[60px]
+  tag-small
+  text-white
+  px-xs
+  py-xxs;
+}
+
+.subscription-quiz__selection--frequency[data-selected="true"] {
+  @apply border-blue;
+}
+
+.subscription-quiz__selection--frequency[data-selected="true"] .subscription-quiz-frequency__heading {
+  @apply bg-blue-darkSky
+  border-blue;
+}
+
+.subscription-quiz-frequency__checkbox::after {
+  @apply content-['']
+  block
+  absolute
+  w-[12px]
+  h-[12px]
+  top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  rounded-full
+  bg-transparent;
+}
+
+.subscription-quiz__selection--frequency[data-selected="true"] .subscription-quiz-frequency__checkbox::after {
+  @apply bg-blue;
+}
+
+@media screen(desktop){
+  .subscription-quiz__search-submit:hover {
+    @apply bg-blue
+    text-white;
+  }
+
+  .subscription-quiz__selection:hover {
+    @apply border-blue;
+  }
+}
