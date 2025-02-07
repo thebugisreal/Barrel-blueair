@@ -113,7 +113,7 @@
                   </span>
                   <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
                 </button>
-                <div id="SortByTriggerAccordion" class="accordion-content bg-white border-[1px] border-gray border-t-0 absolute w-full right-0" aria-hidden="true" js-accordion-content js-sort-triggers>
+                <div id="SortByTriggerAccordion" class="accordion-content bg-white border-[1px] border-gray border-t-0 absolute w-full right-0 z-[2]" aria-hidden="true" js-accordion-content js-sort-triggers>
                   {% for option in collection.sort_options %}
                     {% unless option.value == sort_by %}
                       <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
