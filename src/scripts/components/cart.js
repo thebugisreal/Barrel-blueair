@@ -1,3 +1,30 @@
+class CartSubscription extends HTMLElement {
+  constructor() {
+    super();
+
+    this._selectors = {
+      editBtn: '[js-cart-subscription-edit]'
+    }
+  }
+
+  connectedCallback() {
+    this.editBtn = this.querySelector(this._selectors.editBtn);
+
+    this.editBtn?.addEventListener('click', this.editBtnOnClick);
+  }
+
+  editBtnOnClick = (evt) => {
+    evt.preventDefault();
+
+    const itemData = {
+      key: this.dataset.itemKey,
+      properties: JSON.parse(this.dataset.properties)
+    }
+    sessionStorage.setItem('pdpToEditCartSubscription', JSON.stringify(itemData));
+    window.location.href = evt.currentTarget.href;
+  }
+}
+
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();

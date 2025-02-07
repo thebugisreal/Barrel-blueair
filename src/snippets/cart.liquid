@@ -25,7 +25,7 @@
             <p class="s1 mb-sm">Your Items</p>
 
             {% comment %} Cart Items  {% endcomment %}
-            <div class="drawer__cart-items-wrapper flex flex-col gap-md">
+            <div class="drawer__cart-items-wrapper flex flex-col gap-md mb-md">
               {%- for item in cart.items -%}
               <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative" js-cart-item>
                 <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
@@ -53,14 +53,11 @@
                     {%- for property in item.properties -%}
                       {%- assign property_first_char = property.first | slice: 0 -%}
                       {%- if property.last != blank and property_first_char != '_' -%}
-                        <p>{{ property.first }}: {{ property.last }}</p>
+                        <p class="my-xxxs">{{ property.first }}: {{ property.last }}</p>
                       {%- endif -%}
                     {%- endfor -%}
-                    {% if item.selling_plan_allocation != null %}
-                      <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                    {% endif %}
                     {% if item.discounts != empty %}
-                      <ul>
+                      <ul class="my-xxxs">
                         {%- for discount in item.discounts -%}
                           <li>{{ discount.title }}</li>
                         {%- endfor -%}
@@ -146,6 +143,75 @@
                     </div>
                   </div>
                 </div>
+
+                {% if item.product.metafields.seed.subscription != blank %}
+                  {% liquid 
+                    assign subscription_object = item.product.metafields.seed.subscription.value
+                    assign is_subscribed = false
+                    assign subscription_available = false
+                    if item.selling_plan_allocation != blank
+                      assign is_subscribed = true
+                    else
+                      if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['subscription'] != blank
+                        for cart_item in cart.items
+                          if item != cart_item and item.properties['subscription'] == cart_item.properties['subscription']
+                            assign is_subscribed = true
+                            break
+                          endif
+                        endfor
+                      endif
+                      if is_subscribed == false
+                        assign filter_subscriptions = subscription_object.filter_subscriptions.value
+                        for filter_product in filter_subscriptions
+                          assign filter_variant = filter_product.variants[0]
+                          if filter_variant.available and filter_variant.selling_plan_allocations.size > 0
+                            assign subscription_available = true
+                            assign preselected_subscription = filter_variant
+                            break
+                          endif
+                        endfor
+                      endif
+                    endif
+                  %}
+                  {%- capture item_properties -%}
+                    {
+                    {% for property in item.properties %}
+                      "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                    }
+                  {%- endcapture -%}
+                  {% if subscription_object.pdp_type == 'Filter' and is_subscribed %}
+                    <cart-subscription class="cart-item__subscription block border border-gray p-sm mt-sm" data-item-key="{{ item.key }}" data-properties='{{ item_properties }}'>
+                      <div class="flex justify-start items-start gap-xs">
+                        <button type="button" class="cart-item-subscription__checkbox mt-xxxs" data-checked="true" js-cart-subscription-checkbox></button>
+                        <div class="p3 flex-1">{{ item.title }} Subscription</div>
+                      </div>
+                      <p class="mt-xxxs">
+                        {{ item.selling_plan_allocation.selling_plan.name }}&nbsp;
+                        <a href="{{ item.url }}" class="link link--underline underline-offset-2" js-cart-subscription-edit>Edit</a>
+                      </p>
+                    </cart-subscription>
+                  {% elsif subscription_available %}
+                    <cart-subscription class="cart-item__subscription block border border-gray p-sm mt-sm" data-type="{{ subscription_object.pdp_type | handle }}" data-item-key="{{ item.key }}" data-properties='{{ item_properties }}' data-preselected-subscription="{{ preselected_subscription.id }}:{{ filter_variant.selling_plan_allocations[0].selling_plan.id }}">
+                      <div class="flex justify-start items-center gap-xs">
+                        <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
+                        <div class="p3 flex-1">Add a Filter Subscription</div>
+                      </div>
+                      <div class="border-t border-t-gray mt-sm pt-sm flex items-center gap-xxs">
+                        <div class="flex-1">Pay when it's sent</div>
+                        <div>
+                          {% if preselected_subscription.selling_plan_allocations[0].compare_at_price > preselected_subscription.selling_plan_allocations[0].price %}
+                            <s>{{ preselected_subscription.selling_plan_allocations[0].compare_at_price | money }}</s><br>
+                          {% endif %}
+                          <span class="font-700">{{ preselected_subscription.selling_plan_allocations[0].price | money }}</span>
+                        </div>
+                        <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
+                          Save 15%
+                        </div>
+                      </div>
+                    </cart-subscription>
+                  {% endif %}
+                {% endif %}
               </div>
               {%- endfor -%}
             </div>

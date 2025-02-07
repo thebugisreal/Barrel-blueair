@@ -67,3 +67,20 @@ cart-remove-button .cart-remove-button:focus-visible {
   border-[#00B5E2]
 }
 /* END Cart GWP */
+
+/* cart subscription */
+.cart-item-subscription__checkbox {
+  @apply w-[22px]
+  h-[22px]
+  border
+  border-blue
+  rounded-[4px]
+  bg-no-repeat
+  bg-center
+  bg-none;
+}
+
+.cart-item-subscription__checkbox[data-checked="true"] {
+  @apply bg-blue;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 22 22'%3e%3cpath fill='none' stroke='white' d='M5 12l4.2 3.5 7.1-9'/%3e%3c/svg%3e");
+}

@@ -24,6 +24,8 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
+      filterSubscriptionPropertyInput: '[js-filter-subscription-property-input]',
+      filterSubscriptionTwoPackQuantityInput: '[js-filter-subscription-two-pack-quantity-input]',
       subscriptionContainer: '[js-subscription-container]',
       subscriptionOffer: '[js-subscription-offer]',
       subscriptionCustomization: '[js-subscription-customization]',
@@ -60,11 +62,20 @@ class ProductMain extends HTMLElement {
     this.currentPrice = parseInt(this.dataset.currentPrice);
     this.currentPriceCompareAt = parseInt(this.dataset.currentPriceCompareAt);
     
+    this._checkCartSubscriptionEdit();
     this._handleStickyBar();
     this._handleSubscription();
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
+  }
+
+  _checkCartSubscriptionEdit = () => {
+    this.pdpToEditCartSubscription = false;
+    if (sessionStorage.getItem('pdpToEditCartSubscription')) {
+      this.pdpToEditCartSubscription = JSON.parse(sessionStorage.getItem('pdpToEditCartSubscription'));
+      sessionStorage.removeItem('pdpToEditCartSubscription');
+    }
   }
 
   _handleQuantityVariant = () => {
@@ -172,6 +183,12 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
     this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
+    this.filterSubscriptionPropertyInputs = this.querySelectorAll(this._selectors.filterSubscriptionPropertyInput);
+
+    if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
+      this.currentQuantity = 2;
+      this.filterSubscriptionTwoPackQuantityInput = this.querySelector(this._selectors.filterSubscriptionTwoPackQuantityInput);
+    }
 
     this.filterSubscriptionVariants.forEach((trigger) => {
       trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
@@ -236,9 +253,21 @@ class ProductMain extends HTMLElement {
     if (enable) {
       this.filterSubscriptionSelectedVariantInput.removeAttribute('disabled');
       this.filterSubscriptionSelectedVariantSellingPlanInput.removeAttribute('disabled');
+      this.filterSubscriptionPropertyInputs.forEach((input) => {
+        input.removeAttribute('disabled');
+      });
+      if (this.filterSubscriptionTwoPackQuantityInput) {
+        this.filterSubscriptionTwoPackQuantityInput.removeAttribute('disabled');
+      }
     } else {
       this.filterSubscriptionSelectedVariantInput.setAttribute('disabled', '');
       this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('disabled', '');
+      this.filterSubscriptionPropertyInputs.forEach((input) => {
+        input.setAttribute('disabled', '');;
+      });
+      if (this.filterSubscriptionTwoPackQuantityInput) {
+        this.filterSubscriptionTwoPackQuantityInput.setAttribute('disabled', '');
+      }
     }
   }
 
@@ -354,6 +383,9 @@ class ProductMain extends HTMLElement {
     }
     this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
     this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+    this.filterSubscriptionPropertyInputs.forEach((input) => {
+      input.setAttribute('value', `subscription${Date.now()}`);;
+    });
   }
 
   _initProductForm() {
@@ -361,6 +393,102 @@ class ProductMain extends HTMLElement {
     this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
     this.cart = document.querySelector('cart-drawer');
     this.cartDrawer = document.querySelector('#CartDrawer')
+  }
+
+  _updateCartItems = (type, data, render = true) => {
+    this.cart.setActiveElement(document.activeElement);
+
+    const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status) {
+          this.handleErrorMessage(response.description);
+          this.subscriptionError = true;
+          return;
+        } else if (!this.cart) {
+          window.location = window.routes.cart_url;
+          return;
+        }
+        console.log(response)
+        if (!this.subscriptionError) {
+          this.subscriptionError = false;
+          if (render) {
+            this.cart.renderContents(response);
+            this.cartDrawer.open();
+          }
+        }
+        
+        return response;
+      })
+      .catch((e) => {
+        this.handleErrorMessage(e.description)
+        console.log(e);
+      })
+      .finally(() => {
+        this._enableButtons();
+      });
+
+    return res;
+  }
+
+  _editCartSubscription = (formData) => {
+    const init = async () => {
+      const newSelectedSubscription = {};
+      for (const [key, value] of formData.entries()) {
+        if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
+          newSelectedSubscription[key] = value;
+        }
+      }
+  
+      console.log(this.pdpToEditCartSubscription, newSelectedSubscription)
+      let replaceItem = false;
+      if (this.pdpToEditCartSubscription.key.split(':')[0] !== newSelectedSubscription.id) {
+        replaceItem = true;
+      }
+
+      if (replaceItem) {
+        console.log('replace')
+        const removeData = {
+          id: this.pdpToEditCartSubscription.key,
+          quantity: 0
+        };
+        console.log(removeData)
+        await this._updateCartItems('change', removeData, false);
+
+        const addData = {
+          items: [
+            { 
+              id: newSelectedSubscription.id, 
+              quantity: parseInt(newSelectedSubscription.quantity), 
+              selling_plan: parseInt(newSelectedSubscription.selling_plan),
+              properties: this.pdpToEditCartSubscription.properties,
+            }
+          ],
+          sections: this.cart.getSectionsToRender().map((section) => section.id)
+        }
+        this._updateCartItems('add', addData, true);
+
+      } else {
+        const changeData = {
+          id: this.pdpToEditCartSubscription.key,
+          quantity: parseInt(newSelectedSubscription.quantity),
+          selling_plan: parseInt(newSelectedSubscription.selling_plan),
+          sections: this.cart.getSectionsToRender().map((section) => section.id)
+        };
+        console.log(changeData)
+        this._updateCartItems('change', changeData, true);
+      }
+
+      this.pdpToEditCartSubscription = false;
+    }
+    
+    init();
   }
 
   onSubmitHandler(evt) {
@@ -376,6 +504,12 @@ class ProductMain extends HTMLElement {
     }
 
     const formData = new FormData(this.form);
+
+    if (this.pdpToEditCartSubscription != false) {
+      this._editCartSubscription(formData);
+      return;
+    }
+    
     if (this.cart) {
       formData.append(
         'sections',
@@ -403,7 +537,7 @@ class ProductMain extends HTMLElement {
           window.location = window.routes.cart_url;
           return;
         }
-
+        console.log(response)
         if (!this.error)
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', productVariantId: formData.get('id') });
           this.error = false;

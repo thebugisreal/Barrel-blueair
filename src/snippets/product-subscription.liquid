@@ -1,12 +1,19 @@
 {% assign filter_subscriptions = subscription.filter_subscriptions.value %}
+{% assign airpurifier_type_two_pack = false %}
 {% if subscription.pdp_type == 'Filter' %}
   {% assign pdp_type = 'filter' %}
 {% else %}
   {% assign pdp_type = 'airpurifier_and_filter' %}
+  {% for filter_product in filter_subscriptions %}
+    {% if filter_product.variants[0].selling_plan_allocations.size > 0 and filter_product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
+      {% assign airpurifier_type_two_pack = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
 
 <div class="product__subscription-container {% if product.variants.size > 1 %}mt-md{% endif %}">
-  <div class="product__subscription border border-blue rounded-[3px] relative mt-sm" data-type="{{ pdp_type }}" data-selected="true" js-subscription>
+  <div class="product__subscription border border-blue rounded-[3px] relative mt-sm" data-type="{{ pdp_type }}" data-selected="true" js-subscription {% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
     <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle>
       <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
         {% render 'icon-check' %}
@@ -61,7 +68,14 @@
       <div class="product-subscription__filter-subscriptions py-md border-t border-gray">
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-input>
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-selling-plan-input>
-        <div class="p2 font-700">
+        {% if pdp_type == 'airpurifier_and_filter' %}
+          <input type="hidden" disabled name="properties[subscription]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="items[1][properties[subscription]]" value="" js-filter-subscription-property-input>
+          {% if airpurifier_type_two_pack %}
+            <input type="hidden" disabled name="items[1][quantity]" value="2" js-filter-subscription-two-pack-quantity-input>
+          {% endif %}
+        {% endif %}
+        <div class="pb-sm p2 font-500">
           Customize Your Subscription
         </div>
         <div class="filter-subscriptions">
