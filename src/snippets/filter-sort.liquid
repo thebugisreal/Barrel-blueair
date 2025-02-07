@@ -61,15 +61,54 @@
                           >
                             <span class="filter-value-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
                             <span class="filter-value-label__text p2 flex-1">
-                              {{ value.label | escape }}
+                              {%  assign final_label = ''%}
+                              {% assign value_label_temp = value.label |  replace: '_',' ' | replace: '-', ' ' %}
+                              {% assign value_label = value_label_temp |  escape |  split: ' ' %}
+                              {% for word in value_label %}
+                                {% assign word_capitalize = word |  capitalize %}
+                                {% assign final_label = final_label |  append: word_capitalize |  append: ' ' %}
+                              {% endfor %}
+                                {{ final_label }}
+                            </span>
+                          </label>
+                        </div>
+                      </li> 
+                    {%- endfor -%}
+                  </ul>   
+                {% when 'price_range' %}
+                  {% render 'filter--range' filter: filter, value: value, scope: scope %}
+                {% when 'boolean' %}
+                  <ul class="filter-sort__values pb-xxs" role="list">
+                    {%- for value in filter.values -%}
+                      {% capture value_id %}FilterSort-{{ filter.label | escape }}-{{ forloop.index }}-{{ scope }}{% endcapture %}
+                      <li class="filter-sort__value mb-sm">
+                        <div class="filter-value">
+                          <input type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            id="{{ value_id }}"
+                            class="filter-value__input visually-hidden"
+                            {% if value.active %}checked{% endif %}
+                            {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          >
+                          <label for="{{ value_id }}" 
+                            class="filter-value__label flex justify-start items-center gap-xs {% if value.count == 0 and value.active == false %} disabled opacity-30 {% endif %}"
+                          >
+                            <span class="filter-value-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
+                            <span class="filter-value-label__text p2 flex-1">
+                              {%  assign final_label = ''%}
+                              {% assign value_label = value.label |  escape |  split: '-' %}
+                              {% for word in value_label %}
+                                {% assign word_capitalize = word |  capitalize %}
+                                {% assign final_label = final_label |  append: word_capitalize |  append: ' ' %}
+                              {% endfor %}
+                                {{ final_label }}
                             </span>
                           </label>
                         </div>
                       </li>                          
                     {%- endfor -%}
                   </ul>   
-                {% when 'price_range' %}   
-                  {% render 'filter--range' filter: filter, value: value, scope: scope %}
               {% endcase %}
             </div><!-- .filter-sort__values-container -->
           </div>
