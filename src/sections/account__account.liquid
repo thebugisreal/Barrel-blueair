@@ -278,9 +278,7 @@
                     {{ section | escape }}
                   </button>
                 {% endfor %}
-                {% comment %}
-                <a href="{{routes.account_logout_url}}" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
-                {% endcomment %}
+                <a href="https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
               </div>
             </div>
           </s-accordion>
@@ -313,9 +311,21 @@
               </label>
             </li>                          
           {%- endfor -%}
-          {% comment %}
-          <a href="{{routes.account_logout_url}}" class="account-section__label flex justify-start items-center gap-xs p-sm">Sign Out</a>
-          {% endcomment %}
+          <li class="border-b border-[#F0F3F6]">
+            <input type="radio"
+              name="AccountSections"
+              id="AccountLogOut"
+              onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';"
+              class="account-section__input visually-hidden">
+            <label 
+              for="AccountLogOut" 
+              class="account-section__label flex justify-start items-center gap-xs p-sm">
+              <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
+              <span class="account-section-label__text p1 leading-none">
+                Sign Out
+              </span>
+            </label>
+          </li>
         </ul>
       </div>
 
