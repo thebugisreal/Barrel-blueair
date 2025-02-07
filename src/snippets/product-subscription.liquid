@@ -69,8 +69,8 @@
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-input>
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-selling-plan-input>
         {% if pdp_type == 'airpurifier_and_filter' %}
-          <input type="hidden" disabled name="properties[subscription]" value="" js-filter-subscription-property-input>
-          <input type="hidden" disabled name="items[1][properties[subscription]]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="properties[subscriptionTempId]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="items[1][properties[subscriptionTempId]]" value="" js-filter-subscription-property-input>
           {% if airpurifier_type_two_pack %}
             <input type="hidden" disabled name="items[1][quantity]" value="2" js-filter-subscription-two-pack-quantity-input>
           {% endif %}

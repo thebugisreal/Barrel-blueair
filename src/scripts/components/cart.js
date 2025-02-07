@@ -3,14 +3,26 @@ class CartSubscription extends HTMLElement {
     super();
 
     this._selectors = {
-      editBtn: '[js-cart-subscription-edit]'
+      cart: 'cart-drawer',
+      cartPage: 'cart-items',
+      editBtn: '[js-cart-subscription-edit]',
+      checkbox: '[js-cart-subscription-checkbox]',
+      cartItem: '[js-cart-item]',
+      loading: 'loading-spinner',
+      error: '[js-cart-subscription-error]'
     }
   }
 
   connectedCallback() {
+    this.cart = document.querySelector(this._selectors.cart);
+    this.cartPage = document.querySelector(this._selectors.cartPage);
     this.editBtn = this.querySelector(this._selectors.editBtn);
+    this.checkbox = this.querySelector(this._selectors.checkbox);
+    this.loading = this.closest(this._selectors.cartItem).querySelector(this._selectors.loading);
+    this.error = this.querySelector(this._selectors.error);
 
     this.editBtn?.addEventListener('click', this.editBtnOnClick);
+    this.checkbox.addEventListener('click', this.checkboxOnClick);
   }
 
   editBtnOnClick = (evt) => {
@@ -22,6 +34,121 @@ class CartSubscription extends HTMLElement {
     }
     sessionStorage.setItem('pdpToEditCartSubscription', JSON.stringify(itemData));
     window.location.href = evt.currentTarget.href;
+  }
+
+  checkboxOnClick = (evt) => {
+    evt.preventDefault();
+
+    this.loading.setAttribute('loading', '');
+
+    const init = async () => {
+      const itemProperties = JSON.parse(this.dataset.properties);
+
+      if (evt.currentTarget.dataset.checked == 'true') {
+        let changeData;
+        if (itemProperties['subscriptionTempId']) {
+          changeData = {
+            id: this.dataset.itemKey,
+            quantity: 0,
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+          };
+        } else {
+          changeData = {
+            id: this.dataset.itemKey,
+            quantity: parseInt(this.dataset.itemQuantity),
+            selling_plan: '',
+            properties: itemProperties,
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+          };
+        }
+        this._updateCartItems('change', changeData, true);
+      } else {
+        const preselectedSubscriptionData = this.dataset.preselectedSubscription.split(':');
+
+        if (this.dataset.type == 'filter') {
+          const changeData = {
+            id: preselectedSubscriptionData[0],
+            selling_plan: preselectedSubscriptionData[1],
+            quantity: parseInt(preselectedSubscriptionData[2]),
+            properties: itemProperties,
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+          };
+          this._updateCartItems('change', changeData, true);
+        } else {
+          const subscriptionTempId = `subscription${Date.now()}`
+          itemProperties['subscriptionTempId'] = subscriptionTempId;
+
+          const addData = {
+            items: [
+              { 
+                id: preselectedSubscriptionData[0], 
+                selling_plan: preselectedSubscriptionData[1],
+                quantity: parseInt(preselectedSubscriptionData[2]),
+                properties: { subscriptionTempId: subscriptionTempId }
+              }
+            ]
+          }
+          await this._updateCartItems('add', addData, false);
+          //error?
+          const changeData = {
+            id: this.dataset.itemKey,
+            properties: itemProperties,
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+          };
+          this._updateCartItems('change', changeData, true);
+        }
+      }
+    }
+    
+    init();
+  }
+
+  _handleErrorMessage(errorMessage = false) {
+    if (errorMessage) {
+      this.error.innerHTML = errorMessage;
+      this.error.classList.remove('hidden');
+    } else {
+      this.error.classList.add('hidden');
+    }
+  }
+
+  _updateCartItems = (type, data, render = true) => {
+    this.cart.setActiveElement(document.activeElement);
+
+    const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status) {
+          this._handleErrorMessage(response.description);
+          this.subscriptionError = true;
+          return;
+        }
+        console.log(response)
+        if (!this.subscriptionError) {
+          this.subscriptionError = false;
+          if (render) {
+            if (this.cart) this.cart.renderContents(response);
+            if (this.cartPage) this.cartPage.onCartUpdate();
+          }
+        }
+        
+        return response;
+      })
+      .catch((e) => {
+        this._handleErrorMessage(e.description)
+        console.log(e);
+      })
+      .finally(() => {
+        this.loading.removeAttribute('loading');
+      });
+
+    return res;
   }
 }
 

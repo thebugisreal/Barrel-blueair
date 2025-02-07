@@ -453,14 +453,6 @@ class ProductMain extends HTMLElement {
       }
 
       if (replaceItem) {
-        console.log('replace')
-        const removeData = {
-          id: this.pdpToEditCartSubscription.key,
-          quantity: 0
-        };
-        console.log(removeData)
-        await this._updateCartItems('change', removeData, false);
-
         const addData = {
           items: [
             { 
@@ -469,10 +461,16 @@ class ProductMain extends HTMLElement {
               selling_plan: parseInt(newSelectedSubscription.selling_plan),
               properties: this.pdpToEditCartSubscription.properties,
             }
-          ],
-          sections: this.cart.getSectionsToRender().map((section) => section.id)
+          ]
         }
-        this._updateCartItems('add', addData, true);
+        await this._updateCartItems('add', addData, false);
+//error?
+        const removeData = {
+          id: this.pdpToEditCartSubscription.key,
+          quantity: 0,
+          sections: this.cart.getSectionsToRender().map((section) => section.id)
+        };
+        this._updateCartItems('change', removeData, true);
 
       } else {
         const changeData = {
