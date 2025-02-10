@@ -145,7 +145,7 @@
                 </div>
 
                 {% if item.product.metafields.seed.subscription != blank %}
-                  {% render 'cart-subscription' item: item %}
+                  {% render 'cart-subscription' item: item scope: 'cart-drawer' %}
                 {% endif %}
               </div>
               {%- endfor -%}

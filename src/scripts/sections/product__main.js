@@ -94,9 +94,7 @@ class ProductMain extends HTMLElement {
       
       if (this.subscription) {
         if (this.selectedFilterSubscriptionVariant) {
-          if (this.subscriptionType == 'filter') {
-            this.updateSubscriptionPrice(this.selectedFilterSubscriptionVariant);
-          }
+          this.updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
 
           if (this.subscription.dataset.selected == 'true') {
             this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
@@ -314,17 +312,39 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  updateSubscriptionPrice = (selectedFilterSubscriptionVariant) => {
+  updateSubscriptionPrice = (selectedFilterSubscriptionVariant, updateFilterSubscriptionVariantPriceLabel = false) => {
     const subscriptionPrice = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.price;
     const subscriptionPriceCompareAt = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.priceCompareAt;
 
     let subscriptionPriceMarkup;
-    if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
-      subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
+    if (this.subscriptionType == 'airpurifier_and_filter') {
+      if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
+        subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity + this.currentPrice, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity + this.currentPrice, this.moneyFormat)}</span>`;
+      } else {
+        subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity + this.currentPrice, this.moneyFormat)}</span>`;
+      }
     } else {
-      subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
+      if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
+        subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
+      } else {
+        subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
+      }
     }
     this.subscriptionPrice.innerHTML = subscriptionPriceMarkup;
+
+
+    if (updateFilterSubscriptionVariantPriceLabel) {
+      this.filterSubscriptionVariants.forEach((filterSubscriptionVariant) => {
+        const label = filterSubscriptionVariant.querySelector(this._selectors.priceCopy);
+        let labelMarkup;
+        if (label.dataset.priceCompareAt && label.dataset.priceCompareAt > label.dataset.price) {
+          labelMarkup = `<s>${theme.utils.formatMoney(label.dataset.priceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(label.dataset.price * this.currentQuantity, this.moneyFormat)}</span>`;
+        } else {
+          labelMarkup = `<span class="font-700">${theme.utils.formatMoney(label.dataset.price * this.currentQuantity, this.moneyFormat)}</span>`;
+        }
+        label.innerHTML = labelMarkup;
+      });
+    }
   }
 
   _filterSubscriptionVariantOnClick = (evt) => {
@@ -353,9 +373,7 @@ class ProductMain extends HTMLElement {
       this._toggleFilterSubscriptionFormInputs(false);
     }
 
-    if (this.subscriptionType == 'filter') {
-      this.updateSubscriptionPrice(triggerTarget);
-    }
+    this.updateSubscriptionPrice(triggerTarget, false);
 
     this._updateAtcStateOnFilterChange(triggerTarget);
 
@@ -396,8 +414,6 @@ class ProductMain extends HTMLElement {
   }
 
   _updateCartItems = (type, data, render = true) => {
-    this.cart.setActiveElement(document.activeElement);
-
     const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
       method: 'POST',
       headers: {
@@ -409,19 +425,13 @@ class ProductMain extends HTMLElement {
       .then((response) => {
         if (response.status) {
           this.handleErrorMessage(response.description);
-          this.subscriptionError = true;
+          sessionStorage.setItem('cartSubscriptionError', response.description);
+          window.location.href = window.Shopify.routes.root + 'cart';
           return response;
-        } else if (!this.cart) {
-          window.location = window.routes.cart_url;
-          return;
         }
-        console.log(response)
-        if (!this.subscriptionError) {
-          this.subscriptionError = false;
-          if (render) {
-            this.cart.renderContents(response);
-            this.cartDrawer.open();
-          }
+
+        if (render) {
+          window.location.href = window.Shopify.routes.root + 'cart';
         }
         
         return response;
@@ -445,8 +455,7 @@ class ProductMain extends HTMLElement {
           newSelectedSubscription[key] = value;
         }
       }
-  
-      console.log(this.pdpToEditCartSubscription, newSelectedSubscription)
+
       let replaceItem = false;
       if (this.pdpToEditCartSubscription.key.split(':')[0] !== newSelectedSubscription.id) {
         replaceItem = true;
@@ -466,14 +475,12 @@ class ProductMain extends HTMLElement {
         const res = await this._updateCartItems('add', addData, false);
 
         if (res.status) {
-          console.log(res.status)
           return;
         }
 
         const removeData = {
           id: this.pdpToEditCartSubscription.key,
-          quantity: 0,
-          sections: this.cart.getSectionsToRender().map((section) => section.id)
+          quantity: 0
         };
         this._updateCartItems('change', removeData, true);
 
@@ -481,10 +488,8 @@ class ProductMain extends HTMLElement {
         const changeData = {
           id: this.pdpToEditCartSubscription.key,
           quantity: parseInt(newSelectedSubscription.quantity),
-          selling_plan: parseInt(newSelectedSubscription.selling_plan),
-          sections: this.cart.getSectionsToRender().map((section) => section.id)
+          selling_plan: parseInt(newSelectedSubscription.selling_plan)
         };
-        console.log(changeData)
         this._updateCartItems('change', changeData, true);
       }
 
@@ -540,7 +545,7 @@ class ProductMain extends HTMLElement {
           window.location = window.routes.cart_url;
           return;
         }
-        console.log(response)
+
         if (!this.error)
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', productVariantId: formData.get('id') });
           this.error = false;

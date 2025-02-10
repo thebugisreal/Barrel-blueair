@@ -5,9 +5,9 @@
   if item.selling_plan_allocation != blank
     assign is_subscribed = true
   else
-    if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['subscriptionTempId'] != blank
+    if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['_subscriptionTempId'] != blank
       for cart_item in cart.items
-        if cart_item.selling_plan_allocation != blank and item.properties['subscriptionTempId'] == cart_item.properties['subscriptionTempId'] and item != cart_item
+        if cart_item.selling_plan_allocation != blank and item.properties['_subscriptionTempId'] == cart_item.properties['_subscriptionTempId'] and item != cart_item
           assign is_subscribed = true
           break
         endif
@@ -41,7 +41,7 @@
   }
 {%- endcapture -%}
 {% if subscription_object.pdp_type == 'Filter' and is_subscribed %}
-  <cart-subscription class="cart-item__subscription block border border-gray p-sm mt-sm" data-item-key="{{ item.key }}" data-item-quantity="{{ item.quantity }}" data-properties='{{ item_properties }}'>
+  <cart-subscription data-scope="{{ scope }}" class="cart-item__subscription block border border-gray p-sm mt-sm" data-item-key="{{ item.key }}" data-item-quantity="{{ item.quantity }}" data-properties='{{ item_properties }}'>
     <div class="flex justify-start items-start gap-xs">
       <button type="button" class="cart-item-subscription__checkbox mt-xxxs" data-checked="true" {% if item.product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}is-two-pack-subscription {% endif %} js-cart-subscription-checkbox></button>
       <div class="p3 flex-1">{{ item.title }} Subscription</div>
@@ -62,7 +62,7 @@
       {% assign preselected_subscription_quantity = 1 %}
     {% endif %}
   {% endif %}
-  <cart-subscription class="cart-item__subscription block border border-gray p-sm mt-sm relative" data-type="{{ subscription_object.pdp_type | handle }}" data-item-key="{{ item.key }}" data-properties='{{ item_properties }}' data-preselected-subscription="{{ preselected_subscription.id }}:{{ preselected_subscription.selling_plan_allocations[0].selling_plan.id }}:{{ preselected_subscription_quantity }}">
+  <cart-subscription data-scope="{{ scope }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative" data-type="{{ subscription_object.pdp_type | handle }}" data-item-key="{{ item.key }}" data-properties='{{ item_properties }}' data-preselected-subscription="{{ preselected_subscription.id }}:{{ preselected_subscription.selling_plan_allocations[0].selling_plan.id }}:{{ preselected_subscription_quantity }}">
     <div class="flex justify-start items-center gap-xs">
       <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
       <p class="p3">Add a Filter Subscription</p>
@@ -73,9 +73,9 @@
       <div class="flex-1">Pay when it's sent</div>
       <div>
         {% if preselected_subscription.selling_plan_allocations[0].compare_at_price > preselected_subscription.selling_plan_allocations[0].price %}
-          <s>{{ preselected_subscription.selling_plan_allocations[0].compare_at_price | money }}</s><br>
+          <s>{{ preselected_subscription.selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
         {% endif %}
-        <span class="font-700">{{ preselected_subscription.selling_plan_allocations[0].price | money }}</span>
+        <span class="font-700">{{ preselected_subscription.selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
       </div>
       <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
         Save 15%

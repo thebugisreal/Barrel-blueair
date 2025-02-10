@@ -101,6 +101,7 @@ cart-remove-button .cart-remove-button:focus-visible {
   text-left
   font-500
   rounded-[3px]
+  z-[1]
   hidden;
   box-shadow: 0 0 10px 0 rgba(0,0,0,.75);
 }

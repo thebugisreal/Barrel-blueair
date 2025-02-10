@@ -41,12 +41,12 @@ customElements.define("s-tabs", Tabs);
 customElements.define("s-carousel", Carousel);
 customElements.define("s-video", Video);
 
-customElements.define('cart-subscription', CartSubscription);
 customElements.define('cart-remove-button', CartRemoveButton);
 customElements.define('cart-items', CartItems);
 customElements.define('cart-note', CartNote);
 customElements.define('cart-drawer', CartDrawer);
 customElements.define('cart-drawer-items', CartDrawerItems);
+customElements.define('cart-subscription', CartSubscription);
 
 customElements.define("s-header", SiteHeader);
 
