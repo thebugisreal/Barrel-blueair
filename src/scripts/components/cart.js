@@ -21,8 +21,41 @@ class CartSubscription extends HTMLElement {
     this.loading = this.closest(this._selectors.cartItem).querySelector(this._selectors.loading);
     this.error = this.querySelector(this._selectors.error);
 
+    this.checkTwoPackSubscriptionItem()
     this.editBtn?.addEventListener('click', this.editBtnOnClick);
     this.checkbox.addEventListener('click', this.checkboxOnClick);
+  }
+
+  checkTwoPackSubscriptionItem = () => {
+    const target = this.querySelector('[is-two-pack-subscription]');
+
+    if (!target) {
+      return;
+    }
+
+    if (this.dataset.itemQuantity == '2') {
+      return;
+    }
+    console.log('tt')
+    const update = async () => {
+      const  changeData = {
+        id: this.dataset.itemKey,
+        quantity: 2,
+        sections: this.cart.getSectionsToRender().map((section) => section.id)
+      };
+      const res = await this._updateCartItems('change', changeData, true);
+
+      if (res.status) {
+        const removeData = {
+          id: this.dataset.itemKey,
+          quantity: 0,
+          sections: this.cart.getSectionsToRender().map((section) => section.id)
+        };
+        this._updateCartItems('change', removeData, true, true);
+      }
+    }
+
+    update();
   }
 
   editBtnOnClick = (evt) => {
@@ -88,8 +121,13 @@ class CartSubscription extends HTMLElement {
               }
             ]
           }
-          await this._updateCartItems('add', addData, false);
-          //error?
+          const res = await this._updateCartItems('add', addData, false);
+          
+          if (res.status) {
+            console.log(res.status)
+            return;
+          }
+          
           const changeData = {
             id: this.dataset.itemKey,
             properties: itemProperties,
@@ -127,7 +165,7 @@ class CartSubscription extends HTMLElement {
         if (response.status) {
           this._handleErrorMessage(response.description);
           this.subscriptionError = true;
-          return;
+          return response;
         }
         console.log(response)
         if (!this.subscriptionError) {

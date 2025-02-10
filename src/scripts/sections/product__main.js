@@ -410,7 +410,7 @@ class ProductMain extends HTMLElement {
         if (response.status) {
           this.handleErrorMessage(response.description);
           this.subscriptionError = true;
-          return;
+          return response;
         } else if (!this.cart) {
           window.location = window.routes.cart_url;
           return;
@@ -463,8 +463,13 @@ class ProductMain extends HTMLElement {
             }
           ]
         }
-        await this._updateCartItems('add', addData, false);
-//error?
+        const res = await this._updateCartItems('add', addData, false);
+
+        if (res.status) {
+          console.log(res.status)
+          return;
+        }
+
         const removeData = {
           id: this.pdpToEditCartSubscription.key,
           quantity: 0,
