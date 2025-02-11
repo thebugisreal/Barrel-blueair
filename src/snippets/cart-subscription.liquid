@@ -62,7 +62,7 @@
       {% assign preselected_subscription_quantity = 1 %}
     {% endif %}
   {% endif %}
-  <cart-subscription data-scope="{{ scope }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative" data-type="{{ subscription_object.pdp_type | handle }}" data-item-key="{{ item.key }}" data-properties='{{ item_properties }}' data-preselected-subscription="{{ preselected_subscription.id }}:{{ preselected_subscription.selling_plan_allocations[0].selling_plan.id }}:{{ preselected_subscription_quantity }}">
+  <cart-subscription data-scope="{{ scope }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative" data-type="{{ subscription_object.pdp_type | handle }}" data-item-key="{{ item.key }}" data-item-quantity="{{ item.quantity }}" data-properties='{{ item_properties }}' data-preselected-subscription="{{ preselected_subscription.id }}:{{ preselected_subscription.selling_plan_allocations[0].selling_plan.id }}:{{ preselected_subscription_quantity }}">
     <div class="flex justify-start items-center gap-xs">
       <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
       <p class="p3">Add a Filter Subscription</p>

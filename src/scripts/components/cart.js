@@ -434,6 +434,7 @@ class CartSubscription extends HTMLElement {
           
           const changeData = {
             id: this.dataset.itemKey,
+            quantity: parseInt(this.dataset.itemQuantity),
             properties: itemProperties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
