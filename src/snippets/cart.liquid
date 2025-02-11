@@ -25,7 +25,7 @@
             <p class="s1 mb-sm">Your Items</p>
 
             {% comment %} Cart Items  {% endcomment %}
-            <div class="drawer__cart-items-wrapper flex flex-col gap-md">
+            <div class="drawer__cart-items-wrapper flex flex-col gap-md mb-md">
               {%- for item in cart.items -%}
               <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative" js-cart-item>
                 <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
@@ -53,14 +53,11 @@
                     {%- for property in item.properties -%}
                       {%- assign property_first_char = property.first | slice: 0 -%}
                       {%- if property.last != blank and property_first_char != '_' -%}
-                        <p>{{ property.first }}: {{ property.last }}</p>
+                        <p class="my-xxxs">{{ property.first }}: {{ property.last }}</p>
                       {%- endif -%}
                     {%- endfor -%}
-                    {% if item.selling_plan_allocation != null %}
-                      <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                    {% endif %}
                     {% if item.discounts != empty %}
-                      <ul>
+                      <ul class="my-xxxs">
                         {%- for discount in item.discounts -%}
                           <li>{{ discount.title }}</li>
                         {%- endfor -%}
@@ -146,6 +143,10 @@
                     </div>
                   </div>
                 </div>
+
+                {% if item.product.metafields.seed.subscription != blank %}
+                  {% render 'cart-subscription' item: item scope: 'cart-drawer' %}
+                {% endif %}
               </div>
               {%- endfor -%}
             </div>

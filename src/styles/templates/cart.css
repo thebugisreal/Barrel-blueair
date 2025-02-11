@@ -67,3 +67,61 @@ cart-remove-button .cart-remove-button:focus-visible {
   border-[#00B5E2]
 }
 /* END Cart GWP */
+
+/* cart subscription */
+.cart-item-subscription__checkbox {
+  @apply w-[22px]
+  h-[22px]
+  border
+  border-blue
+  rounded-[4px]
+  bg-no-repeat
+  bg-center
+  bg-none;
+}
+
+.cart-item-subscription__checkbox[data-checked="true"] {
+  @apply bg-blue;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 22 22'%3e%3cpath fill='none' stroke='white' d='M5 12l4.2 3.5 7.1-9'/%3e%3c/svg%3e");
+}
+
+.cart-item-subscription__tooltip {
+  @apply bg-no-repeat;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0  19 19'%3e%3cg fill='none' fill-rule='evenodd' stroke='%23002955' transform='translate(1 1)'%3e%3ccircle cx='8.5' cy='8.5' r='8.5'/%3e%3cpath stroke-linecap='square' d='M8.5 7.429v5.142M8.5 5v.5'/%3e%3c/g%3e%3c/svg%3e");
+}
+
+.cart-item-subscription__tooltip::after {
+  @apply absolute
+  w-[80vw]
+  max-w-[300px]
+  bg-white
+  p-xs
+  left-1/2
+  -translate-x-1/2
+  text-left
+  font-500
+  rounded-[3px]
+  z-[1]
+  hidden;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.75);
+}
+
+.cart-item-subscription__tooltip--add::after {
+  @apply top-[40px];
+  content: "Subscribers get a 15% discount on replacement filters, free shipping, and automatic delivery right when it's time to replace. Tax and shipping fees may apply in some areas.";
+}
+
+.cart-item-subscription__tooltip--pay::after {
+  @apply -bottom-[40px];
+  content: "Your credit card will be charged on the date your filter is shipped";
+}
+
+.cart-item-subscription__tooltip:focus::after {
+  @apply block;
+}
+
+@media screen(desktop){
+  .cart-item-subscription__tooltip:hover::after {
+    @apply block;
+  }
+}
