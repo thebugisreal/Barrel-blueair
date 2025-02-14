@@ -45,9 +45,9 @@
       {% assign nav_linklist = linklists[section.settings.header_nav_desktop] %}
       {% for link in nav_linklist.links %}
         {% if link.links != blank %}
-          <li class="header-desktop-nav__item header-desktop-nav__item--mega-menu px-sm flex items-center cursor-default">
+          <li class="header-desktop-nav__item header-desktop-nav__item--mega-menu px-sm flex items-center cursor-default" js-nav-item>
             <div class="header-desktop-nav__mega-menu-title text-16">{{ link.title }}</div>
-            <div class="header-desktop-nav__mega-menu-wrapper absolute left-0 w-full bottom-[1px] translate-y-full z-[-1] bg-white pointer-events-none max-h-0 overflow-hidden transition-[max-height] duration-500">
+            <div class="header-desktop-nav__mega-menu-wrapper absolute left-0 w-full bottom-[1px] translate-y-full z-[-1] bg-white pointer-events-none max-h-0 overflow-hidden transition-[max-height] duration-500" js-nav-menu>
               {% render 'mega-menu' link: link %}
             </div>
           </li>

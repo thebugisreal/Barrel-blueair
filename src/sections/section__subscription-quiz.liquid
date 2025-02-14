@@ -1,5 +1,5 @@
 <subscription-quiz class="section__subscription-quiz block p-md desktop:px-xl desktop:pt-sm">
-  <div class="subscription-quiz__nav subscription-quiz__nav--search flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg" js-quiz-search-nav>
+  <div class="subscription-quiz__nav subscription-quiz__nav--search flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg hidden" js-quiz-search-nav>
     <button class="subscription-quiz-nav__btn w-[32px] p-xxxs disabled:opacity-30" disabled data-type="prev" js-quiz-nav-btn>
       {% render 'icon-arrow-left' %}
     </button>
@@ -10,7 +10,7 @@
       {% render 'icon-arrow-right' %}
     </button>
   </div>
-  <div class="subscription-quiz__nav subscription-quiz__nav--family flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg hidden" js-quiz-family-nav>
+  <div class="subscription-quiz__nav subscription-quiz__nav--family flex justify-center items-center gap-xxxs desktop:justify-end mb-md desktop:mb-lg" js-quiz-family-nav>
     <button class="subscription-quiz-nav__btn w-[32px] p-xxxs disabled:opacity-30" disabled data-type="prev" js-quiz-nav-btn>
       {% render 'icon-arrow-left' %}
     </button>
@@ -30,14 +30,14 @@
       {% endif %}
       <s-tabs class="subscription-quiz__tabs block mt-md desktop:mt-lg">
         <div class="tab__triggers flex justify-center items-center rounded-[100px] bg-blue-light p-xxs max-w-max mx-auto" role="tablist" aria-orientation="horizontal" js-tablist>
-          <button id="subscription-quiz-tab1-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab1-content-panel" role="tab" aria-selected="true" data-mode="search" js-tab>
+          <button id="subscription-quiz-tab1-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab1-content-panel" role="tab" aria-selected="false" data-mode="search" js-tab>
             By Model Number
           </button>
-          <button id="subscription-quiz-tab2-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab2-content-panel" role="tab" aria-selected="false" data-mode="family" js-tab>
+          <button id="subscription-quiz-tab2-tab" class="tab__trigger subscription-quiz__tab-trigger text-16 rounded-[30px] py-xs px-md" aria-controls="subscription-quiz-tab2-content-panel" role="tab" aria-selected="true" data-mode="family" js-tab>
             By Family
           </button>
         </div>
-        <div id="subscription-quiz-tab1-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab1-tab" aria-hidden="false">
+        <div id="subscription-quiz-tab1-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab1-tab" aria-hidden="true">
           <form class="subscription-quiz__search-form" js-quiz-search-form>
             <label for="SubscriptionQuizSearch" class="block p1 text-center mb-sm">Enter your model number and we'll find compatible replacement filters</label>
             <div class="flex items-center gap-sm">
@@ -53,7 +53,7 @@
           </form>
           <div class="subscription-quiz__search-no-results text-center mt-md" js-quiz-search-no-results></div>
         </div>
-        <div id="subscription-quiz-tab2-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab2-tab" aria-hidden="true">
+        <div id="subscription-quiz-tab2-content-panel" class="tab__panel py-md desktop:py-lg" role="tabpanel" aria-labelledby="subscription-quiz-tab2-tab" aria-hidden="false">
           <div class="subscription-quiz__selection-group subscription-quiz__selection-group--family grid grid-cols-3 gap-xs desktop:grid-cols-4 desktop:gap-md">
             {% for block in section.blocks %}
               <button class="subscription-quiz__selection subscription-quiz__selection--family border border-gray flex flex-col" data-selected="false" data-group-target="{{ block.settings.title | handleize }}" js-quiz-selection>
@@ -130,16 +130,25 @@
                         {% render 'lazy-image' image: filter_image loading: 'easy' %}
                       </div>
                       <div class="subscription-quiz-filter__info w-full flex-1 text-left p-sm desktop:p-md">
-                        <div class="subscription-quiz-filter__title s3 leading-[22px]">{{ filter_object.name }}</div>
+                        {% if filter_product.metafields.seed.subscription_quiz_badge != blank %}
+                          <div class="subscription-quiz-filter__badge flex gap-xs">
+                            {% for tag in filter_product.metafields.seed.subscription_quiz_badge.value %}
+                              <span class="product-card__tag product-card__tag--blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag}}</span>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                        <div class="subscription-quiz-filter__title s3 leading-[22px] mt-md">{{ filter_object.name }}</div>
                         <div class="subscription-quiz-filter__price p1 mt-md">
                           {% if filter_product_variant.selling_plan_allocations[0].compare_at_price > filter_product_variant.selling_plan_allocations[0].price %}
                             <s class="font-400 mr-xs">{{ filter_product_variant.selling_plan_allocations[0].compare_at_price | times: fitler_quantity | money }}</s>
                           {% endif %}
                           <span>{{ filter_product_variant.selling_plan_allocations[0].price | times: fitler_quantity | money }}</span>
                         </div>
-                        <div class="mt-xxxs">
-                          Filter Subscription Savings
-                        </div>
+                        {% unless filter_product.metafields.seed.subscription_quiz_badge != blank %}
+                          <div class="mt-xxxs">
+                            Filter Subscription Savings
+                          </div>
+                        {% endunless %}
                       </div>
                     </button>
                   {% endif %}
@@ -185,7 +194,7 @@
                             <div class="subscription-quiz-frequency__heading w-full p-md flex justify-center items-center gap-xxs border-b border-blue-darkSky">
                               <span class="subscription-quiz-frequency__checkbox w-[18px] min-w-[18px] h-[18px] border border-blue rounded-full relative"></span>
                               <span class="subscription-quiz-frequency__title p1">
-                                every {{ selling_plan_allocation.selling_plan.options[0].value }}
+                                Every {{ selling_plan_allocation.selling_plan.options[0].value }}
                               </span>
                             </div>
                             <div class="subscription-quiz-frequency__description w-full p-md text-left flex-1">
@@ -229,7 +238,7 @@
                         <div class="subscription-quiz-frequency__heading w-full p-md flex justify-center items-center gap-xxs border-b border-blue-darkSky">
                           <span class="subscription-quiz-frequency__checkbox w-[18px] min-w-[18px] h-[18px] border border-blue rounded-full relative"></span>
                           <span class="subscription-quiz-frequency__title p1">
-                            every {{ selling_plan_allocation.selling_plan.options[0].value }}
+                            Every {{ selling_plan_allocation.selling_plan.options[0].value }}
                           </span>
                         </div>
                         <div class="subscription-quiz-frequency__description w-full p-md text-left flex-1">

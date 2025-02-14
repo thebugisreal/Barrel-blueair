@@ -10,6 +10,9 @@
     {%- capture carousel_options -%}
       {
         "cssMode": true,
+        {% if section.blocks.size < 4 %}
+        "centeredSlides": true,
+        {% endif %}
         "loop": false,
         "autoHeight": false,{% if section.settings.enable_nav_scrollbar %}
         "scrollbar": {

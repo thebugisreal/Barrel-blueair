@@ -249,7 +249,7 @@
                     type="submit" 
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>
-                    <div class="btn__text">
+                    <div class="btn__text whitespace-nowrap">
                       <span js-price>
                         {{ current_variant.price | money }}
                       </span>

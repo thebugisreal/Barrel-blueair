@@ -61,6 +61,7 @@
     @apply stroke-1;
   }
 
+  .header-desktop-nav__item--mega-menu.hovered .header-desktop-nav__mega-menu-title,
   .header-desktop-nav__item--mega-menu:focus-within .header-desktop-nav__mega-menu-title,
   .header-desktop-nav__item--mega-menu:hover .header-desktop-nav__mega-menu-title {
     @apply underline
@@ -68,6 +69,7 @@
     font-500;
   }
 
+  .header-desktop-nav__item--mega-menu.hovered .header-desktop-nav__mega-menu-wrapper,
   .header-desktop-nav__item--mega-menu:focus-within .header-desktop-nav__mega-menu-wrapper,
   .header-desktop-nav__item--mega-menu:hover .header-desktop-nav__mega-menu-wrapper {
     @apply pointer-events-auto
@@ -88,7 +90,8 @@
     pointer-events-none
     hidden;
   }
-
+  
+  .header-desktop-nav__item--mega-menu.hovered::before, 
   .header-desktop-nav__item--mega-menu:focus-within::before,
   .header-desktop-nav__item--mega-menu:hover::before {
     @apply block;

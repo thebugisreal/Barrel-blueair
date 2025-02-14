@@ -275,6 +275,16 @@
   @apply cursor-not-allowed
   opacity-30;
 }
+
+.product__atc:disabled span{
+  @apply hidden
+}
+
+.product__atc:disabled span[js-atc-text]{
+  @apply block
+}
+
+
 .product-viewer--js-press-active {
   @apply cursor-grabbing
 }

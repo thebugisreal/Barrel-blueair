@@ -19,3 +19,7 @@
 .filter-value__input:checked + .filter-value__label .filter-value-label__checkbox::after {
   @apply bg-blue;
 }
+
+#SortByTriggerAccordion[aria-hidden="true"] {
+  @apply border-b-0
+}
