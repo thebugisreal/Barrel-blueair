@@ -337,10 +337,10 @@ class ProductMain extends HTMLElement {
       this.filterSubscriptionVariants.forEach((filterSubscriptionVariant) => {
         const label = filterSubscriptionVariant.querySelector(this._selectors.priceCopy);
         let labelMarkup;
-        if (label.dataset.priceCompareAt && label.dataset.priceCompareAt > label.dataset.price) {
-          labelMarkup = `<s>${theme.utils.formatMoney(label.dataset.priceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(label.dataset.price * this.currentQuantity, this.moneyFormat)}</span>`;
+        if (label.dataset.labelPriceCompareAt && label.dataset.labelPriceCompareAt > label.dataset.labelPrice) {
+          labelMarkup = `<s>${theme.utils.formatMoney(label.dataset.labelPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(label.dataset.labelPrice * this.currentQuantity, this.moneyFormat)}</span>`;
         } else {
-          labelMarkup = `<span class="font-700">${theme.utils.formatMoney(label.dataset.price * this.currentQuantity, this.moneyFormat)}</span>`;
+          labelMarkup = `<span class="font-700">${theme.utils.formatMoney(label.dataset.labelPrice * this.currentQuantity, this.moneyFormat)}</span>`;
         }
         label.innerHTML = labelMarkup;
       });

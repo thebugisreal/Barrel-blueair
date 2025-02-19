@@ -5,9 +5,9 @@
   if item.selling_plan_allocation != blank
     assign is_subscribed = true
   else
-    if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['_subscriptionTempId'] != blank
+    if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['_unitSubscriptionTempId'] != blank
       for cart_item in cart.items
-        if cart_item.selling_plan_allocation != blank and item.properties['_subscriptionTempId'] == cart_item.properties['_subscriptionTempId'] and item != cart_item
+        if cart_item.selling_plan_allocation != blank and item.properties['_unitSubscriptionTempId'] == cart_item.properties['_unitSubscriptionTempId'] and item != cart_item
           assign is_subscribed = true
           break
         endif
@@ -22,7 +22,7 @@
       else
         assign filter_subscriptions = subscription_object.filter_subscriptions.value
         for filter_product in filter_subscriptions
-          assign filter_variant = filter_product.variants[0]
+          assign filter_variant = filter_product.variants[1]
           if filter_variant.available and filter_variant.selling_plan_allocations.size > 0
             assign subscription_available = true
             assign preselected_subscription = filter_variant
@@ -72,10 +72,17 @@
       <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--pay w-[19px] h-[19px] rounded-full"></button>
       <div class="flex-1">Pay when it's sent</div>
       <div>
-        {% if preselected_subscription.selling_plan_allocations[0].compare_at_price > preselected_subscription.selling_plan_allocations[0].price %}
-          <s>{{ preselected_subscription.selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
+        {% if subscription_object.pdp_type == 'Filter' %}
+          {% if preselected_subscription.selling_plan_allocations[0].compare_at_price > preselected_subscription.selling_plan_allocations[0].price %}
+            <s>{{ preselected_subscription.selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
+          {% endif %}
+          <span class="font-700">{{ preselected_subscription.selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
+        {% else %}
+          {% if preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price > preselected_subscription.product.variants[0].selling_plan_allocations[0].price %}
+            <s>{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
+          {% endif %}
+          <span class="font-700">{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
         {% endif %}
-        <span class="font-700">{{ preselected_subscription.selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
       </div>
       <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
         Save 15%

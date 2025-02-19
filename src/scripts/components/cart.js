@@ -383,7 +383,7 @@ class CartSubscription extends HTMLElement {
 
       if (evt.currentTarget.dataset.checked == 'true') {
         let changeData;
-        if (itemProperties['_subscriptionTempId']) {
+        if (itemProperties['_unitSubscriptionTempId']) {
           changeData = {
             id: this.dataset.itemKey,
             quantity: 0,
@@ -413,7 +413,7 @@ class CartSubscription extends HTMLElement {
           this._updateCartItems('change', changeData, true);
         } else {
           const subscriptionTempId = `subscription${Date.now()}`
-          itemProperties['_subscriptionTempId'] = subscriptionTempId;
+          itemProperties['_unitSubscriptionTempId'] = subscriptionTempId;
 
           const addData = {
             items: [
@@ -421,7 +421,7 @@ class CartSubscription extends HTMLElement {
                 id: preselectedSubscriptionData[0], 
                 selling_plan: preselectedSubscriptionData[1],
                 quantity: parseInt(preselectedSubscriptionData[2]),
-                properties: { _subscriptionTempId: subscriptionTempId }
+                properties: { _unitSubscriptionTempId: subscriptionTempId }
               }
             ]
           }
