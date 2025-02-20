@@ -168,7 +168,18 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <div class="product__star-rating mt-sm {{ spacing }}">reviews</div>
+                <div class="product__star-rating mt-sm {{ spacing }}">
+                  <div data-bv-show="rating_summary" data-bv-product-id="{{product.id}}"></div>
+                  <style>
+                    .product__star-rating [data-bv-show="rating_summary"] .bv_main_container_row_flex {
+                      display: none !important;
+                    }
+                    .product__star-rating [data-bv-show="rating_summary"] .bv_main_container_row_flex.bv_ratings_summary {
+                      display: inline-flex !important
+                    }
+                   
+                  </style>
+                </div>
               {% when 'filter_options' %}
                 {% if enable_subscription == false and product.metafields.seed.product_card_filter_products != blank %}
                   <div class="product__filter-options my-sm">

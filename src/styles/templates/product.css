@@ -284,3 +284,9 @@
     @apply border-blue
   }
 }
+
+/* Bazaarvoice Styling */
+.product__star-rating [data-bv-show="rating_summary"] .bv_main_container_row_flex {
+  @apply !hidden
+}
+/* END Bazaarvoice Styling */
