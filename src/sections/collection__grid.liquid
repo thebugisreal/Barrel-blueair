@@ -116,7 +116,7 @@
                     <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
                   </button>
                   <div id="SortByTriggerAccordion" class="accordion-content bg-white border-[1px] border-gray border-t-0 absolute w-full right-0 z-[2]" aria-hidden="true" js-accordion-content js-sort-triggers>
-                    {% assign options_to_show = 'title-ascending price-ascending price-descending best-selling' %}
+                    {% assign options_to_show = 'title-ascending price-ascending price-descending best-selling manual' %}
                     {% for option in collection.sort_options %}
                       {% unless option.value == sort_by %}
                           {% if options_to_show contains option.value %}
