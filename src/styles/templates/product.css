@@ -250,6 +250,10 @@
   }
 }
 
+s-carousel.pointer-event {
+  touch-action: pan-y pinch-zoom;
+}
+
 
 
 /* product quantity opption */

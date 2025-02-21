@@ -103,12 +103,18 @@
             <div class="s2 mt-xs hidden desktop:block">Sort by</div>
             <s-accordion data-manual-collapse="false" class="block relative" js-accordion>
                 <div class="accordion-item border border-gray" js-accordion-item>
-                  <button class="accordion-header p-xs flex gap-xs items-center w-full" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
+                  <button class="accordion-header p-xs flex gap-xs items-center w-full min-w-[215px]" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
                     <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-sort' %}</span>
                     <span class="flex-1 text-center s3 desktop:text-left" js-current-sort-label>
                       {% for option in collection.sort_options %}
                         {% if option.value == sort_by %}
-                          {{ option.name | escape }}
+                          {% if option.value == 'title-ascending' %}
+                            Product Name A-Z
+                          {% elsif option.value == 'title-descending' %}
+                            Product Name Z-A
+                          {% else %}
+                            {{ option.name | escape }}
+                          {% endif %}
                           {% break %}
                         {% endif %}
                       {% endfor %}
@@ -116,13 +122,23 @@
                     <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
                   </button>
                   <div id="SortByTriggerAccordion" class="accordion-content bg-white border-[1px] border-gray border-t-0 absolute w-full right-0 z-[2]" aria-hidden="true" js-accordion-content js-sort-triggers>
-                    {% assign options_to_show = 'title-ascending price-ascending price-descending best-selling manual' %}
+                    {% assign options_to_show = 'title-ascending title-descending price-ascending price-descending best-selling manual' %}
                     {% for option in collection.sort_options %}
                       {% unless option.value == sort_by %}
                           {% if options_to_show contains option.value %}
-                          <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
-                            {{ option.name | escape }}
-                          </button>
+                            {% if option.value == 'title-ascending' %}
+                              <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                                Product Name A-Z
+                              </button>
+                            {% elsif option.value == 'title-descending' %}
+                              <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                                Product Name Z-A
+                              </button>
+                            {% else %}
+                              <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                                {{ option.name | escape }}
+                              </button>
+                            {% endif %}
                           {% endif %}
                       {% endunless %}
                     {% endfor %}
