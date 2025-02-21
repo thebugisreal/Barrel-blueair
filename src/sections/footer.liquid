@@ -145,6 +145,11 @@
           <a href="{{ link.url }}" class="site-footer__link !no-underline">{{ link.title }}</a>
         </li>
       {% endfor %}
+      {% if localization.country.iso_code == 'US' %}
+        <li class="site-footer__item">
+          <span class=”evidon-notice-link”></span>
+        </li>
+      {% endif %}
       <li class="site-footer__item w-full mt-sm desktop:w-auto desktop:mt-0 desktop:order-first">&copy; Blueair {{  "now" | date: '%Y' }} </li>
     </ul>
   </div>
