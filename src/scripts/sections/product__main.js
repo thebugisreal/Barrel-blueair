@@ -451,43 +451,60 @@ class ProductMain extends HTMLElement {
     const init = async () => {
       const newSelectedSubscription = {};
       for (const [key, value] of formData.entries()) {
-        if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
-          newSelectedSubscription[key] = value;
+        if (this.pdpToEditCartSubscription.airPurifier) {
+          if (key == 'items[1][id]') {
+            newSelectedSubscription['id'] = value;
+          } else if (key == 'items[1][selling_plan]') {
+            newSelectedSubscription['selling_plan'] = value;
+          } else if (key == 'items[1][quantity]') {
+            newSelectedSubscription['quantity'] = value;
+          }
+        } else {
+          if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
+            newSelectedSubscription[key] = value;
+          }
         }
       }
 
+      let newQuantity;
+      if (newSelectedSubscription.quantity) {
+        newQuantity = newSelectedSubscription.quantity;
+      } else {
+        newQuantity = this.pdpToEditCartSubscription.filter.itemQuantity;
+      }
+
       let replaceItem = false;
-      if (this.pdpToEditCartSubscription.key.split(':')[0] !== newSelectedSubscription.id) {
+      if (this.pdpToEditCartSubscription.filter.itemKey.split(':')[0] !== newSelectedSubscription.id) {
         replaceItem = true;
       }
 
       if (replaceItem) {
-        const addData = {
-          items: [
-            { 
-              id: newSelectedSubscription.id, 
-              quantity: parseInt(newSelectedSubscription.quantity), 
-              selling_plan: parseInt(newSelectedSubscription.selling_plan),
-              properties: this.pdpToEditCartSubscription.properties,
-            }
-          ]
-        }
-        const res = await this._updateCartItems('add', addData, false);
+        const removeData = {
+          id: this.pdpToEditCartSubscription.filter.itemKey,
+          quantity: 0
+        };
+        const res = await  this._updateCartItems('change', removeData, false);
 
         if (res.status) {
           return;
         }
 
-        const removeData = {
-          id: this.pdpToEditCartSubscription.key,
-          quantity: 0
-        };
-        this._updateCartItems('change', removeData, true);
+        const addData = {
+          items: [
+            { 
+              id: newSelectedSubscription.id, 
+              quantity: parseInt(newQuantity), 
+              selling_plan: parseInt(newSelectedSubscription.selling_plan),
+              properties: this.pdpToEditCartSubscription.filter.properties,
+            }
+          ]
+        }
+        this._updateCartItems('add', addData, true);
 
       } else {
         const changeData = {
-          id: this.pdpToEditCartSubscription.key,
-          quantity: parseInt(newSelectedSubscription.quantity),
+          id: this.pdpToEditCartSubscription.filter.itemKey,
+          quantity: parseInt(newQuantity),
           selling_plan: parseInt(newSelectedSubscription.selling_plan)
         };
         this._updateCartItems('change', changeData, true);

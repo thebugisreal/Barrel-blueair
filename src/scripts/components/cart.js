@@ -302,7 +302,8 @@ class CartSubscription extends HTMLElement {
       checkbox: '[js-cart-subscription-checkbox]',
       cartItem: '[js-cart-item]',
       loading: 'loading-spinner',
-      error: '[js-cart-subscription-error]'
+      error: '[js-cart-subscription-error]',
+      subscriptionData: '[js-subscription-data-json]'
     }
   }
 
@@ -313,9 +314,11 @@ class CartSubscription extends HTMLElement {
     this.checkbox = this.querySelector(this._selectors.checkbox);
     this.loading = this.closest(this._selectors.cartItem).querySelector(this._selectors.loading);
     this.error = this.querySelector(this._selectors.error);
-
+    this.subscriptionData = JSON.parse(this.querySelector(this._selectors.subscriptionData).innerHTML);
+    
+    
     this.showErrorFromPdp();
-    this.checkTwoPackSubscriptionItem();
+   // this.checkTwoPackSubscriptionItem();
     this.editBtn?.addEventListener('click', this.editBtnOnClick);
     this.checkbox.addEventListener('click', this.checkboxOnClick);
   }
@@ -365,11 +368,7 @@ class CartSubscription extends HTMLElement {
   editBtnOnClick = (evt) => {
     evt.preventDefault();
 
-    const itemData = {
-      key: this.dataset.itemKey,
-      properties: JSON.parse(this.dataset.properties)
-    }
-    sessionStorage.setItem('pdpToEditCartSubscription', JSON.stringify(itemData));
+    sessionStorage.setItem('pdpToEditCartSubscription', JSON.stringify(this.subscriptionData));
     window.location.href = evt.currentTarget.href;
   }
 
@@ -379,48 +378,48 @@ class CartSubscription extends HTMLElement {
     this.loading.setAttribute('loading', '');
 
     const init = async () => {
-      const itemProperties = JSON.parse(this.dataset.properties);
-
       if (evt.currentTarget.dataset.checked == 'true') {
+        console.log(this.subscriptionData)
         let changeData;
-        if (itemProperties['_unitSubscriptionTempId']) {
+        if (this.subscriptionData.airPurifier) {
           changeData = {
-            id: this.dataset.itemKey,
+            id: this.subscriptionData.filter.itemKey,
             quantity: 0,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
         } else {
           changeData = {
-            id: this.dataset.itemKey,
-            quantity: parseInt(this.dataset.itemQuantity),
+            id: this.subscriptionData.filter.itemKey,
+            quantity: parseInt(this.subscriptionData.filter.itemQuantity),
             selling_plan: '',
-            properties: itemProperties,
+            properties: this.subscriptionData.filter.properties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
         }
         this._updateCartItems('change', changeData, true);
       } else {
-        const preselectedSubscriptionData = this.dataset.preselectedSubscription.split(':');
+        console.log(this.subscriptionData)
 
-        if (this.dataset.type == 'filter') {
+        if (this.subscriptionData.filter) {
           const changeData = {
-            id: preselectedSubscriptionData[0],
-            selling_plan: preselectedSubscriptionData[1],
-            quantity: parseInt(preselectedSubscriptionData[2]),
-            properties: itemProperties,
+            id: this.subscriptionData.preSelectedFilter.id,
+            selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
+            quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
+            properties: this.subscriptionData.filter.properties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
           this._updateCartItems('change', changeData, true);
         } else {
           const subscriptionTempId = `subscription${Date.now()}`
-          itemProperties['_unitSubscriptionTempId'] = subscriptionTempId;
+          const airPurifierProperties = this.subscriptionData.airPurifier.properties;
+          airPurifierProperties['_unitSubscriptionTempId'] = subscriptionTempId;
 
           const addData = {
             items: [
               { 
-                id: preselectedSubscriptionData[0], 
-                selling_plan: preselectedSubscriptionData[1],
-                quantity: parseInt(preselectedSubscriptionData[2]),
+                id: this.subscriptionData.preSelectedFilter.id, 
+                selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
+                quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
                 properties: { _unitSubscriptionTempId: subscriptionTempId }
               }
             ]
@@ -433,9 +432,9 @@ class CartSubscription extends HTMLElement {
           }
           
           const changeData = {
-            id: this.dataset.itemKey,
-            quantity: parseInt(this.dataset.itemQuantity),
-            properties: itemProperties,
+            id: this.subscriptionData.airPurifier.itemKey,
+            quantity: parseInt(this.subscriptionData.airPurifier.itemQuantity),
+            properties: airPurifierProperties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
           this._updateCartItems('change', changeData, true);

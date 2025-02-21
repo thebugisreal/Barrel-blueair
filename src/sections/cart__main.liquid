@@ -4,6 +4,7 @@
 {% endfor %}
 
 <cart-items>
+  <loading-spinner js-cart-container-loading style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
   <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
     <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}" js-cart-page-contents> 
       <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl">
@@ -36,7 +37,27 @@
             {% comment %} Cart Items  {% endcomment %}
               <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-[60%]">
                 {%- for item in cart.items -%}
-                  <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative" js-cart-item>
+                  {% liquid 
+                    assign is_unit_subscription_service_product = false
+                    assign needs_to_be_removed = false
+                    if item.quantity != 2 and item.product.metafields.seed.quantity_option.value contains '2 Pack | 2'
+                      assign needs_to_be_removed = true
+                    endif
+                    if item.variant.title contains 'Subscription' and item.final_price == 0
+                      assign is_unit_subscription_service_product = true
+                      assign matching_unit_subscription_air_purifier_found = false
+                      for cart_item in cart.items
+                        if cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.product.metafields.seed.subscription.value.pdp_type == 'Air Purifier + Filter' and cart_item != item
+                          assign matching_unit_subscription_air_purifier_found = true
+                          break
+                        endif
+                      endfor
+                      if matching_unit_subscription_air_purifier_found == false
+                        assign needs_to_be_removed = true
+                      endif
+                    endif
+                  %}
+                  <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}{% endif %}" {% if needs_to_be_removed %}data-remove="{{ item.key }}"{% endif %} js-cart-item>
                     <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                     <div class="flex justify-between gap-sm tabletl:gap-md">
                       <div class="flex gap-md w-full">
@@ -181,7 +202,7 @@
                       {% comment %} END Price {% endcomment %}
                     </div>
                     
-                    {% if item.product.metafields.seed.subscription != blank %}
+                    {% if item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false  %}
                       {% render 'cart-subscription' item: item scope: 'cart-page' %}
                     {% endif %}
                   </div>
