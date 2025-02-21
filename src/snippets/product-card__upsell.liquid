@@ -9,7 +9,9 @@
     <div class="content-container w-1/2 flex flex-col justify-center items-end">
         <div class="text-content w-full">
             <h1 class="p1 my-xxxs">{{ product.title }}</h1>
-            <p class="p4 my-xxxs">{{ product.selected_or_first_available_variant.title }}</p>
+            {% unless  product.selected_or_first_available_variant.title == "Default Title" %}
+                <p class="p4 my-xxxs">{{ product.selected_or_first_available_variant.title }}</p>
+            {% endunless %}
             <p class="p1 font-700">{{ product.price | money }}</p>
         </div>
 
