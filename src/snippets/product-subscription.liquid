@@ -60,6 +60,7 @@
         {% if pdp_type == 'airpurifier_and_filter' %}
           <input type="hidden" disabled name="properties[_unitSubscriptionTempId]" value="" js-filter-subscription-property-input>
           <input type="hidden" disabled name="items[1][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="items[1][properties[og_first_order_place_date]]" value="" js-filter-subscription-date-input>
           {% if airpurifier_type_two_pack %}
             <input type="hidden" disabled name="items[1][quantity]" value="2" js-filter-subscription-two-pack-quantity-input>
           {% endif %}

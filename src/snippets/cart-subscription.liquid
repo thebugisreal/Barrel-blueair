@@ -8,7 +8,7 @@
   else
     if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['_unitSubscriptionTempId'] != blank
       for cart_item in cart.items
-        if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item != item
+        if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant.title contains 'Subscription' and cart_item.final_price == 0 and cart_item != item
           assign is_subscribed = true
           assign unit_subscription_service_product = cart_item
           break
@@ -20,6 +20,22 @@
         if item.variant.available and item.variant.selling_plan_allocations.size > 0
           assign subscription_available = true
           assign preselected_subscription = item.variant
+          assign preselected_subscription_selling_plan_allocation = ''
+          if item.product.metafields.seed.subscription_frequency_options != blank
+            for frequency_option in item.product.metafields.seed.subscription_frequency_options.value
+              for selling_plan_allocation in preselected_subscription.selling_plan_allocations
+                if frequency_option == selling_plan_allocation.selling_plan.options[0].value
+                  assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
+                  break
+                endif
+              endfor
+              if preselected_subscription_selling_plan_allocation != blank
+                break
+              endif
+            endfor
+          else 
+            assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
+          endif
         endif
       else
         assign filter_subscriptions = subscription_object.filter_subscriptions.value
@@ -28,6 +44,22 @@
           if filter_variant.available and filter_variant.selling_plan_allocations.size > 0
             assign subscription_available = true
             assign preselected_subscription = filter_variant
+            assign preselected_subscription_selling_plan_allocation = ''
+            if filter_product.metafields.seed.subscription_frequency_options != blank
+              for frequency_option in filter_product.metafields.seed.subscription_frequency_options.value
+                for selling_plan_allocation in preselected_subscription.selling_plan_allocations
+                  if frequency_option == selling_plan_allocation.selling_plan.options[0].value
+                    assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
+                    break
+                  endif
+                endfor
+                if preselected_subscription_selling_plan_allocation != blank
+                  break
+                endif
+              endfor
+            else 
+              assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
+            endif
             break
           endif
         endfor
@@ -46,6 +78,9 @@
       <div class="p3 flex-1">{{ subscription_item.product.title }} - Subscription</div>
     </div>
     <p class="mt-xxxs">
+      {% if unit_subscription_service_product != blank %}
+        First order place date: {{ unit_subscription_service_product.properties['og_first_order_place_date'] }}<br />
+      {% endif %}
       {{ subscription_item.selling_plan_allocation.selling_plan.name }}&nbsp;
       <a href="{{ item.url }}" class="link link--underline underline-offset-2" js-cart-subscription-edit>Edit</a>
     </p>
@@ -94,10 +129,10 @@
       <div class="flex-1">Pay when it's sent</div>
       <div>
         {% if subscription_object.pdp_type == 'Filter' %}
-          {% if preselected_subscription.selling_plan_allocations[0].compare_at_price > preselected_subscription.selling_plan_allocations[0].price %}
-            <s>{{ preselected_subscription.selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
+          {% if preselected_subscription_selling_plan_allocation.compare_at_price > preselected_subscription_selling_plan_allocation.price %}
+            <s>{{ preselected_subscription_selling_plan_allocation.compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
           {% endif %}
-          <span class="font-700">{{ preselected_subscription.selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
+          <span class="font-700">{{ preselected_subscription_selling_plan_allocation.price | times: preselected_subscription_quantity | money }}</span>
         {% else %}
           {% if preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price > preselected_subscription.product.variants[0].selling_plan_allocations[0].price %}
             <s>{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
@@ -123,7 +158,8 @@
         },
         "preSelectedFilter": {
           "id": "{{ preselected_subscription.id }}",
-          "sellingPlanId": "{{ preselected_subscription.selling_plan_allocations[0].selling_plan.id }}",
+          "sellingPlanId": "{{ preselected_subscription_selling_plan_allocation.selling_plan.id }}",
+          "frequency": "{{ preselected_subscription_selling_plan_allocation.selling_plan.options[0].value | downcase | remove: 'months' | strip }}",
           "quantity": "{{ preselected_subscription_quantity }}"
         }
       }

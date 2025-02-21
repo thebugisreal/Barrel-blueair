@@ -30,11 +30,92 @@ class CartItems extends HTMLElement {
       }
       this.onCartUpdate();
     });
+
+    this.checkIneligibleCartItems();
   }
 
   disconnectedCallback() {
     if (this.cartUpdateUnsubscriber) {
       this.cartUpdateUnsubscriber();
+    }
+  }
+
+  _adjustCartItems = (type, data) => {
+    const loadings = document.querySelectorAll('[js-cart-container-loading]');
+    const cart = document.querySelector('cart-drawer');
+    const cartPage = document.querySelector('cart-items');
+
+    loadings.forEach((loading) => {
+      loading.setAttribute('loading', '');
+    });
+
+    cart.setActiveElement(document.activeElement);
+
+    const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status) {
+          return;
+        }
+
+        if (cart) cart.renderContents(response);
+        if (cartPage) cartPage.onCartUpdate();
+        
+        return response;
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => {
+        loadings.forEach((loading) => {
+          loading.removeAttribute('loading');
+        });
+      });
+
+    return res;
+  }
+
+  checkIneligibleCartItems() {
+    if (this.dataset.type == 'cartPage') {
+      return;
+    }
+
+    const itemToRemoveSellingPlan = this.querySelector('[auto-item-remove-selling-plan]');
+    if (itemToRemoveSellingPlan) {
+      const update = async () => {
+        const  changeData = {
+          id: itemToRemoveSellingPlan.dataset.key,
+          quantity: parseInt(itemToRemoveSellingPlan.dataset.quantity),
+          selling_plan: '',
+          sections: document.querySelector('cart-drawer').getSectionsToRender().map((section) => section.id)
+        };
+        this._adjustCartItems('change', changeData);
+      }
+      update();
+      return;
+    }
+
+    const itemsToRemove = this.querySelectorAll('[auto-item-remove]');
+    if (itemsToRemove.length > 0) {
+      const update = async () => {
+        let updates = {};
+        itemsToRemove.forEach((item) => {
+          updates[item.dataset.key] = 0;
+        });
+        const data = { 
+          updates,     
+          sections: document.querySelector('cart-drawer').getSectionsToRender().map((section) => section.id) 
+        };
+        this._adjustCartItems('update', data);
+      }
+      update();
+      return;
     }
   }
 
@@ -379,7 +460,6 @@ class CartSubscription extends HTMLElement {
 
     const init = async () => {
       if (evt.currentTarget.dataset.checked == 'true') {
-        console.log(this.subscriptionData)
         let changeData;
         if (this.subscriptionData.airPurifier) {
           changeData = {
@@ -398,8 +478,6 @@ class CartSubscription extends HTMLElement {
         }
         this._updateCartItems('change', changeData, true);
       } else {
-        console.log(this.subscriptionData)
-
         if (this.subscriptionData.filter) {
           const changeData = {
             id: this.subscriptionData.preSelectedFilter.id,
@@ -410,7 +488,11 @@ class CartSubscription extends HTMLElement {
           };
           this._updateCartItems('change', changeData, true);
         } else {
-          const subscriptionTempId = `subscription${Date.now()}`
+          const subscriptionTempId = `subscription${Date.now()}`;
+          const frequency = parseInt(this.subscriptionData.preSelectedFilter.frequency);
+          const date = new Date();
+          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
           const airPurifierProperties = this.subscriptionData.airPurifier.properties;
           airPurifierProperties['_unitSubscriptionTempId'] = subscriptionTempId;
 
@@ -420,7 +502,10 @@ class CartSubscription extends HTMLElement {
                 id: this.subscriptionData.preSelectedFilter.id, 
                 selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
-                properties: { _unitSubscriptionTempId: subscriptionTempId }
+                properties: { 
+                  _unitSubscriptionTempId: subscriptionTempId,
+                  og_first_order_place_date: formattedOrderDate
+                }
               }
             ]
           }
