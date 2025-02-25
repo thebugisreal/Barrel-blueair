@@ -62,10 +62,10 @@
   transform: translate3d(0px, 0, 0);
 }
 .swiper-horizontal {
-  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
 }
 .swiper-vertical {
-  touch-action: pan-x;
+  touch-action: pan-x pinch-zoom;
 }
 .swiper-slide {
   flex-shrink: 0;

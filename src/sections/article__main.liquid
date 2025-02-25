@@ -1,6 +1,6 @@
 <article class="article" itemscope itemtype="http://schema.org/BlogPosting" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
 
-  <div class="article__header-container pt-lg mt-xs bg-gray-athans tabletl:mt-0 tabletl:pt-0 tabletl:flex">
+  <div class="article__header-container pt-lg mt-xs bg-gray-athans justify-center tabletl:mt-0 tabletl:pt-0 tabletl:flex">
     <header class="article__header mx-md flex items-center tabletl:mx-xl tabletl:w-1/2">
       <div class="article__header-content tabletl:mx-auto">
         <a href="{{ blog.url }}" class="btn pt-xs tabletl:pt-md">
@@ -10,8 +10,6 @@
         
         <h1 class="article__title h2 font-900 my-md tabletl:my-lg tabletl:py-xs">{{ article.title }}</h1>
         <div class="article__author tabletl:flex tabletl:mb-md tabletl:gap-sm">
-          <p class="p4 mb-md tabletl:mb-0">Reviewed by <span class="p3 underline">{{ article.author }}</span></p>
-          <p class="hidden text-[#121A224D] tabletl:block">&bull;</p>
           <p class="p4">Updated {{ article.published_at | date: "%b %d, %Y"}}</p>
         </div>
       </div>

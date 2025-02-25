@@ -18,7 +18,7 @@
         </div>
         <div class="collection-grid__title-container flex justify-start items-center gap-sm">
           <h1 class="collection-grid__title h3">{{ collection.title }}</h1>
-          <div class="collection-grid__count text-18 leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
+          <div class="collection-grid__count text-18 whitespace-nowrap leading-[24px] bg-white rounded-[124px] px-xs py-xxs" js-products-count>{{ collection.products_count }} results</div>
         </div>
         {% if section.settings.enable_collection_description and collection.description != blank %}
           <div class="collection-grid__description-container mt-md">
@@ -84,7 +84,7 @@
             endif
           endfor
         %}
-        <div class="collection-grid__filter-sort-triggers mb-md flex justify-start relative flex-wrap">
+        <div class="collection-grid__filter-sort-triggers mb-md flex justify-between relative flex-wrap">
           <button class="collection-grid__filter-trigger collection-grid__filter-trigger--mobile flex items-center py-xxs pr-xs desktop:hidden" js-open-mobile-filter>
             <span class="w-[36px] h-[36px] bg-blue text-white rounded-full flex justify-center items-center mr-xs">
               <span class="w-[20px] leading-[0px]">{% render 'icon-filter' %}</span>
@@ -98,32 +98,54 @@
             </span>
             <span class="s2" js-desktop-filter-trigger-label>Show Filters</span>
           </button>
-          <s-accordion data-manual-collapse="false" class="collection-grid__sort-trigger-container block relative mobile:absolute right-0 top-0 desktop:flex desktop:justify-end desktop:gap-sm" js-accordion>
-              <div class="s2 mt-xs hidden desktop:block">Sort by</div>
-              <div class="accordion-item border border-gray" js-accordion-item>
-                <button class="accordion-header p-xs flex gap-xs items-center w-full" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
-                  <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-sort' %}</span>
-                  <span class="flex-1 text-center s3 desktop:text-left" js-current-sort-label>
+
+          <div class="collection-grid__sort-trigger-container relative mobile:absolute right-0 top-0 desktop:flex desktop:justify-end desktop:gap-sm">
+            <div class="s2 mt-xs hidden desktop:block">Sort by</div>
+            <s-accordion data-manual-collapse="false" class="block relative" js-accordion>
+                <div class="accordion-item border border-gray" js-accordion-item>
+                  <button class="accordion-header p-xs flex gap-xs items-center w-full min-w-[215px]" aria-expanded="false" aria-controls="SortByTriggerAccordion" js-accordion-header js-sort-trigger-accoridon-header>
+                    <span class="w-[15px] leading-[0px] desktop:hidden">{% render 'icon-sort' %}</span>
+                    <span class="flex-1 text-center s3 desktop:text-left" js-current-sort-label>
+                      {% for option in collection.sort_options %}
+                        {% if option.value == sort_by %}
+                          {% if option.value == 'title-ascending' %}
+                            Product Name A-Z
+                          {% elsif option.value == 'title-descending' %}
+                            Product Name Z-A
+                          {% else %}
+                            {{ option.name | escape }}
+                          {% endif %}
+                          {% break %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
+                  </button>
+                  <div id="SortByTriggerAccordion" class="accordion-content bg-white border-[1px] border-gray border-t-0 absolute w-full right-0 z-[2]" aria-hidden="true" js-accordion-content js-sort-triggers>
+                    {% assign options_to_show = 'title-ascending title-descending price-ascending price-descending best-selling manual' %}
                     {% for option in collection.sort_options %}
-                      {% if option.value == sort_by %}
-                        {{ option.name | escape }}
-                        {% break %}
-                      {% endif %}
+                      {% unless option.value == sort_by %}
+                          {% if options_to_show contains option.value %}
+                            {% if option.value == 'title-ascending' %}
+                              <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                                Product Name A-Z
+                              </button>
+                            {% elsif option.value == 'title-descending' %}
+                              <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                                Product Name Z-A
+                              </button>
+                            {% else %}
+                              <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
+                                {{ option.name | escape }}
+                              </button>
+                            {% endif %}
+                          {% endif %}
+                      {% endunless %}
                     {% endfor %}
-                  </span>
-                  <span class="accordion-icon--caret-down w-[24px] leading-[0px] hidden desktop:block">{% render 'icon-active-down' %}</span>
-                </button>
-                <div id="SortByTriggerAccordion" class="accordion-content bg-white border-[1px] border-gray border-t-0 absolute w-full right-0 z-[2]" aria-hidden="true" js-accordion-content js-sort-triggers>
-                  {% for option in collection.sort_options %}
-                    {% unless option.value == sort_by %}
-                      <button class="collection-grid__sort-trigger block w-full p2 px-xs pb-xs desktop:text-left link" disabled data-value="{{ option.value | escape }}" js-sort-trigger>
-                        {{ option.name | escape }}
-                      </button>
-                    {% endunless %}
-                  {% endfor %}
+                  </div>
                 </div>
-              </div>
-          </s-accordion>
+            </s-accordion>
+          </div>
         </div>
 
         <div class="collection-grid__grid-container desktop:flex">

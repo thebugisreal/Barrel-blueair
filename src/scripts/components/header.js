@@ -8,13 +8,17 @@ class SiteHeader extends HTMLElement {
       mobileSubnavTrigger: '[js-mobile-subnav-trigger]',
       mobileSubnavClose: '[js-mobile-subnav-close]',
       closeAnnouncementBtn: '[js-close-announcement]',
-      announcementBar: '[js-announcement-bar]'
+      announcementBar: '[js-announcement-bar]',
+      navItem: '[js-nav-item]',
+      navMenu: '[js-nav-menu]'
     }
   }
 
   connectedCallback() {
     this.closeAnnouncementBtn = this.querySelector(this._selectors.closeAnnouncementBtn);
     this.announcementBar = this.querySelector(this._selectors.announcementBar);
+    this.navItems = this.querySelectorAll(this._selectors.navItem)
+    this.navMenus = this.querySelectorAll(this._selectors.navMenu)
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
 
@@ -33,6 +37,27 @@ class SiteHeader extends HTMLElement {
     });
     this.mobileSubnavCloseBtns.forEach((btn) => {
       btn.addEventListener('click', this._closeMobileSubNav);
+    });
+
+    this.navItems.forEach((item) => {
+      item.addEventListener('mouseenter', this._handleMouseEnterNavItem.bind(this));
+    });
+
+    this.navMenus.forEach((menu) => {
+      menu.addEventListener('mouseleave', this._handleMouseLeaveNavMenu.bind(this));
+    })
+  }
+
+  _handleMouseEnterNavItem(e) {
+    this.navItems.forEach((item) => {
+      item.classList.remove('hovered')
+    });
+    e.currentTarget.classList.add('hovered')
+  }
+
+  _handleMouseLeaveNavMenu(e) {
+    this.navItems.forEach((item) => {
+      item.classList.remove('hovered')
     });
   }
 

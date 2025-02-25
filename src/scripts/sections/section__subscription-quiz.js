@@ -49,7 +49,7 @@ class SubscriptionQuiz extends HTMLElement {
     this.searchResults = this.querySelector(this._selectors.searchResults);
     this.filterSelections = this.querySelectorAll(this._selectors.filterSelection);
 
-    this.mode = 'search';
+    this.mode = 'family';
     this.currentStep = 1;
     this.currentStepSection = this.querySelector(`${this._selectors.stepSection}[data-step="${this.currentStep}"]`);
     
@@ -77,6 +77,8 @@ class SubscriptionQuiz extends HTMLElement {
 
   _changeMode = (evt) => {
     const newMode = evt.currentTarget.dataset.mode;
+    console.log('this.mode', this.mode)
+    console.log('evt.currentTarget', evt.currentTarget)
 
     if (this.mode == newMode) {
       return;

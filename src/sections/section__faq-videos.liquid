@@ -9,7 +9,10 @@
     
     {%- capture carousel_options -%}
       {
-        "cssMode": true,
+        "cssMode": false,
+        "spaceBetween": 12,
+        "slidesOffsetAfter": 24,
+        "slidesOffsetBefore": 24,
         "loop": false,
         "autoHeight": false,{% if section.settings.enable_nav_scrollbar %}
         "scrollbar": {
@@ -24,16 +27,18 @@
         },{% endif %}
         "breakpoints": {
           "1025": {
-            "cssMode": {% if section.settings.enable_nav_scrollbar %}true{% else %}false{% endif %}
+            "spaceBetween": 24,
+            "slidesOffsetAfter": 64,
+            "slidesOffsetBefore": 64
           }
         }
       }
     {%- endcapture -%}
-    <s-carousel data-options='{{ carousel_options }}' class="faq-videos__carousel grid">
+    <s-carousel data-options='{{ carousel_options }}' class="faq-videos__carousel grid" {% if section.blocks.size < 4 %} data-init="belowDesktop" {% endif %}>
       <div id="FaqVideos-{{ section.id }}" class="swiper w-full max-w-full" js-carousel>
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper {% if section.blocks.size < 4 %} desktop:!flex desktop:justify-center desktop:gap-md {% endif %}">
           {% for block in section.blocks %}
-            <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[21%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
+            <div class="swiper-slide faq-videos__slide w-[83%] desktop:w-[21%] box-content" js-carousel-slide>
               {% if block.settings.youtube_id != blank %}
                 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
                 <div class='embed-container'><iframe src='https://www.youtube.com/embed/{{ block.settings.youtube_id }}' frameborder='0' allowfullscreen></iframe></div>
@@ -50,7 +55,7 @@
         </div>
       </div>
       {% if section.settings.enable_nav_scrollbar %}
-        <div class="hidden desktop:flex gap-md items-center mt-lg px-xl z-0">
+        <div class="hidden desktop:flex gap-md items-center mt-lg px-xl z-0 {% if section.blocks.size < 4 %} desktop:hidden {% endif %}">
           <div class="swiper-button-prev !static !w-[40px] !block after:!content-none !text-blue" js-prev-{{ section.id }}>{% render 'icon-arrow-left' %}</div>
           <div class="swiper-scrollbar !static flex-1" js-scrollbar-{{ section.id }}></div>
           <div class="swiper-button-next !static !w-[40px] !block after:!content-none !text-blue" js-next-{{ section.id }}>{% render 'icon-arrow-right' %}</div>
