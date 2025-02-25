@@ -58,8 +58,9 @@
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-input>
         <input type="hidden" name="" disabled value="" js-filter-subscription-selected-variant-selling-plan-input>
         {% if pdp_type == 'airpurifier_and_filter' %}
-          <input type="hidden" disabled name="properties[_subscriptionTempId]" value="" js-filter-subscription-property-input>
-          <input type="hidden" disabled name="items[1][properties[_subscriptionTempId]]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="properties[_unitSubscriptionTempId]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="items[1][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-property-input>
+          <input type="hidden" disabled name="items[1][properties[og_first_order_place_date]]" value="" js-filter-subscription-date-input>
           {% if airpurifier_type_two_pack %}
             <input type="hidden" disabled name="items[1][quantity]" value="2" js-filter-subscription-two-pack-quantity-input>
           {% endif %}
@@ -73,6 +74,9 @@
             {% assign filter_count = 0 %}
             {% for filter_product in filter_subscriptions %}
               {% assign filter_variant = filter_product.variants[0] %}
+              {% if filter_product.variants[1].title contains 'Subscription' and pdp_type == 'airpurifier_and_filter' %}
+                {% assign filter_variant = filter_product.variants[1] %}
+              {% endif %}
               {% if filter_variant.selling_plan_allocations.size > 0 %}
                 {% assign filter_count = filter_count | plus: 1 %}
                 {% if pdp_type == 'filter' %}
@@ -93,20 +97,20 @@
                     {% if filter_product.metafields.seed.filter_subscription_label != blank %}
                       {{ filter_product.metafields.seed.filter_subscription_label }}
                     {% else %}
-                      {{ filter_variant.title }}
+                      {{ filter_product.variants[0].title }}
                     {% endif %}
                   </div>
-                  <div class="flex justify-center gap-xxs p6" js-price-copy data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
+                  <div class="flex justify-center gap-xxs p6" js-price-copy data-label-price="{{ filter_product.variants[0].selling_plan_allocations[0].price }}" data-label-price-compare-at="{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price }}" data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
                     {% if airpurifier_type_two_pack %} 
-                      {% if filter_variant.selling_plan_allocations[0].compare_at_price > filter_variant.selling_plan_allocations[0].price %}
-                        <s>{{ filter_variant.selling_plan_allocations[0].compare_at_price | times: 2 | money }}</s>
+                      {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
+                        <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | times: 2 | money }}</s>
                       {% endif %}
-                      <span class="font-700">{{ filter_variant.selling_plan_allocations[0].price | times: 2 | money }}</span>
+                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | times: 2 | money }}</span>
                     {% else %}
-                      {% if filter_variant.selling_plan_allocations[0].compare_at_price > filter_variant.selling_plan_allocations[0].price %}
-                        <s>{{ filter_variant.selling_plan_allocations[0].compare_at_price | money }}</s>
+                      {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
+                        <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | money }}</s>
                       {% endif %}
-                      <span class="font-700">{{ filter_variant.selling_plan_allocations[0].price | money }}</span>
+                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | money }}</span>
                     {% endif %}
                   </div>
                 </button>
@@ -115,6 +119,9 @@
           </div>
           {% for filter_product in filter_subscriptions %}
             {% assign filter_variant = filter_product.variants[0] %}
+            {% if filter_product.variants[1].title contains 'Subscription' and pdp_type == 'airpurifier_and_filter' %}
+              {% assign filter_variant = filter_product.variants[1] %}
+            {% endif %}
             {% if filter_variant.selling_plan_allocations.size > 0 %}
               <div class="filter-subscription__selling-plans-group hidden" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
                 {% if filter_product.metafields.seed.filter_subscription_description != blank %}

@@ -1,5 +1,8 @@
 {%- liquid 
   assign current_variant = product.selected_or_first_available_variant
+  if product.variants[1].title contains 'Subscription'
+    assign current_variant = product.variants[0]
+  endif
   assign product_form_id = 'ProductForm-' | append: section.id | append: product.id
   assign master_select_id = 'MasterSelect-' | append: section.id
   assign current_swatch = ''

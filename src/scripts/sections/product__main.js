@@ -26,6 +26,7 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
       filterSubscriptionPropertyInput: '[js-filter-subscription-property-input]',
       filterSubscriptionTwoPackQuantityInput: '[js-filter-subscription-two-pack-quantity-input]',
+      filterSubscriptionDateInput: '[js-filter-subscription-date-input]',
       subscriptionContainer: '[js-subscription-container]',
       subscriptionOffer: '[js-subscription-offer]',
       subscriptionCustomization: '[js-subscription-customization]',
@@ -182,6 +183,7 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
     this.filterSubscriptionPropertyInputs = this.querySelectorAll(this._selectors.filterSubscriptionPropertyInput);
+    this.filterSubscriptionDateInput = this.querySelector(this._selectors.filterSubscriptionDateInput);
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
@@ -254,6 +256,9 @@ class ProductMain extends HTMLElement {
       this.filterSubscriptionPropertyInputs.forEach((input) => {
         input.removeAttribute('disabled');
       });
+      if (this.filterSubscriptionDateInput) {
+        this.filterSubscriptionDateInput.removeAttribute('disabled');
+      }
       if (this.filterSubscriptionTwoPackQuantityInput) {
         this.filterSubscriptionTwoPackQuantityInput.removeAttribute('disabled');
       }
@@ -261,8 +266,11 @@ class ProductMain extends HTMLElement {
       this.filterSubscriptionSelectedVariantInput.setAttribute('disabled', '');
       this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('disabled', '');
       this.filterSubscriptionPropertyInputs.forEach((input) => {
-        input.setAttribute('disabled', '');;
+        input.setAttribute('disabled', '');
       });
+      if (this.filterSubscriptionDateInput) {
+        this.filterSubscriptionDateInput.setAttribute('disabled', '');
+      }
       if (this.filterSubscriptionTwoPackQuantityInput) {
         this.filterSubscriptionTwoPackQuantityInput.setAttribute('disabled', '');
       }
@@ -337,10 +345,10 @@ class ProductMain extends HTMLElement {
       this.filterSubscriptionVariants.forEach((filterSubscriptionVariant) => {
         const label = filterSubscriptionVariant.querySelector(this._selectors.priceCopy);
         let labelMarkup;
-        if (label.dataset.priceCompareAt && label.dataset.priceCompareAt > label.dataset.price) {
-          labelMarkup = `<s>${theme.utils.formatMoney(label.dataset.priceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(label.dataset.price * this.currentQuantity, this.moneyFormat)}</span>`;
+        if (label.dataset.labelPriceCompareAt && label.dataset.labelPriceCompareAt > label.dataset.labelPrice) {
+          labelMarkup = `<s>${theme.utils.formatMoney(label.dataset.labelPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(label.dataset.labelPrice * this.currentQuantity, this.moneyFormat)}</span>`;
         } else {
-          labelMarkup = `<span class="font-700">${theme.utils.formatMoney(label.dataset.price * this.currentQuantity, this.moneyFormat)}</span>`;
+          labelMarkup = `<span class="font-700">${theme.utils.formatMoney(label.dataset.labelPrice * this.currentQuantity, this.moneyFormat)}</span>`;
         }
         label.innerHTML = labelMarkup;
       });
@@ -404,6 +412,13 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionPropertyInputs.forEach((input) => {
       input.setAttribute('value', `subscription${Date.now()}`);;
     });
+    if (this.filterSubscriptionDateInput) {
+      const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
+      const date = new Date();
+      const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+      const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+      this.filterSubscriptionDateInput.setAttribute('value', formattedOrderDate);
+    }
   }
 
   _initProductForm() {
@@ -451,44 +466,69 @@ class ProductMain extends HTMLElement {
     const init = async () => {
       const newSelectedSubscription = {};
       for (const [key, value] of formData.entries()) {
-        if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
-          newSelectedSubscription[key] = value;
+        if (this.pdpToEditCartSubscription.airPurifier) {
+          if (key == 'items[1][id]') {
+            newSelectedSubscription['id'] = value;
+          } else if (key == 'items[1][selling_plan]') {
+            newSelectedSubscription['selling_plan'] = value;
+          } else if (key == 'items[1][quantity]') {
+            newSelectedSubscription['quantity'] = value;
+          } else if (key == 'items[1][properties[og_first_order_place_date]]') {
+            newSelectedSubscription['frequency'] = value;
+          }
+        } else {
+          if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
+            newSelectedSubscription[key] = value;
+          }
         }
       }
 
+      let newQuantity;
+      if (newSelectedSubscription.quantity) {
+        newQuantity = newSelectedSubscription.quantity;
+      } else {
+        newQuantity = this.pdpToEditCartSubscription.filter.itemQuantity;
+      }
+
+      let newProperties = this.pdpToEditCartSubscription.filter.properties;
+      if (newSelectedSubscription.frequency) {
+        newProperties.og_first_order_place_date = newSelectedSubscription.frequency;
+      }
+
       let replaceItem = false;
-      if (this.pdpToEditCartSubscription.key.split(':')[0] !== newSelectedSubscription.id) {
+      if (this.pdpToEditCartSubscription.filter.itemKey.split(':')[0] !== newSelectedSubscription.id) {
         replaceItem = true;
       }
 
       if (replaceItem) {
-        const addData = {
-          items: [
-            { 
-              id: newSelectedSubscription.id, 
-              quantity: parseInt(newSelectedSubscription.quantity), 
-              selling_plan: parseInt(newSelectedSubscription.selling_plan),
-              properties: this.pdpToEditCartSubscription.properties,
-            }
-          ]
-        }
-        const res = await this._updateCartItems('add', addData, false);
+        const removeData = {
+          id: this.pdpToEditCartSubscription.filter.itemKey,
+          quantity: 0
+        };
+        const res = await  this._updateCartItems('change', removeData, false);
 
         if (res.status) {
           return;
         }
 
-        const removeData = {
-          id: this.pdpToEditCartSubscription.key,
-          quantity: 0
-        };
-        this._updateCartItems('change', removeData, true);
+        const addData = {
+          items: [
+            { 
+              id: newSelectedSubscription.id, 
+              quantity: parseInt(newQuantity), 
+              selling_plan: parseInt(newSelectedSubscription.selling_plan),
+              properties: newProperties
+            }
+          ]
+        }
+        this._updateCartItems('add', addData, true);
 
       } else {
         const changeData = {
-          id: this.pdpToEditCartSubscription.key,
-          quantity: parseInt(newSelectedSubscription.quantity),
-          selling_plan: parseInt(newSelectedSubscription.selling_plan)
+          id: this.pdpToEditCartSubscription.filter.itemKey,
+          quantity: parseInt(newQuantity),
+          selling_plan: parseInt(newSelectedSubscription.selling_plan),
+          properties: newProperties
         };
         this._updateCartItems('change', changeData, true);
       }
@@ -514,6 +554,12 @@ class ProductMain extends HTMLElement {
     const formData = new FormData(this.form);
 
     if (this.pdpToEditCartSubscription != false) {
+      if (this.nonSubscriptionToggle.dataset.selected == 'true') {
+        alert('Please select subscription options to edit.');
+        this._enableButtons();
+        return;
+      }
+
       this._editCartSubscription(formData);
       return;
     }
