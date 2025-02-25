@@ -17,12 +17,12 @@
                 {% endif %}
                 <div class="text-content tabletl:w-1/2 tabletl:py-xxl">
                     {% if product.metafields.seed.pdp_image_text.value.text != blank %}
-                        <div class="rte h5 mb-xl tabletl:mb-xxl"> 
+                        <div class="rte h5"> 
                             {{ product.metafields.seed.pdp_image_text.value.text | metafield_tag}}
                         </div>
                     {% endif %}
                     {% if product.metafields.seed.pdp_image_text.value.logo != blank %}
-                        <div class="logo-container max-w-[60%]">
+                        <div class="logo-container max-w-[60%] tabletl:mt-xxl">
                             {%  render 'lazy-image' image: product.metafields.seed.pdp_image_text.value.logo%}
                         </div>
                     {% endif %}
