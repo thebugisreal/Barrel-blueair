@@ -63,7 +63,6 @@ class CartItems extends HTMLElement {
         if (response.status) {
           return;
         }
-
         if (cart) cart.renderContents(response);
         if (cartPage) cartPage.onCartUpdate();
         
@@ -172,6 +171,7 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
+        console.log('parsedState-remove', parsedState)
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
         const items = document.querySelectorAll('[js-cart-item]');
@@ -286,11 +286,38 @@ class CartDrawer extends HTMLElement {
   }
 
   connectedCallback() {
+    const myCartWatcher = new CartWatcher;
+    myCartWatcher.init();
+    window.addEventListener("cart_changed", this._handleCartChange.bind(this));
+
+
     const openCart = new URLSearchParams(window.location.search).get('viewcart');
     this.cartDrawer = document.querySelector('#CartDrawer');
     if (openCart === 'true'){
       this.cartDrawer.open();
     }
+  }
+
+  _handleCartChange(e) {
+    fetch(window.location.href)
+      .then((response) => response.text())
+      .then((response) => {
+        const parser = new DOMParser();
+        const newDom = parser.parseFromString(response, "text/html");
+        this.getSectionsToRender().forEach((section) => {
+          const sectionElement = section.selector
+            ? document.querySelector(section.selector)
+            : document.getElementById(section.id);
+          const newContent = section.selector
+            ? newDom.querySelector(section.selector)
+            : newDom.getElementById(section.id);
+          
+          if (sectionElement.innerHTML != newContent.innerHTML) {
+            sectionElement.innerHTML = newContent.innerHTML
+            this.cartDrawer.open();
+          }
+        })
+      })
   }
 
   renderContents(parsedState) {
@@ -576,5 +603,37 @@ class CartSubscription extends HTMLElement {
       });
 
     return res;
+  }
+}
+
+class CartWatcher {
+
+  init() {
+    this.emitCartChanges().then(() => {
+      this.observeCartChanges();
+    });
+  }
+
+  async fetchCart() {
+    const response = await fetch('/cart.js');
+    return response.json();
+  }
+  async emitCartChanges() {
+    const newCart = await this.fetchCart();
+    const event = new CustomEvent("cart_changed", { detail: newCart });
+    window.dispatchEvent(event);
+  }
+
+ observeCartChanges() {
+    const cartObserver = new PerformanceObserver((list) => {
+      list.getEntries().forEach((entry) => {
+        const isValidRequestType = ['xmlhttprequest', 'fetch'].includes(entry.initiatorType);
+        const isCartChangeRequest = /\/cart\//.test(entry.name);
+        if (isValidRequestType && isCartChangeRequest) {
+          this.emitCartChanges();
+        }
+      });
+    });
+    cartObserver.observe({ entryTypes: ["resource"] });
   }
 }
