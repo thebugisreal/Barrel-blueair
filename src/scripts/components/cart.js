@@ -313,7 +313,6 @@ class CartDrawer extends HTMLElement {
           
           if (sectionElement.innerHTML != newContent.innerHTML) {
             sectionElement.innerHTML = newContent.innerHTML
-            this.cartDrawer.open();
           }
         })
       })
