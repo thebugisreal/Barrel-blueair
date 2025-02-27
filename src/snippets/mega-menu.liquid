@@ -1,5 +1,5 @@
 <div class="mega-menu px-xl flex gap-xl overflow-x-auto">
-  <div class="mega-menu__left min-w-[220px] w-[220px]">
+  <div class="mega-menu__left min-w-[225px] w-[225px]">
     {% for child_link in link.links %}
       {% assign child_link_handle = child_link.title | handle %}
       {% unless child_link_handle == 'image-links' %}
@@ -56,7 +56,7 @@
                           {% render 'room-icon', size: 'medium', width: '18px' %}
                         {% elsif grandchild_link.title contains 'Large' %}
                           {% render 'room-icon', size: 'large', width: '18px' %}
-                        {% elsif grandchild_link.title contains 'Extralarge' %}
+                        {% elsif grandchild_link.title contains 'Extra' %}
                           {% render 'room-icon', size: 'extralarge', width: '18px' %}
                         {% endif %}
                       {% endif %}
