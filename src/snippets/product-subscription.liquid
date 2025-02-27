@@ -70,6 +70,55 @@
         </div>
         <div class="filter-subscriptions">
           <div class="p6 font-700 mb-xxxs mt-sm {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">Select Filter</div>
+          {% comment %} Subscription Variant Change - Will remain on the same page (Need to remove "!hidden and visually-hidden" to see) {% endcomment %}
+          <div class="filter-subscriptions__filters !hidden visually-hidden flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">
+            {% assign filter_count = 0 %}
+            {% for filter_product in filter_subscriptions %}
+              {% assign filter_variant = filter_product.variants[0] %}
+              {% if filter_product.variants[1].title contains 'Subscription' and pdp_type == 'airpurifier_and_filter' %}
+                {% assign filter_variant = filter_product.variants[1] %}
+              {% endif %}
+              {% if filter_variant.selling_plan_allocations.size > 0 %}
+                {% assign filter_count = filter_count | plus: 1 %}
+                {% if pdp_type == 'filter' %}
+                  {% if filter_product == product %}
+                    {% assign current_on_load = true %}
+                  {% else %}
+                    {% assign current_on_load = false %}
+                  {% endif %}
+                {% else %}
+                  {% if filter_count == 1 %}
+                    {% assign current_on_load = true %}
+                  {% else %}
+                    {% assign current_on_load = false %}
+                  {% endif %}
+                {% endif %}
+                <button type="button" href="{{ filter_product.url }}" class="filter-subscription__variant p-xxs border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if current_on_load %}current-on-load {% endif %} data-selected="false" data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}" js-fitler-subscription-variant>
+                  <div class="p4 font-500">
+                    {% if filter_product.metafields.seed.filter_subscription_label != blank %}
+                      {{ filter_product.metafields.seed.filter_subscription_label }}
+                    {% else %}
+                      {{ filter_product.variants[0].title }}
+                    {% endif %}
+                  </div>
+                  <div class="flex justify-center gap-xxs p6" js-price-copy data-label-price="{{ filter_product.variants[0].selling_plan_allocations[0].price }}" data-label-price-compare-at="{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price }}" data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
+                    {% if airpurifier_type_two_pack %} 
+                      {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
+                        <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | times: 2 | money }}</s>
+                      {% endif %}
+                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | times: 2 | money }}</span>
+                    {% else %}
+                      {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
+                        <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | money }}</s>
+                      {% endif %}
+                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | money }}</span>
+                    {% endif %}
+                  </div>
+                </button>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% comment %} Subscription Page Change - Will change the page to the new variant {% endcomment %}
           <div class="filter-subscriptions__filters flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">
             {% assign filter_count = 0 %}
             {% for filter_product in filter_subscriptions %}
@@ -92,7 +141,7 @@
                     {% assign current_on_load = false %}
                   {% endif %}
                 {% endif %}
-                <button type="button" class="filter-subscription__variant p-xxs border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if current_on_load %}current-on-load {% endif %} data-selected="false" data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}" js-fitler-subscription-variant>
+                <a type="button" href="{{ filter_product.url }}" class="filter-subscription__variant p-xxs text-center !no-underline border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if current_on_load %}current-on-load  data-selected="true" {% endif %}  data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}">
                   <div class="p4 font-500">
                     {% if filter_product.metafields.seed.filter_subscription_label != blank %}
                       {{ filter_product.metafields.seed.filter_subscription_label }}
@@ -100,7 +149,7 @@
                       {{ filter_product.variants[0].title }}
                     {% endif %}
                   </div>
-                  <div class="flex justify-center gap-xxs p6" js-price-copy data-label-price="{{ filter_product.variants[0].selling_plan_allocations[0].price }}" data-label-price-compare-at="{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price }}" data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
+                  <div class="flex justify-center gap-xxs p6" data-label-price="{{ filter_product.variants[0].selling_plan_allocations[0].price }}" data-label-price-compare-at="{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price }}" data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
                     {% if airpurifier_type_two_pack %} 
                       {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
                         <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | times: 2 | money }}</s>
@@ -113,7 +162,7 @@
                       <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | money }}</span>
                     {% endif %}
                   </div>
-                </button>
+                </a>
               {% endif %}
             {% endfor %}
           </div>
