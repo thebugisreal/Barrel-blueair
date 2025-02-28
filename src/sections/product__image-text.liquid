@@ -15,14 +15,14 @@
                       {%  render 'lazy-image' image: product.metafields.seed.pdp_image_text.value.image, image_desktop: product.metafields.seed.pdp_image_text.value.image_desktop, picture_classes: 'h-full', img_classes: 'h-full object-contain'%}
                   </div>
                 {% endif %}
-                <div class="text-content tabletl:w-1/2 tabletl:py-xxl">
+                <div class="text-content flex tabletl:w-1/2 tabletl:py-xxl">
                     {% if product.metafields.seed.pdp_image_text.value.text != blank %}
-                        <div class="rte h5 mb-xl tabletl:mb-xxl"> 
+                        <div class="rte h5 h-fit my-auto"> 
                             {{ product.metafields.seed.pdp_image_text.value.text | metafield_tag}}
                         </div>
                     {% endif %}
                     {% if product.metafields.seed.pdp_image_text.value.logo != blank %}
-                        <div class="logo-container max-w-[60%]">
+                        <div class="logo-container max-w-[60%] tabletl:mt-xxl">
                             {%  render 'lazy-image' image: product.metafields.seed.pdp_image_text.value.logo%}
                         </div>
                     {% endif %}

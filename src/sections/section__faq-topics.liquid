@@ -18,7 +18,8 @@
               </div>
             {% elsif topic_metaobject.image != blank %}
               <div class="faq-topic__image">
-                {% render 'lazy-image' image: topic_metaobject.image img_classes: 'h-48 w-auto' %}
+                {% assign image_classess = 'w-auto ' |  append: section.settings.image_width %}
+                {% render 'lazy-image' image: topic_metaobject.image img_classes:image_classess %}
               </div>
             {% endif %}
           </a>
@@ -482,6 +483,22 @@
         }
       ],
       "default": "h4"
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "Image Width",
+      "options": [
+        {
+          "value": "h-48",
+          "label": "Default"
+        },
+        {
+          "value": "h-[80px]",
+          "label": "Large"
+        }
+      ],
+      "default": "h-48"
     }
   ],
   "blocks": [

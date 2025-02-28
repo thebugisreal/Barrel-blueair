@@ -73,6 +73,12 @@ class PredictiveSearch extends HTMLElement {
         const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#fetchSearch').innerHTML;
         this.predictiveSearchResults.innerHTML = resultsMarkup;
 
+        const searchText = document.querySelector('[js-search-term]')
+    
+        if (searchText) {
+          searchText.textContent = searchTerm
+        }
+
         document.querySelectorAll('[js-view-more]').forEach(button => {
           button.addEventListener('click', this.submitSearch);
         });
