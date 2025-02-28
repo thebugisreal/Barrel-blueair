@@ -226,7 +226,7 @@
                             id="Product{{ product.id }}-QuantityVariant-{{ quantity_variant | handle }}" 
                             class="product-quantity-variant__input visually-hidden"
                             type="radio" 
-                            name="{% if subscription.pdp_type == 'Air Purifier + Filter' and enable_subscription %}items[1][quantity]{% else %}quantity{% endif %}" 
+                            name="quantity" 
                             value="{{ quantity_variant_value }}"
                             data-pack="{% if quantity_variant_label contains 'Pack' %}true{% else %}false{% endif %}"
                             autocomplete="off"

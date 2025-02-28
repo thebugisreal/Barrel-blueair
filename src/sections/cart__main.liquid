@@ -49,7 +49,7 @@
                       if item.selling_plan_allocation != blank
                         assign matching_unit_subscription_air_purifier_found = false
                         for cart_item in cart.items
-                          if cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.product.metafields.seed.subscription.value.pdp_type == 'Air Purifier + Filter' and cart_item != item
+                          if cart_item.properties['unitSubscriptionTempId'] == item.properties['unitSubscriptionTempId'] and cart_item.product.metafields.seed.subscription.value.pdp_type == 'Air Purifier + Filter' and cart_item != item
                             assign matching_unit_subscription_air_purifier_found = true
                             break
                           endif

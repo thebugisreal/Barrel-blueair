@@ -31,7 +31,7 @@ class CartItems extends HTMLElement {
       this.onCartUpdate();
     });
 
-    this.checkIneligibleCartItems();
+    //this.checkIneligibleCartItems();
   }
 
   disconnectedCallback() {
@@ -424,7 +424,6 @@ class CartSubscription extends HTMLElement {
     
     
     this.showErrorFromPdp();
-   // this.checkTwoPackSubscriptionItem();
     this.editBtn?.addEventListener('click', this.editBtnOnClick);
     this.checkbox.addEventListener('click', this.checkboxOnClick);
   }
@@ -441,34 +440,6 @@ class CartSubscription extends HTMLElement {
 
     alert(error);
     sessionStorage.removeItem('cartSubscriptionError');
-  }
-
-  checkTwoPackSubscriptionItem = () => {
-    if (this.dataset.scope == 'cart-drawer' && document.querySelector('cart-subscription[data-scope="cart-page"]')) {
-      return;
-    }
-
-    const target = this.querySelector('[is-two-pack-subscription]');
-
-    if (!target) {
-      return;
-    }
-
-    if (this.dataset.itemQuantity == '2') {
-      return;
-    }
-    
-    const update = async () => {
-      const  changeData = {
-        id: this.dataset.itemKey,
-        quantity: parseInt(this.dataset.itemQuantity),
-        selling_plan: '',
-        sections: this.cart.getSectionsToRender().map((section) => section.id)
-      };
-      this._updateCartItems('change', changeData, true);
-    }
-
-    update();
   }
 
   editBtnOnClick = (evt) => {
@@ -519,7 +490,7 @@ class CartSubscription extends HTMLElement {
           const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
           const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
           const airPurifierProperties = this.subscriptionData.airPurifier.properties;
-          airPurifierProperties['_unitSubscriptionTempId'] = subscriptionTempId;
+          airPurifierProperties['unitSubscriptionTempId'] = subscriptionTempId;
 
           const addData = {
             items: [
@@ -528,7 +499,7 @@ class CartSubscription extends HTMLElement {
                 selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
                 properties: { 
-                  _unitSubscriptionTempId: subscriptionTempId,
+                  unitSubscriptionTempId: subscriptionTempId,
                   og_first_order_place_date: formattedOrderDate
                 }
               }

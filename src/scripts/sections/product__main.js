@@ -22,9 +22,10 @@ class ProductMain extends HTMLElement {
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
+      filterSubscriptionFormInput: '[js-filter-subscription-form-input]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
-      filterSubscriptionPropertyInput: '[js-filter-subscription-property-input]',
+      filterSubscriptionTempIdInput: '[js-filter-subscription-temp-id-input]',
       filterSubscriptionTwoPackQuantityInput: '[js-filter-subscription-two-pack-quantity-input]',
       filterSubscriptionDateInput: '[js-filter-subscription-date-input]',
       subscriptionContainer: '[js-subscription-container]',
@@ -94,8 +95,8 @@ class ProductMain extends HTMLElement {
       }
       
       if (this.subscription) {
-        if (this.selectedFilterSubscriptionVariant) {
-          this.updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
+        if (this.selectedFilterSubscriptionVariant && this.subscriptionPrice) {
+          this._updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
 
           if (this.subscription.dataset.selected == 'true') {
             this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
@@ -112,7 +113,7 @@ class ProductMain extends HTMLElement {
             }
             if (this.subscriptionPrice) this.subscriptionPrice.innerHTML = '';
           } else {
-            this.subscriptionToggle?.removeAttribute('disabled');
+            this.subscriptionToggle.removeAttribute('disabled');
           }
         }
       }
@@ -177,17 +178,33 @@ class ProductMain extends HTMLElement {
     this.subscriptionType = this.subscription.dataset.type;
     this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
     this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
-    this.subscriptionPrice = this.querySelector(this._selectors.subscriptionPrice);
-    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
+    this.subscriptionPrice = this.subscription.querySelector(this._selectors.subscriptionPrice);
+    this.filterSubscriptionVariants = this.subscription.querySelectorAll(this._selectors.filterSubscriptionVariant);
     this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
-    this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
-    this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
-    this.filterSubscriptionPropertyInputs = this.querySelectorAll(this._selectors.filterSubscriptionPropertyInput);
-    this.filterSubscriptionDateInput = this.querySelector(this._selectors.filterSubscriptionDateInput);
+    this.filterSubscriptionFormInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionFormInput);
+    this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
+    this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
+    this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
+    this.filterSubscriptionDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionDateInput);
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
       this.filterSubscriptionTwoPackQuantityInput = this.querySelector(this._selectors.filterSubscriptionTwoPackQuantityInput);
+    }
+
+    if (this.subscriptionType == '2in1_purify_humidify') {
+      this.filterSubscriptionSellingPlansGroups = this.querySelectorAll(this._selectors.filterSubscriptionSellingPlansGroup);
+      this.purifyHumidifySubscriptionAvailable = true;
+      if (this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}:disabled`)) {
+        this.purifyHumidifySubscriptionAvailable = false;
+        this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
+          sellingPlan.setAttribute('disabled', '');
+        });
+      }
+      if (this.purifyHumidifySubscriptionAvailable) {
+        this._toggleFilterSubscriptionFormInputs(true);
+      }
+      this._updateAtcStateOnFilterChange(false);
     }
 
     this.filterSubscriptionVariants.forEach((trigger) => {
@@ -195,7 +212,7 @@ class ProductMain extends HTMLElement {
     });
     
     this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
-      sellingPlan.addEventListener('click' , this.filterSubscriptionSellingPlanOnClick);
+      sellingPlan.addEventListener('click' , this._filterSubscriptionSellingPlanOnClick);
     });
     
     this.subscriptionToggle.addEventListener('click', (evt) => {
@@ -213,15 +230,11 @@ class ProductMain extends HTMLElement {
           this._toggleFilterSubscriptionFormInputs(true);
         }
         this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
-      }
-
-      if (this.subscriptionType == 'airpurifier_and_filter') {
-        this.querySelectorAll(this._selectors.quantityVariant).forEach((quantityInput, index) => {
-          quantityInput.removeAttribute('disabled');
-          if (index == 1) {
-            quantityInput.click();
-          }
-        });
+      } else if (this.subscriptionType == '2in1_purify_humidify') {
+        if (this.purifyHumidifySubscriptionAvailable) {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        this._updateAtcStateOnFilterChange(false);
       }
     });
 
@@ -237,43 +250,27 @@ class ProductMain extends HTMLElement {
 
       this._toggleFilterSubscriptionFormInputs(false);
       this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
-
-      if (this.subscriptionType == 'airpurifier_and_filter') {
-        this.querySelectorAll(this._selectors.quantityVariant).forEach((quantityInput) => {
-          quantityInput.setAttribute('disabled', '');
-        });
-      }
     });
 
     const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
-    filterSubscriptionVariantToBeSelectedOnLoad?.click();
+    if (filterSubscriptionVariantToBeSelectedOnLoad) {
+      filterSubscriptionVariantToBeSelectedOnLoad.click();
+    } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
+      this.filterSubscriptionSellingPlansGroups.forEach((group) => {
+        group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
+      });
+    }
   }
 
   _toggleFilterSubscriptionFormInputs = (enable) => {
     if (enable) {
-      this.filterSubscriptionSelectedVariantInput.removeAttribute('disabled');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.removeAttribute('disabled');
-      this.filterSubscriptionPropertyInputs.forEach((input) => {
+      this.filterSubscriptionFormInputs.forEach((input) => {
         input.removeAttribute('disabled');
       });
-      if (this.filterSubscriptionDateInput) {
-        this.filterSubscriptionDateInput.removeAttribute('disabled');
-      }
-      if (this.filterSubscriptionTwoPackQuantityInput) {
-        this.filterSubscriptionTwoPackQuantityInput.removeAttribute('disabled');
-      }
     } else {
-      this.filterSubscriptionSelectedVariantInput.setAttribute('disabled', '');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('disabled', '');
-      this.filterSubscriptionPropertyInputs.forEach((input) => {
+      this.filterSubscriptionFormInputs.forEach((input) => {
         input.setAttribute('disabled', '');
       });
-      if (this.filterSubscriptionDateInput) {
-        this.filterSubscriptionDateInput.setAttribute('disabled', '');
-      }
-      if (this.filterSubscriptionTwoPackQuantityInput) {
-        this.filterSubscriptionTwoPackQuantityInput.setAttribute('disabled', '');
-      }
     }
   }
 
@@ -281,22 +278,28 @@ class ProductMain extends HTMLElement {
     let btnPrice;
     let btnDisabled;
 
-    if (selectedTrigger.hasAttribute('js-non-subscription-toggle')) {
+    if (selectedTrigger && selectedTrigger.hasAttribute('js-non-subscription-toggle')) {
       btnPrice = selectedTrigger.querySelector(`${this._selectors.priceCopy} span`).textContent;
     } else if (this.subscriptionType == 'filter') {
       btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(this._selectors.priceCopy).dataset.price * this.currentQuantity), this.moneyFormat);
     } else {
-      btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(this._selectors.priceCopy).dataset.price * this.currentQuantity) + parseInt(this.nonSubscriptionToggle.querySelector(this._selectors.priceCopy).dataset.price), this.moneyFormat);
+      btnPrice = theme.utils.formatMoney(parseInt(this.nonSubscriptionToggle.querySelector(this._selectors.priceCopy).dataset.price), this.moneyFormat);
     }
     
-    if (selectedTrigger.hasAttribute('js-non-subscription-toggle') || this.subscriptionType == 'filter') {
+    if ((selectedTrigger && selectedTrigger.hasAttribute('js-non-subscription-toggle')) || this.subscriptionType == 'filter') {
       if (selectedTrigger.dataset.available == 'true') {
         btnDisabled = false;
       } else {
         btnDisabled = true;
       }
-    } else {
+    } else if (this.subscriptionType =='airpurifier_and_filter') {
       if (selectedTrigger.dataset.available == 'true' && this.nonSubscriptionToggle.dataset.available == 'true') {
+        btnDisabled = false;
+      } else {
+        btnDisabled = true;
+      }
+    } else {
+      if (this.purifyHumidifySubscriptionAvailable == true && this.nonSubscriptionToggle.dataset.available == 'true') {
         btnDisabled = false;
       } else {
         btnDisabled = true;
@@ -320,23 +323,15 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  updateSubscriptionPrice = (selectedFilterSubscriptionVariant, updateFilterSubscriptionVariantPriceLabel = false) => {
+  _updateSubscriptionPrice = (selectedFilterSubscriptionVariant, updateFilterSubscriptionVariantPriceLabel = false) => {
     const subscriptionPrice = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.price;
     const subscriptionPriceCompareAt = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.priceCompareAt;
 
     let subscriptionPriceMarkup;
-    if (this.subscriptionType == 'airpurifier_and_filter') {
-      if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
-        subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity + this.currentPrice, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity + this.currentPrice, this.moneyFormat)}</span>`;
-      } else {
-        subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity + this.currentPrice, this.moneyFormat)}</span>`;
-      }
+    if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
+      subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
     } else {
-      if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
-        subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
-      } else {
-        subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
-      }
+      subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
     }
     this.subscriptionPrice.innerHTML = subscriptionPriceMarkup;
 
@@ -381,14 +376,14 @@ class ProductMain extends HTMLElement {
       this._toggleFilterSubscriptionFormInputs(false);
     }
 
-    this.updateSubscriptionPrice(triggerTarget, false);
+    if (this.subscriptionPrice) this._updateSubscriptionPrice(triggerTarget, false);
 
     this._updateAtcStateOnFilterChange(triggerTarget);
 
     this.selectedFilterSubscriptionVariant = triggerTarget;
   }
 
-  filterSubscriptionSellingPlanOnClick = (evt) => {
+  _filterSubscriptionSellingPlanOnClick = (evt) => {
     evt.preventDefault();
 
     const triggerTarget = evt.currentTarget;
@@ -396,28 +391,44 @@ class ProductMain extends HTMLElement {
       return;
     }
 
-    const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
-    if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
-    triggerTarget.dataset.selected = 'true';
+    if (this.subscriptionType == '2in1_purify_humidify') {
+      const prevSelectedTrigger = triggerTarget.closest(this._selectors.filterSubscriptionSellingPlansGroup).querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
+      if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+      triggerTarget.dataset.selected = 'true';
 
-    if (this.subscriptionType == 'filter') {
-      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'id');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'selling_plan');
-    } else {
-      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'items[1][id]');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'items[1][selling_plan]');
-    }
-    this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
-    this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
-    this.filterSubscriptionPropertyInputs.forEach((input) => {
-      input.setAttribute('value', `subscription${Date.now()}`);;
-    });
-    if (this.filterSubscriptionDateInput) {
+      const filterSubscriptionSelectedVariantInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${triggerTarget.dataset.index}][id]"]`);
+      const filterSubscriptionSelectedVariantSellingPlanInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${triggerTarget.dataset.index}][selling_plan]"]`);
+      filterSubscriptionSelectedVariantInputTarget.setAttribute('value', triggerTarget.dataset.variant);
+      filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+      
+      const filterSubscriptionDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionDateInput}[name="items[${triggerTarget.dataset.index}][properties[og_first_order_place_date]]"]`);
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
       const date = new Date();
       const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
       const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
-      this.filterSubscriptionDateInput.setAttribute('value', formattedOrderDate);
+      filterSubscriptionDateInputTarget.setAttribute('value', formattedOrderDate);
+    } else {
+      const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
+      if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+      triggerTarget.dataset.selected = 'true';
+
+      this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+
+      if (this.filterSubscriptionDateInput) {
+        const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
+        const date = new Date();
+        const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+        const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+        this.filterSubscriptionDateInput.setAttribute('value', formattedOrderDate);
+      }
+    }
+
+    if (this.filterSubscriptionTempIdInputs.length > 0) {
+      const tempId = Date.now();
+      this.filterSubscriptionTempIdInputs.forEach((input) => {
+        input.setAttribute('value', `subscription${tempId}`);
+      });
     }
   }
 
