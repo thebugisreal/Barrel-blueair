@@ -150,6 +150,11 @@
           <span class=”evidon-notice-link”></span>
         </li>
       {% endif %}
+      {% if localization.country.iso_code == 'CA' %}
+        <li class="site-footer__item">
+          <button id="ot-sdk-btn" class="ot-sdk-show-settings site-footer__link !no-underline">Cookie Settings</button>
+        </li>
+      {% endif %}
       <li class="site-footer__item w-full mt-sm desktop:w-auto desktop:mt-0 desktop:order-first">&copy; Blueair {{  "now" | date: '%Y' }} </li>
     </ul>
   </div>
