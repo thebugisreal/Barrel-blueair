@@ -89,7 +89,7 @@
             <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
               data-swatch="{{ variant.options[color_option] }}"
               data-available="{{ variant.available }}"
-              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
+              data-price="{{ variant.compare_at_price }}|{{ variant.price }}-WHAT THE FUCK" 
               data-selected="{% if variant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
               data-url="{{ variant.url }}"
               title="{{ variant.options[color_option] }}"
@@ -111,7 +111,7 @@
             <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
               data-swatch="{{ swatch_product.variants[0].title }}"  
               data-available="{{ swatch_product.available }}"
-              data-price="{{ swatch_product.compare_at_price }}|{{ swatch_product.price }}" 
+              data-price="{{ swatch_product.variants[0].compare_at_price }}|{{ swatch_product.variants[0].price }}" 
               data-url="{{ swatch_product.url }}"
               data-selected="{% if swatch_product.variants[0].title == product.variants[0].title %}true{% else %}false{% endif %}"
               js-product-card-filter-swatch>
