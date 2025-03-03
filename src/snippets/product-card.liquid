@@ -89,7 +89,7 @@
             <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
               data-swatch="{{ variant.options[color_option] }}"
               data-available="{{ variant.available }}"
-              data-price="{{ variant.compare_at_price }}|{{ variant.price }}-WHAT THE FUCK" 
+              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
               data-selected="{% if variant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
               data-url="{{ variant.url }}"
               title="{{ variant.options[color_option] }}"
