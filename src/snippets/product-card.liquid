@@ -111,7 +111,7 @@
             <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
               data-swatch="{{ swatch_product.variants[0].title }}"  
               data-available="{{ swatch_product.available }}"
-              data-price="{{ swatch_product.compare_at_price }}|{{ swatch_product.price }}" 
+              data-price="{{ swatch_product.variants[0].compare_at_price }}|{{ swatch_product.variants[0].price }}" 
               data-url="{{ swatch_product.url }}"
               data-selected="{% if swatch_product.variants[0].title == product.variants[0].title %}true{% else %}false{% endif %}"
               js-product-card-filter-swatch>
