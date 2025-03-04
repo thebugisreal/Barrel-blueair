@@ -43,6 +43,7 @@ class ProductCardUpsell extends HTMLElement {
       })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
         this.cart.renderContents(response);
         if (!window.location.pathname.includes('/cart')) this.cartDrawer.open();
         

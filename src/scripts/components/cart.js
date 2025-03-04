@@ -60,11 +60,13 @@ class CartItems extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
         if (response.status) {
           return;
         }
+
         if (cart) cart.renderContents(response);
-        if (cartPage) cartPage.onCartUpdate();
         
         return response;
       })
@@ -180,6 +182,8 @@ class CartItems extends HTMLElement {
           this.updateLiveRegions(line, parsedState.errors);
           return;
         }
+
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
 
         const cartDrawerWrapper = document.querySelector('cart-drawer');
 
@@ -298,6 +302,11 @@ class CartDrawer extends HTMLElement {
   }
 
   _handleCartChange(e) {
+    if (sessionStorage.getItem('noCartWatcherHandle')) {
+      sessionStorage.removeItem('noCartWatcherHandle');
+      return;
+    }
+    
     fetch(window.location.href)
       .then((response) => response.text())
       .then((response) => {
@@ -552,6 +561,8 @@ class CartSubscription extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
         if (response.status) {
           this._handleErrorMessage(response.description);
           this.subscriptionError = true;
@@ -562,7 +573,6 @@ class CartSubscription extends HTMLElement {
           this.subscriptionError = false;
           if (render) {
             if (this.cart) this.cart.renderContents(response);
-            if (this.cartPage) this.cartPage.onCartUpdate();
           }
         }
         

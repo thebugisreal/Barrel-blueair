@@ -464,6 +464,8 @@ class ProductMain extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
         if (response.status) {
           this.handleErrorMessage(response.description);
           sessionStorage.setItem('cartSubscriptionError', response.description);
@@ -688,6 +690,8 @@ class ProductMain extends HTMLElement {
     fetch(`${window.routes.cart_add_url}`, config)
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+        
         if (response.status) {
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartError, {
             source: 'product-form',

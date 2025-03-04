@@ -65,6 +65,8 @@ class ProductUpsell extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+        
         if (response.status) {
           this._handleErrorMessage(response.description);
           return;
