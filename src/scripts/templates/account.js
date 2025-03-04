@@ -112,7 +112,9 @@ class Account extends HTMLElement {
       button.addEventListener('click', this._handleDeleteAddress);
     })
 
-    this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
+    if (this.editAddressModal){
+      this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
+    }
 
     this.accountTabs.forEach((button) => {
       button.addEventListener('click', this._setAccountLabel);
