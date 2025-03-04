@@ -474,7 +474,8 @@ class CartSubscription extends HTMLElement {
           };
         } else {
           let newProperties = this.subscriptionData.filter.properties;
-          newProperties.frequency = '';
+          newProperties.Frequency = '';
+          newProperties['First Order Date'] = '';
           changeData = {
             id: this.subscriptionData.filter.itemKey,
             quantity: parseInt(this.subscriptionData.filter.itemQuantity),
@@ -487,7 +488,10 @@ class CartSubscription extends HTMLElement {
       } else {
         if (this.subscriptionData.filter) {
           let newProperties = this.subscriptionData.filter.properties;
-          newProperties.frequency = this.subscriptionData.preSelectedFilter.frequency + ' months';
+          newProperties.Frequency = this.subscriptionData.preSelectedFilter.frequency + ' months';
+          const date = new Date();
+          const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+          newProperties['First Order Date'] = formattedOrderDate;
           const changeData = {
             id: this.subscriptionData.preSelectedFilter.id,
             selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
@@ -513,8 +517,9 @@ class CartSubscription extends HTMLElement {
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
                 properties: { 
                   _unitSubscriptionTempId: subscriptionTempId,
-                  frequency: this.subscriptionData.preSelectedFilter.frequency + ' months',
-                  og_first_order_place_date: formattedOrderDate
+                  Frequency: this.subscriptionData.preSelectedFilter.frequency + ' months',
+                  'First Order Date': formattedOrderDate,
+                  _og_first_order_place_date: formattedOrderDate
                 }
               }
             ]

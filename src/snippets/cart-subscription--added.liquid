@@ -5,7 +5,7 @@
   </div>
   <p class="mt-xxxs">
     {% if unit_subscription_service_product != blank %}
-      First order place date: {{ unit_subscription_service_product.properties['og_first_order_place_date'] }}<br />
+      First order place date: {{ unit_subscription_service_product.properties['_og_first_order_place_date'] }}<br />
     {% endif %}
     {{ subscription_item.selling_plan_allocation.selling_plan.name }}&nbsp;
     <a href="{{ item.url }}" class="link link--underline underline-offset-2" js-cart-subscription-edit>Edit</a>
