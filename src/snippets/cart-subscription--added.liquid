@@ -1,0 +1,39 @@
+<cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm">
+  <div class="flex justify-start items-start gap-xs">
+    <button type="button" class="cart-item-subscription__checkbox mt-xxxs" data-checked="true" js-cart-subscription-checkbox></button>
+    <div class="p3 flex-1">{{ subscription_item.product.title }} - Subscription</div>
+  </div>
+  <p class="mt-xxxs">
+    {% if unit_subscription_service_product != blank %}
+      First order place date: {{ unit_subscription_service_product.properties['_og_first_order_place_date'] }}<br />
+    {% endif %}
+    {{ subscription_item.selling_plan_allocation.selling_plan.name }}&nbsp;
+    <a href="{{ item.url }}" class="link link--underline underline-offset-2" js-cart-subscription-edit>Edit</a>
+  </p>
+  <p class="text-12 mt-xxxs hidden" js-cart-subscription-error></p>
+  <script type="application/json" js-subscription-data-json>
+    {
+      "filter": {
+        "itemKey": "{{ subscription_item.key }}",
+        "itemQuantity": "{{ subscription_item.quantity }}",
+        "properties": {
+        {% for property in subscription_item.properties %}
+          "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        }
+      }{% if unit_subscription_service_product != blank %},
+      "airPurifier": {
+        "itemKey": "{{ item.key }}",
+        "itemQuantity": "{{ item.quantity }}",
+        "properties": {
+        {% for property in item.properties %}
+          "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        }
+      }{% endif %},
+      "isTwoInOneSubscription": {{ is_two_in_one_subscription }},
+      "isTwoInOneFiltersBundled": {{ is_two_in_one_filters_bundled }},
+      "index": "{{ index }}"
+    }
+  </script>
+</cart-subscription>

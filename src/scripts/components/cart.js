@@ -60,11 +60,13 @@ class CartItems extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
         if (response.status) {
           return;
         }
+
         if (cart) cart.renderContents(response);
-        if (cartPage) cartPage.onCartUpdate();
         
         return response;
       })
@@ -180,6 +182,8 @@ class CartItems extends HTMLElement {
           this.updateLiveRegions(line, parsedState.errors);
           return;
         }
+
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
 
         const cartDrawerWrapper = document.querySelector('cart-drawer');
 
@@ -298,6 +302,11 @@ class CartDrawer extends HTMLElement {
   }
 
   _handleCartChange(e) {
+    if (sessionStorage.getItem('noCartWatcherHandle')) {
+      sessionStorage.removeItem('noCartWatcherHandle');
+      return;
+    }
+    
     fetch(window.location.href)
       .then((response) => response.text())
       .then((response) => {
@@ -424,7 +433,6 @@ class CartSubscription extends HTMLElement {
     
     
     this.showErrorFromPdp();
-   // this.checkTwoPackSubscriptionItem();
     this.editBtn?.addEventListener('click', this.editBtnOnClick);
     this.checkbox.addEventListener('click', this.checkboxOnClick);
   }
@@ -441,34 +449,6 @@ class CartSubscription extends HTMLElement {
 
     alert(error);
     sessionStorage.removeItem('cartSubscriptionError');
-  }
-
-  checkTwoPackSubscriptionItem = () => {
-    if (this.dataset.scope == 'cart-drawer' && document.querySelector('cart-subscription[data-scope="cart-page"]')) {
-      return;
-    }
-
-    const target = this.querySelector('[is-two-pack-subscription]');
-
-    if (!target) {
-      return;
-    }
-
-    if (this.dataset.itemQuantity == '2') {
-      return;
-    }
-    
-    const update = async () => {
-      const  changeData = {
-        id: this.dataset.itemKey,
-        quantity: parseInt(this.dataset.itemQuantity),
-        selling_plan: '',
-        sections: this.cart.getSectionsToRender().map((section) => section.id)
-      };
-      this._updateCartItems('change', changeData, true);
-    }
-
-    update();
   }
 
   editBtnOnClick = (evt) => {
@@ -493,22 +473,30 @@ class CartSubscription extends HTMLElement {
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
         } else {
+          let newProperties = this.subscriptionData.filter.properties;
+          newProperties.Frequency = '';
+          newProperties['First Order Date'] = '';
           changeData = {
             id: this.subscriptionData.filter.itemKey,
             quantity: parseInt(this.subscriptionData.filter.itemQuantity),
             selling_plan: '',
-            properties: this.subscriptionData.filter.properties,
+            properties: newProperties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
         }
         this._updateCartItems('change', changeData, true);
       } else {
         if (this.subscriptionData.filter) {
+          let newProperties = this.subscriptionData.filter.properties;
+          newProperties.Frequency = this.subscriptionData.preSelectedFilter.frequency + ' months';
+          const date = new Date();
+          const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+          newProperties['First Order Date'] = formattedOrderDate;
           const changeData = {
             id: this.subscriptionData.preSelectedFilter.id,
             selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
             quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
-            properties: this.subscriptionData.filter.properties,
+            properties: newProperties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
           this._updateCartItems('change', changeData, true);
@@ -529,7 +517,9 @@ class CartSubscription extends HTMLElement {
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
                 properties: { 
                   _unitSubscriptionTempId: subscriptionTempId,
-                  og_first_order_place_date: formattedOrderDate
+                  Frequency: this.subscriptionData.preSelectedFilter.frequency + ' months',
+                  'First Order Date': formattedOrderDate,
+                  _og_first_order_place_date: formattedOrderDate
                 }
               }
             ]
@@ -576,6 +566,8 @@ class CartSubscription extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
         if (response.status) {
           this._handleErrorMessage(response.description);
           this.subscriptionError = true;
@@ -586,7 +578,6 @@ class CartSubscription extends HTMLElement {
           this.subscriptionError = false;
           if (render) {
             if (this.cart) this.cart.renderContents(response);
-            if (this.cartPage) this.cartPage.onCartUpdate();
           }
         }
         

@@ -22,11 +22,14 @@ class ProductMain extends HTMLElement {
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
+      filterSubscriptionFormInput: '[js-filter-subscription-form-input]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
-      filterSubscriptionPropertyInput: '[js-filter-subscription-property-input]',
+      filterSubscriptionFrequencyInput: '[js-filter-subscription-frequency-input]',
+      filterSubscriptionFirstOrderDateInput: '[js-filter-subscription-first-order-date-input]',
+      filterSubscriptionTempIdInput: '[js-filter-subscription-temp-id-input]',
       filterSubscriptionTwoPackQuantityInput: '[js-filter-subscription-two-pack-quantity-input]',
-      filterSubscriptionDateInput: '[js-filter-subscription-date-input]',
+      filterSubscriptionOgDateInput: '[js-filter-subscription-og-date-input]',
       subscriptionContainer: '[js-subscription-container]',
       subscriptionOffer: '[js-subscription-offer]',
       subscriptionCustomization: '[js-subscription-customization]',
@@ -94,8 +97,8 @@ class ProductMain extends HTMLElement {
       }
       
       if (this.subscription) {
-        if (this.selectedFilterSubscriptionVariant) {
-          this.updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
+        if (this.selectedFilterSubscriptionVariant && this.subscriptionPrice) {
+          this._updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
 
           if (this.subscription.dataset.selected == 'true') {
             this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
@@ -112,7 +115,7 @@ class ProductMain extends HTMLElement {
             }
             if (this.subscriptionPrice) this.subscriptionPrice.innerHTML = '';
           } else {
-            this.subscriptionToggle?.removeAttribute('disabled');
+            this.subscriptionToggle.removeAttribute('disabled');
           }
         }
       }
@@ -177,17 +180,35 @@ class ProductMain extends HTMLElement {
     this.subscriptionType = this.subscription.dataset.type;
     this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
     this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
-    this.subscriptionPrice = this.querySelector(this._selectors.subscriptionPrice);
-    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
+    this.subscriptionPrice = this.subscription.querySelector(this._selectors.subscriptionPrice);
+    this.filterSubscriptionVariants = this.subscription.querySelectorAll(this._selectors.filterSubscriptionVariant);
     this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
-    this.filterSubscriptionSelectedVariantInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
-    this.filterSubscriptionSelectedVariantSellingPlanInput = this.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
-    this.filterSubscriptionPropertyInputs = this.querySelectorAll(this._selectors.filterSubscriptionPropertyInput);
-    this.filterSubscriptionDateInput = this.querySelector(this._selectors.filterSubscriptionDateInput);
+    this.filterSubscriptionFormInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionFormInput);
+    this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
+    this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
+    this.filterSubscriptionFrequencyInput = this.subscription.querySelector(this._selectors.filterSubscriptionFrequencyInput);
+    this.filterSubscriptionFirstOrderDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionFirstOrderDateInput);
+    this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
+    this.filterSubscriptionOgDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionOgDateInput);
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
       this.filterSubscriptionTwoPackQuantityInput = this.querySelector(this._selectors.filterSubscriptionTwoPackQuantityInput);
+    }
+
+    if (this.subscriptionType == '2in1_purify_humidify') {
+      this.filterSubscriptionSellingPlansGroups = this.querySelectorAll(this._selectors.filterSubscriptionSellingPlansGroup);
+      this.purifyHumidifySubscriptionAvailable = true;
+      if (this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}:disabled`)) {
+        this.purifyHumidifySubscriptionAvailable = false;
+        this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
+          sellingPlan.setAttribute('disabled', '');
+        });
+      }
+      if (this.purifyHumidifySubscriptionAvailable) {
+        this._toggleFilterSubscriptionFormInputs(true);
+      }
+      this._updateAtcStateOnFilterChange(false);
     }
 
     this.filterSubscriptionVariants.forEach((trigger) => {
@@ -195,7 +216,7 @@ class ProductMain extends HTMLElement {
     });
     
     this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
-      sellingPlan.addEventListener('click' , this.filterSubscriptionSellingPlanOnClick);
+      sellingPlan.addEventListener('click' , this._filterSubscriptionSellingPlanOnClick);
     });
     
     this.subscriptionToggle.addEventListener('click', (evt) => {
@@ -213,15 +234,11 @@ class ProductMain extends HTMLElement {
           this._toggleFilterSubscriptionFormInputs(true);
         }
         this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
-      }
-
-      if (this.subscriptionType == 'airpurifier_and_filter') {
-        this.querySelectorAll(this._selectors.quantityVariant).forEach((quantityInput, index) => {
-          quantityInput.removeAttribute('disabled');
-          if (index == 1) {
-            quantityInput.click();
-          }
-        });
+      } else if (this.subscriptionType == '2in1_purify_humidify') {
+        if (this.purifyHumidifySubscriptionAvailable) {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        this._updateAtcStateOnFilterChange(false);
       }
     });
 
@@ -237,43 +254,27 @@ class ProductMain extends HTMLElement {
 
       this._toggleFilterSubscriptionFormInputs(false);
       this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
-
-      if (this.subscriptionType == 'airpurifier_and_filter') {
-        this.querySelectorAll(this._selectors.quantityVariant).forEach((quantityInput) => {
-          quantityInput.setAttribute('disabled', '');
-        });
-      }
     });
 
     const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
-    filterSubscriptionVariantToBeSelectedOnLoad?.click();
+    if (filterSubscriptionVariantToBeSelectedOnLoad) {
+      filterSubscriptionVariantToBeSelectedOnLoad.click();
+    } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
+      this.filterSubscriptionSellingPlansGroups.forEach((group) => {
+        group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
+      });
+    }
   }
 
   _toggleFilterSubscriptionFormInputs = (enable) => {
     if (enable) {
-      this.filterSubscriptionSelectedVariantInput.removeAttribute('disabled');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.removeAttribute('disabled');
-      this.filterSubscriptionPropertyInputs.forEach((input) => {
+      this.filterSubscriptionFormInputs.forEach((input) => {
         input.removeAttribute('disabled');
       });
-      if (this.filterSubscriptionDateInput) {
-        this.filterSubscriptionDateInput.removeAttribute('disabled');
-      }
-      if (this.filterSubscriptionTwoPackQuantityInput) {
-        this.filterSubscriptionTwoPackQuantityInput.removeAttribute('disabled');
-      }
     } else {
-      this.filterSubscriptionSelectedVariantInput.setAttribute('disabled', '');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('disabled', '');
-      this.filterSubscriptionPropertyInputs.forEach((input) => {
+      this.filterSubscriptionFormInputs.forEach((input) => {
         input.setAttribute('disabled', '');
       });
-      if (this.filterSubscriptionDateInput) {
-        this.filterSubscriptionDateInput.setAttribute('disabled', '');
-      }
-      if (this.filterSubscriptionTwoPackQuantityInput) {
-        this.filterSubscriptionTwoPackQuantityInput.setAttribute('disabled', '');
-      }
     }
   }
 
@@ -281,22 +282,28 @@ class ProductMain extends HTMLElement {
     let btnPrice;
     let btnDisabled;
 
-    if (selectedTrigger.hasAttribute('js-non-subscription-toggle')) {
+    if (selectedTrigger && selectedTrigger.hasAttribute('js-non-subscription-toggle')) {
       btnPrice = selectedTrigger.querySelector(`${this._selectors.priceCopy} span`).textContent;
     } else if (this.subscriptionType == 'filter') {
       btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(this._selectors.priceCopy).dataset.price * this.currentQuantity), this.moneyFormat);
     } else {
-      btnPrice = theme.utils.formatMoney(parseInt(selectedTrigger.querySelector(this._selectors.priceCopy).dataset.price * this.currentQuantity) + parseInt(this.nonSubscriptionToggle.querySelector(this._selectors.priceCopy).dataset.price), this.moneyFormat);
+      btnPrice = theme.utils.formatMoney(parseInt(this.nonSubscriptionToggle.querySelector(this._selectors.priceCopy).dataset.price), this.moneyFormat);
     }
     
-    if (selectedTrigger.hasAttribute('js-non-subscription-toggle') || this.subscriptionType == 'filter') {
+    if ((selectedTrigger && selectedTrigger.hasAttribute('js-non-subscription-toggle')) || this.subscriptionType == 'filter') {
       if (selectedTrigger.dataset.available == 'true') {
         btnDisabled = false;
       } else {
         btnDisabled = true;
       }
-    } else {
+    } else if (this.subscriptionType =='airpurifier_and_filter') {
       if (selectedTrigger.dataset.available == 'true' && this.nonSubscriptionToggle.dataset.available == 'true') {
+        btnDisabled = false;
+      } else {
+        btnDisabled = true;
+      }
+    } else {
+      if (this.purifyHumidifySubscriptionAvailable == true && this.nonSubscriptionToggle.dataset.available == 'true') {
         btnDisabled = false;
       } else {
         btnDisabled = true;
@@ -320,23 +327,15 @@ class ProductMain extends HTMLElement {
     }
   }
 
-  updateSubscriptionPrice = (selectedFilterSubscriptionVariant, updateFilterSubscriptionVariantPriceLabel = false) => {
+  _updateSubscriptionPrice = (selectedFilterSubscriptionVariant, updateFilterSubscriptionVariantPriceLabel = false) => {
     const subscriptionPrice = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.price;
     const subscriptionPriceCompareAt = selectedFilterSubscriptionVariant.querySelector(this._selectors.priceCopy).dataset.priceCompareAt;
 
     let subscriptionPriceMarkup;
-    if (this.subscriptionType == 'airpurifier_and_filter') {
-      if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
-        subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity + this.currentPrice, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity + this.currentPrice, this.moneyFormat)}</span>`;
-      } else {
-        subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity + this.currentPrice, this.moneyFormat)}</span>`;
-      }
+    if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
+      subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
     } else {
-      if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
-        subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
-      } else {
-        subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
-      }
+      subscriptionPriceMarkup = `<span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
     }
     this.subscriptionPrice.innerHTML = subscriptionPriceMarkup;
 
@@ -363,6 +362,14 @@ class ProductMain extends HTMLElement {
       return;
     }
 
+    if (triggerTarget.hasAttribute('is-variant-link')) {
+      if (this.pdpToEditCartSubscription != false) {
+        sessionStorage.setItem('pdpToEditCartSubscription', JSON.stringify(this.pdpToEditCartSubscription));
+      }
+      window.location.href = triggerTarget.getAttribute('is-variant-link');
+      return;
+    }
+
     const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
     sellingPlanTarget?.click();
     
@@ -381,14 +388,14 @@ class ProductMain extends HTMLElement {
       this._toggleFilterSubscriptionFormInputs(false);
     }
 
-    this.updateSubscriptionPrice(triggerTarget, false);
+    if (this.subscriptionPrice) this._updateSubscriptionPrice(triggerTarget, false);
 
     this._updateAtcStateOnFilterChange(triggerTarget);
 
     this.selectedFilterSubscriptionVariant = triggerTarget;
   }
 
-  filterSubscriptionSellingPlanOnClick = (evt) => {
+  _filterSubscriptionSellingPlanOnClick = (evt) => {
     evt.preventDefault();
 
     const triggerTarget = evt.currentTarget;
@@ -396,28 +403,55 @@ class ProductMain extends HTMLElement {
       return;
     }
 
-    const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
-    if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
-    triggerTarget.dataset.selected = 'true';
+    if (this.subscriptionType == '2in1_purify_humidify') {
+      const prevSelectedTrigger = triggerTarget.closest(this._selectors.filterSubscriptionSellingPlansGroup).querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
+      if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+      triggerTarget.dataset.selected = 'true';
 
-    if (this.subscriptionType == 'filter') {
-      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'id');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'selling_plan');
-    } else {
-      this.filterSubscriptionSelectedVariantInput.setAttribute('name', 'items[1][id]');
-      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('name', 'items[1][selling_plan]');
-    }
-    this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
-    this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
-    this.filterSubscriptionPropertyInputs.forEach((input) => {
-      input.setAttribute('value', `subscription${Date.now()}`);;
-    });
-    if (this.filterSubscriptionDateInput) {
+      const filterSubscriptionSelectedVariantInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${triggerTarget.dataset.index}][id]"]`);
+      const filterSubscriptionSelectedVariantSellingPlanInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${triggerTarget.dataset.index}][selling_plan]"]`);
+      filterSubscriptionSelectedVariantInputTarget.setAttribute('value', triggerTarget.dataset.variant);
+      filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+      
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
+      const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[Frequency]]"]`);
+      filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
+
+      const filterSubscriptionFirstOrderDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${triggerTarget.dataset.index}][properties[First Order Date]]"]`);
+      const filterSubscriptionOgDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${triggerTarget.dataset.index}][properties[_og_first_order_place_date]]"]`);
       const date = new Date();
       const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
       const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
-      this.filterSubscriptionDateInput.setAttribute('value', formattedOrderDate);
+      filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
+      filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
+    } else {
+      const prevSelectedTrigger = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
+      if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
+      triggerTarget.dataset.selected = 'true';
+
+      this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
+      this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+      
+      const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
+      this.filterSubscriptionFrequencyInput.setAttribute('value', frequency + ' months');
+
+      const date = new Date();
+      if (this.subscriptionType == 'filter') {
+        const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        this.filterSubscriptionFirstOrderDateInput.setAttribute('value', formattedOrderDate);
+      } else if (this.filterSubscriptionOgDateInput) {
+        const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+        const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+        this.filterSubscriptionFirstOrderDateInput.setAttribute('value', formattedOrderDate);
+        this.filterSubscriptionOgDateInput.setAttribute('value', formattedOrderDate);
+      }
+    }
+
+    if (this.filterSubscriptionTempIdInputs.length > 0) {
+      const tempId = Date.now();
+      this.filterSubscriptionTempIdInputs.forEach((input) => {
+        input.setAttribute('value', `subscription${tempId}`);
+      });
     }
   }
 
@@ -438,6 +472,8 @@ class ProductMain extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
         if (response.status) {
           this.handleErrorMessage(response.description);
           sessionStorage.setItem('cartSubscriptionError', response.description);
@@ -464,21 +500,35 @@ class ProductMain extends HTMLElement {
 
   _editCartSubscription = (formData) => {
     const init = async () => {
+      let index = 1;
+      if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+        const variantId = this.pdpToEditCartSubscription.filter.itemKey.split(':')[0];
+        index = this.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[value="${variantId}"]`).dataset.index;
+      }
+
       const newSelectedSubscription = {};
       for (const [key, value] of formData.entries()) {
         if (this.pdpToEditCartSubscription.airPurifier) {
-          if (key == 'items[1][id]') {
+          if (key == `items[${index}][id]`) {
             newSelectedSubscription['id'] = value;
-          } else if (key == 'items[1][selling_plan]') {
+          } else if (key == `items[${index}][selling_plan]`) {
             newSelectedSubscription['selling_plan'] = value;
-          } else if (key == 'items[1][quantity]') {
+          } else if (key == `items[${index}][quantity]`) {
             newSelectedSubscription['quantity'] = value;
-          } else if (key == 'items[1][properties[og_first_order_place_date]]') {
+          } else if (key == `items[${index}][properties[Frequency]]`) {
             newSelectedSubscription['frequency'] = value;
+          } else if (key == `items[${index}][properties[First Order Date]]`) {
+            newSelectedSubscription['first_order_date'] = value;
+          } else if (key == `items[${index}][properties[_og_first_order_place_date]]`) {
+            newSelectedSubscription['og_date'] = value;
           }
         } else {
           if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
             newSelectedSubscription[key] = value;
+          } else if (key == 'properties[Frequency]') {
+            newSelectedSubscription['frequency'] = value;
+          } else if (key == 'properties[First Order Date]') {
+            newSelectedSubscription['first_order_date'] = value;
           }
         }
       }
@@ -492,7 +542,13 @@ class ProductMain extends HTMLElement {
 
       let newProperties = this.pdpToEditCartSubscription.filter.properties;
       if (newSelectedSubscription.frequency) {
-        newProperties.og_first_order_place_date = newSelectedSubscription.frequency;
+        newProperties.Frequency = newSelectedSubscription.frequency;
+      }
+      if (newSelectedSubscription.first_order_date) {
+        newProperties['First Order Date'] = newSelectedSubscription.first_order_date;
+      }
+      if (newSelectedSubscription.og_date) {
+        newProperties._og_first_order_place_date = newSelectedSubscription.og_date;
       }
 
       let replaceItem = false;
@@ -524,13 +580,92 @@ class ProductMain extends HTMLElement {
         this._updateCartItems('add', addData, true);
 
       } else {
+        let render = true;
+        if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+          render = false;
+        }
+
         const changeData = {
           id: this.pdpToEditCartSubscription.filter.itemKey,
           quantity: parseInt(newQuantity),
           selling_plan: parseInt(newSelectedSubscription.selling_plan),
           properties: newProperties
         };
-        this._updateCartItems('change', changeData, true);
+        const res = await this._updateCartItems('change', changeData, render);
+
+        if (res.status) {
+          return;
+        }
+
+        if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+          let otherItemIndex;
+          if (index == 1 || index == '1') {
+            otherItemIndex = 2;
+          } else {
+            otherItemIndex = 1;
+          }
+          const newOtherItemSelectedSubscription = {};
+          for (const [key, value] of formData.entries()) {
+            if (key == `items[${otherItemIndex}][id]`) {
+              newOtherItemSelectedSubscription['id'] = value;
+            } else if (key == `items[${otherItemIndex}][selling_plan]`) {
+              newOtherItemSelectedSubscription['selling_plan'] = value;
+            } else if (key == `items[${otherItemIndex}][properties[Frequency]]`) {
+              newOtherItemSelectedSubscription['frequency'] = value;
+            } else if (key == `items[${otherItemIndex}][properties[First Order Date]]`) {
+              newOtherItemSelectedSubscription['first_order_date'] = value;
+            } else if (key == `items[${otherItemIndex}][properties[_og_first_order_place_date]]`) {
+              newOtherItemSelectedSubscription['og_date'] = value;
+            }
+          }
+
+          if (this.pdpToEditCartSubscription.isTwoInOneFiltersBundled == true) {
+            const cartSubscriptionElement = this.cart.querySelector(`cart-subscription[data-index="${this.pdpToEditCartSubscription.index}"]`);
+            let otherItemCartSubscriptionElement;
+            if (cartSubscriptionElement.previousElementSibling.tagName == 'CART-SUBSCRIPTION') {
+              otherItemCartSubscriptionElement = cartSubscriptionElement.previousElementSibling;
+            } else if (cartSubscriptionElement.nextElementSibling.tagName == 'CART-SUBSCRIPTION') {
+              otherItemCartSubscriptionElement = cartSubscriptionElement.nextElementSibling;
+            }
+            const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
+
+            let newOtherItemProperties = otherItemSubscriptionData.filter.properties;
+            if (newOtherItemSelectedSubscription.frequency) {
+              newOtherItemProperties.Frequency = newOtherItemSelectedSubscription.frequency;
+            }
+            if (newOtherItemSelectedSubscription.first_order_date) {
+              newOtherItemProperties['First Order Date'] = newOtherItemSelectedSubscription.first_order_date;
+            }
+            if (newOtherItemSelectedSubscription.og_date) {
+              newOtherItemProperties._og_first_order_place_date = newOtherItemSelectedSubscription.og_date;
+            }
+
+            const changeData = {
+              id: otherItemSubscriptionData.filter.itemKey,
+              quantity: parseInt(otherItemSubscriptionData.filter.itemQuantity),
+              selling_plan: parseInt(newOtherItemSelectedSubscription.selling_plan),
+              properties: newOtherItemProperties
+            };
+            this._updateCartItems('change', changeData, true);
+          } else {
+            const addData = {
+              items: [
+                { 
+                  id: newOtherItemSelectedSubscription.id, 
+                  selling_plan: newOtherItemSelectedSubscription.selling_plan,
+                  quantity: 1,
+                  properties: { 
+                    _unitSubscriptionTempId: this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
+                    Frequency: newOtherItemSelectedSubscription.frequency,
+                    'First Order Date': newOtherItemSelectedSubscription.first_order_date,
+                    _og_first_order_place_date: newOtherItemSelectedSubscription.og_date
+                  }
+                }
+              ]
+            }
+            this._updateCartItems('add', addData, true);
+          }
+        }
       }
 
       this.pdpToEditCartSubscription = false;
@@ -576,6 +711,8 @@ class ProductMain extends HTMLElement {
     fetch(`${window.routes.cart_add_url}`, config)
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+        
         if (response.status) {
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartError, {
             source: 'product-form',

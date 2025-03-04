@@ -195,9 +195,12 @@ class SubscriptionQuiz extends HTMLElement {
     const variantId = selectedFrequency.dataset.variant;
     const sellingPlanId = selectedFrequency.dataset.sellingPlanId;
     const quantity = parseInt(selectedFrequency.dataset.quantity);
-    
+    const frequency = selectedFrequency.dataset.frequency;
+    const date = new Date();
+    const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+
     let data = {
-      items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId }]
+      items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId, properties: { 'Frequency': frequency, 'First Order Date': formattedOrderDate } }]
     };
 
     fetch(window.Shopify.routes.root + 'cart/add.js', {
@@ -209,6 +212,8 @@ class SubscriptionQuiz extends HTMLElement {
     })
       .then((response) => response.json())
       .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+        
         if (response.status) {
           this._handleErrorMessage(response.description);
           return;
