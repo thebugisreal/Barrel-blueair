@@ -245,9 +245,16 @@
     <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
     <div class="mt-md grid gap-md">
       <div class="account-content">
-				<s-warranty class="iframe-loader" data-iframe-url="https://acct66616-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2116&deploy=1&compid=ACCT66616_SB1&ns-at=AAEJ7tMQ6VEe57V0dXTUAijVfZnZV92jG3X44uZO-EO-hBEcA5M&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}">
-					<iframe class="iframe-container w-full h-[1020px] border-0"></iframe>
-				</s-warranty>
+        <h1>Testing URL IFrame</h1>
+        <iframe class="iframe-container w-full h-[1020px] border-0" src="https://acct66616-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2116&deploy=1&compid=ACCT66616_SB1&ns-at=AAEJ7tMQ6VEe57V0dXTUAijVfZnZV92jG3X44uZO-EO-hBEcA5M&uid=6139e556bf5942b5b065452cbf0ed482&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}"></iframe>
+
+        <h1>Current Live IFrame</h1>
+        <iframe class="iframe-container w-full h-[1020px] border-0" src="https://acct66616.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=1319&deploy=1&compid=ACCT66616&h=53fbcd516ebe5428a762&ns-at=AAEJ7tMQs5kFMj85g1G5XX-UFYv3SfIy2IniVgrunpQSEm9E-Q0&hash=5795abb9120349b8b0971f9b1b432dfc1a281de261dc3424c303eb70f82588c4&uid=f89b6cb588c744ccbffcd6dff86a2d48&country=US&locale=en_US"></iframe>
+
+        <h1>My Iframe Attempt</h1>
+        <s-warranty class="iframe-loader" data-iframe-url="https://acct66616.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2116&deploy=1&compid=ACCT66616_SB1&ns-at=AAEJ7tMQ6VEe57V0dXTUAijVfZnZV92jG3X44uZO-EO-hBEcA5M&uid=6139e556bf5942b5b065452cbf0ed482&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}">
+          <iframe class="iframe-container w-full h-[1020px] border-0"></iframe>
+        </s-warranty>
 			</div>
       </div>
     </div>            
