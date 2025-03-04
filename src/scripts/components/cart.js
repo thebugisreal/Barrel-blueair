@@ -31,7 +31,7 @@ class CartItems extends HTMLElement {
       this.onCartUpdate();
     });
 
-    //this.checkIneligibleCartItems();
+    this.checkIneligibleCartItems();
   }
 
   disconnectedCallback() {
@@ -464,22 +464,26 @@ class CartSubscription extends HTMLElement {
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
         } else {
+          let newProperties = this.subscriptionData.filter.properties;
+          newProperties.frequency = '';
           changeData = {
             id: this.subscriptionData.filter.itemKey,
             quantity: parseInt(this.subscriptionData.filter.itemQuantity),
             selling_plan: '',
-            properties: this.subscriptionData.filter.properties,
+            properties: newProperties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
         }
         this._updateCartItems('change', changeData, true);
       } else {
         if (this.subscriptionData.filter) {
+          let newProperties = this.subscriptionData.filter.properties;
+          newProperties.frequency = this.subscriptionData.preSelectedFilter.frequency + ' months';
           const changeData = {
             id: this.subscriptionData.preSelectedFilter.id,
             selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
             quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
-            properties: this.subscriptionData.filter.properties,
+            properties: newProperties,
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           };
           this._updateCartItems('change', changeData, true);
@@ -490,7 +494,7 @@ class CartSubscription extends HTMLElement {
           const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
           const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
           const airPurifierProperties = this.subscriptionData.airPurifier.properties;
-          airPurifierProperties['unitSubscriptionTempId'] = subscriptionTempId;
+          airPurifierProperties['_unitSubscriptionTempId'] = subscriptionTempId;
 
           const addData = {
             items: [
@@ -499,7 +503,8 @@ class CartSubscription extends HTMLElement {
                 selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
                 properties: { 
-                  unitSubscriptionTempId: subscriptionTempId,
+                  _unitSubscriptionTempId: subscriptionTempId,
+                  frequency: this.subscriptionData.preSelectedFilter.frequency + ' months',
                   og_first_order_place_date: formattedOrderDate
                 }
               }

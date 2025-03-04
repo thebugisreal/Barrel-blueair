@@ -2,6 +2,7 @@
 {% for item in cart.items %}
   {% assign cart_variants = cart_variants | append: item.variant_id | append: ',' %}
 {% endfor %}
+{% assign subscription_index = 0 %}
 
 <cart-drawer>
   <div id="cart" class="cart-drawer flex flex-col h-full" js-cart-drawer-contents>
@@ -40,7 +41,7 @@
                   if item.selling_plan_allocation != blank
                     assign matching_unit_subscription_air_purifier_found = false
                     for cart_item in cart.items
-                      if cart_item.properties['unitSubscriptionTempId'] == item.properties['unitSubscriptionTempId'] and cart_item.product.metafields.seed.subscription.value.pdp_type == 'Air Purifier + Filter' and cart_item != item
+                      if cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.product.metafields.seed.subscription.value.pdp_type != 'Filter' and cart_item.product.metafields.seed.subscription != blank and cart_item != item
                         assign matching_unit_subscription_air_purifier_found = true
                         break
                       endif
@@ -53,7 +54,7 @@
                   endif
                 endif
               %}
-              <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" js-cart-item>
+              <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" js-cart-item>
                 <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                 <div class="flex gap-md">
                   <a href="{{item.url}}" class="block w-1/2" js-cart-item-image>
@@ -171,7 +172,8 @@
                 </div>
 
                 {% if item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
-                  {% render 'cart-subscription' item: item scope: 'cart-drawer' %}
+                  {% render 'cart-subscription' item: item scope: 'cart-drawer' index: subscription_index %}
+                  {% assign subscription_index = subscription_index | plus: 1 %}
                 {% endif %}
               </div>
               {%- endfor -%}

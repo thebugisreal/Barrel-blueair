@@ -25,6 +25,7 @@ class ProductMain extends HTMLElement {
       filterSubscriptionFormInput: '[js-filter-subscription-form-input]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
+      filterSubscriptionFrequencyInput: '[js-filter-subscription-frequency-input]',
       filterSubscriptionTempIdInput: '[js-filter-subscription-temp-id-input]',
       filterSubscriptionTwoPackQuantityInput: '[js-filter-subscription-two-pack-quantity-input]',
       filterSubscriptionDateInput: '[js-filter-subscription-date-input]',
@@ -184,6 +185,7 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionFormInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionFormInput);
     this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
+    this.filterSubscriptionFrequencyInput = this.subscription.querySelector(this._selectors.filterSubscriptionFrequencyInput);
     this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
     this.filterSubscriptionDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionDateInput);
 
@@ -358,6 +360,14 @@ class ProductMain extends HTMLElement {
       return;
     }
 
+    if (triggerTarget.hasAttribute('is-variant-link')) {
+      if (this.pdpToEditCartSubscription != false) {
+        sessionStorage.setItem('pdpToEditCartSubscription', JSON.stringify(this.pdpToEditCartSubscription));
+      }
+      window.location.href = triggerTarget.getAttribute('is-variant-link');
+      return;
+    }
+
     const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
     sellingPlanTarget?.click();
     
@@ -401,8 +411,11 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSelectedVariantInputTarget.setAttribute('value', triggerTarget.dataset.variant);
       filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
       
-      const filterSubscriptionDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionDateInput}[name="items[${triggerTarget.dataset.index}][properties[og_first_order_place_date]]"]`);
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
+      const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[frequency]]"]`);
+      filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
+
+      const filterSubscriptionDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionDateInput}[name="items[${triggerTarget.dataset.index}][properties[og_first_order_place_date]]"]`);
       const date = new Date();
       const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
       const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
@@ -414,9 +427,11 @@ class ProductMain extends HTMLElement {
 
       this.filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
       this.filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+      
+      const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
+      this.filterSubscriptionFrequencyInput.setAttribute('value', frequency + ' months');
 
       if (this.filterSubscriptionDateInput) {
-        const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
         const date = new Date();
         const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
         const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
@@ -475,21 +490,31 @@ class ProductMain extends HTMLElement {
 
   _editCartSubscription = (formData) => {
     const init = async () => {
+      let index = 1;
+      if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+        const variantId = this.pdpToEditCartSubscription.filter.itemKey.split(':')[0];
+        index = this.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[value="${variantId}"]`).dataset.index;
+      }
+
       const newSelectedSubscription = {};
       for (const [key, value] of formData.entries()) {
         if (this.pdpToEditCartSubscription.airPurifier) {
-          if (key == 'items[1][id]') {
+          if (key == `items[${index}][id]`) {
             newSelectedSubscription['id'] = value;
-          } else if (key == 'items[1][selling_plan]') {
+          } else if (key == `items[${index}][selling_plan]`) {
             newSelectedSubscription['selling_plan'] = value;
-          } else if (key == 'items[1][quantity]') {
+          } else if (key == `items[${index}][quantity]`) {
             newSelectedSubscription['quantity'] = value;
-          } else if (key == 'items[1][properties[og_first_order_place_date]]') {
+          } else if (key == `items[${index}][properties[frequency]]`) {
             newSelectedSubscription['frequency'] = value;
+          } else if (key == `items[${index}][properties[og_first_order_place_date]]`) {
+            newSelectedSubscription['first_order_date'] = value;
           }
         } else {
           if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
             newSelectedSubscription[key] = value;
+          } else if (key == 'properties[frequency]') {
+            newSelectedSubscription['frequency'] = value;
           }
         }
       }
@@ -503,7 +528,10 @@ class ProductMain extends HTMLElement {
 
       let newProperties = this.pdpToEditCartSubscription.filter.properties;
       if (newSelectedSubscription.frequency) {
-        newProperties.og_first_order_place_date = newSelectedSubscription.frequency;
+        newProperties.frequency = newSelectedSubscription.frequency;
+      }
+      if (newSelectedSubscription.first_order_date) {
+        newProperties.og_first_order_place_date = newSelectedSubscription.first_order_date;
       }
 
       let replaceItem = false;
@@ -535,13 +563,86 @@ class ProductMain extends HTMLElement {
         this._updateCartItems('add', addData, true);
 
       } else {
+        let render = true;
+        if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+          render = false;
+        }
+
         const changeData = {
           id: this.pdpToEditCartSubscription.filter.itemKey,
           quantity: parseInt(newQuantity),
           selling_plan: parseInt(newSelectedSubscription.selling_plan),
           properties: newProperties
         };
-        this._updateCartItems('change', changeData, true);
+        const res = await this._updateCartItems('change', changeData, render);
+
+        if (res.status) {
+          return;
+        }
+
+        if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+          let otherItemIndex;
+          if (index == 1 || index == '1') {
+            otherItemIndex = 2;
+          } else {
+            otherItemIndex = 1;
+          }
+          const newOtherItemSelectedSubscription = {};
+          for (const [key, value] of formData.entries()) {
+            if (key == `items[${otherItemIndex}][id]`) {
+              newOtherItemSelectedSubscription['id'] = value;
+            } else if (key == `items[${otherItemIndex}][selling_plan]`) {
+              newOtherItemSelectedSubscription['selling_plan'] = value;
+            } else if (key == `items[${otherItemIndex}][properties[frequency]]`) {
+              newOtherItemSelectedSubscription['frequency'] = value;
+            } else if (key == `items[${otherItemIndex}][properties[og_first_order_place_date]]`) {
+              newOtherItemSelectedSubscription['first_order_date'] = value;
+            }
+          }
+
+          if (this.pdpToEditCartSubscription.isTwoInOneFiltersBundled == true) {
+            const cartSubscriptionElement = this.cart.querySelector(`cart-subscription[data-index="${this.pdpToEditCartSubscription.index}"]`);
+            let otherItemCartSubscriptionElement;
+            if (cartSubscriptionElement.previousElementSibling.tagName == 'CART-SUBSCRIPTION') {
+              otherItemCartSubscriptionElement = cartSubscriptionElement.previousElementSibling;
+            } else if (cartSubscriptionElement.nextElementSibling.tagName == 'CART-SUBSCRIPTION') {
+              otherItemCartSubscriptionElement = cartSubscriptionElement.nextElementSibling;
+            }
+            const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
+
+            let newOtherItemProperties = otherItemSubscriptionData.filter.properties;
+            if (newOtherItemSelectedSubscription.frequency) {
+              newOtherItemProperties.frequency = newOtherItemSelectedSubscription.frequency;
+            }
+            if (newOtherItemSelectedSubscription.first_order_date) {
+              newOtherItemProperties.og_first_order_place_date = newOtherItemSelectedSubscription.first_order_date;
+            }
+
+            const changeData = {
+              id: otherItemSubscriptionData.filter.itemKey,
+              quantity: parseInt(otherItemSubscriptionData.filter.itemQuantity),
+              selling_plan: parseInt(newOtherItemSelectedSubscription.selling_plan),
+              properties: newOtherItemProperties
+            };
+            this._updateCartItems('change', changeData, true);
+          } else {
+            const addData = {
+              items: [
+                { 
+                  id: newOtherItemSelectedSubscription.id, 
+                  selling_plan: newOtherItemSelectedSubscription.selling_plan,
+                  quantity: 1,
+                  properties: { 
+                    _unitSubscriptionTempId: this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
+                    frequency: newOtherItemSelectedSubscription.frequency,
+                    og_first_order_place_date: newOtherItemSelectedSubscription.first_order_date
+                  }
+                }
+              ]
+            }
+            this._updateCartItems('add', addData, true);
+          }
+        }
       }
 
       this.pdpToEditCartSubscription = false;
