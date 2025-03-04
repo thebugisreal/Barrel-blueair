@@ -156,7 +156,9 @@
                   </div>
                 {% endif %}
               {% else %}
-                {% unless child_link.title == "Image Links" %}
+
+                {% assign child_link_title_downcase = child_link.title | downcase %}
+                {% unless child_link_title_downcase == "image links" %}
                   {% if child_link.links != blank %}
                     <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
                       <div class="font-700 mb-xs">{{ child_link.title }}</div>

@@ -1,0 +1,5 @@
+.section__content-panels .article-card__title {
+    @apply overflow-hidden
+    whitespace-nowrap
+    text-ellipsis
+}
