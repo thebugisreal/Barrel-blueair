@@ -188,6 +188,7 @@
                             data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" 
                             data-variant="{{ filter_product_variant.id }}" 
                             data-quantity="{% if filter_object.quantity != blank %}{{ filter_object.quantity }}{% else %}1{% endif %}"
+                            data-frequency="{{ selling_plan_allocation.selling_plan.options[0].value | downcase }}"
                             {% if filter_product_variant.available == false %}disabled{% endif %} 
                             class="subscription-quiz__selection subscription-quiz__selection--frequency flex flex-col border border-blue-darkSky relative {% if frequency_option_name == recommended_frequency_option %}recommended{% endif %} disabled:opacity-50 disabled:cursor-not-allowed" 
                             js-quiz-subscription-frequency>
