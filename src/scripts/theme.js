@@ -77,7 +77,6 @@ customElements.define('image-caption-modal', ImageCaptionModal);
 // =require sections/product__recommendations.js
 // =require sections/section__hotspot.js
 // =require sections/section__subscription-quiz.js
-// =require sections/account__warranty.js
 
 customElements.define("s-collection-grid", CollectionGrid);
 
@@ -88,7 +87,6 @@ customElements.define('product-recommendations', ProductRecommendations);
 
 customElements.define('s-hotspot', Hotspot);
 customElements.define('subscription-quiz', SubscriptionQuiz);
-customElements.define('s-warranty', AccountWarranty)
 
 
 /*================ Templates ================*/

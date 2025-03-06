@@ -245,16 +245,7 @@
     <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
     <div class="mt-md grid gap-md">
       <div class="account-content">
-        <h1>Testing Iframe</h1>
-          <iframe class="iframe-container w-full h-[1020px] border-0" src="https://acct66616-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2116&amp;deploy=1&amp;compid=ACCT66616_SB1&amp;ns-at=AAEJ7tMQ6VEe57V0dXTUAijVfZnZV92jG3X44uZO-EO-hBEcA5M&amp;uid=6139e556bf5942b5b065452cbf0ed482&amp;country=US&amp;locale=en_US"></iframe>
-        <h1>My Iframe Attempt</h1>
-        {% assign datestamp = "now" | date: "%Y-%m-%d %H" %}
-        {% assign secret = "7qQudOp3GOK2nLK9" %}
-        {% assign stringToHash = customer.id | append: "-" | append: "-" | append: datestamp %}
-        {% assign customer_token = stringToHash | hmac_sha256: secret %}
-        <s-warranty class="iframe-loader" data-token="{{ customer_token }}" data-iframe-url="https://acct66616.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2116&deploy=1&compid=ACCT66616_SB1&ns-at=AAEJ7tMQ6VEe57V0dXTUAijVfZnZV92jG3X44uZO-EO-hBEcA5M&uid=6139e556bf5942b5b065452cbf0ed482&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}">
-          <iframe class="iframe-container w-full h-[1020px] border-0"></iframe>
-        </s-warranty>
+        <iframe class="iframe-container w-full h-[1020px] border-0" src="https://acct66616-sb1.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2116&deploy=1&compid=ACCT66616_SB1&ns-at=AAEJ7tMQ6VEe57V0dXTUAijVfZnZV92jG3X44uZO-EO-hBEcA5M&uid={{ customer.metafields.blueair.gigya_uid }}&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}"></iframe>
 			</div>
       </div>
     </div>            
