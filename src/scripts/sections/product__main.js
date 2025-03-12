@@ -26,6 +26,7 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
       filterSubscriptionFrequencyInput: '[js-filter-subscription-frequency-input]',
+      filterSubscriptionFrequencyIntegerInput: '[js-filter-subscription-frequency-integer-input]',
       filterSubscriptionFirstOrderDateInput: '[js-filter-subscription-first-order-date-input]',
       filterSubscriptionTempIdInput: '[js-filter-subscription-temp-id-input]',
       filterSubscriptionTwoPackQuantityInput: '[js-filter-subscription-two-pack-quantity-input]',
@@ -187,6 +188,7 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
     this.filterSubscriptionFrequencyInput = this.subscription.querySelector(this._selectors.filterSubscriptionFrequencyInput);
+    this.filterSubscriptionFrequencyIntegerInput = this.subscription.querySelector(this._selectors.filterSubscriptionFrequencyIntegerInput);
     this.filterSubscriptionFirstOrderDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionFirstOrderDateInput);
     this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
     this.filterSubscriptionOgDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionOgDateInput);
@@ -318,7 +320,7 @@ class ProductMain extends HTMLElement {
         btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
         btn.setAttribute('disabled', '');
       } else {
-        btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+        btn.querySelector(this._selectors.atcText).textContent = `${this.pdpToEditCartSubscription == false ? 'Add to Cart' : 'Update'}`;
         btn.removeAttribute('disabled');
       }
     });
@@ -416,6 +418,8 @@ class ProductMain extends HTMLElement {
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
       const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[Frequency]]"]`);
       filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
+      const filterSubscriptionFrequencyIntegerInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${triggerTarget.dataset.index}][properties[_frequency_integer]]"]`);
+      filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
 
       const filterSubscriptionFirstOrderDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${triggerTarget.dataset.index}][properties[First Order Date]]"]`);
       const filterSubscriptionOgDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${triggerTarget.dataset.index}][properties[_og_first_order_place_date]]"]`);
@@ -434,6 +438,7 @@ class ProductMain extends HTMLElement {
       
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
       this.filterSubscriptionFrequencyInput.setAttribute('value', frequency + ' months');
+      this.filterSubscriptionFrequencyIntegerInput.setAttribute('value', frequency);
 
       const date = new Date();
       if (this.subscriptionType == 'filter') {
@@ -517,18 +522,22 @@ class ProductMain extends HTMLElement {
             newSelectedSubscription['quantity'] = value;
           } else if (key == `items[${index}][properties[Frequency]]`) {
             newSelectedSubscription['frequency'] = value;
+          } else if (key == `items[${index}][properties[_frequency_integer]]`) {
+            newSelectedSubscription['frequencyInteger'] = value;
           } else if (key == `items[${index}][properties[First Order Date]]`) {
-            newSelectedSubscription['first_order_date'] = value;
+            newSelectedSubscription['firstOrderDate'] = value;
           } else if (key == `items[${index}][properties[_og_first_order_place_date]]`) {
-            newSelectedSubscription['og_date'] = value;
+            newSelectedSubscription['ogDate'] = value;
           }
         } else {
           if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
             newSelectedSubscription[key] = value;
           } else if (key == 'properties[Frequency]') {
             newSelectedSubscription['frequency'] = value;
+          } else if (key == 'properties[_frequency_integer]') {
+            newSelectedSubscription['frequencyInteger'] = value;
           } else if (key == 'properties[First Order Date]') {
-            newSelectedSubscription['first_order_date'] = value;
+            newSelectedSubscription['firstOrderDate'] = value;
           }
         }
       }
@@ -542,13 +551,16 @@ class ProductMain extends HTMLElement {
 
       let newProperties = this.pdpToEditCartSubscription.filter.properties;
       if (newSelectedSubscription.frequency) {
-        newProperties.Frequency = newSelectedSubscription.frequency;
+        newProperties['Frequency'] = newSelectedSubscription.frequency;
       }
-      if (newSelectedSubscription.first_order_date) {
-        newProperties['First Order Date'] = newSelectedSubscription.first_order_date;
+      if (newSelectedSubscription.frequencyInteger) {
+        newProperties['_frequency_integer'] = newSelectedSubscription.frequencyInteger;
       }
-      if (newSelectedSubscription.og_date) {
-        newProperties._og_first_order_place_date = newSelectedSubscription.og_date;
+      if (newSelectedSubscription.firstOrderDate) {
+        newProperties['First Order Date'] = newSelectedSubscription.firstOrderDate;
+      }
+      if (newSelectedSubscription.ogDate) {
+        newProperties['_og_first_order_place_date'] = newSelectedSubscription.ogDate;
       }
 
       let replaceItem = false;
@@ -612,32 +624,37 @@ class ProductMain extends HTMLElement {
               newOtherItemSelectedSubscription['selling_plan'] = value;
             } else if (key == `items[${otherItemIndex}][properties[Frequency]]`) {
               newOtherItemSelectedSubscription['frequency'] = value;
+            } else if (key == `items[${otherItemIndex}][properties[_frequency_integer]]`) {
+              newOtherItemSelectedSubscription['frequencyInteger'] = value;
             } else if (key == `items[${otherItemIndex}][properties[First Order Date]]`) {
-              newOtherItemSelectedSubscription['first_order_date'] = value;
+              newOtherItemSelectedSubscription['firstOrderDate'] = value;
             } else if (key == `items[${otherItemIndex}][properties[_og_first_order_place_date]]`) {
-              newOtherItemSelectedSubscription['og_date'] = value;
+              newOtherItemSelectedSubscription['ogDate'] = value;
             }
           }
 
-          if (this.pdpToEditCartSubscription.isTwoInOneFiltersBundled == true) {
-            const cartSubscriptionElement = this.cart.querySelector(`cart-subscription[data-index="${this.pdpToEditCartSubscription.index}"]`);
-            let otherItemCartSubscriptionElement;
-            if (cartSubscriptionElement.previousElementSibling.tagName == 'CART-SUBSCRIPTION') {
-              otherItemCartSubscriptionElement = cartSubscriptionElement.previousElementSibling;
-            } else if (cartSubscriptionElement.nextElementSibling.tagName == 'CART-SUBSCRIPTION') {
-              otherItemCartSubscriptionElement = cartSubscriptionElement.nextElementSibling;
-            }
-            const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
+          const cartSubscriptionElement = this.cart.querySelector(`cart-subscription[data-index="${this.pdpToEditCartSubscription.index}"]`);
+          let otherItemCartSubscriptionElement;
+          if (cartSubscriptionElement.previousElementSibling.tagName == 'CART-SUBSCRIPTION') {
+            otherItemCartSubscriptionElement = cartSubscriptionElement.previousElementSibling;
+          } else if (cartSubscriptionElement.nextElementSibling.tagName == 'CART-SUBSCRIPTION') {
+            otherItemCartSubscriptionElement = cartSubscriptionElement.nextElementSibling;
+          }
 
+          if (otherItemCartSubscriptionElement.querySelector('[js-cart-subscription-checkbox]').dataset.checked == 'true') {
+            const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
             let newOtherItemProperties = otherItemSubscriptionData.filter.properties;
             if (newOtherItemSelectedSubscription.frequency) {
-              newOtherItemProperties.Frequency = newOtherItemSelectedSubscription.frequency;
+              newOtherItemProperties['Frequency'] = newOtherItemSelectedSubscription.frequency;
             }
-            if (newOtherItemSelectedSubscription.first_order_date) {
-              newOtherItemProperties['First Order Date'] = newOtherItemSelectedSubscription.first_order_date;
+            if (newOtherItemSelectedSubscription.frequencyInteger) {
+              newOtherItemProperties['_frequency_integer'] = newOtherItemSelectedSubscription.frequencyInteger;
             }
-            if (newOtherItemSelectedSubscription.og_date) {
-              newOtherItemProperties._og_first_order_place_date = newOtherItemSelectedSubscription.og_date;
+            if (newOtherItemSelectedSubscription.firstOrderDate) {
+              newOtherItemProperties['First Order Date'] = newOtherItemSelectedSubscription.firstOrderDate;
+            }
+            if (newOtherItemSelectedSubscription.ogDate) {
+              newOtherItemProperties['_og_first_order_place_date'] = newOtherItemSelectedSubscription.ogDate;
             }
 
             const changeData = {
@@ -655,10 +672,11 @@ class ProductMain extends HTMLElement {
                   selling_plan: newOtherItemSelectedSubscription.selling_plan,
                   quantity: 1,
                   properties: { 
-                    _unitSubscriptionTempId: this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
-                    Frequency: newOtherItemSelectedSubscription.frequency,
-                    'First Order Date': newOtherItemSelectedSubscription.first_order_date,
-                    _og_first_order_place_date: newOtherItemSelectedSubscription.og_date
+                    '_unitSubscriptionTempId': this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
+                    'Frequency': newOtherItemSelectedSubscription.frequency,
+                    '_frequency_integer': newOtherItemSelectedSubscription.frequencyInteger,
+                    'First Order Date': newOtherItemSelectedSubscription.firstOrderDate,
+                    '_og_first_order_place_date': newOtherItemSelectedSubscription.ogDate
                   }
                 }
               ]

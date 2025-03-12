@@ -3,22 +3,17 @@
   assign is_subscribed = false
   assign unit_subscription_service_product = ''
   assign subscription_available = false
-  assign purify_humidify_subscription_count = 0
   if item.selling_plan_allocation != blank
     assign is_subscribed = true
   else
-    if subscription_object.pdp_type == '2in1 Purify + Humidify' or subscription_object.pdp_type == 'Air Purifier + Filter'
-      if item.properties['_unitSubscriptionTempId'] != blank
-        for cart_item in cart.items
-          if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant.title contains 'Subscription' and cart_item.final_price == 0 and cart_item != item
-            assign is_subscribed = true
-            assign unit_subscription_service_product = cart_item
-            if subscription_object.pdp_type == '2in1 Purify + Humidify'
-              assign purify_humidify_subscription_count = purify_humidify_subscription_count | plus: 1
-            endif
-          endif
-        endfor
-      endif
+    if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['_unitSubscriptionTempId'] != blank
+      for cart_item in cart.items
+        if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant.title contains 'Subscription' and cart_item.final_price == 0 and cart_item != item
+          assign is_subscribed = true
+          assign unit_subscription_service_product = cart_item
+          break
+        endif
+      endfor
     endif
     if is_subscribed == false
       if subscription_object.pdp_type == 'Filter'
@@ -42,7 +37,7 @@
             assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
           endif
         endif
-      else
+      elsif subscription_object.pdp_type == 'Air Purifier + Filter'
         assign filter_subscriptions = subscription_object.filter_subscriptions.value
         for filter_product in filter_subscriptions
           assign filter_variant = filter_product.variants[1]
@@ -68,13 +63,6 @@
             break
           endif
         endfor
-        if subscription_object.pdp_type == '2in1 Purify + Humidify'
-          for filter_product in filter_subscriptions
-            if filter_product.variants[1].available == false
-              assign subscription_available = false
-            endif
-          endfor
-        endif
       endif
     endif
   endif
@@ -84,94 +72,84 @@
   {% if unit_subscription_service_product != blank %}
     {% assign subscription_item = unit_subscription_service_product  %}
   {% endif %}
-  {% assign is_two_in_one_subscription = false %}
-  {% assign is_two_in_one_filters_bundled = false %}
-  {% if subscription_object.pdp_type == '2in1 Purify + Humidify' %}
-    {% assign is_two_in_one_subscription = true %}
-    {% if purify_humidify_subscription_count > 1 %}
-      {% assign is_two_in_one_filters_bundled = true %}
-    {% endif %}
-  {% endif %}
   {% render 'cart-subscription--added'
     scope: scope
     item: item
     subscription_item: subscription_item
     unit_subscription_service_product: unit_subscription_service_product 
-    is_two_in_one_subscription: is_two_in_one_subscription
-    is_two_in_one_filters_bundled: is_two_in_one_filters_bundled
+    is_two_in_one_subscription: false
     index: index
   %}
-  {% if purify_humidify_subscription_count > 1 %}
-    {% for cart_item in cart.items %}
-      {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant.title contains 'Subscription' and cart_item.final_price == 0 and cart_item != unit_subscription_service_product and cart_item != item %}
-        {% assign new_index = index | plus: 0.5 %}
-        {% render 'cart-subscription--added'
-          scope: scope
-          item: item
-          subscription_item: cart_item
-          unit_subscription_service_product: cart_item 
-          is_two_in_one_subscription: true
-          is_two_in_one_filters_bundled: true
-          index: new_index
-        %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
 {% elsif subscription_available %}
-  {% if preselected_subscription.product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
-    {% assign preselected_subscription_quantity = 2 %}
-  {% else %}
-    {% if subscription_object.pdp_type == 'Filter' %}
-      {% assign preselected_subscription_quantity = item.quantity %}
-    {% else %}
-      {% assign preselected_subscription_quantity = 1 %}
+  {% render 'cart-subscription--available'
+    scope: scope
+    item: item
+    pdp_type: subscription_object.pdp_type
+    preselected_subscription: preselected_subscription
+    preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
+    is_two_in_one_subscription: false
+    index: index
+  %}
+{% elsif subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+  {% assign filter_subscriptions = subscription_object.filter_subscriptions.value %}
+  {% for filter_product in filter_subscriptions %}
+    {% liquid
+      assign is_filter_subscribed = false
+      assign filter_subscription_available = false
+      assign filter_variant = filter_product.variants[1]
+      assign unit_subscription_service_product = ''
+      assign index = index | plus: 0.1
+      if item.properties['_unitSubscriptionTempId'] != blank
+        for cart_item in cart.items
+          if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == filter_variant.id
+            assign is_filter_subscribed = true
+            assign unit_subscription_service_product = cart_item
+            break
+          endif
+        endfor
+      endif
+      if is_filter_subscribed == false
+        if filter_variant.available and filter_variant.selling_plan_allocations.size > 0
+          assign filter_subscription_available = true
+          assign preselected_subscription = filter_variant
+          assign preselected_subscription_selling_plan_allocation = ''
+          if filter_product.metafields.seed.subscription_frequency_options != blank
+            for frequency_option in filter_product.metafields.seed.subscription_frequency_options.value
+              for selling_plan_allocation in preselected_subscription.selling_plan_allocations
+                if frequency_option == selling_plan_allocation.selling_plan.options[0].value
+                  assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
+                  break
+                endif
+              endfor
+              if preselected_subscription_selling_plan_allocation != blank
+                break
+              endif
+            endfor
+          else 
+            assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
+          endif
+        endif
+      endif
+    %}
+    {% if is_filter_subscribed %}
+      {% render 'cart-subscription--added'
+        scope: scope
+        item: item
+        subscription_item: unit_subscription_service_product
+        unit_subscription_service_product: unit_subscription_service_product 
+        is_two_in_one_subscription: true
+        index: index
+      %}
+    {% elsif filter_subscription_available %}
+      {% render 'cart-subscription--available'
+        scope: scope
+        item: item
+        pdp_type: subscription_object.pdp_type
+        preselected_subscription: preselected_subscription
+        preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
+        is_two_in_one_subscription: true
+        index: index
+      %}
     {% endif %}
-  {% endif %}
-  <cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative">
-    <div class="flex justify-start items-center gap-xs">
-      <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
-      <p class="p3">Add a Filter Subscription</p>
-      <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--add w-[19px] h-[19px] rounded-full"></button>
-    </div>
-    <div class="border-t border-t-gray mt-sm pt-sm flex items-center gap-xxs">
-      <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--pay w-[19px] h-[19px] rounded-full"></button>
-      <div class="flex-1">Pay when it's sent</div>
-      <div>
-        {% if subscription_object.pdp_type == 'Filter' %}
-          {% if preselected_subscription_selling_plan_allocation.compare_at_price > preselected_subscription_selling_plan_allocation.price %}
-            <s>{{ preselected_subscription_selling_plan_allocation.compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
-          {% endif %}
-          <span class="font-700">{{ preselected_subscription_selling_plan_allocation.price | times: preselected_subscription_quantity | money }}</span>
-        {% else %}
-          {% if preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price > preselected_subscription.product.variants[0].selling_plan_allocations[0].price %}
-            <s>{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
-          {% endif %}
-          <span class="font-700">{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
-        {% endif %}
-      </div>
-      <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
-        Save 15%
-      </div>
-    </div>
-    <p class="text-12 mt-xxxs hidden" js-cart-subscription-error></p>
-    <script type="application/json" js-subscription-data-json>
-      {
-        "{% if subscription_object.pdp_type == 'Filter' %}filter{% else %}airPurifier{% endif %}": {
-          "itemKey": "{{ item.key }}",
-          "itemQuantity": "{{ item.quantity }}",
-          "properties": {
-          {% for property in item.properties %}
-            "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-          }
-        },
-        "preSelectedFilter": {
-          "id": "{{ preselected_subscription.id }}",
-          "sellingPlanId": "{{ preselected_subscription_selling_plan_allocation.selling_plan.id }}",
-          "frequency": "{{ preselected_subscription_selling_plan_allocation.selling_plan.options[0].value | downcase | remove: 'months' | strip }}",
-          "quantity": "{{ preselected_subscription_quantity }}"
-        }
-      }
-    </script>
-  </cart-subscription>
+  {% endfor %}
 {% endif %}

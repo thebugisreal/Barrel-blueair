@@ -196,11 +196,12 @@ class SubscriptionQuiz extends HTMLElement {
     const sellingPlanId = selectedFrequency.dataset.sellingPlanId;
     const quantity = parseInt(selectedFrequency.dataset.quantity);
     const frequency = selectedFrequency.dataset.frequency;
+    const frequencyInteger = frequency.replace('months', '').trim();
     const date = new Date();
     const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 
     let data = {
-      items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId, properties: { 'Frequency': frequency, 'First Order Date': formattedOrderDate } }]
+      items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId, properties: { 'Frequency': frequency, '_frequency_integer': frequencyInteger, 'First Order Date': formattedOrderDate } }]
     };
 
     fetch(window.Shopify.routes.root + 'cart/add.js', {

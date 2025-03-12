@@ -72,12 +72,14 @@
           <input type="hidden" disabled name="id" value="" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="selling_plan" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="properties[Frequency]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input>
+          <input type="hidden" disabled name="properties[_frequency_integer]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="properties[First Order Date]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input>
         {% elsif pdp_type == 'airpurifier_and_filter' %}
           <input type="hidden" disabled name="properties[_unitSubscriptionTempId]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="items[1][id]" value="" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="items[1][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="items[1][properties[Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input>
+          <input type="hidden" disabled name="items[1][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="items[1][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="items[1][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="items[1][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input>
@@ -90,6 +92,7 @@
             <input type="hidden" disabled name="items[{{ forloop.index }}][id]" value="" data-index="{{ forloop.index }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
             <input type="hidden" disabled name="items[{{ forloop.index }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input>
             <input type="hidden" disabled name="items[{{ forloop.index }}][properties[Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input>
             <input type="hidden" disabled name="items[{{ forloop.index }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input>
             <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input>
             <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input>

@@ -1,15 +1,14 @@
 <cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm">
   <div class="flex justify-start items-start gap-xs">
     <button type="button" class="cart-item-subscription__checkbox mt-xxxs" data-checked="true" js-cart-subscription-checkbox></button>
-    <div class="p3 flex-1">{{ subscription_item.product.title }} - Subscription</div>
+    <div class="p3 flex-1">{{ subscription_item.product.title }} Subscription</div>
   </div>
-  <p class="mt-xxxs">
-    {% if unit_subscription_service_product != blank %}
-      First order place date: {{ unit_subscription_service_product.properties['_og_first_order_place_date'] }}<br />
-    {% endif %}
-    {{ subscription_item.selling_plan_allocation.selling_plan.name }}&nbsp;
-    <a href="{{ item.url }}" class="link link--underline underline-offset-2" js-cart-subscription-edit>Edit</a>
-  </p>
+  <div class="mt-xxxs relative">
+    <p>First filter will process on <span class="font-700">{{ subscription_item.properties['First Order Date'] }}</span></p>
+    <p>Delievered every <span class="font-700">{{ subscription_item.properties['Frequency'] }}</span></p>
+    <p class="mr-lg">Recurring payment: <span class="font-700">{{ subscription_item.product.variants[0].selling_plan_allocations[0].price | times: subscription_item.quantity | money }}</span></p>
+    <a href="{{ item.url }}" class="link link--underline underline-offset-2 absolute right-0 bottom-0" js-cart-subscription-edit>Edit</a>
+  </div>
   <p class="text-12 mt-xxxs hidden" js-cart-subscription-error></p>
   <script type="application/json" js-subscription-data-json>
     {
@@ -32,7 +31,6 @@
         }
       }{% endif %},
       "isTwoInOneSubscription": {{ is_two_in_one_subscription }},
-      "isTwoInOneFiltersBundled": {{ is_two_in_one_filters_bundled }},
       "index": "{{ index }}"
     }
   </script>

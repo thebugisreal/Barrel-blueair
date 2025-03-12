@@ -1,0 +1,58 @@
+{% if preselected_subscription.product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
+  {% assign preselected_subscription_quantity = 2 %}
+{% else %}
+  {% if pdp_type == 'Filter' %}
+    {% assign preselected_subscription_quantity = item.quantity %}
+  {% else %}
+    {% assign preselected_subscription_quantity = 1 %}
+  {% endif %}
+{% endif %}
+<cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative">
+  <div class="flex justify-start items-center gap-xs">
+    <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
+    <p class="p3">{% if preselected_subscription.title contains 'Wick' and is_two_in_one_subscription %}Add a Wick Subscription{% else %}Add a Filter Subscription{% endif %}</p>
+    <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--add w-[19px] h-[19px] rounded-full"></button>
+  </div>
+  <div class="border-t border-t-gray mt-sm pt-sm flex items-center gap-xxs">
+    <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--pay w-[19px] h-[19px] rounded-full"></button>
+    <div class="flex-1">Pay when it's sent</div>
+    <div>
+      {% if pdp_type == 'Filter' %}
+        {% if preselected_subscription_selling_plan_allocation.compare_at_price > preselected_subscription_selling_plan_allocation.price %}
+          <s>{{ preselected_subscription_selling_plan_allocation.compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
+        {% endif %}
+        <span class="font-700">{{ preselected_subscription_selling_plan_allocation.price | times: preselected_subscription_quantity | money }}</span>
+      {% else %}
+        {% if preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price > preselected_subscription.product.variants[0].selling_plan_allocations[0].price %}
+          <s>{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
+        {% endif %}
+        <span class="font-700">{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
+      {% endif %}
+    </div>
+    <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
+      Save 15%
+    </div>
+  </div>
+  <p class="text-12 mt-xxxs hidden" js-cart-subscription-error></p>
+  <script type="application/json" js-subscription-data-json>
+    {
+      "{% if pdp_type == 'Filter' %}filter{% else %}airPurifier{% endif %}": {
+        "itemKey": "{{ item.key }}",
+        "itemQuantity": "{{ item.quantity }}",
+        "properties": {
+        {% for property in item.properties %}
+          "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        }
+      },
+      "preSelectedFilter": {
+        "id": "{{ preselected_subscription.id }}",
+        "sellingPlanId": "{{ preselected_subscription_selling_plan_allocation.selling_plan.id }}",
+        "frequency": "{{ preselected_subscription_selling_plan_allocation.selling_plan.options[0].value | downcase | remove: 'months' | strip }}",
+        "quantity": "{{ preselected_subscription_quantity }}"
+      },
+      "isTwoInOneSubscription": {{ is_two_in_one_subscription }},
+      "index": "{{ index }}"
+    }
+  </script>
+</cart-subscription>
