@@ -125,3 +125,7 @@ cart-remove-button .cart-remove-button:focus-visible {
     @apply block;
   }
 }
+
+.cart-drawer__upsell-container .swiper.swiper-initialized {
+  @apply overflow-visible
+}
