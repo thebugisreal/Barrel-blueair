@@ -77,8 +77,6 @@ class SubscriptionQuiz extends HTMLElement {
 
   _changeMode = (evt) => {
     const newMode = evt.currentTarget.dataset.mode;
-    console.log('this.mode', this.mode)
-    console.log('evt.currentTarget', evt.currentTarget)
 
     if (this.mode == newMode) {
       return;
