@@ -88,6 +88,7 @@ customElements.define('product-recommendations', ProductRecommendations);
 customElements.define('s-hotspot', Hotspot);
 customElements.define('subscription-quiz', SubscriptionQuiz);
 
+
 /*================ Templates ================*/
 // =require templates/account.js
 // =require templates/login.js
