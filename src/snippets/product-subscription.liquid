@@ -22,7 +22,7 @@
       </div>
       <div class="s3 font-700 text-left">
         {% if pdp_type == 'filter' %}
-          Filter Subscription
+          Subscribe + Save
         {% elsif pdp_type == 'airpurifier_and_filter' %}
           {% if subscription.name contains 'Humidifier' %}
             Humidifier + Filter Subscription
@@ -213,7 +213,7 @@
     </div>
     <div class="s3 font-700 flex-1 text-left">
       {% if pdp_type == 'filter' %}
-        Replacement Filter
+        One-Time Purchase
       {% elsif pdp_type == 'airpurifier_and_filter' %}
         {% if subscription.name contains 'Humidifier' %}
           Humidifier Only
