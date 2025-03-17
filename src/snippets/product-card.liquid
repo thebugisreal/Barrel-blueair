@@ -29,7 +29,7 @@
       {% for variant in product.variants %}
         <div class="product-card__image aspect-square {% unless variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ variant.options[color_option] }}" js-product-card-image>
           {% assign image = variant.featured_image | default: product.featured_image %}
-          {% render 'lazy-image' image: image %}
+          {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
         </div>
       {% endfor %}
     {% elsif filter_type_option != false %}
@@ -37,7 +37,7 @@
       {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
         <div class="product-card__image aspect-square {% unless swatch_product.variants[0].title == current_variant.title %}hidden{% endunless %}" data-swatch="{{ swatch_product.variants[0].title }}" js-product-card-image>
           {% assign image = swatch_product.metafields.seed.product_card_image | default: swatch_product.featured_image %}
-          {% render 'lazy-image' image: image %}
+          {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
         </div>
       {% endfor %}
     {% else %}

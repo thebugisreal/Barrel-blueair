@@ -57,7 +57,8 @@
         <div class="product-swatch__header p3">Select {{ option.name }}</div>
           <div class="product-swatch__container {% if option_name_handle == 'color' %}flex flex-wrap{% else %}grid grid-cols-1 desktop:grid-cols-3{% endif %} gap-xxs mt-xxxs">
             {% for value in option.values %}
-              {% unless value contains 'Subscription' %}
+              {% assign value_lowercased = value |  downcase %}
+              {% unless value_lowercased contains 'subscription' %}
                 {% capture input_id %}swatch-{{ value }}-{{ section.id }}-{{ product.id }}{% endcapture %}
                 {% capture radio_name %}swatch-{{ option.name }}-{{ section.id }}-{{ product.id }}{% endcapture %}
                 <div class="product-swatch__group relative">
