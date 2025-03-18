@@ -43,6 +43,7 @@ cart-remove-button .cart-remove-button:focus-visible {
 
 .cart-drawer__upsell-container .swiper-slide {
   @apply border
+  h-auto
   border-[#D6E4F3]
 }
 

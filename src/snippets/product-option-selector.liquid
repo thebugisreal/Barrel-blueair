@@ -49,7 +49,7 @@
   {% when 'swatch' %}
     {% assign option_name_handle = option.name | handle %}
     {% assign has_subscription_variant = false %}
-    {% if option.values[1] contains 'Subscription' %}
+    {% if option.values[1] contains 'subscription' %}
       {% assign has_subscription_variant = true %}
     {% endif %}
     <div class="product-option {% if has_subscription_variant == true or  option.values.size == 1 %} sr-only {% endif %}">

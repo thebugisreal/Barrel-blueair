@@ -50,6 +50,11 @@
 .announcement-bar__carousel .icon--close {
   @apply block
 }
+.header-desktop-nav__item--mega-menu.hovered .mega-menu {
+  @apply 
+  relative
+  z-[1]
+}
 
 @media screen(desktop) {
   .template-index s-header:hover,
@@ -68,16 +73,15 @@
     underline-offset-[12px]
     font-500;
   }
-
   .header-desktop-nav__item--mega-menu.hovered .header-desktop-nav__mega-menu-wrapper,
   .header-desktop-nav__item--mega-menu:focus-within .header-desktop-nav__mega-menu-wrapper,
   .header-desktop-nav__item--mega-menu:hover .header-desktop-nav__mega-menu-wrapper {
     @apply pointer-events-auto
-    z-[1]
+    z-[10]
     max-h-[999px];
   }
 
-  .header-desktop-nav__item--mega-menu::before {
+  .header-desktop-nav__item--mega-menu.hovered::before {
     @apply content-['']
     absolute
     top-[68px]
@@ -86,14 +90,13 @@
     h-[calc(100vh-var(--header-height))]
     bg-white
     opacity-60
-    z-[-2]
+    z-[-3]
     pointer-events-none
     hidden;
   }
   
-  .header-desktop-nav__item--mega-menu.hovered::before, 
-  .header-desktop-nav__item--mega-menu:focus-within::before,
-  .header-desktop-nav__item--mega-menu:hover::before {
+  .header-desktop-nav__item--mega-menu.hovered:focus-within::before,
+  .header-desktop-nav__item--mega-menu.hovered::before {
     @apply block;
   }
 
