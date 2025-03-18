@@ -142,7 +142,7 @@
                       {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
                         <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | times: label_quantity | money }}</s>
                       {% endif %}
-                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | times: 2 | money }}</span>
+                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | times: label_quantity | money }}</span>
                     </div>
                   </button>
                 {% endif %}
