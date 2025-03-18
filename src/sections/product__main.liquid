@@ -283,7 +283,7 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:flex-row tabletl:gap-lg">          
+                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:grid tabletl:grid-cols-2 tabletl:gap-lg">          
                   <button 
                     class="product__atc btn btn--blue-rounded relative mx-auto"
                     type="submit" 
@@ -307,7 +307,7 @@
                   </button>
                   <p class="affirm-as-low-as mx-auto tabletl:order-first" data-page-type="product" data-amount="{{current_variant.price}}"></p>
                 </div>
-                <p class="hidden p2" js-error-message></p>
+                <p class="hidden p2 font-700" js-error-message></p>
               {% when 'experience' %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
