@@ -41,7 +41,8 @@ class ProductMain extends HTMLElement {
       stickySelectOptionsBtn: '[js-sticky-select-options]',
       stickyLoader: '[js-sticky-loader]',
       qunatityOption: '[js-quantity-option]',
-      quantityVariant: '[js-quantity-variant]'
+      quantityVariant: '[js-quantity-variant]',
+      quanityOptionImages: '[js-quanity-option-image]'
     };
   }
 
@@ -83,6 +84,21 @@ class ProductMain extends HTMLElement {
     }
   }
 
+  _updateQuanityImage(selectedQuantity) {
+    const quanityOptionImages = this.querySelectorAll(this._selectors.quanityOptionImages)
+    if (!quanityOptionImages) {
+      return
+    }
+
+    quanityOptionImages.forEach((image) => {
+      if (selectedQuantity == image.dataset.quanity) {
+        image.classList.remove('hidden')
+      } else {
+        image.classList.add('hidden')
+      }
+    });
+  }
+
   _handleQuantityVariant = () => {
     this.qunatityOption = this.querySelector(this._selectors.qunatityOption);
 
@@ -95,6 +111,7 @@ class ProductMain extends HTMLElement {
       if (selectedQuantity != this.currentQuantity) {
         this.currentQuantity = parseInt(evt.target.value);
         this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
+        this._updateQuanityImage(selectedQuantity)
       }
       
       if (this.subscription) {
@@ -372,8 +389,8 @@ class ProductMain extends HTMLElement {
       return;
     }
 
-    const sellingPlanTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
-    sellingPlanTarget?.click();
+    const relatedSubscriptions = this.subscription.querySelectorAll(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
+    relatedSubscriptions[1]?.click();
     
     const prevSelectedTrigger = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
     if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';

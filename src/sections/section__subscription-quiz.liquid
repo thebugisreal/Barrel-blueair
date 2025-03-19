@@ -130,13 +130,9 @@
                         {% render 'lazy-image' image: filter_image loading: 'easy' %}
                       </div>
                       <div class="subscription-quiz-filter__info w-full flex-1 text-left p-sm desktop:p-md">
-                        {% if filter_product.metafields.seed.subscription_quiz_badge != blank %}
-                          <div class="subscription-quiz-filter__badge flex gap-xs">
-                            {% for tag in filter_product.metafields.seed.subscription_quiz_badge.value %}
-                              <span class="product-card__tag product-card__tag--blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag}}</span>
-                            {% endfor %}
-                          </div>
-                        {% endif %}
+                        <div class="subscription-quiz-filter__badge flex gap-xs">
+                          <span class="product-card__tag product-card__tag--blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">Save 15%</span>
+                        </div>
                         <div class="subscription-quiz-filter__title s3 leading-[22px] mt-md">{{ filter_object.name }}</div>
                         <div class="subscription-quiz-filter__price p1 mt-md">
                           {% if filter_product_variant.selling_plan_allocations[0].compare_at_price > filter_product_variant.selling_plan_allocations[0].price %}
@@ -144,11 +140,6 @@
                           {% endif %}
                           <span>{{ filter_product_variant.selling_plan_allocations[0].price | times: fitler_quantity | money }}</span>
                         </div>
-                        {% unless filter_product.metafields.seed.subscription_quiz_badge != blank %}
-                          <div class="mt-xxxs">
-                            Save 15% with Subscription
-                          </div>
-                        {% endunless %}
                       </div>
                     </button>
                   {% endif %}

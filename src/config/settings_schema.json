@@ -21,7 +21,7 @@
         "info": "Replaces current heading when user is subscribed"
       },
       {
-        "type": "textarea",
+        "type": "richtext",
         "id": "newsletter_text",
         "label": "Newsletter Text",
         "info": "Replaces current text when user is subscribed"
@@ -35,7 +35,7 @@
       {
         "type": "text",
         "id": "newsletter_cta_text",
-        "label": "CTA Text",
+        "label": "CTA Text"
       },
       {
         "type": "header",

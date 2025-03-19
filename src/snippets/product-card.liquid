@@ -60,7 +60,13 @@
 
     <div class="product-card__title-layout flex gap-sm justify-between">
       <div class="product-card__title-container flex-1">
-        <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>{{ product.title }}</a>
+        <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>
+          {% if product.metafields.seed.product_card_title != blank %}
+            {{ product.metafields.seed.product_card_title  }}
+          {% else %}
+            {{ product.title }}
+          {% endif %}
+        </a>
         {% if filter_type_option != false %}
           <div class="text-20"><span js-product-card-current-swatch-label>{{ product.variants[0].title }}</span><span> Filter</span></div>
         {% endif %}

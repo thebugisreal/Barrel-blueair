@@ -45,6 +45,7 @@
       <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md w-fit mx-auto">
         <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-[350px] px-[40px]" js-carousel js-pdp-carousel is-thumb-carousel>
           <div class="swiper-wrapper">
+            {% assign first_render_quantity_options_images = true %}
             {% assign current_slides_count = 0 %}
             {% assign active_thumb_taken = false %}
             {% for media in product.media %}
@@ -68,6 +69,18 @@
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
+                    
+                    {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
+                    {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
+                      {% for media in product.metafields.seed.quantity_options_images.value %}
+                        <span class="absolute top-0 bottom-0 right-0 left-0" data-quanity="{{ product.metafields.seed.quantity_option.value[forloop.index] | split: '|' | last | strip }}" js-quanity-option-image>
+                          {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
+                        </span>
+                      {% endfor %}
+                      {% assign first_render_quantity_options_images = false %}
+                    {% endif %}
+                    {% comment %} END Used for replacing first image with Quanity Image Metafield {% endcomment %}
+
                   </div>
                 {% when 'video' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
@@ -101,6 +114,7 @@
       <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid">
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
+            {% assign first_render_quantity_options_images = true %}
             {% for media in product.media %}
               {% assign media_swatch = '' %}
               {% assign hide_media = false %}
@@ -114,6 +128,17 @@
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {% render 'lazy-image' image: media %}
+
+                    {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
+                    {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
+                      {% for media in product.metafields.seed.quantity_options_images.value %}
+                        <span class="absolute top-0 bottom-0 right-0 left-0" data-quanity="{{ product.metafields.seed.quantity_option.value[forloop.index] | split: '|' | last | strip }}" js-quanity-option-image>
+                          {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
+                        </span>
+                      {% endfor %}
+                      {% assign first_render_quantity_options_images = false %}
+                    {% endif %}
+                    {% comment %} END Used for replacing first image with Quanity Image Metafield {% endcomment %}
                   </div>
                 {% when 'video' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
@@ -151,7 +176,13 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <h1 class="product__title h3 {{ spacing }}">{{ product.title }}</h1>
+                <h1 class="product__title h3 {{ spacing }}">
+                  {% if product.metafields.seed.product_card_title != blank %}
+                    {{ product.metafields.seed.product_card_title  }}
+                  {% else %}
+                    {{ product.title }}
+                  {% endif %}
+                </h1>
                 {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
                   <p class="product__short-description h5 desktop:my-xxs">{{ current_variant.title }} </p>
                 {% endif %}
@@ -258,7 +289,7 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:flex-row tabletl:gap-lg">          
+                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:grid tabletl:grid-cols-2 tabletl:gap-lg">          
                   <button 
                     class="product__atc btn btn--blue-rounded relative mx-auto"
                     type="submit" 
@@ -282,7 +313,7 @@
                   </button>
                   <p class="affirm-as-low-as mx-auto tabletl:order-first" data-page-type="product" data-amount="{{current_variant.price}}"></p>
                 </div>
-                <p class="hidden p2" js-error-message></p>
+                <p class="hidden p2 font-700" js-error-message></p>
               {% when 'experience' %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}

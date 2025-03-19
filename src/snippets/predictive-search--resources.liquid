@@ -21,7 +21,13 @@
               {% endif %}
             </div>
             <div class="predictive-search__item-content flex-1">
-              <div class="predictive-search__item-heading p1 font-500">{{ resource.title }}</div>
+              <div class="predictive-search__item-heading p1 font-500">
+                {% if resource.metafields.seed.product_card_title != blank %}
+                  {{ resource.metafields.seed.product_card_title  }}
+                {% else %}
+                  {{ resource.title }}
+                {% endif %}
+              </div>
             </div>
           </a>
         </li>
