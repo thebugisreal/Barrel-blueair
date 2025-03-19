@@ -526,9 +526,9 @@
                                   {% for swatch_product in upsell_object.filter_products.value %}
                                     <button type="button" 
                                       class="product-upsell__variant product-upsell__variant--filter-type p3 border border-gray p-xxs text-center rounded-[2px]" 
-                                      data-variant-id="{{ swatch_product.id }}"
+                                      data-variant-id="{{ swatch_product.variants[0].id }}"
                                       data-available="{{ swatch_product.available }}"
-                                      data-price="{{ swatch_product.price | money }}"
+                                      data-price="{{ swatch_product.variants[0].price | money }}"
                                       data-selected="{% if swatch_product.variants[0].title == upsell_current_variant.variants[0].title %}true{% else %}false{% endif %}"
                                       js-product-upsell-variant>
                                       {{ swatch_product.variants[0].title}}
@@ -538,7 +538,8 @@
                               {% endif %}
                             {% endif %}
                             <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs">
-                              <div class="product-upsell__price p1" js-product-upsell-price>{{ upsell_current_variant.price | money }}</div>
+                              <div class="product-upsell__price p1" js-product-upsell-price>{{ upsell_current_variant.variants[0].price | money }}
+                              </div>
                               <button type="button" class="product-upsell__atc btn btn--blue-rounded" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
                                 <span class="btn__text">
                                   {% if upsell_current_variant.available %}

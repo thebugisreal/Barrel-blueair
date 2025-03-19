@@ -43,6 +43,7 @@ cart-remove-button .cart-remove-button:focus-visible {
 
 .cart-drawer__upsell-container .swiper-slide {
   @apply border
+  h-auto
   border-[#D6E4F3]
 }
 
@@ -65,6 +66,7 @@ cart-remove-button .cart-remove-button:focus-visible {
 .cart-drawer__gwp-container .swiper-slide {
   @apply border
   border-[#00B5E2]
+  h-auto
 }
 /* END Cart GWP */
 
@@ -124,4 +126,8 @@ cart-remove-button .cart-remove-button:focus-visible {
   .cart-item-subscription__tooltip:hover::after {
     @apply block;
   }
+}
+
+.cart-drawer__upsell-container .swiper.swiper-initialized {
+  @apply overflow-visible
 }

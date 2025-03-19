@@ -53,7 +53,7 @@
           </li>
         {% else %}
           <li class="header-desktop-nav__item px-sm flex items-center">
-            <a href="{{ link.url }}" class="header-desktop-nav__link text-16 underline-offset-[12px]">{{ link.title }}</a>
+            <a href="{{ link.url }}" class="header-desktop-nav__link text-16 underline-offset-[12px]" js-nav-item>{{ link.title }}</a>
           </li>
         {% endif %}
       {% endfor %}

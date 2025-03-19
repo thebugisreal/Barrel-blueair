@@ -166,7 +166,7 @@
               </tr>
               {% for order in customer.orders %}
                 <tr class="account__order w-full border-b border-[#F0F3F6]" js-order-desktop>
-                  <td class="p2 px-md py-sm text-left">{{ order.created_at | date: "%B %d, %y" }}</td> 
+                  <td class="p2 px-md py-sm text-left">{{ order.created_at | date: "%B %d, %Y" }}</td> 
                   <td class="p2 px-md py-sm text-left">
                     <div class="px-sm py-xs flex justify-start items-center gap-xxs">
                       {% case order.fulfillment_status %}
