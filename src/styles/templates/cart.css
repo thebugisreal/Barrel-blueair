@@ -66,6 +66,7 @@ cart-remove-button .cart-remove-button:focus-visible {
 .cart-drawer__gwp-container .swiper-slide {
   @apply border
   border-[#00B5E2]
+  h-auto
 }
 /* END Cart GWP */
 
