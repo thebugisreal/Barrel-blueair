@@ -6,7 +6,13 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <h4>{{ product.title }}</h4>
+    <h4>
+        {% if product.metafields.seed.product_card_title != blank %}
+            {{ product.metafields.seed.product_card_title  }}
+          {% else %}
+            {{ product.title }}
+          {% endif %}
+    </h4>
     <p class="s3 mb-24">{{ product.price |  money }}</p>
     <a href="{{ product.url }}" class="flex btn btn--transparent-rounded mx-auto tabletl:mb-48"> 
         <p class="p2 btn__text"> Shop Now</p>

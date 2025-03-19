@@ -176,7 +176,13 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <h1 class="product__title h3 {{ spacing }}">{{ product.title }}</h1>
+                <h1 class="product__title h3 {{ spacing }}">
+                  {% if product.metafields.seed.product_card_title != blank %}
+                    {{ product.metafields.seed.product_card_title  }}
+                  {% else %}
+                    {{ product.title }}
+                  {% endif %}
+                </h1>
                 {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
                   <p class="product__short-description h5 desktop:my-xxs">{{ current_variant.title }} </p>
                 {% endif %}

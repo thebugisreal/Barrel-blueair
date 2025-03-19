@@ -18,7 +18,13 @@ product: Product Object
     <div class="modal-body flex flex-col fadeOut" js-modal-body>
         <div class="flex tabletl:gap-0 tabletl:h-auto tabletl:flex-col">
             <div class="product-body px-24 flex-1 tabletl:text-center">
-                <h4 class="h4">{{ product.title }}</h4>
+                <h4 class="h4">
+                    {% if product.metafields.seed.product_card_title != blank %}
+                        {{ product.metafields.seed.product_card_title  }}
+                      {% else %}
+                        {{ product.title }}
+                      {% endif %}
+                </h4>
                 <h5 class="my-12">{{ product.price | money}}</h5>
                 <a href="{{ product.url }}" class="btn w-fit mb-16 tabletl:mx-auto">
                     <p class="btn__text p2">Shop Now </p>
