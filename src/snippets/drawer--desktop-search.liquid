@@ -1,5 +1,5 @@
 <s-drawer id="DesktopSearchDrawer" position='top' open="[js-open-desktop-search]" close="[js-close-desktop-search]">
-  <predictive-search class="desktop-search block" data-scope="desktop">
+  <predictive-search class="desktop-search block" data-scope="desktop" data-market="{{ localization.language.iso_code | downcase }}-{{ localization.country.iso_code |  downcase}}">
     <div class="desktop-search__heading px-xl flex justify-between items-center gap-md py-sm">
       <a href="{{ routes.root_url }}" class="desktop-search__logo w-[140px]">{% render 'icon-blueair-logo' %}</a>
       <form action="{{ routes.search_url }}" method="get" role="search" class="flex items-center gap-sm w-[650px]">

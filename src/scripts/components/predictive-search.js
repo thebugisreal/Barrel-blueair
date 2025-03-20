@@ -59,7 +59,13 @@ class PredictiveSearch extends HTMLElement {
   }
 
   getSearchResults(searchTerm) {
-    fetch(`/search?q=${searchTerm}`)
+    let predictiveFetchUrl
+    if (this.dataset.market && !this.dataset.market.includes('us')) {
+      predictiveFetchUrl = `/${this.dataset.market}/search?q=${searchTerm}`
+    } else {
+      predictiveFetchUrl = `/search?q=${searchTerm}`
+    }
+    fetch(predictiveFetchUrl)
       .then((response) => {
         if (!response.ok) {
           var error = new Error(response.status);
