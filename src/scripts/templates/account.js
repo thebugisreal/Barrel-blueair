@@ -20,7 +20,8 @@ class Account extends HTMLElement {
       accountTab: '[js-account-tab]',
       returnButton: '[js-return-button]',
       accountSubscribed: '[js-account-subscribed]',
-      accountNotSubscribed: '[js-account-not-subscribed]'
+      accountNotSubscribed: '[js-account-not-subscribed]',
+      unsubscribeBtn: '[js-unsubscribe-btn]'
     }
   }
 
@@ -41,12 +42,15 @@ class Account extends HTMLElement {
     this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
     this.accountSubscribed = this.querySelector(this._selectors.accountSubscribed);
     this.accountNotSubscribed = this.querySelector(this._selectors.accountNotSubscribed);
+    this.unsubscribeBtn = this.querySelector(this._selectors.unsubscribeBtn)
 
     this._setupKlaviyoNewsletter();
     this._setupKlaviyoFormTrigger();
     this._setupCountries();
     this._setupEventListeners();
   }
+
+
 
   async _setupKlaviyoNewsletter() {
     let customerEmail = this.dataset.customerEmail;
@@ -124,7 +128,48 @@ class Account extends HTMLElement {
       button.addEventListener('click', this._returnToOrderHistory);
     })   
 
+    if (this.unsubscribeBtn) {
+      this.unsubscribeBtn.addEventListener('click', this._handleUnsubscribeClick.bind(this))
+    } 
+
     document.addEventListener('click', this._closeAccountTriggerAccordion);
+    window.addEventListener("klaviyoForms", this._handleKlaviyoEvents.bind(this));
+  }
+
+
+  _handleKlaviyoEvents(e) {
+    if (e.detail.type == 'submit') {
+      this.accountNotSubscribed.classList.add('hidden');
+      this.accountSubscribed.classList.remove('hidden');
+    }
+  }
+
+  _handleUnsubscribeClick(e) {
+    e.preventDefault()
+    let customerEmail = this.dataset.customerEmail;
+    let response = fetch("https://us-central1-blueair-shopify.cloudfunctions.net/app/klaviyo/customer/unsubscribe", { 
+      method: "POST",
+      body: JSON.stringify({
+        "email": customerEmail
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => response.json())
+      .then(({ success }) => {
+        if (!success) throw new Error('Failed to query klaviyo customer');
+        if (success) {
+          this.accountNotSubscribed.classList.remove('hidden');
+          this.accountSubscribed.classList.add('hidden');
+        } else {
+          this.accountNotSubscribed.classList.add('hidden');
+          this.accountSubscribed.classList.remove('hidden');
+        }
+      }).catch((err) => {
+        console.log(err)
+        this.accountNotSubscribed.classList.remove('hidden');
+      })
   }
 
   _addOrders = async () => {
