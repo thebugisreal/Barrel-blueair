@@ -4,7 +4,7 @@
       <a href="{{ routes.root_url }}" class="mobile-nav__logo w-[140px]">{% render 'icon-blueair-logo' %}</a>
       <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{% render 'icon-nav-close' %}</button>
     </div>
-    <predictive-search class="mobile-nav__search px-md pt-xxs" data-scope="mobile" data-open="false">
+    <predictive-search class="mobile-nav__search px-md pt-xxs" data-scope="mobile" data-open="false" data-market="{{ localization.language.iso_code | downcase }}-{{ localization.country.iso_code |  downcase}}">
       <form action="{{ routes.search_url }}" method="get" role="search" class="block relative">
         <label for="MobileNavSearch" class="visually-hidden">Search</label>
         <input
