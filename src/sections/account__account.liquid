@@ -52,70 +52,72 @@
     </div>            
   </div>
 
-  <div class="account__section hidden">
-    <h4 class="mt-md mb-xxs text-center min-h-[50px] flex justify-center items-center hidden desktop:mt-0 desktop:mb-0 desktop:text-left desktop:justify-start">Address Book</h4>
-    <p class="p2 mt-xss text-black text-center px-sm desktop:mt-sm desktop:text-left desktop:px-0">
-      Please note: To update your address for filter subscriptions, go to your "Filter Subscription" settings, edit my plan, and update the address details.
-    </p>
-    <div class="mt-md grid gap-md desktop:grid-cols-2">
-      {% for address in customer.addresses %}
-        {% if address == customer.default_address %}
-          <div class="account-content bg-white min-h-[225px] flex flex-col" data-address-id="{{address.id}}">
-            <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-              <p class="s1">Primary Billing</p>
-              <button class="p1 link" data-form="{{address.id}}" js-edit-address>Edit</button>
+  {% if false %} {%  comment %} Removed to show address book {% endcomment %}
+    <div class="account__section">
+      <h4 class="mt-md mb-xxs text-center min-h-[50px] flex justify-center items-center hidden desktop:mt-0 desktop:mb-0 desktop:text-left desktop:justify-start">Address Book</h4>
+      <p class="p2 mt-xss text-black text-center px-sm desktop:mt-sm desktop:text-left desktop:px-0">
+        Please note: To update your address for filter subscriptions, go to your "Filter Subscription" settings, edit my plan, and update the address details.
+      </p>
+      <div class="mt-md grid gap-md desktop:grid-cols-2">
+        {% for address in customer.addresses %}
+          {% if address == customer.default_address %}
+            <div class="account-content bg-white min-h-[225px] flex flex-col" data-address-id="{{address.id}}">
+              <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                <p class="s1">Primary Billing</p>
+                <button class="p1 link" data-form="{{address.id}}" js-edit-address>Edit</button>
+              </div>
+              <div class="account__rte h-full p-md p2">
+                <p>{{ address.first_name }} {{ address.last_name }}</p>
+                {%- if address.company != blank -%}
+                  <p>{{ address.company }}</p>
+                {%- endif -%}
+                <p>{{ address.address1 }}</p>
+                {%- if address.address2 != blank -%}
+                  <p>{{ address.address2 }}</p>
+                {%- endif -%}
+                <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
+                <p>{{ address.country }}</p>
+                {%- if address.phone != blank -%}
+                  <p>Phone: {{ address.phone }}</p>
+                {%- endif -%}
+              </div>
             </div>
-            <div class="account__rte h-full p-md p2">
-              <p>{{ address.first_name }} {{ address.last_name }}</p>
-              {%- if address.company != blank -%}
-                <p>{{ address.company }}</p>
-              {%- endif -%}
-              <p>{{ address.address1 }}</p>
-              {%- if address.address2 != blank -%}
-                <p>{{ address.address2 }}</p>
-              {%- endif -%}
-              <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
-              <p>{{ address.country }}</p>
-              {%- if address.phone != blank -%}
-                <p>Phone: {{ address.phone }}</p>
-              {%- endif -%}
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+          {% endif %}
+        {% endfor %}
 
-      {% for address in customer.addresses %}
-        {% unless address == customer.default_address %}
-          <div class="account-content bg-white min-h-[225px] flex flex-col" data-address-id="{{address.id}}">
-            <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
-              <p class="s1">Billing</p>
-              <button class="p1 link" data-form="{{address.id}}" js-edit-address>Edit</button>
+        {% for address in customer.addresses %}
+          {% unless address == customer.default_address %}
+            <div class="account-content bg-white min-h-[225px] flex flex-col" data-address-id="{{address.id}}">
+              <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
+                <p class="s1">Billing</p>
+                <button class="p1 link" data-form="{{address.id}}" js-edit-address>Edit</button>
+              </div>
+              <div class="account__rte h-full p-md p2">
+                <p>{{ address.first_name }} {{ address.last_name }}</p>
+                {%- if address.company != blank -%}
+                  <p>{{ address.company }}</p>
+                {%- endif -%}
+                <p>{{ address.address1 }}</p>
+                {%- if address.address2 != blank -%}
+                  <p>{{ address.address2 }}</p>
+                {%- endif -%}
+                <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
+                <p>{{ address.country }}</p>
+                {%- if address.phone != blank -%}
+                  <p>Phone: {{ address.phone }}</p>
+                {%- endif -%}
+              </div>
             </div>
-            <div class="account__rte h-full p-md p2">
-              <p>{{ address.first_name }} {{ address.last_name }}</p>
-              {%- if address.company != blank -%}
-                <p>{{ address.company }}</p>
-              {%- endif -%}
-              <p>{{ address.address1 }}</p>
-              {%- if address.address2 != blank -%}
-                <p>{{ address.address2 }}</p>
-              {%- endif -%}
-              <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
-              <p>{{ address.country }}</p>
-              {%- if address.phone != blank -%}
-                <p>Phone: {{ address.phone }}</p>
-              {%- endif -%}
-            </div>
-          </div>
-        {% endunless %}
-      {% endfor %}
+          {% endunless %}
+        {% endfor %}
 
-      <button class="account-content__add account-conent--bordered text-center text-blue bg-tranparent p-md flex justify-center items-center gap-xxs row-start-1 desktop:row-auto desktop:min-h-[225px]" js-open-add-address>
-        <p>New Address</p>
-        <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
-      </button>
+        <button class="account-content__add account-conent--bordered text-center text-blue bg-tranparent p-md flex justify-center items-center gap-xxs row-start-1 desktop:row-auto desktop:min-h-[225px]" js-open-add-address>
+          <p>New Address</p>
+          <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
+        </button>
+      </div>
     </div>
-  </div>
+  {% endif %}
 {% endcapture %}
 
 {% comment %} 
