@@ -14,7 +14,7 @@
   {% assign pdp_type = '2in1_purify_humidify' %}
 {% endif %}
 
-<div class="product__subscription-container {% if product.variants.size > 1 %}mt-md{% endif %}">
+<div class="product__subscription-container flex flex-col gap-sm {% if product.variants.size > 1 %}mt-md{% endif %}">
   <div class="product__subscription border border-blue rounded-[3px] relative mt-sm" data-type="{{ pdp_type }}" data-selected="true" js-subscription {% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
     <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle>
       <div class="checkbox w-[22px] min-w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
@@ -207,7 +207,7 @@
     {% endif %}
   </div>
 
-  <button type="button" class="product__non-subscription border border-blue rounded-[3px] mt-sm px-xs py-md desktop:px-md flex items-center gap-sm w-full" data-selected="false" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
+  <button type="button" class="product__non-subscription border border-blue rounded-[3px] px-xs py-md desktop:px-md flex items-center gap-sm w-full {% if pdp_type == 'filter' %} order-first {% endif %}" data-selected="false" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
     <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
       {% render 'icon-check' %}
     </div>
