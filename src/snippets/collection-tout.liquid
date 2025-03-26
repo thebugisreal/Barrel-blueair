@@ -45,7 +45,7 @@
         <div class="collection-tout__title h4">{{ collection_tout.title }}</div>
       {% endif %}
       {% if collection_tout.cta_url != blank and collection_tout.cta_text != blank %}
-        <a href="collection_tout.cta_url" class="collection-tout__cta {{ cta_style }} mt-sm">
+        <a href="{{ collection_tout.cta_url }}" class="collection-tout__cta {{ cta_style }} mt-sm">
           <span class="btn__text">{{ collection_tout.cta_text }}</span>
           <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
         </a>
