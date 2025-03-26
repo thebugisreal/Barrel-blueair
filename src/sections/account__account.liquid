@@ -31,7 +31,7 @@
             </p>
             <p>Blueair news, updates and offers right in your inbox.</p>
           {% endif %}
-          <a href="{{ settings.newsletter_cta_url | default: '/' }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded mt-sm flex justify-center items-center gap-xxs" js-unsubscribe-btn>
+          <a href="/" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded mt-sm flex justify-center items-center gap-xxs" js-unsubscribe-btn>
             {{ settings.newsletter_cta_text | default: 'Unsubscribe' }}<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
           </a>
         </div>
