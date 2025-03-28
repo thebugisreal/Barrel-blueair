@@ -143,10 +143,6 @@ input[name="address[default]"]:checked + .account-address__label .account-addres
   @apply bg-blue;
 }
 
-.account__sections:has(#order-history-content-panel[aria-hidden="true"]) {
-  @apply hidden;
-}
-
 @media screen(desktop){
   .account-content__add:hover .account-content__icon {
     @apply text-blue
@@ -159,5 +155,13 @@ input[name="address[default]"]:checked + .account-address__label .account-addres
 
   .account-section__label:hover {
     @apply underline;
+  }
+
+  .account__sections:has(#order-history-content-panel[aria-hidden="true"]) {
+    @apply hidden;
+  }
+  
+  .account__sections:has([aria-hidden="false"]) {
+    @apply !block;
   }
 }
