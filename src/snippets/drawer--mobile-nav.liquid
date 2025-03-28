@@ -61,10 +61,18 @@
       {% endfor %}
     </ul>
     <div class="mobile-nav__footer border-t border-blue-light px-md py-xs grid grid-cols-2">
-      <a href="https://store.xecurify.com/moas/broker/login/shopify/blueairdev.myshopify.com/account?idpname=custom_idp_ZIO" class="mobile-nav__account flex justify-start items-center gap-xxxs">
-        <span class="w-36">{% render 'icon-account' %}</span>
-        <span class="text-12">{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
-      </a>
+      {% if customer %}
+        <a {{ routes.account_url }} class="mobile-nav__account flex justify-start items-center gap-xxxs">
+          <span class="w-36">{% render 'icon-account' %}</span>
+          <span class="text-12">{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
+        </a>
+      {% else %}
+        <a href="https://store.xecurify.com/moas/broker/login/shopify/blueairdev.myshopify.com/account?idpname=custom_idp_ZIO" class="mobile-nav__account flex justify-start items-center gap-xxxs">
+          <span class="w-36">{% render 'icon-account' %}</span>
+          <span class="text-12">{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
+        </a>      
+      {% endif %}
+
       <div class="mobile-nav__county-select">
         <div class="country-select__label flex gap-xxxs justify-start items-center" js-open-country-market-selector-modal>
           <div class="icon-globe w-32">{% render 'icon-globe' %}</div>
