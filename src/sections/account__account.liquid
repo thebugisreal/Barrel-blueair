@@ -126,7 +126,7 @@
 {% capture filter_subscriptions %}
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Active Filter Subscriptions</h4>
+      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Filter Subscriptions</h4>
       <a href="{{ settings.add_subscription_url }}" target="_blank" rel="noopener noreferrer" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
         Add a Subscription
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
@@ -189,7 +189,7 @@
                     </div>
                   </td> 
                   <td class="p2 px-md py-sm text-left">{{ order.total_price | money }}</td> 
-                  <td class="p2 px-md py-sm text-left">{{ order.id }}</td>
+                  <td class="p2 px-md py-sm text-left">{{ order.name }}</td>
                   <td class="p2 px-md py-sm text-right">
                     <button id="{{ order.id }}-tab" class="tab__trigger link link--underline" aria-controls="{{ order.id }}-content-panel" role="tab" aria-selected="true" js-tab>
                       View Details
@@ -244,7 +244,8 @@
           </div>
         {% endif %}
       </div>
-    </div>            
+    </div>
+    
   </div>
 {% endcapture %}
 
@@ -363,7 +364,7 @@
         {% endfor %}
 
         <!-- Account Orders -->
-        <div js-orders-tabs>
+        <div class="desktop:col-span-9" js-orders-tabs>
           {% paginate customer.orders by 10 %}
             {% for order in customer.orders %}
               <div id="{{ order.id }}-content-panel" class="tab__panel" 
@@ -386,7 +387,7 @@
                     <div class="account-order__details bg-white">
                       <div class="px-md py-sm grid justify-between items-center border-b border-[#F0F3F6] gap-xxs desktop:flex">
                         <p class="s1 text-blue">Order Details</p>
-                        <p class="p1 text-blue">Order No. {{ order.id }}</p>
+                        <p class="p1 text-blue">Order No. {{ order.name }}</p>
                       </div>
                       <div class="px-md py-sm">
                         <table class="w-full">

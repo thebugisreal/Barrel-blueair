@@ -156,4 +156,12 @@ input[name="address[default]"]:checked + .account-address__label .account-addres
   .account-section__label:hover {
     @apply underline;
   }
+
+  .account__sections:has(#order-history-content-panel[aria-hidden="true"]) {
+    @apply hidden;
+  }
+  
+  .account__sections:has([aria-hidden="false"]) {
+    @apply !block;
+  }
 }
