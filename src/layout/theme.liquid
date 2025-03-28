@@ -83,7 +83,9 @@
     {% render 'modal--country-selector' %}
 
     {% if template.name == 'product' %}
-      {% render 'product-sticky-bar' %}
+      {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+        {% render 'product-sticky-bar' %}
+      {% endif %}
     {% endif %}
 
     <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}" role="main">

@@ -8,7 +8,150 @@
     {% endif %}
     <div class="content-container w-1/2 flex flex-col justify-center items-end">
         <div class="text-content w-full">
-            <h1 class="p1 my-xxxs">{{ product.title }}</h1>
+            <h1 class="p1 my-xxxs">
+                {% if localization.country.iso_code == 'US' %}
+                    {% if product.metafields.seed.product_card_title != blank %}
+                        {% assign product_title = product.metafields.seed.product_card_title %}
+                      {% else %}
+                        {% assign product_title = product.title %}
+                      {% endif %}
+                  {% else %}
+                    {% if localization.country.iso_code == 'MY' %}
+                        {% if product.metafields.seed.product_title_my != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_my %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'NP' %}
+                        {% if product.metafields.seed.product_title_my != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_np %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'NZ' %}
+                        {% if product.metafields.seed.product_title_nz != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_nz %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'SG' %}
+                        {% if product.metafields.seed.product_title_sg != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_sg %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'TH' %}
+                        {% if product.metafields.seed.product_title_th != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_th %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'VN' %}
+                        {% if product.metafields.seed.product_title_vn != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_vn %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'ID' %}
+                        {% if product.metafields.seed.product_title_id != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_id %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'PH' %}
+                        {% if product.metafields.seed.product_title_ph != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_ph %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'PK' %}
+                        {% if product.metafields.seed.product_title_pk != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_pk %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'TW' %}
+                        {% if product.metafields.seed.product_title_tw != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_tw %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'HK' %}
+                        {% if product.metafields.seed.product_title_hk != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_hk %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'GB' %}
+                        {% if product.metafields.seed.product_title_uk != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_uk %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'AU' %}
+                        {% if product.metafields.seed.product_title_au != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_au %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %} 
+                    {% elsif localization.country.iso_code == 'CN' %}
+                        {% if product.metafields.seed.product_title_cn != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_cn %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'MO' %}
+                        {% if product.metafields.seed.product_title_mc != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_mc %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'JP' %}
+                        {% if product.metafields.seed.product_title_jp != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_jp %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'KR' %}
+                        {% if product.metafields.seed.product_title_kr != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_kr %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}     
+                    {% elsif localization.country.iso_code == 'IN' %}
+                        {% if product.metafields.seed.product_title_in != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_in %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'EU' %}
+                        {% if product.metafields.seed.product_title_eu != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_eu %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'CA' %}
+                        {% if product.metafields.seed.product_title_ca != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_ca %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'BD' %}
+                        {% if product.metafields.seed.product_title_bd != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_bd %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% elsif localization.country.iso_code == 'AE' %}
+                        {% if product.metafields.seed.product_title_ae != blank %}
+                            {% assign product_title = product.metafields.seed.product_title_ae %}
+                        {% else %}
+                            {% assign product_title = product.title %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {{ product_title }}
+            </h1>
             {% unless  product.selected_or_first_available_variant.title == "Default Title" %}
                 <p class="p4 my-xxxs">{{ product.selected_or_first_available_variant.title }}</p>
             {% endunless %}
