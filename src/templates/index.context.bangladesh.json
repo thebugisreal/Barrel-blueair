@@ -1,0 +1,43 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "bangladesh"
+  },
+  "sections": {
+    "section_icons_BHyffr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_J44nHk": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  },
+  "order": [
+    "hero",
+    "section_icons_BHyffr",
+    "section_content_panels_RLhBrA",
+    "section_testimonial_tabs_Rtbxp9",
+    "section_media_8mGCqR",
+    "section_image_text_grid_HDAVLL",
+    "section_icons_UWxQ9i",
+    "section_text_banner_KfBBEr",
+    "section_hotspot_67Pgmf",
+    "section_image_text_xm7pgF",
+    "section_text_banner_KHYtRe",
+    "section_product_grid_mkajCi",
+    "section_text_banner_Q6hFFh",
+    "section_hero_hwthNJ",
+    "section_image_text_J44nHk",
+    "section_image_text_YpPrBz",
+    "section_content_panels_y3B4Jf",
+    "section_custom_instagram_feed_MUdiYc"
+  ]
+}

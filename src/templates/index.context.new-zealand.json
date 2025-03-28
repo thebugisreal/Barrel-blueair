@@ -1,0 +1,80 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "new-zealand"
+  },
+  "sections": {
+    "section_icons_BHyffr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {
+        "icon_XPJRPC": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    },
+    "section_image_text_J44nHk": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_url": "shopify:\/\/collections",
+        "cta_text": "Explore"
+      },
+      "blocks": {}
+    },
+    "section_content_panels_RLhBrA": {
+      "settings": {},
+      "blocks": {
+        "customization_kjnCLm": {
+          "settings": {
+            "cta_text": "Explore"
+          }
+        },
+        "customization_JmCjcD": {
+          "settings": {
+            "cta_text": "Explore"
+          }
+        },
+        "customization_AnNMyD": {
+          "settings": {
+            "cta_text": "Coming Soon"
+          }
+        },
+        "customization_hcRJgQ": {
+          "settings": {
+            "cta_text": "Coming Soon"
+          }
+        }
+      },
+      "block_order": [
+        "customization_kjnCLm",
+        "customization_JmCjcD",
+        "customization_AnNMyD",
+        "customization_hcRJgQ"
+      ]
+    },
+    "section_text_banner_KHYtRe": {
+      "settings": {
+        "title": "Explore our best-sellers"
+      },
+      "blocks": {}
+    },
+    "section_product_grid_mkajCi": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    }
+  }
+}

@@ -12,8 +12,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/faq-hero-mobile.png",
-        "image_desktop": "shopify:\/\/shop_images\/faq-hero-desktop.png",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Blueair Support",
@@ -35,12 +35,6 @@
             "topic": "blueair-app"
           }
         },
-        "topic_tzqW7R": {
-          "type": "topic",
-          "settings": {
-            "topic": "wildfire"
-          }
-        },
         "topic_xtULW6": {
           "type": "topic",
           "settings": {
@@ -58,15 +52,21 @@
           "settings": {
             "topic": "account-warranty"
           }
+        },
+        "topic_tzqW7R": {
+          "type": "topic",
+          "settings": {
+            "topic": "wildfire"
+          }
         }
       },
       "block_order": [
         "topic_cjkpCM",
         "topic_PkrQAq",
-        "topic_tzqW7R",
         "topic_xtULW6",
         "topic_P7cRRr",
-        "topic_44CjVw"
+        "topic_44CjVw",
+        "topic_tzqW7R"
       ],
       "settings": {
         "margin_top_mobile": "mt-md",
@@ -79,19 +79,20 @@
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 2,
         "num_cols_desktop": 6,
-        "max_width": "",
+        "max_width": "1440px",
         "color": "bg-white text-blue",
         "title": "Help by Topic",
-        "title_style": "h4"
+        "title_style": "h4",
+        "image_width": "h-48"
       }
     },
     "section_faq_topics_k8RQpD": {
       "type": "section__faq-topics",
       "blocks": {
-        "topic_dPNDxQ": {
+        "topic_GFKt48": {
           "type": "topic",
           "settings": {
-            "topic": "blue"
+            "topic": "blue-pure-max"
           }
         },
         "topic_7ijgjd": {
@@ -100,10 +101,28 @@
             "topic": "3-in-1"
           }
         },
+        "topic_RDjTDR": {
+          "type": "topic",
+          "settings": {
+            "topic": "humidifier"
+          }
+        },
         "topic_DedYi7": {
           "type": "topic",
           "settings": {
-            "topic": "humidifier-2-in-1"
+            "topic": "2-in-1"
+          }
+        },
+        "topic_H8czMm": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic-pro"
+          }
+        },
+        "topic_dPNDxQ": {
+          "type": "topic",
+          "settings": {
+            "topic": "blue"
           }
         },
         "topic_HADU7f": {
@@ -118,19 +137,36 @@
             "topic": "classic"
           }
         },
+        "topic_WGq669": {
+          "type": "topic",
+          "settings": {
+            "topic": "dust-magnet"
+          }
+        },
+        "topic_jirpDa": {
+          "type": "topic",
+          "settings": {
+            "topic": "pro"
+          }
+        },
         "topic_VaK6Ty": {
           "type": "topic",
           "settings": {
-            "topic": "other-products"
+            "topic": "sense"
           }
         }
       },
       "block_order": [
-        "topic_dPNDxQ",
+        "topic_GFKt48",
         "topic_7ijgjd",
+        "topic_RDjTDR",
         "topic_DedYi7",
+        "topic_H8czMm",
+        "topic_dPNDxQ",
         "topic_HADU7f",
         "topic_nKazPq",
+        "topic_WGq669",
+        "topic_jirpDa",
         "topic_VaK6Ty"
       ],
       "settings": {
@@ -144,10 +180,11 @@
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 2,
         "num_cols_desktop": 6,
-        "max_width": "",
+        "max_width": "1440px",
         "color": "bg-white text-blue",
         "title": "Help by Product",
-        "title_style": "h4"
+        "title_style": "h4",
+        "image_width": "h-[80px]"
       }
     },
     "section_faq_tagged_posts_8tKFhr": {
@@ -187,7 +224,7 @@
         "title_style": "h4",
         "cta_url": "shopify:\/\/pages\/contact-us",
         "cta_text": "Contact Support",
-        "cta_style": "btn btn--transparent-rounded"
+        "cta_style": "btn btn--white-rounded"
       }
     }
   },

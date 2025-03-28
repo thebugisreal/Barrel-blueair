@@ -1,0 +1,13 @@
+{
+  "parent": "footer-group.json",
+  "context": {
+    "market": "indonesia"
+  },
+  "sections": {
+    "klaviyo": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

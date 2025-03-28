@@ -15,6 +15,43 @@
         "max_width": "80ch"
       }
     },
+    "section_hero_dJCEcn": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/Hero_290981aa-7942-4e04-803a-3e4048fffd91.png",
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Discover the <br> Blueair app",
+        "title_style": "h1",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-center",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-center",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
+      }
+    },
     "section_page_hero_AHpQD6": {
       "type": "section__page-hero",
       "settings": {
@@ -27,33 +64,14 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "text-blue",
-        "title": "Your connection to clean \u2028air, in every room",
+        "title": "",
         "title_style": "h1",
-        "subtext": "Discover the  convenience of all your Blueair products, controlled and monitored in one place.",
+        "subtext": "Discover the convenience of all your Blueair products, controlled and monitored in one place.",
         "subtext_style": "p2",
         "max_width_desktop": "80ch",
-        "image_desktop": "shopify:\/\/shop_images\/blueair-app-qrcode.png",
+        "max_width_section_desktop": "1440px",
         "caption": "Scan to download the app",
         "caption_style": "p2"
-      }
-    },
-    "section_media_WPtH4j": {
-      "type": "section__media",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "gutter_mobile": "mx-0",
-        "gutter_desktop": "tabletl:mx-xl",
-        "video_embed": "",
-        "enable_autoplay": false,
-        "image_mobile": "shopify:\/\/shop_images\/app-media.png",
-        "color": "bg-white text-blue"
       }
     },
     "section_image_text_M9zJ8t": {
@@ -71,7 +89,7 @@
         "image_mobile": "shopify:\/\/shop_images\/app-split1.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
-        "image_width": 60,
+        "image_width": 50,
         "title": "Easily control all your devices in one spot",
         "title_style": "h3",
         "subtext": "Monitor air quality in every room and adjust settings for multiple devices at once, \u2028all from our homepage.",
@@ -98,7 +116,7 @@
         "image_mobile": "shopify:\/\/shop_images\/app-split2.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
-        "image_width": 60,
+        "image_width": 50,
         "title": "Never forget to change your filter again",
         "title_style": "h3",
         "subtext": "Stay ahead with automated filter reminders and easily reorder replacements through our app, ensuring peak performance of your air purifier.",
@@ -125,7 +143,7 @@
         "image_mobile": "shopify:\/\/shop_images\/app-split3.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
-        "image_width": 60,
+        "image_width": 50,
         "title": "Filters exactly when you need it",
         "title_style": "h3",
         "subtext": "Manage subscriptions effortlessly and access step-by-step instructions for hassle-free filter replacement, keeping your system running smoothly without missing a beat.",
@@ -350,7 +368,7 @@
         "collection_XFPtwm": {
           "type": "collection",
           "settings": {
-            "collection": "shop-all",
+            "collection": "air-purifiers",
             "product_pulled": 10,
             "product_card_style": "style2"
           }
@@ -368,11 +386,15 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
         "max_width_desktop": "",
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",
-        "slides_per_view_desktop": "3.2",
-        "slides_per_view_extrawide": "3.2",
+        "slides_per_view_desktop": "3.4",
+        "slides_per_view_extrawide": "3.4",
         "carousel_nav": "scrollbar",
         "enable_carousel_nav_mobile": true,
         "enable_carousel_nav_desktop": true,
@@ -422,7 +444,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "",
+        "max_width_desktop": "1440px",
         "color": "bg-gray-athans text-blue",
         "title": "Our customers \u2028have spoken",
         "title_style": "h3",
@@ -481,12 +503,11 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxxl",
-        "max_width_desktop": "",
+        "max_width_desktop": "1440px",
+        "max_width_content_desktop": "109ch",
         "color": "bg-[#D6E4F3] text-blue",
         "title": "Download the app and start your clean air journey",
-        "title_style": "h3",
-        "image_desktop": "shopify:\/\/shop_images\/App-Image.png",
-        "background_image_desktop": "shopify:\/\/shop_images\/seed-apppage-hero2-bg.png"
+        "title_style": "h3"
       }
     },
     "section_accordion_TU8wif": {
@@ -576,8 +597,8 @@
   },
   "order": [
     "main",
+    "section_hero_dJCEcn",
     "section_page_hero_AHpQD6",
-    "section_media_WPtH4j",
     "section_image_text_M9zJ8t",
     "section_image_text_afQzWQ",
     "section_image_text_QtcpGy",

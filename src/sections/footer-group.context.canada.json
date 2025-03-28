@@ -3,5 +3,18 @@
   "context": {
     "market": "canada"
   },
-  "sections": {}
+  "sections": {
+    "klaviyo": {
+      "settings": {
+        "klaviyo_embed": "<div class=\"klaviyo-form-U3zzHQ\"><\/div>"
+      },
+      "blocks": {}
+    },
+    "footer": {
+      "settings": {
+        "subfooter_nav": "seed-canada-subfooter"
+      },
+      "blocks": {}
+    }
+  }
 }

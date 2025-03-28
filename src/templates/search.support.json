@@ -16,13 +16,15 @@
         "image_desktop": "shopify:\/\/shop_images\/faq-hero-desktop.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Humidifier Selection",
+        "title": "Blueair Support",
         "title_style": "h2"
       }
     },
     "main": {
       "type": "section__faq-search-results",
-      "settings": {}
+      "settings": {
+        "max_width": ""
+      }
     },
     "section_faq_cta_Xm4YFU": {
       "type": "section__faq-cta",
@@ -35,6 +37,7 @@
         "margin_bottom_desktop": "desktop:mb-lg",
         "padding_top_desktop": "desktop:pt-lg",
         "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width": "",
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",

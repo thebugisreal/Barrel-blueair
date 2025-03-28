@@ -9,25 +9,6 @@
     "article_content_gA8XMg": {
       "type": "article__content",
       "blocks": {
-        "image_caption_DKxmM7": {
-          "type": "image_caption",
-          "settings": {
-            "margin_top_mobile": "mt-md",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-lg",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/BLOG-BTS-COVER-MOBILE.png",
-            "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-COVER-DESKTOP.webp",
-            "caption": "<p>Add a Blueair air purifier to your back-to-school list<\/p>",
-            "caption_style": "p6",
-            "product": ""
-          }
-        },
         "text_cVppfy": {
           "type": "text",
           "settings": {
@@ -41,6 +22,7 @@
             "padding_bottom_desktop": "desktop:pb-sm",
             "max_width_desktop": "95ch",
             "richtext": "<p>Many dorm rooms have air quality issues because of aging buildings¹ with small, underlid rooms and limited airflow. Because interior living spaces harbor moisture, these features create the perfect breeding ground for mold.<\/p><p>Exposure to mold—a common indoor air pollutant found in dormitories—can cause symptoms such as sneezing, stuffy nose, red or itchy eyes or skin, and chest tightness. These symptoms² can be seasonal or long term and more severe, leading to pneumonia, asthma, and other respiratory infections.<\/p>",
+            "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
@@ -60,6 +42,11 @@
             "title": "Cute and compact",
             "title_style": "h3",
             "richtext": "<p>Don't let its small size fool you – this little air purifier works wonders in even the coziest of dorm rooms.<\/p><p>The Blue Pure 511 was designed to fit in tight spaces. Fresh air, more space, and total comfort are now just a tap away.<\/p>",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "text_padding_left_desktop": "desktop:pl-0",
+            "text_padding_right_desktop": "desktop:pr-0",
             "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY1_1.png",
             "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY1.webp",
             "image_placement_mobile": "flex-col",
@@ -82,6 +69,11 @@
             "title": "Quiet Mark certified",
             "title_style": "h3",
             "richtext": "<p>Dorm life can sometimes feel like a never-ending party, with bustling corridors and loud roommates. Amid this chaos, the last thing you need is a noisy appliance adding to the commotion.<\/p><p>Thankfully, our air purifiers are designed to be whisper-quiet, ensuring that you can concentrate on your studies or enjoy a peaceful night's sleep without any disturbances.<\/p>",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "text_padding_left_desktop": "desktop:pl-0",
+            "text_padding_right_desktop": "desktop:pr-0",
             "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY2_1.png",
             "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY2.png",
             "image_placement_mobile": "flex-col",
@@ -104,6 +96,11 @@
             "title": "Quickly cleans stuffy dorm rooms",
             "title_style": "h3",
             "richtext": "<p>If you are someone who constantly suffers from allergies, life in a confined dorm can quickly turn into a nightmare.<\/p><p>Blueair air purifiers remove at least 99.97%* of tiny airborne particles like pollen, dust and mold allergens. No more red eyes or sneezing fits, just pure comfort, and a clear mind for your studies.<\/p>",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "text_padding_left_desktop": "desktop:pl-0",
+            "text_padding_right_desktop": "desktop:pr-0",
             "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY3_1.png",
             "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY3.png",
             "image_placement_mobile": "flex-col",
@@ -126,6 +123,11 @@
             "title": "Keeps your room stylish",
             "title_style": "h3",
             "richtext": "<p>Choose from a variety of washable Scandinavian-inspired pre-filters. Allowing you to choose the one that best suits your personal style.<\/p>",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "text_padding_left_desktop": "desktop:pl-0",
+            "text_padding_right_desktop": "desktop:pr-0",
             "image_mobile": "shopify:\/\/shop_images\/BLOG-BTS-BODY4.png",
             "image_desktop": "shopify:\/\/shop_images\/BLOG-BTS-BODY4_1.png",
             "image_placement_mobile": "flex-col",
@@ -134,7 +136,6 @@
         }
       },
       "block_order": [
-        "image_caption_DKxmM7",
         "text_cVppfy",
         "image_text_KwReyX",
         "image_text_myAfUX",
@@ -174,6 +175,10 @@
         "margin_bottom_desktop": "desktop:mb-lg",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-lg",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
         "max_width_desktop": "180ch",
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",
@@ -349,6 +354,7 @@
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
             "richtext": "<p>* Tested on PM 2.5 up to 90mins<\/p><p>1 Min. reduction 99.9% of S. aureus, K. pneumoniae, P. aeruginosa, MS2, E.Coli, H1N1, A.Niger<\/p><p>2 https:\/\/www.nytimes.com\/2019\/08\/25\/us\/college-dorms-mold-health.html?<\/p><p>3 https:\/\/pubmed.ncbi.nlm.nih.gov\/27869727\/<\/p>",
+            "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         }
@@ -381,6 +387,10 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",

@@ -11,28 +11,30 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "color": "text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/hero-mobile.png",
-        "image_desktop": "shopify:\/\/shop_images\/hero-desktop.png",
+        "color": "bg-blue text-white",
+        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/Spring_desktop_51895177-7148-4737-8587-267cc9396140.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Self care starts with clean air",
-        "title_style": "h1",
-        "subtext": "Faster. Quieter. Smarter.",
+        "title": "Fresh air for a  fresh spring",
+        "title_style": "h2",
+        "subtext": "Save up to 30% on air care <br>for a healthier home",
         "subtext_style": "h5",
-        "cta_url": "shopify:\/\/collections\/shop-all",
+        "cta_url": "shopify:\/\/collections\/spring-essentials",
         "cta_text": "Shop now",
-        "cta_style": "btn btn--blue-rounded",
+        "cta_style": "btn btn--white-rounded",
         "text_align_mobile": "text-left",
         "hor_align_mobile": "justify-start",
         "ver_align_mobile": "items-start",
         "text_align_desktop": "desktop:text-left",
         "hor_align_desktop": "desktop:justify-start",
-        "ver_align_desktop": "desktop:items-start",
+        "ver_align_desktop": "desktop:items-center",
         "content_max_width_mobile": "400px",
         "content_max_width_desktop": "500px",
-        "content_max_height_mobile": "100%",
-        "content_max_height_desktop": "80vh"
+        "content_max_height_mobile": "80vh",
+        "content_max_height_desktop": "80vh",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": true
       }
     },
     "section_icons_BHyffr": {
@@ -41,45 +43,35 @@
         "icon_XPJRPC": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/free-fast-shipping.png",
-            "icon_fixed_width": "34",
+            "icon": "shopify:\/\/shop_images\/shipping_24488db5-7849-4152-b918-9d4abbcf8f3a.png",
+            "icon_fixed_width": "35",
             "title": "Free & fast shipping",
-            "title_style": "s1"
+            "title_style": "s3"
           }
         },
         "icon_ptEb3g": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/free-returns-exchange.png",
-            "icon_fixed_width": "34",
-            "title": "60 day free returns & exchange",
-            "title_style": "s1"
+            "icon": "shopify:\/\/shop_images\/trial_ee958e90-bbeb-4879-abe8-9123e8a576ac.png",
+            "icon_fixed_width": "35",
+            "title": "60 day free returns",
+            "title_style": "s3"
           }
         },
         "icon_mhDfE9": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/free-extended-warranty.png",
-            "icon_fixed_width": "34",
-            "title": "Free extended warranty",
-            "title_style": "s1"
-          }
-        },
-        "icon_cQFT3X": {
-          "type": "icon",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/genuine-filters-protection.png",
-            "icon_fixed_width": "34",
-            "title": "Genuine filters protection",
-            "title_style": "s1"
+            "icon": "shopify:\/\/shop_images\/warranty_f925a01f-7603-40aa-bf5c-b6e2ded4f041.png",
+            "icon_fixed_width": "35",
+            "title": "Extended warranty",
+            "title_style": "s3"
           }
         }
       },
       "block_order": [
         "icon_XPJRPC",
         "icon_ptEb3g",
-        "icon_mhDfE9",
-        "icon_cQFT3X"
+        "icon_mhDfE9"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -90,14 +82,14 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-lg",
         "padding_bottom_desktop": "desktop:pb-lg",
-        "num_cols_mobile": 2,
-        "num_cols_desktop": 4,
+        "num_cols_mobile": 3,
+        "num_cols_desktop": 3,
         "max_width_mobile": "",
         "max_width_desktop": "",
-        "color": "bg-blue-sky text-blue",
-        "title": "Shop direct from Blueair",
+        "color": "bg-blue-light text-blue",
+        "title": "",
         "title_style": "h3",
-        "text_align_mobile": "text-left",
+        "text_align_mobile": "text-center",
         "text_align_desktop": "desktop:text-center",
         "enable_borders": false,
         "gap_desktop": "tabletl:gap-md"
@@ -109,14 +101,13 @@
         "customization_kjnCLm": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-airpurifiers-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-airpurifiers-desktop.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Image_3_4-1_c87d8971-4698-4961-b096-b6b4c9cd17f6.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
             "content_spacing": "",
             "title": "Air Purifiers",
-            "title_style": "h5",
+            "title_style": "h4",
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-left",
@@ -129,14 +120,14 @@
         "customization_AnNMyD": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-heatcoolpurify-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-heatcoolpurify-desktop.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Image_3_4-1_41f3fd0d-3ff7-4b0a-98c4-67bc4f592280.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/Image_3_4-1_41f3fd0d-3ff7-4b0a-98c4-67bc4f592280.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
             "content_spacing": "",
-            "title": "Heat, Cool, Purify",
-            "title_style": "h5",
+            "title": "Heaters & Fans",
+            "title_style": "h4",
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-left",
@@ -149,14 +140,13 @@
         "customization_hcRJgQ": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-humidify2in1-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-humidify2in1-desktop.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Image_3_4_f09c2759-dba3-4bc9-b418-3f5657869c34.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
             "content_spacing": "justify-between",
-            "title": "Humidify + 2-in-1",
-            "title_style": "h5",
+            "title": "Humidifiers",
+            "title_style": "h4",
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-left",
@@ -169,14 +159,14 @@
         "customization_JmCjcD": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/seed-homepage-filters-mobile.jpg",
-            "image_desktop": "shopify:\/\/shop_images\/seed-homepage-filters-desktop.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Image_3_4_71d21739-8600-4fee-b7ae-57de22270baa.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/Image_3_4_71d21739-8600-4fee-b7ae-57de22270baa.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
             "content_spacing": "",
-            "title": "Filters",
-            "title_style": "h5",
+            "title": "Filters & Accessories",
+            "title_style": "h4",
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-left",
@@ -205,12 +195,13 @@
         "carousel_mobile": true,
         "num_cols_mobile": 1,
         "num_cols_desktop": 4,
-        "color": "text-blue",
+        "color": "bg-white text-blue",
         "title": "A perfect solution for all your air care needs",
-        "title_style": "h2",
+        "title_style": "h3",
         "cta_url": "",
         "cta_text": "",
-        "cta_style": "btn"
+        "cta_style": "btn",
+        "content_max_width_desktop": ""
       }
     },
     "section_testimonial_tabs_Rtbxp9": {
@@ -219,41 +210,42 @@
         "tab_jd3pnn": {
           "type": "tab",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/wirecutter.png",
+            "logo": "shopify:\/\/shop_images\/Wirecutter_7b3546e9-043c-400a-a959-e8672a5483e7.png",
             "text": "“The Blue Pure 211i Max aced our tests, and on top of its powerful performance, it stands out for its energy efficiency, quiet operation, user-friendly features, and good looks.”",
-            "text_style": "h5"
-          }
-        },
-        "tab_BxmkPU": {
-          "type": "tab",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/seed-goodhouskeeping-logo-cropped.png",
-            "text": "\"AAA Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
-            "text_style": "h5"
-          }
-        },
-        "tab_i3jmYc": {
-          "type": "tab",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/seed-wirecutter-logo.png",
-            "text": "\"BBB Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
-            "text_style": "h5"
+            "text_style": "h6"
           }
         },
         "tab_4aKxxr": {
           "type": "tab",
           "settings": {
             "logo": "shopify:\/\/shop_images\/seed-goodhouskeeping-logo-cropped.png",
-            "text": "\"CCC Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
-            "text_style": "h5"
+            "text": "“Blueair's 311i+ Max was the best at capturing the full range of contaminants floating through the air in a typical home. Its advanced multi-level filtration captures contaminants of all sizes — not just dander and pet hair, but also cooking fumes, dust mites and pollen.”",
+            "text_style": "h6"
+          }
+        },
+        "tab_BxmkPU": {
+          "type": "tab",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Tech_awards_f33e5f1f-decf-4c47-a35e-93a8e01e25f4.png",
+            "text": "\"The elegant [ComfortPure™ 3-in-1] did a whole lot more than efficiently cleaning the air in my large living room. It also cooled the space during a few unseasonably hot late-October afternoons and warmed it when the chilly fall weather kicked in.\"",
+            "text_style": "h6"
+          }
+        },
+        "tab_i3jmYc": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/seed-wirecutter-logo.png",
+            "text": "\"BBB Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
+            "text_style": "h6"
           }
         }
       },
       "block_order": [
         "tab_jd3pnn",
+        "tab_4aKxxr",
         "tab_BxmkPU",
-        "tab_i3jmYc",
-        "tab_4aKxxr"
+        "tab_i3jmYc"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -265,13 +257,14 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "text-blue",
-        "image": "shopify:\/\/shop_images\/seed-mostawarded.png",
+        "image": "shopify:\/\/shop_images\/award-image.png",
         "tab_content_max_width_mobile": "",
         "tab_content_max_width_desktop": "700px"
       }
     },
     "section_media_8mGCqR": {
       "type": "section__media",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -279,14 +272,82 @@
         "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-0",
         "gutter_mobile": "px-md",
         "gutter_desktop": "tabletl:px-xl",
-        "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
+        "video": "shopify:\/\/files\/videos\/BLUE_Hero30_16x9_WEB.mp4",
         "video_embed": "",
         "enable_autoplay": true,
-        "color": "bg-pink-light text-pink-dark"
+        "color": "bg-blue-light text-blue",
+        "section_max_width_desktop": "1920px"
+      }
+    },
+    "section_image_text_grid_HDAVLL": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_3fGyxM": {
+          "type": "block",
+          "settings": {
+            "title": "96%",
+            "title_style": "h2",
+            "subtext": "of users felt more <br> refreshed and energized",
+            "subtext_style": "p2"
+          }
+        },
+        "block_m6tpRN": {
+          "type": "block",
+          "settings": {
+            "title": "96%",
+            "title_style": "h2",
+            "subtext": "recommend Blueair to improve <br> overall sleep quality",
+            "subtext_style": "p2"
+          }
+        },
+        "block_BcyYiL": {
+          "type": "block",
+          "settings": {
+            "title": "94%",
+            "title_style": "h2",
+            "subtext": "of users with allergy discomfort <br> felt more comfortable",
+            "subtext_style": "p2"
+          }
+        },
+        "block_qWJKHi": {
+          "type": "block",
+          "settings": {
+            "title": "96%",
+            "title_style": "h2",
+            "subtext": "would recommend Blueair air <br> purifiers to improve your wellbeing",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "block_3fGyxM",
+        "block_m6tpRN",
+        "block_BcyYiL",
+        "block_qWJKHi"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-blue-light text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/wellness.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 45,
+        "title": "Feel the difference <br>of Blueair air care",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
       }
     },
     "section_icons_UWxQ9i": {
@@ -303,6 +364,7 @@
         },
         "icon_hWQY4g": {
           "type": "icon",
+          "disabled": true,
           "settings": {
             "icon": "shopify:\/\/shop_images\/seed-californiaairresourcesboard-logo.png",
             "icon_fixed_width": "135",
@@ -335,6 +397,7 @@
         "icon_iW7DCR",
         "icon_73wGbg"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -343,12 +406,12 @@
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "num_cols_mobile": 2,
-        "num_cols_desktop": 4,
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "num_cols_mobile": 3,
+        "num_cols_desktop": 3,
         "max_width_mobile": "",
         "max_width_desktop": "900px",
-        "color": "bg-pink-light text-pink-dark",
+        "color": "bg-blue-light text-blue",
         "title": "",
         "title_style": "h3",
         "text_align_mobile": "text-center",
@@ -359,11 +422,12 @@
     },
     "section_text_banner_KfBBEr": {
       "type": "section__text-banner",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-xl",
         "margin_bottom_mobile": "mb-xl",
         "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
+        "padding_bottom_mobile": "pb-lg",
         "margin_top_desktop": "desktop:mt-xxl",
         "margin_bottom_desktop": "desktop:mb-lg",
         "padding_top_desktop": "desktop:pt-0",
@@ -372,7 +436,7 @@
         "color": "text-blue",
         "image_position_desktop": "desktop:order-first",
         "title": "Create your Blueair home",
-        "title_style": "h1",
+        "title_style": "h3",
         "subtext": "",
         "subtext_style": "h5",
         "cta_url": "",
@@ -455,6 +519,7 @@
         "hotspot_Xd9PYn",
         "hotspot_Y7NDEk"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -473,14 +538,43 @@
         "title_style": "h3",
         "subtext": "Remove cooking odors in the kitchen while you cool and humidify in the bedroom. Create a home system personalized for your air care needs.",
         "subtext_style": "s3",
-        "cta_url": "\/",
+        "cta_url": "shopify:\/\/collections",
         "cta_text": "Shop by room size",
-        "cta_style": "btn btn--white-rounded",
+        "cta_style": "btn btn--transparent-rounded",
         "enable_hover_display": "hover-display"
+      }
+    },
+    "section_image_text_J44nHk": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-xl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Frame_3951.png",
+        "image_desktop": "shopify:\/\/shop_images\/Frame_3951.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "Not sure where to begin?",
+        "title_style": "h3",
+        "subtext": "As the air care experts, we’ll guide you to the perfect solution to keep your air fresh and clean",
+        "subtext_style": "s3",
+        "cta_url": "shopify:\/\/pages\/guided-selling",
+        "cta_text": "Take the quiz",
+        "cta_style": "btn btn--transparent-rounded",
+        "text_max_width": "",
+        "max_width_desktop": ""
       }
     },
     "section_image_text_xm7pgF": {
       "type": "section__image-text",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -491,17 +585,17 @@
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "color": "text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/imge-content-1.png",
+        "image_mobile": "shopify:\/\/shop_images\/homepage_app.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
-        "title": "Control your air with ease",
+        "title": "Smart features in   the Blueair app",
         "title_style": "h3",
-        "subtext": "The Blueair app allows you to customize and control your air care settings, for every device in your home.",
+        "subtext": "Track and personalize your air care settings across every device in your home.",
         "subtext_style": "s3",
         "cta_url": "shopify:\/\/pages\/blueair-app",
         "cta_text": "Learn more",
-        "cta_style": "btn btn--white-rounded",
+        "cta_style": "btn btn--transparent-rounded",
         "text_max_width": "80ch",
         "max_width_desktop": ""
       }
@@ -520,88 +614,53 @@
         "color": "text-blue",
         "image_mobile": "shopify:\/\/shop_images\/image-comtent-2.png",
         "image_position_mobile": "order-last",
-        "image_position_desktop": "right",
+        "image_position_desktop": "left",
         "image_width": 50,
-        "title": "Put filter changes on auto-pilot",
+        "title": "Subscribe & save <br> 15% on filters",
         "title_style": "h3",
-        "subtext": "Sign up for a filter subscription, decide on your delivery schedule  and we’ll take care of the rest.",
+        "subtext": "Choose your delivery schedule, edit <br>  anytime and we’ll take care of the rest",
         "subtext_style": "s3",
         "cta_url": "shopify:\/\/pages\/subscribe",
         "cta_text": "Learn more",
-        "cta_style": "btn btn--white-rounded",
+        "cta_style": "btn btn--transparent-rounded",
         "text_max_width": "80ch",
         "max_width_desktop": ""
       }
     },
-    "section_image_text_grid_HDAVLL": {
-      "type": "section__image-text-grid",
-      "blocks": {
-        "block_3fGyxM": {
-          "type": "block",
-          "settings": {
-            "title": "96%",
-            "title_style": "h2",
-            "subtext": "of users felt more refreshed and energized after using Blueair air purifiers",
-            "subtext_style": "h6"
-          }
-        },
-        "block_m6tpRN": {
-          "type": "block",
-          "settings": {
-            "title": "96%",
-            "title_style": "h2",
-            "subtext": "of users recommend Blueair devices to improve overall sleep quality",
-            "subtext_style": "h6"
-          }
-        },
-        "block_BcyYiL": {
-          "type": "block",
-          "settings": {
-            "title": "94%",
-            "title_style": "h2",
-            "subtext": "of users with allergy related discomfort felt more comfort after using Blueair",
-            "subtext_style": "h6"
-          }
-        },
-        "block_qWJKHi": {
-          "type": "block",
-          "settings": {
-            "title": "61%",
-            "title_style": "h2",
-            "subtext": "increase in productivity was reported by participants when using air purifiers",
-            "subtext_style": "h6"
-          }
-        }
-      },
-      "block_order": [
-        "block_3fGyxM",
-        "block_m6tpRN",
-        "block_BcyYiL",
-        "block_qWJKHi"
-      ],
+    "section_text_banner_KHYtRe": {
+      "type": "section__text-banner",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "color": "bg-pink-light text-pink-dark",
-        "image_mobile": "shopify:\/\/shop_images\/seed-homepage-breathing.jpg",
-        "image_inset_mobile": false,
-        "image_position_mobile": "order-last",
-        "image_position_desktop": "left",
-        "image_width": 40,
-        "title": "How Blueair customers feel after using our air purifiers",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Shop our best-sellers",
         "title_style": "h3",
-        "text_max_width": ""
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
       }
     },
     "section_product_grid_mkajCi": {
       "type": "section__product-grid",
       "blocks": {
+        "product_gK4U7z": {
+          "type": "product",
+          "settings": {
+            "product": "blue-pure-211i-max"
+          }
+        },
         "product_RVC3Ri": {
           "type": "product",
           "settings": {
@@ -613,18 +672,12 @@
           "settings": {
             "product": "2in1-purify-humidify-dh3i"
           }
-        },
-        "product_gK4U7z": {
-          "type": "product",
-          "settings": {
-            "product": "blue-pure-211i-max"
-          }
         }
       },
       "block_order": [
+        "product_gK4U7z",
         "product_RVC3Ri",
-        "product_LhFdEk",
-        "product_gK4U7z"
+        "product_LhFdEk"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -660,19 +713,20 @@
         "color": "bg-green-light text-green-dark",
         "image": "shopify:\/\/shop_images\/b-corp-image.png",
         "image_position_desktop": "desktop:order-first",
-        "title": "Our commitment to sustainability",
+        "title": "Proud to be a Certified B Corp",
         "title_style": "h3",
-        "subtext": "Clean air for the next generation is our purpose, the reason we exist and the reason we continue to drive sustainable innovation in air care.",
+        "subtext": "As a B Corp, we’re part of a global community of businesses that meet high standards of social and environmental impact.",
         "subtext_style": "s3",
         "cta_url": "shopify:\/\/pages\/why-clean-air",
-        "cta_text": "Read our story",
-        "cta_style": "btn btn--transparent-rounded",
+        "cta_text": "",
+        "cta_style": "btn",
         "text_align_mobile": "text-left",
         "text_align_desktop": "desktop:text-left"
       }
     },
     "section_hero_hwthNJ": {
       "type": "section__hero",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -703,7 +757,9 @@
         "content_max_width_mobile": "",
         "content_max_width_desktop": "",
         "content_max_height_mobile": "",
-        "content_max_height_desktop": ""
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
       }
     },
     "section_content_panels_y3B4Jf": {
@@ -718,7 +774,7 @@
         "article_cRwU33": {
           "type": "article",
           "settings": {
-            "article": "news\/dorms-blog"
+            "article": "news\/humidifier-and-sleep"
           }
         },
         "article_GTbREg": {
@@ -746,11 +802,12 @@
         "num_cols_mobile": 1,
         "num_cols_desktop": 3,
         "color": "bg-blue-light text-blue",
-        "title": "From our Blog",
+        "title": "Let’s talk air",
         "title_style": "h3",
         "cta_url": "shopify:\/\/blogs\/news",
-        "cta_text": "All Blogs",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_text": "Read our blog",
+        "cta_style": "btn btn--blue-rounded",
+        "content_max_width_desktop": ""
       }
     },
     "section_custom_instagram_feed_MUdiYc": {
@@ -759,31 +816,31 @@
         "video_jVWcwD": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/video-sample.mp4"
+            "video": "shopify:\/\/files\/videos\/DIY Home Projects  @alainakathleenhome.mov"
           }
         },
         "video_NVhPXL": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/video-sample.mp4"
+            "video": "shopify:\/\/files\/videos\/Pet Benefits @katiepellegrinohome .mp4"
           }
         },
         "video_6g6Q3y": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/video-sample.mp4"
+            "video": "shopify:\/\/files\/videos\/Home Reset @creatively.crisp.mov"
           }
         },
         "video_UrWhVX": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/video-sample.mp4"
+            "video": "shopify:\/\/files\/videos\/Dr. Inna - ENT x Humidifier@innahusainmd.mp4"
           }
         },
         "video_bD8Wb3": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/video-sample.mp4"
+            "video": "shopify:\/\/files\/videos\/Morning Wellness Routine @justlizv.mov"
           }
         }
       },
@@ -804,7 +861,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "text-blue",
-        "title": "Life with Blueair",
+        "title": "Life is better with Blueair",
         "title_style": "h2",
         "subtext": "",
         "subtext_style": "s2",
@@ -818,12 +875,14 @@
     "section_content_panels_RLhBrA",
     "section_testimonial_tabs_Rtbxp9",
     "section_media_8mGCqR",
+    "section_image_text_grid_HDAVLL",
     "section_icons_UWxQ9i",
     "section_text_banner_KfBBEr",
     "section_hotspot_67Pgmf",
+    "section_image_text_J44nHk",
     "section_image_text_xm7pgF",
     "section_image_text_YpPrBz",
-    "section_image_text_grid_HDAVLL",
+    "section_text_banner_KHYtRe",
     "section_product_grid_mkajCi",
     "section_text_banner_Q6hFFh",
     "section_hero_hwthNJ",

@@ -27,6 +27,12 @@
         "info": "Replaces current text when user is subscribed"
       },
       {
+        "type": "url",
+        "id": "newsletter_cta_url",
+        "label": "CTA URL",
+        "info": "Replaces current CTA when user is subscribed"
+      },
+      {
         "type": "text",
         "id": "newsletter_cta_text",
         "label": "CTA Text"

@@ -2,7 +2,10 @@
   "sections": {
     "product-grid": {
       "type": "collection__grid",
-      "settings": {}
+      "settings": {
+        "enable_collection_image": true,
+        "enable_collection_description": true
+      }
     },
     "section_compare_banner_aNPWed": {
       "type": "section__compare-banner",

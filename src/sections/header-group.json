@@ -5,7 +5,7 @@
     "header": {
       "type": "header",
       "settings": {
-        "header_nav_desktop": "seed-desktop-nav",
+        "header_nav_desktop": "launch-nav-bar",
         "bg_color": "bg-white text-blue"
       }
     }

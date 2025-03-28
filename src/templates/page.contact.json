@@ -27,6 +27,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Contact Us",
@@ -45,7 +47,9 @@
         "content_max_width_mobile": "",
         "content_max_width_desktop": "",
         "content_max_height_mobile": "",
-        "content_max_height_desktop": ""
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
       }
     },
     "section_embed_GWNkVD": {
@@ -142,7 +146,8 @@
         "title_style": "h2",
         "cta_url": "",
         "cta_text": "",
-        "cta_style": "btn"
+        "cta_style": "btn",
+        "content_max_width_desktop": ""
       }
     },
     "section_hero_XWdJgJ": {
@@ -157,7 +162,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/ContactUsPage-StockImage-edited.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Need Support? We can help",
@@ -176,7 +181,9 @@
         "content_max_width_mobile": "",
         "content_max_width_desktop": "",
         "content_max_height_mobile": "",
-        "content_max_height_desktop": ""
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
       }
     }
   },

@@ -1,0 +1,27 @@
+{
+  "parent": "index.json",
+  "context": {
+    "market": "nepal"
+  },
+  "sections": {
+    "section_icons_BHyffr": {
+      "settings": {},
+      "blocks": {
+        "icon_XPJRPC": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    },
+    "section_image_text_J44nHk": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

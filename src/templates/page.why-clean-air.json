@@ -47,7 +47,8 @@
         "content_max_width_mobile": "",
         "content_max_width_desktop": "60%",
         "content_max_height_mobile": "80vh",
-        "content_max_height_desktop": "80vh"
+        "content_max_height_desktop": "80vh",
+        "enable_bg_clickabe_url": false
       }
     },
     "section_image_text_kczWp3": {
@@ -257,7 +258,8 @@
         "title_style": "h3",
         "cta_url": "",
         "cta_text": "",
-        "cta_style": "btn"
+        "cta_style": "btn",
+        "content_max_width_desktop": ""
       }
     },
     "section_page_hero_gUd6RB": {
@@ -277,6 +279,7 @@
         "subtext": "",
         "subtext_style": "p2",
         "max_width_desktop": "",
+        "max_width_section_desktop": "109ch",
         "image_desktop": "shopify:\/\/shop_images\/blueair-app-qrcode.png",
         "caption": "Scan to download the app.",
         "caption_style": "p2"
@@ -353,6 +356,10 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-xl",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-lg",
         "max_width_desktop": "",
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",

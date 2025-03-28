@@ -1,7 +1,16 @@
 {
   "sections": {
     "main": {
-      "type": "account__account"
+      "type": "account__account",
+      "settings": {
+        "newsletter_heading": "",
+        "newsletter_text": "",
+        "newsletter_cta_url": "",
+        "newsletter_cta_text": "",
+        "add_subscription_url": "shopify:\/\/pages\/subscribe-quiz",
+        "start_return_url": "",
+        "max_width_desktop": "1440px"
+      }
     }
   },
   "order": [

@@ -1,0 +1,7 @@
+{
+  "parent": "collection.compare.json",
+  "context": {
+    "market": "taiwan"
+  },
+  "sections": {}
+}

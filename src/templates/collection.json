@@ -1,7 +1,11 @@
 {
   "sections": {
     "product-grid": {
-      "type": "collection__grid"
+      "type": "collection__grid",
+      "settings": {
+        "enable_collection_image": true,
+        "enable_collection_description": true
+      }
     }
   },
   "order": [

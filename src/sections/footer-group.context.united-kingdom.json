@@ -10,6 +10,11 @@
         "subfooter_nav": "seed-intl-subfooter"
       },
       "blocks": {}
+    },
+    "klaviyo": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

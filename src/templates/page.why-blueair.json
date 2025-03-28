@@ -56,7 +56,8 @@
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
         "enable_autoplay": false,
-        "color": "bg-white text-blue"
+        "color": "bg-white text-blue",
+        "section_max_width_desktop": "1440px"
       }
     },
     "section_hero_4K3iNp": {
@@ -89,7 +90,9 @@
         "content_max_width_mobile": "100%",
         "content_max_width_desktop": "80ch",
         "content_max_height_mobile": "",
-        "content_max_height_desktop": ""
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "1440px",
+        "enable_bg_clickabe_url": false
       }
     },
     "section_image_text_3wawg6": {
@@ -116,7 +119,7 @@
         "cta_text": "",
         "cta_style": "btn",
         "text_max_width": "",
-        "max_width_desktop": ""
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_PzqJLM": {
@@ -143,7 +146,7 @@
         "cta_text": "",
         "cta_style": "btn",
         "text_max_width": "85%",
-        "max_width_desktop": "90%"
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_RBWqdk": {
@@ -170,7 +173,7 @@
         "cta_text": "Shop Now",
         "cta_style": "btn",
         "text_max_width": "80ch",
-        "max_width_desktop": ""
+        "max_width_desktop": "1440px"
       }
     },
     "section_image_text_yMx4Yy": {
@@ -197,7 +200,7 @@
         "cta_text": "Read More",
         "cta_style": "btn",
         "text_max_width": "85%",
-        "max_width_desktop": ""
+        "max_width_desktop": "1440px"
       }
     },
     "section_text_banner_QYaPrn": {
@@ -211,7 +214,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "",
+        "max_width_desktop": "1440px",
         "color": "bg-white text-blue",
         "image": "shopify:\/\/shop_images\/b-corp-image.png",
         "image_position_desktop": "desktop:order-last",
@@ -278,11 +281,15 @@
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
+        "padding_bottom_mobile": "pb-lg",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
         "max_width_desktop": "",
         "color": "bg-white text-blue",
         "slides_per_view": "1.2",
@@ -315,7 +322,7 @@
         "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-xl",
         "color": "bg-blue-light text-blue",
         "content_height_mobile": "",
@@ -336,7 +343,9 @@
         "content_max_width_mobile": "",
         "content_max_width_desktop": "60%",
         "content_max_height_mobile": "",
-        "content_max_height_desktop": ""
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "1440px",
+        "enable_bg_clickabe_url": false
       }
     },
     "section_media_kBChiC": {
@@ -355,7 +364,8 @@
         "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
         "video_embed": "",
         "enable_autoplay": false,
-        "color": "bg-white text-blue"
+        "color": "bg-white text-blue",
+        "section_max_width_desktop": ""
       }
     },
     "section_icons_cpNGn7": {
@@ -416,7 +426,7 @@
         "num_cols_mobile": 2,
         "num_cols_desktop": 4,
         "max_width_mobile": "",
-        "max_width_desktop": "1024px",
+        "max_width_desktop": "1440px",
         "color": "bg-blue-light text-blue",
         "title": "",
         "title_style": "h3",
@@ -456,7 +466,9 @@
         "content_max_width_mobile": "",
         "content_max_width_desktop": "60%",
         "content_max_height_mobile": "",
-        "content_max_height_desktop": ""
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
       }
     },
     "section_carousel_mG8yR3": {
@@ -506,6 +518,10 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xs",
         "padding_bottom_desktop": "desktop:pb-xxxl",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
         "max_width_desktop": "",
         "color": "bg-blue-light text-blue",
         "slides_per_view": "1.2",
@@ -603,6 +619,7 @@
         "image_position_mobile": "flex-col",
         "image_position_desktop": "desktop:flex-row-reverse",
         "max_width_desktop": "70ch",
+        "section_max_width_desktop": "1440px",
         "title": "Clean air is the cornerstone to a healthy life.",
         "title_style": "h4"
       }
@@ -687,7 +704,8 @@
         "title_style": "h2",
         "cta_url": "",
         "cta_text": "",
-        "cta_style": "btn"
+        "cta_style": "btn",
+        "content_max_width_desktop": "1440px"
       }
     }
   },
