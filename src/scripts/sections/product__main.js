@@ -456,7 +456,7 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
       
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
-      const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[Frequency]]"]`);
+      const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[_Frequency]]"]`);
       filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
       const filterSubscriptionFrequencyIntegerInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${triggerTarget.dataset.index}][properties[_frequency_integer]]"]`);
       filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
@@ -560,7 +560,7 @@ class ProductMain extends HTMLElement {
             newSelectedSubscription['selling_plan'] = value;
           } else if (key == `items[${index}][quantity]`) {
             newSelectedSubscription['quantity'] = value;
-          } else if (key == `items[${index}][properties[Frequency]]`) {
+          } else if (key == `items[${index}][properties[_Frequency]]`) {
             newSelectedSubscription['frequency'] = value;
           } else if (key == `items[${index}][properties[_frequency_integer]]`) {
             newSelectedSubscription['frequencyInteger'] = value;
@@ -572,7 +572,7 @@ class ProductMain extends HTMLElement {
         } else {
           if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
             newSelectedSubscription[key] = value;
-          } else if (key == 'properties[Frequency]') {
+          } else if (key == 'properties[_Frequency]') {
             newSelectedSubscription['frequency'] = value;
           } else if (key == 'properties[_frequency_integer]') {
             newSelectedSubscription['frequencyInteger'] = value;
@@ -591,7 +591,7 @@ class ProductMain extends HTMLElement {
 
       let newProperties = this.pdpToEditCartSubscription.filter.properties;
       if (newSelectedSubscription.frequency) {
-        newProperties['Frequency'] = newSelectedSubscription.frequency;
+        newProperties['_Frequency'] = newSelectedSubscription.frequency;
       }
       if (newSelectedSubscription.frequencyInteger) {
         newProperties['_frequency_integer'] = newSelectedSubscription.frequencyInteger;
@@ -662,7 +662,7 @@ class ProductMain extends HTMLElement {
               newOtherItemSelectedSubscription['id'] = value;
             } else if (key == `items[${otherItemIndex}][selling_plan]`) {
               newOtherItemSelectedSubscription['selling_plan'] = value;
-            } else if (key == `items[${otherItemIndex}][properties[Frequency]]`) {
+            } else if (key == `items[${otherItemIndex}][properties[_Frequency]]`) {
               newOtherItemSelectedSubscription['frequency'] = value;
             } else if (key == `items[${otherItemIndex}][properties[_frequency_integer]]`) {
               newOtherItemSelectedSubscription['frequencyInteger'] = value;
@@ -685,7 +685,7 @@ class ProductMain extends HTMLElement {
             const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
             let newOtherItemProperties = otherItemSubscriptionData.filter.properties;
             if (newOtherItemSelectedSubscription.frequency) {
-              newOtherItemProperties['Frequency'] = newOtherItemSelectedSubscription.frequency;
+              newOtherItemProperties['_Frequency'] = newOtherItemSelectedSubscription.frequency;
             }
             if (newOtherItemSelectedSubscription.frequencyInteger) {
               newOtherItemProperties['_frequency_integer'] = newOtherItemSelectedSubscription.frequencyInteger;
@@ -713,7 +713,7 @@ class ProductMain extends HTMLElement {
                   quantity: 1,
                   properties: { 
                     '_unitSubscriptionTempId': this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
-                    'Frequency': newOtherItemSelectedSubscription.frequency,
+                    '_Frequency': newOtherItemSelectedSubscription.frequency,
                     '_frequency_integer': newOtherItemSelectedSubscription.frequencyInteger,
                     'First Order Date': newOtherItemSelectedSubscription.firstOrderDate,
                     '_og_first_order_place_date': newOtherItemSelectedSubscription.ogDate

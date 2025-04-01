@@ -5,7 +5,7 @@
   </div>
   <div class="mt-xxxs relative">
     <p>First filter will process on <span class="font-700">{{ subscription_item.properties['First Order Date'] }}</span></p>
-    <p>Delievered every <span class="font-700">{{ subscription_item.properties['Frequency'] }}</span></p>
+    <p>Delievered every <span class="font-700">{{ subscription_item.properties['_Frequency'] }}</span></p>
     <p class="mr-lg">Recurring payment: <span class="font-700">{{ subscription_item.product.variants[0].selling_plan_allocations[0].price | times: subscription_item.quantity | money }}</span></p>
     <a href="{{ item.url }}" class="link link--underline underline-offset-2 absolute right-0 bottom-0" js-cart-subscription-edit>Edit</a>
   </div>

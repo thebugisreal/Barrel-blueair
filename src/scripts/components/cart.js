@@ -93,7 +93,7 @@ class CartItems extends HTMLElement {
           id: itemToRemoveSellingPlan.dataset.key,
           quantity: parseInt(itemToRemoveSellingPlan.dataset.quantity),
           selling_plan: '',
-          properties: { 'Frequency': '', '_frequency_integer': '', 'First Order Date': '', '_unitSubscriptionTempId': '', '_og_first_order_place_date': '' },
+          properties: { '_Frequency': '', '_frequency_integer': '', 'First Order Date': '', '_unitSubscriptionTempId': '', '_og_first_order_place_date': '' },
           sections: document.querySelector('cart-drawer').getSectionsToRender().map((section) => section.id)
         };
         this._adjustCartItems('change', changeData);
@@ -471,7 +471,7 @@ class CartSubscription extends HTMLElement {
           };
         } else {
           let newProperties = this.subscriptionData.filter.properties;
-          newProperties['Frequency'] = '';
+          newProperties['_Frequency'] = '';
           newProperties['_frequency_integer'] = '';
           newProperties['First Order Date'] = '';
           changeData = {
@@ -486,7 +486,7 @@ class CartSubscription extends HTMLElement {
       } else {
         if (this.subscriptionData.filter) {
           let newProperties = this.subscriptionData.filter.properties;
-          newProperties['Frequency'] = this.subscriptionData.preSelectedFilter.frequency + ' months';
+          newProperties['_Frequency'] = this.subscriptionData.preSelectedFilter.frequency + ' months';
           newProperties['_frequency_integer'] = this.subscriptionData.preSelectedFilter.frequency;
           const date = new Date();
           const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -521,7 +521,7 @@ class CartSubscription extends HTMLElement {
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
                 properties: { 
                   '_unitSubscriptionTempId': subscriptionTempId,
-                  'Frequency': this.subscriptionData.preSelectedFilter.frequency + ' months',
+                  '_Frequency': this.subscriptionData.preSelectedFilter.frequency + ' months',
                   '_frequency_integer': this.subscriptionData.preSelectedFilter.frequency,
                   'First Order Date': formattedOrderDate,
                   '_og_first_order_place_date': formattedOrderDate

@@ -199,7 +199,7 @@ class SubscriptionQuiz extends HTMLElement {
     const formattedOrderDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 
     let data = {
-      items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId, properties: { 'Frequency': frequency, '_frequency_integer': frequencyInteger, 'First Order Date': formattedOrderDate } }]
+      items: [{ id: variantId, quantity: quantity, selling_plan: sellingPlanId, properties: { '_Frequency': frequency, '_frequency_integer': frequencyInteger, 'First Order Date': formattedOrderDate } }]
     };
 
     fetch(window.Shopify.routes.root + 'cart/add.js', {
