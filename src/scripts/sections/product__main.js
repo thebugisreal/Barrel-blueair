@@ -209,6 +209,7 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionFirstOrderDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionFirstOrderDateInput);
     this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
     this.filterSubscriptionOgDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionOgDateInput);
+    this.subscriptionSelectedOnLoad = this.subscription.dataset.selected == 'true' ? true : false;
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
@@ -224,10 +225,12 @@ class ProductMain extends HTMLElement {
           sellingPlan.setAttribute('disabled', '');
         });
       }
-      if (this.purifyHumidifySubscriptionAvailable) {
-        this._toggleFilterSubscriptionFormInputs(true);
+      if (this.subscriptionSelectedOnLoad) {
+        if (this.purifyHumidifySubscriptionAvailable) {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        this._updateAtcStateOnFilterChange(false);
       }
-      this._updateAtcStateOnFilterChange(false);
     }
 
     this.filterSubscriptionVariants.forEach((trigger) => {
@@ -248,16 +251,30 @@ class ProductMain extends HTMLElement {
       this.subscription.dataset.selected = 'true';
       this.nonSubscriptionToggle.dataset.selected = 'false';
 
-      if (this.selectedFilterSubscriptionVariant) {
-        if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
-          this._toggleFilterSubscriptionFormInputs(true);
+      if (this.subscriptionSelectedOnLoad) {
+        if (this.selectedFilterSubscriptionVariant) {
+          if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
+            this._toggleFilterSubscriptionFormInputs(true);
+          }
+          this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
+        } else if (this.subscriptionType == '2in1_purify_humidify') {
+          if (this.purifyHumidifySubscriptionAvailable) {
+            this._toggleFilterSubscriptionFormInputs(true);
+          }
+          this._updateAtcStateOnFilterChange(false);
         }
-        this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
-      } else if (this.subscriptionType == '2in1_purify_humidify') {
-        if (this.purifyHumidifySubscriptionAvailable) {
+      } else {
+        const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+        if (filterSubscriptionVariantToBeSelectedOnLoad) {
+          filterSubscriptionVariantToBeSelectedOnLoad.click();
+        } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
           this._toggleFilterSubscriptionFormInputs(true);
+          this._updateAtcStateOnFilterChange(false);
+          this.filterSubscriptionSellingPlansGroups.forEach((group) => {
+            group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
+          });
         }
-        this._updateAtcStateOnFilterChange(false);
+        this.subscriptionSelectedOnLoad = true;
       }
     });
 
@@ -275,13 +292,19 @@ class ProductMain extends HTMLElement {
       this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
     });
 
-    const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
-    if (filterSubscriptionVariantToBeSelectedOnLoad) {
-      filterSubscriptionVariantToBeSelectedOnLoad.click();
-    } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
-      this.filterSubscriptionSellingPlansGroups.forEach((group) => {
-        group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
-      });
+    if (this.subscriptionSelectedOnLoad) {
+      const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+      if (filterSubscriptionVariantToBeSelectedOnLoad) {
+        filterSubscriptionVariantToBeSelectedOnLoad.click();
+      } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
+        this.filterSubscriptionSellingPlansGroups.forEach((group) => {
+          group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
+        });
+      }
+    }
+
+    if (this.pdpToEditCartSubscription) {
+      this.subscriptionToggle.click();
     }
   }
 
@@ -433,7 +456,7 @@ class ProductMain extends HTMLElement {
       filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
       
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
-      const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[Frequency]]"]`);
+      const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[_Frequency]]"]`);
       filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
       const filterSubscriptionFrequencyIntegerInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${triggerTarget.dataset.index}][properties[_frequency_integer]]"]`);
       filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
@@ -537,7 +560,7 @@ class ProductMain extends HTMLElement {
             newSelectedSubscription['selling_plan'] = value;
           } else if (key == `items[${index}][quantity]`) {
             newSelectedSubscription['quantity'] = value;
-          } else if (key == `items[${index}][properties[Frequency]]`) {
+          } else if (key == `items[${index}][properties[_Frequency]]`) {
             newSelectedSubscription['frequency'] = value;
           } else if (key == `items[${index}][properties[_frequency_integer]]`) {
             newSelectedSubscription['frequencyInteger'] = value;
@@ -549,7 +572,7 @@ class ProductMain extends HTMLElement {
         } else {
           if (key == 'id' || key == 'selling_plan' || key == 'quantity') {
             newSelectedSubscription[key] = value;
-          } else if (key == 'properties[Frequency]') {
+          } else if (key == 'properties[_Frequency]') {
             newSelectedSubscription['frequency'] = value;
           } else if (key == 'properties[_frequency_integer]') {
             newSelectedSubscription['frequencyInteger'] = value;
@@ -568,7 +591,7 @@ class ProductMain extends HTMLElement {
 
       let newProperties = this.pdpToEditCartSubscription.filter.properties;
       if (newSelectedSubscription.frequency) {
-        newProperties['Frequency'] = newSelectedSubscription.frequency;
+        newProperties['_Frequency'] = newSelectedSubscription.frequency;
       }
       if (newSelectedSubscription.frequencyInteger) {
         newProperties['_frequency_integer'] = newSelectedSubscription.frequencyInteger;
@@ -639,7 +662,7 @@ class ProductMain extends HTMLElement {
               newOtherItemSelectedSubscription['id'] = value;
             } else if (key == `items[${otherItemIndex}][selling_plan]`) {
               newOtherItemSelectedSubscription['selling_plan'] = value;
-            } else if (key == `items[${otherItemIndex}][properties[Frequency]]`) {
+            } else if (key == `items[${otherItemIndex}][properties[_Frequency]]`) {
               newOtherItemSelectedSubscription['frequency'] = value;
             } else if (key == `items[${otherItemIndex}][properties[_frequency_integer]]`) {
               newOtherItemSelectedSubscription['frequencyInteger'] = value;
@@ -662,7 +685,7 @@ class ProductMain extends HTMLElement {
             const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
             let newOtherItemProperties = otherItemSubscriptionData.filter.properties;
             if (newOtherItemSelectedSubscription.frequency) {
-              newOtherItemProperties['Frequency'] = newOtherItemSelectedSubscription.frequency;
+              newOtherItemProperties['_Frequency'] = newOtherItemSelectedSubscription.frequency;
             }
             if (newOtherItemSelectedSubscription.frequencyInteger) {
               newOtherItemProperties['_frequency_integer'] = newOtherItemSelectedSubscription.frequencyInteger;
@@ -690,7 +713,7 @@ class ProductMain extends HTMLElement {
                   quantity: 1,
                   properties: { 
                     '_unitSubscriptionTempId': this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
-                    'Frequency': newOtherItemSelectedSubscription.frequency,
+                    '_Frequency': newOtherItemSelectedSubscription.frequency,
                     '_frequency_integer': newOtherItemSelectedSubscription.frequencyInteger,
                     'First Order Date': newOtherItemSelectedSubscription.firstOrderDate,
                     '_og_first_order_place_date': newOtherItemSelectedSubscription.ogDate
