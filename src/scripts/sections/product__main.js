@@ -209,6 +209,7 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionFirstOrderDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionFirstOrderDateInput);
     this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
     this.filterSubscriptionOgDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionOgDateInput);
+    this.subscriptionSelectedOnLoad = this.subscription.dataset.selected == 'true' ? true : false;
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
@@ -224,10 +225,12 @@ class ProductMain extends HTMLElement {
           sellingPlan.setAttribute('disabled', '');
         });
       }
-      if (this.purifyHumidifySubscriptionAvailable) {
-        this._toggleFilterSubscriptionFormInputs(true);
+      if (this.subscriptionSelectedOnLoad) {
+        if (this.purifyHumidifySubscriptionAvailable) {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        this._updateAtcStateOnFilterChange(false);
       }
-      this._updateAtcStateOnFilterChange(false);
     }
 
     this.filterSubscriptionVariants.forEach((trigger) => {
@@ -248,16 +251,30 @@ class ProductMain extends HTMLElement {
       this.subscription.dataset.selected = 'true';
       this.nonSubscriptionToggle.dataset.selected = 'false';
 
-      if (this.selectedFilterSubscriptionVariant) {
-        if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
-          this._toggleFilterSubscriptionFormInputs(true);
+      if (this.subscriptionSelectedOnLoad) {
+        if (this.selectedFilterSubscriptionVariant) {
+          if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
+            this._toggleFilterSubscriptionFormInputs(true);
+          }
+          this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
+        } else if (this.subscriptionType == '2in1_purify_humidify') {
+          if (this.purifyHumidifySubscriptionAvailable) {
+            this._toggleFilterSubscriptionFormInputs(true);
+          }
+          this._updateAtcStateOnFilterChange(false);
         }
-        this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
-      } else if (this.subscriptionType == '2in1_purify_humidify') {
-        if (this.purifyHumidifySubscriptionAvailable) {
+      } else {
+        const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+        if (filterSubscriptionVariantToBeSelectedOnLoad) {
+          filterSubscriptionVariantToBeSelectedOnLoad.click();
+        } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
           this._toggleFilterSubscriptionFormInputs(true);
+          this._updateAtcStateOnFilterChange(false);
+          this.filterSubscriptionSellingPlansGroups.forEach((group) => {
+            group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
+          });
         }
-        this._updateAtcStateOnFilterChange(false);
+        this.subscriptionSelectedOnLoad = true;
       }
     });
 
@@ -275,13 +292,19 @@ class ProductMain extends HTMLElement {
       this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
     });
 
-    const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
-    if (filterSubscriptionVariantToBeSelectedOnLoad) {
-      filterSubscriptionVariantToBeSelectedOnLoad.click();
-    } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
-      this.filterSubscriptionSellingPlansGroups.forEach((group) => {
-        group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
-      });
+    if (this.subscriptionSelectedOnLoad) {
+      const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+      if (filterSubscriptionVariantToBeSelectedOnLoad) {
+        filterSubscriptionVariantToBeSelectedOnLoad.click();
+      } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
+        this.filterSubscriptionSellingPlansGroups.forEach((group) => {
+          group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
+        });
+      }
+    }
+
+    if (this.pdpToEditCartSubscription) {
+      this.subscriptionToggle.click();
     }
   }
 
