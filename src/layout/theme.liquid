@@ -114,6 +114,16 @@
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    
     {% render 'sprinklr-chat' %}
+
+    <script type="text/javascript">
+      setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = 'https://static.ordergroove.com/3488d6a745bd4989b67ebc6b0ad38ad6/msi.js';
+        document.head.appendChild(script);
+      }, 1000);
+    </script>
+
   </body>
 </html>

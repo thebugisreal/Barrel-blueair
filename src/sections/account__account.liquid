@@ -1,5 +1,10 @@
 {% assign sections = "My Profile,Filter Subscriptions,Order History,Devices & Warranty" | split: ',' %}
 
+{% assign secret_key = shop.metafields.ordergroove.themeHashKey.value %}
+{% assign customer_id = customer.id  %}
+{% assign timestamp = "now" | date: "%s" %}
+{% assign signature = customer_id | append: "|" | append: timestamp | hmac_sha256: secret_key %}
+
 {% comment %} 
   My Profile Content 
 {% endcomment %}
@@ -135,7 +140,6 @@
     <div class="grid gap-md">
       <div class="account-content">
         <div id="og-msi" ng-jq></div>
-        <script type="text/javascript" src="https://static.ordergroove.com/3488d6a745bd4989b67ebc6b0ad38ad6/msi.js"></script>
       </div>
     </div>
   </div>
@@ -264,7 +268,11 @@
   </div>
 {% endcapture %}
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" data-customer-email="{{ customer.email }}">
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" 
+  data-customer-email="{{ customer.email }}" 
+  data-customer-id="{{ customer.id }}"
+  data-customer-signature="{{ signature }}"
+  data-customer-timestamp="{{ timestamp }}">
   <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
     <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
       <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
