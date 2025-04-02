@@ -42,15 +42,13 @@ class Account extends HTMLElement {
     this.returnButtons = this.querySelectorAll(this._selectors.returnButton);
     this.accountSubscribed = this.querySelector(this._selectors.accountSubscribed);
     this.accountNotSubscribed = this.querySelector(this._selectors.accountNotSubscribed);
-    this.unsubscribeBtn = this.querySelector(this._selectors.unsubscribeBtn)
+    this.unsubscribeBtn = this.querySelector(this._selectors.unsubscribeBtn);
 
     this._setupKlaviyoNewsletter();
     this._setupKlaviyoFormTrigger();
     this._setupCountries();
     this._setupEventListeners();
   }
-
-
 
   async _setupKlaviyoNewsletter() {
     let customerEmail = this.dataset.customerEmail;
@@ -135,7 +133,6 @@ class Account extends HTMLElement {
     document.addEventListener('click', this._closeAccountTriggerAccordion);
     window.addEventListener("klaviyoForms", this._handleKlaviyoEvents.bind(this));
   }
-
 
   _handleKlaviyoEvents(e) {
     if (e.detail.type == 'submit') {
