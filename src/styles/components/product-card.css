@@ -1,6 +1,11 @@
-.product-card__tag--blue {
+.product-card__tag--dark-blue {
   @apply text-white
   bg-blue;
+}
+
+.product-card__tag--blue {
+  @apply text-blue
+  bg-blue-darkSky;
 }
 
 .product-card__tag--white {
