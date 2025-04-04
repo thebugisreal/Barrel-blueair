@@ -355,12 +355,12 @@
                 {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifiConnectivity != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductAdditionalFeatures" js-accordion-header>
+                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
                         <span class="s2">Additional Features</span>
                         <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>
-                      <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="false" js-accordion-content>
+                      <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="true" js-accordion-content>
                         <ul class="product-additional-features__list pb-md">
                           {% if product.metafields.seed.blair_wifiConnectivity != blank %}
                             <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
@@ -404,12 +404,12 @@
                 {% if block.settings.icon_1_image != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="true" aria-controls="ProductShippingWarranty" js-accordion-header>
+                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductShippingWarranty" js-accordion-header>
                         <span class="s2">Shipping & Warranty</span>
                         <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>
-                      <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="false" js-accordion-content>
+                      <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="true" js-accordion-content>
                         <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
                           {% for i in (1..3) %}
                             {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
