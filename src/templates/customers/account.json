@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,7 +16,7 @@
         "newsletter_text": "",
         "newsletter_cta_url": "",
         "newsletter_cta_text": "",
-        "add_subscription_url": "shopify:\/\/pages\/subscribe-quiz",
+        "add_subscription_url": "shopify://pages/subscribe-quiz",
         "start_return_url": "",
         "max_width_desktop": "1440px"
       }

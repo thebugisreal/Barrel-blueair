@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -21,7 +30,7 @@
             "padding_top_desktop": "desktop:pt-xxxl",
             "padding_bottom_desktop": "desktop:pb-xxl",
             "max_width_desktop": "95ch",
-            "richtext": "<p>At Blueair, we’re proud to announce that our Classic Pro Air Purifier now holds the Asthma and Allergy Friendly™ Certification. This certification is a stamp of approval that proves our air purifier is scientifically tested to reduce airborne allergens and improve air quality in your home. It’s not just another claim—it’s a trusted standard.<\/p>",
+            "richtext": "<p>At Blueair, we’re proud to announce that our Classic Pro Air Purifier now holds the Asthma and Allergy Friendly™ Certification. This certification is a stamp of approval that proves our air purifier is scientifically tested to reduce airborne allergens and improve air quality in your home. It’s not just another claim—it’s a trusted standard.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
@@ -38,12 +47,12 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-xxl",
             "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
-            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
+            "image": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
+            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
             "caption": "",
             "caption_style": "p6",
             "product": "classic-pro-cp7i",
-            "product_image_override": "shopify:\/\/shop_images\/Classic_Pro_CP7i.png"
+            "product_image_override": "shopify://shop_images/Classic_Pro_CP7i.png"
           }
         },
         "text_e9yarP": {
@@ -58,7 +67,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Why air quality matters<\/h4><p><\/p><p>Did you know more than 100 million Americans experience allergies, and 27 million live with asthma? Additionally, people spend 90% of their time indoors, where air can be 2-5 times more polluted than outdoor air. That makes effective air purification essential for those living with asthma or allergies.<\/p>",
+            "richtext": "<h4>Why air quality matters</h4><p></p><p>Did you know more than 100 million Americans experience allergies, and 27 million live with asthma? Additionally, people spend 90% of their time indoors, where air can be 2-5 times more polluted than outdoor air. That makes effective air purification essential for those living with asthma or allergies.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -75,7 +84,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>What Asthma and Allergy Friendly™ Certification Means<\/h4><p><\/p><p>The Asthma and Allergy Friendly™ Certification isn’t just a logo—it’s a sign of trust. It means that the Classic Pro CP7i has been third-party tested by independent medical experts who evaluate the product based on its ability to reduce airborne allergens, such as dust, pollen, pet dander, and smoke. These allergens are known triggers for asthma and allergies, and the certification ensures that the product is scientifically proven to address those concerns.<\/p><p><\/p><p>Many products on the market make claims about helping with asthma and allergies, but without proper testing, these claims can be misleading or even dangerous. False advertising about a product’s effectiveness can lead health complications for those who rely on the product for relief.<\/p><p><\/p><p>For example, using an air purifier that isn’t actually capable of removing harmful allergens may lead to a worsening of asthma symptoms, triggering allergic reactions, or even exacerbating respiratory issues.<\/p><p><\/p><p>With the Asthma and Allergy Friendly™ Certification, Blueair offers you the peace of mind that our Classic Pro Air Purifier has been rigorously tested to meet high standards of allergen reduction. You don’t have to rely on unverified marketing claims or guesswork—we’ve done the hard work to ensure that our air purifier actually does what it says. This certification is proof that the Classic Pro is truly effective in helping to tackle asthma and allergy issues.<\/p>",
+            "richtext": "<h4>What Asthma and Allergy Friendly™ Certification Means</h4><p></p><p>The Asthma and Allergy Friendly™ Certification isn’t just a logo—it’s a sign of trust. It means that the Classic Pro CP7i has been third-party tested by independent medical experts who evaluate the product based on its ability to reduce airborne allergens, such as dust, pollen, pet dander, and smoke. These allergens are known triggers for asthma and allergies, and the certification ensures that the product is scientifically proven to address those concerns.</p><p></p><p>Many products on the market make claims about helping with asthma and allergies, but without proper testing, these claims can be misleading or even dangerous. False advertising about a product’s effectiveness can lead health complications for those who rely on the product for relief.</p><p></p><p>For example, using an air purifier that isn’t actually capable of removing harmful allergens may lead to a worsening of asthma symptoms, triggering allergic reactions, or even exacerbating respiratory issues.</p><p></p><p>With the Asthma and Allergy Friendly™ Certification, Blueair offers you the peace of mind that our Classic Pro Air Purifier has been rigorously tested to meet high standards of allergen reduction. You don’t have to rely on unverified marketing claims or guesswork—we’ve done the hard work to ensure that our air purifier actually does what it says. This certification is proof that the Classic Pro is truly effective in helping to tackle asthma and allergy issues.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -92,8 +101,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/Blog_Image_8aa31d2b-248d-4b74-b4db-953ed0f4796b.png",
-            "image_desktop": "shopify:\/\/shop_images\/Blog_Image_8aa31d2b-248d-4b74-b4db-953ed0f4796b.png",
+            "image": "shopify://shop_images/Blog_Image_8aa31d2b-248d-4b74-b4db-953ed0f4796b.png",
+            "image_desktop": "shopify://shop_images/Blog_Image_8aa31d2b-248d-4b74-b4db-953ed0f4796b.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -111,7 +120,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Why Choose the Blueair Classic Pro?<\/h4><p><\/p><p>With its Asthma and Allergy Friendly™ Certification, the Classic Pro is not just another air purifier. It’s a proven solution designed to reduce allergens and improve indoor air quality. By combining HINS Lighting Technology, HEPASilent™ filtration, and whisper-quiet operation, the Classic Pro is a trusted ally in creating a safer, more comfortable environment for you and your family.<\/p>",
+            "richtext": "<h4>Why Choose the Blueair Classic Pro?</h4><p></p><p>With its Asthma and Allergy Friendly™ Certification, the Classic Pro is not just another air purifier. It’s a proven solution designed to reduce allergens and improve indoor air quality. By combining HINS Lighting Technology, HEPASilent™ filtration, and whisper-quiet operation, the Classic Pro is a trusted ally in creating a safer, more comfortable environment for you and your family.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -128,7 +137,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<p>Some advanced features of the Classic Pro CP7i include:<\/p><ul><li>HINS Lighting Technology, which neutralizes germs trapped on filters using specialized light<\/li><li>5 layers of filtration, removing 99.97% of airborne pollutants like pollen, dust, and smoke with HEPASilent™ technology<\/li><li>Powerful performance, cleaning up to 2,800 ft² in just 1 hour, quietly transforming your air<\/li><\/ul><p><\/p><p>The Asthma and Allergy Friendly™ Certification sets a high bar for air purification products. By achieving this rigorous certification, Blueair’s Classic Pro Air Purifier has been proven to help improve air quality for those dealing with asthma and allergies. Don't fall for misleading claims—choose a product that you can trust. Breathe easier and enjoy a healthier home with Blueair today!<\/p>",
+            "richtext": "<p>Some advanced features of the Classic Pro CP7i include:</p><ul><li>HINS Lighting Technology, which neutralizes germs trapped on filters using specialized light</li><li>5 layers of filtration, removing 99.97% of airborne pollutants like pollen, dust, and smoke with HEPASilent™ technology</li><li>Powerful performance, cleaning up to 2,800 ft² in just 1 hour, quietly transforming your air</li></ul><p></p><p>The Asthma and Allergy Friendly™ Certification sets a high bar for air purification products. By achieving this rigorous certification, Blueair’s Classic Pro Air Purifier has been proven to help improve air quality for those dealing with asthma and allergies. Don't fall for misleading claims—choose a product that you can trust. Breathe easier and enjoy a healthier home with Blueair today!</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -151,18 +160,18 @@
         "image_caption_WEgPaf": {
           "type": "image_caption",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/Screenshot_2024-11-18_at_2.28.04_PM.png",
-            "caption": "<p>Above: <a href=\"\/products\/3in1-air-purifier-t20i\" title=\"ComfortPure™ 3-in-1 T20i Air Purifier\">DustMagnet 5410i <\/a>reducing pollen allergy symptoms.<\/p>",
+            "image_mobile": "shopify://shop_images/Screenshot_2024-11-18_at_2.28.04_PM.png",
+            "caption": "<p>Above: <a href=\"/products/3in1-air-purifier-t20i\" title=\"ComfortPure™ 3-in-1 T20i Air Purifier\">DustMagnet 5410i </a>reducing pollen allergy symptoms.</p>",
             "caption_style": "p6",
             "product": "3in1-air-purifier-t20i",
-            "product_image_override": "shopify:\/\/shop_images\/Image_1.png"
+            "product_image_override": "shopify://shop_images/Image_1.png"
           }
         },
         "image_caption_A8kYPj": {
           "type": "image_caption",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/carousel2.png",
-            "caption": "<p>Above: <a href=\"\/products\/blue-pure-211i-max-1\" title=\"Blue Pure 211i Max\">Blue 211+ Auto<\/a> reducing pollen allergy symptoms.<\/p>",
+            "image_mobile": "shopify://shop_images/carousel2.png",
+            "caption": "<p>Above: <a href=\"/products/blue-pure-211i-max-1\" title=\"Blue Pure 211i Max\">Blue 211+ Auto</a> reducing pollen allergy symptoms.</p>",
             "caption_style": "p6",
             "product": ""
           }
@@ -170,8 +179,8 @@
         "image_caption_76wFUD": {
           "type": "image_caption",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/carousel3.png",
-            "caption": "<p>Above:<\/p>",
+            "image_mobile": "shopify://shop_images/carousel3.png",
+            "caption": "<p>Above:</p>",
             "caption_style": "p6",
             "product": ""
           }
@@ -234,7 +243,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "richtext": "<p>h2 Pet allergies<\/p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets off furniture, especially upholstery. <\/li><li>Keep pets away from carpeted areas. <\/li><li>Vacuum carpets and furniture to reduce the amount of dander.<\/li><\/ul>",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -271,7 +280,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "richtext": "<h2>h2 Dust Mites<\/h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:<\/p><h3>H3 Do you have dog, cat or other pet allergies?<\/h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.<\/li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.<\/li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.<\/li><li>Consider replacing wall-to-wall carpet with hardwood floors.<\/li><\/ul>",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -288,11 +297,11 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/image3.png",
+            "image": "shopify://shop_images/image3.png",
             "caption": "",
             "caption_style": "p6",
             "product": "1342-master-product",
-            "product_image_override": "shopify:\/\/shop_images\/689122003122_blueair_refurbished_pro_xl.jpg"
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
           }
         },
         "image_caption_BeR79M": {
@@ -307,7 +316,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "image": "shopify:\/\/shop_images\/image5.png",
+            "image": "shopify://shop_images/image5.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -325,7 +334,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.<\/p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.<\/p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.<\/p>",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -347,9 +356,9 @@
             "section_title_style": "h4",
             "title": "Dr. Priya Bansal, MD",
             "title_style": "h4",
-            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.<\/p>",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
             "richtext_style": "p2",
-            "image_mobile": "shopify:\/\/shop_images\/image-review.png"
+            "image_mobile": "shopify://shop_images/image-review.png"
           }
         }
       },
@@ -373,7 +382,7 @@
           "settings": {
             "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
             "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
             "richtext_style": "p2"
           }
         },
@@ -382,7 +391,7 @@
           "settings": {
             "title": "What is the recommended maintenance for the air purifier & filters?",
             "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
             "richtext_style": "p2"
           }
         },
@@ -391,7 +400,7 @@
           "settings": {
             "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
             "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
             "richtext_style": "p2"
           }
         },
@@ -400,7 +409,7 @@
           "settings": {
             "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
             "title_style": "s1",
-            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https:\/\/www.blueair.com\/us\/guidedselling\/<\/p><ul><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><li>Keep pets out of the bedroom of the allergy sufferer.<\/li><\/ul>",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
             "richtext_style": "p2"
           }
         }

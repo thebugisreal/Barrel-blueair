@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -31,8 +40,8 @@
         "image_desktop": "shopify:\/\/shop_images\/Hero_290981aa-7942-4e04-803a-3e4048fffd91.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "It's not magic,<br>  it's Swedish engineering",
-        "title_style": "h1",
+        "title": "It's not magic,<br> it's Swedish engineering",
+        "title_style": "h3",
         "subtext": "",
         "subtext_style": "h5",
         "cta_url": "",
@@ -66,7 +75,7 @@
         "color": "bg-white text-blue",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Our award winning technology promises cleaner air at a faster rate, delivered whisper quiet, while using less energy than a lightbulb.",
+        "title": "Our award winning technology delivers clean air faster² and quieter³, while using less energy than a lightbulb⁴",
         "title_style": "h4",
         "subtext": "",
         "subtext_style": "h5",
@@ -95,7 +104,7 @@
           "settings": {
             "title": "99.97%",
             "title_style": "h2",
-            "subtext": "Airborne particles are \u2028captured down to 0.1 \u2028microns in size.",
+            "subtext": "Airborne particles are\u2028captured down to 0.1 \u2028microns in size¹",
             "subtext_style": "p2"
           }
         },
@@ -104,7 +113,7 @@
           "settings": {
             "title": "45%",
             "title_style": "h2",
-            "subtext": "More volume of clean air delivered compared to typical HEPA filtration.",
+            "subtext": "More volume of clean air delivered compared to typical HEPA filtration²",
             "subtext_style": "p2"
           }
         },
@@ -113,7 +122,7 @@
           "settings": {
             "title": "67%",
             "title_style": "h2",
-            "subtext": "Lower noise produced than competitors purifiers. We’re whisper silent.",
+            "subtext": "Lower noise³ you might forget it's even on",
             "subtext_style": "p2"
           }
         },
@@ -122,7 +131,7 @@
           "settings": {
             "title": "29%",
             "title_style": "h2",
-            "subtext": "Lower energy usage, consuming less energy \u2028than a lightbulb.",
+            "subtext": "Lower energy usage, consuming less energy \u2028than a lightbulb⁴.",
             "subtext_style": "p2"
           }
         }
@@ -143,7 +152,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/seed-subscribe-hero-mobile.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Frame_4145.png",
         "image_inset_mobile": false,
         "image_position_mobile": "order-first",
         "image_position_desktop": "left",
@@ -167,7 +176,7 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "gutter_mobile": "mx-0",
         "gutter_desktop": "tabletl:mx-0",
-        "video": "shopify:\/\/files\/videos\/healthprotect.mp4",
+        "video": "shopify:\/\/files\/videos\/Blueair_Tech_16x9_EPA Update.mp4",
         "video_embed": "",
         "enable_autoplay": true,
         "color": "bg-white text-blue",
@@ -188,7 +197,7 @@
         "color": "bg-white text-blue",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "The genius of HEPASilent™ dual filtration technology combines traditional mechanical filtration with electrostatic charging of particles.",
+        "title": "Watch how it works",
         "title_style": "h4",
         "subtext": "",
         "subtext_style": "h5",
@@ -215,21 +224,8 @@
         "image_content_tp6Lbm": {
           "type": "image_content",
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/seed-blueair-tech-carousel1.jpg",
-            "title": "1. The fan draws polluted air into the air purifier",
-            "title_style": "s1",
-            "subtext": "",
-            "subtext_style": "p4",
-            "cta_url": "",
-            "cta_text": "",
-            "cta_style": "btn"
-          }
-        },
-        "image_content_eHXxq4": {
-          "type": "image_content",
-          "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/seed-blueair-tech-carousel2.jpg",
-            "title": "2. Airborne particles receive an electrostatic charge",
+            "image_mobile": "shopify:\/\/shop_images\/fan.gif",
+            "title": "The fan draws polluted air into the device",
             "title_style": "s1",
             "subtext": "",
             "subtext_style": "p4",
@@ -241,7 +237,34 @@
         "image_content_yrCnFq": {
           "type": "image_content",
           "settings": {
-            "title": "",
+            "image_mobile": "shopify:\/\/shop_images\/prefilter.gif",
+            "title": "The pre-filter catches larger airborne particles like dust and dander",
+            "title_style": "s1",
+            "subtext": "",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "image_content_eHXxq4": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/particles.gif",
+            "title": "Airborne particles receive an electrostatic charge to help them cling to the particle filter",
+            "title_style": "s1",
+            "subtext": "",
+            "subtext_style": "p4",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn"
+          }
+        },
+        "image_content_6RYR4K": {
+          "type": "image_content",
+          "settings": {
+            "image_mobile": "shopify:\/\/shop_images\/gas.gif",
+            "title": "Carbon layer traps odor and gas particles",
             "title_style": "s1",
             "subtext": "",
             "subtext_style": "p4",
@@ -253,8 +276,9 @@
       },
       "block_order": [
         "image_content_tp6Lbm",
+        "image_content_yrCnFq",
         "image_content_eHXxq4",
-        "image_content_yrCnFq"
+        "image_content_6RYR4K"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -279,6 +303,7 @@
         "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": false,
         "enable_title_link_same_link": false,
+        "enable_carousel_gutter": true,
         "title": "",
         "title_style": "h2",
         "title_alignment_mobile": "text-left",
@@ -365,6 +390,7 @@
         "hotspot_pHzRkh",
         "hotspot_UMxVEx"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -392,40 +418,40 @@
     "section_image_tabs_3eCidp": {
       "type": "section__image-tabs",
       "blocks": {
-        "tab_qVV3LT": {
-          "type": "tab",
-          "settings": {
-            "subtitle": "Cooling",
-            "subtitle_style": "s2",
-            "subtext": "Stay cool and breathe clean air with our latest air purifier that also cools. Ideal for hot summers, it offers refreshing relief while purifying your space, providing a healthier and more comfortable home.",
-            "subtext_style": "p2",
-            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-tabs1.png"
-          }
-        },
         "tab_P7KdpQ": {
           "type": "tab",
           "settings": {
-            "subtitle": "Heating",
+            "subtitle": "InvisibleMist™ Technology",
             "subtitle_style": "s2",
-            "subtext": "Stay cool and breathe clean air with our latest air purifier that also cools. Ideal for hot summers, it offers refreshing relief while purifying your space, providing a healthier and more comfortable home.",
+            "subtext": "Uses advanced filtration to deliver fresh, humidified air without visible mist. Its anti-microbial filter removes waterborne pollutants, preventing white dust buildup and moisture damage for a cleaner humidification experience.",
             "subtext_style": "p2",
-            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-tabs1.png"
+            "image_mobile": "shopify:\/\/shop_images\/Frame_4147.png"
+          }
+        },
+        "tab_qVV3LT": {
+          "type": "tab",
+          "settings": {
+            "subtitle": "TripleFlow Technology",
+            "subtitle_style": "s2",
+            "subtext": "Optimizes air circulation with three distinct airflow patterns, ensuring efficient purification while heating or cooling.",
+            "subtext_style": "p2",
+            "image_mobile": "shopify:\/\/shop_images\/Frame_4146.png"
           }
         },
         "tab_ffWMzH": {
           "type": "tab",
           "settings": {
-            "subtitle": "Humidifying",
+            "subtitle": "RealTrack Technology",
             "subtitle_style": "s2",
-            "subtext": "Stay cool and breathe clean air with our latest air purifier that also cools. Ideal for hot summers, it offers refreshing relief while purifying your space, providing a healthier and more comfortable home.",
+            "subtext": "RealTrack™ technology uses advanced machine learning to adjust its calculations based on your unique environment, taking into account factors like fan speed, usage time and pollutant levels.",
             "subtext_style": "p2",
-            "image_mobile": "shopify:\/\/shop_images\/seed-blueairtech-tabs1.png"
+            "image_mobile": "shopify:\/\/shop_images\/Frame_4149.png"
           }
         }
       },
       "block_order": [
-        "tab_qVV3LT",
         "tab_P7KdpQ",
+        "tab_qVV3LT",
         "tab_ffWMzH"
       ],
       "settings": {
@@ -483,14 +509,15 @@
         "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": true,
         "enable_title_link_same_link": true,
-        "title": "From our Blog",
+        "enable_carousel_gutter": true,
+        "title": "Read more about our technology",
         "title_style": "h4",
         "title_alignment_mobile": "text-center",
         "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
         "url": "shopify:\/\/blogs\/news",
-        "url_text": "All Blogs",
+        "url_text": "Blogs",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",
         "cta_position_desktop": "tabletl:justify-center"
@@ -580,6 +607,22 @@
         "cta_style": "btn",
         "content_max_width_desktop": "1440px"
       }
+    },
+    "section_text_PfKFzL": {
+      "type": "section__text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-md",
+        "max_width_desktop": "109ch",
+        "richtext": "<p>¹ Based on removal testing of PM 2.5 (0.1 - 2.5 microns) and germs (H1N1, E.coli) up to 90min in a 30m3 room. Performance may vary. Not all Blueair air purifiers have been tested against SARS-CoV-2, and Blueair does not claim to kill\/prevent transmission of COVID-19.<\/p><p>² Comparing CADR performance of Blueair models with mechanical and electrostatic filtration vs same models with only H13 HEPA mechanical filtration.<\/p><p>³ When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power. Sound pressure measured on low fan speed.<\/p><p>⁴ Energy consumption on high fan speed. Compared to over 900 lumens incandescent light bulb.<\/p>",
+        "richtext_style": "p2"
+      }
     }
   },
   "order": [
@@ -593,6 +636,7 @@
     "section_hotspot_Vq7BWq",
     "section_image_tabs_3eCidp",
     "section_carousel_cz4iDK",
-    "section_content_panels_8BWLBy"
+    "section_content_panels_8BWLBy",
+    "section_text_PfKFzL"
   ]
 }

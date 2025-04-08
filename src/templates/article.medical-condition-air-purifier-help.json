@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -21,7 +30,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-xxxl",
             "max_width_desktop": "95ch",
-            "richtext": "<p>Living with a medical condition often requires taking extra steps to ensure that the places where you or your loved ones spend time support health and well-being. This is where an air purifier becomes essential in maintaining clean, high-quality indoor air. In fact, Dr. Priya Bansal*, a triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center believes that air purifiers should be part of a whole-house strategy for people with conditions such as allergies or asthma, as they can help reduce the number of triggers that can cause symptoms to flare up.<\/p><p>We’re deeply committed to helping you in this pursuit, so let’s take some time to understand how an air purifier can improve your home's ability to reduce pollutants while enhancing overall well-being and comfort for those with a medical condition.<\/p>",
+            "richtext": "<p>Living with a medical condition often requires taking extra steps to ensure that the places where you or your loved ones spend time support health and well-being. This is where an air purifier becomes essential in maintaining clean, high-quality indoor air. In fact, Dr. Priya Bansal*, a triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center believes that air purifiers should be part of a whole-house strategy for people with conditions such as allergies or asthma, as they can help reduce the number of triggers that can cause symptoms to flare up.</p><p>We’re deeply committed to helping you in this pursuit, so let’s take some time to understand how an air purifier can improve your home's ability to reduce pollutants while enhancing overall well-being and comfort for those with a medical condition.</p>",
             "richtext_style": "p2"
           }
         },
@@ -37,8 +46,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify:\/\/shop_images\/medicalCondition-image1mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/medicalCondition-image1.webp",
+            "image": "shopify://shop_images/medicalCondition-image1mob.png",
+            "image_desktop": "shopify://shop_images/medicalCondition-image1.webp",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -56,7 +65,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h5>Medical conditions and filtration technology <\/h5><p>While an air purifier's overall ability to filter the air is essential for any household, individuals with asthma and allergies need to have a filtration system in their air purifier that can capture miniscule particles of pollen, dust, and other pollutants.<\/p><p>Mold spores are also incredibly small, about 3 to 40 microns in size, and can be present in damp areas. It's crucial for filtration systems to effectively eliminate particles of this size and smaller to ensure clean air, especially for individuals with respiratory conditions.<\/p><p>Individuals with Chronic Obstructive Pulmonary Disease (or COPD) need to limit exposure to airborne irritants and pollutants as well, especially dust and smoke. This makes any air purifier’s ability to significantly lower the concentration of such contaminants an important factor when understanding and assessing its filtration technology.<\/p><p>Airborne particles aren’t the only adversaries for those living with medical conditions. Sensitivities to airborne gasses, tobacco and wildfire smoke, and Volatile Organic Compounds (or VOCs), can also be challenging. This is where air purifiers with activated carbon filters can be particularly effective, allowing them to create a safer, more environmentally friendly home.<\/p><p>You’ll be happy to know that your solution to finding the best filtration technology in the pursuit of a healthier home is right here at Blueair. In fact, all Blueair air purifiers come with groundbreaking HEPAsilent™ filtration technology that combines mechanical and electrostatic filtration to maximize particle removal. This engineering achievement is able to remove 99.97% of airborne particles1 as small as 0.1 microns2. Many of our air filters feature activated carbon as well, making them beneficial for ridding the air of gasses and VOCs.<\/p>",
+            "richtext": "<h5>Medical conditions and filtration technology </h5><p>While an air purifier's overall ability to filter the air is essential for any household, individuals with asthma and allergies need to have a filtration system in their air purifier that can capture miniscule particles of pollen, dust, and other pollutants.</p><p>Mold spores are also incredibly small, about 3 to 40 microns in size, and can be present in damp areas. It's crucial for filtration systems to effectively eliminate particles of this size and smaller to ensure clean air, especially for individuals with respiratory conditions.</p><p>Individuals with Chronic Obstructive Pulmonary Disease (or COPD) need to limit exposure to airborne irritants and pollutants as well, especially dust and smoke. This makes any air purifier’s ability to significantly lower the concentration of such contaminants an important factor when understanding and assessing its filtration technology.</p><p>Airborne particles aren’t the only adversaries for those living with medical conditions. Sensitivities to airborne gasses, tobacco and wildfire smoke, and Volatile Organic Compounds (or VOCs), can also be challenging. This is where air purifiers with activated carbon filters can be particularly effective, allowing them to create a safer, more environmentally friendly home.</p><p>You’ll be happy to know that your solution to finding the best filtration technology in the pursuit of a healthier home is right here at Blueair. In fact, all Blueair air purifiers come with groundbreaking HEPAsilent™ filtration technology that combines mechanical and electrostatic filtration to maximize particle removal. This engineering achievement is able to remove 99.97% of airborne particles1 as small as 0.1 microns2. Many of our air filters feature activated carbon as well, making them beneficial for ridding the air of gasses and VOCs.</p>",
             "richtext_style": "p2"
           }
         },
@@ -72,9 +81,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper_mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_7.webp",
-            "caption": "<p>Above: Blueair<span style=\"text-decoration:underline\"><strong> ComfortPure™ 3-in-1<\/strong><\/span> Air Purifier in a small sized living room.<\/p>",
+            "image": "shopify://shop_images/Image_Ratio_Keeper_mob.png",
+            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_7.webp",
+            "caption": "<p>Above: Blueair<span style=\"text-decoration:underline\"><strong> ComfortPure™ 3-in-1</strong></span> Air Purifier in a small sized living room.</p>",
             "caption_style": "p6",
             "product": "3in1-air-purifier-t10i"
           }
@@ -91,7 +100,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Assessing air purifiers for better health<\/h4><p>We’ve made reviewing air purifier specifications easy, but there are still some misconceptions and common things to avoid when purchasing an air purifier. This becomes especially important when choosing one for its ability to address the specific needs of living with a medical condition. You can do this with three simple but vital considerations.<\/p><p>The first is coverage. Matching room size to an air purifier’s capabilities is essential. Blueair offers a range of models designed for various room sizes, ensuring effective air purification. Check out our helpful room size guide if you’re not sure how to measure the size of a space.<\/p><p>The next is how often the air in a given sized space will be refreshed in a single hour. This is called Air Changes per Hour (or ACH). This rating is particularly important for individuals with allergies or respiratory conditions, as a higher ACH ensures a continuous supply of fresh air more often.<\/p><p>Lastly, Clean Air Delivery Rate (or CADR) measures an air purifier's ability to remove three specific pollutants: dust, pollen, and smoke. CADR is measured in Cubic Feet per Minute (or CFM). A higher CADR rating indicates a higher volume of air is treated for a specific contaminant every minute, which can be especially helpful for those of us living with a medical condition who might be more sensitive to one pollutant over another. By reviewing CADR you can choose an air purifier based on the needs of your home, and the people in it.<\/p>",
+            "richtext": "<h4>Assessing air purifiers for better health</h4><p>We’ve made reviewing air purifier specifications easy, but there are still some misconceptions and common things to avoid when purchasing an air purifier. This becomes especially important when choosing one for its ability to address the specific needs of living with a medical condition. You can do this with three simple but vital considerations.</p><p>The first is coverage. Matching room size to an air purifier’s capabilities is essential. Blueair offers a range of models designed for various room sizes, ensuring effective air purification. Check out our helpful room size guide if you’re not sure how to measure the size of a space.</p><p>The next is how often the air in a given sized space will be refreshed in a single hour. This is called Air Changes per Hour (or ACH). This rating is particularly important for individuals with allergies or respiratory conditions, as a higher ACH ensures a continuous supply of fresh air more often.</p><p>Lastly, Clean Air Delivery Rate (or CADR) measures an air purifier's ability to remove three specific pollutants: dust, pollen, and smoke. CADR is measured in Cubic Feet per Minute (or CFM). A higher CADR rating indicates a higher volume of air is treated for a specific contaminant every minute, which can be especially helpful for those of us living with a medical condition who might be more sensitive to one pollutant over another. By reviewing CADR you can choose an air purifier based on the needs of your home, and the people in it.</p>",
             "richtext_style": "p2"
           }
         },
@@ -127,9 +136,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/bluepure-311i-max-medium-room_mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/bluepure-311i-max-medium-room_mob.png",
-            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>Blue Pure 311i Max <\/strong><\/span>purifier with Allergenblock filter at use in a medium sized room.<\/p>",
+            "image": "shopify://shop_images/bluepure-311i-max-medium-room_mob.png",
+            "image_desktop": "shopify://shop_images/bluepure-311i-max-medium-room_mob.png",
+            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>Blue Pure 311i Max </strong></span>purifier with Allergenblock filter at use in a medium sized room.</p>",
             "caption_style": "p6",
             "product": "blue-pure-311i-plus-max"
           }
@@ -146,7 +155,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Additional features for medical conditions<\/h4><p>In addition to advanced filtration technology, there are a few operating features that can be especially helpful when it comes to selecting an air purifier for a home where someone with a medical condition might be residing.<\/p><p>Specialized replacement filters that are designed with enhanced protection against specific pollutants can be a beneficial consideration for homes in areas with high levels of pollution or anyone living with a medical condition.<\/p><p>Smart features and sensors that allow an air purifier to automatically adjust its fan speed based on the air quality in your home help to ensure the air is being treated according to the level of toxins in the air. It also enables more energy-efficient operation.<\/p><p>Air quality monitoring and reporting capabilities allow you to conveniently check on the quality of the air in your home. This can be helpful for those of us who can’t second guess what might be in the air. It’s even better if this information is available on a mobile device, allowing you to monitor your air quality from anywhere.<\/p><p>Different operating modes and settings that control an air purifier’s fan and display are great for different times of day or different types of rooms you may be treating. For those of us with children, a child lock that keeps the air purifier operating without disruption is also a helpful feature to look out for.<\/p>",
+            "richtext": "<h4>Additional features for medical conditions</h4><p>In addition to advanced filtration technology, there are a few operating features that can be especially helpful when it comes to selecting an air purifier for a home where someone with a medical condition might be residing.</p><p>Specialized replacement filters that are designed with enhanced protection against specific pollutants can be a beneficial consideration for homes in areas with high levels of pollution or anyone living with a medical condition.</p><p>Smart features and sensors that allow an air purifier to automatically adjust its fan speed based on the air quality in your home help to ensure the air is being treated according to the level of toxins in the air. It also enables more energy-efficient operation.</p><p>Air quality monitoring and reporting capabilities allow you to conveniently check on the quality of the air in your home. This can be helpful for those of us who can’t second guess what might be in the air. It’s even better if this information is available on a mobile device, allowing you to monitor your air quality from anywhere.</p><p>Different operating modes and settings that control an air purifier’s fan and display are great for different times of day or different types of rooms you may be treating. For those of us with children, a child lock that keeps the air purifier operating without disruption is also a helpful feature to look out for.</p>",
             "richtext_style": "p2"
           }
         },
@@ -182,9 +191,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/Image_4_3mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/Image_4_3.webp",
-            "caption": "<p>Above: A visual representation of GermShield™ technology.<\/p>",
+            "image": "shopify://shop_images/Image_4_3mob.png",
+            "image_desktop": "shopify://shop_images/Image_4_3.webp",
+            "caption": "<p>Above: A visual representation of GermShield™ technology.</p>",
             "caption_style": "p6",
             "product": ""
           }
@@ -201,7 +210,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>For protection against germs and bacteria<\/h4><p>The Blueair Protect 7470i is worth a look because of its unique GermShield™ technology, which actively prevents the growth of bacteria and viruses3. It’s an excellent choice for homes where people living there might have compromised immune systems. Its premium LCD display delivers detailed info on a home’s air quality, so you’re always reassured. When used in conjunction with the Blueair app you’re informed from any location about the air quality at home, both indoors and outdoors.<\/p>",
+            "richtext": "<h4>For protection against germs and bacteria</h4><p>The Blueair Protect 7470i is worth a look because of its unique GermShield™ technology, which actively prevents the growth of bacteria and viruses3. It’s an excellent choice for homes where people living there might have compromised immune systems. Its premium LCD display delivers detailed info on a home’s air quality, so you’re always reassured. When used in conjunction with the Blueair app you’re informed from any location about the air quality at home, both indoors and outdoors.</p>",
             "richtext_style": "p2"
           }
         },
@@ -237,9 +246,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/protect-7470i-large-room_1mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/protect-7470i-large-room.png",
-            "caption": "<p>Above: Blueair <span style=\"text-decoration:underline\"><strong>Protect 7470i <\/strong><\/span>air purifier at use in a large bedroom<\/p>",
+            "image": "shopify://shop_images/protect-7470i-large-room_1mob.png",
+            "image_desktop": "shopify://shop_images/protect-7470i-large-room.png",
+            "caption": "<p>Above: Blueair <span style=\"text-decoration:underline\"><strong>Protect 7470i </strong></span>air purifier at use in a large bedroom</p>",
             "caption_style": "p6",
             "product": "refurbished-protect-7470i"
           }
@@ -256,7 +265,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Professional grade air purification<\/h4><p>If you’re looking for an air purifier that’s ideal for combatting pollen, dust, and smoke, the Classic 605 is impressive. It actually has one of the highest CADR ratings among all of our award winning air purifiers, especially for pollen. It’s durable, and has wheels so it can easily be moved from place to place, and comes with Wi-Fi capabilities that allow it to be used with the Blueair app as well, which provides a variety of intuitive app-only features.<\/p>",
+            "richtext": "<h4>Professional grade air purification</h4><p>If you’re looking for an air purifier that’s ideal for combatting pollen, dust, and smoke, the Classic 605 is impressive. It actually has one of the highest CADR ratings among all of our award winning air purifiers, especially for pollen. It’s durable, and has wheels so it can easily be moved from place to place, and comes with Wi-Fi capabilities that allow it to be used with the Blueair app as well, which provides a variety of intuitive app-only features.</p>",
             "richtext_style": "p2"
           }
         },
@@ -272,9 +281,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/311iMax-large-kitchen_mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/311iMax-large-kitchen_mob.png",
-            "caption": "<p>Above: <span style=\"text-decoration:underline\"><strong>The Blue Pure 311i+ Max <\/strong><\/span>air purifier at use in a large kitchen refreshes the indoor air from food odors and VOCs.<\/p>",
+            "image": "shopify://shop_images/311iMax-large-kitchen_mob.png",
+            "image_desktop": "shopify://shop_images/311iMax-large-kitchen_mob.png",
+            "caption": "<p>Above: <span style=\"text-decoration:underline\"><strong>The Blue Pure 311i+ Max </strong></span>air purifier at use in a large kitchen refreshes the indoor air from food odors and VOCs.</p>",
             "caption_style": "p6",
             "product": "blue-pure-311i-plus-max"
           }
@@ -291,7 +300,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Treating gasses, odors, and VOCs<\/h4><p>For large, high-functioning spaces, like kitchens, where a lot of cooking and cleaning takes place, check out the Blue Pure 211i Max. With powerful filtration and activated carbon filters designed to tackle odors and VOCs, the Blue Pure 211i Max can completely refresh the air in a large, 1500 square foot space, every 30 minutes. When placed in a 635 square root room the air can be cleaned every 12.5 minutes. When the kitchen’s closed, auto sensors can adapt fan speeds and settings accordingly, so you’re not wasting energy.<\/p>",
+            "richtext": "<h4>Treating gasses, odors, and VOCs</h4><p>For large, high-functioning spaces, like kitchens, where a lot of cooking and cleaning takes place, check out the Blue Pure 211i Max. With powerful filtration and activated carbon filters designed to tackle odors and VOCs, the Blue Pure 211i Max can completely refresh the air in a large, 1500 square foot space, every 30 minutes. When placed in a 635 square root room the air can be cleaned every 12.5 minutes. When the kitchen’s closed, auto sensors can adapt fan speeds and settings accordingly, so you’re not wasting energy.</p>",
             "richtext_style": "p2"
           }
         },
@@ -307,9 +316,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/Image_4_3_1_mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/Image_4_3_1_mob.png",
-            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>Blue Pure 411i Max <\/strong><\/span>purifier at use in a small sized bedroom.<\/p>",
+            "image": "shopify://shop_images/Image_4_3_1_mob.png",
+            "image_desktop": "shopify://shop_images/Image_4_3_1_mob.png",
+            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>Blue Pure 411i Max </strong></span>purifier at use in a small sized bedroom.</p>",
             "caption_style": "p6",
             "product": "blue-pure-211i-max"
           }
@@ -326,7 +335,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Added protection while sleeping<\/h4><p>The Blue Pure 411i Max has many of the same capabilities as its bigger sibling, but is better suited to smaller spaces, like a bedroom. Both come with a night mode that operates quietly and without disruptive lights for a restful night of sleep. Even better, both are certified by QuietMark⁴ for their unintrusive operation.<\/p><p>What’s also great about the Blue Pure 211i and 411i Max for anyone who might be living with a medical condition are the specialized filters we designed for these and other Blue Pure purifiers. AllergenBlock™ and SmokeBlock™ filters provide added protection against irritating allergens or smoke.<\/p>",
+            "richtext": "<h4>Added protection while sleeping</h4><p>The Blue Pure 411i Max has many of the same capabilities as its bigger sibling, but is better suited to smaller spaces, like a bedroom. Both come with a night mode that operates quietly and without disruptive lights for a restful night of sleep. Even better, both are certified by QuietMark⁴ for their unintrusive operation.</p><p>What’s also great about the Blue Pure 211i and 411i Max for anyone who might be living with a medical condition are the specialized filters we designed for these and other Blue Pure purifiers. AllergenBlock™ and SmokeBlock™ filters provide added protection against irritating allergens or smoke.</p>",
             "richtext_style": "p2"
           }
         },
@@ -342,9 +351,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/app-real-track_mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/app-real-track.webp",
-            "caption": "<p>Above: A look into Blueair app with RealTrack technology that monitors filter status and remind you when it’s time to change.<\/p>",
+            "image": "shopify://shop_images/app-real-track_mob.png",
+            "image_desktop": "shopify://shop_images/app-real-track.webp",
+            "caption": "<p>Above: A look into Blueair app with RealTrack technology that monitors filter status and remind you when it’s time to change.</p>",
             "caption_style": "p6",
             "product": ""
           }
@@ -361,7 +370,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Tips for getting the most out of your air purifier<\/h4><p>Once you’ve decided on an air purifier and it arrives in your home, be sure to place it in an unobstructed and centrally located area so it can deliver optimal air cleaning.<\/p><p>Keep your air purifier running efficiently with regular filter replacements. Our RealTrack technology monitors filter status and reminds you when it’s time for a change. Our subscription service sends new filters to your door so that you always get a new one right when you should.<\/p><p>Once you’re breathing easy, be sure to take advantage of your air purifier’s scheduling capabilities so it’s always preparing the air for you based on the times you need it most. You’ll be happy to know that many of our air purifiers come with this intuitive feature.<\/p>",
+            "richtext": "<h4>Tips for getting the most out of your air purifier</h4><p>Once you’ve decided on an air purifier and it arrives in your home, be sure to place it in an unobstructed and centrally located area so it can deliver optimal air cleaning.</p><p>Keep your air purifier running efficiently with regular filter replacements. Our RealTrack technology monitors filter status and reminds you when it’s time for a change. Our subscription service sends new filters to your door so that you always get a new one right when you should.</p><p>Once you’re breathing easy, be sure to take advantage of your air purifier’s scheduling capabilities so it’s always preparing the air for you based on the times you need it most. You’ll be happy to know that many of our air purifiers come with this intuitive feature.</p>",
             "richtext_style": "p2"
           }
         },
@@ -377,9 +386,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify:\/\/shop_images\/dust-magnet-5440i-office-room.webp",
-            "image_desktop": "shopify:\/\/shop_images\/dust-magnet-5440i-office-room.webp",
-            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>DustMagnet™ 5440i <\/strong><\/span>in office room.<\/p>",
+            "image": "shopify://shop_images/dust-magnet-5440i-office-room.webp",
+            "image_desktop": "shopify://shop_images/dust-magnet-5440i-office-room.webp",
+            "caption": "<p>Above: The <span style=\"text-decoration:underline\"><strong>DustMagnet™ 5440i </strong></span>in office room.</p>",
             "caption_style": "p6",
             "product": "dustmagnet-combofilter-5201"
           }
@@ -396,7 +405,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Living with the benefits of better air<\/h4><p>We’re glad that you’re pursuing pristine air with an air purifier tailored to your health needs. With an understanding of indoor pollutants and how to choose an air purifier to combat them, you’ve now taken an important, proactive step to better health and well-being.<br\/><br\/><\/p><p><strong>Disclaimer:<\/strong><\/p><p>¹ Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blueair models achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary.<\/p><p>² Tested on PM2.5 (0.1 - 2.5 μm) up to 90min.<\/p><p>³ When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.<\/p><p>* Dr. Bansal is a Blueair sponsored partner<\/p><p>⁴ Dr. Bansal's review pertains to Blue Pure 411i Max and Blue Pure 311i+ Max models<\/p><p>⁵ 24\/7 protection refers to the key function of GermShield technology, activated when the unit is in standby mode. Tested on Staphylococcus Albus, MS2 bacteriophage (deactivation) and E. coli (growth prevention).<\/p><p>⁶ Quietest refers to eligibility for Quiet Mark certification, limited to 10-20% of quietest products. See https:\/\/www.quietmark.com\/ for further information<\/p>",
+            "richtext": "<h4>Living with the benefits of better air</h4><p>We’re glad that you’re pursuing pristine air with an air purifier tailored to your health needs. With an understanding of indoor pollutants and how to choose an air purifier to combat them, you’ve now taken an important, proactive step to better health and well-being.<br/><br/></p><p><strong>Disclaimer:</strong></p><p>¹ Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blueair models achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary.</p><p>² Tested on PM2.5 (0.1 - 2.5 μm) up to 90min.</p><p>³ When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.</p><p>* Dr. Bansal is a Blueair sponsored partner</p><p>⁴ Dr. Bansal's review pertains to Blue Pure 411i Max and Blue Pure 311i+ Max models</p><p>⁵ 24/7 protection refers to the key function of GermShield technology, activated when the unit is in standby mode. Tested on Staphylococcus Albus, MS2 bacteriophage (deactivation) and E. coli (growth prevention).</p><p>⁶ Quietest refers to eligibility for Quiet Mark certification, limited to 10-20% of quietest products. See https://www.quietmark.com/ for further information</p>",
             "richtext_style": "p2"
           }
         }
@@ -466,7 +475,7 @@
         "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
-        "url": "shopify:\/\/blogs\/news",
+        "url": "shopify://blogs/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",

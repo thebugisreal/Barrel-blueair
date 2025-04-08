@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -32,12 +41,11 @@
         },
         "star_rating_rYzLXJ": {
           "type": "star_rating",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
+            "margin_bottom_mobile": "mb-sm",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0"
+            "margin_bottom_desktop": "desktop:mb-sm"
           }
         },
         "filter_options_XPQVUh": {
@@ -87,11 +95,11 @@
             "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "icon_1_image": "shopify:\/\/shop_images\/icon-shipping.png",
+            "icon_1_image": "shopify://shop_images/icon-shipping.png",
             "icon_1_text": "Free and fast shipping",
-            "icon_2_image": "shopify:\/\/shop_images\/icon-trial.png",
+            "icon_2_image": "shopify://shop_images/icon-trial.png",
             "icon_2_text": "60 day home trial",
-            "icon_3_image": "shopify:\/\/shop_images\/icon-warranty.png",
+            "icon_3_image": "shopify://shop_images/icon-warranty.png",
             "icon_3_text": "Free extended warranty"
           }
         },
@@ -230,7 +238,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https:\/\/player.vimeo.com\/video\/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"><\/iframe><\/div><script src=\"https:\/\/player.vimeo.com\/api\/player.js\"><\/script>"
+        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>"
       }
     },
     "product_brands_3gV3EU": {
@@ -280,7 +288,6 @@
     },
     "product_tech_specs_jEUNXD": {
       "type": "product__tech-specs",
-      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -342,6 +349,21 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px"
       }
+    },
+    "bazaarvoice_reviews_g6D6HN": {
+      "type": "bazaarvoice__reviews",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "100%",
+        "color": "text-blue"
+      }
     }
   },
   "order": [
@@ -359,6 +381,7 @@
     "product_tech_specs_jEUNXD",
     "product_accordion_6QWP9F",
     "product_footnotes_izYTTQ",
-    "product_related_products_8Pzzge"
+    "product_related_products_8Pzzge",
+    "bazaarvoice_reviews_g6D6HN"
   ]
 }

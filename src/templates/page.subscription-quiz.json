@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,7 +16,7 @@
           "type": "family",
           "settings": {
             "title": "Blue Pure Max",
-            "image": "shopify:\/\/shop_images\/Blue_Pure_Max_8fa8a8f5-a7b1-4a7e-8b0f-e74b1abf79b1.png",
+            "image": "shopify://shop_images/Blue_Pure_Max_8fa8a8f5-a7b1-4a7e-8b0f-e74b1abf79b1.png",
             "series": [
               "211-i-max",
               "311-i-max-1",
@@ -23,7 +32,7 @@
           "type": "family",
           "settings": {
             "title": "ComfortPure™ 3-in-1",
-            "image": "shopify:\/\/shop_images\/3in1_fb0a6c31-1780-4f9f-bd1e-c0c26fac1dae.png",
+            "image": "shopify://shop_images/3in1_fb0a6c31-1780-4f9f-bd1e-c0c26fac1dae.png",
             "series": [
               "t-10-i",
               "t-20-i"
@@ -34,7 +43,7 @@
           "type": "family",
           "settings": {
             "title": "2-in-1 Purify + Humidify",
-            "image": "shopify:\/\/shop_images\/2in1_991e645e-c4af-4927-a3bb-424698104295.png",
+            "image": "shopify://shop_images/2in1_991e645e-c4af-4927-a3bb-424698104295.png",
             "series": [
               "dh-3-i"
             ]
@@ -44,7 +53,7 @@
           "type": "family",
           "settings": {
             "title": "Humidifier",
-            "image": "shopify:\/\/shop_images\/Humidifier_f01530b5-a039-449c-9b1d-6fb07705f7bc.png",
+            "image": "shopify://shop_images/Humidifier_f01530b5-a039-449c-9b1d-6fb07705f7bc.png",
             "series": [
               "h-35-i"
             ]
@@ -54,7 +63,7 @@
           "type": "family",
           "settings": {
             "title": "Classic Pro",
-            "image": "shopify:\/\/shop_images\/subscription-classic-pro.png",
+            "image": "shopify://shop_images/subscription-classic-pro.png",
             "series": [
               "cp-7-i"
             ]
@@ -64,7 +73,7 @@
           "type": "family",
           "settings": {
             "title": "Blue Pure",
-            "image": "shopify:\/\/shop_images\/Blue_Pure_ef2c7249-2623-4a26-9132-9090d8cfadcc.png",
+            "image": "shopify://shop_images/Blue_Pure_ef2c7249-2623-4a26-9132-9090d8cfadcc.png",
             "series": [
               "121",
               "211-211",
@@ -82,7 +91,7 @@
           "type": "family",
           "settings": {
             "title": "DustMagnet",
-            "image": "shopify:\/\/shop_images\/DustMagnet-1.png",
+            "image": "shopify://shop_images/DustMagnet-1.png",
             "series": [
               "5200-series",
               "5400-series"
@@ -93,7 +102,7 @@
           "type": "family",
           "settings": {
             "title": "Protect",
-            "image": "shopify:\/\/shop_images\/Protect_9445ff3f-e2d8-4605-b850-efa78af5ecf0.png",
+            "image": "shopify://shop_images/Protect_9445ff3f-e2d8-4605-b850-efa78af5ecf0.png",
             "series": [
               "7400-series",
               "7700-series"
@@ -104,7 +113,7 @@
           "type": "family",
           "settings": {
             "title": "Classic",
-            "image": "shopify:\/\/shop_images\/Classic_fa283a1d-f7a3-42f0-8149-41efcaf2425c.png",
+            "image": "shopify://shop_images/Classic_fa283a1d-f7a3-42f0-8149-41efcaf2425c.png",
             "series": [
               "100-series",
               "200-300-series",
@@ -117,7 +126,7 @@
           "type": "family",
           "settings": {
             "title": "Pro",
-            "image": "shopify:\/\/shop_images\/Pro_5e6bcfd9-c5ac-4e7b-a05f-7686aad046ac.png",
+            "image": "shopify://shop_images/Pro_5e6bcfd9-c5ac-4e7b-a05f-7686aad046ac.png",
             "series": [
               "m",
               "l",
@@ -129,7 +138,7 @@
           "type": "family",
           "settings": {
             "title": "Sense+",
-            "image": "shopify:\/\/shop_images\/Sense_51017d56-a899-46a4-925a-382e754a7cef.png",
+            "image": "shopify://shop_images/Sense_51017d56-a899-46a4-925a-382e754a7cef.png",
             "series": [
               "sense-sense"
             ]
@@ -154,7 +163,7 @@
         "step_2_heading": "Select your model",
         "step_3_heading": "Select a filter",
         "step_4_heading": "Select a shipment frequency",
-        "policy_link": "shopify:\/\/pages\/terms-of-sale"
+        "policy_link": "shopify://pages/terms-of-sale"
       }
     },
     "section_image_text_7QycpC": {
@@ -169,11 +178,11 @@
         "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/ClassicPro_desktop.png",
+        "image_mobile": "shopify://shop_images/512_b1ffca4f-0c5a-46db-85bd-133c92afe2a5.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
-        "title": "Not sure which <br> device you own?",
+        "title": "Not sure which  device you own?",
         "title_style": "h3",
         "subtext": "Find your model number and name <br> on the label inside of your device",
         "subtext_style": "s3",

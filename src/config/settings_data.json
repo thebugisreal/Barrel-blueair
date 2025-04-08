@@ -1,10 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "newsletter_heading": "Already Subscribed",
-    "newsletter_text": "<p><strong>You are currently subscribed to receive our marketing emails.<\/strong><\/p><p>Click Unsubscribe to be removed from our marketing emails list.<\/p>",
+    "newsletter_text": "<p><strong>You are currently subscribed to receive our marketing emails.</strong></p><p>Click Unsubscribe to be removed from our marketing emails list.</p>",
     "newsletter_cta_text": "",
-    "add_subscription_url": "shopify:\/\/pages\/subscribe-quiz",
-    "start_return_url": "https:\/\/returns.narvar.com\/blueair\/returns?locale=en_US",
+    "add_subscription_url": "shopify://pages/subscribe-quiz",
+    "start_return_url": "https://returns.narvar.com/blueair/returns?locale=en_US",
     "shipping_threshold_enabled": true,
     "shipping_threshold": 5000,
     "gwp_threshold": 0,
@@ -12,23 +21,24 @@
     "gwp2": "",
     "upsell_1": "blue-pure-311i-max",
     "upsell_2": "blue-pure-311-auto-pre-filter",
-    "cart_cta_url_1": "shopify:\/\/pages\/guided-selling",
+    "cart_cta_url_1": "shopify://pages/guided-selling",
     "cart_cta_text_1": "Take the Quiz",
-    "cart_cta_url_2": "shopify:\/\/collections\/sale",
+    "cart_cta_url_2": "shopify://collections/sale",
     "cart_cta_text_2": "Shop Sales",
     "plp_num_cols_mobile": "grid-cols-1",
     "popular_searches": "seed-popular-searches",
-    "quiz_image": "shopify:\/\/shop_images\/seed-callout-quiz-mobile.png",
-    "quiz_link_url": "shopify:\/\/pages\/guided-selling",
-    "bcorp_link_url": "https:\/\/www.bcorporation.net\/en-us\/",
-    "app_store_url_mobile": "https:\/\/apps.apple.com\/us\/app\/blueair-friend\/id1016299342",
-    "app_store_url_desktop": "https:\/\/apps.apple.com\/us\/app\/blueair-friend\/id1016299342",
-    "google_play_url_mobile": "https:\/\/play.google.com\/store\/apps\/details?id=com.blueair.android&hl=en_US",
-    "google_play_url_desktop": "https:\/\/play.google.com\/store\/apps\/details?id=com.blueair.android",
-    "social_instagram": "https:\/\/www.instagram.com\/blueairus\/",
-    "social_facebook": "https:\/\/www.facebook.com\/BlueairUS",
-    "social_tiktok": "https:\/\/www.tiktok.com\/@blueair",
-    "social_linkedin": "https:\/\/www.linkedin.com\/company\/blueair\/",
+    "quiz_image": "shopify://shop_images/seed-callout-quiz-mobile.png",
+    "quiz_link_url": "shopify://pages/guided-selling",
+    "bcorp_link_url": "https://www.bcorporation.net/en-us/",
+    "app_store_url_mobile": "https://apps.apple.com/us/app/blueair-friend/id1016299342",
+    "app_store_url_desktop": "https://apps.apple.com/us/app/blueair-friend/id1016299342",
+    "google_play_url_mobile": "https://play.google.com/store/apps/details?id=com.blueair.android&hl=en_US",
+    "google_play_url_desktop": "https://play.google.com/store/apps/details?id=com.blueair.android",
+    "social_instagram": "https://www.instagram.com/blueairus/",
+    "social_facebook": "https://www.facebook.com/BlueairUS",
+    "social_tiktok": "https://www.tiktok.com/@blueair",
+    "social_linkedin": "https://www.linkedin.com/company/blueair/",
+    "favicon": "shopify://shop_images/download.png",
     "sections": {
       "header": {
         "type": "header",
@@ -44,7 +54,7 @@
             "type": "announcement",
             "settings": {
               "announcement": "60-Day Home Trial | Free Extended Warranty",
-              "url": "shopify:\/\/pages\/warranty"
+              "url": "shopify://pages/warranty"
             }
           }
         },
@@ -78,7 +88,7 @@
           "padding_top_desktop": "desktop:pt-xxl",
           "padding_bottom_desktop": "desktop:pb-xxl",
           "max_width_desktop": "",
-          "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"><\/div>",
+          "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"></div>",
           "title": "Sign up to receive exclusive offers, updates, and more",
           "title_style": "h3",
           "color": "bg-blue-light text-blue"
@@ -88,12 +98,12 @@
     "content_for_index": [],
     "blocks": {
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
       },
       "7079518687644006178": {
-        "type": "shopify:\/\/apps\/checkout-blocks\/blocks\/app-embed\/b0024ca5-9de8-4bf0-a92f-cd0783877ae2",
+        "type": "shopify://apps/checkout-blocks/blocks/app-embed/b0024ca5-9de8-4bf0-a92f-cd0783877ae2",
         "disabled": false,
         "settings": {
           "utm_id": true,
@@ -105,12 +115,17 @@
         }
       },
       "2809662434511621298": {
-        "type": "shopify:\/\/apps\/ordergroove-subscriptions\/blocks\/main-app-embed\/cf69fc68-e893-4d33-87e3-4e71e2f5822f",
+        "type": "shopify://apps/ordergroove-subscriptions/blocks/main-app-embed/cf69fc68-e893-4d33-87e3-4e71e2f5822f",
         "disabled": false,
         "settings": {}
       },
       "15685250022964305326": {
-        "type": "shopify:\/\/apps\/elevar-conversion-tracking\/blocks\/dataLayerEmbed\/bc30ab68-b15c-4311-811f-8ef485877ad6",
+        "type": "shopify://apps/elevar-conversion-tracking/blocks/dataLayerEmbed/bc30ab68-b15c-4311-811f-8ef485877ad6",
+        "disabled": false,
+        "settings": {}
+      },
+      "1291562577487733835": {
+        "type": "shopify://apps/black-crow-ai-that-delivers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
         "disabled": false,
         "settings": {}
       }

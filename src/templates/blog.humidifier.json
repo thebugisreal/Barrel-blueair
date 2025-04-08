@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "search": {
@@ -12,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -28,7 +37,7 @@
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify:\/\/shop_images\/Group_48097731.svg",
+            "image": "shopify://shop_images/Group_48097731.svg",
             "svg_html": ""
           }
         },
@@ -37,7 +46,7 @@
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
-            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
+            "image": "shopify://shop_images/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -46,7 +55,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
+            "image": "shopify://shop_images/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -55,7 +64,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify:\/\/shop_images\/Group_48097729.svg",
+            "image": "shopify://shop_images/Group_48097729.svg",
             "svg_html": ""
           }
         }
@@ -186,13 +195,13 @@
           "type": "block",
           "settings": {
             "title": "Humidifier H35i",
-            "image": "shopify:\/\/shop_images\/support-humidifier.png",
+            "image": "shopify://shop_images/support-humidifier.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/h35i-humidifier-manual-english-12.23.24.pdf?v=1740162908",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/h35i-humidifier-manual-english-12.23.24.pdf?v=1740162908",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/humidifier"
+            "product_link_url": "shopify://collections/humidifier"
           }
         }
       },
@@ -417,7 +426,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

@@ -1,18 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "parent": "index.json",
   "context": {
     "market": "africa"
   },
   "sections": {
-    "section_hotspot_67Pgmf": {
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_url": "shopify:\/\/collections\/air-purifiers",
+        "cta_text": "Explore"
+      },
+      "blocks": {}
+    },
+    "section_icons_BHyffr": {
+      "disabled": true,
       "settings": {},
-      "blocks": {},
+      "blocks": {}
+    },
+    "section_content_panels_RLhBrA": {
+      "settings": {},
+      "blocks": {
+        "customization_kjnCLm": {
+          "settings": {
+            "cta_text": "Explore"
+          }
+        },
+        "customization_JmCjcD": {
+          "settings": {
+            "cta_text": "Explore"
+          }
+        },
+        "customization_AnNMyD": {
+          "settings": {
+            "cta_text": "Coming Soon"
+          }
+        },
+        "customization_hcRJgQ": {
+          "settings": {
+            "cta_text": "Coming Soon"
+          }
+        }
+      },
       "block_order": [
-        "hotspot_Xejpjp",
-        "hotspot_cYjhp8",
-        "hotspot_7LK8a3",
-        "hotspot_Xd9PYn",
-        "hotspot_Y7NDEk"
+        "customization_kjnCLm",
+        "customization_JmCjcD",
+        "customization_AnNMyD",
+        "customization_hcRJgQ"
       ]
     },
     "section_image_text_J44nHk": {
@@ -25,9 +68,27 @@
       "settings": {},
       "blocks": {}
     },
-    "section_icons_BHyffr": {
+    "section_hotspot_67Pgmf": {
+      "settings": {},
+      "blocks": {},
+      "block_order": [
+        "hotspot_Xejpjp",
+        "hotspot_cYjhp8",
+        "hotspot_7LK8a3",
+        "hotspot_Xd9PYn",
+        "hotspot_Y7NDEk"
+      ]
+    },
+    "section_product_grid_mkajCi": {
       "disabled": true,
       "settings": {},
+      "blocks": {}
+    },
+    "section_text_banner_KHYtRe": {
+      "disabled": true,
+      "settings": {
+        "title": "Explore our best-sellers"
+      },
       "blocks": {}
     }
   },

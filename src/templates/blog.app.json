@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "search": {
@@ -12,48 +21,25 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/faq-hero-mobile.png",
-        "image_desktop": "shopify:\/\/shop_images\/faq-hero-desktop.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_3b3f198c-30bf-4562-8857-8f757e1da372.png",
+        "image_desktop": "shopify://shop_images/business_desktop_3b83682b-612b-4d91-93a8-6249844e7c9b.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
         "title_style": "h2"
       }
     },
-    "section_page_hero_cxnYX8": {
-      "type": "section__page-hero",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "color": "text-blue",
-        "title": "Your connection to clean \u2028air, in every room",
-        "title_style": "h2",
-        "subtext": "Where to download:",
-        "subtext_style": "h5",
-        "max_width_desktop": "109ch",
-        "max_width_section_desktop": "1440px",
-        "image_desktop": "shopify:\/\/shop_images\/blueair-app-qrcode.png",
-        "caption": "Scan to download the app",
-        "caption_style": "p2"
-      }
-    },
     "section_text_banner_BPtQwb": {
       "type": "section__text-banner",
       "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
+        "margin_top_mobile": "mt-xxl",
+        "margin_bottom_mobile": "mb-xl",
         "padding_top_mobile": "pt-0",
         "padding_bottom_mobile": "pb-0",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xl",
         "max_width_desktop": "80ch",
         "color": "bg-white text-blue",
         "image_position_desktop": "desktop:order-first",
@@ -415,6 +401,29 @@
         "title_style": "h4"
       }
     },
+    "section_page_hero_cxnYX8": {
+      "type": "section__page-hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "text-blue",
+        "title": "Click below or scan to download",
+        "title_style": "h4",
+        "subtext": "",
+        "subtext_style": "h5",
+        "max_width_desktop": "109ch",
+        "max_width_section_desktop": "1440px",
+        "image_desktop": "shopify://shop_images/blueair-app-qrcode.png",
+        "caption": "Scan to download the app",
+        "caption_style": "p2"
+      }
+    },
     "section_faq_topics_6hBact": {
       "type": "section__faq-topics",
       "blocks": {
@@ -597,7 +606,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }
@@ -605,7 +614,6 @@
   },
   "order": [
     "search",
-    "section_page_hero_cxnYX8",
     "section_text_banner_BPtQwb",
     "section_content_panels_FymACC",
     "section_content_panels_e8RHCP",
@@ -616,6 +624,7 @@
     "section_faq_tagged_posts_8Q74bc",
     "section_faq_tagged_posts_4QHQDD",
     "section_faq_all_posts_L4pa7k",
+    "section_page_hero_cxnYX8",
     "section_faq_topics_6hBact",
     "section_faq_topics_k8RQpD",
     "section_faq_cta_CtHhKJ"

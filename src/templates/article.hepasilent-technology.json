@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -22,7 +31,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<p>Blueair's HEPASilent™ technology captures at least 99.97% of airborne particles down to 0.1 micron² in size, removes germs and delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a lightbulb.<\/p>",
+            "richtext": "<p>Blueair's HEPASilent™ technology captures at least 99.97% of airborne particles down to 0.1 micron² in size, removes germs and delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a lightbulb.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -39,7 +48,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Two technologies make the difference<\/strong><\/h4><p><\/p><p>With Blueair’s HEPASilent™ technology, airborne particles are charged before they reach the filter. This makes the particles adhere to the polypropylene fibers in the filter more easily due to electrostatic forces, which allows the use of a less dense filter, so more air can be pushed through with less noise and less energy.<\/p><p><br\/>The lower filter density allowed by the stickiness of the charged particles also reduces clogging. Filtration remains at peak performance levels longer, with high efficiency and longer lasting performance.<\/p>",
+            "richtext": "<h4><strong>Two technologies make the difference</strong></h4><p></p><p>With Blueair’s HEPASilent™ technology, airborne particles are charged before they reach the filter. This makes the particles adhere to the polypropylene fibers in the filter more easily due to electrostatic forces, which allows the use of a less dense filter, so more air can be pushed through with less noise and less energy.</p><p><br/>The lower filter density allowed by the stickiness of the charged particles also reduces clogging. Filtration remains at peak performance levels longer, with high efficiency and longer lasting performance.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -56,8 +65,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "image": "shopify:\/\/shop_images\/Blueair_-_Pre-Filter_Ionization_-_030122_-web_mob.webp",
-            "image_desktop": "shopify:\/\/shop_images\/Blueair_-_Pre-Filter_Ionization_-_030122_-web.webp",
+            "image": "shopify://shop_images/Blueair_-_Pre-Filter_Ionization_-_030122_-web_mob.webp",
+            "image_desktop": "shopify://shop_images/Blueair_-_Pre-Filter_Ionization_-_030122_-web.webp",
             "caption": "",
             "caption_style": "s4",
             "product": ""
@@ -75,7 +84,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h6>How do air filters work?<\/h6><p>In a Blueair filter, ultra-thin polypropylene fibers of different sizes and layers are interwoven to lock in particles. Once captured, particles are never released back into your home or office environment, even when filters are heavily loaded. The filters capture larger particles like pollen, dust and pet dander as well as smaller particles such as microplastics and smoke. Because polypropylene prevents bacterial growth, our filters also prevent the growth of bacteria and mold inside the air purifier.<\/p><p><br\/>When the filter needs to be replaced (around every six months), just open the lid, take out the old filter and put the new one in. No screws, hooks or tools are needed. All done in less than a minute. An extra bonus is that Blueair filters don’t require additives or washing. Polypropylene is also an environmentally responsible synthetic, which when properly disposed of, breaks down into carbon dioxide and water.<\/p>",
+            "richtext": "<h6>How do air filters work?</h6><p>In a Blueair filter, ultra-thin polypropylene fibers of different sizes and layers are interwoven to lock in particles. Once captured, particles are never released back into your home or office environment, even when filters are heavily loaded. The filters capture larger particles like pollen, dust and pet dander as well as smaller particles such as microplastics and smoke. Because polypropylene prevents bacterial growth, our filters also prevent the growth of bacteria and mold inside the air purifier.</p><p><br/>When the filter needs to be replaced (around every six months), just open the lid, take out the old filter and put the new one in. No screws, hooks or tools are needed. All done in less than a minute. An extra bonus is that Blueair filters don’t require additives or washing. Polypropylene is also an environmentally responsible synthetic, which when properly disposed of, breaks down into carbon dioxide and water.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -92,8 +101,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "image": "shopify:\/\/shop_images\/Blueair_-_Post_Filter_Ionization_-_1101_-web_mob.png",
-            "image_desktop": "shopify:\/\/shop_images\/Blueair_-_Post_Filter_Ionization_-_1101_-web_mob.png",
+            "image": "shopify://shop_images/Blueair_-_Post_Filter_Ionization_-_1101_-web_mob.png",
+            "image_desktop": "shopify://shop_images/Blueair_-_Post_Filter_Ionization_-_1101_-web_mob.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -111,7 +120,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h6>How does HEPASilent™ technology work?<br\/><br\/><\/h6><ul><li>The ultra-quiet fan draws air into the air purifier.<\/li><li>Airborne particles receive an electrical charge that causes them to adhere faster and more easily to the polypropylene filters.<\/li><li>The combination of electrical charging and high air draft inactivates viruses and bacteria.<\/li><li>Because the charged particles adhere to the fibers in the filter more easily, the filter can be less dense. Lower density means the fan pushes through more air with less pressure, noise and energy consumption. Lower density also reduces clogging.<br\/><br\/><br\/><\/li><\/ul><p>¹Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blueair models achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary.<\/p><p><br\/>²Tested on PM2.5 (0.1 - 2.5 μm) up to 90min.<\/p>",
+            "richtext": "<h6>How does HEPASilent™ technology work?<br/><br/></h6><ul><li>The ultra-quiet fan draws air into the air purifier.</li><li>Airborne particles receive an electrical charge that causes them to adhere faster and more easily to the polypropylene filters.</li><li>The combination of electrical charging and high air draft inactivates viruses and bacteria.</li><li>Because the charged particles adhere to the fibers in the filter more easily, the filter can be less dense. Lower density means the fan pushes through more air with less pressure, noise and energy consumption. Lower density also reduces clogging.<br/><br/><br/></li></ul><p>¹Comparing CADR performance of Blueair models vs same models with only H13 HEPA. At similar CADRs, Blueair models achieved less noise than same models with only H13 HEPA. Noise refers to the dB(A) difference in acoustic power. Tested on Blue Pure 211+ Auto, DustMagnet 5400i, Protect 7400 series. Performance may vary.</p><p><br/>²Tested on PM2.5 (0.1 - 2.5 μm) up to 90min.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -170,7 +179,7 @@
         "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
-        "url": "shopify:\/\/blogs\/news",
+        "url": "shopify://blogs/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",

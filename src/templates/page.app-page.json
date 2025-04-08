@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -26,21 +35,21 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile.png",
-        "image_desktop": "shopify:\/\/shop_images\/Hero_290981aa-7942-4e04-803a-3e4048fffd91.png",
+        "color": "bg-blue text-white",
+        "image_mobile": "shopify:\/\/shop_images\/app_mobile_cda0ef61-0868-43f0-b459-70e3eaf8c727.png",
+        "image_desktop": "shopify:\/\/shop_images\/app_mobile_e53f0392-b8b8-4c76-aeed-c90763067181.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Discover the <br> Blueair app",
-        "title_style": "h1",
+        "title": "Discover the<br> Blueair app",
+        "title_style": "h2",
         "subtext": "",
         "subtext_style": "h5",
         "cta_url": "",
         "cta_text": "",
         "cta_style": "btn",
-        "text_align_mobile": "text-left",
-        "hor_align_mobile": "justify-start",
-        "ver_align_mobile": "items-center",
+        "text_align_mobile": "text-center",
+        "hor_align_mobile": "justify-center",
+        "ver_align_mobile": "items-start",
         "text_align_desktop": "desktop:text-left",
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-center",
@@ -66,8 +75,8 @@
         "color": "text-blue",
         "title": "",
         "title_style": "h1",
-        "subtext": "Discover the convenience of all your Blueair products, controlled and monitored in one place.",
-        "subtext_style": "p2",
+        "subtext": "Tap below to download the Blueair app",
+        "subtext_style": "s2",
         "max_width_desktop": "80ch",
         "max_width_section_desktop": "1440px",
         "caption": "Scan to download the app",
@@ -83,15 +92,15 @@
         "padding_bottom_mobile": "pb-xl",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "color": "bg-blue-light text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/app-split1.png",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Frame_4054_b7701bfc-8411-4775-9a47-a874e15065be.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
         "title": "Easily control all your devices in one spot",
-        "title_style": "h3",
+        "title_style": "h4",
         "subtext": "Monitor air quality in every room and adjust settings for multiple devices at once, \u2028all from our homepage.",
         "subtext_style": "p2",
         "cta_url": "",
@@ -101,25 +110,25 @@
         "max_width_desktop": "1440px"
       }
     },
-    "section_image_text_afQzWQ": {
+    "section_image_text_gtk74P": {
       "type": "section__image-text",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "color": "bg-blue-light text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/app-split2.png",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Frame_4055.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
-        "title": "Never forget to change your filter again",
-        "title_style": "h3",
-        "subtext": "Stay ahead with automated filter reminders and easily reorder replacements through our app, ensuring peak performance of your air purifier.",
+        "title": "Build schedules to <br>fit your lifestyle",
+        "title_style": "h4",
+        "subtext": "'Welcome Home' technology puts your air purifier on standby when you head out and then refreshes the air as you return. <br> <br>\n\nWant more control? Manually set schedules that fit your lifestyle and let fresh air run on your time.",
         "subtext_style": "p2",
         "cta_url": "",
         "cta_text": "",
@@ -130,6 +139,7 @@
     },
     "section_image_text_QtcpGy": {
       "type": "section__image-text",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -169,9 +179,9 @@
         "max_width_desktop": "1440px",
         "color": "bg-white text-blue",
         "image_position_desktop": "desktop:order-first",
-        "title": "Control all your devices in one place",
+        "title": "Get to know the features",
         "title_style": "h3",
-        "subtext": "Get back to breathing easy, explore our features",
+        "subtext": "",
         "subtext_style": "p2",
         "cta_url": "",
         "cta_text": "",
@@ -294,7 +304,7 @@
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
         "num_cols_mobile": 2,
         "num_cols_desktop": 5,
         "max_width_mobile": "",
@@ -308,6 +318,33 @@
         "gap_desktop": "tabletl:gap-md"
       }
     },
+    "section_image_text_afQzWQ": {
+      "type": "section__image-text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Frame_4056_6c40fd03-6dd5-42c2-890a-423654f98521.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "Track your  filter lifetime",
+        "title_style": "h4",
+        "subtext": "Stay ahead with automated filter reminders and easily reorder replacements, ensuring peak performance of your device.",
+        "subtext_style": "p2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "80ch",
+        "max_width_desktop": "1440px"
+      }
+    },
     "section_image_text_4fznTi": {
       "type": "section__image-text",
       "settings": {
@@ -317,43 +354,16 @@
         "padding_bottom_mobile": "pb-lg",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "color": "bg-blue-light text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/seed-apppage-image4.png",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify:\/\/shop_images\/Frame_4057.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
-        "title": "Monitor and adapt to environmental changes",
-        "title_style": "h3",
-        "subtext": "Gain insights into your environment with real-time indoor and outdoor Air Quality Index (AQI) comparisons, visualized in an easy-to-understand graph. <br><br>\n\nReceive timely notifications prompting adjustments to your air purifier settings, ensuring optimal purification in response to changing air quality conditions both indoors and outdoors.",
-        "subtext_style": "p2",
-        "cta_url": "",
-        "cta_text": "",
-        "cta_style": "btn",
-        "text_max_width": "80ch",
-        "max_width_desktop": "1440px"
-      }
-    },
-    "section_image_text_gtk74P": {
-      "type": "section__image-text",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-lg",
-        "padding_bottom_mobile": "pb-lg",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "color": "bg-blue-light text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/seed-apppage-image5.png",
-        "image_position_mobile": "order-last",
-        "image_position_desktop": "right",
-        "image_width": 50,
-        "title": "Build a schedule around your day-to-day life",
-        "title_style": "h3",
-        "subtext": "Utilize 'Welcome Home' technology to automatically switch your air purifier to standby mode when you leave and reactivating it upon your return, ensuring a fresh, clean environment awaits you. <br><br>\n\nAdditionally, manually set your preferred schedule, to seamlessly integrate your air purifier into your day-to-day life.",
+        "title": "Monitor indoor & <br>outdoor air quality",
+        "title_style": "h4",
+        "subtext": "See real-time indoor and outdoor air quality at a glance with easy-to-read graphs.\n<br><br>\nGet smart alerts to adjust your purifier for the best air, always.",
         "subtext_style": "p2",
         "cta_url": "",
         "cta_text": "",
@@ -377,6 +387,7 @@
       "block_order": [
         "collection_XFPtwm"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -400,6 +411,7 @@
         "enable_carousel_nav_desktop": true,
         "enable_centered_carousel": false,
         "enable_title_link_same_link": true,
+        "enable_carousel_gutter": true,
         "title": "Compatible products",
         "title_style": "h3",
         "title_alignment_mobile": "text-left",
@@ -419,15 +431,15 @@
         "quote_CKKBVW": {
           "type": "quote",
           "settings": {
-            "quote": "Intuitive, simple & fast. Senses cooking odors immediately, changes colors & increases speed before we can think of it",
-            "author": "Aaron"
+            "quote": "Helps you track how the air quality is in a room and can even change the settings on the filter. Nifty if you aren’t home...",
+            "author": "Joe"
           }
         },
         "quote_MkLcT4": {
           "type": "quote",
           "settings": {
-            "quote": "Love that I can control my device from my phone. Also like that it tells me the outdoor air quality. That's really helpful feature when you live somewhere that has frequent bad air days.",
-            "author": "Diana"
+            "quote": "The scheduling is nice as well, I can have my systems turned on in the bedrooms prior to our arrival home from school\/work and it's just nice.",
+            "author": "Heather"
           }
         }
       },
@@ -446,10 +458,10 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px",
         "color": "bg-gray-athans text-blue",
-        "title": "Our customers \u2028have spoken",
-        "title_style": "h3",
+        "title": "Our customers have spoken",
+        "title_style": "h4",
         "rating": 4.8,
-        "reviews_count": "8,100"
+        "reviews_count": "8,000+"
       }
     },
     "section_hero_2_ajgWXh": {
@@ -494,6 +506,7 @@
         "text_NeMRqQ",
         "text_QKkLm7"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -513,68 +526,38 @@
     "section_accordion_TU8wif": {
       "type": "section__accordion",
       "blocks": {
-        "accordion_item_pR4fFz": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "What is the recommended maintenance for the air purifier & filters?",
-            "title_style": "s1",
-            "richtext": "<p>Need content.<\/p>",
-            "richtext_style": "p2"
-          }
-        },
         "accordion_item_m6KYby": {
           "type": "accordion-item",
           "settings": {
-            "title": "What is warranty process?",
+            "title": "Why should I download the Blueair app?",
             "title_style": "s1",
-            "richtext": "<p>need content.<\/p>",
+            "richtext": "<p>The Blueair app makes it effortless to monitor and control your devices from anywhere, so you can breathe easier at home and beyond.<\/p><p>Get real-time air quality updates, set schedules, and optimize your device's performance with just a few taps.<\/p>",
             "richtext_style": "p2"
           }
         },
         "accordion_item_R8bdbq": {
           "type": "accordion-item",
           "settings": {
-            "title": "How do Blueair purifiers compare with the competitors?",
+            "title": "What can I do in the Blueair app?",
             "title_style": "s1",
-            "richtext": "<p>need content<\/p>",
+            "richtext": "<p>Turn your device on or off remotely, adjust fan speeds and modes to match your needs, and monitor real-time air quality insights to stay informed about pollutants in your home. <\/p><p>The app also allows you to set schedules so your purifier runs automatically when you need it most and sends filter change alerts to keep your device running at peak performance.<\/p><p><\/p>",
             "richtext_style": "p2"
           }
         },
-        "accordion_item_B9EaXX": {
+        "accordion_item_bTt8ax": {
           "type": "accordion-item",
           "settings": {
-            "title": "How to manage your subscription",
+            "title": "How do I connect my device to the Blueair app?",
             "title_style": "s1",
-            "richtext": "<p>need content.<\/p>",
-            "richtext_style": "p2"
-          }
-        },
-        "accordion_item_QKbUpV": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "How to change the filter and reset the filter warning light?",
-            "title_style": "s1",
-            "richtext": "<p>need content<\/p>",
-            "richtext_style": "p2"
-          }
-        },
-        "accordion_item_QxHWxJ": {
-          "type": "accordion-item",
-          "settings": {
-            "title": "Where do I find the model name of my air purifier and filter?",
-            "title_style": "s1",
-            "richtext": "<p>need content<\/p>",
+            "richtext": "<p>Connecting your purifier is simple. First, plug in and power on your device.<\/p><p>Then, download the Blueair app from the App Store or Google Play, log in or create an account, and tap “Add Device.”<\/p><p>Follow the on-screen instructions, ensuring your phone is connected to a 2.4GHz Wi-Fi network. <\/p>",
             "richtext_style": "p2"
           }
         }
       },
       "block_order": [
-        "accordion_item_pR4fFz",
         "accordion_item_m6KYby",
         "accordion_item_R8bdbq",
-        "accordion_item_B9EaXX",
-        "accordion_item_QKbUpV",
-        "accordion_item_QxHWxJ"
+        "accordion_item_bTt8ax"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -586,7 +569,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "title": "FAQ",
-        "title_style": "h2",
+        "title_style": "h3",
         "max_width_desktop": "80ch",
         "bg_color": "text-blue",
         "cta_url": "shopify:\/\/pages\/support",
@@ -600,12 +583,12 @@
     "section_hero_dJCEcn",
     "section_page_hero_AHpQD6",
     "section_image_text_M9zJ8t",
-    "section_image_text_afQzWQ",
+    "section_image_text_gtk74P",
     "section_image_text_QtcpGy",
     "section_text_banner_PE3LPX",
     "section_icons_haFVbx",
+    "section_image_text_afQzWQ",
     "section_image_text_4fznTi",
-    "section_image_text_gtk74P",
     "section_carousel_3WLtUq",
     "section_quotes_JPrEnr",
     "section_hero_2_ajgWXh",
