@@ -1,9 +1,9 @@
 {% if localization.country.iso_code == 'US' %}
     {% if product.metafields.seed.product_card_title != blank %}
-        {% assign product_title = product.metafields.seed.product_card_title %}
-      {% else %}
-        {% assign product_title = product.title %}
-      {% endif %}
+      {% assign product_title = product.metafields.seed.product_card_title %}
+    {% else %}
+      {% assign product_title = product.title %}
+    {% endif %}
 {% else %}
     {% if localization.country.iso_code == 'MY' %}
         {% if product.metafields.seed.product_title_my != blank %}
@@ -137,6 +137,8 @@
         {% else %}
             {% assign product_title = product.title %}
         {% endif %}
+    {% else %}
+      {% assign product_title = product.title %}
     {% endif %}
 {% endif %}
 
