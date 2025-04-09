@@ -590,6 +590,7 @@
     "@context": "http://schema.org/",
     "@type": "Product",
     "name": {{ product.title | json }},
+    "@id" : {{ shop.url | append: product.url | json }},
     "url": {{ shop.url | append: product.url | json }},
     {% if seo_media -%}
       "image": [
