@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -36,8 +27,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/seed-whycleanair-hero-mobile.jpg",
-        "image_desktop": "shopify://shop_images/seed-whycleanair-hero.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/seed-whycleanair-hero-mobile.jpg",
+        "image_desktop": "shopify:\/\/shop_images\/seed-whycleanair-hero.jpg",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Clean air for a healthier and happier life",
@@ -72,7 +63,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/whycleanair-image1.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/whycleanair-image1.jpg",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
@@ -99,7 +90,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/whycleanair-image2.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/whycleanair-image2.jpg",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
@@ -126,7 +117,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/whycleanair-image3.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/whycleanair-image3.jpg",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
@@ -153,7 +144,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/whycleanair-image4.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/whycleanair-image4.jpg",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
@@ -289,7 +280,7 @@
         "subtext_style": "p2",
         "max_width_desktop": "",
         "max_width_section_desktop": "109ch",
-        "image_desktop": "shopify://shop_images/blueair-app-qrcode.png",
+        "image_desktop": "shopify:\/\/shop_images\/blueair-app-qrcode.png",
         "caption": "Scan to download the app.",
         "caption_style": "p2"
       }
@@ -300,12 +291,12 @@
         "image_content_YmRj3C": {
           "type": "image_content",
           "settings": {
-            "image_mobile": "shopify://shop_images/whycleanair-bluepure.png",
+            "image_mobile": "shopify:\/\/shop_images\/whycleanair-bluepure.png",
             "title": "Blue Pure Max & Blue Pure",
             "title_style": "s1",
             "subtext": "Plug and play simplicity - Blue features our signature performance with colorful style – in a lightweight, compact package.",
             "subtext_style": "p2",
-            "cta_url": "shopify://collections/blue-pure-max",
+            "cta_url": "shopify:\/\/collections\/blue-pure-max",
             "cta_text": "Meet the Family",
             "cta_style": "btn"
           }
@@ -313,12 +304,12 @@
         "image_content_47DVxp": {
           "type": "image_content",
           "settings": {
-            "image_mobile": "shopify://shop_images/whycleanair-protect.png",
+            "image_mobile": "shopify:\/\/shop_images\/whycleanair-protect.png",
             "title": "Protect",
             "title_style": "s1",
             "subtext": "Plug and play simplicity - Blue features our signature performance with colorful style – in a lightweight, compact package.",
             "subtext_style": "p2",
-            "cta_url": "shopify://collections/protect",
+            "cta_url": "shopify:\/\/collections\/protect",
             "cta_text": "Meet the Family",
             "cta_style": "btn"
           }
@@ -326,12 +317,12 @@
         "image_content_JmaBdJ": {
           "type": "image_content",
           "settings": {
-            "image_mobile": "shopify://shop_images/whycleanair-classic.png",
+            "image_mobile": "shopify:\/\/shop_images\/whycleanair-classic.png",
             "title": "Classic",
             "title_style": "s1",
             "subtext": "Trusted by allergy sufferers - Classic is a timeless option that gets the job done – quietly and effectively for you and your family.",
             "subtext_style": "p2",
-            "cta_url": "shopify://collections/classic",
+            "cta_url": "shopify:\/\/collections\/classic",
             "cta_text": "Classic",
             "cta_style": "btn"
           }
@@ -339,12 +330,12 @@
         "image_content_GaE4Lq": {
           "type": "image_content",
           "settings": {
-            "image_mobile": "shopify://shop_images/whycleanair-pro.png",
+            "image_mobile": "shopify:\/\/shop_images\/whycleanair-pro.png",
             "title": "Pro",
             "title_style": "s1",
             "subtext": "Professional performance with a minimalist design - Pro is perfectly suited for a large workshop, studio, or office environment.",
             "subtext_style": "p2",
-            "cta_url": "shopify://collections/pro-1",
+            "cta_url": "shopify:\/\/collections\/pro-1",
             "cta_text": "Meet the Family",
             "cta_style": "btn"
           }
@@ -404,7 +395,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "",
-        "richtext": "<p><span style=\"text-decoration:underline\"><strong>Footnotes</strong></span></p><p>¹To track your indoor air quality you must own and pair a Blueair air purifier equipped with an air quality sensor.</p>",
+        "richtext": "<p><span style=\"text-decoration:underline\"><strong>Footnotes<\/strong><\/span><\/p><p>¹To track your indoor air quality you must own and pair a Blueair air purifier equipped with an air quality sensor.<\/p>",
         "richtext_style": "p2"
       }
     }

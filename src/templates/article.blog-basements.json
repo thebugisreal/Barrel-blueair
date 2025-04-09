@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -31,7 +22,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<p>Clean and healthy air is essential for maintaining a comfortable and safe environment in any area of a home, and basements are no different in this respect. These sub-level spaces often serve many purposes, from storage and laundry to recreation and full on living areas. This is why it’s important to keep them free of airborne pollutants like mold and bacteria¹, dust mites, and volatile organic compounds (VOCs) that can accumulate in basements because of lower ceilings, limited ventilation, and reduced sunlight exposure. </p><p>Placing an air purifier in a basement offers an excellent way to combat these common issues, providing fresh and clean air for you and your family to breathe no matter how often or for what purpose a visit to a basement is required. There are however some important things to consider when selecting an air purifier for a basement. We’ve assembled everything you need to know here in one place. </p>",
+            "richtext": "<p>Clean and healthy air is essential for maintaining a comfortable and safe environment in any area of a home, and basements are no different in this respect. These sub-level spaces often serve many purposes, from storage and laundry to recreation and full on living areas. This is why it’s important to keep them free of airborne pollutants like mold and bacteria¹, dust mites, and volatile organic compounds (VOCs) that can accumulate in basements because of lower ceilings, limited ventilation, and reduced sunlight exposure. <\/p><p>Placing an air purifier in a basement offers an excellent way to combat these common issues, providing fresh and clean air for you and your family to breathe no matter how often or for what purpose a visit to a basement is required. There are however some important things to consider when selecting an air purifier for a basement. We’ve assembled everything you need to know here in one place. <\/p>",
             "richtext_style": "p2"
           }
         },
@@ -47,8 +38,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "120ch",
-            "image": "shopify://shop_images/family.webp",
-            "image_desktop": "shopify://shop_images/family.webp",
+            "image": "shopify:\/\/shop_images\/family.webp",
+            "image_desktop": "shopify:\/\/shop_images\/family.webp",
             "caption": "",
             "caption_style": "s4",
             "product": ""
@@ -66,7 +57,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>How to asses and air purifier's suitability for a basement</h4><p>When <a href=\"https://www.blueair.com/us/blog-all/how-to-choose.html\" target=\"_self\">selecting an air purifier</a> for a sub-level area in your home, a few simple specifications are available that can help you to assess its ability to ensure optimal performance and effectiveness based on your needs.  </p><p>One of the most important things to consider is room size. Matching an air purifier to the size of the basement it will be treating can be determined by its coverage. Look for models that offer sufficient coverage based on the square footage of your basement to ensure thorough purification of its air. </p><p>Another important factor to consider is how often the air will be refreshed in your basement. This is determined by a specification called, Air Changes per Hour, also known as ACH. This tells you how many times the purifier can treat all the air in a basement in one hour. If you happen to be spending a lot of time in your basement, entertaining or watching movies, you’ll want to keep an eye out for a high ACH rate in order to maintain a constant supply of clean air.   </p><p>When considering specific pollutants look to a specification called CADR, or <a href=\"https://www.blueair.com/us/blog-all/at-home/cadr.html\" target=\"_self\">Clean Air Delivery Rate</a>. CADR is specified in CFM, or Cubic Feet per Minute, and addresses three different pollutants: dust, pollen, and smoke. For each of these particular airborne annoyances a CADR rate will be specified with a number. </p><p>Here’s an example of how CADR works. Say you’re finding the air in your basement is often filled with dust. Our Blue Pure 121 air purifier has a CADR rating of 400 CFM for dust, meaning that for every minute, the Blue Pure 121 is operating, it can remove dust from the air at the rate of 400 cubic feet per minute. When it comes to pollen and smoke, this performer additionally delivers, with the same CADR rating for these two common allergens. That’s a lot of dust, smoke, and allergy inducing pollen getting removed from the air every minute.</p><h4>Air purifier features that are best for a basement</h4><p>Highly efficient filtration capabilities that can remove the tiniest particles like <a href=\"https://www.blueair.com/us/blog-all/health/mold-removal.html\" target=\"_self\">mold and spores</a> from the air with little noise are among the most important aspects of an air purifier’s capabilities.</p><p>All Blueair air purifiers come with <a href=\"https://www.blueair.com/us/blueair-performance.html\" target=\"_self\">HEPAsilent™</a> filtration that removes 99.97% of airborne particles², even down to 0.1 microns³. They’re also among the quietest⁴, least intrusive air purifiers you can buy. </p><p>Beyond filtration systems, air purifiers for a basement should be designed to withstand these unique environments with durability to handle potential moisture and humidity. Energy-efficiency is also a key factor since it will be operating continually, even in your absence, so you’ll want to minimize electricity consumption and reduce environmental impact over long periods of time. </p><p>Models with accurate filter monitoring systems that can alert you when a filter replacement is needed keep the importance of maintaining the air quality in a basement top of mind should you not see your purifier a lot. And remote monitoring and control features that keep an eye on a basement’s air quality are also great for limiting unnecessary trips there if it’s mainly used as a storage area.</p>",
+            "richtext": "<h4>How to asses and air purifier's suitability for a basement<\/h4><p>When <a href=\"https:\/\/www.blueair.com\/us\/blog-all\/how-to-choose.html\" target=\"_self\">selecting an air purifier<\/a> for a sub-level area in your home, a few simple specifications are available that can help you to assess its ability to ensure optimal performance and effectiveness based on your needs.  <\/p><p>One of the most important things to consider is room size. Matching an air purifier to the size of the basement it will be treating can be determined by its coverage. Look for models that offer sufficient coverage based on the square footage of your basement to ensure thorough purification of its air. <\/p><p>Another important factor to consider is how often the air will be refreshed in your basement. This is determined by a specification called, Air Changes per Hour, also known as ACH. This tells you how many times the purifier can treat all the air in a basement in one hour. If you happen to be spending a lot of time in your basement, entertaining or watching movies, you’ll want to keep an eye out for a high ACH rate in order to maintain a constant supply of clean air.   <\/p><p>When considering specific pollutants look to a specification called CADR, or <a href=\"https:\/\/www.blueair.com\/us\/blog-all\/at-home\/cadr.html\" target=\"_self\">Clean Air Delivery Rate<\/a>. CADR is specified in CFM, or Cubic Feet per Minute, and addresses three different pollutants: dust, pollen, and smoke. For each of these particular airborne annoyances a CADR rate will be specified with a number. <\/p><p>Here’s an example of how CADR works. Say you’re finding the air in your basement is often filled with dust. Our Blue Pure 121 air purifier has a CADR rating of 400 CFM for dust, meaning that for every minute, the Blue Pure 121 is operating, it can remove dust from the air at the rate of 400 cubic feet per minute. When it comes to pollen and smoke, this performer additionally delivers, with the same CADR rating for these two common allergens. That’s a lot of dust, smoke, and allergy inducing pollen getting removed from the air every minute.<\/p><h4>Air purifier features that are best for a basement<\/h4><p>Highly efficient filtration capabilities that can remove the tiniest particles like <a href=\"https:\/\/www.blueair.com\/us\/blog-all\/health\/mold-removal.html\" target=\"_self\">mold and spores<\/a> from the air with little noise are among the most important aspects of an air purifier’s capabilities.<\/p><p>All Blueair air purifiers come with <a href=\"https:\/\/www.blueair.com\/us\/blueair-performance.html\" target=\"_self\">HEPAsilent™<\/a> filtration that removes 99.97% of airborne particles², even down to 0.1 microns³. They’re also among the quietest⁴, least intrusive air purifiers you can buy. <\/p><p>Beyond filtration systems, air purifiers for a basement should be designed to withstand these unique environments with durability to handle potential moisture and humidity. Energy-efficiency is also a key factor since it will be operating continually, even in your absence, so you’ll want to minimize electricity consumption and reduce environmental impact over long periods of time. <\/p><p>Models with accurate filter monitoring systems that can alert you when a filter replacement is needed keep the importance of maintaining the air quality in a basement top of mind should you not see your purifier a lot. And remote monitoring and control features that keep an eye on a basement’s air quality are also great for limiting unnecessary trips there if it’s mainly used as a storage area.<\/p>",
             "richtext_style": "p2"
           }
         },
@@ -82,9 +73,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "80ch",
-            "image": "shopify://shop_images/HEPA_51d8f144-88cf-458a-a8ed-34a1e09cc551.webp",
-            "image_desktop": "shopify://shop_images/HEPA_51d8f144-88cf-458a-a8ed-34a1e09cc551.webp",
-            "caption": "<p>Above: Dramatized view of HEPASilentTM Dual Filtration Technology</p>",
+            "image": "shopify:\/\/shop_images\/HEPA_51d8f144-88cf-458a-a8ed-34a1e09cc551.webp",
+            "image_desktop": "shopify:\/\/shop_images\/HEPA_51d8f144-88cf-458a-a8ed-34a1e09cc551.webp",
+            "caption": "<p>Above: Dramatized view of HEPASilentTM Dual Filtration Technology<\/p>",
             "caption_style": "p5",
             "product": ""
           }
@@ -101,7 +92,7 @@
             "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Air purifier ideal for medium and large sized basements</h4><p>For basements of a small to medium size. Put our <a href=\"https://www.blueair.com/us/air-purifiers/blue-pure-311i-max/3539.html\" target=\"_self\">Blue Pure 311i Max</a> to work. It’s able to quickly clean basements up to 526 square feet in just 30 minutes. And don’t forget, it does it with HEPASilent™ technology that’s whisper-quiet, and only available on Blueair air purifiers.</p><h4><strong>Blue Pure 311i+ Max</strong></h4><p>For big basement air purification, you’ll be interested to know the Blue Pure 311i Max has a twin. The <a href=\"https://www.blueair.com/us/air-purifiers/blue-pure-311i-plus-max/3540.html\" target=\"_self\">Blue Pure 311i+ Max</a> comes with the same exceptional filtration capabilities for spaces of a larger size. Both are programmed with RealTrack, Blueair's proprietary algorithm that can accurately calculate your purifier’s remaining filter lifetime based on fan speed, usage time, and pollution levels. </p><p>Each of these models give you complete control, either through the Blueair proprietary app, or its intuitive interface that uses a simple, two-button control for everything from on/off and 4 speed settings to auto, night mode, child lock and a filter expiration reminder. </p><p>When it comes to energy savings, these two models boast certifications as Energy Star Most Efficient. Leaving either of them running in the basement for extended periods of time will be less of a concern for your energy bill and any environmental impact they might have.   </p>",
+            "richtext": "<h4>Air purifier ideal for medium and large sized basements<\/h4><p>For basements of a small to medium size. Put our <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-311i-max\/3539.html\" target=\"_self\">Blue Pure 311i Max<\/a> to work. It’s able to quickly clean basements up to 526 square feet in just 30 minutes. And don’t forget, it does it with HEPASilent™ technology that’s whisper-quiet, and only available on Blueair air purifiers.<\/p><h4><strong>Blue Pure 311i+ Max<\/strong><\/h4><p>For big basement air purification, you’ll be interested to know the Blue Pure 311i Max has a twin. The <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-311i-plus-max\/3540.html\" target=\"_self\">Blue Pure 311i+ Max<\/a> comes with the same exceptional filtration capabilities for spaces of a larger size. Both are programmed with RealTrack, Blueair's proprietary algorithm that can accurately calculate your purifier’s remaining filter lifetime based on fan speed, usage time, and pollution levels. <\/p><p>Each of these models give you complete control, either through the Blueair proprietary app, or its intuitive interface that uses a simple, two-button control for everything from on\/off and 4 speed settings to auto, night mode, child lock and a filter expiration reminder. <\/p><p>When it comes to energy savings, these two models boast certifications as Energy Star Most Efficient. Leaving either of them running in the basement for extended periods of time will be less of a concern for your energy bill and any environmental impact they might have.   <\/p>",
             "richtext_style": "p2"
           }
         },
@@ -123,8 +114,8 @@
             "product": "blue-pure-311i-plus-max",
             "btn_text": "Shop Now",
             "btn_style": "btn",
-            "image": "shopify://shop_images/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp",
-            "image_desktop": "shopify://shop_images/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp"
+            "image": "shopify:\/\/shop_images\/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp",
+            "image_desktop": "shopify:\/\/shop_images\/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp"
           }
         },
         "text_JLDU6a": {
@@ -139,7 +130,7 @@
             "padding_top_desktop": "desktop:pt-md",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Extra durable air purifiers for extra-large basements</h4><p>When it comes to extra-large basements, we love the <a href=\"https://www.blueair.com/us/air-purifiers/classic-605/2929.html\" target=\"_self\">Classic 605</a> for its galvanized steel case that can handle the toughest environments, and its wheels that allow you to move it from area to area. But that doesn’t mean it uses a lot of power. In fact, the Classic 605 uses less electricity than an incandescent lightbulb on its lowest setting at 15W and up to 100W on high. </p><p>And for those of us sensitive to allergens, the Classic 605 has an elevated CADR rate for pollen that will remove it from the air around you at the rate of 640 cubic feet a minute.  </p><h4><strong>Blue Pure 211i Max</strong></h4><p>If you’re impressed with the capabilities of our Blue Pure line of purifiers, however, we designed one for the biggest of basements. Unlike the other models in its fleet, the <a href=\"https://www.blueair.com/us/air-purifiers/blue-pure-211i-max/3541.html\" target=\"_self\">Blue Pure 211i Max</a> comes with an intuitive LED display that allows you to control fan speed, different modes, its child lock, and brightness and get filter expiration reminder.  </p>",
+            "richtext": "<h4>Extra durable air purifiers for extra-large basements<\/h4><p>When it comes to extra-large basements, we love the <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/classic-605\/2929.html\" target=\"_self\">Classic 605<\/a> for its galvanized steel case that can handle the toughest environments, and its wheels that allow you to move it from area to area. But that doesn’t mean it uses a lot of power. In fact, the Classic 605 uses less electricity than an incandescent lightbulb on its lowest setting at 15W and up to 100W on high. <\/p><p>And for those of us sensitive to allergens, the Classic 605 has an elevated CADR rate for pollen that will remove it from the air around you at the rate of 640 cubic feet a minute.  <\/p><h4><strong>Blue Pure 211i Max<\/strong><\/h4><p>If you’re impressed with the capabilities of our Blue Pure line of purifiers, however, we designed one for the biggest of basements. Unlike the other models in its fleet, the <a href=\"https:\/\/www.blueair.com\/us\/air-purifiers\/blue-pure-211i-max\/3541.html\" target=\"_self\">Blue Pure 211i Max<\/a> comes with an intuitive LED display that allows you to control fan speed, different modes, its child lock, and brightness and get filter expiration reminder.  <\/p>",
             "richtext_style": "p2"
           }
         },
@@ -161,8 +152,8 @@
             "product": "blue-pure-211i-max",
             "btn_text": "Shop Now",
             "btn_style": "btn",
-            "image": "shopify://shop_images/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp",
-            "image_desktop": "shopify://shop_images/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp"
+            "image": "shopify:\/\/shop_images\/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp",
+            "image_desktop": "shopify:\/\/shop_images\/ProductTile2-211iMax_01f38404-5ec1-401e-b554-d6d07197b46d.webp"
           }
         },
         "text_YFexjV": {
@@ -177,7 +168,7 @@
             "padding_top_desktop": "desktop:pt-md",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>Getting the most out of your basement's air purifier</h4><p>Whichever air purifier you choose for the basement in your home you’ll want to be sure you’re getting everything out of it that it’s capable of. </p><p>Be sure to position your air purifier strategically in the sub-level room it’s in to maximize air circulation and coverage. You’ll be glad to know that placement is less of a concern with Blueair air purifiers that have a 360-degree air intake that ensures thorough filtration and effective removal of pollutants from any location. </p><p>Don’t forget to follow the manufacturer’s filter replacement guidelines so that the air in your basement is guaranteed to be as fresh and pure as promised. Our filter subscription program makes this hassle-free, and sends fresh filters to your door right for when you need them. </p><p>We’re so glad you’ve prioritized clean air for your basement so that you can create a comfortable and safe environment for you and your family to enjoy. </p><p>Looking for an air purifier for another place in your home? Check out our articles that supply you with all the knowledge needed to make an informed decision about air purifiers for large rooms and small spaces. </p>",
+            "richtext": "<h4>Getting the most out of your basement's air purifier<\/h4><p>Whichever air purifier you choose for the basement in your home you’ll want to be sure you’re getting everything out of it that it’s capable of. <\/p><p>Be sure to position your air purifier strategically in the sub-level room it’s in to maximize air circulation and coverage. You’ll be glad to know that placement is less of a concern with Blueair air purifiers that have a 360-degree air intake that ensures thorough filtration and effective removal of pollutants from any location. <\/p><p>Don’t forget to follow the manufacturer’s filter replacement guidelines so that the air in your basement is guaranteed to be as fresh and pure as promised. Our filter subscription program makes this hassle-free, and sends fresh filters to your door right for when you need them. <\/p><p>We’re so glad you’ve prioritized clean air for your basement so that you can create a comfortable and safe environment for you and your family to enjoy. <\/p><p>Looking for an air purifier for another place in your home? Check out our articles that supply you with all the knowledge needed to make an informed decision about air purifiers for large rooms and small spaces. <\/p>",
             "richtext_style": "p2"
           }
         },
@@ -193,7 +184,7 @@
             "padding_top_desktop": "desktop:pt-md",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h6><strong>Disclaimer:</strong></h6><p>1. Based on removal testing of PM 2.5 (0.1 - 2.5 microns) and germs (H1N1, E.coli) up to 90min in a 30m3 room. Performance may vary. Not all Blueair air purifiers have been tested against SARS-CoV-2 and Blueair does not claim to kill/prevent transmission of COVID-19.</p><p>2. Comparing CADR performance of Blueair models with mechanical and electrostatic filtration vs same models with only H13 HEPA mechanical filtration.</p><p>3. When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.</p>",
+            "richtext": "<h6><strong>Disclaimer:<\/strong><\/h6><p>1. Based on removal testing of PM 2.5 (0.1 - 2.5 microns) and germs (H1N1, E.coli) up to 90min in a 30m3 room. Performance may vary. Not all Blueair air purifiers have been tested against SARS-CoV-2 and Blueair does not claim to kill\/prevent transmission of COVID-19.<\/p><p>2. Comparing CADR performance of Blueair models with mechanical and electrostatic filtration vs same models with only H13 HEPA mechanical filtration.<\/p><p>3. When similar CADR was measured, Blueair models with mechanical and electrostatic filtration achieved less noise with less energy than same models with only H13 HEPA mechanical filtration. Noise refers to the dB(A) difference in acoustic power.<\/p>",
             "richtext_style": "p2"
           }
         }
@@ -267,7 +258,7 @@
         "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
-        "url": "shopify://collections",
+        "url": "shopify:\/\/collections",
         "url_text": "Shop all",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",
@@ -313,7 +304,7 @@
         "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
-        "url": "shopify://blogs/news",
+        "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",

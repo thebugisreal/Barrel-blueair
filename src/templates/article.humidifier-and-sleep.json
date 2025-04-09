@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -30,7 +21,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<p>Skin moisturization, plant health care, aromatic relaxation, all benefits of a humidifier. But what about the benefits that actually matter, the ones that could potentially improve our lives? Our health?  </p><p>While it may be a small change in your life, adding a humidifier at night can make a big difference. During more extreme seasons, such as winter and summer, maintaining a balanced humidity level between 40 and 60% can provide a surprising amount of benefits to your sleep and the overall health of your body.</p>",
+            "richtext": "<p>Skin moisturization, plant health care, aromatic relaxation, all benefits of a humidifier. But what about the benefits that actually matter, the ones that could potentially improve our lives? Our health?  <\/p><p>While it may be a small change in your life, adding a humidifier at night can make a big difference. During more extreme seasons, such as winter and summer, maintaining a balanced humidity level between 40 and 60% can provide a surprising amount of benefits to your sleep and the overall health of your body.<\/p>",
             "richtext_style": "p2"
           }
         },
@@ -46,9 +37,9 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify://shop_images/Image_Ratio_Keeper.png",
-            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper.png",
-            "caption": "<p>Above: The <strong>Blueair Humidifier </strong>at use in a medium sized room</p>",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper.png",
+            "caption": "<p>Above: The <strong>Blueair Humidifier <\/strong>at use in a medium sized room<\/p>",
             "caption_style": "p6",
             "product": "h35i-humidifier"
           }
@@ -65,7 +56,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4>What Sleep Benefits Does a Humidifier Provide?</h4><p>Sleeping better with a humidifier can result because of a few different direct benefits a humidifier can provide:</p><p>1. Maintaining your optimal humidity level increases overall comfort when trying to go to sleep. This humidity can help ease an itchy, irritated throat.</p><p>2. A humidifier creates a ‘white noise’ effect while it runs overnight. The soft hum of a fan or humidifier has been shown to help people calm down, slow breathing, and fall asleep.</p><p>3. Turning on a humidifier before you go to bed can also help alleviate loud snoring by providing more moisture to the mouth, nasal cavities, pallet and airways. When these areas become dried out, it tends to make snoring worse - the vibrations of these dry tissues caused by each breath in and out can even intensify the sound of snoring.<br/><br/></p><h4>Which Time of Year is Best to Use a Humidifier?</h4>",
+            "richtext": "<h4>What Sleep Benefits Does a Humidifier Provide?<\/h4><p>Sleeping better with a humidifier can result because of a few different direct benefits a humidifier can provide:<\/p><p>1. Maintaining your optimal humidity level increases overall comfort when trying to go to sleep. This humidity can help ease an itchy, irritated throat.<\/p><p>2. A humidifier creates a ‘white noise’ effect while it runs overnight. The soft hum of a fan or humidifier has been shown to help people calm down, slow breathing, and fall asleep.<\/p><p>3. Turning on a humidifier before you go to bed can also help alleviate loud snoring by providing more moisture to the mouth, nasal cavities, pallet and airways. When these areas become dried out, it tends to make snoring worse - the vibrations of these dry tissues caused by each breath in and out can even intensify the sound of snoring.<br\/><br\/><\/p><h4>Which Time of Year is Best to Use a Humidifier?<\/h4>",
             "richtext_style": "p2"
           }
         },
@@ -81,8 +72,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify://shop_images/Image_Ratio_Keeper_2.png",
-            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_2.png",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper_2.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_2.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -100,7 +91,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Winter</strong></h4><p>In winter, people typically stay indoors more, and heated homes often lead to drier indoor air. This dry air can contribute to the survival and spread of cold and influenza viruses. To combat this, increasing indoor humidity while the heating is on can help reduce the airborne transmission of these seasonal viruses. </p><p>Additionally, a humidifier can add moisture to the nasal and upper respiratory passages, making it easier to breathe if you’re dealing with a runny nose, chest congestion, cough, or sore throat.</p>",
+            "richtext": "<h4><strong>Winter<\/strong><\/h4><p>In winter, people typically stay indoors more, and heated homes often lead to drier indoor air. This dry air can contribute to the survival and spread of cold and influenza viruses. To combat this, increasing indoor humidity while the heating is on can help reduce the airborne transmission of these seasonal viruses. <\/p><p>Additionally, a humidifier can add moisture to the nasal and upper respiratory passages, making it easier to breathe if you’re dealing with a runny nose, chest congestion, cough, or sore throat.<\/p>",
             "richtext_style": "p2"
           }
         },
@@ -116,8 +107,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1000px",
-            "image": "shopify://shop_images/Image_Ratio_Keeper_3.png",
-            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_3.png",
+            "image": "shopify:\/\/shop_images\/Image_Ratio_Keeper_3.png",
+            "image_desktop": "shopify:\/\/shop_images\/Image_Ratio_Keeper_3.png",
             "caption": "",
             "caption_style": "p6",
             "product": "1342-master-product"
@@ -135,7 +126,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Summer</strong></h4><p>Dry indoor air isn’t limited to winter; air conditioning in the summer also can remove moisture which may lead to similar health issues. Air-conditioned environments can dry out your sinuses, nasal passages, and throat during sleep, causing inflammation and irritation in these sensitive areas. </p><p>Using a humidifier while you sleep in the summer can help alleviate these dry air symptoms, along with seasonal allergies. The cool mist from the humidifier may also help counteract high levels of pollen and mold, which are prevalent during warmer months.</p>",
+            "richtext": "<h4><strong>Summer<\/strong><\/h4><p>Dry indoor air isn’t limited to winter; air conditioning in the summer also can remove moisture which may lead to similar health issues. Air-conditioned environments can dry out your sinuses, nasal passages, and throat during sleep, causing inflammation and irritation in these sensitive areas. <\/p><p>Using a humidifier while you sleep in the summer can help alleviate these dry air symptoms, along with seasonal allergies. The cool mist from the humidifier may also help counteract high levels of pollen and mold, which are prevalent during warmer months.<\/p>",
             "richtext_style": "p2"
           }
         }
@@ -190,7 +181,7 @@
         "title_alignment_desktop": "tabletl:text-left",
         "subtext": "",
         "subtext_style": "p2",
-        "url": "shopify://blogs/news",
+        "url": "shopify:\/\/blogs\/news",
         "url_text": "See All",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",

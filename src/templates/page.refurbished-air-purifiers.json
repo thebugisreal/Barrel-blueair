@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -36,8 +27,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-blue text-white",
-        "image_mobile": "shopify://shop_images/Spring_mobile_d8ebb966-7198-4ae0-84f9-8d02b9111374.png",
-        "image_desktop": "shopify://shop_images/business_desktop_20bd7602-e848-428b-b138-8d140a7f9964.png",
+        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile_d8ebb966-7198-4ae0-84f9-8d02b9111374.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_20bd7602-e848-428b-b138-8d140a7f9964.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Blueair Restored",
@@ -188,7 +179,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/seed-refurbished-image1.png",
+        "image_mobile": "shopify:\/\/shop_images\/seed-refurbished-image1.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
@@ -215,7 +206,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/seed-refurbished-image2.png",
+        "image_mobile": "shopify:\/\/shop_images\/seed-refurbished-image2.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
@@ -242,7 +233,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/seed-refurbished-image3.webp",
+        "image_mobile": "shopify:\/\/shop_images\/seed-refurbished-image3.webp",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -70,8 +61,8 @@
         "padding_bottom_desktop": "desktop:pb-xl",
         "max_width_desktop": "",
         "color": "text-blue",
-        "back_to_shop_url": "shopify://collections/air-purifiers",
-        "compare_more_url": "shopify://collections/air-purifiers"
+        "back_to_shop_url": "shopify:\/\/collections\/air-purifiers",
+        "compare_more_url": "shopify:\/\/collections\/air-purifiers"
       }
     }
   },
