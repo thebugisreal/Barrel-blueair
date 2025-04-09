@@ -36,7 +36,8 @@
                 endif
                 assign is_unit_subscription_service_product = false
                 assign auto_item_remove = false
-                if item.variant.title contains 'Subscription' and item.final_price == 0
+                assign item_variant_title_lowercased = item.variant.title | downcase
+                if item_variant_title_lowercased contains 'subscription' and item.final_price == 0
                   assign is_unit_subscription_service_product = true
                   if item.selling_plan_allocation != blank
                     assign matching_unit_subscription_air_purifier_found = false

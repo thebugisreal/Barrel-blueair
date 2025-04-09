@@ -8,7 +8,8 @@
   else
     if subscription_object.pdp_type == 'Air Purifier + Filter' and item.properties['_unitSubscriptionTempId'] != blank
       for cart_item in cart.items
-        if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant.title contains 'Subscription' and cart_item.final_price == 0 and cart_item != item
+        assign cart_item_variant_title_lowercased = cart_item.variant.title | downcase
+        if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item_variant_title_lowercased contains 'subscription' and cart_item.final_price == 0 and cart_item != item
           assign is_subscribed = true
           assign unit_subscription_service_product = cart_item
           break

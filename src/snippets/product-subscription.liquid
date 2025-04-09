@@ -110,8 +110,10 @@
               {% assign filter_count = 0 %}
               {% for filter_product in filter_subscriptions %}
                 {% assign filter_variant = filter_product.variants[0] %}
-                {% if filter_product.variants[1].title contains 'Subscription' and pdp_type == 'airpurifier_and_filter' %}
-                  {% assign filter_variant = filter_product.variants[1] %}
+                {% if pdp_type == 'airpurifier_and_filter' %}
+                  {% if filter_product.variants[1].title contains 'subscription' or filter_product.variants[1].title contains 'Subscription' %}
+                    {% assign filter_variant = filter_product.variants[1] %}
+                  {% endif %}
                 {% endif %}
                 {% if filter_variant.selling_plan_allocations.size > 0 %}
                   {% assign filter_count = filter_count | plus: 1 %}
@@ -153,8 +155,10 @@
           {% endunless %}
           {% for filter_product in filter_subscriptions %}
             {% assign filter_variant = filter_product.variants[0] %}
-            {% if filter_product.variants[1].title contains 'Subscription' and pdp_type != 'filter' %}
-              {% assign filter_variant = filter_product.variants[1] %}
+            {% if pdp_type != 'filter' %}
+              {% if filter_product.variants[1].title contains 'subscription' or filter_product.variants[1].title contains 'Subscription' %}
+                {% assign filter_variant = filter_product.variants[1] %}
+              {% endif %}
             {% endif %}
             {% if filter_variant.selling_plan_allocations.size > 0 %}
               <div class="filter-subscription__selling-plans-group {% if pdp_type != '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
