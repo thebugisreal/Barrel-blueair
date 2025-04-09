@@ -294,6 +294,12 @@
                   </product-options>
                   {% endunless %}
 
+                  {% if product.metafields.seed.promo_callout != blank %}
+                    <div class="product__promo-callout my-32 font-700 text-12 text-center bg-blue-darkSky text-blue py-xxs px-xs w-full rounded-[60px]">
+                      {{ product.metafields.seed.promo_callout }}
+                    </div>
+                  {% endif %}
+
                   {% if enable_subscription %}
                     {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}
                   {% endif %}
