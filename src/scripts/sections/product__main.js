@@ -42,11 +42,14 @@ class ProductMain extends HTMLElement {
       stickyLoader: '[js-sticky-loader]',
       qunatityOption: '[js-quantity-option]',
       quantityVariant: '[js-quantity-variant]',
-      quanityOptionImages: '[js-quanity-option-image]'
+      quanityOptionImages: '[js-quanity-option-image]',
+      relatedColors: '[js-related-colors]',
+      relatedColorSwatch: '[js-related-color-swatch]'
     };
   }
 
   connectedCallback() {
+    window.addEventListener("popstate", this._popStateRender);
     this.buttons = this.querySelectorAll(this._selectors.addToCart);
     this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
@@ -74,6 +77,7 @@ class ProductMain extends HTMLElement {
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
+    this._initRelatedColors();
   }
 
   _checkCartSubscriptionEdit = () => {
@@ -951,4 +955,89 @@ class ProductMain extends HTMLElement {
       }
     });
   }
+
+  async _initRelatedColors() {
+    this.relatedColorsContainer = this.querySelectorAll(this._selectors.relatedColors);
+
+    if (this.relatedColorsContainer.length < 1) {
+      return;
+    }
+
+    const currentProductHandle = this.relatedColorsContainer[0].getAttribute('data-handle');
+    const relatedColorsTag = this.relatedColorsContainer[0].getAttribute('data-tag');
+    const targetURL = `/collections/all/${relatedColorsTag}/?view=json`;
+    const relatedColorsJSON = await this._getRelatedColorJSON(targetURL);
+    let relatedColorsMarkup = '';
+
+    if (relatedColorsJSON.length <= 1) {
+      return;
+    }
+
+    relatedColorsJSON.forEach((product) => {    
+      if (product.handle == currentProductHandle) {
+        relatedColorsMarkup = `${relatedColorsMarkup}<span class="product__related-color-current w-[21px] h-[21px] rounded-full flex relative" style="background-color:${product.colorHex}"></span>`
+
+      }else{
+        relatedColorsMarkup = `${relatedColorsMarkup}<a href="${product.url}" class="product-related-color w-[21px] h-[21px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-color-swatch js-color-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></a>`
+      }
+    })
+
+    this.relatedColorsContainer.forEach(container => {
+      container.innerHTML = relatedColorsMarkup;
+    })
+
+    this._colorSwatchLinksOnClick();
+  }
+
+  _getRelatedColorJSON(url) {
+    return fetch(url)
+      .then(response => response.text())
+      .then((text) => {
+        const html = text;
+        const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
+        const JSONcontainer = parsedHTML.querySelector('[js-collection-json]');
+        const parsedJSON = JSON.parse(JSONcontainer.innerHTML);
+        return parsedJSON;
+      })
+  }
+
+  _colorSwatchLinksOnClick = () => {
+    const swatchLinks = this.querySelectorAll('[js-color-swatch-link]');
+    swatchLinks.forEach((link) => {
+      link.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        
+        let url = evt.currentTarget.href;
+        this._renderSwatchLink(url);
+      })
+    })
+  }
+
+  _renderSwatchLink = (url) => {
+    fetch(url)
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+        const oldSections = document.querySelectorAll('.shopify-section');
+        const newSections = html.querySelectorAll('.shopify-section');
+        oldSections.forEach((section, index) => {
+          section.innerHTML = newSections[index].innerHTML;
+        })
+
+        window.history.pushState({}, "", url);
+
+        window.removeEventListener('popstate', this._popStateRender);
+
+        this.connectedCallback();   
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  _popStateRender = () => {
+    this._renderSwatchLink(document.location)
+  }
+
 }

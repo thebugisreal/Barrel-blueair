@@ -302,3 +302,68 @@ s-carousel.pointer-event {
 /* Bazaarvoice Styling */
 
 /* END Bazaarvoice Styling */
+
+
+/* Product Swatch */
+
+.product__related-color-current::after{
+  content: '';
+  @apply block
+  absolute
+  top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  w-[31px]
+  h-[31px]
+  rounded-full
+  border
+  border-blue;
+}
+
+.product-related-color:focus::after{
+  content: '';
+  @apply block
+  absolute
+  top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  w-[31px]
+  h-[31px]
+  rounded-full
+  border
+  border-blue;
+}
+
+.product-related-color:focus-visible::after{
+  content: '';
+  @apply block
+  absolute
+  top-1/2
+  left-1/2
+  -translate-x-1/2
+  -translate-y-1/2
+  w-[31px]
+  h-[31px]
+  rounded-full
+  border
+  border-blue;
+}
+
+@media screen(desktop) {
+  .product-related-color:hover::after{
+    content: '';
+    @apply block
+    absolute
+    top-1/2
+    left-1/2
+    -translate-x-1/2
+    -translate-y-1/2
+    w-[31px]
+    h-[31px]
+    rounded-full
+    border
+    border-blue;
+  }
+}

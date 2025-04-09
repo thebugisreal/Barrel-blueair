@@ -23,6 +23,11 @@
       endif
     endfor
   endif
+  for tag in product.tags
+    if tag contains 'product-family:'
+      assign related_tag = tag
+    endif
+  endfor
 -%}
 
 <s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
@@ -294,8 +299,24 @@
                   </product-options>
                   {% endunless %}
 
+                  {% if product.metafields.shopify.color-pattern != blank and related_tag %}
+                    <div class="product__realted-colors-container mt-lg mb-32">
+                      {% for color in product.metafields.shopify.color-pattern.value %}
+                        <div class="product__related-color">
+                          <span class="product__related-color-label block font-700 text-12 text-blue mb-xs">Color: {{color.label}}</span>
+                          <div class="product__related-colors flex gap-xs"
+                            data-handle="{{product.handle}}"
+                            data-tag="{{related_tag}}"
+                            js-related-colors>
+                            <span class="product__related-color-current w-[21px] h-[21px] rounded-full flex relative" style="background-color: {{color.color}}"></span>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
                   {% if product.metafields.seed.promo_callout != blank %}
-                    <div class="product__promo-callout my-32 font-700 text-12 text-center bg-blue-darkSky text-blue py-xxs px-xs w-full rounded-[60px]">
+                    <div class="product__promo-callout mb-32 font-700 text-12 text-center bg-blue-darkSky text-blue py-xxs px-xs w-full rounded-[60px]">
                       {{ product.metafields.seed.promo_callout }}
                     </div>
                   {% endif %}
