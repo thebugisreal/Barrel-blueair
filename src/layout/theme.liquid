@@ -115,7 +115,9 @@
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     
-    {% render 'sprinklr-chat' %}
+    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% render 'sprinklr-chat' %}
+      {% endif %}
 
     <script type="text/javascript">
       setTimeout(function() {
