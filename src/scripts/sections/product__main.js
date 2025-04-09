@@ -150,8 +150,8 @@ class ProductMain extends HTMLElement {
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
     this.stickyAtcBtns = document.querySelectorAll(this._selectors.stickyAtc);
     this.buttons = [...this.buttons, ...this.stickyAtcBtns];
-    this.stickyPrice = document.querySelector(this._selectors.stickyPrice);
-    this.prices = [...this.prices, this.stickyPrice]
+    this.stickyPrices = document.querySelectorAll(this._selectors.stickyPrice);
+    this.prices = [...this.prices, ...this.stickyPrices]
     this.stickySelectOptionsBtns = document.querySelectorAll(this._selectors.stickySelectOptionsBtn);
     const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
     this.stickyAtcClicked = false;
@@ -364,8 +364,10 @@ class ProductMain extends HTMLElement {
         btn.removeAttribute('disabled');
       }
     });
-    if (this.stickyPrice) {
-      this.stickyPrice.textContent = btnPrice;
+    if (this.stickyPrices.length > 0) {
+      this.stickyPrices.forEach((price) => {
+        price.textContent = btnPrice;
+      });
     }
   }
 
