@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "parent": "page.contact.json",
   "context": {
@@ -7,6 +16,12 @@
     "section_content_panels_64Jcm3": {
       "disabled": true,
       "settings": {},
+      "blocks": {}
+    },
+    "section_embed_GWNkVD": {
+      "settings": {
+        "embed": "<iframe scrolling=\"no\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/641b100105bfa424f692ba47?gwId=665628a2808de773d2e0c1d4\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
+      },
       "blocks": {}
     }
   }
