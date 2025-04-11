@@ -339,10 +339,18 @@
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>
                       <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
-                        {% if product.metafields.seed.experience_description != blank %}
-                          <div class="product-experience__description rte p4">
-                            {{ product.metafields.seed.experience_description | metafield_tag }}
-                          </div>
+                        {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                          {% if product.metafields.seed.experience_description != blank %}
+                            <div class="product-experience__description rte p4">
+                              {{ product.metafields.seed.experience_description | metafield_tag }}
+                            </div>
+                          {% endif %}
+                        {% else %}
+                          {% if product.metafields.seed.experience_description_international != blank %}
+                            <div class="product-experience__description rte p4">
+                              {{ product.metafields.seed.experience_description_international | metafield_tag }}
+                            </div>
+                          {% endif %}
                         {% endif %}
                         {% if product.metafields.seed.experience_icons != blank %}
                           <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md pb-md desktop:gap-x-sm">
