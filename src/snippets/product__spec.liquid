@@ -27,12 +27,28 @@
         {% endif %}
       {% endif %}
     {% endif %}
-    {% if product.metafields.seed.blair_productSpecification_weight != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Product Weight</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
-        </li>
-    {% endif %}
+    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if product.metafields.seed.blair_productSpecification_weight != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Product Weight</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
+          </li>
+      {% endif %}
+    {% else %}
+      {% if product.metafields.seed.blair_productSpecification_weight_internaional  != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Product Weight</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight_internaional }} {{ product.metafields.seed.blair_productSpecification_weight_measurement_international}}</p>
+          </li>
+      {% else %}
+        {% if product.metafields.seed.blair_productSpecification_weight != blank %}
+            <li class="flex gap-md">
+                <p class="p3 w-1/2">Product Weight</p>
+                <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
+            </li>
+        {% endif %}
+      {% endif %}
+    {% endif %}   
     {% if product.metafields.seed.blair_productSpecification_tankcapacity != blank %}
         <li class="flex gap-md">
             <p class="p3 w-1/2">Tank Capacity</p>
