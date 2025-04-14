@@ -25,6 +25,11 @@
     h-[270px]
 }
 
+.compare__image-container img {
+    @apply h-full
+    mx-auto
+}
+
 .compare-product__title-text {
     @apply text-[16px]
     !no-underline
