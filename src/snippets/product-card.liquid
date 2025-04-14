@@ -11,6 +11,20 @@
   if localization.country.iso_code != 'CA' and localization.country.iso_code != 'US'
     assign hide_price_and_tag = true
   endif
+
+  if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA'
+    if product.metafields.seed.blair_dimensions != blank
+      assign blair_dimensions = product.metafields.seed.blair_dimensions
+    endif
+  else
+    if product.metafields.seed.dimensions_hxwxd_international != blank
+      assign blair_dimensions = product.metafields.seed.dimensions_hxwxd_international
+    else
+      if product.metafields.seed.blair_dimensions != blank
+        assign blair_dimensions = product.metafields.seed.blair_dimensions
+      endif
+    endif
+  endif
 %}
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
   <a href="{{ product.url }}" class="product-card__image-link-wrapper block relative !no-underline" js-product-link>
@@ -149,7 +163,7 @@
               "product_card_image": "{{ product.metafields.seed.product_card_image.value.src |  image_url: width: '1920px'}}",
             {% endif %}
             "blair_recommendedRoomSize": "{{ product.metafields.seed.blair_recommendedRoomSize | escape | default: '-'}}",
-            "blair_dimensions":"{{ product.metafields.seed.blair_dimensions | escape | default: '-' }}",
+            "blair_dimensions":"{{ blair_dimensions | escape | default: '-' }}",
             "blair_productSpecification_weight":"{{ product.metafields.seed.blair_productSpecification_weight | escape | default: '-' }}",
             "blair_wifi":"{{ product.metafields.seed.blair_wifi | escape | default: '-'}}",
             "blair_energyConsumption":"{{ product.metafields.seed.blair_energyConsumption | escape | default: '-'}}",
