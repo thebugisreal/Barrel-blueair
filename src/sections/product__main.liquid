@@ -169,8 +169,16 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                {% if product.metafields.seed.applicableFor != blank %}
-                  <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                  {% if product.metafields.seed.applicableFor != blank %}
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                  {% endif %}
+                {% else %}
+                  {% if product.metafields.seed.applicableFor_international != blank %}
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor_international }}</div>
+                  {% elsif product.metafields.seed.applicableFor != blank %}
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                  {% endif %}
                 {% endif %}
               {% when 'title' %}
                 {% capture spacing %}
