@@ -37,7 +37,7 @@
       <div class="collection-grid__body px-md pt-lg pb-xxl desktop:px-xl">
         {% if collection.metafields.seed.collection_links != blank %}
           {% assign linklist = linklists[collection.metafields.seed.collection_links] %}
-          {% if linklist != blank %}
+          {% if linklist != blank and section.settings.hide_links != true %}
             <div class="collection-grid__collection-links-container mb-lg">
               {% if collection.metafields.seed.collection_links_heading != blank %}
                 <div class="p4">{{ collection.metafields.seed.collection_links_heading }}</div>
@@ -204,6 +204,13 @@
       "type": "checkbox",
       "id": "enable_collection_description",
       "label": "Enable Collection Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_links",
+      "label": "Hide Filter Links",
+      "info": "If enabled, the filter links will not be shown on the collection page.",
+      "default": false
     }
   ]
 }
