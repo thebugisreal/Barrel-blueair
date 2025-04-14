@@ -31,14 +31,29 @@
       assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight
     endif
   else
-    if product.metafields.seed.blair_productSpecification_weight_internaional != blank
-      assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight_internaional
+    if product.metafields.seed.blair_productSpecification_weight_international != blank
+      assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight_international
     else
       if product.metafields.seed.blair_productSpecification_weight != blank
         assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight
       endif
     endif
   endif
+
+  if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA'
+    if product.metafields.seed.blair_energyConsumption != blank
+      assign blair_energyConsumption = product.metafields.seed.blair_energyConsumption
+    endif
+  else
+    if product.metafields.seed.blair_energyConsumption_international != blank
+      assign blair_energyConsumption = product.metafields.seed.blair_energyConsumption_international
+    else
+      if product.metafields.seed.blair_energyConsumption != blank
+        assign blair_energyConsumption = product.metafields.seed.blair_energyConsumption
+      endif
+    endif
+  endif
+
 %}
 
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">

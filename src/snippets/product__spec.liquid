@@ -55,11 +55,27 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_tankcapacity}}</p>
         </li>
     {% endif %}
-    {% if product.metafields.seed.blair_energyConsumption != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Energy Consumption</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
-        </li>
+    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if product.metafields.seed.blair_energyConsumption != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Energy Consumption</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
+          </li>
+      {% endif %}
+    {% else %}
+      {% if product.metafields.seed.blair_energyConsumption_international != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Energy Consumption</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption_international}}</p>
+          </li>
+      {% else %}
+        {% if product.metafields.seed.blair_energyConsumption != blank %}
+            <li class="flex gap-md">
+                <p class="p3 w-1/2">Energy Consumption</p>
+                <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
+            </li>
+        {% endif %}
+      {% endif %}
     {% endif %}
     {% if product.metafields.seed.max_wattage_heat != blank %}
         <li class="flex gap-md">
