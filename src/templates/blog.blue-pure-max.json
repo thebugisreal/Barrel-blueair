@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "search": {
@@ -12,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -28,7 +37,7 @@
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify:\/\/shop_images\/Group_48097731.svg",
+            "image": "shopify://shop_images/Group_48097731.svg",
             "svg_html": ""
           }
         },
@@ -37,7 +46,7 @@
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
-            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
+            "image": "shopify://shop_images/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -46,7 +55,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
+            "image": "shopify://shop_images/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -55,7 +64,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify:\/\/shop_images\/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
+            "image": "shopify://shop_images/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
             "svg_html": ""
           }
         }
@@ -87,7 +96,7 @@
         "video_UiJcNE": {
           "type": "video",
           "settings": {
-            "youtube_id": "jfDLrCqYXa4&t=1s"
+            "youtube_id": "jfDLrCqYXa4"
           }
         },
         "video_JaH9CC": {
@@ -110,6 +119,7 @@
         },
         "video_agGEVg": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "youtube_id": "MlO_NUUTC8"
           }
@@ -173,91 +183,91 @@
           "type": "block",
           "settings": {
             "title": "Blue Pure Mini Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_3.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_3.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Mini_Max_Manual_-_English_10.3.24.pdf?v=1740161162",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Mini_Max_Manual_-_English_10.3.24.pdf?v=1740161162",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/mini-max-1"
+            "product_link_url": "shopify://collections/mini-max-1"
           }
         },
         "block_cwtmmP": {
           "type": "block",
           "settings": {
             "title": "Blue Pure 511i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_4.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_4.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_511i_Max_User_Manual_-_English_10.3.24.pdf?v=1740161829",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_511i_Max_User_Manual_-_English_10.3.24.pdf?v=1740161829",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/511i-max"
+            "product_link_url": "shopify://collections/511i-max"
           }
         },
         "block_q8PRWn": {
           "type": "block",
           "settings": {
             "title": "Blue Pure 411a Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_4.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_4.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_411a_Max_User_Manual_-_English_10.3.24.pdf?v=1740161885",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_411a_Max_User_Manual_-_English_10.3.24.pdf?v=1740161885",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/411a-max"
+            "product_link_url": "shopify://collections/411a-max"
           }
         },
         "block_bGih4a": {
           "type": "block",
           "settings": {
             "title": "Blue Pure 411i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_4.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_4.png",
             "video_link_text": "How it works",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_411i_Max_User_Manual_-_English_10.3.24.pdf?v=1740161918",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_411i_Max_User_Manual_-_English_10.3.24.pdf?v=1740161918",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/411i-max"
+            "product_link_url": "shopify://collections/411i-max"
           }
         },
         "block_KJXYyQ": {
           "type": "block",
           "settings": {
             "title": "Blue Pure 311i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_5.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_5.png",
             "video_link_text": "How it works",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_311i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162016",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_311i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162016",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/311i-max-1"
+            "product_link_url": "shopify://collections/311i-max-1"
           }
         },
         "block_JEaEGQ": {
           "type": "block",
           "settings": {
             "title": "Blue Pure 311i+ Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_5.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_5.png",
             "video_link_text": "How it works",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_311iplus_Max_user_manual_-_English_07.30.24.pdf?v=1740162059",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_311iplus_Max_user_manual_-_English_07.30.24.pdf?v=1740162059",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/311i-max-2"
+            "product_link_url": "shopify://collections/311i-max-2"
           }
         },
         "block_N9tFUz": {
           "type": "block",
           "settings": {
             "title": "Blue Pure 211i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_6.png",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_6.png",
             "video_link_text": "How it works",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_211i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162064",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_211i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162064",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/211i-max-1"
+            "product_link_url": "shopify://collections/211i-max-1"
           }
         }
       },
@@ -488,7 +498,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

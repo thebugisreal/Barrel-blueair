@@ -8,13 +8,9 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {
-    "main": {
-      "type": "account__account",
-      "settings": {}
-    }
+  "parent": "page.json",
+  "context": {
+    "market": "australia"
   },
-  "order": [
-    "main"
-  ]
+  "sections": {}
 }
