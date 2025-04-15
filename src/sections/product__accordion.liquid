@@ -17,55 +17,44 @@
                 <{{ title_tag }} class="product__accordion-title mb-24 tabletl:mb-48">{{ section.settings.title }}</{{ title_tag }}>
             {% endif %}
             <s-accordion class="product__accordion-content" data-manual-collapse="true" js-accordion>
-                {% assign first_shown = true %}
-                {% for block in product.metafields.seed.pdp_faq.value %}
-                    {% comment %} ISO Check {% endcomment %}
-                        {% assign iso_text = '' %}
-                        {% for country_name in block.region.value %}
-                            {% if country_name == 'Africa' %} {%  assign iso_text = iso_text |  append: 'AE ' %} {% endif %}
-                            {% if country_name == 'Australia' %} {%  assign iso_text = iso_text |  append: 'AU ' %} {% endif %}
-                            {% if country_name == 'Bangladesh' %} {%  assign iso_text = iso_text |  append: 'BD ' %} {% endif %}
-                            {% if country_name == 'Canada' %} {%  assign iso_text = iso_text |  append: 'CA ' %} {% endif %}
-                            {% if country_name == 'China (Hong Kong/Macau)' %} {%  assign iso_text = iso_text |  append: 'HK ' %} {% endif %}
-                            {% if country_name == 'India' %} {%  assign iso_text = iso_text |  append: 'IN ' %} {% endif %}
-                            {% if country_name == 'Indonesia' %} {%  assign iso_text = iso_text |  append: 'ID ' %} {% endif %}
-                            {% if country_name == 'Japan' %} {%  assign iso_text = iso_text |  append: 'JP ' %} {% endif %}
-                            {% if country_name == 'Korea' %} {%  assign iso_text = iso_text |  append: 'KR ' %} {% endif %}
-                            {% if country_name == 'Mainland China' %} {%  assign iso_text = iso_text |  append: 'CN ' %} {% endif %}
-                            {% if country_name == 'Malaysia' %} {%  assign iso_text = iso_text |  append: 'MY ' %} {% endif %}
-                            {% if country_name == 'Middle East' %} {%  assign iso_text = iso_text |  append: 'AE ' %} {% endif %}
-                            {% if country_name == 'Nepal' %} {%  assign iso_text = iso_text |  append: 'NP ' %} {% endif %}
-                            {% if country_name == 'New Zealand' %} {%  assign iso_text = iso_text |  append: 'NZ ' %} {% endif %}
-                            {% if country_name == 'Pakistan' %} {%  assign iso_text = iso_text |  append: 'PK ' %} {% endif %}
-                            {% if country_name == 'Philippines' %} {%  assign iso_text = iso_text |  append: 'PH ' %} {% endif %}
-                            {% if country_name == 'Singapore' %} {%  assign iso_text = iso_text |  append: 'SG' %} {% endif %}
-                            {% if country_name == 'Thailand' %} {%  assign iso_text = iso_text |  append: 'TH ' %} {% endif %}
-                            {% if country_name == 'United States' %} {%  assign iso_text = iso_text |  append: 'US ' %} {% endif %}
-                            {% if country_name == 'UK' %} {%  assign iso_text = iso_text |  append: 'UK ' %} {% endif %}
-                            {% if country_name == 'Vietnam' %} {%  assign iso_text = iso_text |  append: 'VN ' %} {% endif %}
-                        {% endfor %}
-                        {% assign show_in_country = false %}
-                        {% if iso_text contains localization.country.iso_code %}
-                            {% assign show_in_country = true %}
-                        {% endif %}
-                    {% comment %} END - ISO Check {% endcomment %}
-                    {% if block.region == blank or show_in_country%}
-                        <div class="accordion-item py-md border-gray {% if first_shown %} border-t {% endif %} border-b" js-accordion-item>
-                            <button class="accordion-header w-full flex justify-between items-center gap-xs" {% if first_shown %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
-                                <p class="s1 text-left flex-1">{{ block.question }}</p>
-                                <div class="icon-container h-[33px] w-[33px] p-xxs">
-                                    {%  render 'icon-plus' %}
-                                    {%  render 'icon-minus' %}
-                                </div>
-                            </button>
-        
-                            <div id="accordionID-{{ section.id }}-{{ forloop.index }}" class="accordion-content rte p2" {% if first_shown%} aria-hidden="false" {% else %} aria-hidden="true" {% endif %} js-accordion-content>
-                                {{ block.answer |  metafield_tag }}
+              {% assign first_shown = true %}
+              {% for block in product.metafields.seed.pdp_faq.value %}
+                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                  {% unless block.international contains 'International' %}
+                    <div class="accordion-item py-md border-gray {% if first_shown %} border-t {% endif %} border-b" js-accordion-item>
+                        <button class="accordion-header w-full flex justify-between items-center gap-xs" {% if first_shown %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
+                            <p class="s1 text-left flex-1">{{ block.question }}</p>
+                            <div class="icon-container h-[33px] w-[33px] p-xxs">
+                                {%  render 'icon-plus' %}
+                                {%  render 'icon-minus' %}
                             </div>
+                        </button>
+    
+                        <div id="accordionID-{{ section.id }}-{{ forloop.index }}" class="accordion-content rte p2" {% if first_shown%} aria-hidden="false" {% else %} aria-hidden="true" {% endif %} js-accordion-content>
+                            {{ block.answer |  metafield_tag }}
                         </div>
-                        {% assign first_shown = false %}
-                    {% endif %}
-                {% endfor %}
+                    </div>
+                    {% assign first_shown = false %}
+                  {% endunless %}
+                {% else %}
+                  {% if block.international contains 'International' %}
+                    <div class="accordion-item py-md border-gray {% if first_shown %} border-t {% endif %} border-b" js-accordion-item>
+                        <button class="accordion-header w-full flex justify-between items-center gap-xs" {% if first_shown %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
+                            <p class="s1 text-left flex-1">{{ block.question }}</p>
+                            <div class="icon-container h-[33px] w-[33px] p-xxs">
+                                {%  render 'icon-plus' %}
+                                {%  render 'icon-minus' %}
+                            </div>
+                        </button>
+    
+                        <div id="accordionID-{{ section.id }}-{{ forloop.index }}" class="accordion-content rte p2" {% if first_shown%} aria-hidden="false" {% else %} aria-hidden="true" {% endif %} js-accordion-content>
+                            {{ block.answer |  metafield_tag }}
+                        </div>
+                    </div>
+                    {% assign first_shown = false %}
+                  {% endif %}     
+                {% endif %}
+              {% endfor %}
             </s-accordion>
     
             {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}

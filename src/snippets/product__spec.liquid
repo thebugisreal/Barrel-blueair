@@ -5,29 +5,77 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_filterSpecification_filterType}}</p>
         </li>
     {% endif %}
-    {% if product.metafields.seed.blair_dimensions != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Dimensions(HxWxD)</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_dimensions}}</p>
-        </li>
+    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if product.metafields.seed.blair_dimensions != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Dimensions(HxWxD)</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_dimensions}}</p>
+          </li>
+      {% endif %}
+    {% else %}
+      {% if product.metafields.seed.dimensions_hxwxd_international != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Dimensions(HxWxD)</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.dimensions_hxwxd_international}}</p>
+          </li>
+      {% else %}
+        {% if product.metafields.seed.blair_dimensions != blank %}
+            <li class="flex gap-md">
+                <p class="p3 w-1/2">Dimensions(HxWxD)</p>
+                <p class="p4 w-1/2">{{ product.metafields.seed.blair_dimensions}}</p>
+            </li>
+        {% endif %}
+      {% endif %}
     {% endif %}
-    {% if product.metafields.seed.blair_productSpecification_weight != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Product Weight</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
-        </li>
-    {% endif %}
+    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if product.metafields.seed.blair_productSpecification_weight != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Product Weight</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
+          </li>
+      {% endif %}
+    {% else %}
+      {% if product.metafields.seed.blair_productSpecification_weight_internaional  != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Product Weight</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight_internaional }} {{ product.metafields.seed.blair_productSpecification_weight_measurement_international}}</p>
+          </li>
+      {% else %}
+        {% if product.metafields.seed.blair_productSpecification_weight != blank %}
+            <li class="flex gap-md">
+                <p class="p3 w-1/2">Product Weight</p>
+                <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_weight}} {{ product.metafields.seed.blair_productSpecification_weight_measurement}}</p>
+            </li>
+        {% endif %}
+      {% endif %}
+    {% endif %}   
     {% if product.metafields.seed.blair_productSpecification_tankcapacity != blank %}
         <li class="flex gap-md">
             <p class="p3 w-1/2">Tank Capacity</p>
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_tankcapacity}}</p>
         </li>
     {% endif %}
-    {% if product.metafields.seed.blair_energyConsumption != blank %}
-        <li class="flex gap-md">
-            <p class="p3 w-1/2">Energy Consumption</p>
-            <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
-        </li>
+    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if product.metafields.seed.blair_energyConsumption != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Energy Consumption</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
+          </li>
+      {% endif %}
+    {% else %}
+      {% if product.metafields.seed.blair_energyConsumption_international != blank %}
+          <li class="flex gap-md">
+              <p class="p3 w-1/2">Energy Consumption</p>
+              <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption_international}}</p>
+          </li>
+      {% else %}
+        {% if product.metafields.seed.blair_energyConsumption != blank %}
+            <li class="flex gap-md">
+                <p class="p3 w-1/2">Energy Consumption</p>
+                <p class="p4 w-1/2">{{ product.metafields.seed.blair_energyConsumption}}</p>
+            </li>
+        {% endif %}
+      {% endif %}
     {% endif %}
     {% if product.metafields.seed.max_wattage_heat != blank %}
         <li class="flex gap-md">

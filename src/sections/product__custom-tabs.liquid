@@ -6,19 +6,40 @@
     <div class="product__custom-tabs product__tabs {{ margins_paddings }} text-left px-md {{ section.settings.color }} tabletl:px-xl">
       <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }} tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
           <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
-            {% if product.metafields.seed.pdp_custom_tab_title != blank %}
-              <h4 class="font-900 mb-md ">
-                {{ product.metafields.seed.pdp_custom_tab_title }}
-              </h4>
+            {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+              {% if product.metafields.seed.pdp_custom_tab_title != blank %}
+                <h4 class="font-900 mb-md ">
+                  {{ product.metafields.seed.pdp_custom_tab_title }}
+                </h4>
+              {% endif %}
+            {% else %}
+              {% if product.metafields.seed.pdp_custom_tab_title_international != blank %}
+                <h4 class="font-900 mb-md ">
+                  {{ product.metafields.seed.pdp_custom_tab_title_international }}
+                </h4>
+              {% endif %}
             {% endif %}
             <ul class="flex flex-col gap-sm">
               {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
-                  <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
+                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                  {% unless tab.international contains 'International' %}
+                    <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
                       <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
                       <div class="tab__text-content rte text-left">
-                          {{ tab.richtext |  metafield_tag }}
+                        {{ tab.richtext |  metafield_tag }}
                       </div>
-                  </li>
+                    </li>
+                  {% endunless %}
+                {% else %}
+                  {% if tab.international contains 'International' %}
+                    <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
+                      <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
+                      <div class="tab__text-content rte text-left">
+                        {{ tab.richtext |  metafield_tag }}
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endif %}
               {% endfor %}
             </ul>
           </div>

@@ -169,15 +169,23 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                {% if product.metafields.seed.applicableFor != blank %}
-                  <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                  {% if product.metafields.seed.applicableFor != blank %}
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                  {% endif %}
+                {% else %}
+                  {% if product.metafields.seed.applicableFor_international != blank %}
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor_international }}</div>
+                  {% elsif product.metafields.seed.applicableFor != blank %}
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                  {% endif %}
                 {% endif %}
               {% when 'title' %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
                 <h1 class="product__title h3 {{ spacing }}">
-                  {% render 'product-title-intl' %}
+                  {% render 'product-title-intl', product: product %}
                 </h1>
                 {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
                   <p class="product__short-description h5 desktop:my-xxs">{{ current_variant.title }} </p>
@@ -339,10 +347,18 @@
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>
                       <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
-                        {% if product.metafields.seed.experience_description != blank %}
-                          <div class="product-experience__description rte p4">
-                            {{ product.metafields.seed.experience_description | metafield_tag }}
-                          </div>
+                        {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                          {% if product.metafields.seed.experience_description != blank %}
+                            <div class="product-experience__description rte p4">
+                              {{ product.metafields.seed.experience_description | metafield_tag }}
+                            </div>
+                          {% endif %}
+                        {% else %}
+                          {% if product.metafields.seed.experience_description_international != blank %}
+                            <div class="product-experience__description rte p4">
+                              {{ product.metafields.seed.experience_description_international | metafield_tag }}
+                            </div>
+                          {% endif %}
                         {% endif %}
                         {% if product.metafields.seed.experience_icons != blank %}
                           <ul class="product-experience__icons grid grid-cols-4 mt-md gap-x-xxs gap-y-md pb-md desktop:gap-x-sm">
