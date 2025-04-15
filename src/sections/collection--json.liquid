@@ -5,11 +5,18 @@
 <script type="text/javascript" js-collection-json>
   [
   {%- for product in collection.products -%}
-    {%- assign color = product.options_by_name['Color'].values[0] -%}
     {
+      {%- for tag in product.tags -%}
+        {%- if tag contains 'size:' -%}
+          {%- assign size = tag | split: 'size:' | last | capitalize -%}
+        {%- endif -%}
+      {%- endfor -%}
       "title": "{{product.title}}",
       "url": "{{product.url}}",
       "handle": "{{product.handle}}",
+      {% if size != blank %}
+        "size": "{{size}}",
+      {% endif %}
       {% for color in product.metafields.shopify.color-pattern.value %}
         "colorTitle": "{{color.label}}",
         "colorHex": "{{color.color}}",

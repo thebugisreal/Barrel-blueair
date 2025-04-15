@@ -43,8 +43,8 @@ class ProductMain extends HTMLElement {
       qunatityOption: '[js-quantity-option]',
       quantityVariant: '[js-quantity-variant]',
       quanityOptionImages: '[js-quanity-option-image]',
-      relatedColors: '[js-related-colors]',
-      relatedColorSwatch: '[js-related-color-swatch]'
+      optionSwatchesContainers: '[js-product-option-swatches-container]',
+      relatedOptionSwatch: '[js-related-option-swatch]'
     };
   }
 
@@ -77,7 +77,10 @@ class ProductMain extends HTMLElement {
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
-    this._initRelatedColors();
+    this.optionSwatchesContainers = this.querySelectorAll(this._selectors.optionSwatchesContainers);
+    if (this.optionSwatchesContainers.length > 0) {
+      this.optionSwatchesContainers.forEach((option) => this._initOptionSwatches(option));
+    }
   }
 
   _checkCartSubscriptionEdit = () => {
@@ -956,40 +959,35 @@ class ProductMain extends HTMLElement {
     });
   }
 
-  async _initRelatedColors() {
-    this.relatedColorsContainer = this.querySelectorAll(this._selectors.relatedColors);
+  async _initOptionSwatches(option) {
+    const currentProductHandle = option.dataset.handle;
+    const collectionHandle = option.dataset.collection;
+    const targetURL = `/collections/all/${collectionHandle}?view=json`;
+    const optionSwatchesJSON = await this._getRelatedSwatchesJSON(targetURL);
+    let optionSwatchesMarkup = '';
 
-    if (this.relatedColorsContainer.length < 1) {
-      return;
-    }
-
-    const currentProductHandle = this.relatedColorsContainer[0].getAttribute('data-handle');
-    const relatedColorsTag = this.relatedColorsContainer[0].getAttribute('data-tag');
-    const targetURL = `/collections/all/${relatedColorsTag}/?view=json`;
-    const relatedColorsJSON = await this._getRelatedColorJSON(targetURL);
-    let relatedColorsMarkup = '';
-
-    if (relatedColorsJSON.length <= 1) {
-      return;
-    }
-
-    relatedColorsJSON.forEach((product) => {    
+    optionSwatchesJSON.forEach((product) => {
       if (product.handle == currentProductHandle) {
-        relatedColorsMarkup = `${relatedColorsMarkup}<span class="product__related-color-current w-[21px] h-[21px] rounded-full flex relative" style="background-color:${product.colorHex}"></span>`
-
-      }else{
-        relatedColorsMarkup = `${relatedColorsMarkup}<a href="${product.url}" class="product-related-color w-[21px] h-[21px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-color-swatch js-color-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></a>`
+        return;
+      }
+      if (option.dataset.option == 'size') {
+        optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product__related-size p-xxs w-[99px] h-[25px] rounded-[3px] bg-white text-blue border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch js-option-swatch-link>${product.size}</a>`
+      } else if (option.dataset.option == 'color') {
+        optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product-related-color w-[21px] h-[21px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></a>`
       }
     })
 
-    this.relatedColorsContainer.forEach(container => {
-      container.innerHTML = relatedColorsMarkup;
-    })
+    option.insertAdjacentHTML('beforeend', optionSwatchesMarkup);
 
-    this._colorSwatchLinksOnClick();
+    const swatches = option.querySelectorAll('[js-related-option-swatch]');
+    Array.from(swatches).sort((a, b) =>
+      a.dataset.swatch.toLowerCase().localeCompare(b.dataset.swatch.toLowerCase())
+    ).forEach(el => el.parentNode.appendChild(el));
+
+    this._optionSwatchLinksOnClick();
   }
 
-  _getRelatedColorJSON(url) {
+  _getRelatedSwatchesJSON(url) {
     return fetch(url)
       .then(response => response.text())
       .then((text) => {
@@ -1001,8 +999,8 @@ class ProductMain extends HTMLElement {
       })
   }
 
-  _colorSwatchLinksOnClick = () => {
-    const swatchLinks = this.querySelectorAll('[js-color-swatch-link]');
+  _optionSwatchLinksOnClick = () => {
+    const swatchLinks = this.querySelectorAll('[js-option-swatch-link]');
     swatchLinks.forEach((link) => {
       link.addEventListener('click', (evt) => {
         evt.preventDefault();
