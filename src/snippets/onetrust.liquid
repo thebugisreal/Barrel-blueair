@@ -6,4 +6,13 @@
     function OptanonWrapper() { }
     </script>
     <!-- OneTrust Cookies Consent Notice end for blueair.com/ca -->
-    {% endif %}
+{% endif %}
+{% if localization.country.iso_code == 'GB' %}
+  <!-- OneTrust Cookies Consent Notice start for blueair.com/en-gb -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/01960f04-4a2f-73dc-9d13-e137c10aa50b/OtAutoBlock.js" ></script>
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="01960f04-4a2f-73dc-9d13-e137c10aa50b" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for blueair.com/en-gb -->  
+{% endif %}
