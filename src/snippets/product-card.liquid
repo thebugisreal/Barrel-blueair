@@ -186,7 +186,7 @@
 
     {% if refurbished_air_purifiers %}
       <div class="product-card__atc-wrapper mt-md">
-        <button class="product-card__atc btn btn--blue-rounded relative {% unless current_variant.available %}disabled cursor-not-allowed{% endunless %}" data-variant-id="{{ product.selected_or_first_available_variant.id }}" js-quick-add>
+        <button class="product-card__atc btn btn--blue-rounded relative" {% unless current_variant.available %}disabled{% endunless %} data-variant-id="{{ product.selected_or_first_available_variant.id }}" js-quick-add>
           <div class="btn__text whitespace-nowrap">
             <span js-atc-text>
               {% if current_variant.available %}

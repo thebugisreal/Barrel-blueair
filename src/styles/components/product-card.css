@@ -23,6 +23,18 @@
   p-xxxs;
 }
 
+.product-card__atc:disabled {
+  @apply pr-sm
+  py-xs
+  !bg-gray
+  !text-white
+  !border-gray;
+}
+
+.product-card__atc:disabled .btn__arrow {
+  @apply hidden;
+}
+
 .product-card__swatch--color[data-selected="false"]:focus:not(:focus-visible) {
   @apply border-0
   p-0;
