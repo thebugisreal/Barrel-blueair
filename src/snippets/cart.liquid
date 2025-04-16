@@ -72,7 +72,7 @@
                     {%- endif -%}
                     <div class="p1 hidden">
                       {% if item.original_price != item.final_price %}
-                        <s>{{ item.original_price | money }}</s>
+                        {{ item.original_price | money }}
                         <span>{{ item.final_price | money }}</span>
                       {% else %}
                         <span>{{ item.original_price | money }}</span>
@@ -98,7 +98,7 @@
                         </span>
                         <s class="cart-item__old-price price price--end">
                           {{ item.original_line_price | money }}
-                        </s>
+                        
                         <span class="visually-hidden">
                           {{ 'products.product.price.sale_price' | t }}
                         </span>
@@ -239,12 +239,21 @@
                         {% if use_complementary %}
                           {% for item in cart.items %}
                             {% for test_product in item.product.metafields["shopify--discovery--product_recommendation"].complementary_products.value %}
-                              {% assign test_variant = test_product.variants[0] %}
-                              {% unless cart_variants contains test_variant.id or shown_products contains test_product.id %}
+
+                              {% for variant in test_product.variants %}
+                                {% if variant.price != 0 %}
+                                  {% assign selected_variant = variant %}
+                                {% endif %}
+                              {% endfor %}
+
+                              {% unless cart_variants contains selected_variant.id or shown_products contains test_product.id %}
+
                                 <div class="swiper-slide" js-carousel-slide>
-                                  {% render 'product-card__upsell' product:test_product, section_id: section.id %}
+                                  {% render 'variant-card__upsell' variant:selected_variant, section_id: section.id %}
                                 </div>
+
                                 {% assign shown_products = shown_products | append: test_product.id | append: ',' %}
+                                
                               {% endunless %}
                             {% endfor %}
                           {% endfor %}
