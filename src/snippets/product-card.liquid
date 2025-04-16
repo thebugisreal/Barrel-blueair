@@ -2,6 +2,7 @@
   assign current_variant = product.variants[0]
   assign color_option = false
   assign filter_type_option = false
+  assign refurbished_air_purifiers = false
   if product.options_by_name['color'] != blank
     assign color_option = product.options_by_name['color'].position | minus: 1
   elsif product.metafields.seed.product_card_filter_products != blank
@@ -54,10 +55,13 @@
     endif
   endif
 
+  if product.type == 'refurbished-air-purifiers'
+    assign refurbished_air_purifiers = true
+  endif
 %}
 
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a href="{{ product.url }}" class="product-card__image-link-wrapper block relative !no-underline" js-product-link>
+  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link>
     {% comment %} Product Card Top Tag {% endcomment %}
      {% if product.metafields.seed.product_card_top_tags != blank %}
       <div class="product-card__top-tag absolute top-sm left-sm">
@@ -104,7 +108,7 @@
 
     <div class="product-card__title-layout flex gap-sm justify-between">
       <div class="product-card__title-container flex-1">
-        <a href="{{ product.url }}" class="product-card__title s1 block !no-underline" js-product-link>
+        <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__title s1 block !no-underline" js-product-link>
           {% render 'product-title-intl', product: product %}
         </a>
         {% if filter_type_option != false %}
@@ -179,6 +183,23 @@
         <span class="product-card__price product-card__price--current font-700">{{ current_variant.price | money }}</span>
       {% endif %}
     </div>
+
+    {% if refurbished_air_purifiers %}
+      <div class="product-card__atc-wrapper mt-md">
+        <button class="product-card__atc btn btn--blue-rounded relative" {% unless current_variant.available %}disabled{% endunless %} data-variant-id="{{ product.selected_or_first_available_variant.id }}" js-quick-add>
+          <div class="btn__text whitespace-nowrap">
+            <span js-atc-text>
+              {% if current_variant.available %}
+                Add to Cart
+              {% else %}
+                Out of Stock
+              {% endif %}
+            </span>
+          </div>
+          <div class="btn__arrow">{% render 'icon-arrow-right' %}</div>
+        </button>
+      </div>
+    {% endif %}
 
     {% if collection.template_suffix == 'compare' %}
       <div class="text-12 mt-sm flex items-center gap-sm">

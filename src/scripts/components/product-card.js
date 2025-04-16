@@ -12,7 +12,8 @@ class ProductCard extends HTMLElement {
       productCompareCheckbox: '[js-product-compare-checkbox]',
       productCompareProduct: '[js-product-compare-product]',
       productCompareInfo:'[js-product-compare-info]',
-      filterSwatch: '[js-product-card-filter-swatch]'
+      filterSwatch: '[js-product-card-filter-swatch]',
+      quickAdd: '[js-quick-add]'
     }
   }
 
@@ -25,6 +26,9 @@ class ProductCard extends HTMLElement {
     this.price = this.querySelector(this._selectors.price);
     this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
     this.productCompareCheckbox = this.querySelector(this._selectors.productCompareCheckbox)
+    this.quickAdd = this.querySelectorAll(this._selectors.quickAdd);
+    this.cart = document.querySelector('cart-drawer');
+    this.cartDrawer = document.querySelector('#CartDrawer');
     if (this.querySelector(this._selectors.productCompareProduct)) {
       this.productCompareProduct = JSON.parse(this.querySelector(this._selectors.productCompareProduct).innerHTML)
     }
@@ -51,6 +55,12 @@ class ProductCard extends HTMLElement {
       this._initProductCompare()
       this.productCompareCheckbox.addEventListener('change', this._handleProductCompareCheckToggle.bind(this))
       window.addEventListener("seed:compare:itemchange", this._handleItemChange.bind(this));
+    }
+
+    if ((this.quickAdd) != null) {
+      this.quickAdd.forEach(button => {
+        button.addEventListener('click', this._submitSingle.bind(this));
+      });
     }
   }
 
@@ -209,5 +219,50 @@ class ProductCard extends HTMLElement {
     this._updateProductLink(swatchTarget.dataset.url);
     this._updatePrice(swatchTarget.dataset.price);
     this._updateImage(swatchTarget.dataset.swatch);
+  }
+
+  _submitSingle(e) {
+    e.preventDefault();
+
+    console.log('e.currentTarget', e.currentTarget);
+    let variantId = e.currentTarget.dataset.variantId
+    console.log('variantId', variantId);
+    let data = {
+      items: [{
+        'id': variantId,
+        'quantity': 1
+      }],
+      sections: this.getSectionsToRender().map((section) => section.section)
+    }
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      this.cart.renderContents(response);
+      this.cartDrawer.open();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
+  getSectionsToRender() {
+    return [
+      {
+        id: 'cart',
+        section: 'cart',
+        selector: '[js-cart-drawer-contents]',
+      },
+      {
+        id: 'cart-count',
+        section: 'cart-count',
+        selector: '.shopify-section',
+      }
+    ];
   }
 }
