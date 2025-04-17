@@ -1,0 +1,46 @@
+<variant-card-upsell class="{% if gwp %} product-card__gwp {% else %} product-card__upsell {% endif %} flex gap-sm p-md">
+    <script>
+        console.log('=== VARIANT CARD DEBUG ===');
+        console.log('Full Variant:', {{ variant | json }});
+        console.log('Product Featured Image:', {{ variant.product.featured_image | json }});
+        console.log('Product Title:', {{ variant.product.title | json }});
+    </script>
+    {% if variant.product.featured_image != blank %}
+        <div class="image-container w-1/2 max-w-[160px]">
+            <a href="{{ variant.url }}">
+                {% render 'lazy-image' image:variant.product.featured_image %}
+            </a>
+        </div>
+    {% endif %}
+    <div class="content-container w-1/2 flex flex-col justify-center items-end">
+        <div class="text-content w-full">
+            <h1 class="p1 my-xxxs">
+                {% render 'product-title-intl', product: variant.product %}
+            </h1>
+            {% unless variant.title == "Default Title" %}
+                <p class="p4 my-xxxs">{{ variant.title }}</p>
+            {% endunless %}
+            <p class="p1 font-700">{{ variant.price | money }}</p>
+        </div>
+
+        <button class="product-card__atc underline mt-xs" data-variant-id="{{ variant.id }}" {% unless variant.available %} disabled {% endunless %} js-quick-add>
+            {% if gwp %}
+                {% if cart.total_price > settings.gwp_threshold %}
+                    {% if variant.available %}
+                        Claim Gift
+                    {% else %}
+                        Sold Out
+                    {% endif %}
+                {% else %}
+                    Increase Cart Total
+                {% endif %}
+            {% else %}
+                {% if variant.available %}
+                    Add to Cart
+                {% else %}
+                    Sold Out
+                {% endif %}
+            {% endif %}
+        </button>
+    </div>
+</variant-card-upsell>

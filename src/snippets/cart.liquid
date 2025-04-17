@@ -72,7 +72,7 @@
                     {%- endif -%}
                     <div class="p1 hidden">
                       {% if item.original_price != item.final_price %}
-                        <s>{{ item.original_price | money }}</s>
+                        {{ item.original_price | money }}
                         <span>{{ item.final_price | money }}</span>
                       {% else %}
                         <span>{{ item.original_price | money }}</span>
@@ -98,7 +98,7 @@
                         </span>
                         <s class="cart-item__old-price price price--end">
                           {{ item.original_line_price | money }}
-                        </s>
+                        
                         <span class="visually-hidden">
                           {{ 'products.product.price.sale_price' | t }}
                         </span>
@@ -182,57 +182,106 @@
             {% comment %} END Cart Items  {% endcomment %}
 
             {% comment %} Upsell Products {% endcomment %}
-            {% if settings.upsell_1 != blank or settings.upsell_2 != blank %}
-              {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
-              {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
+            {% assign display_carousel = false %}
+            {% assign use_complementary = false %}
+            {% assign use_static_upsells = false %}
+            {% assign shown_products = '' %}
 
-              {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}   
-                {%- capture upsell_carousel_options -%}
-                  {
-                    "slidesPerView": 1,
-                    "pagination": {
-                      "el": ".swiper-upsell-pagination",
-                      "type": "fraction"
-                    },
-                    "navigation": {
-                      "nextEl": ".swiper-upsell-next",
-                      "prevEl": ".swiper-upsell-prev"
-                    }
+            {% comment %} Check if we have complementary products first {% endcomment %}
+            {% for item in cart.items %}
+              {% if item.product.metafields["shopify--discovery--product_recommendation"].complementary_products.value != blank %}
+                {% assign use_complementary = true %}
+                {% assign display_carousel = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            {% comment %} Only check for static upsells if we don't have complementary products {% endcomment %}
+            {% unless use_complementary %}
+              {% if settings.upsell_1 != blank or settings.upsell_2 != blank %}
+                {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
+                {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
+                
+                {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}
+                  {% assign use_static_upsells = true %}
+                  {% assign display_carousel = true %}
+                {% endunless %}
+              {% endif %}
+            {% endunless %}
+
+            {% if display_carousel %}   
+              {%- capture upsell_carousel_options -%}
+                {
+                  "slidesPerView": 1,
+                  "pagination": {
+                    "el": ".swiper-upsell-pagination",
+                    "type": "fraction"
+                  },
+                  "navigation": {
+                    "nextEl": ".swiper-upsell-next",
+                    "prevEl": ".swiper-upsell-prev"
                   }
-                {%- endcapture -%}
-                <div class="cart-drawer__upsell-container my-lg">
-                  <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
-                      <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
-                        <div class="flex justify-between items-center mb-md">
-                          <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
-                          <div class="swiper-nav-container flex gap-xxs items-center">
-                            <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
-                            <div class="swiper-upsell-pagination w-fit p6"></div>
-                            <div class="swiper-upsell-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
-                          </div>
+                }
+              {%- endcapture -%}
+              <div class="cart-drawer__upsell-container my-lg">
+                <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
+                    <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
+                      <div class="flex justify-between items-center mb-md">
+                        <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
+                        <div class="swiper-nav-container flex gap-xxs items-center">
+                          <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                          <div class="swiper-upsell-pagination w-fit p6"></div>
+                          <div class="swiper-upsell-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
                         </div>
+                      </div>
 
-                        <div class="swiper-wrapper">
-                          {% unless cart_variants contains upsell_1_variant.id %}
+                      <div class="swiper-wrapper">
+                        {% if use_complementary %}
+                          {% for item in cart.items %}
+                            {% for test_product in item.product.metafields["shopify--discovery--product_recommendation"].complementary_products.value %}
+
+                              {% for variant in test_product.variants %}
+                                {% if variant.price != 0 %}
+                                  {% assign selected_variant = variant %}
+                                {% endif %}
+                              {% endfor %}
+
+                              {% unless cart_variants contains selected_variant.id or shown_products contains test_product.id %}
+
+                                <div class="swiper-slide" js-carousel-slide>
+                                  {% render 'variant-card__upsell' variant:selected_variant, section_id: section.id %}
+                                </div>
+
+                                {% assign shown_products = shown_products | append: test_product.id | append: ',' %}
+                                
+                              {% endunless %}
+                            {% endfor %}
+                          {% endfor %}
+                        {% endif %}
+
+                        {% if use_static_upsells %}
+                          {% unless cart_variants contains upsell_1_variant.id or shown_products contains settings.upsell_1.id %}
                             {% if settings.upsell_1 != blank %}
                               <div class="swiper-slide" js-carousel-slide>
                                 {% render 'product-card__upsell' product:settings.upsell_1, section_id: section.id %}
                               </div>
+                              {% assign shown_products = shown_products | append: settings.upsell_1.id | append: ',' %}
                             {% endif %}
                           {% endunless %}
 
-                          {% unless cart_variants contains upsell_2_variant.id %}
+                          {% unless cart_variants contains upsell_2_variant.id or shown_products contains settings.upsell_2.id %}
                             {% if settings.upsell_2 != blank %}
                               <div class="swiper-slide" js-carousel-slide>
                                 {% render 'product-card__upsell' product:settings.upsell_2, section_id: section.id%}
                               </div>
+                              {% assign shown_products = shown_products | append: settings.upsell_2.id | append: ',' %}
                             {% endif %}
                           {% endunless %}
-                        </div>
+                        {% endif %}
                       </div>
-                  </s-carousel>
-                </div>
-              {% endunless %}
+                    </div>
+                </s-carousel>
+              </div>
             {% endif %}
             {% comment %} END Upsell Products {% endcomment %}
 
