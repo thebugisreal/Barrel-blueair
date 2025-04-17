@@ -358,6 +358,10 @@
                             <div class="product-experience__description rte p4">
                               {{ product.metafields.seed.experience_description_international | metafield_tag }}
                             </div>
+                          {% elsif product.metafields.seed.experience_description != blank %}
+                              <div class="product-experience__description rte p4">
+                                {{ product.metafields.seed.experience_description | metafield_tag }}
+                              </div>
                           {% endif %}
                         {% endif %}
                         {% if product.metafields.seed.experience_icons != blank %}

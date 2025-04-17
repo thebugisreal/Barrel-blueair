@@ -17,6 +17,10 @@
                 <h4 class="font-900 mb-md ">
                   {{ product.metafields.seed.pdp_custom_tab_title_international }}
                 </h4>
+              {% elsif product.metafields.seed.pdp_custom_tab_title != blank %}
+                  <h4 class="font-900 mb-md ">
+                    {{ product.metafields.seed.pdp_custom_tab_title }}
+                  </h4>
               {% endif %}
             {% endif %}
             <ul class="flex flex-col gap-sm">
@@ -31,14 +35,14 @@
                     </li>
                   {% endunless %}
                 {% else %}
-                  {% if tab.international contains 'International' %}
+                  {% unless tab.international contains 'US/CA' %}
                     <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
                       <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>
                       <div class="tab__text-content rte text-left">
                         {{ tab.richtext |  metafield_tag }}
                       </div>
                     </li>
-                  {% endif %}
+                  {% endunless %}
                 {% endif %}
               {% endfor %}
             </ul>
