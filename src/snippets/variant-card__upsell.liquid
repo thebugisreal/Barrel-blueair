@@ -1,10 +1,4 @@
 <variant-card-upsell class="{% if gwp %} product-card__gwp {% else %} product-card__upsell {% endif %} flex gap-sm p-md">
-    <script>
-        console.log('=== VARIANT CARD DEBUG ===');
-        console.log('Full Variant:', {{ variant | json }});
-        console.log('Product Featured Image:', {{ variant.product.featured_image | json }});
-        console.log('Product Title:', {{ variant.product.title | json }});
-    </script>
     {% if variant.product.featured_image != blank %}
         <div class="image-container w-1/2 max-w-[160px]">
             <a href="{{ variant.url }}">

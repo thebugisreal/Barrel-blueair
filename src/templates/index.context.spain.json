@@ -10,17 +10,18 @@
 {
   "parent": "index.json",
   "context": {
-    "market": "pakistan"
+    "market": "spain"
   },
   "sections": {
-    "section_icons_BHyffr": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
     "section_content_panels_RLhBrA": {
       "settings": {},
       "blocks": {
+        "customization_hcRJgQ": {
+          "settings": {
+            "title": "Humidifiers & Dehumidifiers",
+            "cta_text": "Coming Soon"
+          }
+        },
         "customization_kjnCLm": {
           "settings": {
             "cta_text": "Explore"
@@ -35,12 +36,6 @@
           "settings": {
             "cta_text": "Coming Soon"
           }
-        },
-        "customization_hcRJgQ": {
-          "settings": {
-            "cta_text": "Coming Soon",
-            "title": "Humidifiers & Dehumidifiers"
-          }
         }
       },
       "block_order": [
@@ -49,26 +44,6 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
-    },
-    "section_image_text_J44nHk": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_image_text_YpPrBz": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_text_banner_KHYtRe": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_product_grid_mkajCi": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
     }
   }
 }

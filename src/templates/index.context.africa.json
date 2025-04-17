@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "parent": "index.json",
   "context": {
@@ -8,7 +17,7 @@
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify:\/\/collections\/air-purifiers",
+        "cta_url": "shopify://collections/air-purifiers",
         "cta_text": "Explore"
       },
       "blocks": {}
@@ -38,7 +47,8 @@
         },
         "customization_hcRJgQ": {
           "settings": {
-            "cta_text": "Coming Soon"
+            "cta_text": "Coming Soon",
+            "title": "Humidifiers & Dehumidifiers"
           }
         }
       },
@@ -70,16 +80,16 @@
         "hotspot_Y7NDEk"
       ]
     },
-    "section_product_grid_mkajCi": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
     "section_text_banner_KHYtRe": {
       "disabled": true,
       "settings": {
         "title": "Explore our best-sellers"
       },
+      "blocks": {}
+    },
+    "section_product_grid_mkajCi": {
+      "disabled": true,
+      "settings": {},
       "blocks": {}
     }
   },

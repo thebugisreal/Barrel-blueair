@@ -1,31 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "parent": "index.json",
   "context": {
     "market": "united-kingdom"
   },
   "sections": {
-    "section_icons_BHyffr": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_image_text_J44nHk": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_image_text_YpPrBz": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
     "hero": {
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify:\/\/collections\/air-purifiers",
+        "cta_url": "shopify://collections/air-purifiers",
         "cta_text": "Explore"
       },
+      "blocks": {}
+    },
+    "section_icons_BHyffr": {
+      "disabled": true,
+      "settings": {},
       "blocks": {}
     },
     "section_content_panels_RLhBrA": {
@@ -48,7 +47,8 @@
         },
         "customization_hcRJgQ": {
           "settings": {
-            "cta_text": "Coming Soon"
+            "cta_text": "Coming Soon",
+            "title": "Humidifiers & Dehumidifiers"
           }
         }
       },
@@ -58,6 +58,16 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
+    },
+    "section_image_text_J44nHk": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     },
     "section_text_banner_KHYtRe": {
       "settings": {

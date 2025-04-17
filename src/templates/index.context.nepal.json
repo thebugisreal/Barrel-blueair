@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "parent": "index.json",
   "context": {
@@ -12,26 +21,6 @@
           "settings": {}
         }
       }
-    },
-    "section_image_text_J44nHk": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_image_text_YpPrBz": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_text_banner_KHYtRe": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
-    "section_product_grid_mkajCi": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
     },
     "section_content_panels_RLhBrA": {
       "settings": {},
@@ -53,7 +42,8 @@
         },
         "customization_hcRJgQ": {
           "settings": {
-            "cta_text": "Coming Soon"
+            "cta_text": "Coming Soon",
+            "title": "Humidifiers & Dehumidifiers"
           }
         }
       },
@@ -63,6 +53,26 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
+    },
+    "section_image_text_J44nHk": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_text_banner_KHYtRe": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_product_grid_mkajCi": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }
