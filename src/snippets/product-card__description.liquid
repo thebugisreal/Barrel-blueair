@@ -7,9 +7,15 @@
     <div class="product-card__tags min-h-[28px] mb-xxs flex justify-center gap-x-xs gap-y-xxs flex-wrap">
       <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" >Out of Stock</span>
       {% if localization.country.iso_code == 'CA' %}
-        {% for tag in product.metafields.seed.product_tags_canada.value %}
-          <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style_canada == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
-        {% endfor %}
+        {% if product.metafields.seed.product_tags_canada != blank %}
+            {% for tag in product.metafields.seed.product_tags_canada.value %}
+                <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style_canada == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+            {% endfor %}
+        {% else %}
+            {% for tag in product.metafields.seed.product_tags.value %}
+                <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+            {% endfor %}
+        {% endif %}
       {% else %}
         {% for tag in product.metafields.seed.product_tags.value %}
           <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
