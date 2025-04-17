@@ -1,0 +1,5 @@
+{% if request.path contains '/.well-known/assetlinks.json' %}
+    {% render 'assetlinks-json' %}
+  {% elsif request.path contains '/.well-known/apple-app-site-association' %}
+    {% render 'apple-app-site-association' %}
+  {% endif %}
