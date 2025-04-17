@@ -9,15 +9,23 @@
                 {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
                 <p class="s2">Select Market</p>
                 <div class="modal__country-select relative bg-white border p-sm border-gray rounded-[4px]">
-                    <div class="country-name text-[22px] flex-1" js-country-input-label>{{ localization.country.name }}</div>
+                    <div class="country-name text-[22px] flex-1"
+                     
+                    js-country-input-label>
+                    {% if localization.country.name == 'Hong Kong SAR' %}
+                        Hong Kong/Macau
+                    {% else %}
+                        {{ localization.country.name }}
+                    {% endif %}
+                    </div>
                     <select name="country_code" id="{{ input_id }}" class="country-select__selector block absolute inset-0 z-[1] opacity-0 cursor-pointer" js-country-select>
-                        <option value="AE" {% if localization.country.iso_code == "AE"%}selected{% endif %} data-country-name="Africa">Africa</option>
                         <option value="AU" {% if localization.country.iso_code == "AU"%}selected{% endif %} data-country-name="Australia">Australia</option>
                         <option value="BD" {% if localization.country.iso_code == "BD"%}selected{% endif %} data-country-name="Bangladesh">Bangladesh</option>
                         <option value="CA" {% if localization.country.iso_code == "CA"%}selected{% endif %} data-country-name="Canada">Canada</option>
-                        <option value="HK" {% if localization.country.iso_code == "HK"%}selected{% endif %} data-country-name="China (Hong Kong/Macau)">China (Hong Kong/Macau)</option>
-                        <option value="TW" {% if localization.country.iso_code == "TW"%}selected{% endif %} data-country-name="China (Taiwan)">China (Taiwan)</option>
-                        <option value="IN" {% if localization.country.iso_code == "IN"%}selected{% endif %} data-country-name="India">India</option>
+                        <option value="HK" {% if localization.country.iso_code == "HK"%}selected{% endif %} data-country-name="Hong Kong/Macau">Hong Kong/Macau</option>
+                        <option value="TW" {% if localization.country.iso_code == "TW"%}selected{% endif %} data-country-name="Taiwan">Taiwan</option>
+                        <option value="FR" {% if localization.country.iso_code == "FR"%}selected{% endif %} data-country-name="France">France</option>
+                        <option value="DE" {% if localization.country.iso_code == "DE"%}selected{% endif %} data-country-name="Germany">Germany</option>
                         <option value="ID" {% if localization.country.iso_code == "ID"%}selected{% endif %} data-country-name="Indonesia">Indonesia</option>
                         <option value="JP" {% if localization.country.iso_code == "JP"%}selected{% endif %} data-country-name="Japan">Japan</option>
                         <option value="KR" {% if localization.country.iso_code == "KR"%}selected{% endif %} data-country-name="Korea">Korea</option>
@@ -29,6 +37,7 @@
                         <option value="PK" {% if localization.country.iso_code == "PK"%}selected{% endif %} data-country-name="Pakistan">Pakistan</option>
                         <option value="PH" {% if localization.country.iso_code == "PH"%}selected{% endif %} data-country-name="Philippines">Philippines</option>
                         <option value="SG" {% if localization.country.iso_code == "SG"%}selected{% endif %} data-country-name="Singapore">Singapore</option>
+                        <option value="ES" {% if localization.country.iso_code == "ES"%}selected{% endif %} data-country-name="Spain">Spain</option>
                         <option value="TH" {% if localization.country.iso_code == "TH"%}selected{% endif %} data-country-name="Thailand">Thailand</option>
                         <option value="US" {% if localization.country.iso_code == "US"%}selected{% endif %} data-country-name="United States">United States</option>
                         <option value="GB" {% if localization.country.iso_code == "GB"%}selected{% endif %} data-country-name="UK">UK</option>
