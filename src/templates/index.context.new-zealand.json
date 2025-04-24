@@ -52,8 +52,8 @@
         },
         "customization_hcRJgQ": {
           "settings": {
-            "cta_text": "Coming Soon",
-            "title": "Humidifiers & Dehumidifiers"
+            "title": "Humidifiers & Dehumidifiers",
+            "cta_text": "Coming Soon"
           }
         }
       },
@@ -75,6 +75,7 @@
       "blocks": {}
     },
     "section_text_banner_KHYtRe": {
+      "disabled": true,
       "settings": {
         "title": "Explore our best-sellers"
       },
@@ -83,8 +84,34 @@
     "section_product_grid_mkajCi": {
       "disabled": true,
       "settings": {},
-      "blocks": {},
-      "block_order": []
+      "blocks": {
+        "product_tc9TA": {
+          "type": "product",
+          "disabled": false,
+          "settings": {
+            "product": "classic-pro-cp7i"
+          }
+        },
+        "product_iPTAq": {
+          "type": "product",
+          "disabled": false,
+          "settings": {
+            "product": "classic-pro-cp9i"
+          }
+        },
+        "product_f63yN": {
+          "type": "product",
+          "disabled": false,
+          "settings": {
+            "product": "f4max-replacement-pac-filter-for-411max-series-f4max"
+          }
+        }
+      },
+      "block_order": [
+        "product_tc9TA",
+        "product_iPTAq",
+        "product_f63yN"
+      ]
     }
   }
 }

@@ -38,8 +38,8 @@
         },
         "customization_hcRJgQ": {
           "settings": {
-            "cta_text": "Coming Soon",
-            "title": "Humidifiers & Dehumidifiers"
+            "title": "Humidifiers & Dehumidifiers",
+            "cta_text": "Coming Soon"
           }
         }
       },
@@ -49,6 +49,11 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
+    },
+    "section_text_banner_KfBBEr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     },
     "section_image_text_J44nHk": {
       "disabled": true,
@@ -68,7 +73,13 @@
     "section_product_grid_mkajCi": {
       "disabled": true,
       "settings": {},
-      "blocks": {}
+      "blocks": {
+        "product_RVC3Ri": {
+          "settings": {
+            "product": "blue-pure-411i-max"
+          }
+        }
+      }
     }
   }
 }

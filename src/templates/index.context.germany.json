@@ -13,6 +13,20 @@
     "market": "germany"
   },
   "sections": {
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_text": "Explore",
+        "cta_url": "shopify://collections/shop-all"
+      },
+      "blocks": {}
+    },
+    "section_icons_BHyffr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
     "section_content_panels_RLhBrA": {
       "settings": {},
       "blocks": {
@@ -44,6 +58,17 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_text_banner_KHYtRe": {
+      "settings": {
+        "title": "Explore our best-sellers"
+      },
+      "blocks": {}
     }
   }
 }

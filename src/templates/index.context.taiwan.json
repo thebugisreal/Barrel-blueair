@@ -17,7 +17,7 @@
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify:\/\/collections\/air-purifiers",
+        "cta_url": "shopify://collections/air-purifiers",
         "cta_text": "Explore"
       },
       "blocks": {}
@@ -80,12 +80,12 @@
       "blocks": {
         "product_gK4U7z": {
           "settings": {
-            "product": "classic-290i"
+            "product": "classic-pro-cp7i"
           }
         },
         "product_RVC3Ri": {
           "settings": {
-            "product": "blue-pure-311i-max"
+            "product": "blue-pure-411i-max"
           }
         },
         "product_LhFdEk": {
