@@ -23,11 +23,29 @@
     ) {
       const newHeight = Math.ceil(data.payload.height);
       const appliedHeight = Math.max(newHeight, MIN_HEIGHT);
+      const oldHeight = iframe.offsetHeight;
+
       iframe.style.height = `${appliedHeight}px`;
+
+      if (appliedHeight > oldHeight) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const rect = iframe.getBoundingClientRect();
+            const scrollY = window.scrollY;
+            const iframeBottom = rect.top + scrollY + iframe.offsetHeight;
+
+            window.scrollTo({
+              top: iframeBottom - window.innerHeight + 40,
+              behavior: 'smooth'
+            });
+          });
+        });
+      }
     }
   });
-
 </script>
+
+
 
 {% schema %}
 {
