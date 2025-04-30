@@ -8,6 +8,27 @@
     {% endif %}
 </div>
 
+<script>
+  const iframe = document.querySelector('iframe');
+  const MIN_HEIGHT = 1000;
+
+  window.addEventListener('message', (event) => {
+    if (!event.origin.includes('sprinklr.com')) return;
+
+    const data = event.data;
+
+    if (
+      data?.eventName === '@sprinklr/GUIDED_WORKFLOW_HEIGHT_UPDATED' &&
+      data?.payload?.height
+    ) {
+      const newHeight = Math.ceil(data.payload.height);
+      const appliedHeight = Math.max(newHeight, MIN_HEIGHT);
+      iframe.style.height = `${appliedHeight}px`;
+    }
+  });
+
+</script>
+
 {% schema %}
 {
   "name": "Embed",
