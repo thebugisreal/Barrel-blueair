@@ -967,13 +967,18 @@ class ProductMain extends HTMLElement {
     let optionSwatchesMarkup = '';
 
     optionSwatchesJSON.forEach((product) => {
-      if (product.handle == currentProductHandle) {
-        return;
-      }
       if (option.dataset.option == 'size') {
-        optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product__related-size p-xxs w-[99px] h-[25px] rounded-[3px] bg-white text-blue border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch js-option-swatch-link>${product.size}</a>`
+        if (product.handle != currentProductHandle) {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product__related-size p-xxs w-[99px] h-[25px] rounded-[3px] bg-white text-blue border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch js-option-swatch-link>${product.size}</a>`
+        } else {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-size-current p-xxs w-[99px] h-[25px] rounded-[3px] bg-blue text-white border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch>${product.size}</div>`
+        }
       } else if (option.dataset.option == 'color') {
-        optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product-related-color w-[21px] h-[21px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></a>`
+        if (product.handle != currentProductHandle) {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product-related-color w-[21px] h-[21px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></a>`
+        } else {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-color-current w-[21px] h-[21px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></div>`
+        }
       }
     })
 
