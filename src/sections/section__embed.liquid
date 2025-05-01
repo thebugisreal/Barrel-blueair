@@ -13,36 +13,64 @@
   const MIN_HEIGHT = 650;
 
   window.addEventListener('message', (event) => {
-    if (!event.origin.includes('sprinklr.com')) return;
+  if (!event.origin.includes('sprinklr.com')) return;
 
-    const data = event.data;
+  const data = event.data;
 
-    if (
-      data?.eventName === '@sprinklr/GUIDED_WORKFLOW_HEIGHT_UPDATED' &&
-      data?.payload?.height
-    ) {
-      const newHeight = Math.ceil(data.payload.height);
-      const appliedHeight = Math.max(newHeight, MIN_HEIGHT);
-      const oldHeight = iframe.offsetHeight;
+  // Adjust height of iframe and scroll to bottom when new contnet is loaded
+  if (
+    data?.eventName === '@sprinklr/GUIDED_WORKFLOW_HEIGHT_UPDATED' &&
+    data?.payload?.height
+  ) {
+    const newHeight = Math.ceil(data.payload.height);
+    const appliedHeight = Math.max(newHeight, MIN_HEIGHT);
+    const oldHeight = iframe.offsetHeight;
 
-      iframe.style.height = `${appliedHeight}px`;
+    iframe.style.height = `${appliedHeight}px`;
 
-      if (appliedHeight > oldHeight) {
+    if (appliedHeight > oldHeight) {
+      requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            const rect = iframe.getBoundingClientRect();
-            const scrollY = window.scrollY;
-            const iframeBottom = rect.top + scrollY + iframe.offsetHeight;
+          const rect = iframe.getBoundingClientRect();
+          const scrollY = window.scrollY;
+          const iframeBottom = rect.top + scrollY + iframe.offsetHeight;
 
-            window.scrollTo({
-              top: iframeBottom - window.innerHeight + 40,
-              behavior: 'smooth'
-            });
+          window.scrollTo({
+            top: iframeBottom - window.innerHeight + 40,
+            behavior: 'smooth'
           });
         });
-      }
+      });
     }
-  });
+  }
+
+  // Scroll to top when submitting a support ticket
+  if (data?.eventName === '@sprinklr/SUBMIT_SUPPORT_TICKET_CLICKED') {
+    const rect = iframe.getBoundingClientRect();
+    const scrollY = window.scrollY;
+    const iframeTop = rect.top + scrollY;
+
+    window.scrollTo({
+      top: iframeTop - 20,
+      behavior: 'smooth'
+    });
+  }
+
+  if (
+      data?.action === 'GUIDED_WORKFLOW_COMPLETED' &&
+      data?.eventName === 'noClicked'
+    ) {
+      const rect = iframe.getBoundingClientRect();
+      const scrollY = window.scrollY;
+      const iframeTop = rect.top + scrollY;
+
+      window.scrollTo({
+        top: iframeTop - 20,
+        behavior: 'smooth'
+      });
+    }
+});
+
 </script>
 
 
