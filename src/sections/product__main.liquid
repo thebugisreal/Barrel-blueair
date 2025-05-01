@@ -219,15 +219,39 @@
                   </style>
                 </div>
               {% when 'product_badge' %}
-                {% if product.metafields.seed.product_tags != blank %}
-                  {% capture spacing %}
-                    {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                  {% endcapture %}
-                  <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
-                    {% for tag in product.metafields.seed.product_tags.value %}
-                      <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
-                    {% endfor %}
-                  </div>
+                {% if localization.country.iso_code == 'CA' %}
+                  {% if product.metafields.seed.product_tags_canada != blank %}
+                    {% capture spacing %}
+                      {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                    {% endcapture %}
+                    <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                      {% for tag in product.metafields.seed.product_tags_canada.value %}
+                        <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    {% if product.metafields.seed.product_tags != blank %}
+                      {% capture spacing %}
+                        {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                      {% endcapture %}
+                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                        {% for tag in product.metafields.seed.product_tags.value %}
+                          <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% else %}
+                    {% if product.metafields.seed.product_tags != blank %}
+                      {% capture spacing %}
+                        {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                      {% endcapture %}
+                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                        {% for tag in product.metafields.seed.product_tags.value %}
+                          <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
                 {% endif %}
               {% when 'filter_options' %}
                 {% if enable_subscription == false and product.metafields.seed.product_card_filter_products != blank %}
