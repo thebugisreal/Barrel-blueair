@@ -14,9 +14,15 @@
   },
   "sections": {
     "section_embed_GWNkVD": {
+      "disabled": false,
       "settings": {
         "embed": "<iframe scrolling=\"no\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
       },
+      "blocks": {}
+    },
+    "section_text_banner_NnPEqy": {
+      "disabled": true,
+      "settings": {},
       "blocks": {}
     }
   }

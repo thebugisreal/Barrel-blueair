@@ -36,8 +36,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Contact Us",
@@ -61,8 +61,35 @@
         "enable_bg_clickabe_url": false
       }
     },
+    "section_text_banner_NnPEqy": {
+      "type": "section__text-banner",
+      "name": "Text Banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "",
+        "title_style": "h1",
+        "subtext": "Please reach out to your local distributor for assistance",
+        "subtext_style": "h6",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
     "section_embed_GWNkVD": {
       "type": "section__embed",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -72,7 +99,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "embed": "<iframe scrolling=\"yes\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"><\/iframe>"
+        "embed": "<iframe scrolling=\"yes\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
       }
     },
     "section_content_panels_64Jcm3": {
@@ -90,7 +117,7 @@
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-center",
-            "cta_url": "https:\/\/careers.usa.blueair.com\/",
+            "cta_url": "https://careers.usa.blueair.com/",
             "cta_text": "Learn More",
             "cta_style": "btn",
             "color": "bg-blue-light text-blue"
@@ -108,7 +135,7 @@
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-center",
-            "cta_url": "https:\/\/www.blueair.com\/us\/storelocator-retailer.html",
+            "cta_url": "https://www.blueair.com/us/storelocator-retailer.html",
             "cta_text": "Learn more",
             "cta_style": "btn",
             "color": "bg-blue-light text-blue"
@@ -126,7 +153,7 @@
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-center",
-            "cta_url": "shopify:\/\/pages\/commercial-and-business-air-purifiers",
+            "cta_url": "shopify://pages/commercial-and-business-air-purifiers",
             "cta_text": "Learn More",
             "cta_style": "btn",
             "color": "bg-blue-light text-blue"
@@ -171,14 +198,14 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Need Support? We can help",
         "title_style": "h3",
         "subtext": "Get product help and answers from the Blueair customer support team.",
         "subtext_style": "s2",
-        "cta_url": "shopify:\/\/pages\/support",
+        "cta_url": "shopify://pages/support",
         "cta_text": "See Support",
         "cta_style": "btn btn--blue-rounded",
         "text_align_mobile": "text-left",
@@ -199,6 +226,7 @@
   "order": [
     "main",
     "section_hero_MWKKLh",
+    "section_text_banner_NnPEqy",
     "section_embed_GWNkVD",
     "section_content_panels_64Jcm3",
     "section_hero_XWdJgJ"

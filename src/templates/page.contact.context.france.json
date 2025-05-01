@@ -10,29 +10,18 @@
 {
   "parent": "page.contact.json",
   "context": {
-    "market": "india"
+    "market": "france"
   },
   "sections": {
-    "section_content_panels_64Jcm3": {
-      "settings": {},
-      "blocks": {
-        "customization_GPDw4p": {
-          "disabled": true,
-          "settings": {}
-        },
-        "customization_XYBgLz": {
-          "disabled": true,
-          "settings": {}
-        }
-      }
-    },
     "section_embed_GWNkVD": {
-      "disabled": true,
-      "settings": {},
+      "disabled": false,
+      "settings": {
+        "embed": "<iframe scrolling=\"yes\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/641b100105bfa424f692ba47?gwId=65fd26ddcdf4f120804bb2ca\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
+      },
       "blocks": {}
     },
     "section_text_banner_NnPEqy": {
-      "disabled": false,
+      "disabled": true,
       "settings": {},
       "blocks": {}
     }
