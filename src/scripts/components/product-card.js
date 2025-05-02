@@ -223,8 +223,11 @@ class ProductCard extends HTMLElement {
 
   _submitSingle(e) {
     e.preventDefault();
+    console.log('e.currentTarget', e.currentTarget);
     let variantId = e.currentTarget.dataset.variantId
+    console.log('variantId', variantId);
     let variantCompareAtPrice = e.currentTarget.dataset.variantCompareAtPrice
+    console.log('variantCompareAtPrice', variantCompareAtPrice);
     let data = {
       items: [{
         'id': variantId,
