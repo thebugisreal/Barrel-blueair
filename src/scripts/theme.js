@@ -59,6 +59,7 @@ customElements.define('active-filters', ActiveFilters);
 customElements.define('price-range', PriceRange);
 customElements.define('product-card', ProductCard);
 customElements.define('product-card-upsell', ProductCardUpsell);
+customElements.define('variant-card-upsell', VariantCardUpsell);
 customElements.define('product-upsell', ProductUpsell);
 customElements.define('compare-banner', CompareBanner);
 customElements.define('compare-grid', CompareGrid);
