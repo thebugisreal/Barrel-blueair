@@ -17,6 +17,7 @@ class ProductMain extends HTMLElement {
       subscriptionToggle: '[js-subscription-toggle]',
       nonSubscriptionToggle: '[js-non-subscription-toggle]',
       subscriptionPrice: '[js-subscription-price]',
+      discountSubscriptionPrice: '[js-discount-subscription-price]',
       priceCopy: '[js-price-copy]',
       filterSubscriptionVariant: '[js-fitler-subscription-variant]',
       filterSubscriptionDescription: '[js-filter-subscription-description]',
@@ -283,6 +284,8 @@ class ProductMain extends HTMLElement {
         }
         this.subscriptionSelectedOnLoad = true;
       }
+
+      this._updateAtcSubscriptionPrice();
     });
 
     this.nonSubscriptionToggle.addEventListener('click', (evt) => {
@@ -325,6 +328,21 @@ class ProductMain extends HTMLElement {
         input.setAttribute('disabled', '');
       });
     }
+  }
+
+  _updateAtcSubscriptionPrice = () => {
+    const discountSubscriptionPrice = this.querySelector(this._selectors.discountSubscriptionPrice);
+    if (!discountSubscriptionPrice) {
+      return;
+    }
+    if (this.stickyPrices.length > 0) {
+      this.stickyPrices.forEach((price) => {
+        price.textContent = discountSubscriptionPrice.textContent;
+      });
+    }
+    this.buttons.forEach((btn) => {
+      btn.querySelector(this._selectors.price).textContent = discountSubscriptionPrice.textContent;
+    });
   }
 
   _updateAtcStateOnFilterChange = (selectedTrigger) => {
