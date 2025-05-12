@@ -1,0 +1,28 @@
+{% comment %}
+  Template to be used for getting grouped color swatches
+  collections/all/(product tag)?view=json
+{% endcomment %}
+<script type="text/javascript" js-collection-json>
+  [
+  {%- for product in collection.products -%}
+    {
+      {%- for tag in product.tags -%}
+        {%- if tag contains 'size:' -%}
+          {%- assign size = tag | split: 'size:' | last | capitalize -%}
+        {%- endif -%}
+      {%- endfor -%}
+      "title": "{{product.title}}",
+      "url": "{{product.url}}",
+      "handle": "{{product.handle}}",
+      {% if size != blank %}
+        "size": "{{size}}",
+      {% endif %}
+      {% for color in product.metafields.shopify.color-pattern.value %}
+        "colorTitle": "{{color.label}}",
+        "colorHex": "{{color.color}}",
+      {% endfor %}
+      "available": {{product.available}}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+  ]
+  </script>

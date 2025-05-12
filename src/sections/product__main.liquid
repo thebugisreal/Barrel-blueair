@@ -23,6 +23,17 @@
       endif
     endfor
   endif
+  for tag in product.tags
+    if tag contains 'product-family-size:'
+      assign related_tag_size = tag
+    endif
+    if tag contains 'product-family-color:'
+      assign related_tag_color = tag
+    endif
+    if tag contains 'size:'
+      assign size_tag = tag | split: 'size:' | last | capitalize
+    endif
+  endfor
 -%}
 
 <s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
@@ -293,6 +304,40 @@
                     {% endfor %}
                   </product-options>
                   {% endunless %}
+
+                  {% if size_tag != blank and related_tag_size != blank %}
+                    <div class="product__realated-sizes-container mt-sm mb-sm">
+                      <span class="product__related-size-label block font-700 text-12 text-blue mb-xxs">Size: {{size_tag}}</span>
+                      <div class="product__related-sizes flex flex-row-reverse justify-end flex-wrap gap-xs"
+                        data-handle="{{product.handle}}"
+                        data-collection="{{related_tag_size}}"
+                        data-option="size"
+                        js-product-option-swatches-container>
+                      </div>
+                    </div>
+                  {% endif %}
+
+                  {% if product.metafields.shopify.color-pattern != blank and related_tag_color != blank %}
+                    <div class="product__realted-colors-container mt-sm mb-sm">
+                      {% for color in product.metafields.shopify.color-pattern.value %}
+                        <div class="product__related-color">
+                          <span class="product__related-color-label block font-700 text-12 text-blue mb-xxs">Color: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-xs"
+                            data-handle="{{product.handle}}"
+                            data-collection="{{related_tag_color}}"
+                            data-option="color"
+                            js-product-option-swatches-container>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% if product.metafields.seed.promo_callout != blank %}
+                    <div class="product__promo-callout mb-32 font-700 text-12 text-center bg-blue-darkSky text-blue py-xxs px-xs w-full rounded-[60px]">
+                      {{ product.metafields.seed.promo_callout }}
+                    </div>
+                  {% endif %}
 
                   {% if enable_subscription %}
                     {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription %}

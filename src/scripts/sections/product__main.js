@@ -42,11 +42,14 @@ class ProductMain extends HTMLElement {
       stickyLoader: '[js-sticky-loader]',
       qunatityOption: '[js-quantity-option]',
       quantityVariant: '[js-quantity-variant]',
-      quanityOptionImages: '[js-quanity-option-image]'
+      quanityOptionImages: '[js-quanity-option-image]',
+      optionSwatchesContainers: '[js-product-option-swatches-container]',
+      relatedOptionSwatch: '[js-related-option-swatch]'
     };
   }
 
   connectedCallback() {
+    window.addEventListener("popstate", this._popStateRender);
     this.buttons = this.querySelectorAll(this._selectors.addToCart);
     this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
     this.thumbSlides = this.querySelectorAll(this._selectors.thumbSlide);
@@ -74,6 +77,10 @@ class ProductMain extends HTMLElement {
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
     this._initProductForm();
+    this.optionSwatchesContainers = this.querySelectorAll(this._selectors.optionSwatchesContainers);
+    if (this.optionSwatchesContainers.length > 0) {
+      this.optionSwatchesContainers.forEach((option) => this._initOptionSwatches(option));
+    }
   }
 
   _checkCartSubscriptionEdit = () => {
@@ -951,4 +958,89 @@ class ProductMain extends HTMLElement {
       }
     });
   }
+
+  async _initOptionSwatches(option) {
+    const currentProductHandle = option.dataset.handle;
+    const collectionHandle = option.dataset.collection;
+    const targetURL = `/collections/all/${collectionHandle}?view=json`;
+    const optionSwatchesJSON = await this._getRelatedSwatchesJSON(targetURL);
+    let optionSwatchesMarkup = '';
+
+    optionSwatchesJSON.forEach((product) => {
+      if (option.dataset.option == 'size') {
+        if (product.handle != currentProductHandle) {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product__related-size p-xxs w-[99px] h-[25px] rounded-[3px] bg-white text-blue border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch js-option-swatch-link>${product.size}</a>`
+        } else {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-size-current p-xxs w-[99px] h-[25px] rounded-[3px] bg-blue text-white border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch>${product.size}</div>`
+        }
+      } else if (option.dataset.option == 'color') {
+        if (product.handle != currentProductHandle) {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product-related-color w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></a>`
+        } else {
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-color-current w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch><span class="product__related-color w-full h-full flex relative rounded-full" style="background-color: ${product.colorHex}"></span></div>`
+        }
+      }
+    })
+
+    option.insertAdjacentHTML('beforeend', optionSwatchesMarkup);
+
+    const swatches = option.querySelectorAll('[js-related-option-swatch]');
+    Array.from(swatches).sort((a, b) =>
+      a.dataset.swatch.toLowerCase().localeCompare(b.dataset.swatch.toLowerCase())
+    ).forEach(el => el.parentNode.appendChild(el));
+
+    this._optionSwatchLinksOnClick();
+  }
+
+  _getRelatedSwatchesJSON(url) {
+    return fetch(url)
+      .then(response => response.text())
+      .then((text) => {
+        const html = text;
+        const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
+        const JSONcontainer = parsedHTML.querySelector('[js-collection-json]');
+        const parsedJSON = JSON.parse(JSONcontainer.innerHTML);
+        return parsedJSON;
+      })
+  }
+
+  _optionSwatchLinksOnClick = () => {
+    const swatchLinks = this.querySelectorAll('[js-option-swatch-link]');
+    swatchLinks.forEach((link) => {
+      link.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        
+        let url = evt.currentTarget.href;
+        this._renderSwatchLink(url);
+      })
+    })
+  }
+
+  _renderSwatchLink = (url) => {
+    fetch(url)
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+        const oldSections = document.querySelectorAll('.shopify-section');
+        const newSections = html.querySelectorAll('.shopify-section');
+        oldSections.forEach((section, index) => {
+          section.innerHTML = newSections[index].innerHTML;
+        })
+
+        window.history.pushState({}, "", url);
+
+        window.removeEventListener('popstate', this._popStateRender);
+
+        this.connectedCallback();   
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  _popStateRender = () => {
+    this._renderSwatchLink(document.location)
+  }
+
 }
