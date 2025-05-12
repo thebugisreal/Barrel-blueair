@@ -189,6 +189,7 @@
     },
     "product_video_WFRqMh": {
       "type": "product__video",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -298,6 +299,7 @@
     },
     "product_tech_specs_jEUNXD": {
       "type": "product__tech-specs",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
