@@ -39,6 +39,7 @@
       "{% if pdp_type == 'Filter' %}filter{% else %}airPurifier{% endif %}": {
         "itemKey": "{{ item.key }}",
         "itemQuantity": "{{ item.quantity }}",
+        "variantId": "{{ item.variant_id }}",
         "properties": {
         {% for property in item.properties %}
           "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
