@@ -71,4 +71,11 @@ class ProductCardUpsell extends HTMLElement {
           }
         ];
       }
-  }
+}
+
+class VariantCardUpsell extends ProductCardUpsell {
+    constructor() {
+        super();
+        console.log('VariantCardUpsell constructor called');
+    }
+}
