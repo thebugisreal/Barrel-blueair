@@ -10,27 +10,27 @@
 
     <div class="py-md max-w-[400px] w-full">
       <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8" data-login-with-shop-sign-in="true" novalidate="novalidate" class="space-y-4">
-          <input type="hidden" name="form_type" value="customer_login">
-          <input type="hidden" name="utf8" value="✓">
-          <div class="">
-            <label for="CustomerEmail" class="sr-only">
-                Email
-            </label>
-            <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off" autocapitalize="none" placeholder="Email" class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue">
-          </div>
-          <div class="">
-          <label for="CustomerPassword" class="sr-only">
-              Password
+        <input type="hidden" name="form_type" value="customer_login">
+        <input type="hidden" name="utf8" value="✓">
+        <div class="">
+          <label for="CustomerEmail" class="sr-only">
+              Email
           </label>
-          <input type="password" value="" name="customer[password]" id="CustomerPassword" autocomplete="current-password" placeholder="Password" class="w-full mb-md border-b px-sm py-xxxs pr-xxxs text-16 text-blue bg-transparent placeholder:text-blue">
-          </div>
+          <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off" autocapitalize="none" placeholder="Email" class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue">
+        </div>
+        <div class="">
+        <label for="CustomerPassword" class="sr-only">
+            Password
+        </label>
+        <input type="password" value="" name="customer[password]" id="CustomerPassword" autocomplete="current-password" placeholder="Password" class="w-full mb-md border-b px-sm py-xxxs pr-xxxs text-16 text-blue bg-transparent placeholder:text-blue">
+        </div>
 
-          <div class="flex pt-4">
-            <button type="submit" class="btn btn--blue-rounded mb-lg">
-              <span class="btn__text">Sign in</span>
-              <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
-            </button>
-          </div>
+        <div class="flex pt-4">
+          <button type="submit" class="btn btn--blue-rounded mb-lg">
+            <span class="btn__text">Sign in</span>
+            <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+          </button>
+        </div>
       </form>
     </div>
 </div>
