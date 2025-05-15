@@ -2,6 +2,8 @@
   <div class="max-w-md w-full">
     <h1 class="h3 text-center mb-md">Gigya Registration Form</h1>
 
+    <div id="formErrors" class="mb-4 text-red text-14"></div>
+
     <form id="registrationForm" class="mt-8">
       <div>
         <div class="mb-4">
@@ -59,15 +61,16 @@
 <script>
   document.getElementById('registrationForm').addEventListener('submit', function (event) {
     event.preventDefault();
+    document.getElementById('formErrors').innerHTML = ""; // Clear previous errors
     const formData = new FormData(event.target);
     const password = formData.get('password');
     const confirmPassword = formData.get('confirm_password');
     if (password !== confirmPassword) {
-      alert('Passwords do not match.');
+      document.getElementById('formErrors').textContent = 'Passwords do not match.';
       return;
     }
     if (!document.getElementById('over16').checked) {
-      alert('You must confirm that you are over 16 years old.');
+      document.getElementById('formErrors').textContent = 'You must confirm that you are over 16 years old.';
       return;
     }
     const data = {
@@ -81,11 +84,34 @@
       },
       preferences: {
         ageConsentGranted: { isConsentGranted: document.getElementById('over16').checked },
-        blueairUpdates: { isConsentGranted: document.getElementById('blueairUpdates').checked },
-        unileverConsent: { isConsentGranted: document.getElementById('unileverConsent').checked },
         cookies: { isConsentGranted: true },
       },
     };
+    function handleValidationErrors(validationErrors) {
+      const userFields = ['password', 'email', 'firstName', 'lastName', 'confirm_password'];
+      const hasPasswordError = validationErrors.some(err => err.fieldName === 'password');
+      const errorList = [];
+
+      if (hasPasswordError) {
+        errorList.push(
+          `<li>Password must be at least 10 characters, contain uppercase and lowercase letters, a number, and a special character.</li>`
+        );
+      }
+
+      // Add other user field errors (excluding password)
+      validationErrors
+        .filter(err => userFields.includes(err.fieldName) && err.fieldName !== 'password')
+        .forEach(err => {
+          errorList.push(`<li>${err.message}</li>`);
+        });
+
+      if (errorList.length > 0) {
+        document.getElementById('formErrors').innerHTML = `<ul>${errorList.join('')}</ul>`;
+      } else {
+        console.warn('Technical validation errors:', validationErrors);
+        document.getElementById('formErrors').textContent = 'An unknown error occurred. Please try again.';
+      }
+    }
     gigya.accounts.initRegistration({
       callback: function (response) {
         if (response.errorCode === 0) {
@@ -107,9 +133,17 @@
                   fields: "email,profile",
                   expiration: 3600
                 });
+              } else if (response.validationErrors && response.validationErrors.length > 0) {
+                handleValidationErrors(response.validationErrors);
+              } else if (response.errorMessage) {
+                document.getElementById('formErrors').textContent = response.errorMessage;
               }
             },
           });
+        } else if (response.validationErrors && response.validationErrors.length > 0) {
+          handleValidationErrors(response.validationErrors);
+        } else if (response.errorMessage) {
+          document.getElementById('formErrors').textContent = response.errorMessage;
         }
       },
     });
