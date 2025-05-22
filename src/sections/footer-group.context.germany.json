@@ -8,24 +8,21 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "header-group.json",
+  "parent": "footer-group.json",
   "context": {
-    "market": "canada"
+    "market": "germany"
   },
   "sections": {
-    "header": {
+    "footer": {
       "settings": {
-        "header_nav_desktop": "ca-nav-bar",
-        "bg_color": "bg-blue-light text-blue"
+        "footer_nav": "seed-intl-footer"
       },
-      "blocks": {
-        "announcement_9GCU6L": {
-          "settings": {
-            "announcement": "Save up to 40% on air care",
-            "url": "shopify://collections/canada-sale"
-          }
-        }
-      }
+      "blocks": {}
+    },
+    "klaviyo": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

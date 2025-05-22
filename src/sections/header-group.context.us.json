@@ -8,30 +8,23 @@
  * ------------------------------------------------------------
  */
 {
-  "type": "header",
-  "name": "Header Group",
+  "parent": "header-group.json",
+  "context": {
+    "market": "us"
+  },
   "sections": {
     "header": {
-      "type": "header",
+      "settings": {
+        "bg_color": "bg-blue-light text-blue"
+      },
       "blocks": {
         "announcement_9GCU6L": {
-          "type": "announcement",
           "settings": {
-            "announcement": "",
-            "url": ""
+            "announcement": "Memorial Day Sale: Up to 40% off air care",
+            "url": "shopify://collections/sale"
           }
         }
-      },
-      "block_order": [
-        "announcement_9GCU6L"
-      ],
-      "settings": {
-        "header_nav_desktop": "us-nav-bar",
-        "bg_color": "bg-white text-blue"
       }
     }
-  },
-  "order": [
-    "header"
-  ]
+  }
 }

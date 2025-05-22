@@ -10,22 +10,14 @@
 {
   "parent": "header-group.json",
   "context": {
-    "market": "canada"
+    "market": "germany"
   },
   "sections": {
     "header": {
       "settings": {
-        "header_nav_desktop": "ca-nav-bar",
-        "bg_color": "bg-blue-light text-blue"
+        "header_nav_desktop": "seed-intl-desktop-nav"
       },
-      "blocks": {
-        "announcement_9GCU6L": {
-          "settings": {
-            "announcement": "Save up to 40% on air care",
-            "url": "shopify://collections/canada-sale"
-          }
-        }
-      }
+      "blocks": {}
     }
   }
 }
