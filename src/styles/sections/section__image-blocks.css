@@ -1,0 +1,17 @@
+.section__image-block-link:focus {
+  @apply opacity-50;
+}
+
+.section__image-block-link:focus-visible {
+  @apply opacity-50;
+}
+
+.section__image-block-link:focus:not(:focus-visible) {
+  @apply opacity-100;
+}
+
+@media screen(desktop) {
+  .section__image-block-link:hover {
+    @apply opacity-50;
+  }
+}
