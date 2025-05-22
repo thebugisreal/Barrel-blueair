@@ -157,6 +157,15 @@ class CartItems extends HTMLElement {
     ];
   }
 
+  getConfigToRender(){
+    return [
+      {
+        id: '',
+
+      }
+    ]
+  }
+
   updateQuantity(line, quantity, name) {
     this.enableLoading(line);
 
@@ -527,22 +536,34 @@ class CartSubscription extends HTMLElement {
                   '_og_first_order_place_date': formattedOrderDate
                 }
               }
-            ]
+            ],
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
           }
-          const res = await this._updateCartItems('add', addData, false);
+
+          const res = await this._updateCartItems('add', addData, true);
           
           if (res.status) {
             console.log(res.status)
             return;
           }
-          
-          const changeData = {
-            id: this.subscriptionData.airPurifier.itemKey,
-            quantity: parseInt(this.subscriptionData.airPurifier.itemQuantity),
-            properties: airPurifierProperties,
-            sections: this.cart.getSectionsToRender().map((section) => section.id)
-          };
-          this._updateCartItems('change', changeData, true);
+
+          this.subscriptionData = JSON.parse(this.querySelector(this._selectors.subscriptionData).innerHTML);
+
+          const cartItems = await this._getCartItems()
+          const airPurifier = cartItems.items.find((item) => item.variant_id.toString() === this.subscriptionData.airPurifier.variantId)
+
+          if(airPurifier?.key) this.subscriptionData.airPurifier.itemKey = airPurifier.key
+
+          setTimeout(() => {
+            const changeData = {
+              id: this.subscriptionData.airPurifier.itemKey,
+              quantity: parseInt(this.subscriptionData.airPurifier.itemQuantity),
+              properties: airPurifierProperties,
+              sections: this.cart.getSectionsToRender().map((section) => section.id)
+            };
+  
+            this._updateCartItems('change', changeData, true);
+          }, 1000);
         }
       }
     }
@@ -557,6 +578,21 @@ class CartSubscription extends HTMLElement {
     } else {
       this.error.classList.add('hidden');
     }
+  }
+
+  _getCartItems = async () => {
+    const res = await fetch(window.Shopify.routes.root + 'cart.js', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .catch((e) => {
+      console.error(e)
+    })
+
+    return res
   }
 
   _updateCartItems = (type, data, render = true) => {

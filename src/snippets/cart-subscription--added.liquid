@@ -15,6 +15,7 @@
       "filter": {
         "itemKey": "{{ subscription_item.key }}",
         "itemQuantity": "{{ subscription_item.quantity }}",
+        "variantId": "{{ subscription_item.variant_id }}",
         "properties": {
         {% for property in subscription_item.properties %}
           "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}
@@ -24,6 +25,7 @@
       "airPurifier": {
         "itemKey": "{{ item.key }}",
         "itemQuantity": "{{ item.quantity }}",
+        "variantId": "{{ item.variant_id }}",
         "properties": {
         {% for property in item.properties %}
           "{{ property.first }}": "{{ property.last }}"{% unless forloop.last %},{% endunless %}

@@ -41,7 +41,10 @@
       </div>
       <div class="product-subscription__price-wrapper s3 flex-1 flex flex-wrap justify-end items-center gap-x-xs gap-y-0" {% if pdp_type == 'filter' %}js-subscription-price {% endif %}>
         {% if pdp_type != 'filter' %}
-          {% if current_variant.compare_at_price > current_variant.price %}
+          {% if product.metafields.seed.filter_subscription_discount != blank and filter_subscription_discounted_price != blank %}
+            <s class="product__price product__price--compare">{{ current_variant.price | money }}</s>
+            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ filter_subscription_discounted_price | money }}</span>
+          {% elsif current_variant.compare_at_price > current_variant.price %}
             <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
             <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
           {% else %}
