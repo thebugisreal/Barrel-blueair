@@ -18,7 +18,7 @@
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify://collections/shop-all",
+        "cta_url": "shopify:\/\/collections\/shop-all",
         "cta_text": "Explore"
       },
       "blocks": {}
@@ -82,7 +82,7 @@
     },
     "section_image_text_grid_HDAVLL": {
       "settings": {
-        "image_mobile": "shopify://shop_images/Image_3_4-1_c87d8971-4698-4961-b096-b6b4c9cd17f6.jpg"
+        "image_mobile": "shopify:\/\/shop_images\/Image_3_4-1_c87d8971-4698-4961-b096-b6b4c9cd17f6.jpg"
       },
       "blocks": {}
     },

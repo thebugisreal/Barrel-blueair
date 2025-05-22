@@ -89,7 +89,6 @@
     },
     "section_embed_GWNkVD": {
       "type": "section__embed",
-      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -116,6 +115,38 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251207212717145\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Customer Service Email:<br><a href=\"mailto:service@hlh.com.tw\" class=\"ProsemirrorEditor-link\">service@hlh.com.tw</a></p>\n<p>Telephone:<br>0800-251-209</p>\n<p>Line<br>@hlh0800251209</p>\n<p><strong>Operating Hours</strong></p>\n<p>Telephone customer service:<br>Mon-Fri 08:00 - 20:00<br>Sat 09:00 - 18:00 | Closed Sundays</p>\n</div>"
+      }
+    },
+    "section_embed_hBxRjM": {
+      "type": "section__embed",
+      "disabled": true,
+      "name": "Embed",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251347139931156\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Shift Electronics LLC</p>\n<p>Customer Service Email:<br><a href=\"mailto:info@shift.ae\" class=\"ProsemirrorEditor-link\">info@shift.ae</a></p>\n<p>Telephone:<br>04 323 3220</p>\n<p>Address: Block 32 8B Street - Al Quoz Industrial Area 1 - Dubai</p>\n</div>"
+      }
+    },
+    "section_embed_DD9f4r": {
+      "type": "section__embed",
+      "disabled": true,
+      "name": "Embed",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251347278263158\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Arisit Pty LTD</p>\n<p>Customer Service Email:<br><a href=\"mailto:arisit.warranties@arisit.com\" class=\"ProsemirrorEditor-link\">arisit.warranties@arisit.com</a></p>\n<p>Telephone:<br>1300 762 219</p>\n</div>"
       }
     },
     "section_content_panels_64Jcm3": {
@@ -245,6 +276,8 @@
     "section_text_banner_NnPEqy",
     "section_embed_GWNkVD",
     "section_embed_7Gdzyj",
+    "section_embed_hBxRjM",
+    "section_embed_DD9f4r",
     "section_content_panels_64Jcm3",
     "section_hero_XWdJgJ"
   ]

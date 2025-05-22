@@ -17,7 +17,7 @@
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify://collections/air-purifiers",
+        "cta_url": "shopify:\/\/collections\/air-purifiers",
         "cta_text": "Explore"
       },
       "blocks": {}
@@ -32,7 +32,7 @@
       "blocks": {
         "customization_kjnCLm": {
           "settings": {
-            "cta_url": "shopify://collections/air-purifiers",
+            "cta_url": "shopify:\/\/collections\/air-purifiers",
             "cta_text": "Explore"
           }
         },

@@ -13,10 +13,15 @@
     "market": "africa"
   },
   "sections": {
-    "section_embed_GWNkVD": {
+    "section_text_banner_NnPEqy": {
       "disabled": false,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_embed_GWNkVD": {
+      "disabled": true,
       "settings": {
-        "embed": "<iframe scrolling=\"no\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/641b100105bfa424f692ba47?gwId=665628a2808de773d2e0c1d4\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
+        "embed": "<iframe scrolling=\"no\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/641b100105bfa424f692ba47?gwId=665628a2808de773d2e0c1d4\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"><\/iframe>"
       },
       "blocks": {}
     },
@@ -25,8 +30,13 @@
       "settings": {},
       "blocks": {}
     },
-    "section_text_banner_NnPEqy": {
+    "section_embed_7Gdzyj": {
       "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_embed_hBxRjM": {
+      "disabled": false,
       "settings": {},
       "blocks": {}
     }

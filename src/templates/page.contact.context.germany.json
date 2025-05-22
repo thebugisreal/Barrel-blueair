@@ -16,7 +16,7 @@
     "section_embed_GWNkVD": {
       "disabled": false,
       "settings": {
-        "embed": "<iframe scrolling=\"yes\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/641b100105bfa424f692ba47?gwId=65fd26ddcdf4f120804bb2ca\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
+        "embed": "<iframe scrolling=\"yes\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/641b100105bfa424f692ba47?gwId=65fd26ddcdf4f120804bb2ca\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"><\/iframe>"
       },
       "blocks": {}
     },

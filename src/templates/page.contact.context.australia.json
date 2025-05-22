@@ -13,9 +13,11 @@
     "market": "australia"
   },
   "sections": {
-    "section_content_panels_64Jcm3": {
-      "disabled": true,
-      "settings": {},
+    "section_text_banner_NnPEqy": {
+      "disabled": false,
+      "settings": {
+        "padding_top_desktop": "desktop:pt-xxl"
+      },
       "blocks": {}
     },
     "section_embed_GWNkVD": {
@@ -23,11 +25,19 @@
       "settings": {},
       "blocks": {}
     },
-    "section_text_banner_NnPEqy": {
+    "section_embed_DD9f4r": {
       "disabled": false,
-      "settings": {
-        "padding_top_desktop": "desktop:pt-xxl"
-      },
+      "settings": {},
+      "blocks": {}
+    },
+    "section_content_panels_64Jcm3": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_hero_XWdJgJ": {
+      "disabled": true,
+      "settings": {},
       "blocks": {}
     }
   }

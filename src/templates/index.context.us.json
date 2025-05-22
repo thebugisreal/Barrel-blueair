@@ -10,15 +10,7 @@
 {
   "parent": "index.json",
   "context": {
-    "market": "canada"
+    "market": "us"
   },
-  "sections": {
-    "hero": {
-      "settings": {
-        "title": "Kick off summer <br> with fresh, clean air",
-        "title_style": "h3"
-      },
-      "blocks": {}
-    }
-  }
+  "sections": {}
 }

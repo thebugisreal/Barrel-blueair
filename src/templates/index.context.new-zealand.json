@@ -17,7 +17,7 @@
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify://collections",
+        "cta_url": "shopify:\/\/collections",
         "cta_text": "Explore"
       },
       "blocks": {}
