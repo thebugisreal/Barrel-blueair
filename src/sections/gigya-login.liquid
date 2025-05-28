@@ -12,7 +12,8 @@
       <button id="toggleRegister" class="font-bold text-18 text-blue hover:underline">Create an account</button>
     </div>
     <div id="loginForm" class="py-md max-w-[400px] w-full">
-      <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8" data-login-with-shop-sign-in="true" novalidate="novalidate" class="space-y-4">
+      <div id="loginFormErrors" class="mb-4 text-red text-14"></div>
+      <form id="customer_login" accept-charset="UTF-8" data-login-with-shop-sign-in="true" novalidate="novalidate" class="space-y-4">
         <input type="hidden" name="form_type" value="customer_login">
         <input type="hidden" name="utf8" value="✓">
         <div class="">
@@ -136,6 +137,14 @@
             fields: "email,profile",
             expiration: 3600
           });
+        } else {
+          // Show error message to user
+          var loginErrorDiv = document.getElementById('loginFormErrors');
+          if (loginErrorDiv) {
+            loginErrorDiv.textContent = 'Invalid email or password';
+          } else {
+            alert('Invalid email or password');
+          }
         }
       }
     });
