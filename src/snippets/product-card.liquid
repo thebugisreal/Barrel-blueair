@@ -101,16 +101,18 @@
   <div class="product-card__info px-sm py-md desktop:p-md">
     <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xs gap-y-xxs flex-wrap {% if hide_price_and_tag %}!hidden{% endif %}">
       <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available or true %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>Out of Stock</span>
-      {% if localization.country.iso_code == 'CA' %}
-        {% if product.metafields.seed.product_tags_canada != blank %}
-          {% for tag in product.metafields.seed.product_tags_canada.value %}
-            <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style_canada == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+      {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+        {% if localization.country.iso_code == 'CA' %}
+          {% if product.metafields.seed.product_tags_canada != blank %}
+            {% for tag in product.metafields.seed.product_tags_canada.value %}
+              <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style_canada == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+        {% else %}
+          {% for tag in product.metafields.seed.product_tags.value %}
+            <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
           {% endfor %}
         {% endif %}
-      {% else %}
-        {% for tag in product.metafields.seed.product_tags.value %}
-          <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
-        {% endfor %}
       {% endif %}
     </div>
 
