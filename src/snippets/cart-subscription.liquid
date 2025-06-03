@@ -22,8 +22,13 @@
           assign subscription_available = true
           assign preselected_subscription = item.variant
           assign preselected_subscription_selling_plan_allocation = ''
-          if item.product.metafields.seed.subscription_frequency_options != blank
-            for frequency_option in item.product.metafields.seed.subscription_frequency_options.value
+          if subscription_object.frequency_options_override != blank or item.product.metafields.seed.subscription_frequency_options != blank
+            if subscription_object.frequency_options_override != blank
+              assign frequency_options = subscription_object.frequency_options_override.value
+            else 
+              assign frequency_options = item.product.metafields.seed.subscription_frequency_options.value
+            endif
+            for frequency_option in frequency_options
               for selling_plan_allocation in preselected_subscription.selling_plan_allocations
                 if frequency_option == selling_plan_allocation.selling_plan.options[0].value
                   assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
@@ -46,8 +51,13 @@
             assign subscription_available = true
             assign preselected_subscription = filter_variant
             assign preselected_subscription_selling_plan_allocation = ''
-            if filter_product.metafields.seed.subscription_frequency_options != blank
-              for frequency_option in filter_product.metafields.seed.subscription_frequency_options.value
+            if subscription_object.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank
+              if subscription_object.frequency_options_override != blank
+                assign frequency_options = subscription_object.frequency_options_override.value
+              else 
+                assign frequency_options = filter_product.metafields.seed.subscription_frequency_options.value
+              endif
+              for frequency_option in frequency_options
                 for selling_plan_allocation in preselected_subscription.selling_plan_allocations
                   if frequency_option == selling_plan_allocation.selling_plan.options[0].value
                     assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
@@ -115,8 +125,13 @@
           assign filter_subscription_available = true
           assign preselected_subscription = filter_variant
           assign preselected_subscription_selling_plan_allocation = ''
-          if filter_product.metafields.seed.subscription_frequency_options != blank
-            for frequency_option in filter_product.metafields.seed.subscription_frequency_options.value
+          if subscription_object.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank
+            if subscription_object.frequency_options_override != blank
+              assign frequency_options = subscription_object.frequency_options_override.value
+            else
+              assign frequency_options = filter_product.metafields.seed.subscription_frequency_options.value
+            endif
+            for frequency_option in frequency_options
               for selling_plan_allocation in preselected_subscription.selling_plan_allocations
                 if frequency_option == selling_plan_allocation.selling_plan.options[0].value
                   assign preselected_subscription_selling_plan_allocation = selling_plan_allocation

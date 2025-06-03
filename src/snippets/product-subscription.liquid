@@ -193,8 +193,13 @@
                   {% endif %}
                 </div>  
                 <div class="filter-subscription__selling-plans flex flex-wrap gap-xxs">
-                  {% if filter_product.metafields.seed.subscription_frequency_options != blank %}
-                    {% for frequency_option in filter_product.metafields.seed.subscription_frequency_options.value %}
+                  {% if subscription.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank %}
+                    {% if subscription.frequency_options_override != blank %}
+                      {% assign frequency_options = subscription.frequency_options_override.value %}
+                    {% else %}
+                      {% assign frequency_options = filter_product.metafields.seed.subscription_frequency_options.value %}
+                    {% endif %}
+                    {% for frequency_option in frequency_options %}
                       {% for selling_plan_allocation in filter_variant.selling_plan_allocations %}
                         {% if frequency_option == selling_plan_allocation.selling_plan.options[0].value %}
                           <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray p-xxs p-3 font-500 text-blue" js-filter-subscription-selling-plan>
