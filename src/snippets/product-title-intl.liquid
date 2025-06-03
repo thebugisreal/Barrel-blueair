@@ -1,4 +1,26 @@
-{% render 'region-check' %}
+{% liquid
+  if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+      assign transactional_countries = 'US,CA' | split: ',' 
+      assign is_transactional = false 
+      assign current_country = localization.country.iso_code | upcase 
+      for country in transactional_countries 
+          if country == current_country 
+            assign is_transactional = true 
+            break 
+          endif 
+        endfor 
+  elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+      assign transactional_countries = 'DE' | split: ',' 
+      assign is_transactional = false 
+      assign current_country = localization.country.iso_code | upcase 
+      for country in transactional_countries 
+          if country == current_country 
+            assign is_transactional = true 
+            break 
+          endif 
+        endfor 
+  endif  
+  %}
 {% if is_transactional %}
   {% if product.metafields.seed.product_card_title != blank %}
     {% assign product_title = product.metafields.seed.product_card_title %}

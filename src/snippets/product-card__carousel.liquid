@@ -1,4 +1,26 @@
-{% render 'region-check' %}
+{% liquid
+    if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+        assign transactional_countries = 'US,CA' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+        assign transactional_countries = 'DE' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    endif  
+%}
 <div class="product-card__carousel h-full text-center bg-gray-athans px-md pt-md tabletl:pt-[50px]">
     {% if product.metafields.seed.product_tags != blank %}
     <ul class="product-card__carousel-tags mb-[22px] flex justify-center">

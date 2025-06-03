@@ -1,4 +1,26 @@
-{% render 'region-check' %}
+{% liquid
+    if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+        assign transactional_countries = 'US,CA' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+        assign transactional_countries = 'DE' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    endif  
+    %}
 <ul class="product__spec-container">
     {% if product.metafields.seed.blair_filterSpecification_filterType != blank %}
         <li class="flex gap-md">

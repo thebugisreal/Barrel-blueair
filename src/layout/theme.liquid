@@ -80,7 +80,7 @@
     {% render 'drawer--desktop-search' %}
     {% render 'modal--country-selector' %}
 
-    {% render 'region-check' %}
+    {% include 'region-check' %}
     {% if template.name == 'product' %}
       {% if is_transactional %}
         {% render 'product-sticky-bar' %}
