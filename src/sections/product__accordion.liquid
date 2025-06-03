@@ -19,8 +19,6 @@
             <s-accordion class="product__accordion-content" data-manual-collapse="true" js-accordion>
               {% assign first_shown = true %}
               {% for block in product.metafields.seed.pdp_faq.value %}
-                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
-                  {% unless block.international contains 'International' %}
                     <div class="accordion-item py-md border-gray {% if first_shown %} border-t {% endif %} border-b" js-accordion-item>
                         <button class="accordion-header w-full flex justify-between items-center gap-xs" {% if first_shown %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
                             <p class="s1 text-left flex-1">{{ block.question }}</p>
@@ -35,25 +33,6 @@
                         </div>
                     </div>
                     {% assign first_shown = false %}
-                  {% endunless %}
-                {% else %}
-                  {% if block.international contains 'International' %}
-                    <div class="accordion-item py-md border-gray {% if first_shown %} border-t {% endif %} border-b" js-accordion-item>
-                        <button class="accordion-header w-full flex justify-between items-center gap-xs" {% if first_shown %} aria-expanded="true" {% else %}  aria-expanded="false" {% endif %} aria-controls="accordionID-{{ section.id }}-{{ forloop.index }}" js-accordion-header>
-                            <p class="s1 text-left flex-1">{{ block.question }}</p>
-                            <div class="icon-container h-[33px] w-[33px] p-xxs">
-                                {%  render 'icon-plus' %}
-                                {%  render 'icon-minus' %}
-                            </div>
-                        </button>
-    
-                        <div id="accordionID-{{ section.id }}-{{ forloop.index }}" class="accordion-content rte p2" {% if first_shown%} aria-hidden="false" {% else %} aria-hidden="true" {% endif %} js-accordion-content>
-                            {{ block.answer |  metafield_tag }}
-                        </div>
-                    </div>
-                    {% assign first_shown = false %}
-                  {% endif %}     
-                {% endif %}
               {% endfor %}
             </s-accordion>
     
