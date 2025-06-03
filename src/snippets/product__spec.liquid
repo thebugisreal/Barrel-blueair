@@ -1,3 +1,4 @@
+{% render 'region-check' %}
 <ul class="product__spec-container">
     {% if product.metafields.seed.blair_filterSpecification_filterType != blank %}
         <li class="flex gap-md">
@@ -5,7 +6,7 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_filterSpecification_filterType}}</p>
         </li>
     {% endif %}
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% if product.metafields.seed.blair_dimensions != blank %}
           <li class="flex gap-md">
               <p class="p3 w-1/2">Dimensions(HxWxD)</p>
@@ -27,7 +28,7 @@
         {% endif %}
       {% endif %}
     {% endif %}
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% if product.metafields.seed.blair_productSpecification_weight != blank %}
           <li class="flex gap-md">
               <p class="p3 w-1/2">Product Weight</p>
@@ -55,7 +56,7 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_tankcapacity}}</p>
         </li>
     {% endif %}
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% if product.metafields.seed.blair_energyConsumption != blank %}
           <li class="flex gap-md">
               <p class="p3 w-1/2">Energy Consumption</p>

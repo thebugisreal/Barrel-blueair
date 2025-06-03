@@ -1,3 +1,4 @@
+{% render 'region-check' %}
 {%- liquid 
   assign current_variant = product.selected_or_first_available_variant
   if product.variants[1].title contains 'subscription' or product.variants[1].title contains 'Subscription'
@@ -188,7 +189,7 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                {% if is_transactional %}
                   {% if product.metafields.seed.applicableFor != blank %}
                     <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
                   {% endif %}
@@ -238,7 +239,7 @@
                   </style>
                 </div>
               {% when 'product_badge' %}
-                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                {% if is_transactional %}
                   {% if localization.country.iso_code == 'CA' %}
                     {% if product.metafields.seed.product_tags_canada != blank %}
                       {% capture spacing %}
@@ -278,7 +279,7 @@
                   </div>
                 {% endif %}
               {% when 'product_options' %}
-                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                {% if is_transactional %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
@@ -370,7 +371,7 @@
                 </div>
               {% endif %}
               {% when 'atc' %}
-                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                {% if is_transactional %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
@@ -415,7 +416,7 @@
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>
                       <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
-                        {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                        {% if is_transactional %}
                           {% if product.metafields.seed.experience_description != blank %}
                             <div class="product-experience__description rte p4">
                               {{ product.metafields.seed.experience_description | metafield_tag }}

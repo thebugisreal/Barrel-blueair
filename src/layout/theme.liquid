@@ -80,8 +80,9 @@
     {% render 'drawer--desktop-search' %}
     {% render 'modal--country-selector' %}
 
+    {% render 'region-check' %}
     {% if template.name == 'product' %}
-      {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if is_transactional %}
         {% render 'product-sticky-bar' %}
       {% endif %}
     {% endif %}
@@ -114,10 +115,9 @@
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-    
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% render 'sprinklr-chat' %}
-      {% endif %}
+    {% endif %}
 
     <script type="text/javascript">
       setTimeout(function() {

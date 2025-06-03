@@ -1,0 +1,19 @@
+{% comment %}
+  Region Check Snippet
+  This snippet checks the store URL and defines transactional regions based on country codes.
+  Usage: {% render 'region-check' %}
+{% endcomment %}
+
+{% if shop.permanent_domain == 'blueairdev.myshopify.com'  %}
+    {% assign transactional_countries = 'US,CA' | split: ',' %}
+    {% assign is_transactional = false %}
+  {% if transactional_countries contains localization.country.iso_code %}
+    {% assign is_transactional = true %}
+  {% endif %}
+{% elsif shop.permanent_domain == 'blueeudev.myshopify.com' %}
+    {% assign transactional_countries = 'DE' | split: ',' %}
+    {% assign is_transactional = false %}
+  {% if transactional_countries contains localization.country.iso_code %}
+    {% assign is_transactional = true %}
+  {% endif %}
+{% endif %} 

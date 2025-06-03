@@ -1,4 +1,5 @@
-{% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+{% render 'region-check' %}
+{% if is_transactional %}
   {% if product.metafields.seed.product_card_title != blank %}
     {% assign product_title = product.metafields.seed.product_card_title %}
   {% else %}
