@@ -1,10 +1,17 @@
-{% if preselected_subscription.product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
-  {% assign preselected_subscription_quantity = 2 %}
-{% else %}
-  {% if pdp_type == 'Filter' %}
-    {% assign preselected_subscription_quantity = item.quantity %}
+{% assign preselected_subscription_quantity = 1 %}
+{% if pdp_type == 'Filter' %}
+  {% if preselected_subscription.product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
+    {% assign preselected_subscription_quantity = 2 %}
   {% else %}
-    {% assign preselected_subscription_quantity = 1 %}
+    {% assign preselected_subscription_quantity = item.quantity %}
+  {% endif %}
+{% elsif pdp_type == 'Air Purifier + Filter' %}
+  {% if two_pack_override == false or two_pack_override == true %}
+    {% if two_pack_override == true %}
+      {% assign preselected_subscription_quantity = 2 %}
+    {% endif %}
+  {% elsif preselected_subscription.product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
+    {% assign preselected_subscription_quantity = 2 %}
   {% endif %}
 {% endif %}
 <cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative">

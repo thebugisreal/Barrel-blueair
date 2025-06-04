@@ -31,8 +31,14 @@
               {%- for item in cart.items -%}
               {% liquid 
                 assign auto_item_remove_selling_plan = false
-                if item.quantity != 2 and item.product.metafields.seed.quantity_option.value contains '2 Pack | 2' and item.selling_plan_allocation != blank
-                  assign auto_item_remove_selling_plan = true
+                if item.properties['_unitSubscriptionTempId']
+                  if item.quantity != 2 and item.properties['_two_pack'] == 'true' and item.selling_plan_allocation != blank
+                    assign auto_item_remove_selling_plan = true
+                  endif
+                else
+                  if item.quantity != 2 and item.product.metafields.seed.quantity_option.value contains '2 Pack | 2' and item.selling_plan_allocation != blank
+                    assign auto_item_remove_selling_plan = true
+                  endif
                 endif
                 assign is_unit_subscription_service_product = false
                 assign auto_item_remove = false

@@ -522,6 +522,19 @@ class CartSubscription extends HTMLElement {
           const airPurifierProperties = this.subscriptionData.airPurifier.properties;
           airPurifierProperties['_unitSubscriptionTempId'] = subscriptionTempId;
 
+          const changeData = {
+            id: this.subscriptionData.airPurifier.itemKey,
+            quantity: parseInt(this.subscriptionData.airPurifier.itemQuantity),
+            properties: airPurifierProperties
+          };
+
+          const res = await this._updateCartItems('change', changeData, false);
+
+          if (res.status) {
+            console.log(res.status)
+            return;
+          }
+
           const addData = {
             items: [
               { 
@@ -540,30 +553,11 @@ class CartSubscription extends HTMLElement {
             sections: this.cart.getSectionsToRender().map((section) => section.id)
           }
 
-          const res = await this._updateCartItems('add', addData, true);
-          
-          if (res.status) {
-            console.log(res.status)
-            return;
+          if (addData.items[0].quantity == 2) {
+            addData.items[0].properties['_two_pack'] = 'true';
           }
 
-          this.subscriptionData = JSON.parse(this.querySelector(this._selectors.subscriptionData).innerHTML);
-
-          const cartItems = await this._getCartItems()
-          const airPurifier = cartItems.items.find((item) => item.variant_id.toString() === this.subscriptionData.airPurifier.variantId)
-
-          if(airPurifier?.key) this.subscriptionData.airPurifier.itemKey = airPurifier.key
-
-          setTimeout(() => {
-            const changeData = {
-              id: this.subscriptionData.airPurifier.itemKey,
-              quantity: parseInt(this.subscriptionData.airPurifier.itemQuantity),
-              properties: airPurifierProperties,
-              sections: this.cart.getSectionsToRender().map((section) => section.id)
-            };
-  
-            this._updateCartItems('change', changeData, true);
-          }, 1000);
+          this._updateCartItems('add', addData, true);
         }
       }
     }
