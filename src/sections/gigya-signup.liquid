@@ -45,7 +45,7 @@
           <label for="unileverConsent" class="text-14 ml-2">I consent to my data being shared with other Unilever brands to receive the latest news on other Unilever products & services</label>
         </div>
         <div class="my-xs">
-          <p class="text-14">Please read our <a href="#" class="underline">notices</a> to understand how we use your personal data. By clicking the button below, you agree to our</p>
+          <p class="text-14">Please read our <a href="{{ section.settings.notices_url }}" class="underline">notices</a> to understand how we use your personal data. By clicking the button below, you agree to our</p>
         </div>
       </div>
       <div>
@@ -127,7 +127,8 @@
                   callback: function (response) {
                     if (response.errorCode === 0) {
                       const token = response.id_token;
-                      window.location.href = `https://store.xecurify.com/moas/broker/login/jwt/callback/34273/jwt_H1X/${token}?relay=https://store.xecurify.com/moas/broker/login/shopify/blueair-staging.myshopify.com/account`;
+                      const xecurifyId = {{ settings.xecurify_id | json }};
+                      window.location.href = `https://store.xecurify.com/moas/broker/login/jwt/callback/${xecurifyId}/jwt_H1X/${token}?relay=https://store.xecurify.com/moas/broker/login/shopify/${window.Shopify.shop}/account`;
                     }
                   },
                   fields: "email,profile",
@@ -153,7 +154,13 @@
 {% schema %}
 {
   "name": "Gigya Signup",
-  "settings": [],
+  "settings": [
+    {
+      "type": "url",
+      "id": "notices_url",
+      "label": "Notices Link URL",
+    }
+  ],
   "presets": [
     {
       "name": "Gigya Signup",

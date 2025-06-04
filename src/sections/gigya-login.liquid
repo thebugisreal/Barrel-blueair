@@ -1,4 +1,4 @@
-<script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey=3_ySPsrsHSXFGBAm5bIySMyifZ29wt6LFIsiaU4QLEVlaz5MOEhi5cEJrKaWn_Glcv"></script>
+<script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey={{ settings.gigya_api_key }}"></script>
 
 <div class="min-h-screen mx-auto text-blue bg-gray-light px-xl {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}">
   <div class="flex flex-col items-center justify-center">
@@ -37,7 +37,7 @@
         </div>
       </form>
       <div class="flex justify-center mt-4">
-        <a href="/pages/reset-password" class="text-blue underline hover:text-blue-dark text-16">Forgot Password?</a>
+        <a href="{{ section.settings.reset_password_link }}" class="text-blue underline hover:text-blue-dark text-16">Forgot Password?</a>
       </div>
     </div>
     <div id="registerForm" class="py-md max-w-[400px] w-full" style="display:none;">
@@ -98,149 +98,93 @@
 </div>
 
 <script>
-  // Toggle logic
-  const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-  const toggleLogin = document.getElementById('toggleLogin');
-  const toggleRegister = document.getElementById('toggleRegister');
+  document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const toggleLogin = document.getElementById('toggleLogin');
+    const toggleRegister = document.getElementById('toggleRegister');
 
-  toggleLogin.onclick = function() {
-    loginForm.style.display = 'block';
-    registerForm.style.display = 'none';
-    toggleLogin.classList.add('border-b-2', 'border-blue', 'font-bold');
-    toggleRegister.classList.remove('border-b-2', 'border-blue', 'font-bold');
-  };
-  toggleRegister.onclick = function() {
-    loginForm.style.display = 'none';
-    registerForm.style.display = 'block';
-    toggleRegister.classList.add('border-b-2', 'border-blue', 'font-bold');
-    toggleLogin.classList.remove('border-b-2', 'border-blue', 'font-bold');
-  };
-
-  // Login form submission
-  document.getElementById('customer_login').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const email = document.getElementById('CustomerEmail').value;
-    const password = document.getElementById('CustomerPassword').value;
-    gigya.accounts.login({
-      loginID: email,
-      password: password,
-      callback: function (response) {
-        if (response.errorCode === 0) {
-          gigya.accounts.getJWT({
-            callback: function (response) {
-              if (response.errorCode === 0) {
-                const token = response.id_token;
-                window.location.href = `https://store.xecurify.com/moas/broker/login/jwt/callback/34273/jwt_H1X/${token}?relay=https://store.xecurify.com/moas/broker/login/shopify/blueair-staging.myshopify.com/account`;
-              }
-            },
-            fields: "email,profile",
-            expiration: 3600
-          });
-        } else {
-          // Show error message to user
-          var loginErrorDiv = document.getElementById('loginFormErrors');
-          if (loginErrorDiv) {
-            loginErrorDiv.textContent = 'Invalid email or password';
-          } else {
-            alert('Invalid email or password');
-          }
-        }
-      }
-    });
-  });
-
-  // Registration form submission
-  document.getElementById('registrationForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    document.getElementById('formErrors').innerHTML = ""; // Clear previous errors
-
-    const formData = new FormData(event.target);
-    const password = formData.get('password');
-    const confirmPassword = formData.get('confirm_password');
-    if (password !== confirmPassword) {
-      document.getElementById('formErrors').textContent = 'Passwords do not match.';
-      return;
-    }
-    if (!document.getElementById('over16').checked) {
-      document.getElementById('formErrors').textContent = 'You must confirm that you are over 16 years old.';
-      return;
-    }
-    const data = {
-      loginID: formData.get('email'),
-      password: password,
-      email: formData.get('email'),
-      profile: {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName'),
-        address: formData.get('address'),
-      },
-      preferences: {
-        ageConsentGranted: { isConsentGranted: document.getElementById('over16').checked },
-        cookies: { isConsentGranted: true },
-      },
+    toggleLogin.onclick = function () {
+      loginForm.style.display = 'block';
+      registerForm.style.display = 'none';
+      toggleLogin.classList.add('border-b-2', 'border-blue', 'font-bold');
+      toggleRegister.classList.remove('border-b-2', 'border-blue', 'font-bold');
     };
 
-    function handleValidationErrors(validationErrors) {
-      const userFields = ['password', 'email', 'firstName', 'lastName', 'confirm_password'];
-      const hasPasswordError = validationErrors.some(err => err.fieldName === 'password');
-      const errorList = [];
+    toggleRegister.onclick = function () {
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+      toggleRegister.classList.add('border-b-2', 'border-blue', 'font-bold');
+      toggleLogin.classList.remove('border-b-2', 'border-blue', 'font-bold');
+    };
 
-      if (hasPasswordError) {
-        errorList.push(
-          `<li>Password must be at least 10 characters, contain uppercase and lowercase letters, a number, and a special character.</li>`
-        );
-      }
-
-      // Add other user field errors (excluding password)
-      validationErrors
-        .filter(err => userFields.includes(err.fieldName) && err.fieldName !== 'password')
-        .forEach(err => {
-          errorList.push(`<li>${err.message}</li>`);
-        });
-
-      if (errorList.length > 0) {
-        document.getElementById('formErrors').innerHTML = `<ul>${errorList.join('')}</ul>`;
-      } else {
-        console.warn('Technical validation errors:', validationErrors);
-        document.getElementById('formErrors').textContent = 'An unknown error occurred. Please try again.';
-      }
-    }
-
-    gigya.accounts.initRegistration({
-      callback: function (response) {
-        if (response.errorCode === 0) {
-          data.regToken = response.regToken;
-          gigya.accounts.register({
-            ...data,
-            ignoreInterruptions: true,
-            finalizeRegistration: true,
-            callback: function (response) {
-              if (response.errorCode === 0) {
-                alert("User registered successfully");
-                gigya.accounts.getJWT({
-                  callback: function (response) {
-                    if (response.errorCode === 0) {
-                      const token = response.id_token;
-                      window.location.href = `https://store.xecurify.com/moas/broker/login/jwt/callback/34273/jwt_H1X/${token}?relay=https://store.xecurify.com/moas/broker/login/shopify/blueair-staging.myshopify.com/account`;
-                    }
-                  },
-                  fields: "email,profile",
-                  expiration: 3600
-                });
-              } else if (response.validationErrors && response.validationErrors.length > 0) {
-                handleValidationErrors(response.validationErrors);
-              } else if (response.errorMessage) {
-                document.getElementById('formErrors').textContent = response.errorMessage;
-              }
-            },
-          });
-        } else if (response.validationErrors && response.validationErrors.length > 0) {
-          handleValidationErrors(response.validationErrors);
-        } else if (response.errorMessage) {
-          document.getElementById('formErrors').textContent = response.errorMessage;
+    // Login form submission
+    document.getElementById('customer_login').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const email = document.getElementById('CustomerEmail').value;
+      const password = document.getElementById('CustomerPassword').value;
+      gigya.accounts.login({
+        loginID: email,
+        password: password,
+        callback: function (response) {
+          if (response.errorCode === 0) {
+            gigya.accounts.getJWT({
+              callback: function (response) {
+                if (response.errorCode === 0) {
+                  const token = response.id_token;
+                  const xecurifyId = {{ settings.xecurify_id | json }};
+                  window.location.href = `https://store.xecurify.com/moas/broker/login/jwt/callback/${xecurifyId}/jwt_H1X/${token}?relay=https://store.xecurify.com/moas/broker/login/shopify/${window.Shopify.shop}/account`;
+                }
+              },
+              fields: "email,profile",
+              expiration: 3600
+            });
+          } else {
+            var loginErrorDiv = document.getElementById('loginFormErrors');
+            if (loginErrorDiv) {
+              loginErrorDiv.textContent = 'Invalid email or password';
+            } else {
+              alert('Invalid email or password');
+            }
+          }
         }
-      },
+      });
+    });
+
+    // Registration form submission
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('formErrors').innerHTML = "";
+
+      const formData = new FormData(event.target);
+      const password = formData.get('password');
+      const confirmPassword = formData.get('confirm_password');
+
+      if (password !== confirmPassword) {
+        document.getElementById('formErrors').textContent = 'Passwords do not match.';
+        return;
+      }
+
+      if (!document.getElementById('over16').checked) {
+        document.getElementById('formErrors').textContent = 'You must confirm that you are over 16 years old.';
+        return;
+      }
+
+      const data = {
+        loginID: formData.get('email'),
+        password: password,
+        email: formData.get('email'),
+        profile: {
+          firstName: formData.get('firstName'),
+          lastName: formData.get('lastName')
+        },
+        preferences: {
+          ageConsentGranted: { isConsentGranted: true },
+          cookies: { isConsentGranted: true }
+        }
+      };
+
+      gigya.accounts.register(data);
     });
   });
 </script>
@@ -249,6 +193,11 @@
 {
   "name": "Gigya Login",
   "settings": [
+    {
+      "type": "url",
+      "id": "reset_password_link",
+      "label": "Reset Password Page Link",
+    },
     {
       "type": "select",
       "id": "margin_top_mobile",

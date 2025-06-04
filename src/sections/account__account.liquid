@@ -341,6 +341,7 @@
             </li>                          
           {%- endfor -%}
           <li class="border-b border-[#F0F3F6]">
+<<<<<<< HEAD
             <input type="radio"
               name="AccountSections"
               id="AccountLogOut"
@@ -351,13 +352,21 @@
             <label 
               for="AccountLogOut" 
               class="account-section__label flex justify-start items-center gap-xs p-sm">
+=======
+            <a href="{{ settings.account_logout_link_url }}" class="account-section__label flex justify-start items-center gap-xs p-sm">
+>>>>>>> 5c2e23e (github code review points addressed:)
               <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
               <span class="account-section-label__text p1 leading-none">
               <!-- <span class="account-section-label__text p1 leading-none">
                 Sign Out
+<<<<<<< HEAD
               </span> -->
               <a class="account-section-label__text p1 leading-none" href="{{ routes.account_logout_url }}">Sign Out</a>
             </label>
+=======
+              </span>
+            </a>
+>>>>>>> 5c2e23e (github code review points addressed:)
           </li>
         </ul>
       </div>
