@@ -70,6 +70,7 @@
       {% elsif shop.permanent_domain == 'uk-blueair.myshopify.com' %}
         <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
       {% else %}
+<<<<<<< HEAD
       {% if is_transactional == true %}
         {% if customer %}
           <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
@@ -77,6 +78,12 @@
           <a href="https://store.xecurify.com/moas/broker/login/shopify/www.blueair.com/account?idpname=custom_idp_ZIO" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
         {% endif %}
       {% endif %}
+=======
+      {% if customer %}
+        <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
+      {% else %}
+        <a href="{{ section.settings.user_account_link_url | default: '/account/login' }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
+>>>>>>> 00d82ff (Let's add a theme level setting for the page link instead of hardcoding.)
       {% endif %}
       {% if is_transactional == true %}
       <button class="site-header__icon-link site-header__icon-link--cart w-36 relative" js-open-cart>
@@ -104,6 +111,12 @@
       "type": "link_list",
       "id": "header_nav_desktop",
       "label": "Navigation"
+    },
+    {
+      "type": "url",
+      "id": "user_account_link_url",
+      "label": "User Account Link URL",
+      "info": "URL for the account icon when user is not logged in"
     },
     {
       "type": "header",
