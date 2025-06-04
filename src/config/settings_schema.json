@@ -351,12 +351,27 @@
     ]
   },
   {
+<<<<<<< HEAD
     "name": "Purple Dot",
     "settings": [
       {
         "type": "checkbox",
         "id": "use_purpledot",
         "label": "Turn on Purple Dot integration"
+=======
+    "name": "User Authentication",
+    "settings": [
+      {
+        "type": "header",
+        "content": "User Auth settings"
+      },
+      {
+        "type": "url",
+        "id": "mobile_drawer_login_link_url",
+        "label": "Mobile Drawer Login Link URL",
+        "info": "Default is the Shopify login page",
+        "default": "/account/login"
+>>>>>>> d8ff8d6 (User auth section)
       }
     ]
   }
