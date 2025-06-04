@@ -1,11 +1,33 @@
 {% liquid
-    assign current_variant = product.selected_or_first_available_variant
-%}
+  assign current_variant = product.selected_or_first_available_variant
+
+  if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+      assign transactional_countries = 'US,CA' | split: ',' 
+      assign is_transactional = false 
+      assign current_country = localization.country.iso_code | upcase 
+      for country in transactional_countries 
+          if country == current_country 
+            assign is_transactional = true 
+            break 
+          endif 
+        endfor 
+  elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+      assign transactional_countries = 'DE' | split: ',' 
+      assign is_transactional = false 
+      assign current_country = localization.country.iso_code | upcase 
+      for country in transactional_countries 
+          if country == current_country 
+            assign is_transactional = true 
+            break 
+          endif 
+        endfor 
+  endif  
+  %}
 
 <div class="product-card__description p-md bg-white">
     <div class="product-card__tags min-h-[28px] mb-xxs flex justify-center gap-x-xs gap-y-xxs flex-wrap">
       <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" >Out of Stock</span>
-      {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+      {% if is_transactional %}
         {% if localization.country.iso_code == 'CA' %}
           {% if product.metafields.seed.product_tags_canada != blank %}
               {% for tag in product.metafields.seed.product_tags_canada.value %}

@@ -1,3 +1,4 @@
+{% include 'region-check' %}
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
@@ -6,7 +7,7 @@
     <div class="product__custom-tabs product__tabs {{ margins_paddings }} text-left px-md {{ section.settings.color }} tabletl:px-xl">
       <s-tabs class="flex {{ section.settings.image_position_mobile }} gap-lg tabletl:gap-xxxl {{ section.settings.image_position_desktop }} tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
           <div class="tab__triggers flex flex-col justify-center tabletl:w-1/2" role="tablist" aria-orientation="horizontal" js-tablist>
-            {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+            {% if is_transactional %}
               {% if product.metafields.seed.pdp_custom_tab_title != blank %}
                 <h4 class="font-900 mb-md ">
                   {{ product.metafields.seed.pdp_custom_tab_title }}
@@ -25,7 +26,7 @@
             {% endif %}
             <ul class="flex flex-col gap-sm">
               {% for tab in product.metafields.seed.pdp_custom_tabs.value %}
-                {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                {% if is_transactional %}
                   {% unless tab.international contains 'International' %}
                     <li id="tab-{{ forloop.index }}" class="tab__trigger py-xxxs px-md border-l border-gray" aria-controls="product__tab-content-{{ forloop.index }}" role="tab" {% if forloop.first %} aria-selected="true" {% else %} aria-selected="false" {% endif %} js-tab>
                       <h3 class="s2 font-900 text-left">{{ tab.title }}</h3>

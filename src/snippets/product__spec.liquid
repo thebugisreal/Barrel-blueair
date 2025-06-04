@@ -1,3 +1,26 @@
+{% liquid
+    if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+        assign transactional_countries = 'US,CA' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+        assign transactional_countries = 'DE' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    endif  
+    %}
 <ul class="product__spec-container">
     {% if product.metafields.seed.blair_filterSpecification_filterType != blank %}
         <li class="flex gap-md">
@@ -5,7 +28,7 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_filterSpecification_filterType}}</p>
         </li>
     {% endif %}
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% if product.metafields.seed.blair_dimensions != blank %}
           <li class="flex gap-md">
               <p class="p3 w-1/2">Dimensions(HxWxD)</p>
@@ -27,7 +50,7 @@
         {% endif %}
       {% endif %}
     {% endif %}
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% if product.metafields.seed.blair_productSpecification_weight != blank %}
           <li class="flex gap-md">
               <p class="p3 w-1/2">Product Weight</p>
@@ -55,7 +78,7 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_tankcapacity}}</p>
         </li>
     {% endif %}
-    {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+    {% if is_transactional %}
       {% if product.metafields.seed.blair_energyConsumption != blank %}
           <li class="flex gap-md">
               <p class="p3 w-1/2">Energy Consumption</p>

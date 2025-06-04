@@ -1,3 +1,4 @@
+{% include 'region-check' %}
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
@@ -42,7 +43,7 @@
                                {%  render 'lazy-image' image:associated_prod.featured_image, picture_classes: 'h-fit', img_classes: 'h-full'%}
                             {% endif %}
                             <div class="text-container px-sm pt-sm pb-lg bg-blue-light">
-                              {% if localization.country.iso_code == 'US' or localization.country.iso_code == 'CA' %}
+                              {% if is_transactional %}
                                <div class="product-card__tags min-h-[28px] mb-md flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                                    <span class="product-card__tag product-card__tag--gray bg-gray {% if associated_prod.selected_or_first_available_variant.available %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">Out of Stock</span>
                                    {% for tag in associated_prod.metafields.seed.product_tags.value %}

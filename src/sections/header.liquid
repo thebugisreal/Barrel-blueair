@@ -58,18 +58,22 @@
         {% endif %}
       {% endfor %}
     </ul>
+    {% include 'region-check' %}
     <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs py-sm">
       <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block" js-open-desktop-search>{% render 'icon-search' %}</button>
-      {% if customer %}
-        <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
-      {% else %}
-        <a href="https://store.xecurify.com/moas/broker/login/shopify/www.blueair.com/account?idpname=custom_idp_ZIO" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
+      {% if is_transactional == true %}
+        {% if customer %}
+          <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
+        {% else %}
+          <a href="https://store.xecurify.com/moas/broker/login/shopify/www.blueair.com/account?idpname=custom_idp_ZIO" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
+        {% endif %}
       {% endif %}
-
+      {% if is_transactional == true %}
       <button class="site-header__icon-link site-header__icon-link--cart w-36 relative" js-open-cart>
         {% render 'icon-cart' %}
-        <span id="cart-count" class="absolute block top-0 right-0">{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}</span>
-      </button>
+          <span id="cart-count" class="absolute block top-0 right-0">{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}</span>
+        </button>
+      {% endif %}
     </div>
   </div>  
 </s-header>
