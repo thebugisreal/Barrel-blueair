@@ -375,13 +375,13 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:grid tabletl:grid-cols-2 tabletl:gap-lg">          
+                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between tabletl:flex-col-reverse">          
                   <button 
-                    class="product__atc btn btn--blue-rounded relative mx-auto"
+                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center"
                     type="submit" 
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>
-                    <div class="btn__text whitespace-nowrap">
+                    <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
                       <span js-price>
                         {{ current_variant.price | money }}
                       </span>
@@ -394,7 +394,7 @@
                         {% endif %}
                       </span>
                     </div>
-                    <div class="btn__arrow">{% render 'icon-arrow-right' %}</div>
+                    <div class="btn__arrow absolute right-xxs">{% render 'icon-arrow-right' %}</div>
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
                   <p class="affirm-as-low-as mx-auto tabletl:order-first" data-page-type="product" data-amount="{{current_variant.price}}"></p>
