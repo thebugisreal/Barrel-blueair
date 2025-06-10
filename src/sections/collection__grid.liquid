@@ -10,7 +10,12 @@
       <div class="collection-grid__header-text-container w-full px-md py-lg desktop:px-xl desktop:pt-[48px] desktop:pb-xxl desktop:flex desktop:flex-col desktop:justify-center {% if  section.settings.enable_collection_image %} tabletl:w-1/2 {% endif %}">
         <div class="collection-grid__breadcrumb mb-md flex gap-xxs items-center">
           {% assign shop_all_collection = collections['shop-all'] %}
-          <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>
+          {% include 'region-check' %}
+          {% if is_transactional %}
+            <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>
+          {% else %}
+            <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Explore</a>
+          {% endif %}
           {% if collection.handle != 'shop-all' %}
             <span class="w-[4px] h-[4px] rounded-full bg-blue"></span>
             <span>{{ collection.title }}</span>
