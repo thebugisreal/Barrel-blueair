@@ -2,11 +2,11 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
-<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl">
-    <compare-grid class="compare__grid grid grid-cols-3 relative tabletl:grid-cols-4">
+<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl max-w-[100vw] overflow-x-auto tabletl:overflow-x-visible">
+    <compare-grid class="compare__grid grid grid-cols-3 relative min-w-[500px] tabletl:grid-cols-4 tabletl:min-w-0">
         {% comment %} Compare Grid Info Column {% endcomment %}
         <ul class="compare__grid-info-column border-r border-gray">
-            <li class="compare-product__title" js-compare-product-title>
+            <li class="compare-product__title whitespace-nowrap" js-compare-product-title>
               <a {% if section.settings.back_to_shop_url != blank %} href="{{ section.settings.back_to_shop_url }}" {% endif %} class="underline"> Back to shop </a>
             </li>
             <li class="compare__image-container invisible">
@@ -85,7 +85,7 @@
         </ul>
 
         {% comment %} Compare Grid Additional Item Column {% endcomment %}
-        <ul class="compare__grid-additional-column text-center order-[999]" js-additional-column>
+        <ul class="compare__grid-additional-column text-center order-[999] hidden tabletl:block" js-additional-column>
             <li class="compare-product__title invisible" js-compare-product-title>
               <a {% if section.settings.back_to_shop_url != blank %} href="{{ section.settings.back_to_shop_url }}" {% endif %} class="underline"> Back to shop </a>
             </li>
