@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "search": {
@@ -12,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Blueair Support",
@@ -35,6 +44,12 @@
             "topic": "blueair-app"
           }
         },
+        "topic_tzqW7R": {
+          "type": "topic",
+          "settings": {
+            "topic": "wildfire"
+          }
+        },
         "topic_xtULW6": {
           "type": "topic",
           "settings": {
@@ -52,21 +67,15 @@
           "settings": {
             "topic": "account-warranty"
           }
-        },
-        "topic_tzqW7R": {
-          "type": "topic",
-          "settings": {
-            "topic": "wildfire"
-          }
         }
       },
       "block_order": [
         "topic_cjkpCM",
         "topic_PkrQAq",
+        "topic_tzqW7R",
         "topic_xtULW6",
         "topic_P7cRRr",
-        "topic_44CjVw",
-        "topic_tzqW7R"
+        "topic_44CjVw"
       ],
       "settings": {
         "margin_top_mobile": "mt-md",
@@ -95,10 +104,17 @@
             "topic": "blue-pure-max"
           }
         },
-        "topic_7ijgjd": {
+        "topic_qUWQUE": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "blue-signature"
+          }
+        },
+        "topic_dPNDxQ": {
           "type": "topic",
           "settings": {
-            "topic": "3-in-1"
+            "topic": "blue"
           }
         },
         "topic_RDjTDR": {
@@ -113,28 +129,28 @@
             "topic": "2-in-1"
           }
         },
+        "topic_7ijgjd": {
+          "type": "topic",
+          "settings": {
+            "topic": "3-in-1"
+          }
+        },
         "topic_H8czMm": {
           "type": "topic",
           "settings": {
             "topic": "classic-pro"
           }
         },
-        "topic_dPNDxQ": {
+        "topic_nKazPq": {
           "type": "topic",
           "settings": {
-            "topic": "blue"
+            "topic": "classic"
           }
         },
         "topic_HADU7f": {
           "type": "topic",
           "settings": {
             "topic": "protect"
-          }
-        },
-        "topic_nKazPq": {
-          "type": "topic",
-          "settings": {
-            "topic": "classic"
           }
         },
         "topic_WGq669": {
@@ -158,13 +174,14 @@
       },
       "block_order": [
         "topic_GFKt48",
-        "topic_7ijgjd",
+        "topic_qUWQUE",
+        "topic_dPNDxQ",
         "topic_RDjTDR",
         "topic_DedYi7",
+        "topic_7ijgjd",
         "topic_H8czMm",
-        "topic_dPNDxQ",
-        "topic_HADU7f",
         "topic_nKazPq",
+        "topic_HADU7f",
         "topic_WGq669",
         "topic_jirpDa",
         "topic_VaK6Ty"
@@ -222,7 +239,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--white-rounded"
       }

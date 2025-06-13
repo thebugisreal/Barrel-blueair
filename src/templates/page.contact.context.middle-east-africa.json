@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.contact.json",
+  "context": {
+    "market": "middle-east-africa"
+  },
+  "sections": {
+    "section_embed_GWNkVD": {
+      "settings": {
+        "embed": "<iframe scrolling=\"yes\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/641b100105bfa424f692ba47?gwId=665628a2808de773d2e0c1d4&amp;viewType=FULL_PAGE\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
+      },
+      "blocks": {}
+    },
+    "section_content_panels_64Jcm3": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_hero_XWdJgJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

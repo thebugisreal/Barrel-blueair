@@ -38,8 +38,8 @@
         },
         "customization_hcRJgQ": {
           "settings": {
-            "cta_text": "Coming Soon",
-            "title": "Humidifiers & Dehumidifiers"
+            "title": "Humidifiers & Dehumidifiers",
+            "cta_text": "Coming Soon"
           }
         }
       },
@@ -68,6 +68,14 @@
     "section_product_grid_mkajCi": {
       "disabled": true,
       "settings": {},
+      "blocks": {}
+    },
+    "hero": {
+      "settings": {
+        "cta_text": "Explore",
+        "subtext": "",
+        "title": "Breathe better, live better"
+      },
       "blocks": {}
     }
   }

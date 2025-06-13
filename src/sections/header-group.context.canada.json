@@ -19,13 +19,32 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_9GCU6L": {
+        "announcement_YLKFbB": {
+          "type": "announcement",
+          "disabled": false,
           "settings": {
-            "announcement": "Save up to 40% on air care",
-            "url": "shopify://collections/canada-sale"
+            "header-a3df77012dfb743b75dc4659f22098fe": null,
+            "announcement": "Shop our Summer Essentials for fresh, clean air",
+            "url": "shopify://collections/spring-essentials"
+          }
+        },
+        "announcement_9ieDxY": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-a3df77012dfb743b75dc4659f22098fe": null,
+            "announcement": "30-Day Home Trial | Free Extended Warranty",
+            "url": ""
           }
         }
-      }
+      },
+      "block_order": [
+        "announcement_YLKFbB",
+        "announcement_9ieDxY"
+      ]
     }
-  }
+  },
+  "order": [
+    "header"
+  ]
 }

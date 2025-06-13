@@ -50,6 +50,13 @@
         "customization_hcRJgQ"
       ]
     },
+    "section_text_banner_KfBBEr": {
+      "disabled": false,
+      "settings": {
+        "title": "Explore our Best-Sellers"
+      },
+      "blocks": {}
+    },
     "section_image_text_J44nHk": {
       "disabled": true,
       "settings": {},
@@ -70,10 +77,11 @@
       "settings": {},
       "blocks": {}
     },
-    "section_text_banner_KfBBEr": {
-      "disabled": false,
+    "hero": {
       "settings": {
-        "title": "Explore our Best-Sellers"
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_text": "Explore"
       },
       "blocks": {}
     }

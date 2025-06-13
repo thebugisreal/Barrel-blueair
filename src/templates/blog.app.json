@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "search": {
@@ -12,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_3b3f198c-30bf-4562-8857-8f757e1da372.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_3b83682b-612b-4d91-93a8-6249844e7c9b.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_3b3f198c-30bf-4562-8857-8f757e1da372.png",
+        "image_desktop": "shopify://shop_images/business_desktop_3b83682b-612b-4d91-93a8-6249844e7c9b.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -410,7 +419,7 @@
         "subtext_style": "h5",
         "max_width_desktop": "109ch",
         "max_width_section_desktop": "1440px",
-        "image_desktop": "shopify:\/\/shop_images\/blueair-app-qrcode.png",
+        "image_desktop": "shopify://shop_images/blueair-app-qrcode.png",
         "caption": "Scan to download the app",
         "caption_style": "p2"
       }
@@ -484,22 +493,23 @@
     "section_faq_topics_k8RQpD": {
       "type": "section__faq-topics",
       "blocks": {
-        "topic_dPNDxQ": {
-          "type": "topic",
-          "settings": {
-            "topic": "blue"
-          }
-        },
         "topic_GFKt48": {
           "type": "topic",
           "settings": {
             "topic": "blue-pure-max"
           }
         },
-        "topic_7ijgjd": {
+        "topic_UhEhEe": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "blue-signature"
+          }
+        },
+        "topic_dPNDxQ": {
           "type": "topic",
           "settings": {
-            "topic": "3-in-1"
+            "topic": "blue"
           }
         },
         "topic_RDjTDR": {
@@ -514,10 +524,16 @@
             "topic": "2-in-1"
           }
         },
-        "topic_HADU7f": {
+        "topic_7ijgjd": {
           "type": "topic",
           "settings": {
-            "topic": "protect"
+            "topic": "3-in-1"
+          }
+        },
+        "topic_H8czMm": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic-pro"
           }
         },
         "topic_nKazPq": {
@@ -526,10 +542,10 @@
             "topic": "classic"
           }
         },
-        "topic_H8czMm": {
+        "topic_HADU7f": {
           "type": "topic",
           "settings": {
-            "topic": "classic-pro"
+            "topic": "protect"
           }
         },
         "topic_WGq669": {
@@ -552,14 +568,15 @@
         }
       },
       "block_order": [
-        "topic_dPNDxQ",
         "topic_GFKt48",
-        "topic_7ijgjd",
+        "topic_UhEhEe",
+        "topic_dPNDxQ",
         "topic_RDjTDR",
         "topic_DedYi7",
-        "topic_HADU7f",
-        "topic_nKazPq",
+        "topic_7ijgjd",
         "topic_H8czMm",
+        "topic_nKazPq",
+        "topic_HADU7f",
         "topic_WGq669",
         "topic_jirpDa",
         "topic_VaK6Ty"
@@ -597,7 +614,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

@@ -14,16 +14,16 @@
     "header": {
       "type": "header",
       "blocks": {
-        "announcement_9GCU6L": {
+        "announcement_A6AHyV": {
           "type": "announcement",
           "settings": {
-            "announcement": "",
+            "announcement": "Important Notice for California Residents: The Blue Signature is awaiting CARB certification, required for CA sales. This is expected by Mid July.",
             "url": ""
           }
         }
       },
       "block_order": [
-        "announcement_9GCU6L"
+        "announcement_A6AHyV"
       ],
       "settings": {
         "header_nav_desktop": "us-nav-bar",

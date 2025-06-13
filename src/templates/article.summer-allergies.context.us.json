@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "article.summer-allergies.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "article_content_zMAJck": {
+      "settings": {},
+      "blocks": {
+        "text_YUP9JY": {
+          "settings": {
+            "richtext": "<h4><strong>How Blueair Air Purifiers Help You Breathe Easier</strong><br/></h4><p></p><p>This is what Blueair air purifiers do best. Powered by proprietary HEPASilent™ filtration technology, Blueair purifiers remove 99.97% of airborne pollutants, including allergens as small as 0.1 microns in size—such as pollen, pet dander, smoke, and bacteria. This mechanical and electrostatic filtration combination delivers powerful yet whisper-quiet performance ideal for any room.</p><p>Models like the Blue Pure 211i Max and Classic Pro are among the best air purifiers for allergies. They combine medical-grade filtration with sleek, Scandinavian design—perfect for bedrooms, home offices, and living rooms. Whether you're managing asthma, hay fever, or simply desiring clean indoor air, Blueair makes air wellness effective and easy.</p>"
+          }
+        },
+        "text_agqizw": {
+          "settings": {
+            "richtext": "<h4><strong>Summer Indoor Air Care: Quick Tips</strong><br/></h4><h4></h4><h4></h4><p>To recap the most from your indoor air care strategy, follow these simple yet effective measures:<br/><br/>• Run your air purifier continuously, especially during high pollen days<br/>• Place it in high-traffic areas like living rooms or bedrooms<br/>• Keep windows and doors shut when outdoor air is poor<br/>• Replace filters as recommended to maintain optimal performance<br/>• Clean regularly to prevent dust and dander accumulation</p>"
+          }
+        },
+        "text_j8xWQE": {
+          "settings": {
+            "richtext": "<h4><strong>Breathe Better, Live Better</strong></h4><h4></h4><h4></h4><p>Your air may be invisible—but its impact is not. In a season when allergens, pollutants, and heatwaves are at their peak, taking control of your indoor air quality is one of the most powerful ways to protect your health and comfort.</p><p><strong>Invest in your air. Invest in your health. Choose Blueair for clean, healthy air this summer.</strong></p>"
+          }
+        }
+      }
+    },
+    "section_carousel_NMANUr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

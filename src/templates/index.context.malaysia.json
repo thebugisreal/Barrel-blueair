@@ -50,6 +50,11 @@
         "customization_hcRJgQ"
       ]
     },
+    "section_text_banner_KfBBEr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
     "section_image_text_J44nHk": {
       "disabled": true,
       "settings": {},
@@ -70,9 +75,12 @@
       "settings": {},
       "blocks": {}
     },
-    "section_text_banner_KfBBEr": {
-      "disabled": true,
-      "settings": {},
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_text": "Explore"
+      },
       "blocks": {}
     }
   }

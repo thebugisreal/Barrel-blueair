@@ -70,6 +70,15 @@
       "disabled": true,
       "settings": {},
       "blocks": {}
+    },
+    "hero": {
+      "settings": {
+        "title": "Breathe better, Live better",
+        "subtext": "",
+        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/Spring_desktop_51895177-7148-4737-8587-267cc9396140.png"
+      },
+      "blocks": {}
     }
   }
 }

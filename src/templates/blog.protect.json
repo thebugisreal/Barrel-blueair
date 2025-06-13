@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "search": {
@@ -12,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -28,7 +37,7 @@
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify:\/\/shop_images\/Group_48097731.svg",
+            "image": "shopify://shop_images/Group_48097731.svg",
             "svg_html": ""
           }
         },
@@ -37,7 +46,7 @@
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
-            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
+            "image": "shopify://shop_images/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -46,7 +55,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
+            "image": "shopify://shop_images/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -55,7 +64,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify:\/\/shop_images\/Group_48097729.svg",
+            "image": "shopify://shop_images/Group_48097729.svg",
             "svg_html": ""
           }
         }
@@ -179,52 +188,52 @@
           "type": "block",
           "settings": {
             "title": "Protect 7410i",
-            "image": "shopify:\/\/shop_images\/support-protect-7410i-edited.png",
+            "image": "shopify://shop_images/support-protect-7410i-edited.png",
             "video_link_text": "How it works",
-            "video_link_url": "https:\/\/vimeo.com\/687949811",
+            "video_link_url": "https://vimeo.com/687949811",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/protect"
+            "product_link_url": "shopify://collections/protect"
           }
         },
         "block_cwtmmP": {
           "type": "block",
           "settings": {
             "title": "Protect 7470i",
-            "image": "shopify:\/\/shop_images\/support-protect-7410i-edited.png",
+            "image": "shopify://shop_images/support-protect-7410i-edited.png",
             "video_link_text": "How it works",
-            "video_link_url": "https:\/\/vimeo.com\/687949811",
+            "video_link_url": "https://vimeo.com/687949811",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/protect"
+            "product_link_url": "shopify://collections/protect"
           }
         },
         "block_q8PRWn": {
           "type": "block",
           "settings": {
             "title": "Protect 7770i",
-            "image": "shopify:\/\/shop_images\/support-protect7770i.png",
+            "image": "shopify://shop_images/support-protect7770i.png",
             "video_link_text": "How it works",
-            "video_link_url": "https:\/\/vimeo.com\/687949811",
+            "video_link_url": "https://vimeo.com/687949811",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/protect"
+            "product_link_url": "shopify://collections/protect"
           }
         },
         "block_bGih4a": {
           "type": "block",
           "settings": {
             "title": "Protect 7710i",
-            "image": "shopify:\/\/shop_images\/support-protect7770i.png",
+            "image": "shopify://shop_images/support-protect7770i.png",
             "video_link_text": "How it works",
-            "video_link_url": "https:\/\/vimeo.com\/687949811",
+            "video_link_url": "https://vimeo.com/687949811",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/protect-user-manual-english-1.2.2025.pdf?v=1740163226",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/protect"
+            "product_link_url": "shopify://collections/protect"
           }
         }
       },
@@ -339,22 +348,23 @@
     "section_faq_topics_k8RQpD": {
       "type": "section__faq-topics",
       "blocks": {
-        "topic_dPNDxQ": {
-          "type": "topic",
-          "settings": {
-            "topic": "blue"
-          }
-        },
         "topic_GFKt48": {
           "type": "topic",
           "settings": {
             "topic": "blue-pure-max"
           }
         },
-        "topic_7ijgjd": {
+        "topic_QExNCq": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "blue-signature"
+          }
+        },
+        "topic_dPNDxQ": {
           "type": "topic",
           "settings": {
-            "topic": "3-in-1"
+            "topic": "blue"
           }
         },
         "topic_RDjTDR": {
@@ -369,10 +379,16 @@
             "topic": "2-in-1"
           }
         },
-        "topic_HADU7f": {
+        "topic_7ijgjd": {
           "type": "topic",
           "settings": {
-            "topic": "protect"
+            "topic": "3-in-1"
+          }
+        },
+        "topic_H8czMm": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic-pro"
           }
         },
         "topic_nKazPq": {
@@ -381,10 +397,10 @@
             "topic": "classic"
           }
         },
-        "topic_H8czMm": {
+        "topic_HADU7f": {
           "type": "topic",
           "settings": {
-            "topic": "classic-pro"
+            "topic": "protect"
           }
         },
         "topic_WGq669": {
@@ -407,14 +423,15 @@
         }
       },
       "block_order": [
-        "topic_dPNDxQ",
         "topic_GFKt48",
-        "topic_7ijgjd",
+        "topic_QExNCq",
+        "topic_dPNDxQ",
         "topic_RDjTDR",
         "topic_DedYi7",
-        "topic_HADU7f",
-        "topic_nKazPq",
+        "topic_7ijgjd",
         "topic_H8czMm",
+        "topic_nKazPq",
+        "topic_HADU7f",
         "topic_WGq669",
         "topic_jirpDa",
         "topic_VaK6Ty"
@@ -452,7 +469,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

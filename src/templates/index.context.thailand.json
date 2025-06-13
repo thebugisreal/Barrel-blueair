@@ -88,6 +88,16 @@
           }
         }
       }
+    },
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_text": "Explore",
+        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/Spring_desktop_51895177-7148-4737-8587-267cc9396140.png"
+      },
+      "blocks": {}
     }
   }
 }

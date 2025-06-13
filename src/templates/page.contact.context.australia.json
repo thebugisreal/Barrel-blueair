@@ -27,7 +27,9 @@
     },
     "section_embed_DD9f4r": {
       "disabled": false,
-      "settings": {},
+      "settings": {
+        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251347278263158\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Arisit Pty LTD</p>\n<p>Email: <a href=\"mailto:nz.sales@arisit.com\" class=\"ProsemirrorEditor-link\">nz.sales@arisit.com</a></p>\n<p>Telephone: +64 9 306 1020</p>\n<p>Hours: 09:00-17:00 (NZST)\n</p>\n</div>"
+      },
       "blocks": {}
     },
     "section_content_panels_64Jcm3": {

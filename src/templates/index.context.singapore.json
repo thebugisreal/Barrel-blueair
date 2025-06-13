@@ -80,6 +80,14 @@
           }
         }
       }
+    },
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_text": "Explore"
+      },
+      "blocks": {}
     }
   }
 }

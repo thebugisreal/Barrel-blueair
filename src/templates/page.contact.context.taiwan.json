@@ -1,9 +1,214 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "parent": "page.contact.json",
   "context": {
     "market": "taiwan"
   },
   "sections": {
+    "section_content_panels_UBiJG6": {
+      "type": "section__content-panels",
+      "disabled": false,
+      "settings": {
+        "header-aa397abbf3a4153279589421ce3d7588": null,
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-lg",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-xl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "header-f0d5bab78aae2f6586b4305b92346f1a": null,
+        "color": "bg-white text-blue",
+        "header-1d270ee0afd24dc5975bc3ed3c2bbfe8": null,
+        "title": "",
+        "title_style": "h2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "content_max_width_desktop": ""
+      },
+      "blocks": {
+        "customization_J3gt3r": {
+          "type": "customization",
+          "disabled": true,
+          "settings": {
+            "image_mobile": null,
+            "image_desktop": null,
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-center",
+            "content_spacing": "justify-between",
+            "title": "Warranty Registration",
+            "title_style": "h4",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-center",
+            "cta_url": "shopify:\/\/pages\/unit-registration",
+            "cta_text": "Learn More",
+            "cta_style": "btn",
+            "header-15ad635f7090e21394fa37ea25798be5": null,
+            "color": "bg-blue-light text-blue"
+          }
+        },
+        "customization_crPD4d": {
+          "type": "customization",
+          "disabled": false,
+          "settings": {
+            "image_mobile": null,
+            "image_desktop": null,
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-center",
+            "content_spacing": "justify-between",
+            "title": "Store Locator",
+            "title_style": "h4",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-center",
+            "cta_url": "shopify:\/\/pages\/blueair-store-locator",
+            "cta_text": "Learn more",
+            "cta_style": "btn",
+            "header-5a2c45b7450c057ac6732f122c060153": null,
+            "color": "bg-blue-light text-blue"
+          }
+        },
+        "customization_YF7E6L": {
+          "type": "customization",
+          "disabled": true,
+          "settings": {
+            "image_mobile": null,
+            "image_desktop": null,
+            "image_position": "order-first",
+            "enable_padding": true,
+            "content_position": "items-center",
+            "content_spacing": "justify-between",
+            "title": "RoHS Documentation",
+            "title_style": "h4",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-center",
+            "cta_url": "shopify:\/\/pages\/commercial-and-business-air-purifiers",
+            "cta_text": "Learn More",
+            "cta_style": "btn",
+            "header-5fde1d44ca1da8b2ba43dd7c5511ef81": null,
+            "color": "bg-blue-light text-blue"
+          }
+        }
+      },
+      "block_order": [
+        "customization_J3gt3r",
+        "customization_crPD4d",
+        "customization_YF7E6L"
+      ]
+    },
+    "section_image_blocks_i6bPf": {
+      "type": "section__image-blocks",
+      "disabled": false,
+      "settings": {
+        "header-e9c9be19ca57235d04535e85368539d5": null,
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-md",
+        "margin_bottom_desktop": "desktop:mb-md",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "header-9ad713c96b0c362bbdd4e08b7f2104ce": null,
+        "title": "Where can I buy Blueair?",
+        "title_style": "h2",
+        "title_color": ""
+      },
+      "blocks": {
+        "image_QhtHH": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/momoLogo_1080_10850_-2_d0addeac-6147-4673-bd0c-6aa3a00af50e.png",
+            "image_url": "https:\/\/www.momoshop.com.tw\/category\/DgrpCategory.jsp?d_code=2902000172"
+          }
+        },
+        "image_PAemj": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2025-05-08_at_3.25.17_PM.png",
+            "image_url": "https:\/\/shopee.tw\/hlh_blueair"
+          }
+        },
+        "image_wHAaq": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2025-05-08_at_3.25.32_PM.png",
+            "image_url": "https:\/\/24h.pchome.com.tw\/store\/DMAUE4"
+          }
+        },
+        "image_EA6t9": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/LOGO-new_0.png",
+            "image_url": "https:\/\/bmai.app\/765q9z"
+          }
+        }
+      },
+      "block_order": [
+        "image_QhtHH",
+        "image_PAemj",
+        "image_wHAaq",
+        "image_EA6t9"
+      ]
+    },
+    "17480146502a009aa8": {
+      "type": "_blocks",
+      "disabled": false,
+      "settings": {},
+      "blocks": {
+        "ai_gen_block_1da3016_ey8Uh": {
+          "type": "ai_gen_block_1da3016",
+          "disabled": false,
+          "settings": {
+            "paragraph-26bacfe07302149b8ec7177b70db006c": null,
+            "header-4938e4c7832c63bc7543cb0169bda94d": null,
+            "button_selector": ".store-locator .learn-more-button",
+            "target_section_id": "store-locations",
+            "header-42345c8510a3b238e3f28ebe07069dc7": null,
+            "scroll_offset": 80,
+            "smooth_scroll": "smooth",
+            "update_url": true,
+            "header-d2916d5d32f81fb701f6b743b39f0ef8": null,
+            "add_indicator": false,
+            "indicator_color": "#000f9f"
+          }
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1da3016_ey8Uh"
+      ]
+    },
+    "section_text_banner_NnPEqy": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_embed_GWNkVD": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
     "section_embed_7Gdzyj": {
       "disabled": false,
       "settings": {},
@@ -19,65 +224,10 @@
         }
       }
     },
-    "section_image_blocks_i6bPf": {
-      "type": "section__image-blocks",
-      "disabled": false,
-      "settings": {
-        "header-4b07cb7e316123163bda97f625a807cc": null,
-        "margin_top_mobile": "mt-md",
-        "margin_bottom_mobile": "mb-md",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-md",
-        "margin_bottom_desktop": "desktop:mb-md",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "header-f7d79338802289895aea9d046606b216": null,
-        "title": "Where can I buy Blueair?",
-        "title_style": "h2",
-        "title_color": ""
-      },
-      "blocks": {
-        "image_QhtHH": {
-          "type": "image",
-          "disabled": false,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/blueair-logo.webp",
-            "image_url": "\/"
-          }
-        },
-        "image_EA6t9": {
-          "type": "image",
-          "disabled": false,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/blueair-logo.webp",
-            "image_url": ""
-          }
-        },
-        "image_A9tkP": {
-          "type": "image",
-          "disabled": false,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/blueair-logo.webp",
-            "image_url": ""
-          }
-        },
-        "image_ptPCh": {
-          "type": "image",
-          "disabled": false,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/blueair-logo.webp",
-            "image_url": "\/"
-          }
-        }
-      },
-      "block_order": [
-        "image_QhtHH",
-        "image_EA6t9",
-        "image_A9tkP",
-        "image_ptPCh"
-      ],
-      "name": "Image Blocks"
+    "section_hero_XWdJgJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   },
   "order": [
@@ -87,7 +237,9 @@
     "section_embed_GWNkVD",
     "section_embed_7Gdzyj",
     "section_content_panels_64Jcm3",
+    "section_content_panels_UBiJG6",
     "section_hero_XWdJgJ",
-    "section_image_blocks_i6bPf"
+    "section_image_blocks_i6bPf",
+    "17480146502a009aa8"
   ]
 }

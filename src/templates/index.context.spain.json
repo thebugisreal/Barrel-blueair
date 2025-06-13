@@ -16,12 +16,6 @@
     "section_content_panels_RLhBrA": {
       "settings": {},
       "blocks": {
-        "customization_hcRJgQ": {
-          "settings": {
-            "title": "Humidifiers & Dehumidifiers",
-            "cta_text": "Coming Soon"
-          }
-        },
         "customization_kjnCLm": {
           "settings": {
             "cta_text": "Explore"
@@ -36,6 +30,12 @@
           "settings": {
             "cta_text": "Coming Soon"
           }
+        },
+        "customization_hcRJgQ": {
+          "settings": {
+            "title": "Humidifiers & Dehumidifiers",
+            "cta_text": "Coming Soon"
+          }
         }
       },
       "block_order": [
@@ -44,6 +44,14 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
+    },
+    "hero": {
+      "settings": {
+        "subtext": "",
+        "title": "Breathe Better, Live Better",
+        "cta_text": "Explore"
+      },
+      "blocks": {}
     }
   }
 }

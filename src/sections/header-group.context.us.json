@@ -18,13 +18,39 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_9GCU6L": {
+        "announcement_XMHEL": {
+          "type": "announcement",
+          "disabled": false,
           "settings": {
-            "announcement": "Memorial Day Sale: Up to 40% off air care",
-            "url": "shopify://collections/sale"
+            "header-4133e52325636a25f935a3509eea95c2": null,
+            "announcement": "Free Shipping on Orders +$35",
+            "url": ""
+          }
+        },
+        "announcement_QLGEH": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-4133e52325636a25f935a3509eea95c2": null,
+            "announcement": "Shop our Summer Essentials for fresh, clean air",
+            "url": "shopify://collections/spring-essentials"
+          }
+        },
+        "announcement_KRB8N": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-85672cb685557784d303b93bd20a406f": null,
+            "announcement": "30-Day Home Trial | Free Extended Warranty",
+            "url": ""
           }
         }
-      }
+      },
+      "block_order": [
+        "announcement_XMHEL",
+        "announcement_QLGEH",
+        "announcement_KRB8N"
+      ]
     }
   }
 }

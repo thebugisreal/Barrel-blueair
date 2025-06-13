@@ -19,7 +19,9 @@
         "title": "Breathe better, live better",
         "subtext": "",
         "cta_url": "shopify:\/\/collections\/shop-all",
-        "cta_text": "Explore"
+        "cta_text": "Explore",
+        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/Spring_desktop_51895177-7148-4737-8587-267cc9396140.png"
       },
       "blocks": {}
     },
@@ -114,13 +116,6 @@
             "product": "classic-pro-cp7i"
           }
         },
-        "product_AkiaW": {
-          "type": "product",
-          "disabled": false,
-          "settings": {
-            "product": "classic-pro-cp9i"
-          }
-        },
         "product_iPGAk": {
           "type": "product",
           "disabled": false,
@@ -131,9 +126,13 @@
       },
       "block_order": [
         "product_gK4U7z",
-        "product_AkiaW",
         "product_iPGAk"
       ]
+    },
+    "section_hero_hwthNJ": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   },
   "order": [

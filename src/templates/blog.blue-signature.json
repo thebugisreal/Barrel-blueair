@@ -139,6 +139,7 @@
         "video_agGEVg",
         "video_DyXLtE"
       ],
+      "disabled": true,
       "settings": {
         "anchor_id": "videos",
         "margin_top_mobile": "mt-md",
@@ -183,7 +184,7 @@
           "type": "block",
           "settings": {
             "title": "Blue Signature SP4i",
-            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_3.png",
+            "image": "shopify://shop_images/bluesig_1.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
@@ -262,6 +263,12 @@
             "topic": "blueair-app"
           }
         },
+        "topic_yyjVQa": {
+          "type": "topic",
+          "settings": {
+            "topic": "wildfire"
+          }
+        },
         "topic_xeY3QF": {
           "type": "topic",
           "settings": {
@@ -279,21 +286,15 @@
           "settings": {
             "topic": "account-warranty"
           }
-        },
-        "topic_yyjVQa": {
-          "type": "topic",
-          "settings": {
-            "topic": "wildfire"
-          }
         }
       },
       "block_order": [
         "topic_qwxrHg",
         "topic_pTTqhc",
+        "topic_yyjVQa",
         "topic_xeY3QF",
         "topic_fDztg6",
-        "topic_hdeNxR",
-        "topic_yyjVQa"
+        "topic_hdeNxR"
       ],
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -316,22 +317,23 @@
     "section_faq_topics_k8RQpD": {
       "type": "section__faq-topics",
       "blocks": {
-        "topic_dPNDxQ": {
-          "type": "topic",
-          "settings": {
-            "topic": "blue"
-          }
-        },
         "topic_GFKt48": {
           "type": "topic",
           "settings": {
             "topic": "blue-pure-max"
           }
         },
-        "topic_7ijgjd": {
+        "topic_CxJjJC": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "blue-signature"
+          }
+        },
+        "topic_dPNDxQ": {
           "type": "topic",
           "settings": {
-            "topic": "3-in-1"
+            "topic": "blue"
           }
         },
         "topic_RDjTDR": {
@@ -346,10 +348,16 @@
             "topic": "2-in-1"
           }
         },
-        "topic_HADU7f": {
+        "topic_7ijgjd": {
           "type": "topic",
           "settings": {
-            "topic": "protect"
+            "topic": "3-in-1"
+          }
+        },
+        "topic_H8czMm": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic-pro"
           }
         },
         "topic_nKazPq": {
@@ -358,10 +366,10 @@
             "topic": "classic"
           }
         },
-        "topic_H8czMm": {
+        "topic_HADU7f": {
           "type": "topic",
           "settings": {
-            "topic": "classic-pro"
+            "topic": "protect"
           }
         },
         "topic_WGq669": {
@@ -384,14 +392,15 @@
         }
       },
       "block_order": [
-        "topic_dPNDxQ",
         "topic_GFKt48",
-        "topic_7ijgjd",
+        "topic_CxJjJC",
+        "topic_dPNDxQ",
         "topic_RDjTDR",
         "topic_DedYi7",
-        "topic_HADU7f",
-        "topic_nKazPq",
+        "topic_7ijgjd",
         "topic_H8czMm",
+        "topic_nKazPq",
+        "topic_HADU7f",
         "topic_WGq669",
         "topic_jirpDa",
         "topic_VaK6Ty"

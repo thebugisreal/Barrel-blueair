@@ -44,6 +44,24 @@
         "customization_AnNMyD",
         "customization_hcRJgQ"
       ]
+    },
+    "hero": {
+      "settings": {
+        "title": "Breathe better, live better",
+        "subtext": "",
+        "cta_text": "Explore"
+      },
+      "blocks": {}
+    },
+    "section_icons_BHyffr": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "section_image_text_YpPrBz": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

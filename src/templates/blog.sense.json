@@ -281,22 +281,23 @@
     "section_faq_topics_k8RQpD": {
       "type": "section__faq-topics",
       "blocks": {
-        "topic_dPNDxQ": {
-          "type": "topic",
-          "settings": {
-            "topic": "blue"
-          }
-        },
         "topic_GFKt48": {
           "type": "topic",
           "settings": {
             "topic": "blue-pure-max"
           }
         },
-        "topic_7ijgjd": {
+        "topic_cf87Kp": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "blue-signature"
+          }
+        },
+        "topic_dPNDxQ": {
           "type": "topic",
           "settings": {
-            "topic": "3-in-1"
+            "topic": "blue"
           }
         },
         "topic_RDjTDR": {
@@ -311,10 +312,16 @@
             "topic": "2-in-1"
           }
         },
-        "topic_HADU7f": {
+        "topic_7ijgjd": {
           "type": "topic",
           "settings": {
-            "topic": "protect"
+            "topic": "3-in-1"
+          }
+        },
+        "topic_H8czMm": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic-pro"
           }
         },
         "topic_nKazPq": {
@@ -323,10 +330,10 @@
             "topic": "classic"
           }
         },
-        "topic_H8czMm": {
+        "topic_HADU7f": {
           "type": "topic",
           "settings": {
-            "topic": "classic-pro"
+            "topic": "protect"
           }
         },
         "topic_WGq669": {
@@ -349,14 +356,15 @@
         }
       },
       "block_order": [
-        "topic_dPNDxQ",
         "topic_GFKt48",
-        "topic_7ijgjd",
+        "topic_cf87Kp",
+        "topic_dPNDxQ",
         "topic_RDjTDR",
         "topic_DedYi7",
-        "topic_HADU7f",
-        "topic_nKazPq",
+        "topic_7ijgjd",
         "topic_H8czMm",
+        "topic_nKazPq",
+        "topic_HADU7f",
         "topic_WGq669",
         "topic_jirpDa",
         "topic_VaK6Ty"

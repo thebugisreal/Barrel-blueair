@@ -36,8 +36,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Contact Us",
@@ -98,7 +98,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "embed": "<iframe scrolling=\"yes\" src=\"https://forms-prod3.sprinklr.com/guided-workflows/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"></iframe>"
+        "embed": "<iframe scrolling=\"yes\" src=\"https:\/\/forms-prod3.sprinklr.com\/guided-workflows\/65df6a44be0a0f2c7ee94237?gwId=655dd6caf5926107c70c7a91\" class=\"iframe-container w-full border-none\" style=\"height:1000px;\"><\/iframe>"
       }
     },
     "section_embed_7Gdzyj": {
@@ -114,7 +114,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251207212717145\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Customer Service Email:<br><a href=\"mailto:service@hlh.com.tw\" class=\"ProsemirrorEditor-link\">service@hlh.com.tw</a></p>\n<p>Telephone:<br>0800-251-209</p>\n<p>Line<br>@hlh0800251209</p>\n<p><strong>Operating Hours</strong></p>\n<p>Telephone customer service:<br>Mon-Fri 08:00 - 20:00<br>Sat 09:00 - 18:00 | Closed Sundays</p>\n</div>"
+        "embed": "<script type=\"text\/javascript\" src=\"https:\/\/form.jotform.com\/jsform\/251207212717145\"><\/script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Customer Service Email:<br><a href=\"mailto:service@hlh.com.tw\" class=\"ProsemirrorEditor-link\">service@hlh.com.tw<\/a><\/p>\n<p>Telephone:<br>0800-251-209<\/p>\n<p>Line<br>@hlh0800251209<\/p>\n<p><strong>Operating Hours<\/strong><\/p>\n<p>Telephone customer service:<br>Mon-Fri 08:00 - 20:00<br>Sat 09:00 - 18:00 | Closed Sundays<\/p>\n<\/div>"
       }
     },
     "section_embed_hBxRjM": {
@@ -130,7 +130,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251347139931156\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Shift Electronics LLC</p>\n<p>Customer Service Email:<br><a href=\"mailto:info@shift.ae\" class=\"ProsemirrorEditor-link\">info@shift.ae</a></p>\n<p>Telephone:<br>04 323 3220</p>\n<p>Address: Block 32 8B Street - Al Quoz Industrial Area 1 - Dubai</p>\n</div>"
+        "embed": "<script type=\"text\/javascript\" src=\"https:\/\/form.jotform.com\/jsform\/251347139931156\"><\/script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Shift Electronics LLC<\/p>\n<p>Customer Service Email:<br><a href=\"mailto:info@shift.ae\" class=\"ProsemirrorEditor-link\">info@shift.ae<\/a><\/p>\n<p>Telephone:<br>04 323 3220<\/p>\n<p>Address: Block 32 8B Street - Al Quoz Industrial Area 1 - Dubai<\/p>\n<\/div>"
       }
     },
     "section_embed_DD9f4r": {
@@ -146,7 +146,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251347278263158\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Arisit Pty LTD</p>\n<p>Customer Service Email:<br><a href=\"mailto:arisit.warranties@arisit.com\" class=\"ProsemirrorEditor-link\">arisit.warranties@arisit.com</a></p>\n<p>Telephone:<br>1300 762 219</p>\n</div>"
+        "embed": "<script type=\"text\/javascript\" src=\"https:\/\/form.jotform.com\/jsform\/251347278263158\"><\/script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Arisit Pty LTD<\/p>\n<p>Customer Service Email:<br><a href=\"mailto:arisit.warranties@arisit.com\" class=\"ProsemirrorEditor-link\">arisit.warranties@arisit.com<\/a><\/p>\n<p>Telephone:<br>1300 762 219<\/p>\n<\/div>"
       }
     },
     "section_content_panels_64Jcm3": {
@@ -164,7 +164,7 @@
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-center",
-            "cta_url": "https://careers.usa.blueair.com/",
+            "cta_url": "https:\/\/careers.usa.blueair.com\/",
             "cta_text": "Learn More",
             "cta_style": "btn",
             "color": "bg-blue-light text-blue"
@@ -182,7 +182,7 @@
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-center",
-            "cta_url": "https://www.blueair.com/us/storelocator-retailer.html",
+            "cta_url": "https:\/\/www.blueair.com\/us\/storelocator-retailer.html",
             "cta_text": "Learn more",
             "cta_style": "btn",
             "color": "bg-blue-light text-blue"
@@ -200,7 +200,7 @@
             "subtext": "",
             "subtext_style": "p1",
             "subtext_alignment": "text-center",
-            "cta_url": "shopify://pages/commercial-and-business-air-purifiers",
+            "cta_url": "shopify:\/\/pages\/commercial-and-business-air-purifiers",
             "cta_text": "Learn More",
             "cta_style": "btn",
             "color": "bg-blue-light text-blue"
@@ -245,14 +245,14 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Need Support? We can help",
         "title_style": "h3",
         "subtext": "Get product help and answers from the Blueair customer support team.",
         "subtext_style": "s2",
-        "cta_url": "shopify://pages/support",
+        "cta_url": "shopify:\/\/pages\/support",
         "cta_text": "See Support",
         "cta_style": "btn btn--blue-rounded",
         "text_align_mobile": "text-left",
