@@ -41,6 +41,7 @@
         },
         "star_rating_rYzLXJ": {
           "type": "star_rating",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-sm",
@@ -64,7 +65,6 @@
         },
         "product_options_GLfTKf": {
           "type": "product_options",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -74,7 +74,6 @@
         },
         "atc_BURfeB": {
           "type": "atc",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-sm",
             "margin_bottom_mobile": "mb-md",
@@ -143,21 +142,6 @@
         "buybox_max_width": "80ch"
       }
     },
-    "product_slideshow_f7BaaR": {
-      "type": "product__slideshow",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "80ch",
-        "color": "bg-gray-athans text-blue"
-      }
-    },
     "product_custom_tabs_acewb9": {
       "type": "product__custom-tabs",
       "settings": {
@@ -175,73 +159,6 @@
         "image_position_desktop": "tabletl:flex-row"
       }
     },
-    "section_image_text_grid_NwP3Er": {
-      "type": "section__image-text-grid",
-      "blocks": {
-        "block_Jj7E6p": {
-          "type": "block",
-          "settings": {
-            "title": "95%",
-            "title_style": "h2",
-            "subtext": "felt it contributed to a <br> healthier living environment⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_Qhdt9K": {
-          "type": "block",
-          "settings": {
-            "title": "97%",
-            "title_style": "h2",
-            "subtext": "find it easy to use <br> and maintain⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_KkfhwF": {
-          "type": "block",
-          "settings": {
-            "title": "92%",
-            "title_style": "h2",
-            "subtext": "would recommend <br> to a friend⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_EJkn6p": {
-          "type": "block",
-          "settings": {
-            "title": "89%",
-            "title_style": "h2",
-            "subtext": "prefer it over any <br> other air purifier⁵",
-            "subtext_style": "p2"
-          }
-        }
-      },
-      "block_order": [
-        "block_Jj7E6p",
-        "block_Qhdt9K",
-        "block_KkfhwF",
-        "block_EJkn6p"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/blue_sig_image_for_stats.png",
-        "image_inset_mobile": false,
-        "image_position_mobile": "order-first",
-        "image_position_desktop": "left",
-        "image_width": 45,
-        "title": "Feel the difference of Blueair air care",
-        "title_style": "h3",
-        "text_max_width": "",
-        "section_max_width_desktop": ""
-      }
-    },
     "product_image_text_6MPkRA": {
       "type": "product__image-text",
       "settings": {
@@ -254,7 +171,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px",
-        "color": "bg-gray-athans text-blue"
+        "color": "text-blue"
       }
     },
     "section_image_blocks_A9wwV3": {
@@ -303,6 +220,21 @@
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "100%",
         "color": "text-blue"
+      }
+    },
+    "product_slideshow_f7BaaR": {
+      "type": "product__slideshow",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "80ch",
+        "color": "bg-gray-athans text-blue"
       }
     },
     "product_app_tabs_BzryrE": {
@@ -366,6 +298,75 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px",
         "color": "text-blue"
+      }
+    },
+    "section_image_text_grid_NwP3Er": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_Jj7E6p": {
+          "type": "block",
+          "settings": {
+            "title": "95%",
+            "title_style": "h2",
+            "subtext": "felt it contributed to a <br> healthier living environment⁵",
+            "subtext_style": "p2"
+          }
+        },
+        "block_Qhdt9K": {
+          "type": "block",
+          "settings": {
+            "title": "97%",
+            "title_style": "h2",
+            "subtext": "find it easy to use <br> and maintain⁵",
+            "subtext_style": "p2"
+          }
+        },
+        "block_KkfhwF": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "92%",
+            "title_style": "h2",
+            "subtext": "would recommend <br> to a friend⁵",
+            "subtext_style": "p2"
+          }
+        },
+        "block_EJkn6p": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "89%",
+            "title_style": "h2",
+            "subtext": "prefer it over any <br> other air purifier⁵",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "block_Jj7E6p",
+        "block_Qhdt9K",
+        "block_KkfhwF",
+        "block_EJkn6p"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/blue_sig_image_for_stats.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-first",
+        "image_position_desktop": "left",
+        "image_width": 45,
+        "title": "Feel the difference with Blue Signature™",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
       }
     },
     "section_text_banner_rmDttx": {
@@ -495,17 +496,17 @@
   },
   "order": [
     "main",
-    "product_slideshow_f7BaaR",
     "product_custom_tabs_acewb9",
-    "section_image_text_grid_NwP3Er",
     "product_image_text_6MPkRA",
     "section_image_blocks_A9wwV3",
     "product_video_WFRqMh",
     "product_filters_tPXVJP",
+    "product_slideshow_f7BaaR",
     "product_app_tabs_BzryrE",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
     "product_image_text_product_EitePb",
+    "section_image_text_grid_NwP3Er",
     "section_text_banner_rmDttx",
     "product_perks_FacAhx",
     "product_tech_specs_jEUNXD",

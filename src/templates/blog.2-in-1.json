@@ -293,7 +293,6 @@
         },
         "topic_xbaQnD": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

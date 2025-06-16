@@ -22,7 +22,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-4133e52325636a25f935a3509eea95c2": null,
+            "header-8fc22403902f71566bb7862c2fb88d73": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
@@ -31,16 +31,16 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-4133e52325636a25f935a3509eea95c2": null,
-            "announcement": "Shop our Summer Essentials for fresh, clean air",
-            "url": "shopify://collections/spring-essentials"
+            "header-78734440291c27a1cae14d0a874908ab": null,
+            "announcement": "Introducing Blue Signature: Engineered to Perform. Designed to Impress.",
+            "url": "shopify://collections/blue-signature™"
           }
         },
         "announcement_KRB8N": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-85672cb685557784d303b93bd20a406f": null,
+            "header-cb0f59de95e0dd8cf8572c6426107c27": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
           }

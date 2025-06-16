@@ -330,7 +330,6 @@
         },
         "topic_aqwyfL": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

@@ -406,7 +406,6 @@
         },
         "topic_3Mj8ak": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

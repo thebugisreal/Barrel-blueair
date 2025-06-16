@@ -99,6 +99,7 @@
         },
         "shipping_warranty_Rg4jpP": {
           "type": "shipping_warranty",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -284,6 +285,7 @@
     },
     "product_perks_FacAhx": {
       "type": "product__perks",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",

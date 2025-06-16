@@ -501,7 +501,6 @@
         },
         "topic_UhEhEe": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

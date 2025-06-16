@@ -190,7 +190,7 @@
             "manual_link_text": "User Manual",
             "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Signature_User_Manual_English_5.8.25.pdf?v=1747340958",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify://collections/mini-max-1"
+            "product_link_url": "shopify://products/blue-signature-replacement-filter"
           }
         },
         "block_N9tFUz": {
@@ -325,7 +325,6 @@
         },
         "topic_CxJjJC": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

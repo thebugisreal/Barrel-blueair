@@ -176,7 +176,6 @@
         },
         "topic_Jyc3aB": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

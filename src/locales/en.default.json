@@ -433,6 +433,11 @@
       },
       "marketing": {
         "accept_sms_checkbox_label": "Send me exclusive offers & updates by text"
+      },
+      "shipping_errors": {
+        "shipping_method_not_available_generic": {
+          "one": "This product cannot be shipped to California at this time. We expect to resolve this by mid-July."
+        }
       }
     }
   }

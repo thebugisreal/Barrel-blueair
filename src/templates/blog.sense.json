@@ -289,7 +289,6 @@
         },
         "topic_cf87Kp": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

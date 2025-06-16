@@ -321,7 +321,6 @@
         },
         "topic_XPFcfc": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

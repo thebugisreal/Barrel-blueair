@@ -192,7 +192,6 @@
         },
         "topic_7JGjPz": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }
