@@ -74,7 +74,7 @@
               {% assign active_thumb = false %}
               {% if current_swatch != blank %}
                 {% assign media_swatch = media.alt | strip %}
-                {% if media_swatch != current_swatch %}
+                {% if media_swatch != current_swatch and media_swatch != 'All' %}
                   {% assign hide_media = true %}
                 {% endif %}
               {% endif %}
@@ -140,7 +140,7 @@
               {% assign hide_media = false %}
               {% if current_swatch != blank %}
                 {% assign media_swatch = media.alt | strip %}
-                {% if media_swatch != current_swatch %}
+                {% if media_swatch != current_swatch and media_swatch != 'All' %}
                   {% assign hide_media = true %}
                 {% endif %}
               {% endif %}

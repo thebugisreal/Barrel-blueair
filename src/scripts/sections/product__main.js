@@ -882,7 +882,7 @@ class ProductMain extends HTMLElement {
     let current_thumb_slides_count = 0
     this.thumbSlides.forEach((slide) => {
       slide.classList.remove('hidden', 'swiper-slide', 'swiper-slide-thumb', 'swiper-slide-thumb-active');
-      if (slide.dataset.swatch && slide.dataset.swatch != swatchName) {
+      if (slide.dataset.swatch && slide.dataset.swatch != swatchName && slide.dataset.swatch != 'All') {
         slide.classList.add('hidden');
       } else {
         slide.classList.add('swiper-slide', 'swiper-slide-thumb');
@@ -892,7 +892,7 @@ class ProductMain extends HTMLElement {
 
     this.mainSlides.forEach((slide) => {
       slide.classList.remove('hidden', 'swiper-slide', 'swiper-slide-active');
-      if (slide.dataset.swatch && slide.dataset.swatch != swatchName) {
+      if (slide.dataset.swatch && slide.dataset.swatch != swatchName && slide.dataset.swatch != 'All') {
         slide.classList.add('hidden');
       } else {
         slide.classList.add('swiper-slide');
