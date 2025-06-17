@@ -9,10 +9,14 @@
     @apply sticky 
     bg-white 
     mb-sm
-    z-[3]
     rte;
     height: var(--compare-product-height);
-    top: var(--header-height)
+}
+
+@media screen(tabletl) {
+    .compare-product__title {
+        top: var(--header-height);
+    }
 }
 
 .compare__image-container {
@@ -22,7 +26,7 @@
 .compare__image-container {
     @apply aspect-square
     w-full
-    h-[270px]
+    h-[200px]
 }
 
 .compare__image-container img {
@@ -61,10 +65,12 @@
 }
 
 .compare__item {
-    @apply py-md
+    @apply 
+    py-sm
+    px-sm
     border-b
     border-gray
-    h-[80px]
+    h-[96px]
 }
 
 .compare__item .p1 {
