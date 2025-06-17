@@ -8,16 +8,28 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "index.json",
+  "parent": "article.room-size.json",
   "context": {
     "market": "us"
   },
   "sections": {
-    "hero": {
-      "settings": {
-        "cta_url": "shopify://collections/blue-signature™-1"
+    "section_carousel_mxgJpX": {
+      "settings": {},
+      "blocks": {
+        "product_qcUGT": {
+          "type": "product",
+          "disabled": false,
+          "settings": {
+            "product": "blue-signature",
+            "product_card_style": "style1"
+          }
+        }
       },
-      "blocks": {}
+      "block_order": [
+        "product_qcUGT",
+        "product_UXTGhi",
+        "product_JVYrcD"
+      ]
     }
   }
 }

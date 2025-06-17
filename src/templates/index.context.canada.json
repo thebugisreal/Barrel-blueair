@@ -15,8 +15,13 @@
   "sections": {
     "hero": {
       "settings": {
+        "image_mobile": "shopify://shop_images/md_mobile.png",
+        "image_desktop": "shopify://shop_images/md_desktop2.png",
         "title": "Kick off summer <br> with fresh, clean air",
-        "title_style": "h3"
+        "title_style": "h3",
+        "cta_url": "shopify://collections/canada-sale",
+        "color": "bg-blue-sky text-blue",
+        "cta_style": "btn btn--blue-rounded"
       },
       "blocks": {}
     }

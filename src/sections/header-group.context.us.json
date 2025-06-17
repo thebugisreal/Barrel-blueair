@@ -22,7 +22,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-8fc22403902f71566bb7862c2fb88d73": null,
+            "header-6e3b98d039cf8640ae8cc6c13ea3d8e6": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
@@ -31,7 +31,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-78734440291c27a1cae14d0a874908ab": null,
+            "header-9adec49b8256675e0bc2e27a9febef70": null,
             "announcement": "Introducing Blue Signature: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
           }
@@ -40,15 +40,15 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-cb0f59de95e0dd8cf8572c6426107c27": null,
+            "header-45d39c935ea27ed01bb0df8b6fee17b4": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
           }
         }
       },
       "block_order": [
-        "announcement_XMHEL",
         "announcement_QLGEH",
+        "announcement_XMHEL",
         "announcement_KRB8N"
       ]
     }

@@ -30,7 +30,7 @@
             "padding_top_desktop": "desktop:pt-xxl",
             "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "95ch",
-            "richtext": "<p>Welcome to the next generation of air purification. At Blueair, we’ve always believed that air care is essential to health, comfort, and peace of mind—but we also believe your air purifier should look as good as it works. That’s why we created <strong>Blue Signature</strong>: a groundbreaking air purifier that combines advanced filtration, smart automation, and elevated design, all in one stunningly compact unit.</p><p><strong>Engineered to perform. Designed to impress. </strong>That’s more than a tagline. It’s the foundation of everything Blue Signature delivers.</p>",
+            "richtext": "<p>Welcome to the next generation of air purification. At Blueair, we’ve always believed that air care is essential to health, comfort, and peace of mind—but we also believe your air purifier should look as good as it works. That’s why we created Blue Signature™ – the most powerful, compact & customizable air purifier you can get¹</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
@@ -58,6 +58,7 @@
         },
         "image_caption_KnqYBR": {
           "type": "image_caption",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -85,7 +86,7 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Purification That Goes Further</strong></h4><h4></h4><p>At the heart of Blue Signature is an advanced <strong>7-stage filtration system</strong> that captures 99.97% of airborne pollutant —dust, pollen, smoke, pet dander, and more. But what truly sets it apart is our new <strong>OdorFence™ Technology</strong>. We've doubled the filter media and developed a <strong>patent-pending formulation</strong> specifically designed to tackle stubborn, lingering odors.</p><p>Thanks to <strong>BIO Technology</strong>, Blue Signature doesn’t just trap odor-causing gases—it breaks them down at a molecular level. In fact, it's <strong>up to three times more efficient at reducing odors </strong>than leading models like the Blueair 211i Max and Coway Airmega 400S, based on standardized JEMA testing. Your air will smell as clean as it feels.</p>",
+            "richtext": "<h4><strong>7 stages of filtration, 10X</strong>²<strong> more odor removal</strong></h4><p></p><p>At the heart of Blue Signature™ is an advanced 7-stage filtration system that captures 99.97% of airborne pollutant —dust, pollen, smoke, pet dander, and more. But what truly sets it apart is our new OdorFence Technology. We've doubled the filter media and developed a patent-pending formulation specifically designed to tackle stubborn, lingering odors.</p><p>Blue Signature™ doesn’t just trap odor-causing gases—it breaks them down at a molecular level. In fact, it's up to 10X more efficient at reducing odors. Your air will smell as clean as it feels.</p><p>Despite its sleek, space-saving design, Blue Signature delivers performance that outpaces bulkier purifiers. That’s thanks to <strong>Surround Boost Air engineering  </strong>—aero-optimized, 360-degree airflow that distributes clean air quickly and evenly throughout your space. </p><p>This means you get high-capacity purification without the visual clutter. Blue Signature is powerful enough for large rooms, but compact enough to sit beautifully in a corner, by your desk, or in the middle of the room.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -115,23 +116,6 @@
             "image_mobile": "shopify://shop_images/Image_Ratio_Keeper_56602345-65b9-4a4a-84b2-80c9208dacf9.png",
             "image_placement_mobile": "flex-col",
             "image_placement_desktop": "tabletl:flex-row-reverse"
-          }
-        },
-        "text_Ub47yL": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Big Power, Smaller Package</strong></h4><p>Despite its sleek, space-saving design, Blue Signature delivers performance that outpaces bulkier purifiers. That’s thanks to <strong>Surround Boost Air engineering  </strong>—aero-optimized, 360-degree airflow that distributes clean air quickly and evenly throughout your space. </p><p>This means you get high-capacity purification without the visual clutter. Blue Signature is powerful enough for large rooms, but compact enough to sit beautifully in a corner, by your desk, or in the middle of the room.</p>",
-            "richtext_alignment": "text-left",
-            "richtext_style": "p2"
           }
         },
         "text_VnAwbf": {
@@ -185,26 +169,6 @@
             "richtext_style": "p2"
           }
         },
-        "product_desc_image_YmTdAw": {
-          "type": "product_desc_image",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-sm",
-            "padding_top_mobile": "pt-md",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-md",
-            "padding_bottom_desktop": "desktop:pb-lg",
-            "max_width_desktop": "50ch",
-            "color": "bg-gray-athans text-blue",
-            "title": "Ready to experience the difference?",
-            "title_style": "h5",
-            "product": "blue-signature",
-            "btn_text": "Shop Now",
-            "btn_style": "btn btn--transparent-rounded"
-          }
-        },
         "image_caption_Xi6zz4": {
           "type": "image_caption",
           "disabled": true,
@@ -231,14 +195,34 @@
         "image_caption_KnqYBR",
         "text_e9yarP",
         "image_text_MikMKz",
-        "text_Ub47yL",
         "text_VnAwbf",
         "text_NiRkQd",
         "text_CdAUFh",
-        "product_desc_image_YmTdAw",
         "image_caption_Xi6zz4"
       ],
       "settings": {}
+    },
+    "section_product_grid_tcCwJd": {
+      "type": "section__product-grid",
+      "name": "Product Grid",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-sm",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "carousel_mobile": true,
+        "num_cols_mobile": 2,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "Shop now",
+        "title_style": "h4",
+        "collection": "blue-signature™-1",
+        "num_products": 3
+      }
     },
     "section_carousel_NMANUr": {
       "type": "section__carousel",
@@ -539,6 +523,7 @@
   "order": [
     "main",
     "article_content_zMAJck",
+    "section_product_grid_tcCwJd",
     "section_carousel_NMANUr",
     "article_content_CXmqDG",
     "section_accordion_DgQAah"
