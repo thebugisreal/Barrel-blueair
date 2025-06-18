@@ -14,33 +14,34 @@
   },
   "sections": {
     "header": {
+      "disabled": false,
       "settings": {
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_XMHEL": {
-          "type": "announcement",
-          "disabled": false,
-          "settings": {
-            "header-6e3b98d039cf8640ae8cc6c13ea3d8e6": null,
-            "announcement": "Free Shipping on Orders +$35",
-            "url": ""
-          }
-        },
         "announcement_QLGEH": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-9adec49b8256675e0bc2e27a9febef70": null,
+            "header-78d60f40465a50f0492d1a87ba6ce279": null,
             "announcement": "Introducing Blue Signature: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
+          }
+        },
+        "announcement_XMHEL": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-0191b6114e520023a9ca30c34b57b588": null,
+            "announcement": "Free Shipping on Orders +$35",
+            "url": ""
           }
         },
         "announcement_KRB8N": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-45d39c935ea27ed01bb0df8b6fee17b4": null,
+            "header-6b343554b57f1f831747ff37ae0f7314": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
           }
