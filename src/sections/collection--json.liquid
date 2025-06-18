@@ -17,9 +17,19 @@
       {% if size != blank %}
         "size": "{{size}}",
       {% endif %}
+      {% assign swatch_objects = product.metafields.seed.swatches.value | default: blank %}
       {% for color in product.metafields.shopify.color-pattern.value %}
         "colorTitle": "{{color.label}}",
         "colorHex": "{{color.color}}",
+        {% assign swatch_image_url = '' %}
+        {% if swatch_objects != blank %}
+          {% for swatch in swatch_objects %}
+            {% if swatch.name == color.label and swatch.image != blank %}
+              {% assign swatch_image_url = swatch.image | img_url: '100x100' %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        "swatchImage": "{{ swatch_image_url }}",
       {% endfor %}
       "available": {{product.available}}
     }{%- unless forloop.last -%},{%- endunless -%}
