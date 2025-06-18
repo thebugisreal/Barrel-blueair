@@ -1,5 +1,5 @@
 <div class="mega-menu px-xl flex gap-xl overflow-x-auto">
-  <div class="mega-menu__left min-w-[225px] w-[225px]">
+  <div class="mega-menu__left min-w-[300px] w-[300px]">
     {% for child_link in link.links %}
       {% assign child_link_handle = child_link.title | handle %}
       {% unless child_link_handle == 'image-links' %}
@@ -60,7 +60,12 @@
                           {% render 'room-icon', size: 'extralarge', width: '18px' %}
                         {% endif %}
                       {% endif %}
-                      <span>{{ grandchild_link.title }}</span>
+                      <div class="megamenu__title-container flex justify-start items-center">
+                        <span>{{ grandchild_link.title }}</span>
+                        {% if grandchild_link.object.metafields.seed.megamenu_bubble_text != blank %}
+                        <span class="megamenu__bubble p-xxs rounded-[30px] text-body ml-xxs {% if grandchild_link.object.metafields.seed.megamenu_bubble_color == 'dark blue' %}bg-blue text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'regular blue' %}bg-blue-medium text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'white' %}bg-white text-black{% else %}{% endif %}"> {{ grandchild_link.object.metafields.seed.megamenu_bubble_text }} </span>
+                        {% endif %}
+                      </div>
                     </a>
                   </li>
                 {% endfor %}
