@@ -29,6 +29,16 @@
           break 
         endif 
       endfor 
+  elsif shop.permanent_domain == 'uk-blueair.myshopify.com' 
+    assign transactional_countries = 'GB' | split: ',' 
+    assign is_transactional = false 
+    assign current_country = localization.country.iso_code | upcase 
+    for country in transactional_countries 
+        if country == current_country 
+          assign is_transactional = true 
+          break 
+        endif 
+      endfor 
   endif 
   
   if is_transactional 
