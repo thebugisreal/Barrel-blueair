@@ -85,7 +85,7 @@
 %}
 
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link>
+  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link aria-label="Shop {{ product.title }}">
     {% comment %} Product Card Top Tag {% endcomment %}
      {% if product.metafields.seed.product_card_top_tags != blank %}
       <div class="product-card__top-tag absolute top-sm left-sm">

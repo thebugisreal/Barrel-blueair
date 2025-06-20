@@ -48,7 +48,7 @@
               <ul class="mega-menu__links">
                 {% for grandchild_link in child_link.links %}
                   <li class="mega-menu__item {% unless forloop.last %}mb-sm{% endunless %}">
-                    <a href="{{ grandchild_link.url }}" class="mega-menu__link link text-18 flex gap-xxs items-center w-fit">
+                    <a href="{{ grandchild_link.url }}" class="mega-menu__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ grandchild_link.title }}">
                       {% if child_link_handle contains 'room-size' %}
                         {% if grandchild_link.title contains 'Small' %}
                           {% render 'room-icon', size: 'small', width: '18px' %}
@@ -68,7 +68,7 @@
             </div>
           {% else %}
             <div class="mega-menu__item border-t border-blue-light">
-              <a href="{{ child_link.url }}" class="mega-menu__link link text-18 block my-md w-fit">
+              <a href="{{ child_link.url }}" class="mega-menu__link link text-18 block my-md w-fit" aria-label="{{ child_link.title }}">
                 {{ child_link.title }}
               </a>
             </div>

@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="image-text-grid__image {% unless section.settings.image_inset_mobile %}px-md desktop:px-0{% endunless %} {{ section.settings.image_position_mobile }} {% if section.settings.image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ section.settings.image_width }}%;" >
-      {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop %}
+      {% render 'lazy-image' image: section.settings.image_mobile image_desktop: section.settings.image_desktop, alt: section.settings.title %}
     </div>
   </div>
 </div>

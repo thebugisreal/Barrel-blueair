@@ -17,13 +17,13 @@
             <div class="hero__app-mobile mt-lg tabletl:hidden">
             <div class="hero__app-mobile-links flex flex-col gap-md">
                 {% if settings.app_store_url_mobile != blank %}
-                <a href="{{ settings.app_store_url_mobile }}" target="_blank" rel="noopener noreferrer" class="hero__app-mobile-link">
-                    <img src="{{ 'app-store--white.png' | asset_url }}" class="block w-[195px] h-full" />
+                <a href="{{ settings.app_store_url_mobile }}" target="_blank" rel="noopener noreferrer" class="hero__app-mobile-link" aria-label="Apple App Store">
+                    <img src="{{ 'app-store--white.png' | asset_url }}" class="block w-[195px] h-full" alt="Download on the App Store" />
                 </a>
                 {% endif %}
                 {% if settings.google_play_url_mobile != blank %}
-                <a href="{{ settings.google_play_url_mobile }}" target="_blank" rel="noopener noreferrer" class="hero__app-mobile-link">
-                    <img src="{{ 'google-play--white.png' | asset_url }}" class="block w-[195px] h-full" />
+                <a href="{{ settings.google_play_url_mobile }}" target="_blank" rel="noopener noreferrer" class="hero__app-mobile-link" aria-label="Google Play Store">
+                    <img src="{{ 'google-play--white.png' | asset_url }}" class="block w-[195px] h-full" alt="Get it on Google Play" />
                 </a>
                 {% endif %}
             </div>
@@ -36,13 +36,13 @@
             <div class="hero__app-desktop border-blue-light mt-lg hidden tabletl:block">
             <div class="hero__app-desktop-links flex gap-md">
                 {% if settings.app_store_url_desktop != blank %}
-                <a href="{{ settings.app_store_url_desktop }}" target="_blank" rel="noopener noreferrer" class="hero__app-desktop-link">
-                    <img src="{{ 'app-store--white.png' | asset_url }}" class="block w-[170px] h-full" />
+                <a href="{{ settings.app_store_url_desktop }}" target="_blank" rel="noopener noreferrer" class="hero__app-desktop-link" aria-label="Apple App Store">
+                    <img src="{{ 'app-store--white.png' | asset_url }}" class="block w-[170px] h-full" alt="Download on the App Store" />
                 </a>
                 {% endif %}
                 {% if settings.google_play_url_desktop != blank %}
-                <a href="{{ settings.google_play_url_desktop }}" target="_blank" rel="noopener noreferrer" class="hero__app-desktop-link">
-                    <img src="{{ 'google-play--white.png' | asset_url }}" class="block w-[195px] h-full" />
+                <a href="{{ settings.google_play_url_desktop }}" target="_blank" rel="noopener noreferrer" class="hero__app-desktop-link" aria-label="Google Play Store">
+                    <img src="{{ 'google-play--white.png' | asset_url }}" class="block w-[195px] h-full" alt="Get it on Google Play" />
                 </a>
                 {% endif %}
             </div>
