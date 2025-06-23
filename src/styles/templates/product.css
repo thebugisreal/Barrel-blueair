@@ -367,3 +367,7 @@ s-carousel.pointer-event {
     border-blue;
   }
 }
+
+.product__image-text .metafield-rich_text_field p {
+  @apply text-18;
+}
