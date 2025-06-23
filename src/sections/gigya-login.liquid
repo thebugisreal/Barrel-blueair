@@ -1,6 +1,13 @@
 <script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey={{ settings.gigya_api_key }}"></script>
 
-<div class="min-h-screen mx-auto text-blue bg-gray-light px-xl {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}">
+<script>
+  window.SHOPIFY_SETTINGS = {
+    xecurify_id: {{ settings.xecurify_id | json }},
+    gigya_api_key: {{ settings.gigya_api_key | json }}
+  };
+</script>
+
+<gigya-login class="min-h-screen mx-auto text-blue bg-gray-light px-xl {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}">
   <div class="flex flex-col items-center justify-center">
     <div class="flex justify-center">
         <h1 class="flex items-center h3 mb-sm text-blue">
@@ -30,7 +37,7 @@
         </div>
 
         <div class="flex pt-4 justify-center">
-          <button type="submit" class="btn btn--blue-rounded mb-lg">
+          <button type="submit" class="btn btn--blue-rounded mb-lg" js-gigya-login-submit>
             <span class="btn__text">Sign in</span>
             <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
           </button>
@@ -87,7 +94,7 @@
           </div>
         </div>
         <div>
-          <button type="submit" class="btn btn--blue-rounded mb-lg mx-auto">
+          <button type="submit" class="btn btn--blue-rounded mb-lg mx-auto" >
             <span class="btn__text">Register</span>
             <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
           </button>
@@ -95,99 +102,7 @@
       </form>
     </div>
   </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const toggleLogin = document.getElementById('toggleLogin');
-    const toggleRegister = document.getElementById('toggleRegister');
-
-    toggleLogin.onclick = function () {
-      loginForm.style.display = 'block';
-      registerForm.style.display = 'none';
-      toggleLogin.classList.add('border-b-2', 'border-blue', 'font-bold');
-      toggleRegister.classList.remove('border-b-2', 'border-blue', 'font-bold');
-    };
-
-    toggleRegister.onclick = function () {
-      loginForm.style.display = 'none';
-      registerForm.style.display = 'block';
-      toggleRegister.classList.add('border-b-2', 'border-blue', 'font-bold');
-      toggleLogin.classList.remove('border-b-2', 'border-blue', 'font-bold');
-    };
-
-    // Login form submission
-    document.getElementById('customer_login').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const email = document.getElementById('CustomerEmail').value;
-      const password = document.getElementById('CustomerPassword').value;
-      gigya.accounts.login({
-        loginID: email,
-        password: password,
-        callback: function (response) {
-          if (response.errorCode === 0) {
-            gigya.accounts.getJWT({
-              callback: function (response) {
-                if (response.errorCode === 0) {
-                  const token = response.id_token;
-                  const xecurifyId = {{ settings.xecurify_id | json }};
-                  window.location.href = `https://store.xecurify.com/moas/broker/login/jwt/callback/${xecurifyId}/jwt_H1X/${token}?relay=https://store.xecurify.com/moas/broker/login/shopify/${window.Shopify.shop}/account`;
-                }
-              },
-              fields: "email,profile",
-              expiration: 3600
-            });
-          } else {
-            var loginErrorDiv = document.getElementById('loginFormErrors');
-            if (loginErrorDiv) {
-              loginErrorDiv.textContent = 'Invalid email or password';
-            } else {
-              alert('Invalid email or password');
-            }
-          }
-        }
-      });
-    });
-
-    // Registration form submission
-    document.getElementById('registrationForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      document.getElementById('formErrors').innerHTML = "";
-
-      const formData = new FormData(event.target);
-      const password = formData.get('password');
-      const confirmPassword = formData.get('confirm_password');
-
-      if (password !== confirmPassword) {
-        document.getElementById('formErrors').textContent = 'Passwords do not match.';
-        return;
-      }
-
-      if (!document.getElementById('over16').checked) {
-        document.getElementById('formErrors').textContent = 'You must confirm that you are over 16 years old.';
-        return;
-      }
-
-      const data = {
-        loginID: formData.get('email'),
-        password: password,
-        email: formData.get('email'),
-        profile: {
-          firstName: formData.get('firstName'),
-          lastName: formData.get('lastName')
-        },
-        preferences: {
-          ageConsentGranted: { isConsentGranted: true },
-          cookies: { isConsentGranted: true }
-        }
-      };
-
-      gigya.accounts.register(data);
-    });
-  });
-</script>
+</gigya-login>
 
 {% schema %}
 {
