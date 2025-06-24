@@ -12,5 +12,15 @@
   "context": {
     "market": "us"
   },
-  "sections": {}
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "text_JjtMAU": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    }
+  }
 }
