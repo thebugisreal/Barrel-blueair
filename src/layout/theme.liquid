@@ -29,23 +29,21 @@
     {% if template.name == 'addresses' %}
       <script> location.href = '{{ routes.account_url }}' </script>
     {% endif %}
-
-    {% render 'evidon' %}
     {% render 'onetrust' %}
-
-    <!-- Affirm -->
-    <script>
-      _affirm_config = {
-        public_api_key:  "0JDSO1NZ3ZHRQF0R",
-        script:          "https://cdn1.affirm.com/js/v2/affirm.js"
-      };
-      (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
-      // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
-    </script>
-    <!-- End Affirm -->
-
-    <script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey=3_ySPsrsHSXFGBAm5bIySMyifZ29wt6LFIsiaU4QLEVlaz5MOEhi5cEJrKaWn_Glcv"></script>
-    
+    {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+      {% render 'evidon' %}
+      <script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey=3_ySPsrsHSXFGBAm5bIySMyifZ29wt6LFIsiaU4QLEVlaz5MOEhi5cEJrKaWn_Glcv"></script>
+      <!-- Affirm -->
+      <script>
+        _affirm_config = {
+          public_api_key:  "0JDSO1NZ3ZHRQF0R",
+          script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+        };
+        (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+        // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
+      </script>
+      <!-- End Affirm -->
+    {% endif %}
     {{ content_for_header }}
   
     {{ 'vendor.css' | asset_url | stylesheet_tag }}
@@ -112,10 +110,12 @@
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' or shop.permanent_domain == 'blueeudev.myshopify.com' %}
     {% if is_transactional %}
       {% render 'sprinklr-chat' %}
     {% endif %}
-
+    {% endif %}
+    {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
     <script type="text/javascript">
       setTimeout(function() {
         var script = document.createElement('script');
@@ -123,6 +123,7 @@
         document.head.appendChild(script);
       }, 1000);
     </script>
+    {% endif %}
 
   </body>
 </html>
