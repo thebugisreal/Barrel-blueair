@@ -111,18 +111,18 @@
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' or shop.permanent_domain == 'blueeudev.myshopify.com' %}
-    {% if is_transactional %}
-      {% render 'sprinklr-chat' %}
-    {% endif %}
+      {% if is_transactional %}
+        {% render 'sprinklr-chat' %}
+      {% endif %}
     {% endif %}
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
-    <script type="text/javascript">
-      setTimeout(function() {
-        var script = document.createElement('script');
-        script.src = 'https://static.ordergroove.com/3488d6a745bd4989b67ebc6b0ad38ad6/msi.js';
-        document.head.appendChild(script);
-      }, 1000);
-    </script>
+      <script type="text/javascript">
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.src = 'https://static.ordergroove.com/3488d6a745bd4989b67ebc6b0ad38ad6/msi.js';
+          document.head.appendChild(script);
+        }, 1000);
+      </script>
     {% endif %}
 
   </body>
