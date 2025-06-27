@@ -60,11 +60,11 @@
                           {% render 'room-icon', size: 'extralarge', width: '18px' %}
                         {% endif %}
                       {% endif %}
-                      <div class="megamenu__title-container flex justify-start items-center">
+                      <div class="megamenu__title-container flex justify-start items-start">
                         <span>{{ grandchild_link.title }}</span>
                         {% if grandchild_link.object.metafields.seed.megamenu_bubble_text != blank %}
-                        <span class="megamenu__bubble p-xxs rounded-[30px] text-body ml-xxs {% if grandchild_link.object.metafields.seed.megamenu_bubble_color == 'dark blue' %}bg-blue text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'regular blue' %}bg-blue-medium text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'white' %}bg-white text-black{% else %}{% endif %}"> {{ grandchild_link.object.metafields.seed.megamenu_bubble_text }} </span>
-                        {% endif %}
+                        <span class="megamenu__bubble leading-[12px] font-500 py-xxs px-xs text-12 rounded-[60px] {% if grandchild_link.object.metafields.seed.megamenu_bubble_color == 'dark blue' %}bg-blue text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'regular blue' %}bg-blue-medium text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'white' %}bg-white border border-black border-solid text-black{% else %}{% endif %}"> {{ grandchild_link.object.metafields.seed.megamenu_bubble_text }} </span>
+                        {% endif %}                        
                       </div>
                     </a>
                   </li>
