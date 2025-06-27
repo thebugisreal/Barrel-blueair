@@ -14,7 +14,7 @@
           {% endif %}
           <div class="faq-specs-instructions-block__content flex justify-between items-end gap-sm">
             <ul class="faq-specs-instructions-block__links flex-1">
-              {% assign links = 'video,manual,product' |  split: ',' %}
+              {% assign links = 'video,manual,manual_2,manual_3,manual_4,product' |  split: ',' %}
               {% for link in links %}
                 {% assign link_text_handle = link | append: '_link_text' %}
                 {% assign link_url_handle = link | append: '_link_url' %}
@@ -25,6 +25,12 @@
                         {% when 'video' %}
                           {% render 'icon-faq-video' %}
                         {% when 'manual' %}
+                          {% render 'icon-faq-user-manual' %}
+                        {% when 'manual_2' %}
+                          {% render 'icon-faq-user-manual' %}
+                        {% when 'manual_3' %}
+                          {% render 'icon-faq-user-manual' %}
+                        {% when 'manual_4' %}
                           {% render 'icon-faq-user-manual' %}
                         {% when 'product' %}
                           {% render 'icon-faq-product-details' %}
@@ -555,6 +561,36 @@
           "type": "url",
           "id": "manual_link_url",
           "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "manual_2_link_text",
+          "label": "Link Text 2"
+        },
+        {
+          "type": "url",
+          "id": "manual_2_link_url",
+          "label": "Link URL 2"
+        },
+        {
+          "type": "text",
+          "id": "manual_3_link_text",
+          "label": "Link Text 3"
+        },
+        {
+          "type": "url",
+          "id": "manual_3_link_url",
+          "label": "Link URL 3"
+        },
+        {
+          "type": "text",
+          "id": "manual_4_link_text",
+          "label": "Link Text 4"
+        },
+        {
+          "type": "url",
+          "id": "manual_4_link_url",
+          "label": "Link URL 4"
         },
         {
           "type": "header",
