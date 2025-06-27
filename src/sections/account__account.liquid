@@ -259,16 +259,113 @@
 {% comment %} 
   Device & Warranty Content
 {% endcomment %}
+{% comment %} 
+  Device & Warranty Content
+{% endcomment %}
 {% capture devices_and_warranty %}
-  <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
-    <div class="mt-md grid gap-md">
+  <warranty-devices class="account__section">
+    <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
+      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
+      <button class="p3 font-400 text-center block" js-toggle-warranty-form >Register a new device +</button>
+    </div>
+    <div class="mt-md grid gap-md hidden" js-device-warranty-form>
       <div class="account-content">
-        <iframe class="iframe-container w-full h-[1020px] border-0" src="https://acct66616.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2087&deploy=1&compid=ACCT66616&ns-at=AAEJ7tMQd5YN4YljuCQ07j1ZLwmp8-Wa5uPu4ol4DeKznw8De9w&uid={{ customer.metafields.blueair.gigya_uid }}&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}"></iframe>
-			</div>
+        <form id="warranty-device-form" class="warranty-registration-form p-md bg-white w-full max-w-full">
+          <!-- Device registration fields start -->
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Unit family</label>
+            <div class="select-wrapper relative w-full">
+              <select name="unit_family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]">
+                <option value="" disabled>Select family</option>
+                {% assign collection = collections['air-purifiers'] %}
+                {% for product in collection.products %}
+                  <option value="{{ product.handle }}"{% if forloop.first %} selected{% endif %}>{{ product.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Unit model</label>
+            <div class="select-wrapper relative w-full">
+              <select name="unit_model" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]">
+                <option value="dustmagnet">DustMagnet™</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Serial number</label>
+            <input type="text" name="serial_number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number">
+          </div>
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Date of purchase</label>
+            <div class="relative w-full">
+              <input type="text" name="purchase_date" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY">
+              <button type="button" class="absolute right-sm top-1/2 -translate-y-1/2 text-[#002D72]">
+                {% render 'icon-calendar' %}
+              </button>
+            </div>
+          </div>
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Place of purchase</label>
+            <select class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" name="place_of_purchase" id="place-of-purchase" required>
+              <option value="" disabled selected>Select place of purchase</option>
+              <option value="Amazon">Amazon</option>
+              <option value="Blueair.com">Blueair.com</option>
+              <option value="Other Online Retailer">Other Online Retailer</option>
+              <option value="In-Store">In-Store</option>
+            </select>
+          </div>
+          <div class="flex justify-between items-center gap-md">
+            <button type="submit" class="w-[174px] btn btn--blue-rounded flex justify-center">
+              Save
+            </button>
+            <button type="button" class="btn text-[#002D72] hover:underline" js-cancel-warranty-form>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
-    </div>            
-  </div>
+    </div>
+
+    <div class="device-card-content">
+      <div class="device-card mt-md grid gap-md">
+        <div class="account-content">
+          <div class="my-devices-content flex justify-between p-md bg-white w-full max-w-full">
+            {% for product in collection.products limit:1 %}
+              <div class="flex w-1/4">
+                <div class="product-card__image aspect-square">
+                  {% assign image = product.featured_image %} 
+                  {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+                </div>
+              </div>
+              <div class="flex flex-col w-1/2 my-auto">
+                <div class="">
+                  <h3 class="device-card__title font-700 text-22 font-gilroy mb-24" >
+                    {{ product.title }}
+                  </h3>
+                </div>
+                <div class="flex">
+                  <div class="text-18 font-400 mr-60">
+                    <p>Serial number</p>
+                    <p>027598xxxxxx</p>
+                  </div>
+                    <div class="text-18 font-400 mr-60">
+                    <p>Date of purchase</p>
+                    <p>12/34/1099</p>
+                  </div> 
+                </div>
+              </div>
+              <div>
+                <button id="toggle-warranty-form" class="p3 font-400 text-center block">Register a new device +</button>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="device-card-container" class="device-card-content mt-md grid gap-md"></div>
+  </warranty-devices>
 {% endcapture %}
 
 <s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" 
@@ -765,3 +862,4 @@
   ]
 }
 {% endschema %}
+
