@@ -21,6 +21,9 @@
         "enabled": "客戶可以自行申請和管理退貨。",
         "disabled": "顧客必須聯絡商家要求退貨。"
       }
+    },
+    "privacy_banner": {
+      "cookie_preferences_link": "cookie首選項"
     }
   },
   "sections": {
@@ -43,9 +46,9 @@
       "empty": "您的購物車是空的",
       "cart_error": "更新您的購物車時發生錯誤。請重試。",
       "cart_quantity_error_html": "您只能將 [quantity] 件此商品加入購物車。",
-      "taxes_and_shipping_policy_at_checkout_html": "結帳時計算稅金和<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">運費<\/a>",
+      "taxes_and_shipping_policy_at_checkout_html": "結帳時計算稅金和<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">運費</a>",
       "taxes_included_but_shipping_at_checkout": "含稅，運費在結帳時計算",
-      "taxes_included_and_shipping_policy_html": "含稅。結帳時計算<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">運費<\/a>。",
+      "taxes_included_and_shipping_policy_html": "含稅。結帳時計算<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">運費</a>。",
       "taxes_and_shipping_at_checkout": "結帳時計算稅金和運費",
       "headings": {
         "product": "產品",
@@ -94,7 +97,7 @@
       "sort_by_label": "排序方式",
       "title": "收藏",
       "to": "到",
-      "use_fewer_filters_html": "使用較少的過濾器或<a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;\/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">清除所有<\/a>"
+      "use_fewer_filters_html": "使用較少的過濾器或<a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">清除所有</a>"
     }
   },
   "general": {
@@ -106,7 +109,7 @@
       "login_form_error": "密碼錯誤！",
       "login_form_submit": "進入",
       "modal": "密碼模式",
-      "admin_link_html": "您是店主嗎？<a href=\"\/admin\" class=\"link underlined-link\">在此登入<\/a>",
+      "admin_link_html": "您是店主嗎？<a href=\"/admin\" class=\"link underlined-link\">在此登入</a>",
       "powered_by_shopify_html": "本店將由{{ shopify }}提供支持"
     },
     "social": {
@@ -117,7 +120,14 @@
       },
       "links": {
         "twitter": "嘰嘰喳喳",
-        "youtube": "Youtube"
+        "youtube": "Youtube",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tumblr": "tumblr",
+        "snapchat": "Snapchat",
+        "vimeo": "Vimeo",
+        "tiktok": "蒂克托克"
       }
     },
     "continue_shopping": "繼續購物",
@@ -210,8 +220,8 @@
         "view_store_info": "查看商店信息",
         "check_other_stores": "查看其他商店的庫存",
         "pick_up_available": "可取貨",
-        "pick_up_available_at_html": "可在<span class=\"color-foreground\">{{ location_name }}<\/span>取貨",
-        "pick_up_unavailable_at_html": "<span class=\"color-foreground\">{{ location_name }}<\/span>目前無法取貨",
+        "pick_up_available_at_html": "可在<span class=\"color-foreground\">{{ location_name }}</span>取貨",
+        "pick_up_unavailable_at_html": "<span class=\"color-foreground\">{{ location_name }}</span>目前無法取貨",
         "unavailable": "無法載入取貨日期",
         "refresh": "重新整理"
       },
@@ -257,7 +267,8 @@
       }
     },
     "404": {
-      "title": "找不到頁面"
+      "title": "找不到頁面",
+      "subtext": "404"
     }
   },
   "customer": {
@@ -276,7 +287,7 @@
       "company": "公司",
       "address1": "地址 1",
       "address2": "地址 2",
-      "country": "國家\/地區",
+      "country": "國家/地區",
       "province": "省",
       "zip": "郵遞區號",
       "set_default": "設定為預設地址",
@@ -388,9 +399,9 @@
     "collection_title": "您的收藏名稱"
   },
   "localization": {
-    "country_label": "國家\/地區",
+    "country_label": "國家/地區",
     "language_label": "語言",
     "update_language": "更新語言",
-    "update_country": "更新國家\/地區"
+    "update_country": "更新國家/地區"
   }
 }

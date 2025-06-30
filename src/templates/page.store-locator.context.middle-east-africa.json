@@ -1,0 +1,170 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "page.store-locator.json",
+  "context": {
+    "market": "middle-east-africa"
+  },
+  "sections": {
+    "section_image_blocks_ymfjN": {
+      "settings": {
+        "title": "United Arab Emirates"
+      },
+      "blocks": {
+        "image_kMcNdd": {
+          "settings": {
+            "image": "shopify://shop_images/SharafDG-Logo.png",
+            "image_url": "https://uae.sharafdg.com/brand/Blueair/"
+          }
+        },
+        "image_4D8PYF": {
+          "settings": {
+            "image": "shopify://shop_images/ACE-Hardware-logo.png",
+            "image_url": ""
+          }
+        },
+        "image_eYizRr": {
+          "settings": {
+            "image": "shopify://shop_images/amazon-ae.png",
+            "image_url": ""
+          }
+        },
+        "image_8gCWKH": {
+          "settings": {
+            "image": "shopify://shop_images/dxb.netimages.png",
+            "image_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_kMcNdd",
+        "image_4D8PYF",
+        "image_eYizRr",
+        "image_8gCWKH"
+      ]
+    },
+    "section_image_blocks_jg7xzR": {
+      "type": "section__image-blocks",
+      "disabled": false,
+      "settings": {
+        "header-f563f259e122dca179b1f298a3881b29": null,
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-md",
+        "margin_bottom_desktop": "desktop:mb-md",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "header-74026cffe258c07b29e31598c29386c2": null,
+        "title": "",
+        "title_style": "h2",
+        "title_color": ""
+      },
+      "blocks": {
+        "image_ipedHQ": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/Noon_Website_Logo_svg.png",
+            "image_url": ""
+          }
+        },
+        "image_PgMkEe": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/1607150630_logo.png",
+            "image_url": ""
+          }
+        },
+        "image_BqWAke": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/839d2ed006857b5be43318e8926ae337.jpg",
+            "image_url": ""
+          }
+        },
+        "image_Kgbapt": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/dxb.netimages.png",
+            "image_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_ipedHQ",
+        "image_PgMkEe",
+        "image_BqWAke",
+        "image_Kgbapt"
+      ],
+      "name": "Image Blocks"
+    },
+    "section_image_blocks_tkPpgh": {
+      "type": "section__image-blocks",
+      "disabled": false,
+      "settings": {
+        "header-f563f259e122dca179b1f298a3881b29": null,
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-md",
+        "margin_bottom_desktop": "desktop:mb-md",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "header-74026cffe258c07b29e31598c29386c2": null,
+        "title": "Kingdom of Saudi Arabia",
+        "title_style": "h2",
+        "title_color": ""
+      },
+      "blocks": {
+        "image_rftFNw": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/SACO_KSA.jpg",
+            "image_url": "https://uae.sharafdg.com/brand/Blueair/"
+          }
+        },
+        "image_8MwxLz": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/Amazon.sa.png",
+            "image_url": ""
+          }
+        },
+        "image_x9GTxD": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/Noon_Website_Logo_svg.png",
+            "image_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_rftFNw",
+        "image_8MwxLz",
+        "image_x9GTxD"
+      ],
+      "name": "Image Blocks"
+    }
+  },
+  "order": [
+    "section_image_blocks_ymfjN",
+    "section_image_blocks_jg7xzR",
+    "section_image_blocks_tkPpgh"
+  ]
+}

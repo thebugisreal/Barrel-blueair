@@ -15,15 +15,28 @@
   "sections": {
     "hero": {
       "settings": {
-        "image_mobile": "shopify://shop_images/Signature_mobile_5b4215a2-7525-492b-b644-23d6316c11b4.png",
-        "image_desktop": "shopify://shop_images/Signature_desktop_2x_37dff371-8d95-490e-a53e-7c5f46ac6bd6.png",
+        "image_mobile": "shopify://shop_images/Signature_mobile_85e37483-babc-473c-aad2-b604981a8d5a.png",
+        "image_desktop": "shopify://shop_images/Signature_desktop_ff46f1e5-84e1-4186-99cf-41e0bc51c643.jpg",
         "title": "Meet the new  Blue Signature™",
         "subtext": "The most powerful, compact <br> air purifier you can get",
         "cta_url": "shopify://collections/blue-signature™-1",
         "cta_text": "Shop now",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--white-rounded",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-start",
+        "hor_align_desktop": "desktop:justify-start"
       },
       "blocks": {}
+    },
+    "section_content_panels_RLhBrA": {
+      "settings": {},
+      "blocks": {
+        "customization_kjnCLm": {
+          "settings": {
+            "image_mobile": "shopify://shop_images/Image_3_4_428cad6c-9d2f-4596-b6d3-b6f70f315b51.jpg"
+          }
+        }
+      }
     }
   }
 }
