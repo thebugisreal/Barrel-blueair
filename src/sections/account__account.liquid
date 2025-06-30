@@ -327,44 +327,7 @@
       </div>
     </div>
 
-    <div class="device-card-content">
-      <div class="device-card mt-md grid gap-md">
-        <div class="account-content">
-          <div class="my-devices-content flex justify-between p-md bg-white w-full max-w-full">
-            {% for product in collection.products limit:1 %}
-              <div class="flex w-1/4">
-                <div class="product-card__image aspect-square">
-                  {% assign image = product.featured_image %} 
-                  {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
-                </div>
-              </div>
-              <div class="flex flex-col w-1/2 my-auto">
-                <div class="">
-                  <h3 class="device-card__title font-700 text-22 font-gilroy mb-24" >
-                    {{ product.title }}
-                  </h3>
-                </div>
-                <div class="flex">
-                  <div class="text-18 font-400 mr-60">
-                    <p>Serial number</p>
-                    <p>027598xxxxxx</p>
-                  </div>
-                    <div class="text-18 font-400 mr-60">
-                    <p>Date of purchase</p>
-                    <p>12/34/1099</p>
-                  </div> 
-                </div>
-              </div>
-              <div>
-                <button id="toggle-warranty-form" class="p3 font-400 text-center block">Register a new device +</button>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="device-card-container" class="device-card-content mt-md grid gap-md"></div>
+    <div id="device-card-container" class="device-card-content grid"></div>
   </warranty-devices>
 {% endcapture %}
 
