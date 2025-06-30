@@ -9,12 +9,8 @@ function getCookie(name) {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
-function setCookie(name, value, days = 1) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; expires=${expires}; secure;`;
-}
-
 async function exchangeJwtForAccessToken(jwt) {
+  console.log('jwt', jwt);
   const res = await fetch(LOGIN_API_URL, {
     method: 'POST',
     headers: {
@@ -23,32 +19,40 @@ async function exchangeJwtForAccessToken(jwt) {
     }
   });
   if (!res.ok) {
+    console.log('res not ok');
     const err = await res.json().catch(() => ({}));
     throw new Error(err.error || err.message || 'Failed to exchange JWT for access token');
   }
   const data = await res.json();
+  console.log('data', data);
   if (!data.access_token) throw new Error('No access token returned');
-  setCookie(ACCESS_TOKEN_COOKIE_NAME, data.access_token);
+  console.log('Set gigya_access_token cookie:', data.access_token);
   return data.access_token;
 }
 
 async function getApiAccessToken() {
+  console.log('getApiAccessToken');
   let accessToken = getCookie(ACCESS_TOKEN_COOKIE_NAME);
+  console.log('accessToken', accessToken);
   if (accessToken) return accessToken;
   // Try to exchange JWT for access token
   const jwt = getCookie(JWT_COOKIE_NAME);
+  console.log('jwt in getApiAccessToken', jwt);
   if (!jwt) throw new Error('Not authenticated (no JWT)');
   return await exchangeJwtForAccessToken(jwt);
 }
 
 async function getDevices() {
+  console.log('getDevices');
   const token = await getApiAccessToken();
+  console.log('token', token);
   const res = await fetch(WARRANTY_API_BASE, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`
     }
   });
+  console.log('res', res);
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
     throw new Error(err.error || err.message || 'Failed to fetch devices');

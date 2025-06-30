@@ -1,3 +1,8 @@
+function setCookie(name, value, days = 1) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; expires=${expires}; secure;`;
+}
+
 class GigyaLogin extends HTMLElement {
   constructor() {
     super();
@@ -68,6 +73,7 @@ class GigyaLogin extends HTMLElement {
             callback: (jwtResponse) => {
               if (jwtResponse.errorCode === 0) {
                 const token = jwtResponse.id_token;
+                setCookie('gigya_access_token', token, 1);
                 const xecurifyId = this._xecurifyId;
                 const shop = window.Shopify?.shop;
 
@@ -182,6 +188,7 @@ class GigyaLogin extends HTMLElement {
       callback: (response) => {
         if (response.errorCode === 0) {
           const token = response.id_token;
+          setCookie('gigya_access_token', token, 1);
           const xecurifyId = this._xecurifyId;
           
           if (xecurifyId && window.Shopify?.shop) {
