@@ -229,6 +229,15 @@
                     <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
                   {% endif %}
                 </div>
+                {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+                  {% if localization.country.iso_code == 'DE' %}
+                    <div class="product__intl-pricing mb-md">
+                      <span class="text-16" js-price>
+                        {{ current_variant.price | money }}
+                      </span>
+                    </div>
+                  {% endif %}
+                {% endif %}
               {% when 'star_rating' %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
