@@ -110,6 +110,35 @@
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const country = Shopify.country;
+        const currentUrl = window.location.hostname.replace('www.', '');
+
+        let showModal = false;
+
+        if ((country === 'US' || country === 'CA') && currentUrl !== 'blueair.com') {
+          showModal = true;
+        } else if (country === 'GB' && currentUrl !== 'blueair.co.uk') {
+          showModal = true;
+        } else if (!['US', 'CA', 'GB'].includes(country) && currentUrl !== 'blueair.co') {
+          showModal = true;
+        }
+
+        if (showModal) {
+          const welcomeModal = document.querySelector('#CountryMarketSelectModal');
+          const countrySelector = welcomeModal?.querySelector('country-select-modal [js-country-select]');
+
+          if (welcomeModal && countrySelector) {
+            countrySelector.value = country;
+            countrySelector.dispatchEvent(new Event('change'));
+            welcomeModal.open();
+          }
+        }
+      });
+    </script>
+
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' or shop.permanent_domain == 'blueeudev.myshopify.com' %}
       {% if is_transactional %}
         {% render 'sprinklr-chat' %}
