@@ -106,7 +106,6 @@
         },
         "topic_qUWQUE": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }

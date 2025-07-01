@@ -70,16 +70,6 @@
             "margin_bottom_desktop": "desktop:mb-0"
           }
         },
-        "text_JjtMAU": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "text": "<p></p><p>Important Notice for California Residents: The Blue Signature is awaiting CARB certification, required for CA sales. Expected by mid-July.</p>"
-          }
-        },
         "atc_BURfeB": {
           "type": "atc",
           "settings": {
@@ -140,7 +130,6 @@
         "product_badge_TcD3K4",
         "filter_options_XPQVUh",
         "product_options_GLfTKf",
-        "text_JjtMAU",
         "atc_BURfeB",
         "experience_NzTf78",
         "additional_features_H7XdFi",
