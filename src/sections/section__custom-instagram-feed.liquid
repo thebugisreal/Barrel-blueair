@@ -4,7 +4,7 @@
 <div class="section__custom-instagram-feed relative z-[1] {{ margins_paddings }} {{ section.settings.color }}">
   <div class="custom-instagram-feed__title-container text-center px-md desktop:px-xl flex flex-col gap-xxs desktop:gap-xs mb-lg desktop:mb-xl">
     {% if section.settings.title != blank %}
-      <h1 class="custom-instagram-feed__title {{ section.settings.title_style }}">{{ section.settings.title }}</h1>
+      <h2 class="custom-instagram-feed__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
     {% endif %}
     {% if section.settings.subtext != blank %}
       <div class="custom-instagram-feed__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
@@ -41,7 +41,7 @@
           <div class="swiper-slide custom-instagram-feed__slide w-[40%] desktop:w-[20%] box-content {% if forloop.first %}pl-md pr-xxs desktop:pl-xl desktop:pr-xs{%  elsif forloop.last %}pl-xxs pr-md desktop:pl-xs desktop:pr-xl{% else %}px-xxs desktop:px-xs{% endif %}" js-carousel-slide>
             {% if block.type == 'image' %}
               <div class="custom-instagram-feed__image">
-                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop %}
+                {% render 'lazy-image' image: block.settings.image_mobile image_desktop: block.settings.image_desktop, alt: block.settings.title %}
               </div>
             {% elsif block.type == 'video' %}
               <s-video data-playing="false" data-controls="true" class="custom-instagram-feed__video block relative">

@@ -20,7 +20,7 @@
                 </ul>
                 <p class="blog__first-article-date p4">Updated {{ first_article.created_at | date: "%b %d, %Y"}}</p>
               </div>
-              <h3 class="blog__first-article-title mt-sm tabletl:mt-md">{{ first_article.title }}</h3>
+              <h2 class="blog__first-article-title mt-sm tabletl:mt-md h3">{{ first_article.title }}</h2>
             </header>
             {%- if first_article.excerpt.size > 0 or first_article.content.size > 0 -%}
               <p class="blog__first-article-excerpt p2 mb-sm tabletl:mb-md">

@@ -11,7 +11,7 @@
         <div class="icons__block {% if section.settings.enable_borders %} border border-gray shadow-md py-sm rounded-[12px] tabletl:py-md  {% endif %}">
           {% if block.settings.icon != blank %}
             <div class="icon__image inline-block" style="{% if block.settings.icon_fixed_width != blank %}width: {{ block.settings.icon_fixed_width }}px{% else %}width: 100%{% endif %};">
-              {% render 'lazy-image' image: block.settings.icon %}
+              {% render 'lazy-image' image: block.settings.icon, alt: block.settings.title %}
             </div>
           {% endif %}
           {% if block.settings.title != blank %}

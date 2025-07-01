@@ -1,7 +1,7 @@
 <product-card-upsell class="{% if gwp %} product-card__gwp {% else %} product-card__upsell {% endif %} flex gap-sm p-md">
     {% if product.featured_image != blank %}
         <div class="image-container w-1/2 max-w-[160px]">
-            <a href="{{ product.url }}">
+            <a href="{{ product.url }}" aria-label="View {{ product.title }}">
                 {% render 'lazy-image' image:product.featured_image %}
             </a>
         </div>
