@@ -77,10 +77,11 @@
                     class="product-swatch__label {% if option_name_handle == 'color' %}product-swatch__label--color{% else %}product-swatch__label--non-color{% endif %}"
                     title="{{ value }}">
                     {% if option_name_handle == 'color' %}
-                      {% assign swatch_objects = product.metafields.seed.swatches.value | reverse | reverse %}
-                      <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_objects[forloop.index0].color }};">
-                        {% if swatch_objects[forloop.index0].image != blank %}
-                          <img src="{{ swatch_objects[forloop.index0].image.value | img_url: '40x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
+                      {% assign swatch_objects = product.metafields.seed.swatches.value %}
+                      {% assign swatch_object = swatch_objects | where: "name", value | first %}
+                      <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
+                        {% if swatch_object.image != blank %}
+                          <img src="{{ swatch_object.image.value | img_url: '40x'}}" alt="{{ value }}" class="block h-full w-full">
                         {% endif %}
                       </div>
                     {% else %}
