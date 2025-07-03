@@ -107,6 +107,11 @@
         variantChange: 'variant-change',
         cartError: 'cart-error',
       };
+      window.klaviyo = {
+        apiKeyUS: '{{ settings.klaviyo_api_key_us }}',
+        apiKeyUK: '{{ settings.klaviyo_api_key_uk }}',
+        apiKeyEU: '{{ settings.klaviyo_api_key_eu }}'
+      };
     </script>
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>

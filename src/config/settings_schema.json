@@ -172,6 +172,26 @@
     ]
   },
   {
+    "name": "Klaviyo",
+    "settings": [
+      {
+        "type": "text",
+        "id": "klaviyo_api_key_us",
+        "label": "Klaviyo API Key - US"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_api_key_uk",
+        "label": "Klaviyo API Key - UK"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_api_key_eu",
+        "label": "Klaviyo API Key - EU"
+      }
+    ]
+  },
+  {
     "name": "Special Links",
     "settings": [
       {

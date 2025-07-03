@@ -36,11 +36,19 @@ class ProductUpsell extends HTMLElement {
     this.cart = document.querySelector(this._selectors.cart);
     this.error = this.querySelector(this._selectors.error);
   
+    this._initBis();
+    this._setListeners();
+  }
+
+  _initBis() {
     this.bisModal = document.querySelector(this._klaviyoBis.modal);
     this.bisForm = this.bisModal.querySelector(this._klaviyoBis.form);
     this.bisSubmit = this.bisModal.querySelector(this._klaviyoBis.submit);
+    this.bisSuccess = this.bisModal.querySelector(this._klaviyoBis.success);
+    this.bisError = this.bisModal.querySelector(this._klaviyoBis.error);
 
-    this._setListeners();
+    this.bisBtn.addEventListener('click', this._openBisModal.bind(this));
+    this.bisForm.addEventListener('submit', this._handleBisFormSubmit.bind(this));
   }
 
   _setListeners() {
@@ -48,7 +56,6 @@ class ProductUpsell extends HTMLElement {
       variantBtn.addEventListener('click', this._variantBtnOnClick);
     });
     this.atcBtn.addEventListener('click', this._addToCart);
-    this.bisBtn.addEventListener('click', this._openBisModal.bind(this));
   }
 
   _handleErrorMessage(errorMessage = false) {
@@ -145,14 +152,99 @@ class ProductUpsell extends HTMLElement {
   }
 
   _updateBisModal() {
+    this._resetBisModal();
     this._updateBisTitle();
     this._insertBisSelect();
-    this._updateBisSubmit();
+    this._handleBisVariantChange();
+  }
+
+  _handleBisFormSubmit = (evt) => {
+    evt.preventDefault();
+    
+    const formData = new FormData(this.bisForm);
+    const email = formData.get('email');
+    const variant = formData.get('variant');
+    
+    const region = Shopify.shop.replace('.myshopify.com', '');
+    const submitId = '$shopify:::$default:::' + variant;
+    const testId = '$shopify:::$default:::43850333126700';
+
+    let apiKey = '';
+    if (region == '5ef43d-4a') {
+      apiKey = window.klaviyo.apiKeyUS;
+    } else if (region == 'uk-blueair') {
+      apiKey = window.klaviyo.apiKeyUK;
+    } else if (region == 'blueeudev') {
+      apiKey = window.klaviyo.apiKeyEU;
+    }
+    
+    const url = `https://a.klaviyo.com/client/back-in-stock-subscriptions/?company_id=${apiKey}`;
+
+    const payload = {
+      "data": {
+        "type": "back-in-stock-subscription",
+        "attributes": {
+          "profile": {
+            "data": {
+                "type": "profile",
+                "attributes": {
+                    "email": email,
+                }
+            }
+          },
+          "channels": ["EMAIL"],
+        },
+        "relationships": {
+          "variant": {
+            "data": {
+              "type": "catalog-variant",
+              "id": submitId
+            }
+          }
+        }
+      }
+    }
+    
+    var requestOptions = {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "revision":"2024-06-15"
+        },
+        body: JSON.stringify(payload),
+    };
+    
+    fetch(url,requestOptions)
+        .then(result => {
+          if (result.ok) {
+            this.bisSubmit.classList.add('hidden');
+            this.bisSuccess.classList.remove('hidden');
+          } else {
+            this.bisError.classList.remove('hidden');
+          }
+        })
+        .catch(error => {
+          console.log('error', error);
+          this.bisError.classList.remove('hidden');
+        });
+  }
+
+  _handleBisVariantChange() {
+    const bisSelect = this.bisForm.querySelector('[js-bis-select]');
+    if (bisSelect) {
+      bisSelect.addEventListener('change', this._resetBisModal.bind(this));
+    }
+  }
+
+  _resetBisModal() {
+    this.bisSubmit.classList.remove('hidden');
+    this.bisSuccess.classList.add('hidden');
+    this.bisError.classList.add('hidden');
   }
 
   _updateBisTitle() {
     if (!this.upsellTitle) return;
-    
+
     this.bisModal.querySelector(this._klaviyoBis.productTitle).textContent = this.upsellTitle.textContent;
   }
 
@@ -179,9 +271,5 @@ class ProductUpsell extends HTMLElement {
 
     const emailField = this.bisForm.querySelector('[js-bis-email-field]');
     this.bisForm.insertBefore(bisSelect, emailField);
-  }
-
-  _updateBisSubmit() {
-    this.bisSubmit.dataset.variantId = this.bisForm.querySelector('select').value;
   }
 }
