@@ -77,6 +77,7 @@
 
     {% include 'region-check' %}
     {% if template.name == 'product' %}
+      {% render 'modal--klaviyo-bis' %}
       {% if is_transactional %}
         {% render 'product-sticky-bar' %}
       {% endif %}
