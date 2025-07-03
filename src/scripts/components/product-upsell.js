@@ -151,13 +151,6 @@ class ProductUpsell extends HTMLElement {
     this.bisModal.open();
   }
 
-  _updateBisModal() {
-    this._resetBisModal();
-    this._updateBisTitle();
-    this._insertBisSelect();
-    this._handleBisVariantChange();
-  }
-
   _handleBisFormSubmit = (evt) => {
     evt.preventDefault();
     
@@ -228,6 +221,13 @@ class ProductUpsell extends HTMLElement {
           this.bisError.classList.remove('hidden');
         });
   }
+  
+  _updateBisModal() {
+    this._resetBisModal();
+    this._updateBisTitle();
+    this._insertBisSelect();
+    this._handleBisVariantChange();
+  }
 
   _handleBisVariantChange() {
     const bisSelect = this.bisForm.querySelector('[js-bis-select]');
@@ -236,15 +236,8 @@ class ProductUpsell extends HTMLElement {
     }
   }
 
-  _resetBisModal() {
-    this.bisSubmit.classList.remove('hidden');
-    this.bisSuccess.classList.add('hidden');
-    this.bisError.classList.add('hidden');
-  }
-
   _updateBisTitle() {
     if (!this.upsellTitle) return;
-
     this.bisModal.querySelector(this._klaviyoBis.productTitle).textContent = this.upsellTitle.textContent;
   }
 
@@ -271,5 +264,11 @@ class ProductUpsell extends HTMLElement {
 
     const emailField = this.bisForm.querySelector('[js-bis-email-field]');
     this.bisForm.insertBefore(bisSelect, emailField);
+  }
+
+  _resetBisModal() {
+    this.bisSubmit.classList.remove('hidden');
+    this.bisSuccess.classList.add('hidden');
+    this.bisError.classList.add('hidden');
   }
 }
