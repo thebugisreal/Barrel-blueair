@@ -45,7 +45,7 @@
               </div>
             {% elsif block.type == 'video' %}
               <s-video data-playing="false" data-controls="true" class="custom-instagram-feed__video block relative">
-                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false }}
+                {{ block.settings.video | video_tag: class: 'block w-full', image_size: '1280x', autoplay: false, loop: true, muted: true, controls: false, aria-hidden: 'true' }}
                 <button class="video__trigger video__trigger--white absolute bottom-xxs left-xxs w-[24px] h-[24px] pl-[2px] desktop:bottom-sm desktop:left-sm desktop:w-[40px] desktop:h-[40px] desktop:pl-xxxs flex justify-center items-center rounded-full bg-white" js-video-trigger>
                   <span class="video-trigger__play w-[10px] desktop:w-16 leading-[0px]">{% render 'icon-play' %}</span>
                 </button>
