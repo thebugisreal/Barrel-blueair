@@ -3,7 +3,6 @@ const WARRANTY_API_BASE = 'https://ychmmhbbi1.execute-api.us-east-2.amazonaws.co
 const LOGIN_API_URL = 'https://ychmmhbbi1.execute-api.us-east-2.amazonaws.com/qa/c/login?client_id=4p5qzjra8vdd558fnl9ndn3kj3&client_secret=3t374rg84d2plhdi1ceqorqnop2op0jdmn5lkl5rj888q7fem5u3';
 const JWT_COOKIE_NAME = 'gigya_access_token';
 const ACCESS_TOKEN_COOKIE_NAME = 'warranty_access_token';
-const USE_MOCK_DATA = true; // Set to false when ready for real API
 
 function getCookie(name) {
   const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
@@ -11,7 +10,6 @@ function getCookie(name) {
 }
 
 async function exchangeJwtForAccessToken(jwt) {
-  console.log('jwt', jwt);
   const res = await fetch(LOGIN_API_URL, {
     method: 'POST',
     headers: {
@@ -20,75 +18,40 @@ async function exchangeJwtForAccessToken(jwt) {
     }
   });
   if (!res.ok) {
-    console.log('res not ok');
     const err = await res.json().catch(() => ({}));
     throw new Error(err.error || err.message || 'Failed to exchange JWT for access token');
   }
   const data = await res.json();
-  console.log('data', data);
   if (!data.access_token) throw new Error('No access token returned');
-  console.log('Set gigya_access_token cookie:', data.access_token);
   return data.access_token;
 }
 
 async function getApiAccessToken() {
-  console.log('getApiAccessToken');
   let accessToken = getCookie(ACCESS_TOKEN_COOKIE_NAME);
-  console.log('accessToken', accessToken);
   if (accessToken) return accessToken;
   // Try to exchange JWT for access token
   const jwt = getCookie(JWT_COOKIE_NAME);
-  console.log('jwt in getApiAccessToken', jwt);
   if (!jwt) throw new Error('Not authenticated (no JWT)');
   return await exchangeJwtForAccessToken(jwt);
 }
 
 async function getDevices() {
-  if (USE_MOCK_DATA) {
-    // Return fake device data
-    return [
-      {
-        sn: "123456789012345678901252",
-        family: "X100",
-        series: "S2",
-        name: "Living Room",
-        wherePurchased: "Amazon",
-        dateOfPurchase: "05/07/2023",
-        country: "US"
-      },
-      {
-        sn: "987654321098765432109876",
-        family: "X200",
-        series: "S3",
-        name: "Bedroom",
-        wherePurchased: "Best Buy",
-        dateOfPurchase: "06/15/2022",
-        country: "US"
-      }
-    ];
-  }
-  
   const token = await getApiAccessToken();
-  console.log('token', token);
   const res = await fetch(WARRANTY_API_BASE, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`
     }
   });
-  console.log('res', res);
+  const data = await res.json();
   if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error || err.message || 'Failed to fetch devices');
+    throw new Error(data.error || data.message || 'Failed to fetch devices');
   }
-  return res.json();
+  return data;
 }
 
 async function registerDevice(formData) {
-  if (USE_MOCK_DATA) {
-    // Simulate a successful registration
-    return { success: true, ...formData };
-  }
+
   const token = await getApiAccessToken();
   const res = await fetch(WARRANTY_API_BASE, {
     method: 'POST',
@@ -129,6 +92,14 @@ class WarrantyDevices extends HTMLElement {
     this._dateFormatter();
     this._setupFormHandler();
     this._setupFamilyModelDropdown();
+    // this._handleToTitle();
+
+    this._productLookup = {};
+    document.querySelectorAll('.product-data').forEach(el => {
+      this._productLookup[el.dataset.handle] = {
+        featured_image: el.dataset.featuredImage
+      };
+    });
   }
 
   _renderDevices = async (e) => {
@@ -158,6 +129,15 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _deviceCardHTML(device) {
+    let imageUrl = '';
+    if (this._productLookup && device.family) {
+      const product = this._productLookup[device.family];
+      if (product && product.featured_image) {
+        imageUrl = product.featured_image;
+      }
+    }
+    console.log('device.family:', device.family);
+    console.log('this._productLookup:', this._productLookup);
     return `
       <div class="device-card mt-md grid gap-md">
         <div class="account-content">
@@ -165,15 +145,14 @@ class WarrantyDevices extends HTMLElement {
             <!-- Image column -->
             <div class="flex w-1/4">
               <div class="product-card__image aspect-square">
-                <!-- Replace this with an actual image tag if needed -->
-                <img src="${device.imageUrl || ''}" alt="${device.family} ${device.series}" class="object-contain w-full h-full" />
+                <img src="${imageUrl}" alt="${this._handleToTitle(device.family)}" class="object-contain w-full h-full" />
               </div>
             </div>
             <!-- Details column -->
             <div class="flex flex-col w-1/2 my-auto">
               <div>
                 <h3 class="device-card__title font-700 text-22 font-gilroy mb-24">
-                  ${device.family} ${device.series}
+                  ${this._handleToTitle(device.family)}
                 </h3>
               </div>
               <div class="flex">
@@ -189,7 +168,7 @@ class WarrantyDevices extends HTMLElement {
             </div>
             <!-- Button column -->
             <div>
-              <button class="">Register a new device +</button>
+              <button class="underline">Add a filter subscription +</button>
             </div>
           </div>
         </div>
@@ -200,6 +179,14 @@ class WarrantyDevices extends HTMLElement {
   _formatSerialNumber(sn) {
     if (!sn) return '';
     return sn.slice(0, 6) + 'xxxxxx';
+  }
+
+  // Converts a Shopify handle (e.g., blue-pure-211i-max) to a human-readable title (e.g., Blue Pure 211i Max)
+  _handleToTitle(handle) {
+    return handle
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   _toggleWarrantyForm = () => {
@@ -268,7 +255,8 @@ class WarrantyDevices extends HTMLElement {
           sn: form.serial_number.value,
           dateOfPurchase: form.purchase_date.value,
           wherePurchased: form.place_of_purchase.value,
-          name: "" // Add if you have a name field
+          name: form.device_name.value,
+          country: form.country.value
         };
         try {
           await registerDevice(formData);
@@ -339,4 +327,4 @@ class WarrantyDevices extends HTMLElement {
   }
 }
 
-customElements.define('warranty-devices', WarrantyDevices);
+// customElements.define('warranty-devices', WarrantyDevices);
