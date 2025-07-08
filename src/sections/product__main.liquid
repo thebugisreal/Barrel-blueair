@@ -578,8 +578,9 @@
                                   <div class="product-upsell__variants-container">
                                     <div class="product-upsell__current-color-label p3 mb-xxxs" js-product-upsell-current-color-label>{{ upsell_current_variant.options[color_option] }}</div>
                                     <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
-                                      {% assign upsell_product_swatch_objects = upsell_product.metafields.seed.swatches.value | reverse | reverse %}
+                                      {% assign upsell_product_swatch_objects = upsell_product.metafields.seed.swatches.value %}
                                       {% for upsell_variant in upsell_product.variants %}
+                                        {% assign upsell_swatch_object = upsell_product_swatch_objects | where: "name", upsell_variant.options[color_option] | first %}
                                         <button type="button" 
                                           class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
                                           data-variant-id="{{ upsell_variant.id }}"
@@ -588,10 +589,10 @@
                                           data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
                                           title="{{ upsell_variant.options[color_option] }}"
                                           js-product-upsell-variant>
-                                          <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_product_swatch_objects[forloop.index0].color }};">
-                                            {% if upsell_product_swatch_objects[forloop.index0].image != blank %}
-                                              <img src="{{ upsell_product_swatch_objects[forloop.index0].image.value | img_url: '40x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
-                                            {% endif %}
+                                          <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object.color }};">
+                                            {% if upsell_swatch_object.image != blank %}
+                                              <img src="{{ upsell_swatch_object.image.value | img_url: '40x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
+                                            {% endif %} 
                                           </div>
                                         </button>
                                       {% endfor %}
