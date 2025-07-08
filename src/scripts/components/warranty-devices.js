@@ -136,17 +136,17 @@ class WarrantyDevices extends HTMLElement {
     return `
       <div class="device-card mt-md grid gap-md">
         <div class="account-content">
-          <div class="my-devices-content flex justify-between p-sm bg-white w-full max-w-full">
+          <div class="my-devices-content flex justify-between p-sm tabletp:p-md bg-white w-full max-w-full">
             <!-- Image column -->
-            <div class="flex">
-              <div class="product-card__image aspect-square w-[100px]">
-                <img src="${imageUrl}" alt="${this._handleToTitle(device.family)}" class="object-cover w-full h-full" />
+            <div class="flex mr-20 tabletp:w-1/4 tabletp:mr-0">
+              <div class="product-card__image aspect-square overflow-hidden">
+                <img src="${imageUrl}" alt="${this._handleToTitle(device.family)}" class="object-cover object-center w-full h-full tabletp:object-contain" />
               </div>
             </div>
             <!-- Details column -->
             <div class="flex flex-col w-1/2 my-auto">
               <div>
-                <h3 class="device-card__title font-700 text-20 tabletp:text-22 font-gilroy mb-12">
+                <h3 class="device-card__title font-700 text-20 tabletp:text-22 font-gilroy mb-12 tabletp:mb-24">
                   ${this._handleToTitle(device.family)}
                 </h3>
               </div>
@@ -163,7 +163,7 @@ class WarrantyDevices extends HTMLElement {
             </div>
             <!-- Button column -->
             <div>
-              <button class="hidden tablet:block underline">Add a filter subscription +</button>
+              <button class="underline hidden tabletp:block">Add a filter subscription +</button>
             </div>
           </div>
         </div>
