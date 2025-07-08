@@ -557,7 +557,7 @@
                           {% comment %} Prefilter Upsell {% endcomment %}
                           <product-upsell class="product-upsell__item border border-gray p-sm desktop:py-md flex flex-col">
                             {% if upsell_object.heading != blank %}
-                              <div class="product-upsell__title s2 mb-xxs">{{ upsell_object.heading }}</div>
+                              <div class="product-upsell__title s2 mb-xxs" js-upsell-title>{{ upsell_object.heading | strip }}</div>
                             {% endif %}
                             {% if upsell_object.short_description != blank %}
                               <div class="product-upsell__description p4">{{ upsell_object.short_description }}</div>
@@ -600,7 +600,7 @@
                               {% endif %}
                               <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs">
                                 <div class="product-upsell__price p1" js-product-upsell-price>{{ upsell_current_variant.price | money }}</div>
-                                <button type="button" class="product-upsell__atc btn btn--blue-rounded" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                                <button type="button" class="product-upsell__atc btn btn--blue-rounded {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
                                   <span class="btn__text">
                                     {% if upsell_current_variant.available %}
                                       Add to Cart
@@ -610,6 +610,11 @@
                                   </span>
                                   <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                                 </button>
+                                <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                  <span class="btn__text">
+                                    Notify Me When Available
+                                  </span>
+                                </button>
                                 <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
                               </div>
                             </div>
@@ -618,7 +623,7 @@
                           {% comment %} Filter Upsell {% endcomment %}
                           <product-upsell class="product-upsell__item border border-gray p-sm desktop:py-md flex flex-col">
                             {% if upsell_object.filter_heading != blank %}
-                              <div class="product-upsell__title s2 mb-xxs">{{ upsell_object.filter_heading }}</div>
+                              <div class="product-upsell__title s2 mb-xxs" js-upsell-title>{{ upsell_object.filter_heading }}</div>
                             {% endif %}
                             {% if upsell_object.filter_short_description != blank %}
                               <div class="product-upsell__description p4">{{ upsell_object.filter_short_description }}</div>
@@ -639,18 +644,21 @@
                                 {% if filter_type_option != false %}
                                   <div class="product-upsell__variants grid grid-cols-1 gap-xxs">
                                     {% for swatch_product in upsell_object.filter_products.value %}
+                                      {% liquid
+                                        assign swatch_title = swatch_product.variants[0].title
+                                        if swatch_product.variants[0].title == 'Default Title'
+                                          assign swatch_title = swatch_product.title
+                                        endif
+                                      %}
                                       <button type="button" 
                                         class="product-upsell__variant product-upsell__variant--filter-type p3 border border-gray p-xxs text-center rounded-[2px]" 
                                         data-variant-id="{{ swatch_product.variants[0].id }}"
                                         data-available="{{ swatch_product.available }}"
                                         data-price="{{ swatch_product.variants[0].price | money }}"
                                         data-selected="{% if swatch_product.variants[0].id == upsell_current_variant.variants[0].id %}true{% else %}false{% endif %}"
+                                        title="{{ swatch_title }}"
                                         js-product-upsell-variant>
-                                        {% if swatch_product.variants[0].title != 'Default Title' %}
-                                          {{ swatch_product.variants[0].title }}
-                                        {% else %}
-                                          {{ swatch_product.title }}
-                                        {% endif %}
+                                        {{ swatch_title }}
                                       </button>
                                     {% endfor %}
                                   </div>
@@ -659,7 +667,7 @@
                               <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs">
                                 <div class="product-upsell__price p1" js-product-upsell-price>{{ upsell_current_variant.variants[0].price | money }}
                                 </div>
-                                <button type="button" class="product-upsell__atc btn btn--blue-rounded" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                                <button type="button" class="product-upsell__atc btn btn--blue-rounded {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
                                   <span class="btn__text">
                                     {% if upsell_current_variant.available %}
                                       Add to Cart
@@ -668,6 +676,11 @@
                                     {% endif %}
                                   </span>
                                   <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                </button>
+                                <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                  <span class="btn__text">
+                                    Notify Me When Available
+                                  </span>
                                 </button>
                                 <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
                               </div>
