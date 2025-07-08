@@ -15,11 +15,11 @@
   "sections": {
     "hero": {
       "settings": {
-        "image_mobile": "shopify://shop_images/Signature_mobile_85e37483-babc-473c-aad2-b604981a8d5a.png",
-        "image_desktop": "shopify://shop_images/Signature_desktop_ff46f1e5-84e1-4186-99cf-41e0bc51c643.jpg",
-        "title": "Meet the new  Blue Signature™",
-        "subtext": "The most powerful, compact <br> air purifier you can get",
-        "cta_url": "shopify://collections/blue-signature™-1",
+        "image_mobile": "shopify://shop_images/Sale_mobile.png",
+        "image_desktop": "shopify://shop_images/sale_desktop.jpg",
+        "title": "Save up to 50%",
+        "subtext": "Shop our best deals of the <br>summer for a limited time",
+        "cta_url": "shopify://collections/sale",
         "cta_text": "Shop now",
         "cta_style": "btn btn--white-rounded",
         "hor_align_mobile": "justify-start",

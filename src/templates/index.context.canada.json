@@ -17,12 +17,13 @@
       "settings": {
         "color": "bg-blue-sky text-blue",
         "image_mobile": "shopify://shop_images/md_mobile.png",
-        "image_desktop": "shopify://shop_images/md_desktop2.png",
-        "title": "Kick off summer <br>  with fresh, clean air",
+        "image_desktop": "shopify://shop_images/md_desktop_2.png",
+        "title": "Save up to 50%",
         "title_style": "h3",
+        "subtext": "Shop our best deals of the<br> summer for a limited time",
         "cta_url": "shopify://collections/canada-sale",
         "cta_text": "Shop now",
-        "cta_style": "btn btn--blue-rounded"
+        "cta_style": "btn btn--white-rounded"
       },
       "blocks": {}
     }

@@ -23,16 +23,22 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-a3df77012dfb743b75dc4659f22098fe": null,
-            "announcement": "Shop our Summer Essentials for fresh, clean air",
-            "url": "shopify://collections/spring-essentials"
+            "header-0f3696fd9d8a2219251ca17f41906e8e": null,
+            "announcement": "Summer Sale Extended: Up to 50% Off!",
+            "url": "shopify://collections/canada-sale"
+          }
+        },
+        "announcement_A6AHyV": {
+          "disabled": false,
+          "settings": {
+            "announcement": "Free Shipping on Orders +$35"
           }
         },
         "announcement_9ieDxY": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-a3df77012dfb743b75dc4659f22098fe": null,
+            "header-f2228b6d183379970a1a81212fe2267b": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
           }
@@ -40,6 +46,7 @@
       },
       "block_order": [
         "announcement_YLKFbB",
+        "announcement_A6AHyV",
         "announcement_9ieDxY"
       ]
     }
