@@ -1,4 +1,3 @@
-// API utility functions (combined)
 const WARRANTY_API_BASE = 'https://ychmmhbbi1.execute-api.us-east-2.amazonaws.com/qa/c/warranty';
 const LOGIN_API_URL = 'https://ychmmhbbi1.execute-api.us-east-2.amazonaws.com/qa/c/login?client_id=4p5qzjra8vdd558fnl9ndn3kj3&client_secret=3t374rg84d2plhdi1ceqorqnop2op0jdmn5lkl5rj888q7fem5u3';
 const JWT_COOKIE_NAME = 'gigya_access_token';
@@ -29,7 +28,6 @@ async function exchangeJwtForAccessToken(jwt) {
 async function getApiAccessToken() {
   let accessToken = getCookie(ACCESS_TOKEN_COOKIE_NAME);
   if (accessToken) return accessToken;
-  // Try to exchange JWT for access token
   const jwt = getCookie(JWT_COOKIE_NAME);
   if (!jwt) throw new Error('Not authenticated (no JWT)');
   return await exchangeJwtForAccessToken(jwt);
@@ -51,7 +49,6 @@ async function getDevices() {
 }
 
 async function registerDevice(formData) {
-
   const token = await getApiAccessToken();
   const res = await fetch(WARRANTY_API_BASE, {
     method: 'POST',
@@ -92,9 +89,8 @@ class WarrantyDevices extends HTMLElement {
     this._dateFormatter();
     this._setupFormHandler();
     this._setupFamilyModelDropdown();
-    // this._handleToTitle();
-
     this._productLookup = {};
+
     document.querySelectorAll('.product-data').forEach(el => {
       this._productLookup[el.dataset.handle] = {
         featured_image: el.dataset.featuredImage
@@ -129,6 +125,7 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _deviceCardHTML(device) {
+    // Use the product handle to get the image from the lookup
     let imageUrl = '';
     if (this._productLookup && device.family) {
       const product = this._productLookup[device.family];
@@ -136,26 +133,24 @@ class WarrantyDevices extends HTMLElement {
         imageUrl = product.featured_image;
       }
     }
-    console.log('device.family:', device.family);
-    console.log('this._productLookup:', this._productLookup);
     return `
       <div class="device-card mt-md grid gap-md">
         <div class="account-content">
-          <div class="my-devices-content flex justify-between p-md bg-white w-full max-w-full">
+          <div class="my-devices-content flex justify-between p-sm bg-white w-full max-w-full">
             <!-- Image column -->
-            <div class="flex w-1/4">
-              <div class="product-card__image aspect-square">
-                <img src="${imageUrl}" alt="${this._handleToTitle(device.family)}" class="object-contain w-full h-full" />
+            <div class="flex">
+              <div class="product-card__image aspect-square w-[100px]">
+                <img src="${imageUrl}" alt="${this._handleToTitle(device.family)}" class="object-cover w-full h-full" />
               </div>
             </div>
             <!-- Details column -->
             <div class="flex flex-col w-1/2 my-auto">
               <div>
-                <h3 class="device-card__title font-700 text-22 font-gilroy mb-24">
+                <h3 class="device-card__title font-700 text-20 tabletp:text-22 font-gilroy mb-12">
                   ${this._handleToTitle(device.family)}
                 </h3>
               </div>
-              <div class="flex">
+              <div class="flex flex-col gap-24 tabletp:flex-row tabletp:gap-0">
                 <div class="text-16 font-400 mr-60">
                   <p>Serial number</p>
                   <p>${this._formatSerialNumber(device.sn)}</p>
@@ -168,7 +163,7 @@ class WarrantyDevices extends HTMLElement {
             </div>
             <!-- Button column -->
             <div>
-              <button class="underline">Add a filter subscription +</button>
+              <button class="hidden tablet:block underline">Add a filter subscription +</button>
             </div>
           </div>
         </div>
@@ -181,7 +176,6 @@ class WarrantyDevices extends HTMLElement {
     return sn.slice(0, 6) + 'xxxxxx';
   }
 
-  // Converts a Shopify handle (e.g., blue-pure-211i-max) to a human-readable title (e.g., Blue Pure 211i Max)
   _handleToTitle(handle) {
     return handle
       .split('-')
@@ -248,7 +242,7 @@ class WarrantyDevices extends HTMLElement {
     if (form) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        // Gather form data
+
         const formData = {
           family: form.unit_family.value,
           series: form.unit_model.value,
@@ -262,7 +256,7 @@ class WarrantyDevices extends HTMLElement {
           await registerDevice(formData);
           this._showSuccessMessage('Device registered successfully!');
           form.reset();
-          this._renderDevices(); // Refresh device list
+          this._renderDevices();
         } catch (err) {
           this._showErrorMessage('Failed to register device: ' + err.message);
         }
@@ -293,31 +287,27 @@ class WarrantyDevices extends HTMLElement {
     }
     msgDiv.textContent = message;
     msgDiv.style.display = 'flex';
-    msgDiv.style.backgroundColor = '#FFD6D6'; // light red for error
-    setTimeout(() => {
-      msgDiv.style.display = 'none';
-      msgDiv.style.backgroundColor = '';
-    }, 4000);
+    msgDiv.style.backgroundColor = '#FFD6D6';
   }
 
   _setupFamilyModelDropdown() {
-    var familySelect = this.querySelector('#unit-family');
-    var modelSelect = this.querySelector('#unit-model');
+    let familySelect = this.querySelector('#unit-family');
+    let modelSelect = this.querySelector('#unit-model');
     if (familySelect && modelSelect) {
       familySelect.addEventListener('change', function() {
-        var handle = this.value;
-        var models = window.collectionProducts[handle] || [];
+        const handle = this.value;
+        const models = window.collectionProducts[handle] || [];
         // Clear previous options
         modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
         if (models.length) {
           models.forEach(function(model) {
-            var opt = document.createElement('option');
+            const opt = document.createElement('option');
             opt.value = model.id;
             opt.textContent = model.title;
             modelSelect.appendChild(opt);
           });
         } else {
-          var opt = document.createElement('option');
+          const opt = document.createElement('option');
           opt.value = '';
           opt.textContent = 'No models found';
           modelSelect.appendChild(opt);
