@@ -15,16 +15,17 @@
   "sections": {
     "hero": {
       "settings": {
-        "image_mobile": "shopify://shop_images/Sale_mobile.png",
-        "image_desktop": "shopify://shop_images/sale_desktop.jpg",
+        "image_mobile": "shopify://shop_images/md_mobile.png",
+        "image_desktop": "shopify://shop_images/md_desktop2.png",
         "title": "Save up to 50%",
         "subtext": "Shop our best deals of the <br>summer for a limited time",
         "cta_url": "shopify://collections/sale",
         "cta_text": "Shop now",
-        "cta_style": "btn btn--white-rounded",
+        "cta_style": "btn btn--blue-rounded",
         "hor_align_mobile": "justify-start",
         "ver_align_mobile": "items-start",
-        "hor_align_desktop": "desktop:justify-start"
+        "hor_align_desktop": "desktop:justify-start",
+        "color": "bg-blue-sky text-blue"
       },
       "blocks": {}
     },
