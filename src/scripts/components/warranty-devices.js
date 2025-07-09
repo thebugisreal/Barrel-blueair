@@ -75,6 +75,8 @@ class WarrantyDevices extends HTMLElement {
       warrantyForm: '[js-device-warranty-form]',
       cancelButton: '[js-cancel-warranty-form]',
       successMessage: '.warranty-success-message',
+      familySelect: '#unit-family',
+      modelSelect: '#unit-model'
     }
   }
 
@@ -90,15 +92,106 @@ class WarrantyDevices extends HTMLElement {
     this._setupFormHandler();
     this._setupFamilyModelDropdown();
     this._productLookup = {};
+    this._familySelectListener();
 
     document.querySelectorAll('.product-data').forEach(el => {
       this._productLookup[el.dataset.handle] = {
         featured_image: el.dataset.featuredImage
       };
     });
+
+    // Build product image lookup from unit-model options
+    this._productImageLookup = {};
+    document.querySelectorAll('#unit-model option[data-image][value]').forEach(opt => {
+      this._productImageLookup[opt.value] = opt.getAttribute('data-image');
+    });
   }
 
+  // _familySelectListener() {
+  //   console.log('familySelectListener initialized');
+  //   const familySelect = this.querySelector(this._selectors.familySelect);
+  //   const modelSelect = this.querySelector(this._selectors.modelSelect);
+
+  //   if (!familySelect || !modelSelect) {
+  //     console.warn('Unit family or model select not found in DOM');
+  //     return;
+  //   }
+
+  //   familySelect.addEventListener('change', function() {
+  //     const selectedOption = familySelect.options[familySelect.selectedIndex];
+  //     const value = selectedOption.value;
+  //     console.log('value', value);
+  //     const handle = selectedOption.getAttribute('data-collection-handle');
+  //     // Debug logs
+  //     console.log('Selected option:', selectedOption);
+  //     console.log('Selected value (metaobject id):', value);
+  //     console.log('data-collection-handle:', handle);
+
+  //     if (!handle) {
+  //       modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
+  //       return;
+  //     }
+  //     const models = window.collectionProducts[handle] || [];
+  //     // Clear previous options
+  //     modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
+  //     if (models.length) {
+  //       models.forEach(function(model) {
+  //         const opt = document.createElement('option');
+  //         opt.value = model.id;
+  //         opt.textContent = model.title;
+  //         modelSelect.appendChild(opt);
+  //       });
+  //     } else {
+  //       const opt = document.createElement('option');
+  //       opt.value = '';
+  //       opt.textContent = 'No models found';
+  //       modelSelect.appendChild(opt);
+  //     }
+  //   });
+  // }
+
+  _familySelectListener() {
+    console.log('familySelectListener initialized');
+    const familySelect = this.querySelector(this._selectors.familySelect);
+    const modelSelect = this.querySelector(this._selectors.modelSelect);
+  
+    if (!familySelect || !modelSelect) {
+      console.warn('Unit family or model select not found in DOM');
+      return;
+    }
+  
+    familySelect.addEventListener('change', function() {
+      const selectedOption = familySelect.options[familySelect.selectedIndex];
+      const gid = selectedOption.value;
+      const handle = window.collectionGidToHandle[gid];
+      console.log('Selected GID:', gid);
+      console.log('Resolved handle:', handle);
+  
+      // Clear previous options
+      modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
+  
+      if (!handle) return;
+  
+      const models = window.collectionProducts[handle] || [];
+      if (models.length) {
+        models.forEach(function(model) {
+          const opt = document.createElement('option');
+          opt.value = model.id;
+          opt.textContent = model.title;
+          modelSelect.appendChild(opt);
+        });
+      } else {
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = 'No models found';
+        modelSelect.appendChild(opt);
+      }
+    });
+  }
+  
+
   _renderDevices = async (e) => {
+    console.log('renderDevices');
     const container = document.querySelector('.device-card-content');
     if (!container) {
       console.warn('No .device-card-content found in DOM');
@@ -107,6 +200,7 @@ class WarrantyDevices extends HTMLElement {
     try {
       container.innerHTML = '<p>Loading your devices...</p>';
       const devices = await getDevices();
+      console.log('LOOK HEERREEEE devices', devices);
       if (!devices.length) {
         container.innerHTML = '<p class="account__rte h-full p2">No devices registered yet.</p>';
         return;
@@ -125,29 +219,36 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _deviceCardHTML(device) {
-    // Use the product handle to get the image from the lookup
+    // Log the product ID/series and the product image lookup
+    console.log('device.series:', device.series);
+    console.log('this._productImageLookup:', this._productImageLookup);
     let imageUrl = '';
-    if (this._productLookup && device.family) {
-      const product = this._productLookup[device.family];
-      if (product && product.featured_image) {
-        imageUrl = product.featured_image;
-      }
+    if (this._productImageLookup && device.series) {
+      imageUrl = this._productImageLookup[device.series] || '';
     }
+    console.log('imageUrl:', imageUrl);
+
+    let familyGid = device.family;
+    const handle = window.collectionGidToHandle?.[familyGid];
+    console.log('device.family:', familyGid);
+    console.log('window.collectionGidToHandle:', window.collectionGidToHandle);
+    console.log('resolved handle:', handle);
+
     return `
       <div class="device-card mt-md grid gap-md">
         <div class="account-content">
-          <div class="my-devices-content flex justify-between p-sm tabletp:p-md bg-white w-full max-w-full">
+          <div class="my-devices-content flex justify-between p-sm bg-white w-full max-w-full">
             <!-- Image column -->
-            <div class="flex mr-20 tabletp:w-1/4 tabletp:mr-0">
+            <div class="flex mr-20 tabletp:w-1/4">
               <div class="product-card__image aspect-square overflow-hidden">
-                <img src="${imageUrl}" alt="${this._handleToTitle(device.family)}" class="object-cover object-center w-full h-full tabletp:object-contain" />
+                <img src="${imageUrl}" alt="${this._handleToTitle(handle)}" class="object-cover object-center w-full h-full tabletp:object-contain" />
               </div>
             </div>
             <!-- Details column -->
             <div class="flex flex-col w-1/2 my-auto">
               <div>
                 <h3 class="device-card__title font-700 text-20 tabletp:text-22 font-gilroy mb-12 tabletp:mb-24">
-                  ${this._handleToTitle(device.family)}
+                  ${this._handleToTitle(handle)}
                 </h3>
               </div>
               <div class="flex flex-col gap-24 tabletp:flex-row tabletp:gap-0">
@@ -162,13 +263,13 @@ class WarrantyDevices extends HTMLElement {
               </div>
             </div>
             <!-- Button column -->
-            <div>
+            <div class="tabletp:w-1/4">
               <button class="underline hidden tabletp:block">Add a filter subscription +</button>
             </div>
           </div>
         </div>
       </div>
-      `;
+    `;
   }
 
   _formatSerialNumber(sn) {
@@ -177,6 +278,7 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _handleToTitle(handle) {
+    if (!handle || typeof handle !== 'string') return '';
     return handle
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -291,13 +393,18 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _setupFamilyModelDropdown() {
+    console.log('CHANGES setupFamilyModelDropdown initialized');
     let familySelect = this.querySelector('#unit-family');
     let modelSelect = this.querySelector('#unit-model');
     if (familySelect && modelSelect) {
       familySelect.addEventListener('change', function() {
-        const handle = this.value;
+        const selectedOption = familySelect.options[familySelect.selectedIndex];
+        const handle = selectedOption.getAttribute('data-collection-handle');
+        if (!handle) {
+          modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
+          return;
+        }
         const models = window.collectionProducts[handle] || [];
-        // Clear previous options
         modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
         if (models.length) {
           models.forEach(function(model) {
