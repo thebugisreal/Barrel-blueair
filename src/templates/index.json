@@ -719,7 +719,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1024px",
-        "color": "bg-green-light text-green-dark",
+        "color": "bg-white text-blue",
         "image": "shopify://shop_images/b-corp-image.png",
         "image_position_desktop": "desktop:order-first",
         "title": "Proud to be a Certified B Corp",
