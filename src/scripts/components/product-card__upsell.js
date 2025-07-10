@@ -26,6 +26,7 @@ class ProductCardUpsell extends HTMLElement {
     
     _submitSingle(e) {
       e.preventDefault();
+      console.log('e.target', e.target);
       let variantId = e.target.dataset.variantId
       let data = {
         items: [{
@@ -77,5 +78,98 @@ class VariantCardUpsell extends ProductCardUpsell {
     constructor() {
         super();
         console.log('VariantCardUpsell constructor called');
+
+        this.selectors = {
+            swatch: '[js-product-card-swatch]',
+            image: '[js-product-card-image]',
+            soldOutTag: '[js-product-card-sold-out-tag]',
+            productLink: '[js-product-link]',
+            price: '[js-product-card-price]',
+            currentSwatchLabel: '[js-product-card-current-swatch-label]',
+            quickAdd: '[js-quick-add]'
+        }
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.swatches = this.querySelectorAll(this.selectors.swatch);
+        this.soldOutTag = this.querySelector(this.selectors.soldOutTag);
+        this.productLinks = this.querySelectorAll(this.selectors.productLink);
+        this.price = this.querySelector(this.selectors.price);
+        this.currentSwatchLabel = this.querySelector(this.selectors.currentSwatchLabel);
+        this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
+
+        this._setListeners();
+    }
+
+    _setListeners() {
+        this.swatches.forEach(swatch => {
+            swatch.addEventListener('click', this._swatchOnClick);
+        });
+    }
+
+    _updateImage = (swatchName) => {
+      const prevImage = this.querySelector(`${this.selectors.image}:not(.hidden)`);
+      if (prevImage) prevImage.classList.add('hidden');
+      const newImage = this.querySelector(`${this.selectors.image}[data-swatch="${swatchName}"]`);
+      if (newImage) newImage.classList.remove('hidden');
+    }
+  
+
+    _toggleSoldOutTag = (variantAvailable) => {
+      if (variantAvailable) {
+        this.soldOutTag.classList.add('hidden');
+      } else {
+        this.soldOutTag.classList.remove('hidden');
+      }
+    }
+
+    _updateProductLink = (url) => {
+      this.productLinks.forEach((link) => {
+        link.href = url;
+      });
+    }
+
+    _updatePrice = (price) => {
+      const compareAtPrice = parseFloat(price.split('|')[0]);
+      const currentPrice = parseFloat(price.split('|')[1]);
+  
+      let priceMarkup;
+      if (compareAtPrice && compareAtPrice > currentPrice) {
+        priceMarkup = `<s class="product-card__price product-card__price--compare">${theme.utils.formatMoney(compareAtPrice, this.moneyFormat)}</s>
+                      <span class="product-card__price product-card__price--current">${theme.utils.formatMoney(currentPrice, this.moneyFormat)}</span>`;
+      } else {
+        priceMarkup = `<span class="product-card__price product-card__price--current">${theme.utils.formatMoney(currentPrice, this.moneyFormat)}</span>`;
+      }
+  
+      this.price.innerHTML = priceMarkup;
+    }
+
+    _updateQuickAdd = (variantId) => {
+      this.quickAdd.forEach(button => {
+        button.dataset.variantId = variantId;
+      });
+    }
+  
+    _swatchOnClick = (e) => {
+        e.preventDefault();
+
+        const swatchTarget = e.currentTarget;
+        
+        if (swatchTarget.dataset.selected == 'true') {
+          return;
+        }
+    
+        const prevSelectedSwatch = this.querySelector(`${this.selectors.swatch}[data-selected="true"]`);
+        if (prevSelectedSwatch) prevSelectedSwatch.dataset.selected = 'false';
+        swatchTarget.dataset.selected = 'true';
+    
+        this.currentSwatchLabel.textContent = swatchTarget.dataset.swatch;
+    
+        this._updateImage(swatchTarget.dataset.swatch);
+        this._toggleSoldOutTag(swatchTarget.dataset.available == 'true');
+        this._updateProductLink(swatchTarget.dataset.url);
+        this._updatePrice(swatchTarget.dataset.price);
+        this._updateQuickAdd(swatchTarget.dataset.id);
     }
 }

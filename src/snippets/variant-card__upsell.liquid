@@ -1,21 +1,68 @@
+{% liquid
+    assign current_variant = variant.product.variants[0]
+    assign color_option = false
+    if variant.product.options_by_name['color'] != blank
+        assign color_option = variant.product.options_by_name['color'].position | minus: 1
+    endif
+%}
+
 <variant-card-upsell class="{% if gwp %} product-card__gwp {% else %} product-card__upsell {% endif %} flex gap-sm p-md">
-    {% if variant.product.featured_image != blank %}
+    {% if color_option != false %}
+        {% for product_variant in variant.product.variants %}
+            <div class="image-container w-1/2 max-w-[160px] {% unless product_variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ product_variant.options[color_option] }}" js-product-card-image>
+                {% assign image = product_variant.featured_image | default: variant.product.featured_image %}
+                {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+            </div>
+        {% endfor %}
+    {% elsif variant.product.featured_image != blank %}
         <div class="image-container w-1/2 max-w-[160px]">
-            <a href="{{ variant.url }}">
+            <a href="{{ variant.url }}" js-product-link>
                 {% render 'lazy-image' image:variant.product.featured_image %}
             </a>
         </div>
     {% endif %}
     <div class="content-container w-1/2 flex flex-col justify-center items-end">
         <div class="text-content w-full">
+            <span class="product-card__tag product-card__tag--gray mb-xxxs bg-gray {% if variant.available or true %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>Out of Stock</span>
+
             <h1 class="p1 my-xxxs">
                 {% render 'product-title-intl', product: variant.product %}
             </h1>
             {% unless variant.title == "Default Title" %}
-                <p class="p4 my-xxxs">{{ variant.title }}</p>
+                <p class="p4 my-xxxs" js-product-card-current-swatch-label>{{ variant.title }}</p>
             {% endunless %}
-            <p class="p1 font-700">{{ variant.price | money }}</p>
+            <p class="p1 font-700" js-product-card-price>{{ variant.price | money }}</p>
         </div>
+
+        {% if variant.product.metafields.seed.swatches != blank %}
+            <div class="product-card__swatches w-full flex flex-wrap gap-xxs mt-xxs">
+                {% assign variant_count = 0 %}
+                {% for productVariant in variant.product.variants %}
+                    {% assign variant_count = variant_count | plus: 1 %}
+                {% endfor %}
+                {% assign swatch_objects = variant.product.metafields.seed.swatches.value | reverse | reverse %}
+                {% for productVariant in variant.product.variants limit: 3 %}
+                <button class="product-card__swatch product-card__swatch--color w-[18px] h-[18px] rounded-full"
+                    data-swatch="{{ productVariant.options[color_option] }}"
+                    data-available="{{ productVariant.available }}"
+                    data-price="{{ productVariant.compare_at_price }}|{{ productVariant.price }}" 
+                    data-selected="{% if productVariant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
+                    data-url="{{ productVariant.url }}"
+                    title="{{ productVariant.options[color_option] }}"
+                    data-id="{{ productVariant.id }}"
+                    js-product-card-swatch>
+                    <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_objects[forloop.index0].color }};">
+                    {% if swatch_objects[forloop.index0].image != blank %}
+                        <img src="{{ swatch_objects[forloop.index0].image.value | img_url: '36x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
+                    {% endif %}
+                    </div>
+                </button>
+                {% endfor %}
+                {% if variant_count > 3 %}
+                    <a href="{{ variant.product.url }}" class="p4" js-product-link>+{{ variant_count | minus: 3 }}</a>
+                {% endif %}
+            </div>
+        {% endif %}
 
         <button class="product-card__atc underline mt-xs" data-variant-id="{{ variant.id }}" {% unless variant.available %} disabled {% endunless %} js-quick-add>
             {% if gwp %}
