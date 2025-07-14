@@ -538,6 +538,8 @@
                     </div>
                   </s-accordion>
                 {% endif %}
+              {% when '@app' %}
+                  {% render block %}
               {% when 'upsells' %}
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
@@ -797,6 +799,9 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
     {
       "name": "Room Size Tag",
       "type": "room_tag",
