@@ -268,9 +268,12 @@
       <div class="product-data" data-handle="{{ product.handle }}" data-featured-image="{{ product.featured_image | img_url: '600x600' }}" style="display:none;"></div>
     {% endfor %}
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
-      <button class="p3 font-400 text-center block underline" js-toggle-warranty-form >Register a new device +</button>
+      <h4 class="text-40 font-300 mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
+      <button class="text-16 font-400 text-center block leading-[1.2] pb-xxs border-b border-blue" js-toggle-warranty-form>
+        Register a new device  <span class="account-content__icon ml-xxxs">{% render 'icon-plus-small' %}</span>
+      </button>
     </div>
+
     <div class="mt-md grid gap-md hidden" js-device-warranty-form>
       <div class="account-content">
         <form id="warranty-device-form" class="warranty-registration-form p-md bg-white w-full max-w-full">
@@ -282,7 +285,7 @@
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit family</label>
             <div class="select-wrapper relative w-full">
-              <select name="unit_family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]">
+              <select name="unit_family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
                 <option value="" disabled selected>Select family</option>
 
                 {% for family in shop.metaobjects.unit_family.values %}
@@ -296,7 +299,7 @@
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit model</label>
-            <select name="unit_model" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]">
+            <select name="unit_model" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
               <option value="" disabled selected>Select model</option>
               {% for collection in collections %}
                 {% for product in collection.products %}
@@ -310,13 +313,13 @@
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Serial number</label>
-            <input type="text" name="serial_number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number">
+            <input type="text" name="serial_number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
           </div>
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Date of purchase</label>
             <div class="relative w-full">
-              <input type="text" name="purchase_date" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY">
-              <button type="button" class="absolute right-sm top-1/2 -translate-y-1/2 text-[#002D72]">
+              <input type="text" name="purchase_date" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY" required>
+              <button type="button" js-calendar-picker class="absolute right-sm top-1/2 -translate-y-1/2 text-[#002D72]">
                 {% render 'icon-calendar' %}
               </button>
             </div>
@@ -332,8 +335,9 @@
             </select>
           </div>
           <div class="flex justify-between items-center gap-md">
-            <button type="submit" class="w-[174px] btn flex justify-center p-xxs pl-sm rounded-[30px] border border-blue text-white bg-blue">
-              Save
+            <button type="submit" id="warranty-save-btn" class="w-[174px] btn flex justify-center p-xxs pl-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative">
+              <span class="btn-text">Save</span>
+              <loading-spinner id="warranty-save-spinner" style="--color: #fff; --width: 20px; --height: 20px;" class="ml-2"></loading-spinner>
             </button>
             <button type="button" class="btn text-[#002D72] hover:underline" js-cancel-warranty-form>
               Cancel
@@ -365,7 +369,7 @@
   };
 </script>
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" 
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md font-gilroy" 
   data-customer-email="{{ customer.email }}" 
   data-customer-id="{{ customer.id }}"
   data-customer-signature="{{ signature }}"
