@@ -26,13 +26,25 @@
                 <p class="p1">Price</p>
             </li>
             <li class="compare__item">
+              {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
                 <p class="p1">Recommended max room size (sq ft) </p>
+              {% else %}
+                <p class="p1">Recommended max room size (sq m)</p>
+              {% endif %}
             </li>
             <li class="compare__item">
+              {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
                 <p class="p1">Dimensions h x w x d (in)</p>
+              {% else %}
+                <p class="p1">Dimensions h x w x d (m)</p>
+              {% endif %}
             </li>
             <li class="compare__item">
+              {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
                 <p class="p1">Weight (lbs)</p>
+              {% else %}
+                <p class="p1">Weight (kg)</p>
+              {% endif %}
             </li>
             <li class="compare__item">
                 <p class="p1">Wi-Fi Enabled</p>
