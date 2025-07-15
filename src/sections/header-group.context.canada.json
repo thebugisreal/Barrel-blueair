@@ -23,8 +23,8 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-0f3696fd9d8a2219251ca17f41906e8e": null,
-            "announcement": "Summer Sale Extended: Up to 50% Off!",
+            "header-bc44fca9d59df6b80dab8d98f1a00a39": null,
+            "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/canada-sale"
           }
         },
@@ -38,7 +38,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-f2228b6d183379970a1a81212fe2267b": null,
+            "header-12831f9b3a133d57d71308935abc13cb": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
           }

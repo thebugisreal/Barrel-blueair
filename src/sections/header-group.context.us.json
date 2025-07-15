@@ -23,8 +23,8 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-8d40cbb8138988d7793c11d921615610": null,
-            "announcement": "Summer Sale Extended: Up to 50% Off!",
+            "header-42d9dcde4172113752ca0e8aad9766dd": null,
+            "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": "shopify://collections/sale"
           }
         },
@@ -32,8 +32,8 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-bcc0c9a80a25f2c28617689700efe748": null,
-            "announcement": "Introducing Blue Signature: Engineered to Perform. Designed to Impress.",
+            "header-2e4d77926e963901cc57ba0c460e47c6": null,
+            "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
           }
         },
@@ -41,16 +41,16 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-6849749766fd0fe090a1222c0d0538a9": null,
+            "header-32988d3fd6141524912377e9229a7a8f": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
         }
       },
       "block_order": [
-        "announcement_KRB8N",
         "announcement_QLGEH",
-        "announcement_XMHEL"
+        "announcement_XMHEL",
+        "announcement_KRB8N"
       ]
     }
   }
