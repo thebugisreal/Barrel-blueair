@@ -468,7 +468,7 @@ class WarrantyDevices extends HTMLElement {
 
         console.log('Disabling button and showing spinner');
         saveBtn.disabled = true;
-        saveBtn.querySelector('.btn-text').style.opacity = '0';
+        saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
         spinner.setAttribute('loading', '');
         console.log('Spinner loading attribute set:', spinner.hasAttribute('loading'));
 
@@ -492,7 +492,7 @@ class WarrantyDevices extends HTMLElement {
         } finally {
           console.log('Re-enabling button and hiding spinner');
           saveBtn.disabled = false;
-          saveBtn.querySelector('.btn-text').style.opacity = '1';
+          saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
           spinner.removeAttribute('loading');
           console.log('Spinner loading attribute removed:', !spinner.hasAttribute('loading'));
         }
