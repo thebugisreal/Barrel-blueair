@@ -178,8 +178,9 @@
           <span js-product-card-current-swatch-label>{{ current_variant.options[color_option] }}</span>
         </div>
         <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
-          {% assign swatch_objects = product.metafields.seed.swatches.value | reverse | reverse %}
+          {% assign swatch_objects = product.metafields.seed.swatches.value %}
           {% for variant in product.variants %}
+            {% assign swatch_object = swatch_objects | where: "name", variant.options[color_option] | first %}
             <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
               data-swatch="{{ variant.options[color_option] }}"
               data-available="{{ variant.available }}"
@@ -188,9 +189,9 @@
               data-url="{{ variant.url }}"
               title="{{ variant.options[color_option] }}"
               js-product-card-swatch>
-              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_objects[forloop.index0].color }};">
-                {% if swatch_objects[forloop.index0].image != blank %}
-                  <img src="{{ swatch_objects[forloop.index0].image.value | img_url: '36x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
+              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
+                {% if swatch_object.image != blank %}
+                  <img src="{{ swatch_object.image.value | img_url: '36x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
                 {% endif %}
               </div>
             </button>
