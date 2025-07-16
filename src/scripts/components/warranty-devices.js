@@ -18,6 +18,11 @@ async function exchangeJwtForAccessToken(jwt) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
+          if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
+        clearAuthTokens();
+        window.location.href = '/account/logout';
+        throw new Error('JWT token expired or invalid. Please log in again.');
+      }
     throw new Error(err.error || err.message || 'Failed to exchange JWT for access token');
   }
   const data = await res.json();
@@ -29,8 +34,17 @@ async function getApiAccessToken() {
   let accessToken = getCookie(ACCESS_TOKEN_COOKIE_NAME);
   if (accessToken) return accessToken;
   const jwt = getCookie(JWT_COOKIE_NAME);
-  if (!jwt) throw new Error('Not authenticated (no JWT)');
+      if (!jwt) {
+      clearAuthTokens();
+      window.location.href = '/account/logout';
+      throw new Error('Authentication error, please log in again.');
+    }
   return await exchangeJwtForAccessToken(jwt);
+}
+
+function clearAuthTokens() {
+  document.cookie = `${JWT_COOKIE_NAME}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  document.cookie = `${ACCESS_TOKEN_COOKIE_NAME}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
 async function getDevices() {
@@ -43,6 +57,11 @@ async function getDevices() {
   });
   const data = await res.json();
   if (!res.ok) {
+          if (res.status === 401 || res.status === 403 || data.error?.includes('expired') || data.error?.includes('invalid')) {
+        clearAuthTokens();
+        window.location.href = '/account/logout';
+        throw new Error('Please log in again.');
+      }
     throw new Error(data.error || data.message || 'Failed to fetch devices');
   }
   return data;
@@ -60,6 +79,11 @@ async function registerDevice(formData) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
+          if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
+        clearAuthTokens();
+        window.location.href = '/account/logout';
+        throw new Error('Please log in again.');
+      }
     throw new Error(err.error || err.message || 'Failed to register device');
   }
   return res.json();
@@ -67,7 +91,7 @@ async function registerDevice(formData) {
 
 function formatWarrantyErrorMessage(apiMessage) {
   if (/serial number/i.test(apiMessage)) {
-    return "Please enter a valid Serial Number";
+    return "Please enter a valid serial number";
   }
   if (/dateofpurchase.*within the last 3 years/i.test(apiMessage) || /date of purchase.*within the last 3 years/i.test(apiMessage)) {
     return "Date of Purchase must be within the last 3 years";
