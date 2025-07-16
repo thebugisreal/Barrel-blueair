@@ -77,7 +77,7 @@ class CompareGrid extends HTMLElement {
       productTitleContainer.setAttribute('js-compare-product-title', '')
       const productTitleLink = document.createElement('a')
       productTitleLink.classList.add('compare-product__title-text')
-      productTitleLink.href = `https://blueairdev.myshopify.com/products/${product.handle}`
+      productTitleLink.href = `/products/${product.handle}`
       productTitleLink.innerText = product.title
       productTitleContainer.appendChild(productTitleLink)
 
@@ -99,7 +99,7 @@ class CompareGrid extends HTMLElement {
       const productCompareAtcContainer = document.createElement('li')
       productCompareAtcContainer.classList.add('compare__atc')
       const productCompareAtc = this.atcBtn.cloneNode(true);
-      productCompareAtc.setAttribute('href', `https://blueairdev.myshopify.com/products/${product.handle}`)
+      productCompareAtc.setAttribute('href', `/products/${product.handle}`)
       productCompareAtcContainer.appendChild(productCompareAtc)
 
       // Compare Title
