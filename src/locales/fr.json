@@ -27,7 +27,8 @@
       "cart_count": {
         "one": "{{ count }} article",
         "other": "{{ count }} articles"
-      }
+      },
+      "menu": "Menu"
     },
     "cart": {
       "title": "Votre panier",
@@ -40,14 +41,15 @@
       "empty": "Votre panier est vide",
       "cart_error": "Une erreur s'est produite lors de la mise à jour de votre panier. Veuillez réessayer.",
       "cart_quantity_error_html": "Vous ne pouvez ajouter que [quantité] de cet article à votre panier.",
-      "taxes_and_shipping_policy_at_checkout_html": "Taxes et <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">frais de port<\/a> calculés au moment du paiement",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes et <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">frais de port</a> calculés au moment du paiement",
       "taxes_included_but_shipping_at_checkout": "Taxes incluses et frais de port calculés à la caisse",
-      "taxes_included_and_shipping_policy_html": "Taxes incluses. <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">Frais de port<\/a> calculés au moment du paiement.",
+      "taxes_included_and_shipping_policy_html": "Taxes incluses. <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">Frais de port</a> calculés au moment du paiement.",
       "taxes_and_shipping_at_checkout": "Taxes et frais de port calculés au moment du paiement",
       "headings": {
         "product": "Produit",
         "price": "Prix",
-        "quantity": "Quantité"
+        "quantity": "Quantité",
+        "total": "Total"
       },
       "update": "Mise à jour"
     },
@@ -89,7 +91,8 @@
       "sort_button": "Trier",
       "sort_by_label": "Trier par",
       "to": "À",
-      "use_fewer_filters_html": "Utilisez moins de filtres ou <a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;\/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">effacez tout<\/a>"
+      "use_fewer_filters_html": "Utilisez moins de filtres ou <a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">effacez tout</a>",
+      "title": "Collection"
     }
   },
   "general": {
@@ -101,7 +104,7 @@
       "login_form_error": "Mot de passe incorrect!",
       "login_form_submit": "Entrer",
       "modal": "Modalité de mot de passe",
-      "admin_link_html": "Êtes-vous propriétaire du magasin ? <a href=\"\/admin\" class=\"link underlined-link\">Connectez-vous ici.<\/a>",
+      "admin_link_html": "Êtes-vous propriétaire du magasin ? <a href=\"/admin\" class=\"link underlined-link\">Connectez-vous ici.</a>",
       "powered_by_shopify_html": "Cette boutique sera propulsée par {{ shopify }}"
     },
     "social": {
@@ -111,14 +114,23 @@
         "share_on_pinterest": "Épingler sur Pinterest"
       },
       "links": {
-        "twitter": "Gazouillement"
+        "twitter": "Gazouillement",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tumblr": "Tumblr",
+        "snapchat": "Snapchat",
+        "youtube": "Youtube",
+        "vimeo": "Vimeo",
+        "tiktok": "Tiktok"
       }
     },
     "continue_shopping": "Continuer vos achats",
     "pagination": {
       "page": "Page {{ number }}",
       "next": "Page suivante",
-      "previous": "Page précédente"
+      "previous": "Page précédente",
+      "label": "Pagination"
     },
     "search": {
       "search": "Recherche"
@@ -173,14 +185,15 @@
       "address1": "Adresse 1",
       "address2": "Adresse 2",
       "city": "Ville",
-      "country": "Pays\/région",
+      "country": "Pays/région",
       "zip": "Code postal",
       "phone": "Téléphone",
       "set_default": "Définir comme adresse par défaut",
       "add": "Ajouter une adresse",
       "update": "Mettre à jour l'adresse",
       "cancel": "Annuler",
-      "edit": "Modifier"
+      "edit": "Modifier",
+      "province": "Province"
     },
     "log_in": "Se connecter",
     "log_out": "Se déconnecter",
@@ -217,7 +230,8 @@
       "tracking_url": "Lien de suivi",
       "tracking_company": "Transporteur",
       "tracking_number": "Numéro de suivi",
-      "subtotal": "Total"
+      "subtotal": "Total",
+      "total": "Total"
     },
     "orders": {
       "title": "Historique des commandes",
@@ -225,7 +239,9 @@
       "order_number_link": "Numéro de commande {{ number }}",
       "payment_status": "Statut de paiement",
       "fulfillment_status": "Statut d'exécution",
-      "none": "Vous n'avez pas encore passé de commande."
+      "none": "Vous n'avez pas encore passé de commande.",
+      "date": "Date",
+      "total": "Total"
     },
     "recover_password": {
       "title": "Réinitialiser votre mot de passe",
@@ -295,7 +311,8 @@
       "back_to_blog": "Retour au blog",
       "share": "Partagez cet article",
       "success": "Votre commentaire a été publié avec succès ! Merci !",
-      "success_moderated": "Votre commentaire a été publié avec succès. Nous le publierons prochainement, car notre blog est modéré."
+      "success_moderated": "Votre commentaire a été publié avec succès. Nous le publierons prochainement, car notre blog est modéré.",
+      "blog": "Blog"
     }
   },
   "onboarding": {
@@ -323,8 +340,8 @@
         "view_store_info": "Afficher les informations du magasin",
         "check_other_stores": "Vérifiez la disponibilité dans d'autres magasins",
         "pick_up_available": "Ramassage disponible",
-        "pick_up_available_at_html": "Ramassage disponible à <span class=\"color-foreground\">{{ location_name }}<\/span>",
-        "pick_up_unavailable_at_html": "Le ramassage n'est actuellement pas disponible à <span class=\"color-foreground\">{{ location_name }}<\/span>",
+        "pick_up_available_at_html": "Ramassage disponible à <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Le ramassage n'est actuellement pas disponible à <span class=\"color-foreground\">{{ location_name }}</span>",
         "unavailable": "Impossible de charger la disponibilité du ramassage",
         "refresh": "Rafraîchir"
       },
@@ -340,7 +357,8 @@
       "vendor": "Fournisseur",
       "video_exit_message": "{{ title }} ouvre la vidéo en plein écran dans la même fenêtre.",
       "xr_button": "Vue dans votre espace",
-      "xr_button_label": "Visualisez dans votre espace, chargez l'élément dans la fenêtre de réalité augmentée"
+      "xr_button_label": "Visualisez dans votre espace, chargez l'élément dans la fenêtre de réalité augmentée",
+      "description": "Description"
     },
     "modal": {
       "label": "Galerie multimédia"
@@ -353,7 +371,8 @@
         "one": "{{ count }} résultat trouvé pour « {{ terms }} »",
         "other": "{{ count }} résultats trouvés pour « {{ terms }} »"
       },
-      "title": "Résultats de la recherche"
+      "title": "Résultats de la recherche",
+      "page": "Page"
     },
     "cart": {
       "cart": "Panier"
@@ -370,13 +389,14 @@
       }
     },
     "404": {
-      "title": "Page non trouvée"
+      "title": "Page non trouvée",
+      "subtext": "404"
     }
   },
   "localization": {
-    "country_label": "Pays\/région",
+    "country_label": "Pays/région",
     "language_label": "Langue",
     "update_language": "Mettre à jour la langue",
-    "update_country": "Mettre à jour le pays\/la région"
+    "update_country": "Mettre à jour le pays/la région"
   }
 }

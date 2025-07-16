@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer Group",
@@ -14,14 +23,15 @@
         "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-xl",
         "max_width_desktop": "",
-        "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"><\/div>",
-        "title": "Fresh updates <br> for fresher air",
+        "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"></div>",
+        "title": "Fresh updates  for fresher air",
         "title_style": "h3",
         "color": "bg-blue-light text-blue"
       }
     },
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "footer_nav": "seed-footer",
         "subfooter_nav": "seed-subfooter",

@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width": "80ch"
+      }
+    },
+    "section_faq_cta_AxRwzp": {
+      "type": "section__faq-cta",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "max_width": "",
+        "color": "bg-blue text-white non-color-revert",
+        "title": "Not finding what you need? We can help.",
+        "title_style": "h4",
+        "cta_url": "shopify://pages/contact-us",
+        "cta_text": "Contact Support",
+        "cta_style": "btn btn--white-rounded"
+      }
+    },
+    "footer_klaviyo_cMBtqC": {
+      "type": "footer__klaviyo",
+      "name": "Footer - Klaviyo",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "109ch",
+        "klaviyo_embed": "<div class=\"klaviyo-form-XdY2Sy\"></div>",
+        "title": "",
+        "title_style": "h3",
+        "color": "bg-white text-blue"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_faq_cta_AxRwzp",
+    "footer_klaviyo_cMBtqC"
+  ]
+}
