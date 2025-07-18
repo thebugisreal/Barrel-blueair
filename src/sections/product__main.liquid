@@ -43,6 +43,8 @@
     assign filter_subscription_price = current_variant.price | times: filter_subscription_discount_decimal
     assign filter_subscription_discounted_price = current_variant.price | minus: filter_subscription_price
   endif
+
+  assign user_country = localization.country.iso_code | downcase
 -%}
 
 <s-product role="section" class="product" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
@@ -70,7 +72,21 @@
             {% assign active_thumb_taken = false %}
             {% for media in product.media %}
               {% assign media_swatch = '' %}
+              {% assign country_tag = '' %}
               {% assign hide_media = false %}
+              {% assign alt_text = media.alt | downcase | strip %}
+              {% if alt_text contains 'country:' %}
+                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
+                {% if show_country != user_country %}
+                  {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
+              {% if alt_text contains 'country-hide:' %}
+                {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
+                {% if hide_country == user_country %}
+                  {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
               {% assign active_thumb = false %}
               {% if current_swatch != blank %}
                 {% assign media_swatch = media.alt | strip %}
@@ -138,6 +154,19 @@
             {% for media in product.media %}
               {% assign media_swatch = '' %}
               {% assign hide_media = false %}
+              {% assign alt_text = media.alt | downcase | strip %}
+              {% if alt_text contains 'country:' %}
+                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
+                {% if show_country != user_country %}
+                  {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
+              {% if alt_text contains 'country-hide:' %}
+                {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
+                {% if hide_country == user_country %}
+                  {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
               {% if current_swatch != blank %}
                 {% assign media_swatch = media.alt | strip %}
                 {% if media_swatch != current_swatch and media_swatch != 'All' %}
