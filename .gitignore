@@ -61,3 +61,4 @@ _site
 secrets.json
 .jekyll-metadata
 .ruby-version
+.shopify
