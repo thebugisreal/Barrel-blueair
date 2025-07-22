@@ -202,11 +202,13 @@ class CountrySelectModal extends HTMLElement {
       const language = this.selectedLanguage.toLowerCase();
 
       if (this.dataset.domain == '5ef43d-4a.myshopify.com') {
-        if (country == 'ca' || country == 'us') {
-          window.location.href = `https://www.blueair.com/${language}`
+        if (country == 'us') {
+          window.location.href = `https://www.blueair.com/`
+        } else if (country == 'ca'){
+          window.location.href = `https://www.blueair.com/${language}-${country}`
         } else if (country == 'gb'){
           window.location.href = `https://blueair.co.uk`
-        } if (country == 'de' && language == 'de'){
+        } else if (country == 'de' && language == 'de'){
           window.location.href = 'https://blueair.co/'
         } else if (country == 'de' && language == 'en'){
           window.location.href = 'https://blueair.co/en'
@@ -216,25 +218,29 @@ class CountrySelectModal extends HTMLElement {
       }
 
       if (this.dataset.domain == 'blueeudev.myshopify.com') {
-        if (country == 'ca' || country == 'us') {
-          window.location.href = `https://www.blueair.com/${language}`
-        } else if (country == 'gb'){
+        if (country == 'us') {
+          window.location.href = `https://www.blueair.com/`
+        } else if (country == 'ca'){
+          window.location.href = `https://www.blueair.com/${language}-${country}`
+        }else if (country == 'gb'){
           window.location.href = `https://blueair.co.uk`
-        } if (country == 'de' && language == 'de'){
+        } else if (country == 'de' && language == 'de'){
           window.location.href = 'https://blueair.co/'
         } else if (country == 'de' && language == 'en'){
-          window.location.href = 'https://blueair.co/en'
+          window.location.href = 'https://blueair.co/en-de'
         } else {
           window.location.href = `https://blueair.co/${language}-${country}`
         }
       }
 
       if (this.dataset.domain == 'uk-blueair.myshopify.com') {
-        if (country == 'ca' || country == 'us') {
-          window.location.href = `https://www.blueair.com/${language}`
+        if (country == 'us') {
+          window.location.href = `https://www.blueair.com/`
+        } else if (country == 'ca'){
+          window.location.href = `https://www.blueair.com/${language}-${country}`
         } else if (country == 'gb'){
           window.location.href = `https://blueair.co.uk`
-        } if (country == 'de' && language == 'de'){
+        } else if (country == 'de' && language == 'de'){
           window.location.href = 'https://blueair.co/'
         } else if (country == 'de' && language == 'en'){
           window.location.href = 'https://blueair.co/en'
