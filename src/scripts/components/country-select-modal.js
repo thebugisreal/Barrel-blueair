@@ -184,7 +184,10 @@ class CountrySelectModal extends HTMLElement {
       this.submitBtn = this.querySelector(this._selectors.submitBtn)
   
       this.select.addEventListener('change', this._handleCountryChange.bind(this));
+      this.selectedCountry = this.select.value;
+
       if (this.languageSelect) {
+        this.selectedLanguage = this.languageSelect.value;
         this.languageSelect.addEventListener('change', this._handleLanguageChange.bind(this));
       }
   
@@ -195,12 +198,57 @@ class CountrySelectModal extends HTMLElement {
     }
   
     _submitForm = () => {
-      this.form.submit();
+      const country = this.selectedCountry.toLowerCase();
+      const language = this.selectedLanguage.toLowerCase();
+
+      if (this.dataset.domain == '5ef43d-4a.myshopify.com') {
+        if (country == 'ca' || country == 'us') {
+          window.location.href = `https://www.blueair.com/${language}`
+        } else if (country == 'gb'){
+          window.location.href = `https://blueair.co.uk`
+        } if (country == 'de' && language == 'de'){
+          window.location.href = 'https://blueair.co/'
+        } else if (country == 'de' && language == 'en'){
+          window.location.href = 'https://blueair.co/en'
+        } else {
+          window.location.href = `https://blueair.co/${language}-${country}`
+        }
+      }
+
+      if (this.dataset.domain == 'blueeudev.myshopify.com') {
+        if (country == 'ca' || country == 'us') {
+          window.location.href = `https://www.blueair.com/${language}`
+        } else if (country == 'gb'){
+          window.location.href = `https://blueair.co.uk`
+        } if (country == 'de' && language == 'de'){
+          window.location.href = 'https://blueair.co/'
+        } else if (country == 'de' && language == 'en'){
+          window.location.href = 'https://blueair.co/en'
+        } else {
+          window.location.href = `https://blueair.co/${language}-${country}`
+        }
+      }
+
+      if (this.dataset.domain == 'uk-blueair.myshopify.com') {
+        if (country == 'ca' || country == 'us') {
+          window.location.href = `https://www.blueair.com/${language}`
+        } else if (country == 'gb'){
+          window.location.href = `https://blueair.co.uk`
+        } if (country == 'de' && language == 'de'){
+          window.location.href = 'https://blueair.co/'
+        } else if (country == 'de' && language == 'en'){
+          window.location.href = 'https://blueair.co/en'
+        } else {
+          window.location.href = `https://blueair.co/${language}-${country}`
+        }
+      } 
     }
   
     _handleCountryChange(e) {
       this.countryLabel.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
       const selectedValue = e.target.options[e.target.selectedIndex].value
+      this.selectedCountry = selectedValue;
+
       for (let i = 0; i < this._languagePicker.length; i++) {
         if (this._languagePicker[i].country == selectedValue) {
           this._removeOptions()
@@ -221,6 +269,8 @@ class CountrySelectModal extends HTMLElement {
   
     _handleLanguageChange(e) {
       this.languageInput.value = e.target.value
+      this.selectedLanguage = e.target.value;
+
       if (this.languageInputLabel) {
         this.languageInputLabel.innerHTML =  e.target.options[e.target.selectedIndex].dataset.endonymName
       }
