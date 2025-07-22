@@ -431,11 +431,11 @@
                         {{ current_variant.price | money }}
                       </span>
                       <span>&nbsp;-&nbsp;</span>
-                      <span js-atc-text>
+                      <span js-atc-text data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}" data-out-of-stock-text="{{'products.product.sold_out' | t }}">
                         {% if current_variant.available %}
-                          Add to Cart
+                          {{ 'products.product.add_to_cart' | t }}
                         {% else %}
-                          Out of Stock
+                          {{'products.product.sold_out' | t }}
                         {% endif %}
                       </span>
                     </div>

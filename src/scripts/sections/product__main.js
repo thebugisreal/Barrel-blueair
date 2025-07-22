@@ -918,14 +918,22 @@ class ProductMain extends HTMLElement {
       if (variant.available) {
         this.buttons.forEach((btn) => {
           if (btn.querySelector(this._selectors.atcText).textContent) {
-            btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+            if (btn.querySelector(this._selectors.atcText).dataset.addCartText) {
+              btn.querySelector(this._selectors.atcText).textContent = btn.querySelector(this._selectors.atcText).dataset.addCartText;
+            } else {
+              btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
+            }
           }
-          btn.removeAttribute('disabled');
+          btn.remsoveAttribute('disabled');
         });
       } else {
         this.buttons.forEach((btn) => {
           if (btn.querySelector(this._selectors.atcText)) {
-            btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+            if (btn.querySelector(this._selectors.atcText).dataset.outOfStockText) {
+              btn.querySelector(this._selectors.atcText).textContent = btn.querySelector(this._selectors.atcText).dataset.outOfStockText;
+            } else {
+              btn.querySelector(this._selectors.atcText).textContent = 'Out of Stock';
+            }
           }
           btn.setAttribute('disabled', '');
         });

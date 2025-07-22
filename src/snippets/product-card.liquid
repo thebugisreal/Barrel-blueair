@@ -233,11 +233,11 @@
       <div class="product-card__atc-wrapper mt-md">
         <button class="product-card__atc btn btn--blue-rounded relative" {% unless current_variant.available %}disabled{% endunless %} data-variant-id="{{ product.selected_or_first_available_variant.id }}" js-quick-add>
           <div class="btn__text whitespace-nowrap">
-            <span js-atc-text>
+            <span js-atc-text data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}" data-out-of-stock-text="{{'products.product.sold_out' | t }}">
               {% if current_variant.available %}
-                Add to Cart
+                {{ 'products.product.add_to_cart' | t }}
               {% else %}
-                Out of Stock
+                {{'products.product.sold_out' | t }}
               {% endif %}
             </span>
           </div>
