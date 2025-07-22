@@ -265,6 +265,8 @@ class CountrySelectModal extends HTMLElement {
           break
         }
       }
+
+      this.selectedLanguage = this.languageSelect.options[0].value.toLowerCase();
     }
   
     _handleLanguageChange(e) {
