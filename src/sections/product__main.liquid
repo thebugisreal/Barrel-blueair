@@ -724,6 +724,22 @@
                 {% endif %}
             {% endcase %}
           {% endfor %}
+{% comment %} 
+          <p class="line-item-property__field">
+            <label for="parent-product">parent-product</label>
+            <input id="parent-product" type="text" name="properties[_parent-product]" value="{{ product.id }}">
+          </p> {% endcomment %}
+          {% if product.metafields.seed.product_gwp_product != blank %}
+            <p class="line-item-property__field hidden">
+              <label for="parent-product">parent-product</label>
+              <input id="parent-product" type="text" name="properties[_parent-product]" value="{{ product.id }}">
+            </p>
+            <p class="line-item-property__field hidden">
+              <label for="gwp-product">gwp-product</label>
+              <input id="gwp-product" type="text" name="properties[_gwp-product]" value="{{ product.metafields.seed.product_gwp_product.value.variants[0].id }}">
+            </p>
+          {% endif %}
+
         {%- endform -%}
       </div>
     </div><!-- .product__info-container -->

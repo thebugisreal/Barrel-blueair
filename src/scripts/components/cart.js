@@ -32,11 +32,63 @@ class CartItems extends HTMLElement {
     });
 
     this.checkIneligibleCartItems();
+    this.checkGWP()
   }
 
   disconnectedCallback() {
     if (this.cartUpdateUnsubscriber) {
       this.cartUpdateUnsubscriber();
+    }
+  }
+
+  async fetchCart() {
+    const response = await fetch('/cart.js');
+    return response.json();
+  }
+
+  async checkGWP() {
+    console.log('CHECKING!!!')
+    const newCart = await this.fetchCart();
+    this.cart = document.querySelector('cart-drawer');
+    let hasGWP = false;
+    let gwpInCart = false
+    let gwpProductId = '';
+    let parentProductId = '';
+
+    newCart.items.forEach((item)=> {
+      console.log('item', item.properties)
+      if(item.properties['_gwp-product']) {
+        hasGWP = true;
+        gwpProductId = parseInt(item.properties['_gwp-product']);
+      }
+      if(item.properties['_parent-product']) {
+        parentProductId = parseInt(item.properties['_parent-product']);
+      }
+      if(item.properties['_isGWP']) {
+        console.log('what is the properties', item.properties['_isGWP'])
+        gwpInCart = true
+        return
+      }
+    })
+
+    if(hasGWP) {
+      const gwpData = {
+            items: [
+              { 
+                id: gwpProductId, 
+                quantity: 1,
+                properties: { 
+                  '_isGWP': true,
+                  '_parentProductId': parentProductId
+                }
+              }
+            ],
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+      }
+      console.log("GWP?", gwpInCart)
+      if(!gwpInCart) {
+        this._updateCartItems('add', gwpData, true);
+      }
     }
   }
 
@@ -275,6 +327,46 @@ class CartItems extends HTMLElement {
     const cartDrawerItemElements = this.querySelectorAll(`#CartDrawer-Item-${line} loading-spinner`);
     
     [...cartItemElements, ...cartDrawerItemElements].forEach((spinner) => spinner.removeAttribute("loading"));
+  }
+
+    _updateCartItems = (type, data, render = true) => {
+    this.cart.setActiveElement(document.activeElement);
+
+    const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        sessionStorage.setItem('noCartWatcherHandle', 'true');
+
+        if (response.status) {
+          this._handleErrorMessage(response.description);
+          this.subscriptionError = true;
+          return response;
+        }
+
+        if (!this.subscriptionError) {
+          this.subscriptionError = false;
+          if (render) {
+            if (this.cart) this.cart.renderContents(response);
+          }
+        }
+        
+        return response;
+      })
+      .catch((e) => {
+        this._handleErrorMessage(e.description)
+        console.log(e);
+      })
+      .finally(() => {
+        this.loading.removeAttribute('loading');
+      });
+
+    return res;
   }
 }
 
@@ -637,6 +729,7 @@ class CartWatcher {
       this.observeCartChanges();
     });
   }
+  
 
   async fetchCart() {
     const response = await fetch('/cart.js');
@@ -644,6 +737,7 @@ class CartWatcher {
   }
   async emitCartChanges() {
     const newCart = await this.fetchCart();
+
     const event = new CustomEvent("cart_changed", { detail: newCart });
     window.dispatchEvent(event);
   }
