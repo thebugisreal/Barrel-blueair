@@ -9,17 +9,17 @@
   if product.available
     if current_variant
       if current_variant.available 
-        assign atc_text = 'Add To Cart '
+        assign atc_text = 'products.product.add_to_cart' | t
       else 
         assign atc_disabled = true
-        assign atc_text = 'Out Of Stock'
+        assign atc_text = 'products.product.sold_out' | t
       endif
     else 
       assign options_select_required = true
     endif
   else
     assign atc_disabled = true
-    assign atc_text = 'Out Of Stock'
+    assign atc_text = 'products.product.sold_out' | t
   endif
 -%}
 
