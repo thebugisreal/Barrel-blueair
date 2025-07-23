@@ -7,10 +7,11 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "main": {
       "type": "page__main",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -21,6 +22,32 @@
         "padding_top_desktop": "desktop:pt-lg",
         "padding_bottom_desktop": "desktop:pb-lg",
         "max_width": "80ch"
+      }
+    },
+    "section_text_banner_4wGYnd": {
+      "type": "section__text-banner",
+      "name": "Text Banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Reset Capsule Giveaway",
+        "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-left"
       }
     },
     "section_faq_cta_AxRwzp": {
@@ -44,8 +71,24 @@
         "cta_style": "btn btn--white-rounded"
       }
     },
+    "section_embed_BJC7Wq": {
+      "type": "section__embed",
+      "name": "Embed",
+      "settings": {
+        "margin_top_mobile": "mt-lg",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "embed": "<div class=\"klaviyo-form-XdY2Sy\"></div>"
+      }
+    },
     "footer_klaviyo_cMBtqC": {
       "type": "footer__klaviyo",
+      "disabled": true,
       "name": "Footer - Klaviyo",
       "settings": {
         "margin_top_mobile": "mt-0",
@@ -62,11 +105,31 @@
         "title_style": "h3",
         "color": "bg-white text-blue"
       }
+    },
+    "section_text_NNnQUm": {
+      "type": "section__text",
+      "name": "Text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "109ch",
+        "richtext": "<p><a href=\"https://www.unileversweepsrules.com/blueairreset\" target=\"_blank\" title=\"https://www.unileversweepsrules.com/blueairreset\">Rules & Regulations</a></p><p><a href=\"https://www.blueair.com/pages/privacy-notice-us\" target=\"_blank\" title=\"https://www.blueair.com/pages/privacy-notice-us\">Blueair Privacy Policy</a></p>",
+        "richtext_style": "p2"
+      }
     }
   },
   "order": [
     "main",
+    "section_text_banner_4wGYnd",
     "section_faq_cta_AxRwzp",
-    "footer_klaviyo_cMBtqC"
+    "section_embed_BJC7Wq",
+    "footer_klaviyo_cMBtqC",
+    "section_text_NNnQUm"
   ]
 }
