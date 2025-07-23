@@ -105,3 +105,9 @@
 .evidon-consent-link {
   @apply flex;
 }
+
+@media (max-width: 767px) {
+  [data-testid="form-component"] {
+    padding: 10px 10px 10px 0 !important;
+  }
+}
