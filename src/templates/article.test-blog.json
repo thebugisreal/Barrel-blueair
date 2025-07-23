@@ -30,7 +30,7 @@
             "padding_top_desktop": "desktop:pt-xxl",
             "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "95ch",
-            "richtext": "<p>As much as we love our pets, dealing with <strong>pet odor</strong> is something every pet owner encounters. Whether it’s a wet dog smell, litter box funk, or just everyday dander in the air, pet odor can quickly make your space feel less fresh.</p><p>But here’s the good news: you don’t need to rely on chemical-filled sprays or overpowering artificial scents to keep your home smelling clean without masking. Instead, turn to <strong>a more natural way of living with air care solutions</strong> that create air that's <strong>optimized for you, and your pet’s, health</strong>.</p>",
+            "richtext": "<p>new blog post</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
@@ -48,17 +48,16 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-xxl",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/blue_sig_image_for_stats.png",
-            "image_desktop": "shopify://shop_images/blue_sig_image_for_stats.png",
+            "image": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
+            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
             "caption": "",
             "caption_style": "p6",
-            "product": "blue-signature",
-            "product_image_override": "shopify://shop_images/MAIN-1.png"
+            "product": "classic-pro-cp7i",
+            "product_image_override": "shopify://shop_images/Classic_Pro_CP7i.png"
           }
         },
         "image_caption_KnqYBR": {
           "type": "image_caption",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -74,6 +73,26 @@
             "product": ""
           }
         },
+        "product_desc_image_CyD73g": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "Blue Signature",
+            "title_style": "p1",
+            "product": "blue-signature-midnight",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
         "text_e9yarP": {
           "type": "text",
           "settings": {
@@ -86,7 +105,24 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>The Risks of Conventional Air Fresheners</strong></h4><p></p><p>Many store-bought air fresheners and sprays contain:</p><ol><li>Volatile Organic Compounds (VOCs)</li><li>Synthetic fragrances</li><li>Formaldehyde</li><li>Phthalates</li></ol><p></p><p>These ingredients can contribute to respiratory problems and allergies—not just for humans, but for animals too. Cats and dogs have more sensitive respiratory systems, so what seems safe to you might be harmful to them over time.</p>",
+            "richtext": "<p>new </p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "text_ATDCUx": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -118,7 +154,7 @@
             "image_placement_desktop": "tabletl:flex-row-reverse"
           }
         },
-        "text_VnAwbf": {
+        "text_Ub47yL": {
           "type": "text",
           "settings": {
             "margin_top_mobile": "mt-0",
@@ -130,13 +166,14 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Why Nontoxic Air Care Products Matter</strong></h4><p></p><p><strong>Nontoxic air care products</strong> are made from safe, plant-based ingredients and avoid harsh chemicals that can negatively affect pets. They’re designed to neutralize odors rather than mask them.</p><p>Benefits include:</p><ol><li>Safe for use around pets, kids, and sensitive individuals</li><li>Made without synthetic chemicals</li><li>Often biodegradable and packaged sustainably</li><li>Free from allergens and hormone-disrupting additives</li></ol><p> </p><h4><strong>Creating Air That’s Optimized for Pet Health</strong></h4><p></p><p>Beyond odor elimination, think about the <strong>overall air quality</strong> in your home. Pet dander, dust, and allergens can stay airborne for hours, contributing to sneezing, asthma, and general discomfort.</p><p>Here’s how to improve your air for both you and your furry family members:</p><p><strong>1. Invest in a High-Quality Air Purifier</strong></p><p>An<strong> air purifier</strong> is one of the most effective tools for improving air quality. It captures:</p><ol><li>Pet dander</li><li>Odors</li><li>Hair and fur</li><li>Dust </li><li>Pollen</li><li>Smoke</li><li>Mold spores allergen</li><li>Bacteria</li><li>Viruses</li></ol><p></p><p>Some models even include <strong>activated carbon filters</strong>, which are excellent for neutralizing pet odors specifically. Choose a purifier rated for the size of your space and run it continuously in high-traffic pet areas.</p><p><strong>2. Use Environmentally Friendly Air Care Products</strong></p><p>Eco-friendly doesn’t have to mean less effective. Many<strong> air care products</strong> are now designed with pets in mind, using natural ingredients and refillable or recyclable packaging.</p><p>Great options include:</p><ol><li>Refillable essential oil diffusers</li><li>Soy or beeswax candles with pet-safe scents</li><li>Baking soda-based deodorizing sprays</li><li>Charcoal odor absorbers</li></ol><p></p><p><strong>3. Ventilate and Clean Regularly</strong></p><p>While air care products help, fresh air is still key. Open windows, run fans, and clean pet bedding often. Combine this with air purifying solutions to maintain truly clean, breathable air.</p>",
+            "richtext": "<h4>The Ocean’s Role in Our World</h4><p></p><p>The oceans are more than just vast bodies of water — they are essential to life on Earth. Scientists estimate that nearly half of the oxygen we breathe is produced by the ocean*, much of it from plankton — tiny, floating plants, algae, and bacteria that photosynthesize. One tiny organism, Prochlorococcus, produces up to 20% of the oxygen in our entire biosphere, which is more than all the tropical rainforests on land combined!</p><p>As an air care brand, Blueair knows that clean air is vital to health and well-being, and our oceans play a significant role in providing the oxygen that we need. That’s why we’re proud to join forces with 4ocean to protect these vital ecosystems from the devastating impact of plastic pollution. Keeping the oceans clean helps to ensure that they can continue to support life both underwater and on land.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
         "image_caption_Xi6zz4": {
           "type": "image_caption",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -147,28 +184,10 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/2_e57bfee4-8580-409d-a650-db7ea4e77294.png",
-            "image_desktop": "shopify://shop_images/2_e57bfee4-8580-409d-a650-db7ea4e77294.png",
+            "image": "shopify://shop_images/Image_4_3.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
-          }
-        },
-        "text_NiRkQd": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Pet-Safe Air Care: Top Picks</strong></h4><p></p><p>Here’s a quick list of pet- and planet-friendly options:</p><ol><li><strong>Air Purifier with Carbon Filter  </strong>– Best for long-term odor and allergen control.</li><li><strong>DIY Spray with Baking Soda + Natural Essential Oils</strong>  – A safe and budget-friendly deodorizer.</li><li><strong>Activated Charcoal Bags</strong>  – Passive odor control </li><li><strong>Pet-Safe Essential Oil Diffusers</strong> – Use only highly diluted pet-safe essential oils (like lavendar or chamomile), and ensure good ventilation.  Avoid diffusing near cats without veterinarian guidance.</li></ol><p></p><p><strong>Final Thoughts</strong></p><p>A clean-smelling home doesn’t have to come at the cost of your pet’s health—or the planet’s. By switching to <strong>more natural air care products</strong> and using tools like <strong>air purifiers</strong>, you can eliminate <strong>pet odor</strong> and optimize your home’s air quality for everyone under your roof.</p><p>Cleaner air. Happier pets. Healthier home.</p>",
-            "richtext_alignment": "text-left",
-            "richtext_style": "p2"
           }
         }
       },
@@ -176,35 +195,14 @@
         "text_QNqwkC",
         "image_caption_QBGK76",
         "image_caption_KnqYBR",
+        "product_desc_image_CyD73g",
         "text_e9yarP",
+        "text_ATDCUx",
         "image_text_MikMKz",
-        "text_VnAwbf",
-        "image_caption_Xi6zz4",
-        "text_NiRkQd"
+        "text_Ub47yL",
+        "image_caption_Xi6zz4"
       ],
       "settings": {}
-    },
-    "section_product_grid_tcCwJd": {
-      "type": "section__product-grid",
-      "name": "Product Grid",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-sm",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-sm",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "carousel_mobile": true,
-        "num_cols_mobile": 2,
-        "num_cols_desktop": 3,
-        "color": "bg-white text-blue",
-        "title": "Shop now",
-        "title_style": "h4",
-        "collection": "shop-all",
-        "num_products": 3
-      }
     },
     "section_carousel_NMANUr": {
       "type": "section__carousel",
@@ -288,6 +286,31 @@
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",
         "cta_position_desktop": "tabletl:justify-center"
+      }
+    },
+    "section_text_banner_UJhz3g": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-xl",
+        "margin_bottom_mobile": "mb-xl",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xl",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "",
+        "title_style": "h1",
+        "subtext": "*Campaign ends at 10,000 subscriptions",
+        "subtext_style": "p5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "text_align_desktop": "desktop:text-left"
       }
     },
     "article_content_CXmqDG": {
@@ -505,8 +528,8 @@
   "order": [
     "main",
     "article_content_zMAJck",
-    "section_product_grid_tcCwJd",
     "section_carousel_NMANUr",
+    "section_text_banner_UJhz3g",
     "article_content_CXmqDG",
     "section_accordion_DgQAah"
   ]

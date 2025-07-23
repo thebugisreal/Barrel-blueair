@@ -18,14 +18,15 @@
         "color": "bg-blue text-white",
         "image_mobile": "shopify://shop_images/Sale_mobile.png",
         "image_desktop": "shopify://shop_images/sale_desktop.jpg",
-        "title": "Meet the new <br> Blue Signature™",
+        "title": "Meet the new <br>Blue Signature™",
         "subtext": "The most powerful, compact <br> air purifier you can get",
         "cta_url": "shopify://collections/air-purifiers",
         "cta_text": "Shop now",
         "cta_style": "btn btn--white-rounded",
         "hor_align_mobile": "justify-start",
         "ver_align_mobile": "items-start",
-        "hor_align_desktop": "desktop:justify-start"
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-center"
       },
       "blocks": {}
     },
@@ -38,6 +39,18 @@
           }
         }
       }
+    },
+    "section_testimonial_tabs_Rtbxp9": {
+      "settings": {
+        "image": "shopify://shop_images/Blueair_MostAwarded_2025.png"
+      },
+      "blocks": {}
+    },
+    "section_image_text_grid_HDAVLL": {
+      "settings": {
+        "title": "Healthier living<br> starts here"
+      },
+      "blocks": {}
     }
   }
 }

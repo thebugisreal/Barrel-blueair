@@ -15,10 +15,12 @@
   "sections": {
     "hero": {
       "settings": {
-        "title": "Breathe better, live better",
-        "subtext": "",
-        "cta_text": "Explore",
-        "cta_url": "shopify:\/\/collections\/shop-all"
+        "image_mobile": "shopify://shop_images/GE_launch_mobile.png",
+        "image_desktop": "shopify://shop_images/GE_launch_desktop.png",
+        "title": "Your new destination <br>for fresh clean air",
+        "subtext": "Healthier living starts here",
+        "cta_url": "shopify://collections/shop-all",
+        "cta_text": "Explore"
       },
       "blocks": {}
     },

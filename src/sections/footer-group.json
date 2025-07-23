@@ -31,7 +31,6 @@
     },
     "footer": {
       "type": "footer",
-      "disabled": true,
       "settings": {
         "footer_nav": "seed-footer",
         "subfooter_nav": "seed-subfooter",

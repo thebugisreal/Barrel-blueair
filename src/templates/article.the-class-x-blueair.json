@@ -30,35 +30,13 @@
             "padding_top_desktop": "desktop:pt-xxl",
             "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "95ch",
-            "richtext": "<p>As much as we love our pets, dealing with <strong>pet odor</strong> is something every pet owner encounters. Whether it’s a wet dog smell, litter box funk, or just everyday dander in the air, pet odor can quickly make your space feel less fresh.</p><p>But here’s the good news: you don’t need to rely on chemical-filled sprays or overpowering artificial scents to keep your home smelling clean without masking. Instead, turn to <strong>a more natural way of living with air care solutions</strong> that create air that's <strong>optimized for you, and your pet’s, health</strong>.</p>",
+            "richtext": "<p>When movement meets clean air, something powerful happens. That’s exactly what unfolded during a recent partnership between Blueair, a global leader in air wellness, and The Class (<a href=\"https://www.theclass.com\" target=\"_blank\" title=\"Join a class\">Join a class</a>), the transformative movement and mindfulness practice known for its emotionally cathartic and physically demanding sessions.</p><p>As the official air wellness partner for The Class’s flagship studio, Blueair integrated its advanced air wellness products—including the new Blue Signature™—to deliver a fresh, high-performing environment where breath, movement, and presence came together.</p><p>This collaboration highlighted how non-toxic living, clean air, and somatic wellness experiences like The Class are shaping the future of the modern mind and body retreat.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
         },
-        "image_caption_QBGK76": {
-          "type": "image_caption",
-          "disabled": true,
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-xxl",
-            "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/blue_sig_image_for_stats.png",
-            "image_desktop": "shopify://shop_images/blue_sig_image_for_stats.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": "blue-signature",
-            "product_image_override": "shopify://shop_images/MAIN-1.png"
-          }
-        },
         "image_caption_KnqYBR": {
           "type": "image_caption",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -69,6 +47,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/BlueSig_9efa4c6e-15ae-4484-98f3-36e598758b51.png",
+            "image_desktop": "shopify://shop_images/BlueSig_9efa4c6e-15ae-4484-98f3-36e598758b51.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -86,14 +66,98 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>The Risks of Conventional Air Fresheners</strong></h4><p></p><p>Many store-bought air fresheners and sprays contain:</p><ol><li>Volatile Organic Compounds (VOCs)</li><li>Synthetic fragrances</li><li>Formaldehyde</li><li>Phthalates</li></ol><p></p><p>These ingredients can contribute to respiratory problems and allergies—not just for humans, but for animals too. Cats and dogs have more sensitive respiratory systems, so what seems safe to you might be harmful to them over time.</p>",
+            "richtext": "<h4><strong>When Breath Fuels Movement</strong></h4><p></p><p>The Class is known for guiding participants through dynamic, music-driven classes that help release stored tension and re-regulate the nervous system. With Blueair's HEPASilent™ air purification technology in the space, every inhale became an intentional, nourishing part of the experience.</p><p>Blue Signature™ air purifiers worked quietly in the background, filtering out airborne pollutants, allergens, and odors to support clearer breathing, better focus, and improved recovery. The result was a subtle yet transformative shift in how participants felt—physically, mentally, and emotionally.</p><p>“It’s subtle, but powerful. You don’t see it working; you just feel better being in the space,” said Soeuraya Wilson, teacher at The Class.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
-        "image_text_MikMKz": {
-          "type": "image_text",
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "95ch",
+            "richtext": "<h4>A Shared Vision for Non-Toxic Living and Whole-Body Wellness</h4><p></p><p>Today’s wellness seekers are more aware than ever of the importance of non-toxic living and clean indoor environments—especially in high-traffic spaces like fitness studios, homes, and yoga and wellness retreats. Clean air is no longer a luxury—it’s essential to the overall wellness equation.</p><p>Blueair and The Class shared a belief that breath is at the center of well-being. With research showing links between air quality and benefits like better sleep, stronger immunity, and improved mental clarity, the collaboration offered more than just a cleaner space—it elevated the entire experience.</p><p></p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_Xi6zz4": {
+          "type": "image_caption",
           "disabled": true,
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Image_4_3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "text_Ub47yL",
+        "image_caption_Xi6zz4"
+      ],
+      "settings": {}
+    },
+    "article_content_bnQRKR": {
+      "type": "article__content",
+      "blocks": {
+        "image_caption_C6MQ7c": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Class_3eee719c-aac3-4c34-adcc-0db71f3d841c.png",
+            "image_desktop": "shopify://shop_images/Class.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_grBbCr": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "95ch",
+            "richtext": "<h4>The Blue Signature™ Difference</h4><p></p><p>The Blue Signature™ air purifier is engineered to clean large spaces—up to 3,390 square feet in just one hour—making it ideal for wellness studios, home sanctuaries, and eco-conscious retreats. During the partnership, the studio was outfitted with Blueair devices that supported deeper breathing and helped students move through their practice with greater ease and focus.</p><p>Guests had the opportunity to experience the Blue Signature ™  line firsthand, scan to learn more, and even take home exclusive offers—bringing air wellness into their personal routines.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_xFwJ34": {
+          "type": "image_text",
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-xl",
@@ -107,18 +171,19 @@
             "color": "text-blue",
             "title": "Get started",
             "title_style": "h4",
-            "richtext": "<p>Find your device, select your filter, & customize your subscription</p><p>Your purchase directly supports 1 pound of plastic & trash pulled from the ocean, coastlines & rivers</p>",
-            "cta_url": "shopify://pages/subscribe",
-            "cta_text": "Subscribe now",
+            "richtext": "<p>View our partnership product: Blue Signature™</p>",
+            "cta_url": "shopify://products/blue-signature",
+            "cta_text": "Explore now",
             "cta_style": "btn btn--blue-rounded",
             "text_padding_left_desktop": "desktop:pl-0",
             "text_padding_right_desktop": "desktop:pr-0",
-            "image_mobile": "shopify://shop_images/Image_Ratio_Keeper_56602345-65b9-4a4a-84b2-80c9208dacf9.png",
+            "image_mobile": "shopify://shop_images/MAIN_0e150d4a-c615-4d98-89c8-9e1b08082bca.png",
+            "image_desktop": "shopify://shop_images/MAIN_0e150d4a-c615-4d98-89c8-9e1b08082bca.png",
             "image_placement_mobile": "flex-col",
             "image_placement_desktop": "tabletl:flex-row-reverse"
           }
         },
-        "text_VnAwbf": {
+        "text_3rDKjn": {
           "type": "text",
           "settings": {
             "margin_top_mobile": "mt-0",
@@ -130,13 +195,14 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Why Nontoxic Air Care Products Matter</strong></h4><p></p><p><strong>Nontoxic air care products</strong> are made from safe, plant-based ingredients and avoid harsh chemicals that can negatively affect pets. They’re designed to neutralize odors rather than mask them.</p><p>Benefits include:</p><ol><li>Safe for use around pets, kids, and sensitive individuals</li><li>Made without synthetic chemicals</li><li>Often biodegradable and packaged sustainably</li><li>Free from allergens and hormone-disrupting additives</li></ol><p> </p><h4><strong>Creating Air That’s Optimized for Pet Health</strong></h4><p></p><p>Beyond odor elimination, think about the <strong>overall air quality</strong> in your home. Pet dander, dust, and allergens can stay airborne for hours, contributing to sneezing, asthma, and general discomfort.</p><p>Here’s how to improve your air for both you and your furry family members:</p><p><strong>1. Invest in a High-Quality Air Purifier</strong></p><p>An<strong> air purifier</strong> is one of the most effective tools for improving air quality. It captures:</p><ol><li>Pet dander</li><li>Odors</li><li>Hair and fur</li><li>Dust </li><li>Pollen</li><li>Smoke</li><li>Mold spores allergen</li><li>Bacteria</li><li>Viruses</li></ol><p></p><p>Some models even include <strong>activated carbon filters</strong>, which are excellent for neutralizing pet odors specifically. Choose a purifier rated for the size of your space and run it continuously in high-traffic pet areas.</p><p><strong>2. Use Environmentally Friendly Air Care Products</strong></p><p>Eco-friendly doesn’t have to mean less effective. Many<strong> air care products</strong> are now designed with pets in mind, using natural ingredients and refillable or recyclable packaging.</p><p>Great options include:</p><ol><li>Refillable essential oil diffusers</li><li>Soy or beeswax candles with pet-safe scents</li><li>Baking soda-based deodorizing sprays</li><li>Charcoal odor absorbers</li></ol><p></p><p><strong>3. Ventilate and Clean Regularly</strong></p><p>While air care products help, fresh air is still key. Open windows, run fans, and clean pet bedding often. Combine this with air purifying solutions to maintain truly clean, breathable air.</p>",
+            "richtext": "<h4><strong>Clean Air as a Cornerstone of Wellness Spaces</strong></h4><p></p><p>Whether in a dynamic movement class, a serene yoga and wellness retreat, or the comfort of a home, clean air supports deeper connection to self and environment. This collaboration illustrated how thoughtful design, science-backed products, and a commitment to mind-body wellness can transform even a single breath into a moment of healing.</p><p>From boutique fitness spaces to full-scale wellness retreats like Haven Wellness, the message is clear: air matters.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
-        "image_caption_Xi6zz4": {
+        "image_caption_ccDrVH": {
           "type": "image_caption",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -147,147 +213,37 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/2_e57bfee4-8580-409d-a650-db7ea4e77294.png",
-            "image_desktop": "shopify://shop_images/2_e57bfee4-8580-409d-a650-db7ea4e77294.png",
+            "image": "shopify://shop_images/TheClass_Header_image.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
           }
-        },
-        "text_NiRkQd": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "95ch",
-            "richtext": "<h4><strong>Pet-Safe Air Care: Top Picks</strong></h4><p></p><p>Here’s a quick list of pet- and planet-friendly options:</p><ol><li><strong>Air Purifier with Carbon Filter  </strong>– Best for long-term odor and allergen control.</li><li><strong>DIY Spray with Baking Soda + Natural Essential Oils</strong>  – A safe and budget-friendly deodorizer.</li><li><strong>Activated Charcoal Bags</strong>  – Passive odor control </li><li><strong>Pet-Safe Essential Oil Diffusers</strong> – Use only highly diluted pet-safe essential oils (like lavendar or chamomile), and ensure good ventilation.  Avoid diffusing near cats without veterinarian guidance.</li></ol><p></p><p><strong>Final Thoughts</strong></p><p>A clean-smelling home doesn’t have to come at the cost of your pet’s health—or the planet’s. By switching to <strong>more natural air care products</strong> and using tools like <strong>air purifiers</strong>, you can eliminate <strong>pet odor</strong> and optimize your home’s air quality for everyone under your roof.</p><p>Cleaner air. Happier pets. Healthier home.</p>",
-            "richtext_alignment": "text-left",
-            "richtext_style": "p2"
-          }
         }
       },
       "block_order": [
-        "text_QNqwkC",
-        "image_caption_QBGK76",
-        "image_caption_KnqYBR",
-        "text_e9yarP",
-        "image_text_MikMKz",
-        "text_VnAwbf",
-        "image_caption_Xi6zz4",
-        "text_NiRkQd"
+        "image_caption_C6MQ7c",
+        "text_grBbCr",
+        "image_text_xFwJ34",
+        "text_3rDKjn",
+        "image_caption_ccDrVH"
       ],
       "settings": {}
     },
-    "section_product_grid_tcCwJd": {
-      "type": "section__product-grid",
-      "name": "Product Grid",
+    "section_text_8tgFQ4": {
+      "type": "section__text",
+      "name": "Text",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-sm",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-sm",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "carousel_mobile": true,
-        "num_cols_mobile": 2,
-        "num_cols_desktop": 3,
-        "color": "bg-white text-blue",
-        "title": "Shop now",
-        "title_style": "h4",
-        "collection": "shop-all",
-        "num_products": 3
-      }
-    },
-    "section_carousel_NMANUr": {
-      "type": "section__carousel",
-      "blocks": {
-        "image_caption_L7XeyH": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify://shop_images/Image_Ratio_Keeper_c2add0ea-9e66-4c15-bf84-875d05e00c3d.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
-          }
-        },
-        "image_caption_C6eLrE": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify://shop_images/Image_Ratio_Keeper-3_c7fbddd6-fa10-4db3-96ea-19c9f93c7b2f.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
-          }
-        },
-        "image_caption_WFwXm6": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify://shop_images/Image_Ratio_Keeper-1_cf7e07b8-3e3f-4f52-bd25-8f34a961321c.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
-          }
-        },
-        "image_caption_cxTYWh": {
-          "type": "image_caption",
-          "settings": {
-            "image_mobile": "shopify://shop_images/Image_Ratio_Keeper-2_9a25d94c-2d92-4a99-87c0-f4d9fffef560.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_caption_L7XeyH",
-        "image_caption_C6eLrE",
-        "image_caption_WFwXm6",
-        "image_caption_cxTYWh"
-      ],
-      "disabled": true,
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-lg",
         "padding_top_mobile": "pt-0",
         "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-lg",
+        "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "carousel_content_top_spacing_mobile": "mt-md",
-        "scrollbar_top_spacing_mobile": "mt-md",
-        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
-        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
-        "max_width_desktop": "90vw",
-        "color": "bg-white text-blue",
-        "slides_per_view": "1.2",
-        "slides_per_view_desktop": "1.8",
-        "slides_per_view_extrawide": "3",
-        "carousel_nav": "scrollbar",
-        "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": false,
-        "enable_carousel_gutter": true,
-        "title": "",
-        "title_style": "h2",
-        "title_alignment_mobile": "text-left",
-        "title_alignment_desktop": "tabletl:text-center",
-        "subtext": "",
-        "subtext_style": "p2",
-        "url": "",
-        "url_text": "",
-        "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "justify-center",
-        "cta_position_desktop": "tabletl:justify-center"
+        "max_width_desktop": "109ch",
+        "richtext": "",
+        "richtext_style": "p2"
       }
     },
     "article_content_CXmqDG": {
@@ -505,8 +461,8 @@
   "order": [
     "main",
     "article_content_zMAJck",
-    "section_product_grid_tcCwJd",
-    "section_carousel_NMANUr",
+    "article_content_bnQRKR",
+    "section_text_8tgFQ4",
     "article_content_CXmqDG",
     "section_accordion_DgQAah"
   ]

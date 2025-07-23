@@ -16,12 +16,12 @@
     "hero": {
       "disabled": false,
       "settings": {
+        "image_mobile": "shopify://shop_images/Spring_mobile.png",
+        "image_desktop": "shopify://shop_images/Spring_desktop_51895177-7148-4737-8587-267cc9396140.png",
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify:\/\/collections\/shop-all",
-        "cta_text": "Explore",
-        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile.png",
-        "image_desktop": "shopify:\/\/shop_images\/Spring_desktop_51895177-7148-4737-8587-267cc9396140.png"
+        "cta_url": "shopify://collections/shop-all",
+        "cta_text": "Explore"
       },
       "blocks": {}
     },
@@ -84,7 +84,7 @@
     },
     "section_image_text_grid_HDAVLL": {
       "settings": {
-        "image_mobile": "shopify:\/\/shop_images\/Image_3_4-1_c87d8971-4698-4961-b096-b6b4c9cd17f6.jpg"
+        "image_mobile": "shopify://shop_images/Image_3_4-1_c87d8971-4698-4961-b096-b6b4c9cd17f6.jpg"
       },
       "blocks": {}
     },
@@ -104,12 +104,15 @@
         "padding_top_mobile": "pt-0",
         "margin_bottom_desktop": "desktop:mb-0",
         "title": "Explore our best-sellers",
-        "title_style": "h3"
+        "title_style": "h3",
+        "padding_top_desktop": "desktop:pt-md"
       },
       "blocks": {}
     },
     "section_product_grid_mkajCi": {
-      "settings": {},
+      "settings": {
+        "padding_top_desktop": "desktop:pt-lg"
+      },
       "blocks": {
         "product_gK4U7z": {
           "settings": {
@@ -122,11 +125,19 @@
           "settings": {
             "product": "blue-pure-411i-max"
           }
+        },
+        "product_bh3Eb": {
+          "type": "product",
+          "disabled": false,
+          "settings": {
+            "product": "blue-pure-mini-max"
+          }
         }
       },
       "block_order": [
         "product_gK4U7z",
-        "product_iPGAk"
+        "product_iPGAk",
+        "product_bh3Eb"
       ]
     },
     "section_hero_hwthNJ": {
