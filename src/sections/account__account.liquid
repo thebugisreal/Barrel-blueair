@@ -430,7 +430,7 @@
                 {% if forloop.first %}checked{% endif %}>
               <label 
                 for="{{ value_id }}" 
-                class="account-section__label h-[31px] flex justify-start items-center gap-xs p-sm"
+                class="account-section__label flex justify-start items-center gap-xs p-sm"
                 role="tab" 
                 aria-controls="{{ section | handleize }}-content-panel" 
                 aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
