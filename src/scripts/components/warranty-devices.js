@@ -60,7 +60,7 @@ async function getDevices() {
           if (res.status === 401 || res.status === 403 || data.error?.includes('expired') || data.error?.includes('invalid')) {
         clearAuthTokens();
         window.location.href = '/account/logout';
-        throw new Error('Please log in again.');
+        throw new Error('Authentication expired. Please log in again.');
       }
     throw new Error(data.error || data.message || 'Failed to fetch devices');
   }
@@ -82,7 +82,7 @@ async function registerDevice(formData) {
           if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
         clearAuthTokens();
         window.location.href = '/account/logout';
-        throw new Error('Please log in again.');
+        throw new Error('Authentication expired. Please log in again.');
       }
     throw new Error(err.error || err.message || 'Failed to register device');
   }
@@ -242,15 +242,17 @@ class WarrantyDevices extends HTMLElement {
               </div>
             </div>
             <!-- Button column -->
-            <div class="tabletp:w-1/4">
-              <button class="text-16 font-400 pb-xxs border-b border-blue hidden tabletp:block" onclick="this.closest('warranty-devices')._navigateToFilterSubscriptions()">
+            <div class="tabletp:w-1/4 flex justify-end items-start">
+              <a href="https://www.blueair.com/pages/subscribe-quiz" class="text-16 font-400 pb-xxs border-b border-blue hidden tabletp:inline-block no-underline hover:no-underline">
                 Add a filter subscription <span class="account-content__icon inline-block align-middle ml-xxxs">
+
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" viewBox="0 0 25 26" width="15" height="15">
                     <title>Plus-smaller</title>
                     <polygon points="25 12.5 13 12.5 13 .5 12 .5 12 12.5 0 12.5 0 13.5 12 13.5 12 25.5 13 25.5 13 13.5 25 13.5 25 12.5"/>
                   </svg>
+
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -490,11 +492,9 @@ class WarrantyDevices extends HTMLElement {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        console.log('Disabling button and showing spinner');
         saveBtn.disabled = true;
         saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
         spinner.setAttribute('loading', '');
-        console.log('Spinner loading attribute set:', spinner.hasAttribute('loading'));
 
         const formData = {
           family: form.unit_family.value,
@@ -514,41 +514,38 @@ class WarrantyDevices extends HTMLElement {
         } catch (err) {
           this._showErrorMessage(formatWarrantyErrorMessage(err.message));
         } finally {
-          console.log('Re-enabling button and hiding spinner');
           saveBtn.disabled = false;
           saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
           spinner.removeAttribute('loading');
-          console.log('Spinner loading attribute removed:', !spinner.hasAttribute('loading'));
         }
       });
     }
   }
 
   _showSuccessMessage(message) {
-    let msgDiv = this.querySelector('.warranty-success-message');
-    if (!msgDiv) {
-      msgDiv = document.createElement('div');
-      msgDiv.className = 'warranty-success-message w-full flex justify-center items-center bg-[#D6E4F3] p-xxs p2 mb-md';
-      this.prepend(msgDiv);
-    }
+    this._clearMessages();
+    let msgDiv = document.createElement('div');
+    msgDiv.className = 'warranty-success-message w-full flex justify-center items-center bg-[#D6E4F3] p-xxs p2 mb-md text-[#002955]';
     msgDiv.textContent = message;
-    msgDiv.style.display = 'flex';
-    msgDiv.style.backgroundColor = '#D6E4F3'; // Set to blue success color
+    this.prepend(msgDiv);
     
     // Scroll to top to show the success message
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  _showErrorMessage(message) {
-    let msgDiv = this.querySelector('.warranty-success-message');
-    if (!msgDiv) {
-      msgDiv = document.createElement('div');
-      msgDiv.className = 'warranty-success-message w-full flex justify-center items-center bg-[#D6E4F3] p-xxs p2 mb-md';
-      this.prepend(msgDiv);
+  _clearMessages() {
+    const existingMsg = this.querySelector('.warranty-success-message');
+    if (existingMsg) {
+      existingMsg.remove();
     }
+  }
+
+  _showErrorMessage(message) {
+    this._clearMessages();
+    let msgDiv = document.createElement('div');
+    msgDiv.className = 'warranty-success-message w-full flex justify-center items-center bg-[#FFD6D6] p-xxs p2 mb-md text-[#721c24]';
     msgDiv.textContent = message;
-    msgDiv.style.display = 'flex';
-    msgDiv.style.backgroundColor = '#FFD6D6';
+    this.prepend(msgDiv);
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -580,17 +577,6 @@ class WarrantyDevices extends HTMLElement {
           modelSelect.appendChild(opt);
         }
       });
-    }
-  }
-
-  _navigateToFilterSubscriptions() {
-    const filterSubscriptionsRadio = document.getElementById('AccountSection-filter-subscriptions');
-    if (filterSubscriptionsRadio) {
-      filterSubscriptionsRadio.checked = true;
-    }
-    const filterSubscriptionsLabel = document.querySelector('label[for="AccountSection-filter-subscriptions"]');
-    if (filterSubscriptionsLabel) {
-      filterSubscriptionsLabel.click();
     }
   }
 }

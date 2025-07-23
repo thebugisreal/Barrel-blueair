@@ -269,8 +269,9 @@
     {% endfor %}
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
       <h4 class="text-40 font-300 mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
-      <button class="text-16 font-400 text-center block leading-[1.2] pb-xxs border-b border-blue" js-toggle-warranty-form>
-        Register a new device  <span class="account-content__icon ml-xxxs">{% render 'icon-plus-small' %}</span>
+      <button class="btn flex justify-center items-center gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
+        <span class="btn__text">Register a new device</span>
+        <span class="w-[32px] rounded-full bg-white text-blue">{% render 'icon-arrow-right' %}</span>
       </button>
     </div>
 
@@ -278,10 +279,17 @@
       <div class="account-content">
         <form id="warranty-device-form" class="warranty-registration-form p-md bg-white w-full max-w-full">
           <!-- Device registration fields start -->
+
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Device Name</label>
             <input type="text" name="device_name" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="e.g. Living Room" required>
           </div>
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Serial number</label>
+            <input type="text" name="serial_number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
+          </div>
+
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit family</label>
             <div class="select-wrapper relative w-full">
@@ -312,10 +320,6 @@
           </div>
 
           <div class="form-group mb-md">
-            <label class="block mb-xs text-[#002D72]">Serial number</label>
-            <input type="text" name="serial_number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
-          </div>
-          <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Date of purchase</label>
             <div class="relative w-full">
               <input type="text" name="purchase_date" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY" required>
@@ -324,6 +328,7 @@
               </button>
             </div>
           </div>
+
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Place of purchase</label>
             <select class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" name="place_of_purchase" id="place-of-purchase" required>
@@ -331,9 +336,13 @@
               <option value="Amazon">Amazon</option>
               <option value="Blueair.com">Blueair.com</option>
               <option value="Other Online Retailer">Other Online Retailer</option>
-              <option value="In-Store">In-Store</option>
+              <option value="In-Store">Costco</option>
+              <option value="In-Store">Target</option>
+              <option value="In-Store">Best Buy</option>
+
             </select>
           </div>
+
           <div class="flex justify-between items-center gap-md">
             <button type="submit" id="warranty-save-btn" class="w-[174px] btn flex justify-center items-center gap-2 p-xxs pl-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative transition-all duration-200">
               <span class="btn-text">Save</span>
@@ -376,10 +385,7 @@
   data-customer-timestamp="{{ timestamp }}">
   <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
     <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
-      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
-        <div class="bg-blue text-white text-center p-sm">
-          <p class="account__title s1">Hello {{customer.first_name}}</p>
-        </div>
+      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full font-gilroy font-300 text-25">
 
         <!-- Mobile Navigation -->
         <div class="flex justify-start relative h-[56px] desktop:hidden">
@@ -424,7 +430,7 @@
                 {% if forloop.first %}checked{% endif %}>
               <label 
                 for="{{ value_id }}" 
-                class="account-section__label flex justify-start items-center gap-xs p-sm"
+                class="account-section__label h-[31px] flex justify-start items-center gap-xs p-sm"
                 role="tab" 
                 aria-controls="{{ section | handleize }}-content-panel" 
                 aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
@@ -432,7 +438,7 @@
                 js-tab
                 js-account-tab>
                 <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
-                <span class="account-section-label__text p1 leading-none">
+                <span class="account-section-label__text s4 text-25">
                   {{ section | escape }}
                 </span>
               </label>
