@@ -243,8 +243,8 @@ class WarrantyDevices extends HTMLElement {
             </div>
             <!-- Button column -->
             <div class="tabletp:w-1/4 flex justify-end items-start">
-              <a href="https://www.blueair.com/pages/subscribe-quiz" class="text-16 font-400 pb-xxs border-b border-blue hidden tabletp:inline-block no-underline hover:no-underline">
-                Add a filter subscription <span class="account-content__icon inline-block align-middle ml-xxxs">
+              <a href="https://www.blueair.com/pages/subscribe-quiz" class="text-16 font-400 pb-xxs border-b border-blue hidden tabletp:inline-block no-underline hover:no-underline flex items-center justify-center">
+                Add a filter subscription <span class="account-content__icon inline-flex items-center ml-xxxs" style="vertical-align: middle;">
 
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" viewBox="0 0 25 26" width="15" height="15">
                     <title>Plus-smaller</title>
