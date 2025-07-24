@@ -642,6 +642,9 @@
                                   </span>
                                   <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                                 </button>
+                                <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
+                                  <span class="btn__text">Added</span>
+                                </button>
                                 <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
                                   <span class="btn__text">
                                     Notify Me When Available
@@ -708,6 +711,9 @@
                                     {% endif %}
                                   </span>
                                   <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+                                </button>
+                                <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
+                                  <span class="btn__text">Added</span>
                                 </button>
                                 <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
                                   <span class="btn__text">

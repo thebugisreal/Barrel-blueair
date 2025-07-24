@@ -5,6 +5,7 @@ class ProductUpsell extends HTMLElement {
     this._selectors = {
       variantBtn: '[js-product-upsell-variant]',
       atcBtn: '[js-product-upsell-atc]',
+      addedBtn: '[js-product-upsell-added]',
       bisBtn: '[js-klaviyo-bis-modal-trigger]',
       upsellTitle: '[js-upsell-title]',
       price: '[js-product-upsell-price]',
@@ -28,6 +29,7 @@ class ProductUpsell extends HTMLElement {
   connectedCallback() {
     this.variantBtns = this.querySelectorAll(this._selectors.variantBtn);
     this.atcBtn = this.querySelector(this._selectors.atcBtn);
+    this.addedBtn = this.querySelector(this._selectors.addedBtn);
     this.bisBtn = this.querySelector(this._selectors.bisBtn);
     this.upsellTitle = this.querySelector(this._selectors.upsellTitle);
     this.price = this.querySelector(this._selectors.price);
@@ -100,6 +102,12 @@ class ProductUpsell extends HTMLElement {
 
         this.cart.renderContents(response);
         this.cartDrawer.open();
+        
+        // Show "Added" button
+        if (this.atcBtn && this.addedBtn) {
+          this.atcBtn.classList.add('hidden');
+          this.addedBtn.classList.remove('hidden');
+        }
       })
       .catch((e) => {
         this._handleErrorMessage(e.description);
@@ -134,12 +142,14 @@ class ProductUpsell extends HTMLElement {
       this.atcBtn.querySelector('.btn__text').textContent = 'Add to Cart';
       this.atcBtn.removeAttribute('disabled');
       this.atcBtn.classList.remove('hidden');
+      this.addedBtn.classList.add('hidden');
       this.bisBtn.classList.add('hidden');
     } else {
       this.atcBtn.querySelector('.btn__text').textContent = 'Out of Stock';
       this.atcBtn.setAttribute('disabled', '');
       this.bisBtn.classList.remove('hidden');
       this.atcBtn.classList.add('hidden');
+      this.addedBtn.classList.add('hidden');
     }
 
     this.price.textContent = target.dataset.price;
