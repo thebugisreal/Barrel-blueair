@@ -26,29 +26,14 @@
         "padding_top_mobile": "pt-sm"
       },
       "blocks": {}
-    },
-    "section_text_7FnEgp": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
-    },
-    "17528498495512d3d0": {
-      "settings": {},
-      "blocks": {
-        "ai_gen_block_18dfb49_qL84pz": {
-          "disabled": true,
-          "settings": {}
-        }
-      }
     }
   },
   "order": [
     "main",
-    "section_text_banner_PKm7EV",
+    "section_text_banner_4wGYnd",
     "section_faq_cta_AxRwzp",
+    "section_embed_BJC7Wq",
     "footer_klaviyo_cMBtqC",
-    "section_embed_RqzKC6",
-    "section_text_7FnEgp",
-    "17528498495512d3d0"
+    "section_text_NNnQUm"
   ]
 }

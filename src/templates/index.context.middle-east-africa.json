@@ -20,8 +20,8 @@
     },
     "hero": {
       "settings": {
-        "image_mobile": "shopify://shop_images/Spring_mobile.png",
-        "image_desktop": "shopify://shop_images/Spring_desktop_8711b31f-b31b-4716-a643-6c27f8f9506f.png",
+        "image_mobile": "shopify:\/\/shop_images\/Spring_mobile.png",
+        "image_desktop": "shopify:\/\/shop_images\/Spring_desktop_8711b31f-b31b-4716-a643-6c27f8f9506f.png",
         "title": "Breathe better, live better",
         "subtext": "",
         "cta_text": "Explore"

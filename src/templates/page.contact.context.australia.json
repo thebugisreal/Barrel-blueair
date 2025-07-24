@@ -28,7 +28,7 @@
     "section_embed_DD9f4r": {
       "disabled": false,
       "settings": {
-        "embed": "<script type=\"text/javascript\" src=\"https://form.jotform.com/jsform/251347278263158\"></script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Arisit Pty LTD</p>\n<p>Email: <a href=\"mailto:arisit.sales@arisit.com\" class=\"ProsemirrorEditor-link\">arisit.sales@arisit.com</a></p>\n<p>Telephone: +1300 762 219</p>\n<p>Hours: 09:00-17:00 (EST)\n</p>\n</div>"
+        "embed": "<script type=\"text\/javascript\" src=\"https:\/\/form.jotform.com\/jsform\/251347278263158\"><\/script>\n<div class=\"tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)] px-md desktop:px-xl\">\n<p>Arisit Pty LTD<\/p>\n<p>Email: <a href=\"mailto:arisit.sales@arisit.com\" class=\"ProsemirrorEditor-link\">arisit.sales@arisit.com<\/a><\/p>\n<p>Telephone: +1300 762 219<\/p>\n<p>Hours: 09:00-17:00 (EST)\n<\/p>\n<\/div>"
       },
       "blocks": {}
     },

@@ -19,20 +19,20 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_KRB8N": {
+        "announcement_whKW4": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-42d9dcde4172113752ca0e8aad9766dd": null,
-            "announcement": "30-Day Home Trial | Free Extended Warranty",
-            "url": "shopify://collections/sale"
+            "header-80851bcba33c62a51df6a3d067d839c6": null,
+            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter ",
+            "url": "shopify://collections/air-purifier-filters"
           }
         },
         "announcement_QLGEH": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-2e4d77926e963901cc57ba0c460e47c6": null,
+            "header-156e46e989448e79807c70dd1001f7c1": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
           }
@@ -41,13 +41,23 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-32988d3fd6141524912377e9229a7a8f": null,
+            "header-65c1ed7ea6928358b1ad76bf87a603f2": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
+          }
+        },
+        "announcement_KRB8N": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-b41cea98f4ce7b129bcc9600ceaed804": null,
+            "announcement": "30-Day Home Trial | Free Extended Warranty",
+            "url": "shopify://collections/sale"
           }
         }
       },
       "block_order": [
+        "announcement_whKW4",
         "announcement_QLGEH",
         "announcement_XMHEL",
         "announcement_KRB8N"

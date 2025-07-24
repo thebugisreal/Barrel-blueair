@@ -23,7 +23,7 @@
         "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-xl",
         "max_width_desktop": "",
-        "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"></div>",
+        "klaviyo_embed": "<div class=\"klaviyo-form-X7WGfn\"><\/div>",
         "title": "Fresh updates  for fresher air",
         "title_style": "h3",
         "color": "bg-blue-light text-blue"

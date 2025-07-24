@@ -16,14 +16,15 @@
     "hero": {
       "settings": {
         "color": "bg-blue text-white",
-        "image_mobile": "shopify://shop_images/Sale_mobile.png",
-        "image_desktop": "shopify://shop_images/sale_desktop.jpg",
-        "title": "Meet the new <br>Blue Signature™",
-        "subtext": "The most powerful, compact <br> air purifier you can get",
-        "cta_url": "shopify://collections/air-purifiers",
+        "image_mobile": "shopify:\/\/shop_images\/Health_mobile_567f61e2-08c0-4d03-a8be-eabecdd9bf24.png",
+        "image_desktop": "shopify:\/\/shop_images\/Health_desktop.png",
+        "title": "Healthier living<br> starts here",
+        "subtext": "Air Optimized for Health™",
+        "cta_url": "shopify:\/\/collections\/air-purifiers",
         "cta_text": "Shop now",
         "cta_style": "btn btn--white-rounded",
-        "hor_align_mobile": "justify-start",
+        "text_align_mobile": "text-center",
+        "hor_align_mobile": "justify-center",
         "ver_align_mobile": "items-start",
         "hor_align_desktop": "desktop:justify-start",
         "ver_align_desktop": "desktop:items-center"
@@ -35,14 +36,14 @@
       "blocks": {
         "customization_kjnCLm": {
           "settings": {
-            "image_mobile": "shopify://shop_images/Image_3_4_428cad6c-9d2f-4596-b6d3-b6f70f315b51.jpg"
+            "image_mobile": "shopify:\/\/shop_images\/Image_3_4_428cad6c-9d2f-4596-b6d3-b6f70f315b51.jpg"
           }
         }
       }
     },
     "section_testimonial_tabs_Rtbxp9": {
       "settings": {
-        "image": "shopify://shop_images/Blueair_MostAwarded_2025.png"
+        "image": "shopify:\/\/shop_images\/Blueair_MostAwarded_2025.png"
       },
       "blocks": {}
     },

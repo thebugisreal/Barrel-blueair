@@ -19,11 +19,20 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
+        "announcement_LKcDB": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-854bb13205a8333446b86600a10e4188": null,
+            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
+            "url": "shopify://collections/air-purifier-filters"
+          }
+        },
         "announcement_YLKFbB": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-bc44fca9d59df6b80dab8d98f1a00a39": null,
+            "header-78c1523a1229029172ce780418f51f3f": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/canada-sale"
           }
@@ -38,13 +47,14 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-12831f9b3a133d57d71308935abc13cb": null,
+            "header-0adde778cd5e3ec99927624d7efd5382": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
           }
         }
       },
       "block_order": [
+        "announcement_LKcDB",
         "announcement_YLKFbB",
         "announcement_A6AHyV",
         "announcement_9ieDxY"

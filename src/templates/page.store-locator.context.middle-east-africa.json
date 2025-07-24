@@ -36,7 +36,7 @@
           "type": "image",
           "disabled": false,
           "settings": {
-            "image": "shopify://shop_images/Noon_Website_Logo_svg.png",
+            "image": "shopify:\/\/shop_images\/Noon_Website_Logo_svg.png",
             "image_url": ""
           }
         },
@@ -44,7 +44,7 @@
           "type": "image",
           "disabled": false,
           "settings": {
-            "image": "shopify://shop_images/1607150630_logo.png",
+            "image": "shopify:\/\/shop_images\/1607150630_logo.png",
             "image_url": ""
           }
         },
@@ -52,7 +52,7 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/839d2ed006857b5be43318e8926ae337.jpg",
+            "image": "shopify:\/\/shop_images\/839d2ed006857b5be43318e8926ae337.jpg",
             "image_url": ""
           }
         },
@@ -60,7 +60,7 @@
           "type": "image",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/dxb.netimages.png",
+            "image": "shopify:\/\/shop_images\/dxb.netimages.png",
             "image_url": ""
           }
         }
@@ -96,15 +96,15 @@
           "type": "image",
           "disabled": false,
           "settings": {
-            "image": "shopify://shop_images/SACO_KSA.jpg",
-            "image_url": "https://uae.sharafdg.com/brand/Blueair/"
+            "image": "shopify:\/\/shop_images\/SACO_KSA.jpg",
+            "image_url": "https:\/\/uae.sharafdg.com\/brand\/Blueair\/"
           }
         },
         "image_8MwxLz": {
           "type": "image",
           "disabled": false,
           "settings": {
-            "image": "shopify://shop_images/Amazon.sa.png",
+            "image": "shopify:\/\/shop_images\/Amazon.sa.png",
             "image_url": ""
           }
         },
@@ -112,7 +112,7 @@
           "type": "image",
           "disabled": false,
           "settings": {
-            "image": "shopify://shop_images/Noon_Website_Logo_svg.png",
+            "image": "shopify:\/\/shop_images\/Noon_Website_Logo_svg.png",
             "image_url": ""
           }
         }
@@ -131,25 +131,25 @@
       "blocks": {
         "image_kMcNdd": {
           "settings": {
-            "image": "shopify://shop_images/SharafDG-Logo.png",
-            "image_url": "https://uae.sharafdg.com/brand/Blueair/"
+            "image": "shopify:\/\/shop_images\/SharafDG-Logo.png",
+            "image_url": "https:\/\/uae.sharafdg.com\/brand\/Blueair\/"
           }
         },
         "image_4D8PYF": {
           "settings": {
-            "image": "shopify://shop_images/ACE-Hardware-logo.png",
+            "image": "shopify:\/\/shop_images\/ACE-Hardware-logo.png",
             "image_url": ""
           }
         },
         "image_eYizRr": {
           "settings": {
-            "image": "shopify://shop_images/amazon-ae.png",
+            "image": "shopify:\/\/shop_images\/amazon-ae.png",
             "image_url": ""
           }
         },
         "image_8gCWKH": {
           "settings": {
-            "image": "shopify://shop_images/dxb.netimages.png",
+            "image": "shopify:\/\/shop_images\/dxb.netimages.png",
             "image_url": ""
           }
         }

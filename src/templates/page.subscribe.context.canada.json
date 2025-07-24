@@ -8,21 +8,16 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "footer-group.json",
+  "parent": "page.subscribe.json",
   "context": {
     "market": "canada"
   },
   "sections": {
-    "klaviyo": {
+    "section_hero_xnfkBi": {
       "settings": {
-        "klaviyo_embed": "<div class=\"klaviyo-form-U3zzHQ\"><\/div>"
-      },
-      "blocks": {}
-    },
-    "footer": {
-      "settings": {
-        "subfooter_nav": "seed-canada-subfooter",
-        "footer_nav": "ca-footer"
+        "title": "Subscribe & save 25% <br> on your first filter",
+        "title_style": "h3",
+        "subtext": "Now through July 27"
       },
       "blocks": {}
     }

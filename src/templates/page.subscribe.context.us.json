@@ -8,21 +8,22 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "footer-group.json",
+  "parent": "page.subscribe.json",
   "context": {
-    "market": "canada"
+    "market": "us"
   },
   "sections": {
-    "klaviyo": {
+    "section_hero_xnfkBi": {
       "settings": {
-        "klaviyo_embed": "<div class=\"klaviyo-form-U3zzHQ\"><\/div>"
+        "title": "Subscribe & save 25%  on your first filter",
+        "title_style": "h3",
+        "subtext": "Now through July 27"
       },
       "blocks": {}
     },
-    "footer": {
+    "section_content_panels_DLjfCE": {
       "settings": {
-        "subfooter_nav": "seed-canada-subfooter",
-        "footer_nav": "ca-footer"
+        "title": "Subscribe & save 15% on every replacement filter"
       },
       "blocks": {}
     }
