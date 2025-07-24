@@ -64,6 +64,13 @@ class CompareGrid extends HTMLElement {
       document.documentElement.style.setProperty('--compare-product-height', `${maxHeight}px`)
     }
 
+    _getLocalizedProductUrl(handle) {
+      const origin = window.location.origin;
+      const localePrefixMatch = window.location.pathname.match(/^\/[a-z]{2}(-[a-z]{2})?\//);
+      const localePrefix = localePrefixMatch ? localePrefixMatch[0].replace(/\/$/, '') : '';
+      return `${origin}${localePrefix}/products/${handle}`;
+    }
+
     _createDataColumn(product, index) {
       const columnContainer =  document.createElement('ul')
       columnContainer.classList.add('compare__grid-item')
@@ -77,7 +84,7 @@ class CompareGrid extends HTMLElement {
       productTitleContainer.setAttribute('js-compare-product-title', '')
       const productTitleLink = document.createElement('a')
       productTitleLink.classList.add('compare-product__title-text')
-      productTitleLink.href = `https://blueairdev.myshopify.com/products/${product.handle}`
+      productTitleLink.href = this._getLocalizedProductUrl(product.handle)
       productTitleLink.innerText = product.title
       productTitleContainer.appendChild(productTitleLink)
 
@@ -99,7 +106,7 @@ class CompareGrid extends HTMLElement {
       const productCompareAtcContainer = document.createElement('li')
       productCompareAtcContainer.classList.add('compare__atc')
       const productCompareAtc = this.atcBtn.cloneNode(true);
-      productCompareAtc.setAttribute('href', `https://blueairdev.myshopify.com/products/${product.handle}`)
+      productCompareAtc.setAttribute('href', this._getLocalizedProductUrl(product.handle));
       productCompareAtcContainer.appendChild(productCompareAtc)
 
       // Compare Title
