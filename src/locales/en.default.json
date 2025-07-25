@@ -194,7 +194,7 @@
       "smoke": "Smoke",
       "operating_power": "Operating Power",
       "filter_frame_material": "Filter Frame Material",
-      "filter_ecycling": "Filter Recycling",
+      "filter_recycling": "Filter Recycling",
       "recommended_filter_change": "Recommended filter change",
       "number_of_filters": "Number of filters",
       "filter_replacement_indicator": "Filter replacement indicator",
