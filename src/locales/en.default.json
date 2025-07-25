@@ -148,6 +148,21 @@
         "sale_price": "Sale price",
         "unit_price": "Unit price"
       },
+      "accordions": {
+        "additional_features": {
+          "label": "Additional Features",
+          "wifi_connectivity": "Wi-Fi connectivity for remote control",
+          "yes": "Yes",
+          "no": "No",
+          "on_off_timer": "On/ off timer",
+          "via_blueair_app": "via Blueair App",
+          "speed_control_options": "Speed control options",
+          "integrated_air_sensors": "Integrated air sensors"
+        },
+        "shipping_warranty": {
+          "label": "Shipping & Warranty"
+        }
+      },
       "share": "Share this product",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
