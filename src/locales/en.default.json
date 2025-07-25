@@ -175,6 +175,7 @@
       "label": "Media gallery"
     },
     "technical_specifications": {
+      "product_viewer": "Click and Drag to Rotate 360°",
       "label": "Technical Specifications",
       "filter_type": "Filter Type",
       "dimensions": "Dimensions(HxWxD)",
