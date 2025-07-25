@@ -207,7 +207,7 @@ class CountrySelectModal extends HTMLElement {
         } else if (country == 'ca'){
           window.location.href = `https://www.blueair.com/${language}-${country}`
         } else if (country == 'gb'){
-          window.location.href = `https://blueair.co.uk`
+          window.location.href = `https://www.blueair.com/en-gb` // revert back to https://blueair.co.uk once UK store is launched
         } else if (country == 'de' && language == 'de'){
           window.location.href = 'https://blueair.co/'
         } else if (country == 'de' && language == 'en'){

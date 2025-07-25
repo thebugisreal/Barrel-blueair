@@ -499,7 +499,7 @@
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
-                        <span class="s2">Additional Features</span>
+                        <span class="s2">{{ 'products.product.accordions.additional_features.label' | t }}</span>
                         <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>
@@ -507,32 +507,32 @@
                         <ul class="product-additional-features__list pb-md">
                           {% if product.metafields.seed.blair_wifiConnectivity != blank %}
                             <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">Wi-Fi connectivity for remote control</span>
-                              <span class="p4">{% if product.metafields.seed.blair_wifiConnectivity == '1' or product.metafields.seed.blair_wifiConnectivity == 'Yes' or product.metafields.seed.blair_wifiConnectivity == 'yes' %}Yes{% else %}No{% endif %}</span>
+                              <span class="p3">{{ 'products.product.accordions.additional_features.wifi_connectivity' | t }}</span>
+                              <span class="p4">{% if product.metafields.seed.blair_wifiConnectivity == '1' or product.metafields.seed.blair_wifiConnectivity == 'Yes' or product.metafields.seed.blair_wifiConnectivity == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_timer != blank %}
                             <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">On/ off timer</span>
+                              <span class="p3">{{ 'products.product.accordions.additional_features.on_off_timer' | t }}</span>
                               <span class="p4">
                                 {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
-                                  Yes, <a href="/pages/subscribe" class="link link--underline underline-offset-1">via Blueair App</a>
+                                  {{ 'products.product.accordions.additional_features.yes' | t }}, <a href="/pages/subscribe" class="link link--underline underline-offset-1">{{ 'products.product.accordions.additional_features.via_blueair_app' | t }}</a>
                                 {% else %}
-                                  No
+                                  {{ 'products.product.accordions.additional_features.no' | t }}
                                 {% endif %}
                             </span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
                             <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">Speed control options</span>
+                              <span class="p3">{{ 'products.product.accordions.additional_features.speed_control_options' | t }}</span>
                               <span class="p4">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_airSensor != blank %}
                             <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">Integrated air sensors</span>
-                              <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}Yes{% else %}No{% endif %}</span>
+                              <span class="p3">{{ 'products.product.accordions.additional_features.integrated_air_sensors' | t }}</span>
+                              <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
                             </li>
                           {% endif %}
                         </ul>
@@ -548,7 +548,7 @@
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductShippingWarranty" js-accordion-header>
-                        <span class="s2">Shipping & Warranty</span>
+                        <span class="s2">{{ 'products.product.accordions.shipping_warranty.label' | t }}</span>
                         <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{% render 'icon-plus' %}</span>
                         <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{% render 'icon-minus' %}</span>
                       </button>

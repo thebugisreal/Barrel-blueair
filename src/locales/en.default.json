@@ -109,6 +109,12 @@
     "product_title": "Example product title",
     "collection_title": "Your collection's name"
   },
+  "collections": {
+    "breadcrumbs": {
+      "shop": "Shop",
+      "explore": "Explore"
+    }
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
@@ -142,6 +148,21 @@
         "sale_price": "Sale price",
         "unit_price": "Unit price"
       },
+      "accordions": {
+        "additional_features": {
+          "label": "Additional Features",
+          "wifi_connectivity": "Wi-Fi connectivity for remote control",
+          "yes": "Yes",
+          "no": "No",
+          "on_off_timer": "On/ off timer",
+          "via_blueair_app": "via Blueair App",
+          "speed_control_options": "Speed control options",
+          "integrated_air_sensors": "Integrated air sensors"
+        },
+        "shipping_warranty": {
+          "label": "Shipping & Warranty"
+        }
+      },
       "share": "Share this product",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
@@ -152,6 +173,32 @@
     },
     "modal": {
       "label": "Media gallery"
+    },
+    "technical_specifications": {
+      "product_viewer": "Click and Drag to Rotate 360°",
+      "label": "Technical Specifications",
+      "filter_type": "Filter Type",
+      "dimensions": "Dimensions(HxWxD)",
+      "product_weight": "Product Weight",
+      "tank_capacity": "Tank Capacity",
+      "energy_consumption": "Energy Consumption",
+      "max_wattage": "Max Wattage (Heat)",
+      "sound_level": "Sound level",
+      "air_outlet": "Air outlet",
+      "recommended_room_size": "Recommended room size",
+      "air_changes_per_hour": "Air changes per hour (ACH)",
+      "humidification_run_time": "Humidification run time",
+      "clean_air_delivery_rate": "Clean air delivery rate (CADR)",
+      "pollen": "Pollen",
+      "dust": "Dust",
+      "smoke": "Smoke",
+      "operating_power": "Operating Power",
+      "filter_frame_material": "Filter Frame Material",
+      "filter_recycling": "Filter Recycling",
+      "recommended_filter_change": "Recommended filter change",
+      "number_of_filters": "Number of filters",
+      "filter_replacement_indicator": "Filter replacement indicator",
+      "speed_control_options": "Speed control options"
     }
   },
   "templates": {
