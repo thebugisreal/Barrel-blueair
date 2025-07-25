@@ -109,6 +109,12 @@
     "product_title": "Example product title",
     "collection_title": "Your collection's name"
   },
+  "collections": {
+    "breadcrumbs": {
+      "shop": "Shop",
+      "explore": "Explore"
+    }
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",

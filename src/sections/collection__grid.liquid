@@ -12,9 +12,9 @@
           {% assign shop_all_collection = collections['shop-all'] %}
           {% include 'region-check' %}
           {% if is_transactional %}
-            <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Shop</a>
+            <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>{{ 'collections.breadcrumbs.shop' | t }}</a>
           {% else %}
-            <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>Explore</a>
+            <a href="{{ shop_all_collection.url }}" class="collection-grid__shop-all-link link link--underline" js-breadcrumb>{{ 'collections.breadcrumbs.explore' | t }}</a>
           {% endif %}
           {% if collection.handle != 'shop-all' %}
             <span class="w-[4px] h-[4px] rounded-full bg-blue"></span>
