@@ -1,5 +1,5 @@
-const WARRANTY_API_BASE = 'https://ychmmhbbi1.execute-api.us-east-2.amazonaws.com/qa/c/warranty';
-const LOGIN_API_URL = 'https://ychmmhbbi1.execute-api.us-east-2.amazonaws.com/qa/c/login?client_id=4p5qzjra8vdd558fnl9ndn3kj3&client_secret=3t374rg84d2plhdi1ceqorqnop2op0jdmn5lkl5rj888q7fem5u3';
+const WARRANTY_API_BASE = 'https://on1keymlmh.execute-api.us-east-2.amazonaws.com/prod/c/warranty';
+const LOGIN_API_URL = 'https://on1keymlmh.execute-api.us-east-2.amazonaws.com/prod/c/login?client_id=2p4qzjra9vdd217fnl0ndn2kj8&client_secret=2t468rg26d1plhdi1ceqorqnop4op0jdmn3lkl2rj873q3fem2u9';
 const JWT_COOKIE_NAME = 'gigya_access_token';
 const ACCESS_TOKEN_COOKIE_NAME = 'warranty_access_token';
 
@@ -244,14 +244,7 @@ class WarrantyDevices extends HTMLElement {
             <!-- Button column -->
             <div class="tabletp:w-1/4 flex justify-end items-start">
               <a href="https://www.blueair.com/pages/subscribe-quiz" class="text-16 font-400 pb-xxs border-b border-blue hidden tabletp:inline-block no-underline hover:no-underline flex items-center justify-center">
-                Add a filter subscription <span class="account-content__icon inline-flex items-center ml-xxxs" style="vertical-align: middle;">
-
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" viewBox="0 0 25 26" width="15" height="15">
-                    <title>Plus-smaller</title>
-                    <polygon points="25 12.5 13 12.5 13 .5 12 .5 12 12.5 0 12.5 0 13.5 12 13.5 12 25.5 13 25.5 13 13.5 25 13.5 25 12.5"/>
-                  </svg>
-
-                </span>
+                Add a filter subscription
               </a>
             </div>
           </div>
