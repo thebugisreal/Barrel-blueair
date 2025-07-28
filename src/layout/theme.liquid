@@ -112,6 +112,10 @@
         apiKeyUK: '{{ settings.klaviyo_api_key_uk }}',
         apiKeyEU: '{{ settings.klaviyo_api_key_eu }}'
       };
+
+      {% if request.design_mode %}
+        document.body.classList.add('is-theme-editor');
+      {% endif %}
     </script>
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
