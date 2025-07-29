@@ -61,7 +61,7 @@
                   endif
                 endif
               %}
-              <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" {% if item.properties['_isGWP'] %} data-is-gwp="true" {% endif %} js-cart-item>
+              <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" {% if item.properties['_isGWP'] %} data-is-gwp="true" data-var-id="{{ item.variant_id }}" {% endif %} js-cart-item>
                 <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                 <div class="flex gap-md">
                   <a href="{{item.url}}" class="block w-1/2" js-cart-item-image>

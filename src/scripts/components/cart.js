@@ -24,6 +24,7 @@ class CartItems extends HTMLElement {
   cartUpdateUnsubscriber = undefined;
 
   connectedCallback() {
+    this.cart = document.querySelector('cart-drawer');
     this.cartUpdateUnsubscriber = theme.utils.subscriptions.subscribe(window.PUB_SUB_EVENTS.cartUpdate, (event) => {
       if (event.source === 'cart-items') {
         return;
@@ -32,7 +33,7 @@ class CartItems extends HTMLElement {
     });
 
     this.checkIneligibleCartItems();
-    this.checkGWP()
+    this.checkGWP();
   }
 
   disconnectedCallback() {
@@ -41,15 +42,13 @@ class CartItems extends HTMLElement {
     }
   }
 
-  async fetchCart() {
+  fetchCart = async () => {
     const response = await fetch('/cart.js');
     return response.json();
   }
 
-  async checkGWP() {
-    console.log('CHECKING!!!')
+  checkGWP = async () => {
     const newCart = await this.fetchCart();
-    this.cart = document.querySelector('cart-drawer');
     let hasGWP = false;
     let gwpInCart = false
     let gwpProductId = '';
@@ -71,6 +70,7 @@ class CartItems extends HTMLElement {
       }
     })
 
+
     if(hasGWP) {
       const gwpData = {
             items: [
@@ -85,9 +85,27 @@ class CartItems extends HTMLElement {
             ],
             sections: this.cart.getSectionsToRender().map((section) => section.id)
       }
-      console.log("GWP?", gwpInCart)
       if(!gwpInCart) {
-        this._updateCartItems('add', gwpData, true);
+        console.log("ADD ITEM")
+        this.cart._updateCartItems('add', gwpData, true);
+      }
+    }
+
+    if(gwpInCart) {
+      if(!hasGWP) {
+        console.log('cart.items', newCart.items)
+        // const gwpRemovalData = {
+        //     items: [
+        //       { 
+        //         id: gwpProductId, 
+        //         quantity: 0
+        //       }
+        //     ],
+        //     sections: this.cart.getSectionsToRender().map((section) => section.id)
+        // }
+
+        //   this.cart._updateCartItems('change', gwpRemovalData, true);
+        
       }
     }
   }
@@ -328,46 +346,6 @@ class CartItems extends HTMLElement {
     
     [...cartItemElements, ...cartDrawerItemElements].forEach((spinner) => spinner.removeAttribute("loading"));
   }
-
-    _updateCartItems = (type, data, render = true) => {
-    this.cart.setActiveElement(document.activeElement);
-
-    const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        sessionStorage.setItem('noCartWatcherHandle', 'true');
-
-        if (response.status) {
-          this._handleErrorMessage(response.description);
-          this.subscriptionError = true;
-          return response;
-        }
-
-        if (!this.subscriptionError) {
-          this.subscriptionError = false;
-          if (render) {
-            if (this.cart) this.cart.renderContents(response);
-          }
-        }
-        
-        return response;
-      })
-      .catch((e) => {
-        this._handleErrorMessage(e.description)
-        console.log(e);
-      })
-      .finally(() => {
-        this.loading.removeAttribute('loading');
-      });
-
-    return res;
-  }
 }
 
 class CartNote extends HTMLElement {
@@ -391,7 +369,7 @@ class CartDrawer extends HTMLElement {
 
   connectedCallback() {
     const myCartWatcher = new CartWatcher;
-    myCartWatcher.init();
+    myCartWatcher.init(this);
     window.addEventListener("cart_changed", this._handleCartChange.bind(this));
 
 
@@ -465,6 +443,39 @@ class CartDrawer extends HTMLElement {
   setActiveElement(element) {
     this.activeElement = element;
   }
+
+_updateCartItems = (type, data, render = true) => {
+  this.setActiveElement(document.activeElement); 
+
+  return fetch(window.Shopify.routes.root + `cart/${type}.js`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      sessionStorage.setItem('noCartWatcherHandle', 'true');
+
+      if (response.status) {
+        this._handleErrorMessage?.(response.description); 
+        this.subscriptionError = true;
+        return response;
+      }
+
+      if (!this.subscriptionError && render && this.renderContents) {
+        this.renderContents(response);
+      }
+
+      return response;
+    })
+    .catch((e) => {
+      this._handleErrorMessage?.(e.description);
+      console.error(e);
+    })
+    .finally(() => {
+      this.loading?.removeAttribute('loading');
+    });
+}
 }
 
 
@@ -724,7 +735,9 @@ class CartSubscription extends HTMLElement {
 
 class CartWatcher {
 
-  init() {
+  init(cartInstance) {
+    this.cart = cartInstance; 
+
     this.emitCartChanges().then(() => {
       this.observeCartChanges();
     });
@@ -735,6 +748,7 @@ class CartWatcher {
     const response = await fetch('/cart.js');
     return response.json();
   }
+
   async emitCartChanges() {
     const newCart = await this.fetchCart();
 
