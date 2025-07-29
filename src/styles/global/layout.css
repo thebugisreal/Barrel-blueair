@@ -61,10 +61,6 @@
     justify-self-center;
   }
 
-  body.is-theme-editor div[aria-label="POPUP Form"] {
-    @apply !hidden;
-  }
-
   .lazypicture img{
     aspect-ratio: var(--ar-lzimg-mobile);
   }

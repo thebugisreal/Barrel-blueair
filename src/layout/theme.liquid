@@ -112,42 +112,42 @@
         apiKeyUK: '{{ settings.klaviyo_api_key_uk }}',
         apiKeyEU: '{{ settings.klaviyo_api_key_eu }}'
       };
-
-      {% if request.design_mode %}
-        document.body.classList.add('is-theme-editor');
-      {% endif %}
     </script>
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const country = Shopify.country;
-        const currentUrl = window.location.hostname.replace('www.', '');
+    {% if request.design_mode == false %}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const country = Shopify.country;
+          const currentUrl = window.location.hostname.replace('www.', '');
 
-        let showModal = false;
+          let showModal = false;
 
-        if ((country === 'US' || country === 'CA') && currentUrl !== 'blueair.com') {
-          showModal = true;
-        } else if (country === 'GB' && currentUrl !== 'blueair.co.uk') {
-          showModal = true;
-        } else if (!['US', 'CA', 'GB'].includes(country) && currentUrl !== 'blueair.co') {
-          showModal = true;
-        }
-
-        if (showModal) {
-          const welcomeModal = document.querySelector('#CountryMarketSelectModal');
-          const countrySelector = welcomeModal?.querySelector('country-select-modal [js-country-select]');
-
-          if (welcomeModal && countrySelector) {
-            countrySelector.value = country;
-            countrySelector.dispatchEvent(new Event('change'));
-            welcomeModal.open();
+          if ((country === 'US' || country === 'CA') && currentUrl !== 'blueair.com') {
+            showModal = true;
+          } else if (country === 'GB' && currentUrl !== 'blueair.co.uk') {
+            showModal = true;
+          } else if (!['US', 'CA', 'GB'].includes(country) && currentUrl !== 'blueair.co') {
+            showModal = true;
+          } else if (country !== 'DE' && currentUrl === 'blueair.co') {
+            showModal = true;
           }
-        }
-      });
-    </script>
+
+          if (showModal) {
+            const welcomeModal = document.querySelector('#CountryMarketSelectModal');
+            const countrySelector = welcomeModal?.querySelector('country-select-modal [js-country-select]');
+
+            if (welcomeModal && countrySelector) {
+              countrySelector.value = country;
+              countrySelector.dispatchEvent(new Event('change'));
+              welcomeModal.open();
+            }
+          }
+        });
+      </script>
+    {% endif %}
 
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' or shop.permanent_domain == 'blueeudev.myshopify.com' %}
       {% if is_transactional %}
