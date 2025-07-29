@@ -131,8 +131,16 @@
             showModal = true;
           } else if (!['US', 'CA', 'GB'].includes(country) && currentUrl !== 'blueair.co') {
             showModal = true;
-          } else if (country !== 'DE' && currentUrl === 'blueair.co') {
-            showModal = true;
+          } else if (currentUrl === 'blueair.co') {
+            if (sessionStorage.getItem('isInitialVisit')) {
+              return;
+            }
+
+            sessionStorage.setItem('isInitialVisit', 'true');
+
+            if (country !== 'DE') {
+              showModal = true;
+            }
           }
 
           if (showModal) {
