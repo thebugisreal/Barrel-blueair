@@ -49,64 +49,78 @@ class CartItems extends HTMLElement {
 
   checkGWP = async () => {
     const newCart = await this.fetchCart();
-    let hasGWP = false;
-    let gwpInCart = false
-    let gwpProductId = '';
-    let parentProductId = '';
 
-    newCart.items.forEach((item)=> {
-      console.log('item', item.properties)
+    let hasGwpList = [];
+    let isGwpList = [];
+
+    newCart.items.forEach((item) => {
       if(item.properties['_gwp-product']) {
-        hasGWP = true;
-        gwpProductId = parseInt(item.properties['_gwp-product']);
-      }
-      if(item.properties['_parent-product']) {
-        parentProductId = parseInt(item.properties['_parent-product']);
+        let itemObject = {};
+
+        itemObject.gwpProductId = parseInt(item.properties['_gwp-product']);
+        itemObject.parentProductId = parseInt(item.properties['_parent-product']);
+
+        hasGwpList.push(itemObject)
       }
       if(item.properties['_isGWP']) {
-        console.log('what is the properties', item.properties['_isGWP'])
-        gwpInCart = true
-        return
+        let giftObject = {};
+        
+        giftObject.isGWP = item.properties['_isGWP'];
+        giftObject.parentProductId = item.properties['_parentProductId'];
+        giftObject.giftId = item.properties['_giftId'];
+        giftObject.lineItemKey = item.key;
+
+        isGwpList.push(giftObject)
       }
     })
 
 
-    if(hasGWP) {
-      const gwpData = {
-            items: [
-              { 
-                id: gwpProductId, 
-                quantity: 1,
-                properties: { 
-                  '_isGWP': true,
-                  '_parentProductId': parentProductId
-                }
+    const missingGifts = hasGwpList.filter((expected) => {
+      return !isGwpList.some(actual => 
+        parseInt(actual.giftId) === expected.gwpProductId
+      );
+    });
+
+    if (missingGifts.length > 0) {
+
+      missingGifts.forEach((product) => {
+        const gwpData = {
+          items: [
+            { 
+              id: product.gwpProductId, 
+              quantity: 1,
+              properties: { 
+                '_isGWP': true,
+                '_parentProductId': product.parentProductId,
+                '_giftId': product.gwpProductId 
               }
-            ],
-            sections: this.cart.getSectionsToRender().map((section) => section.id)
-      }
-      if(!gwpInCart) {
-        console.log("ADD ITEM")
+            }
+          ],
+          sections: this.cart.getSectionsToRender().map((section) => section.id)
+        };
         this.cart._updateCartItems('add', gwpData, true);
-      }
+      });
     }
 
-    if(gwpInCart) {
-      if(!hasGWP) {
-        console.log('cart.items', newCart.items)
-        // const gwpRemovalData = {
-        //     items: [
-        //       { 
-        //         id: gwpProductId, 
-        //         quantity: 0
-        //       }
-        //     ],
-        //     sections: this.cart.getSectionsToRender().map((section) => section.id)
-        // }
+    const orphanedGifts = isGwpList.filter((actual) => {
+      return !hasGwpList.some(expected =>
+        expected.gwpProductId === parseInt(actual.giftId)
+      );
+    });
 
-        //   this.cart._updateCartItems('change', gwpRemovalData, true);
-        
-      }
+    
+    if (orphanedGifts.length > 0) {
+      orphanedGifts.forEach((gift) => {
+        console.log('gift', gift)
+        console.log('gift', gift.giftId)
+        const gwpRemovalData = {
+            id: gift.lineItemKey,
+            quantity: 0,
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+        }
+
+        this.cart._updateCartItems('change', gwpRemovalData, true);
+      })
     }
   }
 
