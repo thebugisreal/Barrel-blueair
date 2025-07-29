@@ -579,7 +579,7 @@
                       {% if product.metafields.seed.upsells_heading != blank %}
                         <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
                       {% endif %}
-                      <div class="product-upsells__items grid grid-cols-1 gap-md desktop:gap-md">
+                      <div class="product-upsells__items grid grid-cols-1">
                         {% for object in product.metafields.seed.upsells.value %}
                           {% if forloop.first %}
                             {% assign upsell_object = object%}
@@ -590,7 +590,7 @@
 
                             {% assign image3 = upsell_object.product.value.metafields.seed.product_card_image %}
                             {% if image3 != blank %}
-                              <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs mr-sm max-w-[134px]">
+                              <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs mr-sm max-w-[100px]">
                                 {% render 'lazy-image' image: image3 %}
                               </div>
                             {% endif %}
@@ -671,13 +671,13 @@
 
                           {% comment %} Filter Upsell {% endcomment %}
                           <product-upsell class="product-upsell__item flex flex-col">
-                            {% if upsell_object.filter_heading != blank %}
+                            {% comment %} {% if upsell_object.filter_heading != blank %}
                               <div class="product-upsell__title s2 mb-xxs" js-upsell-title>{{ upsell_object.filter_heading }}</div>
-                            {% endif %}
-                            {% if upsell_object.filter_short_description != blank %}
+                            {% endif %} {% endcomment %}
+                            {% comment %} {% if upsell_object.filter_short_description != blank %}
                               <div class="product-upsell__description p4">{{ upsell_object.filter_short_description }}</div>
-                            {% endif %}
-                            <div class="product-upsell__buybox mt-md flex-1 flex flex-col justify-between gap-md">
+                            {% endif %} {% endcomment %}
+                            <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
                               {% if upsell_object.filter_products != blank %}
                                 {% liquid
                                   assign filter_type_option = false
@@ -691,7 +691,7 @@
                                   endif
                                 %}
                                 {% if filter_type_option != false %}
-                                  <div class="product-upsell__variants grid grid-cols-1 gap-xxs">
+                                  <div class="product-upsell__variants grid grid-cols-1">
                                     {% for swatch_product in upsell_object.filter_products.value %}
                                       {% liquid
                                         assign swatch_title = swatch_product.variants[0].title
@@ -701,7 +701,7 @@
                                       %}
                                       <div class="flex gap-xs justify-between">
                                         <div class="flex">
-                                          <div class="product-upsell__variant-image max-w-[134px] flex flex-col">
+                                          <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
                                             {% assign image2 = swatch_product.metafields.seed.product_card_image %}
                                             {% render 'lazy-image' image: image2 %}
                                           </div>
