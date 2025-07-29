@@ -107,12 +107,10 @@ class CartItems extends HTMLElement {
         expected.gwpProductId === parseInt(actual.giftId)
       );
     });
-
     
     if (orphanedGifts.length > 0) {
       orphanedGifts.forEach((gift) => {
-        console.log('gift', gift)
-        console.log('gift', gift.giftId)
+
         const gwpRemovalData = {
             id: gift.lineItemKey,
             quantity: 0,
