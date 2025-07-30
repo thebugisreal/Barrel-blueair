@@ -66,7 +66,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify://pages/contact-us",
+        "cta_url": "shopify:\/\/pages\/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--white-rounded"
       }
@@ -83,7 +83,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<div class=\"klaviyo-form-XdY2Sy\"></div>"
+        "embed": "<div class=\"klaviyo-form-XdY2Sy\"><\/div>"
       }
     },
     "footer_klaviyo_cMBtqC": {
@@ -100,7 +100,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "109ch",
-        "klaviyo_embed": "<div class=\"klaviyo-form-XdY2Sy\"></div>",
+        "klaviyo_embed": "<div class=\"klaviyo-form-XdY2Sy\"><\/div>",
         "title": "",
         "title_style": "h3",
         "color": "bg-white text-blue"
@@ -119,7 +119,7 @@
         "padding_top_desktop": "desktop:pt-sm",
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width_desktop": "109ch",
-        "richtext": "<p><a href=\"https://www.unileversweepsrules.com/blueairreset\" target=\"_blank\" title=\"https://www.unileversweepsrules.com/blueairreset\">Rules & Regulations</a></p><p><a href=\"https://www.blueair.com/pages/privacy-notice-us\" target=\"_blank\" title=\"https://www.blueair.com/pages/privacy-notice-us\">Blueair Privacy Policy</a></p>",
+        "richtext": "<p><a href=\"https:\/\/www.unileversweepsrules.com\/blueairreset\" target=\"_blank\" title=\"https:\/\/www.unileversweepsrules.com\/blueairreset\">Rules & Regulations<\/a><\/p><p><a href=\"https:\/\/www.blueair.com\/pages\/privacy-notice-us\" target=\"_blank\" title=\"https:\/\/www.blueair.com\/pages\/privacy-notice-us\">Blueair Privacy Policy<\/a><\/p>",
         "richtext_style": "p2"
       }
     }

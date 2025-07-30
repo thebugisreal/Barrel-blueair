@@ -12,6 +12,26 @@
     "checkout": {
       "thank_you": {
         "verify_shop_account_confirmation": "已儲存結帳詳情"
+      },
+      "shipping_errors": {
+        "unavailable_addresses_only_countries": "您的訂單只能運送到 {{countriesList}}. 添加一個新地址以繼續。"
+      },
+      "order_review_requirement": {
+        "checkout_to_draft": "公司位置設置為提交所有訂單作為草稿進行審查。",
+        "missing_address": "沒有可用的運輸地址：缺少公司地址，並且一次性地址被禁用。"
+      },
+      "local_pickup": {
+        "location_information_next": {
+          "one": "有 %{count} 庫存靠近您的位置",
+          "other": "有 %{count} 股票靠近您的位置"
+        }
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "signature_mismatch": "產品的商品簽名不匹配 {{stable_id}}."
+          }
+        }
       }
     }
   },
@@ -46,9 +66,9 @@
       "empty": "您的購物車是空的",
       "cart_error": "更新您的購物車時發生錯誤。請重試。",
       "cart_quantity_error_html": "您只能將 [quantity] 件此商品加入購物車。",
-      "taxes_and_shipping_policy_at_checkout_html": "結帳時計算稅金和<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">運費<\/a>",
+      "taxes_and_shipping_policy_at_checkout_html": "結帳時計算稅金和<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">運費</a>",
       "taxes_included_but_shipping_at_checkout": "含稅，運費在結帳時計算",
-      "taxes_included_and_shipping_policy_html": "含稅。結帳時計算<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">運費<\/a>。",
+      "taxes_included_and_shipping_policy_html": "含稅。結帳時計算<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">運費</a>。",
       "taxes_and_shipping_at_checkout": "結帳時計算稅金和運費",
       "headings": {
         "product": "產品",
@@ -97,7 +117,7 @@
       "sort_by_label": "排序方式",
       "title": "收藏",
       "to": "到",
-      "use_fewer_filters_html": "使用較少的過濾器或<a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;\/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">清除所有<\/a>"
+      "use_fewer_filters_html": "使用較少的過濾器或<a class=\"&lt;span class='notranslate'&gt;{{ class }}&lt;/span&gt;\" href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">清除所有</a>"
     }
   },
   "general": {
@@ -109,7 +129,7 @@
       "login_form_error": "密碼錯誤！",
       "login_form_submit": "進入",
       "modal": "密碼模式",
-      "admin_link_html": "您是店主嗎？<a href=\"\/admin\" class=\"link underlined-link\">在此登入<\/a>",
+      "admin_link_html": "您是店主嗎？<a href=\"/admin\" class=\"link underlined-link\">在此登入</a>",
       "powered_by_shopify_html": "本店將由{{ shopify }}提供支持"
     },
     "social": {
@@ -220,8 +240,8 @@
         "view_store_info": "查看商店信息",
         "check_other_stores": "查看其他商店的庫存",
         "pick_up_available": "可取貨",
-        "pick_up_available_at_html": "可在<span class=\"color-foreground\">{{ location_name }}<\/span>取貨",
-        "pick_up_unavailable_at_html": "<span class=\"color-foreground\">{{ location_name }}<\/span>目前無法取貨",
+        "pick_up_available_at_html": "可在<span class=\"color-foreground\">{{ location_name }}</span>取貨",
+        "pick_up_unavailable_at_html": "<span class=\"color-foreground\">{{ location_name }}</span>目前無法取貨",
         "unavailable": "無法載入取貨日期",
         "refresh": "重新整理"
       },
@@ -236,10 +256,51 @@
       "unavailable": "不可用",
       "video_exit_message": "{{ title }}在同一視窗中開啟全螢幕影片。",
       "xr_button": "在您的空間中查看",
-      "xr_button_label": "在您的空間中查看，在擴增實境視窗中載入項目"
+      "xr_button_label": "在您的空間中查看，在擴增實境視窗中載入項目",
+      "accordions": {
+        "additional_features": {
+          "label": "其他功能",
+          "wifi_connectivity": "Wi-Fi連接用於遙控器",
+          "yes": "是的",
+          "no": "不",
+          "on_off_timer": "打開/關閉計時器",
+          "via_blueair_app": "通過BlueAir應用程序",
+          "speed_control_options": "速度控制選項",
+          "integrated_air_sensors": "集成的空氣傳感器"
+        },
+        "shipping_warranty": {
+          "label": "運輸和保修"
+        }
+      }
     },
     "modal": {
       "label": "媒體庫"
+    },
+    "technical_specifications": {
+      "product_viewer": "單擊並拖動以旋轉360°",
+      "label": "技術規格",
+      "filter_type": "過濾器類型",
+      "dimensions": "尺寸（HXWXD）",
+      "product_weight": "產品重量",
+      "tank_capacity": "坦克容量",
+      "energy_consumption": "能源消耗",
+      "max_wattage": "最大瓦數（熱）",
+      "sound_level": "聲音級別",
+      "air_outlet": "航空插座",
+      "recommended_room_size": "建議的房間尺寸",
+      "air_changes_per_hour": "每小時更換空氣（ACH）",
+      "humidification_run_time": "加濕運行時間",
+      "clean_air_delivery_rate": "清潔空氣輸送率（CADR）",
+      "pollen": "花粉",
+      "dust": "灰塵",
+      "smoke": "抽煙",
+      "operating_power": "操作能力",
+      "filter_frame_material": "過濾框材料",
+      "filter_recycling": "過濾器回收",
+      "recommended_filter_change": "建議更改過濾器",
+      "number_of_filters": "過濾器數",
+      "filter_replacement_indicator": "過濾器更換指示器",
+      "speed_control_options": "速度控制選項"
     }
   },
   "templates": {
@@ -287,7 +348,7 @@
       "company": "公司",
       "address1": "地址 1",
       "address2": "地址 2",
-      "country": "國家\/地區",
+      "country": "國家/地區",
       "province": "省",
       "zip": "郵遞區號",
       "set_default": "設定為預設地址",
@@ -399,9 +460,15 @@
     "collection_title": "您的收藏名稱"
   },
   "localization": {
-    "country_label": "國家\/地區",
+    "country_label": "國家/地區",
     "language_label": "語言",
     "update_language": "更新語言",
-    "update_country": "更新國家\/地區"
+    "update_country": "更新國家/地區"
+  },
+  "collections": {
+    "breadcrumbs": {
+      "shop": "店鋪",
+      "explore": "探索"
+    }
   }
 }

@@ -17,7 +17,7 @@
       "login_form_error": "Falsches Passwort!",
       "login_form_submit": "Eingeben",
       "modal": "Passwortmodal",
-      "admin_link_html": "Sind Sie der Ladenbesitzer? <a href=\"\/admin\" class=\"link underlined-link\">Melden Sie sich hier an<\/a>",
+      "admin_link_html": "Sind Sie der Ladenbesitzer? <a href=\"/admin\" class=\"link underlined-link\">Melden Sie sich hier an</a>",
       "powered_by_shopify_html": "Dieser Laden wird von Strom versorgt von {{ shopify }}"
     },
     "social": {
@@ -79,9 +79,9 @@
       "empty": "Ihr Wagen ist leer",
       "cart_error": "Bei der Aktualisierung Ihres Wagens gab es einen Fehler. Bitte versuchen Sie es erneut.",
       "cart_quantity_error_html": "Sie können Ihrem Warenkorb nur [Quantität] dieses Elements hinzufügen.",
-      "taxes_and_shipping_policy_at_checkout_html": "Steuern und <a href=\"{{ link }}\">Versand<\/a> an der Kasse berechnet",
+      "taxes_and_shipping_policy_at_checkout_html": "Steuern und <a href=\"{{ link }}\">Versand</a> an der Kasse berechnet",
       "taxes_included_but_shipping_at_checkout": "Steuern und Versand an der Kasse berechnet",
-      "taxes_included_and_shipping_policy_html": "Steuer enthalten. <a href=\"{{ link }}\">Versand<\/a> an der Kasse berechnet.",
+      "taxes_included_and_shipping_policy_html": "Steuer enthalten. <a href=\"{{ link }}\">Versand</a> an der Kasse berechnet.",
       "taxes_and_shipping_at_checkout": "Steuern und Versand an der Kasse berechnet",
       "headings": {
         "product": "Produkt",
@@ -130,7 +130,7 @@
       "sort_by_label": "Sortieren",
       "title": "Sammlung",
       "to": "Zu",
-      "use_fewer_filters_html": "Verwenden Sie weniger Filter oder <a class=\"{{ class }}\" href=\"{{ link }}\">Alle klar<\/a>"
+      "use_fewer_filters_html": "Verwenden Sie weniger Filter oder <a class=\"{{ class }}\" href=\"{{ link }}\">Alle klar</a>"
     }
   },
   "date_formats": {
@@ -205,8 +205,8 @@
         "view_store_info": "Storeinformationen anzeigen",
         "check_other_stores": "Überprüfen Sie die Verfügbarkeit in anderen Geschäften",
         "pick_up_available": "Abholung verfügbar",
-        "pick_up_available_at_html": "Abholung erhältlich bei <span class=\"color-foreground\">{{ location_name }}<\/span>",
-        "pick_up_unavailable_at_html": "Abholung derzeit nicht verfügbar bei <span class=\"color-foreground\">{{ location_name }}<\/span>",
+        "pick_up_available_at_html": "Abholung erhältlich bei <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Abholung derzeit nicht verfügbar bei <span class=\"color-foreground\">{{ location_name }}</span>",
         "unavailable": "Konnte die Verfügbarkeit von Abholung nicht laden",
         "refresh": "Aktualisieren"
       },
@@ -222,10 +222,51 @@
       "vendor": "Verkäufer",
       "video_exit_message": "{{ title }} Öffnet das Vollbildvideo im selben Fenster.",
       "xr_button": "Blick auf Ihren Raum",
-      "xr_button_label": "Sehen Sie sich in Ihrem Raum an, lädt Element im Augmented Reality -Fenster auf"
+      "xr_button_label": "Sehen Sie sich in Ihrem Raum an, lädt Element im Augmented Reality -Fenster auf",
+      "accordions": {
+        "additional_features": {
+          "label": "Zusätzliche Funktionen",
+          "wifi_connectivity": "Wi-Fi-Konnektivität für die Fernbedienung",
+          "yes": "Ja",
+          "no": "NEIN",
+          "on_off_timer": "Ein/ Aus -Timer",
+          "via_blueair_app": "über BlueAir App",
+          "speed_control_options": "Geschwindigkeitssteuerungsoptionen",
+          "integrated_air_sensors": "Integrierte Luftsensoren"
+        },
+        "shipping_warranty": {
+          "label": "Versand & Garantie"
+        }
+      }
     },
     "modal": {
       "label": "Mediengalerie"
+    },
+    "technical_specifications": {
+      "product_viewer": "Klicken und ziehen Sie, um 360 ° zu drehen",
+      "label": "Technische Spezifikationen",
+      "filter_type": "Filtertyp",
+      "dimensions": "Abmessungen (HXWXD)",
+      "product_weight": "Produktgewicht",
+      "tank_capacity": "Tankkapazität",
+      "energy_consumption": "Energieverbrauch",
+      "max_wattage": "Maximale Wattage (Hitze)",
+      "sound_level": "Schallpegel",
+      "air_outlet": "Luftauslass",
+      "recommended_room_size": "Empfohlene Raumgröße",
+      "air_changes_per_hour": "Luftwechsel pro Stunde (ACH)",
+      "humidification_run_time": "Befeugung Laufzeit",
+      "clean_air_delivery_rate": "Saubere Luftversorgerrate (CADR)",
+      "pollen": "Pollen",
+      "dust": "Staub",
+      "smoke": "Rauch",
+      "operating_power": "Betriebsleistung",
+      "filter_frame_material": "Filterrahmenmaterial",
+      "filter_recycling": "Filterrecycling",
+      "recommended_filter_change": "Empfohlene Filteränderung",
+      "number_of_filters": "Anzahl der Filter",
+      "filter_replacement_indicator": "Filterersatzindikator",
+      "speed_control_options": "Geschwindigkeitssteuerungsoptionen"
     }
   },
   "templates": {
@@ -258,10 +299,10 @@
     }
   },
   "localization": {
-    "country_label": "Land\/Region",
+    "country_label": "Land/Region",
     "language_label": "Sprache",
     "update_language": "Sprache aktualisieren",
-    "update_country": "Aktualisieren Sie Land\/Region"
+    "update_country": "Aktualisieren Sie Land/Region"
   },
   "customer": {
     "account": {
@@ -290,9 +331,9 @@
       "address1": "Adresse 1",
       "address2": "Adresse 2",
       "city": "Stadt",
-      "country": "Land\/Region",
+      "country": "Land/Region",
       "province": "Provinz",
-      "zip": "Post-\/Postleitzahl",
+      "zip": "Post-/Postleitzahl",
       "phone": "Telefon",
       "set_default": "Setzen Sie als Standardadresse",
       "add": "Adresse hinzufügen",
@@ -384,6 +425,12 @@
       "expired": "Abgelaufen",
       "copy_code_success": "Code erfolgreich kopiert",
       "print_gift_card": "Drucken"
+    }
+  },
+  "collections": {
+    "breadcrumbs": {
+      "shop": "Geschäft",
+      "explore": "Erkunden"
     }
   }
 }

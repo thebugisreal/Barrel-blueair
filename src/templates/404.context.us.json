@@ -8,18 +8,9 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "page.subscribe.json",
+  "parent": "404.json",
   "context": {
-    "market": "canada"
+    "market": "us"
   },
-  "sections": {
-    "section_hero_xnfkBi": {
-      "settings": {
-        "title": "Fresh filters, <br> fresh air",
-        "title_style": "h3",
-        "subtext": "Never forget to change your filter again"
-      },
-      "blocks": {}
-    }
-  }
+  "sections": {}
 }

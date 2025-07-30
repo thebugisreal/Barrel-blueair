@@ -19,29 +19,27 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_whKW4": {
-          "type": "announcement",
-          "disabled": false,
-          "settings": {
-            "header-80851bcba33c62a51df6a3d067d839c6": null,
-            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter ",
-            "url": "shopify://collections/air-purifier-filters"
-          }
-        },
         "announcement_QLGEH": {
           "type": "announcement",
-          "disabled": false,
+          "disabled": true,
           "settings": {
-            "header-156e46e989448e79807c70dd1001f7c1": null,
+            "header-7b17c0491e886295c6931e68a74481a1": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
+          }
+        },
+        "announcement_A6AHyV": {
+          "disabled": false,
+          "settings": {
+            "announcement": "LIMITED EDITION: Shop new ComfortPure™ 3-in-1 Midnight while it lasts",
+            "url": "shopify://products/comfortpure™-3-in-1-t10i-air-purifier-midnight"
           }
         },
         "announcement_XMHEL": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-65c1ed7ea6928358b1ad76bf87a603f2": null,
+            "header-cde59e1549ba78cc55d061338b4d6bf5": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
@@ -50,17 +48,17 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-b41cea98f4ce7b129bcc9600ceaed804": null,
+            "header-4b986a0ef082fd8bc49dd64dba2bae05": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": "shopify://collections/sale"
           }
         }
       },
       "block_order": [
-        "announcement_whKW4",
-        "announcement_QLGEH",
+        "announcement_A6AHyV",
         "announcement_XMHEL",
-        "announcement_KRB8N"
+        "announcement_KRB8N",
+        "announcement_QLGEH"
       ]
     }
   }

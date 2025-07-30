@@ -8,14 +8,14 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "product.json",
+  "parent": "product.211i.json",
   "context": {
     "market": "us"
   },
   "sections": {
-    "section_image_text_MUTaB": {
+    "section_image_text_KhkEH": {
       "type": "section__image-text",
-      "disabled": true,
+      "disabled": false,
       "settings": {
         "header-f5455084387a173ed125f210076e59d4": null,
         "margin_top_mobile": "mt-0",
@@ -48,25 +48,12 @@
       "blocks": {},
       "block_order": [],
       "name": "Image and Text"
-    },
-    "product_tech_specs_jEUNXD": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
-    },
-    "product_recommendations_Ha8zrk": {
-      "disabled": false,
-      "settings": {
-        "limit": 4,
-        "intent": "related"
-      },
-      "blocks": {}
     }
   },
   "order": [
     "main",
     "product_slideshow_f7BaaR",
-    "section_image_text_MUTaB",
+    "section_image_text_KhkEH",
     "product_custom_tabs_acewb9",
     "product_image_text_6MPkRA",
     "product_video_WFRqMh",
