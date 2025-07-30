@@ -132,7 +132,9 @@
         <div class="country-select__label flex gap-xxxs justify-start items-center py-xxs px-xs pr-md">
           <div class="icon-globe w-32">{% render 'icon-globe' %}</div>
           <div class="country-name text-12 flex-1">
-            {% if localization.country.name == 'Hong Kong SAR' %}
+            {% if localization.country.market.handle == "europe" %}
+                Europe
+            {% elsif localization.country.name == 'Hong Kong SAR' %}
                 Hong Kong/Macau
             {% else %}
                 {{ localization.country.name }}

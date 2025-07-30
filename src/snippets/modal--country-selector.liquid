@@ -10,9 +10,10 @@
                 <p class="s2">Select Market</p>
                 <div class="modal__country-select relative bg-white border p-sm border-gray rounded-[4px]">
                     <div class="country-name text-[22px] flex-1"
-                     
                     js-country-input-label>
-                    {% if localization.country.name == 'Hong Kong SAR' %}
+                    {% if localization.country.market.handle == "europe" %}
+                        Europe
+                    {% elsif localization.country.name == 'Hong Kong SAR' %}
                         Hong Kong/Macau
                     {% else %}
                         {{ localization.country.name }}
@@ -21,6 +22,7 @@
                     <select name="country_code" id="{{ input_id }}" class="country-select__selector block absolute inset-0 z-[1] opacity-0 cursor-pointer" js-country-select>
                         <option value="AU" {% if localization.country.iso_code == "AU"%}selected{% endif %} data-country-name="Australia">Australia</option>
                         <option value="BD" {% if localization.country.iso_code == "BD"%}selected{% endif %} data-country-name="Bangladesh">Bangladesh</option>
+                        <option value="EU" {% if localization.country.market.handle == "europe" %}selected{% endif %} data-country-name="Europe">Europe</option>
                         <option value="CA" {% if localization.country.iso_code == "CA"%}selected{% endif %} data-country-name="Canada">Canada</option>
                         <option value="HK" {% if localization.country.iso_code == "HK"%}selected{% endif %} data-country-name="Hong Kong/Macau">Hong Kong/Macau</option>
                         <option value="TW" {% if localization.country.iso_code == "TW"%}selected{% endif %} data-country-name="Taiwan">Taiwan</option>
