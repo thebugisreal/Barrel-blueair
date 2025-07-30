@@ -1,0 +1,315 @@
+{% assign sections = "My Profile,Filter Subscriptions,Order History,Devices & Warranty" | split: ',' %}
+
+{% assign secret_key = shop.metafields.ordergroove.themeHashKey.value %}
+{% assign customer_id = customer.id  %}
+{% assign timestamp = "now" | date: "%s" %}
+{% assign signature = customer_id | append: "|" | append: timestamp | hmac_sha256: secret_key %}
+
+{% comment %} 
+  Filter Subscriptions Content 
+{% endcomment %}
+{% capture filter_subscriptions %}
+  <div class="account__section">
+    <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
+      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Filter Subscriptions</h4>
+      <a href="{{ settings.add_subscription_url }}" target="_blank" rel="noopener noreferrer" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
+        Add a Subscription
+        <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
+      </a>
+    </div>
+    <div class="grid gap-md">
+      <div class="account-content">
+        <div id="og-msi" ng-jq></div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+
+
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" 
+  data-customer-email="{{ customer.email }}" 
+  data-customer-id="{{ customer.id }}"
+  data-customer-signature="{{ signature }}"
+  data-customer-timestamp="{{ timestamp }}">
+  <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
+    <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
+      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
+        <div class="bg-blue text-white text-center p-sm">
+          <p class="account__title s1">Hello {{customer.first_name}}</p>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="flex justify-start relative h-[56px] desktop:hidden">
+          <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0" js-accordion>
+            <div class="accordion-item" js-accordion-item>
+              <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header js-account-trigger-accoridon-header>
+                <span js-account-label>{{ sections[0] }}</span>
+                <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
+              </button>
+              <div id="AccountSectionsAccordion" class="accordion-content bg-white shadow-md" role="tablist" aria-hidden="true" aria-orientation="horizontal" js-accordion-content js-tablist>
+                {% for section in sections %}
+                  <button id="{{ section | handleize }}-tab" class="tab__trigger block w-full p2 px-xs pb-xs link text-left" 
+                    role="tab" 
+                    aria-controls="{{ section | handleize }}-content-panel" 
+                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
+                    data-label="{{ section }}"
+                    js-tab
+                    js-account-tab
+                    {% unless section == 'Filter Subscriptions' %}
+                      onclick="window.location='{{ routes.account_url }}?section={{ section | handleize }}'"
+                    {% endunless %}
+                  >
+                    {{ section | escape }}
+                  </button>
+                {% endfor %}
+                <!-- <a href="https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a> -->
+                <a href="https://www.blueair.com/account/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
+              </div>
+            </div>
+          </s-accordion>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden desktop:block" role="list">
+          {% for section in sections %}
+            {% capture value_id %}AccountSection-{{ section | handleize }}{% endcapture %}
+            <li class="border-b border-[#F0F3F6]">
+              <input type="radio"
+                name="AccountSections"
+                value="{{ section | handleize }}"
+                id="{{ value_id }}"
+                class="account-section__input visually-hidden"
+                {% if section == 'Filter Subscriptions' %}
+                  checked
+                {% else %}
+                  onclick="window.location='{{ routes.account_url }}?section={{ section | handleize }}'"
+                {% endif %}>
+              <label 
+                for="{{ value_id }}" 
+                class="account-section__label flex justify-start items-center gap-xs p-sm"
+                role="tab" 
+                aria-controls="{{ section | handleize }}-content-panel" 
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
+                data-label="{{ section }}"
+                js-tab
+                js-account-tab>
+                <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
+                <span class="account-section-label__text p1 leading-none">
+                  {{ section | escape }}
+                </span>
+              </label>
+            </li>                          
+          {%- endfor -%}
+          <li class="border-b border-[#F0F3F6]">
+            <input type="radio"
+              name="AccountSections"
+              id="AccountLogOut"
+              onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';"
+              class="account-section__input visually-hidden">
+            <label 
+              for="AccountLogOut" 
+              class="account-section__label flex justify-start items-center gap-xs p-sm">
+              <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
+              <!-- <span class="account-section-label__text p1 leading-none">
+                Sign Out
+              </span> -->
+              <a class="account-section-label__text p1 leading-none" href="https://www.blueair.com/account/logout">Sign Out</a>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="account__sections desktop:col-span-9">
+        <!-- Account Sections -->
+        {% for section in sections %}
+          <div id="{{ section | handleize }}-content-panel" class="tab__panel pt-md grid gap-y-md desktop:pt-0 desktop:gap-y-lg" 
+            role="tabpanel" 
+            aria-labelledby="{{ section | handleize }}-tab" 
+            aria-hidden="{% if section == 'Filter Subscriptions' %}false{% else %}true{% endif %}">
+            {% case section %}
+            {% when 'Filter Subscriptions' %}
+              {{ filter_subscriptions }}
+            {% endcase %}
+          </div>
+        {% endfor %}
+
+      </div>
+    </s-tabs>
+  </div>
+
+  <!-- Add Address Modal -->
+  <s-modal id="addAddressModal" class="w-11/12 max-w-[550px] desktop:w-full" open="[js-open-add-address]" close="[js-close-add-address]">
+    <div class="account-address__modal">
+      <header class="account-address-modal__header px-md py-sm flex justify-between items-center">
+        <p class="account__subtitle h6 font-400 text-blue">New Address</p>
+        <button class="account__close btn p-0 text-blue border-0" js-close-add-address>
+          <span class="w-[33px]">{% render 'icon-close-no-border' %}</span>
+        </button>
+      </header>
+      {%- form 'customer_address', customer.new_address -%}
+        <div class="px-md py-sm">
+          {%- if form.errors -%}
+            <ul class="form__errors">
+              {% for field in form.errors %}
+                <li>
+                  {% if field == 'form' %}
+                    {{ form.errors.messages[field] }}
+                  {% else %}
+                    {{ form.errors.translated_fields[field] }} - {{ form.errors.messages[field] }}
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {%- endif -%}
+          <div class="grid grid-cols-2 gap-md mb-sm">
+            <div class="relative">
+              <label for="AddressFirstNameNew" class="form__label p1">First Name</label>
+              <input type="text" id="AddressFirstNameNew" class="form__element" name="address[first_name]" value="{{ customer.first_name }}" autocomplete="given-name" placeholder="First Name">
+            </div>
+            <div class="relative">
+              <label for="AddressLastNameNew" class="form__label p1">Last Name</label>
+              <input type="text" id="AddressLastNameNew" class="form__element" name="address[last_name]" value="{{ customer.last_name }}" autocomplete="family-name" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="relative mb-sm">
+            <label for="AddressCompanyNew" class="form__label p1">Company</label>
+            <input type="text" id="AddressCompanyNew" class="form__element" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="Company">
+          </div>
+          <div class="relative mb-sm">
+            <label for="AddressAddress1New" class="form__label p1">Address 1</label>
+            <input type="text" id="AddressAddress1New" class="form__element" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="Address 1">
+          </div>
+          <div class="relative mb-sm">
+            <label for="AddressAddress2New" class="form__label p1">Address 2</label>
+            <input type="text" id="AddressAddress2New" class="form__element" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="Address 2">
+          </div>
+          <div class="grid grid-cols-2 gap-md mb-sm">
+            <div class="relative">
+              <label for="AddressCountryNew" class="form__label p1">Country</label>
+              <select id="AddressCountryNew" class="form__element" name="address[country]" data-default="{{ form.country }}" autocomplete="country">{{ all_country_option_tags }}</select>
+            </div>
+            <div id="AddressProvinceContainerNew" class="relative">
+              <label for="AddressProvinceNew" class="form__label p1">State/Province</label>
+              <select id="AddressProvinceNew" class="form__element" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1"></select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-md mb-sm">
+            <div class="relative">     
+              <label for="AddressCityNew" class="form__label p1">City</label>     
+              <input type="text" id="AddressCityNew" class="form__element" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="City">
+            </div>
+            <div class="relative">
+              <label for="AddressZipNew" class="form__label p1">Postal/Zip Code</label>
+              <input type="text" id="AddressZipNew" class="form__element" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="Postal/Zip Code">
+            </div>
+          </div>
+          <div class="relative mb-md">
+            <label for="AddressPhoneNew" class="form__label p1">Phone Number</label>
+            <input type="tel" id="AddressPhoneNew" class="form__element" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="Phone Number">
+          </div>
+          <div class="relative flex items-center justify-start gap-xxs mb-xs">
+            <input type="checkbox" id="address_default_address_new" name="address[default]" value="1" class="account-address__input visually-hidden">
+            <label for="address_default_address_new" class="account-address__label flex justify-start items-center gap-xxs">
+              <span class="account-address-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
+              <span class="account-address-label__text p2 flex-1">
+                Set as default
+              </span>
+            </label>
+          </div>
+          <div class="flex justify-end items-center">
+            <button class="btn btn--blue-rounded flex justify-center items-center gap-xxs">
+              Save Address<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+            </button>
+          </div>
+        </div>
+      {%- endform -%}
+    </div>
+  </s-modal>
+
+  <!-- Edit Address Modal -->
+  <s-modal id="editAddressModal" class="w-11/12 max-w-[550px] desktop:w-full" open="[js-open-edit-address]" close="[js-close-edit-address]" js-edit-address-modal>
+    <div class="account-address__modal">
+      <header class="account-address-modal__header px-md py-sm flex justify-between items-center">
+        <p class="account__subtitle h6 font-400 text-blue">Edit Address</p>
+        <button class="account__close btn p-0 text-blue border-0" js-close-edit-address>
+          <span class="w-[33px]">{% render 'icon-close-no-border' %}</span>
+        </button>
+      </header>
+      {% for address in customer.addresses %}
+        {% form 'customer_address', address, class: 'hidden', js-edit-address-form: '' %}
+          <div class="px-md py-sm">
+            <div class="grid grid-cols-2 gap-md mb-sm">
+              <div class="relative">
+                <label for="AddressFirstName_{{ form.id }}" class="form__label p1">First Name</label>
+                <input type="text" id="AddressFirstName_{{ form.id }}" class="form__element" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="First Name">
+              </div>
+              <div class="relative">
+                <label for="AddressLastName_{{ form.id }}" class="form__label p1">Last Name</label>
+                <input type="text" id="AddressLastName_{{ form.id }}" class="form__element" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="relative mb-sm">
+              <label for="AddressCompany_{{ form.id }}" class="form__label p1">Company</label>
+              <input type="text" id="AddressCompany_{{ form.id }}" class="form__element" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="Company">
+            </div>
+            <div class="relative mb-sm">
+              <label for="AddressAddress1_{{ form.id }}" class="form__label p1">Address 1</label>
+              <input type="text" id="AddressAddress1_{{ form.id }}" class="form__element" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="Address 1">
+            </div>
+            <div class="relative mb-sm">
+              <label for="AddressAddress2_{{ form.id }}" class="form__label p1">Address 2</label>
+              <input type="text" id="AddressAddress2_{{ form.id }}" class="form__element" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="Address 2">
+            </div>
+            <div class="grid grid-cols-2 gap-md mb-sm">
+              <div class="relative">
+                <label for="AddressCountry_{{ form.id }}" class="form__label p1">Country</label>
+                <select id="AddressCountry_{{ form.id }}" class="form__element" name="address[country]" data-default="{{ form.country }}" autocomplete="country" data-form-id="{{ form.id }}" js-country-select>{{ all_country_option_tags }}</select>
+              </div>
+              <div id="AddressProvinceContainer_{{ form.id }}" class="relative">
+                <label for="AddressProvince_{{ form.id }}" class="form__label p1">State/Province</label>
+                <select id="AddressProvince_{{ form.id }}" class="form__element" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1"></select>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-md mb-sm">
+              <div class="relative">     
+                <label for="AddressCity_{{ form.id }}" class="form__label p1">City</label>
+                <input type="text" id="AddressCity_{{ form.id }}" class="form__element" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="City">
+              </div>
+              <div class="relative">
+                <label for="AddressZip_{{ form.id }}" class="form__label p1">Postal/Zip Code</label>
+                <input type="text" id="AddressZip_{{ form.id }}" class="form__element" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="Postal/Zip Code">
+              </div>
+            </div>
+            <div class="relative mb-md">
+              <label for="AddressPhone_{{ form.id }}" class="form__label p1">Phone Number</label>
+              <input type="tel" id="AddressPhone_{{form.id}}" class="form__element" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="Phone Number">
+            </div>
+            <div class="relative flex items-center justify-start gap-xxs mb-xs">
+              {{ form.set_as_default_checkbox }}
+              <label for="address_default_address_{{form.id}}" class="account-address__label flex justify-start items-center gap-xxs">
+                <span class="account-address-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
+                <span class="account-address-label__text p2 flex-1">
+                  Make this my default shipping address
+                </span>
+              </label>
+            </div>
+            <div class="flex justify-end items-center gap-md">
+              <button type="button" class="account-address__edit-delete link text-pink-fuschia" data-target="{{address.url}}" js-delete-address>Delete Address</button>
+              <button type="submit" class="btn btn--blue-rounded flex justify-center items-center gap-xxs">
+                Save changes<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+              </button>
+            </div>
+          </div>
+        {% endform %}
+      {% endfor %}
+  </s-modal>
+</s-account>
+
+
+{% schema %}
+{
+  "name": "Subscription Management",
+  "settings": []
+}
+{% endschema %}

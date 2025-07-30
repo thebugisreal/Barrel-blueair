@@ -4,6 +4,9 @@
 {% assign customer_id = customer.id  %}
 {% assign timestamp = "now" | date: "%s" %}
 {% assign signature = customer_id | append: "|" | append: timestamp | hmac_sha256: secret_key %}
+{% assign filter_subscriptions_url = '/pages/subscription-management' %}
+{% assign active_tab = 'My Profile' %}
+
 
 {% comment %} 
   My Profile Content 
@@ -317,6 +320,9 @@
                 value="{{ section | handleize }}"
                 id="{{ value_id }}"
                 class="account-section__input visually-hidden"
+                {% if section == 'Filter Subscriptions' %}
+                  onclick="window.location='{{ filter_subscriptions_url }}'"
+                {% endif %}
                 {% if forloop.first %}checked{% endif %}>
               <label 
                 for="{{ value_id }}" 
