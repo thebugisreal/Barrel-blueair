@@ -586,86 +586,89 @@
                           {% endif %}
                         {% endfor %}
                           {% comment %} Prefilter Upsell {% endcomment %}
-                          <product-upsell class="product-upsell__item flex justify-between">
-
-                            {% assign image3 = upsell_object.product.value.metafields.seed.product_card_image %}
-                            {% if image3 != blank %}
-                              <div class="product-upsell__atc-container flex justify-between items-center flex-wrap gap-xxs mr-sm max-w-[100px]">
-                                {% render 'lazy-image' image: image3 %}
-                              </div>
-                            {% endif %}
-
-                            <div>
-                              {% assign upsell_product = upsell_object.product.value %}
-                              {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
-                              
-                              {% if upsell_object.heading != blank %}
-                                <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
-                                  {{ upsell_object.heading | strip }} <span class="s3">{{ upsell_current_variant.price | money }}</span>
-                                </div>
-
-                              {% endif %}
-                              {% if upsell_object.short_description != blank %}
-                                <div class="product-upsell__description p4 mb-xxxs">{{ upsell_object.short_description }}</div>
-                              {% endif %}
-                              <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
-                                {% if upsell_product != blank %}
-                                  {% liquid
-                                    assign color_option = false
-                                    assign filter_type_option = false
-                                    if upsell_product.options_by_name['color'] != blank
-                                      assign color_option = upsell_product.options_by_name['color'].position | minus: 1
-                                    endif
-                                  %}
-                                  {% if color_option != false %}
-                                    <div class="product-upsell__variants-container">
-                                      <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
-                                        {% assign upsell_product_swatch_objects = upsell_product.metafields.seed.swatches.value %}
-                                        {% for upsell_variant in upsell_product.variants %}
-                                          {% assign upsell_swatch_object = upsell_product_swatch_objects | where: "name", upsell_variant.options[color_option] | first %}
-                                          <div>
-                                            <button type="button" 
-                                              class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
-                                              data-variant-id="{{ upsell_variant.id }}"
-                                              data-available="{{ upsell_variant.available }}"
-                                              data-price="{{ upsell_variant.price | money }}"
-                                              data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
-                                              title="{{ upsell_variant.options[color_option] }}"
-                                              js-product-upsell-variant>
-                                              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object.color }};">
-                                                {% if upsell_swatch_object.image != blank %}
-                                                  <img src="{{ upsell_swatch_object.image.value | img_url: '40x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
-                                                {% endif %} 
-                                              </div>
-                                            </button>
-                                          </div>
-                                        {% endfor %}
-                                      </div>
+                          <product-upsell class="product-upsell__item flex flex-col">
+                            <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
+                              <div class="flex gap-xs justify-between">
+                                <div class="flex">
+                                  {% assign prefilter_image = product.metafields.seed.product_card_image %}
+                                  {% if prefilter_image != blank %}
+                                    <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
+                                      {% render 'lazy-image' image: prefilter_image %}
                                     </div>
                                   {% endif %}
-                                {% endif %}
-                              </div>
-                            </div>
 
-                            <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
-                              <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
-                                <span class="btn__text">
-                                  {% if upsell_current_variant.available %}
-                                    Add to Cart
-                                  {% else %}
-                                    Out of Stock
-                                  {% endif %}
-                                </span>
-                              </button>
-                              <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
-                                <span class="btn__text">Added</span>
-                              </button>
-                              <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
-                                <span class="btn__text">
-                                  Notify Me When Available
-                                </span>
-                              </button>
-                              <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                  <div class="flex flex-col m-auto">
+                                    {% assign upsell_product = upsell_object.product.value %}
+                                    {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
+                                    
+                                    {% if upsell_object.heading != blank %}
+                                      <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
+                                        {{ upsell_object.heading | strip }} <span class="s3">{{ upsell_current_variant.price | money }}</span>
+                                      </div>
+                                    {% endif %}
+                                    {% if upsell_object.short_description != blank %}
+                                      <div class="product-upsell__description p4 mb-xxxs">{{ upsell_object.short_description }}</div>
+                                    {% endif %}
+                                    
+                                    {% if upsell_product != blank %}
+                                      {% liquid
+                                        assign color_option = false
+                                        assign filter_type_option = false
+                                        if upsell_product.options_by_name['color'] != blank
+                                          assign color_option = upsell_product.options_by_name['color'].position | minus: 1
+                                        endif
+                                      %}
+                                      {% if color_option != false %}
+                                        <div class="product-upsell__variants-container">
+                                          <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
+                                            {% assign upsell_product_swatch_objects = upsell_product.metafields.seed.swatches.value %}
+                                            {% for upsell_variant in upsell_product.variants %}
+                                              {% assign upsell_swatch_object = upsell_product_swatch_objects | where: "name", upsell_variant.options[color_option] | first %}
+                                              <div>
+                                                <button type="button" 
+                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                  data-variant-id="{{ upsell_variant.id }}"
+                                                  data-available="{{ upsell_variant.available }}"
+                                                  data-price="{{ upsell_variant.price | money }}"
+                                                  data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
+                                                  title="{{ upsell_variant.options[color_option] }}"
+                                                  js-product-upsell-variant>
+                                                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object.color }};">
+                                                    {% if upsell_swatch_object.image != blank %}
+                                                      <img src="{{ upsell_swatch_object.image.value | img_url: '40x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
+                                                    {% endif %} 
+                                                  </div>
+                                                </button>
+                                              </div>
+                                            {% endfor %}
+                                          </div>
+                                        </div>
+                                      {% endif %}
+                                    {% endif %}
+                                  </div>
+                                </div>
+
+                                <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
+                                  <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                                    <span class="btn__text">
+                                      {% if upsell_current_variant.available %}
+                                        Add to Cart
+                                      {% else %}
+                                        Out of Stock
+                                      {% endif %}
+                                    </span>
+                                  </button>
+                                  <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
+                                    <span class="btn__text">Added</span>
+                                  </button>
+                                  <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                    <span class="btn__text">
+                                      Notify Me When Available
+                                    </span>
+                                  </button>
+                                  <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                </div>
+                              </div>
                             </div>
                           </product-upsell>
 
@@ -774,9 +777,7 @@
   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
 
   <script>
-    // Custom handler for multiple BIS buttons in upsell sections
     document.addEventListener('DOMContentLoaded', function() {
-      // Handle clicks on BIS buttons in upsell sections
       document.addEventListener('click', function(e) {
         const bisButton = e.target.closest('[js-klaviyo-bis-modal-trigger]');
         if (!bisButton) return;
@@ -794,7 +795,6 @@
         
         // Function to try opening the modal with retry logic
         function openBISModal() {
-          // Try different possible Klaviyo BIS APIs
           if (window.Klaviyo && window.Klaviyo.BIS && window.Klaviyo.BIS.showModal) {
             window.Klaviyo.BIS.showModal({ variant: variantId });
             return true;
@@ -805,20 +805,16 @@
             window.klaviyo.BIS.showModal({ variant: variantId });
             return true;
           } else if (window.klaviyo && typeof window.klaviyo.push === 'function') {
-            // Try using klaviyo.push method
             window.klaviyo.push(['backinstock', 'showModal', { variant: variantId }]);
             return true;
           } else {
-            // Fallback: Try to manually open the BIS modal
             const bisModal = document.querySelector('[js-klaviyo-bis-modal]');
             if (bisModal && typeof bisModal.open === 'function') {
-              // Update modal content with variant info
               const productTitle = bisModal.querySelector('[js-bis-product-title]');
               if (productTitle) {
                 productTitle.textContent = bisButton.closest('.product-upsell__item').querySelector('.product-upsell__title')?.textContent || 'Product';
               }
               
-              // Add variant ID to form
               const form = bisModal.querySelector('[js-bis-form]');
               if (form) {
                 let variantInput = form.querySelector('input[name="variant"]');
@@ -835,7 +831,6 @@
               return true;
             }
             
-            // Only log once per attempt to reduce console spam
             if (!window._klaviyoBISLogged) {
               console.log('Klaviyo BIS not ready, retrying...');
               console.log('Available Klaviyo objects:', {
@@ -851,16 +846,14 @@
           }
         }
         
-        // Try to open immediately, if not ready, retry with intervals
         if (!openBISModal()) {
           const retryInterval = setInterval(() => {
             if (openBISModal()) {
               clearInterval(retryInterval);
-              window._klaviyoBISLogged = false; // Reset for next attempt
+              window._klaviyoBISLogged = false;
             }
-          }, 2000); // Increased interval to reduce spam
+          }, 2000);
           
-          // Stop retrying after 10 seconds
           setTimeout(() => {
             clearInterval(retryInterval);
             console.error('Klaviyo BIS failed to load within 10 seconds');
