@@ -29,9 +29,9 @@
                 {% render 'product-title-intl', product: variant.product %}
             </h1>
             {% unless variant.title == "Default Title" %}
-                <p class="p4 my-xxxs" js-product-card-current-swatch-label>{{ variant.title }}</p>
+                <p class="p4 my-xxxs" js-product-card-current-swatch-label>{{ current_variant.title }}</p>
             {% endunless %}
-            <p class="p1 font-700" js-product-card-price>{{ variant.price | money }}</p>
+            <p class="p1 font-700" js-product-card-price>{{ current_variant.price | money }}</p>
         </div>
 
         {% if variant.product.metafields.seed.swatches != blank %}
