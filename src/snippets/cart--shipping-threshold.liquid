@@ -10,12 +10,12 @@
 <div class="cart_shipping-motivator--container mb-lg max-w-[550px] mx-auto">
   <div class="shipping-motivator__message text-center p4">
     {% if cart == empty %}
-      Start shopping to qualify for free shipping!
+      {{ settings.shipping_threshold_message_empty }}
       {% else %}
       {% if difference > 0 %}
-        You almost get free shipping! Only {{ difference | money_without_trailing_zeros }} away!
+        {{ settings.shipping_threshold_message_not_filled }}
         {% else %}
-        You've qualified for free shipping
+        {{ settings.shipping_threshold_message_filled }}
       {% endif %}
     {% endif %}
   </div>
