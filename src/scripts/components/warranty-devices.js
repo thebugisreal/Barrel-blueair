@@ -1,5 +1,5 @@
-const WARRANTY_API_BASE = 'https://on1keymlmh.execute-api.us-east-2.amazonaws.com/prod/c/warranty';
-const LOGIN_API_URL = 'https://on1keymlmh.execute-api.us-east-2.amazonaws.com/prod/c/login?client_id=2p4qzjra9vdd217fnl0ndn2kj8&client_secret=2t468rg26d1plhdi1ceqorqnop4op0jdmn3lkl2rj873q3fem2u9';
+const WARRANTY_API_BASE = 'https://hkgmr8v960.execute-api.eu-west-1.amazonaws.com/prod/c/warranty';
+const LOGIN_API_URL = 'https://hkgmr8v960.execute-api.eu-west-1.amazonaws.com/prod/c/login?client_id=2p2qzjra4vdd943fnl0ndn8kj2&client_secret=2t247rg19d2plhdi1ceqorqnop3op0jdmn9lkl4rj729q0fem3u7';
 const JWT_COOKIE_NAME = 'gigya_access_token';
 const ACCESS_TOKEN_COOKIE_NAME = 'warranty_access_token';
 
@@ -18,11 +18,11 @@ async function exchangeJwtForAccessToken(jwt) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-          if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
-        clearAuthTokens();
-        window.location.href = '/account/logout';
-        throw new Error('JWT token expired or invalid. Please log in again.');
-      }
+    if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
+      clearAuthTokens();
+      window.location.href = '/account/logout';
+      throw new Error('JWT token expired or invalid. Please log in again.');
+    }
     throw new Error(err.error || err.message || 'Failed to exchange JWT for access token');
   }
   const data = await res.json();
@@ -34,11 +34,11 @@ async function getApiAccessToken() {
   let accessToken = getCookie(ACCESS_TOKEN_COOKIE_NAME);
   if (accessToken) return accessToken;
   const jwt = getCookie(JWT_COOKIE_NAME);
-      if (!jwt) {
-      clearAuthTokens();
-      window.location.href = '/account/logout';
-      throw new Error('Authentication error, please log in again.');
-    }
+  if (!jwt) {
+    clearAuthTokens();
+    window.location.href = '/account/logout';
+    throw new Error('Authentication error, please log in again.');
+  }
   return await exchangeJwtForAccessToken(jwt);
 }
 
@@ -57,11 +57,11 @@ async function getDevices() {
   });
   const data = await res.json();
   if (!res.ok) {
-          if (res.status === 401 || res.status === 403 || data.error?.includes('expired') || data.error?.includes('invalid')) {
-        clearAuthTokens();
-        window.location.href = '/account/logout';
-        throw new Error('Authentication expired. Please log in again.');
-      }
+    if (res.status === 401 || res.status === 403 || data.error?.includes('expired') || data.error?.includes('invalid')) {
+      clearAuthTokens();
+      window.location.href = '/account/logout';
+      throw new Error('Authentication expired. Please log in again.');
+    }
     throw new Error(data.error || data.message || 'Failed to fetch devices');
   }
   return data;
@@ -79,11 +79,11 @@ async function registerDevice(formData) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-          if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
-        clearAuthTokens();
-        window.location.href = '/account/logout';
-        throw new Error('Authentication expired. Please log in again.');
-      }
+    if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
+      clearAuthTokens();
+      window.location.href = '/account/logout';
+      throw new Error('Authentication expired. Please log in again.');
+    }
     throw new Error(err.error || err.message || 'Failed to register device');
   }
   return res.json();
@@ -102,7 +102,7 @@ function formatWarrantyErrorMessage(apiMessage) {
 class WarrantyDevices extends HTMLElement {
   constructor() {
     super();
-    
+
     this._selectors = {
       getDeviceButton: '[js-register-device]',
       toggleWarrantyForm: '[js-toggle-warranty-form]',
@@ -144,24 +144,24 @@ class WarrantyDevices extends HTMLElement {
   _familySelectListener() {
     const familySelect = this.querySelector(this._selectors.familySelect);
     const modelSelect = this.querySelector(this._selectors.modelSelect);
-  
+
     if (!familySelect || !modelSelect) {
       console.warn('Unit family or model select not found in DOM');
       return;
     }
-  
-    familySelect.addEventListener('change', function() {
+
+    familySelect.addEventListener('change', function () {
       const selectedOption = familySelect.options[familySelect.selectedIndex];
       const gid = selectedOption.value;
       const handle = window.collectionGidToHandle[gid];
-  
+
       modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
-  
+
       if (!handle) return;
-  
+
       const models = window.collectionProducts[handle] || [];
       if (models.length) {
-        models.forEach(function(model) {
+        models.forEach(function (model) {
           const opt = document.createElement('option');
           opt.value = model.id;
           opt.textContent = model.title;
@@ -175,7 +175,7 @@ class WarrantyDevices extends HTMLElement {
       }
     });
   }
-  
+
   _renderDevices = async (showLoading = false) => {
     const container = document.querySelector('.device-card-content');
     if (!container) {
@@ -212,7 +212,7 @@ class WarrantyDevices extends HTMLElement {
 
     let familyGid = device.family;
     const handle = window.collectionGidToHandle?.[familyGid];
-   
+
     return `
       <div class="device-card mt-md grid gap-md">
         <div class="account-content">
@@ -308,7 +308,7 @@ class WarrantyDevices extends HTMLElement {
     if (dateInput) {
       dateInput.addEventListener('input', (e) => {
         let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 8) value = value.slice(0, 8); 
+        if (value.length > 8) value = value.slice(0, 8);
         if (value.length >= 4) {
           value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
         } else if (value.length >= 2) {
@@ -322,7 +322,7 @@ class WarrantyDevices extends HTMLElement {
   _setupCalendarPicker = () => {
     const dateInput = this.querySelector('input[name="purchase_date"]');
     const calendarBtn = this.querySelector('[js-calendar-picker]');
-    
+
     if (!dateInput || !calendarBtn) return;
 
     let calendarOpen = false;
@@ -333,10 +333,10 @@ class WarrantyDevices extends HTMLElement {
       const calendar = document.createElement('div');
       calendar.className = 'calendar-picker absolute top-full left-0 mt-1 bg-white border border-[#D6E4F3] rounded-lg shadow-lg z-50 p-3 min-w-[280px]';
       calendar.style.display = 'none';
-      
+
       const header = document.createElement('div');
       header.className = 'flex justify-between items-center mb-3';
-      
+
       const prevBtn = document.createElement('button');
       prevBtn.innerHTML = '‹';
       prevBtn.className = 'text-[#002D72] hover:bg-[#D6E4F3] rounded p-1 text-lg font-bold';
@@ -344,10 +344,10 @@ class WarrantyDevices extends HTMLElement {
         currentDate.setMonth(currentDate.getMonth() - 1);
         renderCalendar();
       });
-      
+
       const monthYear = document.createElement('span');
       monthYear.className = 'text-[#002D72] font-medium';
-      
+
       const nextBtn = document.createElement('button');
       nextBtn.innerHTML = '›';
       nextBtn.className = 'text-[#002D72] hover:bg-[#D6E4F3] rounded p-1 text-lg font-bold';
@@ -355,11 +355,11 @@ class WarrantyDevices extends HTMLElement {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
       });
-      
+
       header.appendChild(prevBtn);
       header.appendChild(monthYear);
       header.appendChild(nextBtn);
-      
+
       const weekdays = document.createElement('div');
       weekdays.className = 'grid grid-cols-7 gap-1 mb-2';
       ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(day => {
@@ -368,48 +368,48 @@ class WarrantyDevices extends HTMLElement {
         dayEl.textContent = day;
         weekdays.appendChild(dayEl);
       });
-      
+
       const daysGrid = document.createElement('div');
       daysGrid.className = 'grid grid-cols-7 gap-1';
-      
+
       calendar.appendChild(header);
       calendar.appendChild(weekdays);
       calendar.appendChild(daysGrid);
-      
+
       return { calendar, monthYear, daysGrid };
     };
 
     const renderCalendar = () => {
       const { calendar, monthYear, daysGrid } = calendarElements;
-      
+
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
-      
+
       monthYear.textContent = `${new Date(year, month).toLocaleDateString('en-US', { month: 'long' })} ${year}`;
-      
+
       daysGrid.innerHTML = '';
-      
+
       const firstDay = new Date(year, month, 1);
       const lastDay = new Date(year, month + 1, 0);
       const startDate = new Date(firstDay);
       startDate.setDate(startDate.getDate() - firstDay.getDay());
-      
+
       const today = new Date();
       const threeYearsAgo = new Date();
       threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
-      
+
       for (let i = 0; i < 42; i++) {
         const date = new Date(startDate);
         date.setDate(startDate.getDate() + i);
-        
+
         const dayEl = document.createElement('button');
         dayEl.className = 'p-2 text-sm rounded hover:bg-[#D6E4F3] transition-colors';
-        
+
         const isCurrentMonth = date.getMonth() === month;
         const isToday = date.toDateString() === today.toDateString();
         const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
         const isDisabled = date < threeYearsAgo || date > today;
-        
+
         if (!isCurrentMonth) {
           dayEl.className += ' text-gray-400';
         } else if (isDisabled) {
@@ -422,9 +422,9 @@ class WarrantyDevices extends HTMLElement {
         } else {
           dayEl.className += ' text-[#002D72]';
         }
-        
+
         dayEl.textContent = date.getDate();
-        
+
         if (!isDisabled) {
           dayEl.addEventListener('click', () => {
             selectedDate = date;
@@ -434,7 +434,7 @@ class WarrantyDevices extends HTMLElement {
             calendarOpen = false;
           });
         }
-        
+
         daysGrid.appendChild(dayEl);
       }
     };
@@ -442,11 +442,11 @@ class WarrantyDevices extends HTMLElement {
     const calendarElements = createCalendar();
     calendarBtn.parentElement.style.position = 'relative';
     calendarBtn.parentElement.appendChild(calendarElements.calendar);
-    
+
     calendarBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       if (calendarOpen) {
         calendarElements.calendar.style.display = 'none';
         calendarOpen = false;
@@ -456,7 +456,7 @@ class WarrantyDevices extends HTMLElement {
         renderCalendar();
       }
     });
-    
+
     // Close calendar when clicking outside
     document.addEventListener('click', (e) => {
       if (!calendarBtn.contains(e.target) && !calendarElements.calendar.contains(e.target)) {
@@ -464,7 +464,7 @@ class WarrantyDevices extends HTMLElement {
         calendarOpen = false;
       }
     });
-    
+
     // Close calendar on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && calendarOpen) {
@@ -479,8 +479,8 @@ class WarrantyDevices extends HTMLElement {
     const saveBtn = document.getElementById('warranty-save-btn');
     const spinner = document.getElementById('warranty-save-spinner');
     const formContainer = this.querySelector('[js-device-warranty-form]');
-    
-    
+
+
     if (form && saveBtn && spinner) {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -521,7 +521,7 @@ class WarrantyDevices extends HTMLElement {
     msgDiv.className = 'warranty-success-message w-full flex justify-center items-center bg-[#D6E4F3] p-xxs p2 mb-md text-[#002955]';
     msgDiv.textContent = message;
     this.prepend(msgDiv);
-    
+
     // Scroll to top to show the success message
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -547,7 +547,7 @@ class WarrantyDevices extends HTMLElement {
     let familySelect = this.querySelector('#unit-family');
     let modelSelect = this.querySelector('#unit-model');
     if (familySelect && modelSelect) {
-      familySelect.addEventListener('change', function() {
+      familySelect.addEventListener('change', function () {
         const selectedOption = familySelect.options[familySelect.selectedIndex];
         const handle = selectedOption.getAttribute('data-collection-handle');
         if (!handle) {
@@ -557,7 +557,7 @@ class WarrantyDevices extends HTMLElement {
         const models = window.collectionProducts[handle] || [];
         modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
         if (models.length) {
-          models.forEach(function(model) {
+          models.forEach(function (model) {
             const opt = document.createElement('option');
             opt.value = model.id;
             opt.textContent = model.title;
