@@ -88,9 +88,15 @@
       },
       {
         "type": "text",
-        "id": "shipping_threshold_message_not_filled",
-        "label": "Shipping Threshold Message - Not Filled",
-        "default": "You almost get free shipping! Only {{ difference | money_without_trailing_zeros }} away!"
+        "id": "shipping_threshold_message_not_filled_prepend",
+        "label": "Shipping Threshold Message - Not Filled - Prepend",
+        "default": "You almost get free shipping! Only "
+      },
+      {
+        "type": "text",
+        "id": "shipping_threshold_message_not_filled_append",
+        "label": "Shipping Threshold Message - Not Filled - Append",
+        "default": " away!"
       },
       {
         "type": "text",
