@@ -7,6 +7,14 @@
     </script>
   <!-- OneTrust Cookies Consent Notice end for blueair.com/en-ca -->
   {% endif %}
+
+  {% if localization.country.iso_code == 'US' %}
+    <script type="text/javascript" src="https://cdn.cookielaw.org/consent/1c9f61b2-0bec-44d8-9279-378cdc49cfea/OtAutoBlock.js"></script>
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="1c9f61b2-0bec-44d8-9279-378cdc49cfea"></script>
+    <script type="text/javascript">
+      function OptanonWrapper() {}
+    </script>
+  {% endif %}
   
   {% if localization.country.iso_code == 'GB' %}
   <!-- OneTrust Cookies Consent Notice start for blueair.com/en-gb -->

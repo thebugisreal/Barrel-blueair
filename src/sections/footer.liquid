@@ -154,9 +154,43 @@
         </li>
       {% endfor %}
       {% if localization.country.iso_code == 'US' %}
-        <li class="site-footer__item">
+        {% comment %} <li class="site-footer__item">
           <span class=evidon-notice-link></span>
-        </li>
+        </li> {% endcomment %}
+                <li id="adchoices-container" class="site-footer__item">
+        <a href="#" class="adchoices-button" Cookie Preferences>
+        <img id="adchoices-logo" alt="AdChoices Logo" src="https://youradchoices.com/DAA_style/YAC/icon.png">
+        <span>Adchoices - Do not sell or Share</span>
+        </a>
+      </li>
+        <style>
+        #adchoices-container a{
+        display:flex !important;
+        align-items:center !important;}
+        #adchoices-logo{width:1.3rem !important}
+        </style>
+        <script>
+          (function() {
+            let adContainer = document.getElementById('adchoices-container');
+            let adLogo = document.getElementById('adchoices-logo');
+            let adText = document.getElementById('adchoices-text');
+         
+            if (!adContainer) {
+              console.warn("AdChoices container not found.");
+              return;
+            }
+         
+            adContainer.onclick = function() {
+              if (window.OneTrust && typeof window.OneTrust.ToggleInfoDisplay === "function") {
+                window.OneTrust.ToggleInfoDisplay();
+              } else {
+                console.warn("OneTrust is not loaded yet.");
+              }
+            };
+         
+            console.log("AdChoices badge initialized.");
+          })();
+         </script>
       {% endif %}
       {% if localization.country.iso_code == 'CA' or localization.country.iso_code == 'GB' or localization.country.iso_code == 'DE' %}
         <li class="site-footer__item">
