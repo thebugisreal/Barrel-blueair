@@ -61,6 +61,12 @@
     "name": "Cart",
     "settings": [
       {
+        "type": "text",
+        "id": "cart_title",
+        "label": "Cart Title",
+        "default": "Your Cart"
+      },
+      {
         "type": "checkbox",
         "id": "show_cart_note",
         "label": "Show Cart Note"
@@ -73,6 +79,30 @@
         "type": "checkbox",
         "id": "shipping_threshold_enabled",
         "label": "Enable Shipping Threshold"
+      },
+      {
+        "type": "text",
+        "id": "shipping_threshold_message_empty",
+        "label": "Shipping Threshold Message - Empty Cart",
+        "default": "Start shopping to qualify for free shipping!"
+      },
+      {
+        "type": "text",
+        "id": "shipping_threshold_message_not_filled_prepend",
+        "label": "Shipping Threshold Message - Not Filled - Prepend",
+        "default": "You almost get free shipping! Only "
+      },
+      {
+        "type": "text",
+        "id": "shipping_threshold_message_not_filled_append",
+        "label": "Shipping Threshold Message - Not Filled - Append",
+        "default": " away!"
+      },
+      {
+        "type": "text",
+        "id": "shipping_threshold_message_filled",
+        "label": "Shipping Threshold Message - Filled",
+        "default": "You've qualified for free shipping!"
       },
       {
         "type": "number",

@@ -6,10 +6,10 @@
 
 <cart-drawer>
   <div id="cart" class="cart-drawer flex flex-col h-full" js-cart-drawer-contents>
-    <h3 class="text-center mb-md px-md">Your Cart</h3>
+    <h3 class="text-center mb-md px-md">{{ settings.cart_title }}</h3>
     {% if cart == empty %}
       <p class="p4 text-center" js-empty-cart>
-        Your cart is empty, <a href="/collections/all" js-cart-continue-link>continue shopping</a>.
+        {{ settings.shipping_threshold_message_empty }}
       </p>
     {% endif %}
 
