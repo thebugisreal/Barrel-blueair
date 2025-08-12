@@ -411,8 +411,11 @@
                       <h2 class="totals__subtotal s2">Estimated Total:</h2>
                       <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
                     </div>
-                    <p class="p4 mb-xs">Taxes calculated at checkout</p>
-          
+                    {% if localization.country == 'Deutschland' or localization.country == 'Germany' %}
+                      <p class="p4 mb-xs">{{ settings.vat_included_msg | default: 'Including VAT'}}</p>
+                    {% else %}
+                      <p class="p4 mb-xs">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
+                    {% endif %}
                     <div>
                       {%- if cart.cart_level_discount_applications.size > 0 -%}
                         <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
