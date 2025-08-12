@@ -133,8 +133,29 @@ class ProductUpsell extends HTMLElement {
     if (prevSelectedBtn) prevSelectedBtn.dataset.selected = 'false';
     target.dataset.selected = 'true';
 
-    if (this.currentColorLabel) {
-      this.currentColorLabel.textContent = target.title;
+    // Update the title to include the selected color variant
+    if (this.upsellTitle) {
+      const baseTitle = this.upsellTitle.getAttribute('data-base-title') || this.upsellTitle.textContent;
+      const colorName = target.title;
+      
+      // Store the base title if we haven't already
+      if (!this.upsellTitle.getAttribute('data-base-title')) {
+        this.upsellTitle.setAttribute('data-base-title', baseTitle);
+      }
+      
+      // Find the text node and update only the text content, preserving HTML structure
+      const textNode = Array.from(this.upsellTitle.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+      if (textNode) {
+        // Extract the base title without the price (everything before the price span)
+        const priceSpan = this.upsellTitle.querySelector('.s3');
+        if (priceSpan) {
+          // Get the text before the price span
+          const beforePrice = baseTitle.split(priceSpan.textContent)[0].trim();
+          textNode.textContent = `${beforePrice} - ${colorName} `;
+        } else {
+          textNode.textContent = `${baseTitle} - ${colorName} `;
+        }
+      }
     }
 
     this.atcBtn.setAttribute('data-variant-id', target.dataset.variantId);
