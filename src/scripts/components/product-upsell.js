@@ -9,7 +9,7 @@ class ProductUpsell extends HTMLElement {
       bisBtn: '[js-klaviyo-bis-modal-trigger]',
       upsellTitle: '[js-upsell-title]',
       price: '[js-product-upsell-price]',
-      currentColorLabel: '[js-product-upsell-current-color-label]',
+      mainImage: '.product-upsell__variant-image, [class*="product-upsell__variant-image"]',
       cartDrawer: '#CartDrawer',
       cart: 'cart-drawer',
       error: '[js-product-upsell-error]'
@@ -33,11 +33,18 @@ class ProductUpsell extends HTMLElement {
     this.bisBtn = this.querySelector(this._selectors.bisBtn);
     this.upsellTitle = this.querySelector(this._selectors.upsellTitle);
     this.price = this.querySelector(this._selectors.price);
-    this.currentColorLabel = this.querySelector(this._selectors.currentColorLabel);
+    this.mainImage = this.querySelector(this._selectors.mainImage);
     this.cartDrawer = document.querySelector(this._selectors.cartDrawer);
     this.cart = document.querySelector(this._selectors.cart);
     this.error = this.querySelector(this._selectors.error);
   
+    console.log('ProductUpsell initialized:', {
+      variantBtns: this.variantBtns.length,
+      upsellTitle: !!this.upsellTitle,
+      mainImage: !!this.mainImage,
+      mainImageElement: this.mainImage
+    });
+    
     this._initBis();
     this._setListeners();
   }
@@ -55,6 +62,11 @@ class ProductUpsell extends HTMLElement {
 
   _setListeners() {
     this.variantBtns.forEach((variantBtn) => {
+      console.log('Setting up variant button:', {
+        title: variantBtn.title,
+        variantImage: variantBtn.dataset.variantImage,
+        variantId: variantBtn.dataset.variantId
+      });
       variantBtn.addEventListener('click', this._variantBtnOnClick);
     });
     this.atcBtn.addEventListener('click', this._addToCart);
@@ -120,6 +132,7 @@ class ProductUpsell extends HTMLElement {
 
   _variantBtnOnClick = (evt) => {
     evt.preventDefault();
+    evt.stopPropagation(); // Prevent theme.js from interfering
 
     this._handleErrorMessage();
     
@@ -132,6 +145,59 @@ class ProductUpsell extends HTMLElement {
     const prevSelectedBtn = this.querySelector(`${this._selectors.variantBtn}[data-selected="true"]`);
     if (prevSelectedBtn) prevSelectedBtn.dataset.selected = 'false';
     target.dataset.selected = 'true';
+
+    // Update the main product image if this variant has an image
+    console.log('Debug image update:', {
+      mainImage: this.mainImage,
+      variantImage: target.dataset.variantImage,
+      target: target,
+      mainImageSelector: this._selectors.mainImage
+    });
+    
+    if (this.mainImage && target.dataset.variantImage) {
+      const img = this.mainImage.querySelector('img');
+      console.log('Found img element:', img);
+      
+      if (img) {
+        const oldSrc = img.src;
+        console.log('Updating img src from:', oldSrc, 'to:', target.dataset.variantImage);
+        img.src = target.dataset.variantImage;
+        img.srcset = target.dataset.variantImage;
+        
+        // Force browser to reload the image by adding a cache-busting parameter
+        if (img.src.includes('?')) {
+          img.src = img.src + '&cb=' + Date.now();
+        } else {
+          img.src = img.src + '?cb=' + Date.now();
+        }
+        
+        // Verify the update actually happened
+        setTimeout(() => {
+          console.log('Image src after update:', img.src);
+          console.log('Update successful:', img.src !== oldSrc);
+        }, 10);
+      }
+      
+      // Also update picture element if it exists
+      const picture = this.mainImage.querySelector('picture');
+      console.log('Found picture element:', picture);
+      
+      if (picture) {
+        const pictureImg = picture.querySelector('img');
+        if (pictureImg) {
+          console.log('Updating picture img src from:', pictureImg.src, 'to:', target.dataset.variantImage);
+          pictureImg.src = target.dataset.variantImage;
+          pictureImg.srcset = target.dataset.variantImage;
+          console.log('Picture img updated successfully to:', pictureImg.src);
+        }
+      }
+    } else {
+      console.log('Missing mainImage or variantImage:', {
+        mainImage: !!this.mainImage,
+        variantImage: !!target.dataset.variantImage,
+        mainImageElement: this.mainImage
+      });
+    }
 
     // Update the title to include the selected color variant
     if (this.upsellTitle) {

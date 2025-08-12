@@ -630,14 +630,15 @@
                                             {% for upsell_variant in upsell_product.variants %}
                                               {% assign upsell_swatch_object = upsell_product_swatch_objects | where: "name", upsell_variant.options[color_option] | first %}
                                               <div>
-                                                <button type="button" 
-                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
-                                                  data-variant-id="{{ upsell_variant.id }}"
-                                                  data-available="{{ upsell_variant.available }}"
-                                                  data-price="{{ upsell_variant.price | money }}"
-                                                  data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
-                                                  title="{{ upsell_variant.options[color_option] }}"
-                                                  js-product-upsell-variant>
+                                                                                                 <button type="button" 
+                                                   class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                   data-variant-id="{{ upsell_variant.id }}"
+                                                   data-available="{{ upsell_variant.available }}"
+                                                   data-price="{{ upsell_variant.price | money }}"
+                                                   data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
+                                                   title="{{ upsell_variant.options[color_option] }}"
+                                                   data-variant-image="{{ upsell_variant.image | img_url: '300x' }}"
+                                                   js-product-upsell-variant>
                                                   <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object.color }};">
                                                     {% if upsell_swatch_object.image != blank %}
                                                       <img src="{{ upsell_swatch_object.image.value | img_url: '40x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
@@ -721,14 +722,15 @@
                                             {% for upsell_variant_2 in upsell_product_2.variants %}
                                               {% assign upsell_swatch_object_2 = upsell_product_swatch_objects_2 | where: "name", upsell_variant_2.options[color_option_2] | first %}
                                               <div>
-                                                <button type="button" 
-                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
-                                                  data-variant-id="{{ upsell_variant_2.id }}"
-                                                  data-available="{{ upsell_variant_2.available }}"
-                                                  data-price="{{ upsell_variant_2.price | money }}"
-                                                  data-selected="{% if upsell_variant_2.options[color_option_2] == upsell_current_variant_2.options[color_option_2] %}true{% else %}false{% endif %}"
-                                                  title="{{ upsell_variant_2.options[color_option_2] }}"
-                                                  js-product-upsell-variant>
+                                                                                                 <button type="button" 
+                                                   class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                   data-variant-id="{{ upsell_variant_2.id }}"
+                                                   data-available="{{ upsell_variant_2.available }}"
+                                                   data-price="{{ upsell_variant_2.price | money }}"
+                                                   data-selected="{% if upsell_variant_2.options[color_option_2] == upsell_current_variant_2.options[color_option_2] %}true{% else %}false{% endif %}"
+                                                   title="{{ upsell_variant_2.options[color_option_2] }}"
+                                                   data-variant-image="{{ upsell_variant_2.image | img_url: '300x' }}"
+                                                   js-product-upsell-variant>
                                                   <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object_2.color }};">
                                                     {% if upsell_swatch_object_2.image != blank %}
                                                       <img src="{{ upsell_swatch_object_2.image.value | img_url: '40x'}}" alt="{{ upsell_variant_2.options[color_option_2] }}" class="block h-full w-full">
@@ -810,14 +812,15 @@
                                             {% for upsell_variant_3 in upsell_product_3.variants %}
                                               {% assign upsell_swatch_object_3 = upsell_product_swatch_objects_3 | where: "name", upsell_variant_3.options[color_option_3] | first %}
                                               <div>
-                                                <button type="button" 
-                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
-                                                  data-variant-id="{{ upsell_variant_3.id }}"
-                                                  data-available="{{ upsell_variant_3.available }}"
-                                                  data-price="{{ upsell_variant_3.price | money }}"
-                                                  data-selected="{% if upsell_variant_3.options[color_option_3] == upsell_current_variant_3.options[color_option_3] %}true{% else %}false{% endif %}"
-                                                  title="{{ upsell_variant_3.options[color_option_3] }}"
-                                                  js-product-upsell-variant>
+                                                                                                 <button type="button" 
+                                                   class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                   data-variant-id="{{ upsell_variant_3.id }}"
+                                                   data-available="{{ upsell_variant_3.available }}"
+                                                   data-price="{{ upsell_variant_3.price | money }}"
+                                                   data-selected="{% if upsell_variant_3.options[color_option_3] == upsell_current_variant_3.options[color_option_3] }}true{% else %}false{% endif %}"
+                                                   title="{{ upsell_variant_3.options[color_option_3] }}"
+                                                   data-variant-image="{{ upsell_variant_3.image | img_url: '300x' }}"
+                                                   js-product-upsell-variant>
                                                   <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object_3.color }};">
                                                     {% if upsell_swatch_object_3.image != blank %}
                                                       <img src="{{ upsell_variant_3.options[color_option_3] }}" alt="{{ upsell_variant_3.options[color_option_3] }}" class="block h-full w-full">
@@ -899,14 +902,15 @@
                                             {% for upsell_variant_4 in upsell_product_4.variants %}
                                               {% assign upsell_swatch_object_4 = upsell_product_swatch_objects_4 | where: "name", upsell_variant_4.options[color_option_4] | first %}
                                               <div>
-                                                <button type="button" 
-                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
-                                                  data-variant-id="{{ upsell_variant_4.id }}"
-                                                  data-available="{{ upsell_variant_4.available }}"
-                                                  data-price="{{ upsell_variant_4.price | money }}"
-                                                  data-selected="{% if upsell_variant_4.options[color_option_4] == upsell_current_variant_4.options[color_option_4] %}true{% else %}false{% endif %}"
-                                                  title="{{ upsell_variant_4.options[color_option_4] }}"
-                                                  js-product-upsell-variant>
+                                                                                                 <button type="button" 
+                                                   class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                   data-variant-id="{{ upsell_variant_4.id }}"
+                                                   data-available="{{ upsell_variant_4.available }}"
+                                                   data-price="{{ upsell_variant_4.price | money }}"
+                                                   data-selected="{% if upsell_variant_4.options[color_option_4] == upsell_current_variant_4.options[color_option_4] %}true{% else %}false{% endif %}"
+                                                   title="{{ upsell_variant_4.options[color_option_4] }}"
+                                                   data-variant-image="{{ upsell_variant_4.image | img_url: '300x' }}"
+                                                   js-product-upsell-variant>
                                                   <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object_4.color }};">
                                                     {% if upsell_swatch_object_4.image != blank %}
                                                       <img src="{{ upsell_swatch_object_4.image.value | img_url: '40x'}}" alt="{{ upsell_variant_4.options[color_option_4] }}" class="block h-full w-full">
