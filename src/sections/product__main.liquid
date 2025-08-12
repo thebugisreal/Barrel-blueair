@@ -574,23 +574,27 @@
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
                 {% if is_transactional %}
-                  {% if product.metafields.seed.upsells != blank %}
-                    <div class="product__upsells py-md border-t border-gray {{ spacing }}">
-                      {% if product.metafields.seed.upsells_heading != blank %}
-                        <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
-                      {% endif %}
-                      <div class="product-upsells__items grid grid-cols-1">
-                        {% for object in product.metafields.seed.upsells.value %}
-                          {% if forloop.first %}
-                            {% assign upsell_object = object%}
-                          {% endif %}
-                        {% endfor %}
-                          {% comment %} Prefilter Upsell {% endcomment %}
+                {% assign upsell_data = product.metafields.custom.seed_upsells.value %}
+
+                {% if product.metafields.seed.upsells != blank %}
+                  <div class="product__upsells py-md border-t border-gray {{ spacing }}">
+                    {% if product.metafields.seed.upsells_heading != blank %}
+                      <div class="product-upsells__heading s2 mb-md cheese">{{ product.metafields.seed.upsells_heading }}</div>
+                    {% endif %}
+                    <div class="product-upsells__items grid grid-cols-1">
+                      {% for object in product.metafields.seed.upsells.value %}
+                        {% if forloop.first %}
+                          {% assign upsell_object = object%}
+                        {% endif %}
+                      {% endfor %}
+
+                      {% for upsell in upsell_data %}
+                        {% if upsell.upsell_1_heading != blank %}
                           <product-upsell class="product-upsell__item flex flex-col">
                             <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
                               <div class="flex gap-xs justify-between">
                                 <div class="flex">
-                                  {% assign prefilter_image = product.metafields.seed.product_card_image %}
+                                  {% assign prefilter_image = upsell.upsell_1_image_upload %}
                                   {% if prefilter_image != blank %}
                                     <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
                                       {% render 'lazy-image' image: prefilter_image %}
@@ -598,19 +602,19 @@
                                   {% endif %}
 
                                   <div class="flex flex-col m-auto">
-                                    {% assign upsell_product = upsell_object.product.value %}
-                                    {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
-                                    
-                                    {% if upsell_object.heading != blank %}
-                                      <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
-                                        {{ upsell_object.heading | strip }} <span class="s3">{{ upsell_current_variant.price | money }}</span>
-                                      </div>
-                                    {% endif %}
-                                    {% if upsell_object.short_description != blank %}
-                                      <div class="product-upsell__description p4 mb-xxxs">{{ upsell_object.short_description }}</div>
-                                    {% endif %}
-                                    
+                                    {% assign upsell_product = upsell.upsell_1_product.value %}
                                     {% if upsell_product != blank %}
+                                      {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
+                                      
+                                      {% if upsell.upsell_1_heading != blank %}
+                                        <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
+                                          {{ upsell.upsell_1_heading | strip }} <span class="s3">{{ upsell_current_variant.price | money }}</span>
+                                        </div>
+                                      {% endif %}
+                                      {% if upsell.upsell_1_short_desc != blank %}
+                                        <div class="product-upsell__description p4 mb-xxxs">{{ upsell.upsell_1_short_desc }}</div>
+                                      {% endif %}
+                                      
                                       {% liquid
                                         assign color_option = false
                                         assign filter_type_option = false
@@ -618,6 +622,7 @@
                                           assign color_option = upsell_product.options_by_name['color'].position | minus: 1
                                         endif
                                       %}
+                                      
                                       {% if color_option != false %}
                                         <div class="product-upsell__variants-container">
                                           <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
@@ -649,124 +654,303 @@
                                 </div>
 
                                 <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
-                                  <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
-                                    <span class="btn__text">
-                                      {% if upsell_current_variant.available %}
-                                        Add to Cart
-                                      {% else %}
-                                        Out of Stock
-                                      {% endif %}
-                                    </span>
-                                  </button>
-                                  <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
-                                    <span class="btn__text">Added</span>
-                                  </button>
-                                  <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
-                                    <span class="btn__text">
-                                      Notify Me When Available
-                                    </span>
-                                  </button>
-                                  <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                  {% if upsell_product != blank %}
+                                    <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                                      <span class="btn__text">
+                                        {% if upsell_current_variant.available %}
+                                          Add to Cart
+                                        {% else %}
+                                          Out of Stock
+                                        {% endif %}
+                                      </span>
+                                    </button>
+                                    <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
+                                      <span class="btn__text">Added</span>
+                                    </button>
+                                    <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                      <span class="btn__text">
+                                        Notify Me When Available
+                                      </span>
+                                    </button>
+                                    <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                  {% endif %}
                                 </div>
                               </div>
                             </div>
                           </product-upsell>
+                        {% endif %}
+                        
+                        <!-- Upsell 2 -->
+                        {% if upsell.upsell_2_heading != blank and upsell.upsell_2_image_upload != blank and upsell.upsell_2_product != blank %}
+                          {% assign upsell_product_2 = upsell.upsell_2_product.value %}
+                          {% if upsell_product_2 != blank %}
+                            <product-upsell class="product-upsell__item flex flex-col">
+                              <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
+                                <div class="flex gap-xs justify-between">
+                                  <div class="flex">
+                                    {% assign prefilter_image_2 = upsell.upsell_2_image_upload %}
+                                    {% if prefilter_image_2 != blank %}
+                                      <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
+                                        {% render 'lazy-image' image: prefilter_image_2 %}
+                                      </div>
+                                    {% endif %}
 
-                          {% comment %} Filter Upsell {% endcomment %}
-                          <product-upsell class="product-upsell__item flex flex-col">
-                            {% comment %} {% if upsell_object.filter_heading != blank %}
-                              <div class="product-upsell__title s2 mb-xxs" js-upsell-title>{{ upsell_object.filter_heading }}</div>
-                            {% endif %} {% endcomment %}
-                            {% comment %} {% if upsell_object.filter_short_description != blank %}
-                              <div class="product-upsell__description p4">{{ upsell_object.filter_short_description }}</div>
-                            {% endif %} {% endcomment %}
-                            <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
-                              {% if upsell_object.filter_products != blank %}
-                                {% liquid
-                                  assign filter_type_option = false
-                                  if upsell_object.filter_products != blank
-                                    assign filter_type_option = true
-                                    for swatch_product in upsell_object.filter_products.value
-                                      if forloop.first
-                                        assign upsell_current_variant = swatch_product
-                                      endif
-                                    endfor
-                                  endif
-                                %}
-                                {% if filter_type_option != false %}
-                                  <div class="product-upsell__variants grid grid-cols-1">
-                                    {% for swatch_product in upsell_object.filter_products.value %}
+                                    <div class="flex flex-col m-auto">
+                                      {% assign upsell_current_variant_2 = upsell_product_2.selected_or_first_available_variant %}
+                                      
+                                      {% if upsell.upsell_2_heading != blank %}
+                                        <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
+                                          {{ upsell.upsell_2_heading | strip }} <span class="s3">{{ upsell_current_variant_2.price | money }}</span>
+                                        </div>
+                                      {% endif %}
+                                      {% if upsell.upsell_2_short_desc != blank %}
+                                        <div class="product-upsell__description p4 mb-xxxs">{{ upsell.upsell_2_short_desc }}</div>
+                                      {% endif %}
+                                      
                                       {% liquid
-                                        assign swatch_title = swatch_product.variants[0].title
-                                        if swatch_product.variants[0].title == 'Default Title'
-                                          assign swatch_title = swatch_product.title
+                                        assign color_option_2 = false
+                                        if upsell_product_2.options_by_name['color'] != blank
+                                          assign color_option_2 = upsell_product_2.options_by_name['color'].position | minus: 1
                                         endif
                                       %}
-                                      <div class="flex gap-xs justify-between">
-                                        <div class="flex">
-                                          <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
-                                            {% assign image2 = swatch_product.metafields.seed.product_card_image %}
-                                            {% render 'lazy-image' image: image2 %}
-                                          </div>
-
-                                          <div class="flex flex-col m-auto">
-                                                                                         <div class="product-upsell__title flex s2 mb-xxxs gap-xs">
-                                               {{ swatch_title }}
-                                             </div>
-                                            <div class="product-upsell__price s3" js-product-upsell-price>{{ swatch_product.variants[0].price | money }}</div>
-                                          </div>
-                                        </div>
-
-                                                                                  <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
-                                          {% comment %} <div class="product-upsell__price p1" js-product-upsell-price>{{ upsell_current_variant.variants[0].price | money }}</div> {% endcomment %}
-                                                                                     <button type="button" 
-                                             class="product-upsell__atc btn btn--blue-rounded pr-sm {% unless swatch_product.available %}hidden{% endunless %}" 
-                                             {% unless swatch_product.available %}disabled{% endunless %} 
-                                             data-variant-id="{{ swatch_product.variants[0].id }}"
-                                             data-available="{{ swatch_product.available }}"
-                                             data-price="{{ swatch_product.variants[0].price | money }}"
-                                             title="{{ swatch_title }}"
-                                             js-product-upsell-atc>
-                                             <span class="btn__text">
-                                               {% if swatch_product.available %}
-                                                 Add to Cart
-                                               {% else %}
-                                                 Out of Stock
-                                               {% endif %}
-                                             </span>
-                                           </button>
-                                           <button type="button" 
-                                             class="product-upsell__added-btn btn btn--white-outline hidden" 
-                                             data-variant-id="{{ swatch_product.variants[0].id }}" 
-                                             js-product-upsell-added>
-                                             <span class="btn__text">Added</span>
-                                           </button>
-                                           <button type="button" 
-                                             class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if swatch_product.available %}hidden{% endif %}" 
-                                             data-variant-id="{{ swatch_product.variants[0].id }}"
-                                             data-available="{{ swatch_product.available }}"
-                                             data-price="{{ swatch_product.variants[0].price | money }}"
-                                             title="{{ swatch_title }}"
-                                             js-klaviyo-bis-modal-trigger>
-                                             <span class="btn__text">
-                                               Notify Me When Available
-                                             </span>
-                                           </button>
-                                          <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
-                                        </div>
                                       
-                                      </div>
-                                    {% endfor %}
+                                      {% if color_option_2 != false %}
+                                        <div class="product-upsell__variants-container">
+                                          <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
+                                            {% assign upsell_product_swatch_objects_2 = upsell_product_2.metafields.seed.swatches.value %}
+                                            {% for upsell_variant_2 in upsell_product_2.variants %}
+                                              {% assign upsell_swatch_object_2 = upsell_product_swatch_objects_2 | where: "name", upsell_variant_2.options[color_option_2] | first %}
+                                              <div>
+                                                <button type="button" 
+                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                  data-variant-id="{{ upsell_variant_2.id }}"
+                                                  data-available="{{ upsell_variant_2.available }}"
+                                                  data-price="{{ upsell_variant_2.price | money }}"
+                                                  data-selected="{% if upsell_variant_2.options[color_option_2] == upsell_current_variant_2.options[color_option_2] %}true{% else %}false{% endif %}"
+                                                  title="{{ upsell_variant_2.options[color_option_2] }}"
+                                                  js-product-upsell-variant>
+                                                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object_2.color }};">
+                                                    {% if upsell_swatch_object_2.image != blank %}
+                                                      <img src="{{ upsell_swatch_object_2.image.value | img_url: '40x'}}" alt="{{ upsell_variant_2.options[color_option_2] }}" class="block h-full w-full">
+                                                    {% endif %} 
+                                                  </div>
+                                                </button>
+                                              </div>
+                                            {% endfor %}
+                                          </div>
+                                        </div>
+                                      {% endif %}
+                                    </div>
                                   </div>
-                                {% endif %}
-                              {% endif %}
-                              
-                          </div>
-                        </product-upsell>
-                      </div>
+
+                                  <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
+                                    <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant_2.available %}hidden{% endunless %}" {% unless upsell_current_variant_2.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant_2.id }}" js-product-upsell-atc>
+                                      <span class="btn__text">
+                                        {% if upsell_current_variant_2.available %}
+                                          Add to Cart
+                                        {% else %}
+                                          Out of Stock
+                                        {% endif %}
+                                      </span>
+                                    </button>
+                                    <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant_2.id }}" js-product-upsell-added>
+                                      <span class="btn__text">Added</span>
+                                    </button>
+                                    <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant_2.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                      <span class="btn__text">
+                                        Notify Me When Available
+                                      </span>
+                                    </button>
+                                    <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </product-upsell>
+                          {% endif %}
+                        {% endif %}
+                        
+                        <!-- Upsell 3 -->
+                        {% if upsell.upsell_3_heading != blank and upsell.upsell_3_image_upload != blank and upsell.upsell_3_product != blank %}
+                          {% assign upsell_product_3 = upsell.upsell_3_product.value %}
+                          {% if upsell_product_3 != blank %}
+                            <product-upsell class="product-upsell__item flex flex-col">
+                              <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
+                                <div class="flex gap-xs justify-between">
+                                  <div class="flex">
+                                    {% assign prefilter_image_3 = upsell.upsell_3_image_upload %}
+                                    {% if prefilter_image_3 != blank %}
+                                      <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
+                                        {% render 'lazy-image' image: prefilter_image_3 %}
+                                      </div>
+                                    {% endif %}
+
+                                    <div class="flex flex-col m-auto">
+                                      {% assign upsell_current_variant_3 = upsell_product_3.selected_or_first_available_variant %}
+                                      
+                                      {% if upsell.upsell_3_heading != blank %}
+                                        <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
+                                          {{ upsell.upsell_3_heading | strip }} <span class="s3">{{ upsell_current_variant_3.price | money }}</span>
+                                        </div>
+                                      {% endif %}
+                                      {% if upsell.upsell_3_short_desc != blank %}
+                                        <div class="product-upsell__description p4 mb-xxxs">{{ upsell.upsell_3_short_desc }}</div>
+                                      {% endif %}
+                                      
+                                      {% liquid
+                                        assign color_option_3 = false
+                                        if upsell_product_3.options_by_name['color'] != blank
+                                          assign color_option_3 = upsell_product_3.options_by_name['color'].position | minus: 1
+                                        endif
+                                      %}
+                                      
+                                      {% if color_option_3 != false %}
+                                        <div class="product-upsell__variants-container">
+                                          <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
+                                            {% assign upsell_product_swatch_objects_3 = upsell_product_3.metafields.seed.swatches.value %}
+                                            {% for upsell_variant_3 in upsell_product_3.variants %}
+                                              {% assign upsell_swatch_object_3 = upsell_product_swatch_objects_3 | where: "name", upsell_variant_3.options[color_option_3] | first %}
+                                              <div>
+                                                <button type="button" 
+                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                  data-variant-id="{{ upsell_variant_3.id }}"
+                                                  data-available="{{ upsell_variant_3.available }}"
+                                                  data-price="{{ upsell_variant_3.price | money }}"
+                                                  data-selected="{% if upsell_variant_3.options[color_option_3] == upsell_current_variant_3.options[color_option_3] %}true{% else %}false{% endif %}"
+                                                  title="{{ upsell_variant_3.options[color_option_3] }}"
+                                                  js-product-upsell-variant>
+                                                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object_3.color }};">
+                                                    {% if upsell_swatch_object_3.image != blank %}
+                                                      <img src="{{ upsell_variant_3.options[color_option_3] }}" alt="{{ upsell_variant_3.options[color_option_3] }}" class="block h-full w-full">
+                                                    {% endif %} 
+                                                  </div>
+                                                </button>
+                                              </div>
+                                            {% endfor %}
+                                          </div>
+                                        </div>
+                                      {% endif %}
+                                    </div>
+                                  </div>
+
+                                  <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
+                                    <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant_3.available %}hidden{% endunless %}" {% unless upsell_current_variant_3.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant_3.id }}" js-product-upsell-atc>
+                                      <span class="btn__text">
+                                        {% if upsell_current_variant_3.available %}
+                                          Add to Cart
+                                        {% else %}
+                                          Out of Stock
+                                        {% endif %}
+                                      </span>
+                                    </button>
+                                    <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant_3.id }}" js-product-upsell-added>
+                                      <span class="btn__text">Added</span>
+                                    </button>
+                                    <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant_3.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                      <span class="btn__text">
+                                        Notify Me When Available
+                                      </span>
+                                    </button>
+                                    <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </product-upsell>
+                          {% endif %}
+                        {% endif %}
+                        
+                        <!-- Upsell 4 -->
+                        {% if upsell.upsell_4_heading != blank and upsell.upsell_4_image_upload != blank and upsell.upsell_4_product != blank %}
+                          {% assign upsell_product_4 = upsell.upsell_4_product.value %}
+                          {% if upsell_product_4 != blank %}
+                            <product-upsell class="product-upsell__item flex flex-col">
+                              <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
+                                <div class="flex gap-xs justify-between">
+                                  <div class="flex">
+                                    {% assign prefilter_image_4 = upsell.upsell_4_image_upload %}
+                                    {% if prefilter_image_4 != blank %}
+                                      <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
+                                        {% render 'lazy-image' image: prefilter_image_4 %}
+                                      </div>
+                                    {% endif %}
+
+                                    <div class="flex flex-col m-auto">
+                                      {% assign upsell_current_variant_4 = upsell_product_4.selected_or_first_available_variant %}
+                                      
+                                      {% if upsell.upsell_4_heading != blank %}
+                                        <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title>
+                                          {{ upsell.upsell_4_heading | strip }} <span class="s3">{{ upsell_current_variant_4.price | money }}</span>
+                                        </div>
+                                      {% endif %}
+                                      {% if upsell.upsell_4_short_desc != blank %}
+                                        <div class="product-upsell__description p4 mb-xxxs">{{ upsell.upsell_4_short_desc }}</div>
+                                      {% endif %}
+                                      
+                                      {% liquid
+                                        assign color_option_4 = false
+                                        if upsell_product_4.options_by_name['color'] != blank
+                                          assign color_option_4 = upsell_product_4.options_by_name['color'].position | minus: 1
+                                        endif
+                                      %}
+                                      
+                                      {% if color_option_4 != false %}
+                                        <div class="product-upsell__variants-container">
+                                          <div class="product-upsell__variants flex justify-start flex-wrap gap-xs">
+                                            {% assign upsell_product_swatch_objects_4 = upsell_product_4.metafields.seed.swatches.value %}
+                                            {% for upsell_variant_4 in upsell_product_4.variants %}
+                                              {% assign upsell_swatch_object_4 = upsell_product_swatch_objects_4 | where: "name", upsell_variant_4.options[color_option_4] | first %}
+                                              <div>
+                                                <button type="button" 
+                                                  class="product-upsell__variant product-upsell__variant--color w-[40px] h-[40px] rounded-full" 
+                                                  data-variant-id="{{ upsell_variant_4.id }}"
+                                                  data-available="{{ upsell_variant_4.available }}"
+                                                  data-price="{{ upsell_variant_4.price | money }}"
+                                                  data-selected="{% if upsell_variant_4.options[color_option_4] == upsell_current_variant_4.options[color_option_4] %}true{% else %}false{% endif %}"
+                                                  title="{{ upsell_variant_4.options[color_option_4] }}"
+                                                  js-product-upsell-variant>
+                                                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object_4.color }};">
+                                                    {% if upsell_swatch_object_4.image != blank %}
+                                                      <img src="{{ upsell_swatch_object_4.image.value | img_url: '40x'}}" alt="{{ upsell_variant_4.options[color_option_4] }}" class="block h-full w-full">
+                                                    {% endif %} 
+                                                  </div>
+                                                </button>
+                                              </div>
+                                            {% endfor %}
+                                          </div>
+                                        </div>
+                                      {% endif %}
+                                    </div>
+                                  </div>
+
+                                  <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs">
+                                    <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm font-[15px] {% unless upsell_current_variant_4.available %}hidden{% endunless %}" {% unless upsell_current_variant_4.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant_4.id }}" js-product-upsell-atc>
+                                      <span class="btn__text">
+                                        {% if upsell_current_variant_4.available %}
+                                          Add to Cart
+                                        {% else %}
+                                          Out of Stock
+                                        {% endif %}
+                                      </span>
+                                    </button>
+                                    <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant_4.id }}" js-product-upsell-added>
+                                      <span class="btn__text">Added</span>
+                                    </button>
+                                    <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded py-xs px-sm {% if upsell_current_variant_4.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+                                      <span class="btn__text">
+                                        Notify Me When Available
+                                      </span>
+                                    </button>
+                                    <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </product-upsell>
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}   
                     </div>
-                  {% endif %}
+                  </div>
                 {% endif %}
+              {% endif %}
             {% endcase %}
           {% endfor %}
         {%- endform -%}
