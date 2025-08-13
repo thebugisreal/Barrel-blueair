@@ -17,7 +17,7 @@
       "type": "section__image-text",
       "disabled": true,
       "settings": {
-        "header-f5455084387a173ed125f210076e59d4": null,
+        "header-e726c47f7fc9db483074fd78ed6eaf6c": null,
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
@@ -26,15 +26,15 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "header-7c39b56c41b5b621198aff86a0f6dae6": null,
+        "header-9ed6c32aab2569a19bb0f3f277cd1e91": null,
         "color": "bg-white text-blue",
-        "header-2a5111a31bd636a487200bb31968b705": null,
+        "header-336246c29c075cbbde2c67840857eb59": null,
         "image_mobile": "shopify://shop_images/Frame_1428.png",
         "image_desktop": "shopify://shop_images/Frame_1428.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 40,
-        "header-f78faf50200fcbfaaa675f00745e1b58": null,
+        "header-26bc0237627746df7f9604aa5636af37": null,
         "title": "",
         "title_style": "h3",
         "subtext": "“On its higher setting, it’s terrific at removing dust, pollen, and smoke...CR members found Blueair air purifiers highly reliable and were quite satisfied with their purchase.”",
@@ -61,14 +61,19 @@
         "intent": "related"
       },
       "blocks": {}
+    },
+    "product_brands_3gV3EU": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   },
   "order": [
     "main",
+    "product_image_text_6MPkRA",
+    "product_custom_tabs_acewb9",
     "product_slideshow_f7BaaR",
     "section_image_text_MUTaB",
-    "product_custom_tabs_acewb9",
-    "product_image_text_6MPkRA",
     "product_video_WFRqMh",
     "product_filters_tPXVJP",
     "product_app_tabs_BzryrE",

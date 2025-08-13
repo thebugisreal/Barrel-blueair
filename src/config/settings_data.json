@@ -15,7 +15,7 @@
     "add_subscription_url": "shopify://pages/subscribe-quiz",
     "start_return_url": "https://returns.narvar.com/blueair/returns?locale=en_US",
     "shipping_threshold_enabled": true,
-    "shipping_threshold": 5000,
+    "shipping_threshold": 3500,
     "gwp_threshold": 0,
     "gwp1": "",
     "gwp2": "",
@@ -128,11 +128,6 @@
       "1291562577487733835": {
         "type": "shopify://apps/black-crow-ai-that-delivers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
         "disabled": false,
-        "settings": {}
-      },
-      "6987625696575125306": {
-        "type": "shopify://apps/weglot-translate-your-store/blocks/weglot/3097482a-fafe-42ff-bc33-ea19e35c4a20",
-        "disabled": true,
         "settings": {}
       },
       "12318114026695823084": {

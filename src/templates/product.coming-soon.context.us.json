@@ -8,23 +8,14 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "page.subscribe.json",
+  "parent": "product.coming-soon.json",
   "context": {
     "market": "us"
   },
   "sections": {
-    "section_hero_xnfkBi": {
-      "settings": {
-        "title": "Subscribe & save 25%  on your first filter",
-        "title_style": "h3",
-        "subtext": "Now through August 13"
-      },
-      "blocks": {}
-    },
-    "section_content_panels_DLjfCE": {
-      "settings": {
-        "title": "Subscribe & save 15% on every replacement filter"
-      },
+    "section_image_text_grid_NwP3Er": {
+      "disabled": true,
+      "settings": {},
       "blocks": {}
     }
   }
