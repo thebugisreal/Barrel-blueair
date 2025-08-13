@@ -132,29 +132,81 @@ class ProductUpsell extends HTMLElement {
     const prevSelectedBtn = this.querySelector(`${this._selectors.variantBtn}[data-selected="true"]`);
     if (prevSelectedBtn) prevSelectedBtn.dataset.selected = 'false';
     target.dataset.selected = 'true';
-
-    // Update the title to include the selected color variant
-    if (this.upsellTitle) {
-      const baseTitle = this.upsellTitle.getAttribute('data-base-title') || this.upsellTitle.textContent;
-      const colorName = target.title;
+    
+    if (this.mainImage && target.dataset.variantImage) {
+      const img = this.mainImage.querySelector('img');
       
-      // Store the base title if we haven't already
+      if (img) {
+        const oldSrc = img.src;
+        img.src = target.dataset.variantImage;
+        img.srcset = target.dataset.variantImage;
+        
+        if (img.src.includes('?')) {
+          img.src = img.src + '&cb=' + Date.now();
+        } else {
+          img.src = img.src + '?cb=' + Date.now();
+        }
+        
+        setTimeout(() => {
+          console.log('Image src after update:', img.src);
+          console.log('Update successful:', img.src !== oldSrc);
+        }, 10);
+      }
+      
+      // Also update picture element if it exists
+      const picture = this.mainImage.querySelector('picture');
+      
+      if (picture) {
+        const pictureImg = picture.querySelector('img');
+        if (pictureImg) {
+          pictureImg.src = target.dataset.variantImage;
+          pictureImg.srcset = target.dataset.variantImage;
+        }
+      }
+    } else {
+      console.log('Missing mainImage or variantImage:', {
+        mainImage: !!this.mainImage,
+        variantImage: !!target.dataset.variantImage,
+        mainImageElement: this.mainImage
+      });
+    }
+
+    if (this.upsellTitle) {
+      const baseTitle = this.upsellTitle.getAttribute('data-base-title') || this.upsellTitle.textContent.trim();
+      const colorName = target.title;
+
+      console.log('Debug: Updating title with color:', colorName);
+      
       if (!this.upsellTitle.getAttribute('data-base-title')) {
         this.upsellTitle.setAttribute('data-base-title', baseTitle);
       }
-      
-      // Find the text node and update only the text content, preserving HTML structure
-      const textNode = Array.from(this.upsellTitle.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-      if (textNode) {
-        // Extract the base title without the price (everything before the price span)
-        const priceSpan = this.upsellTitle.querySelector('.s3');
-        if (priceSpan) {
-          // Get the text before the price span
-          const beforePrice = baseTitle.split(priceSpan.textContent)[0].trim();
-          textNode.textContent = `${beforePrice} - ${colorName} `;
-        } else {
-          textNode.textContent = `${baseTitle} - ${colorName} `;
-        }
+
+      // 1) If the template already includes a .color-name element, just update it.
+      const templateColor = this.upsellTitle.querySelector('.color-name');
+      if (templateColor) {
+        templateColor.textContent = colorName;
+        templateColor.classList.add('s3', 'italic');
+        templateColor.style.fontWeight = '400';
+        return; // done
+      }
+
+      // 2) Otherwise, remove any previously injected color spans (defensive)
+      this.upsellTitle.querySelectorAll('.injected-color-name').forEach(el => el.remove());
+
+      // 3) Create a single color span and insert it (before the price if present)
+      const colorSpan = document.createElement('span');
+      colorSpan.className = 's3 italic injected-color-name color-name';
+      colorSpan.style.fontWeight = '400';
+      colorSpan.textContent = colorName;
+
+      const priceEl = this.upsellTitle.querySelector('.price-display, .s3.price-display, .s3.price-span, .price-span');
+
+      if (priceEl) {
+        // insert the color span before the price (with space separators)
+        priceEl.before(' ', colorSpan, ' ');
+      } else {
+        // fallback: append to the end with separator
+        this.upsellTitle.append(' | ', colorSpan);
       }
     }
 
