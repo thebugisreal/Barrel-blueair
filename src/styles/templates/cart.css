@@ -10,8 +10,11 @@
     margin: 0; 
 }
 
-[data-is-gwp] .cart-item__quantity-wrapper,
-[data-is-gift-product] .cart-item__quantity-wrapper {
+[data-is-gwp] .cart-item__quantity-wrapper {
+  @apply hidden;
+}
+
+[data-is-gift-product] quantity-input {
   @apply hidden;
 }
 

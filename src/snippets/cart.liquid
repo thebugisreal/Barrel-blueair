@@ -13,7 +13,6 @@
     <h3 class="text-center mb-md px-md">{{ settings.cart_title }}</h3>
     {% if cart == empty %}
       <p class="p4 text-center" js-empty-cart>
-        {{ settings.shipping_threshold_message_empty }}
       </p>
     {% endif %}
 
@@ -217,10 +216,10 @@
                     }
                   }
                 {%- endcapture -%}
-                <div class="cart-drawer__gwp-container my-lg">
+                <div class="cart-drawer__gwp-container my-[32px]">
                   <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
                       <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
-                        <div class="flex justify-between items-center mb-md">
+                        <div class="flex justify-between items-center mb-sm">
                           <h1 class="cart-drawer-gwp__title s1 font-900">Select Your Free Gift</h1>
                           <div class="swiper-nav-container flex gap-xxs items-center">
                             <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
@@ -273,10 +272,10 @@
                     }
                   }
                 {%- endcapture -%}
-                <div class="cart-drawer__gwp-container my-lg">
+                <div class="cart-drawer__gwp-container my-[32px]">
                   <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
                       <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
-                        <div class="flex justify-between items-center mb-md">
+                        <div class="flex justify-between items-center mb-sm">
                           <h1 class="cart-drawer-gwp__title s1 font-900">Your Free Gift</h1>
                           <div class="swiper-nav-container flex gap-xxs items-center">
                             <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
@@ -363,10 +362,10 @@
                   }
                 }
               {%- endcapture -%}
-              <div class="cart-drawer__upsell-container my-lg">
+              <div class="cart-drawer__upsell-container my-[32px]">
                 <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
                     <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
-                      <div class="flex justify-between items-center mb-md">
+                      <div class="flex justify-between items-center mb-sm">
                         <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
                         <div class="swiper-nav-container flex gap-xxs items-center">
                           <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
@@ -454,8 +453,89 @@
             </cart-note>
           </details>
         {%- endif -%}
+        {% liquid
+          assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+          for item in cart.items
+            for allocation in item.line_level_discount_allocations
+              if allocation.discount_application.type == 'discount_code'
+                assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
+              endif
+            endfor
+          endfor
+
+          assign discount_codes = discount_codes | uniq
+        %}
+        <div class="cart__discounts cart-drawer-discounts">
+          <div class="cart-discount">
+            <div class="details-content mt-16">
+              <div class="cart-discount__content flex gap-x-16">
+                  <label
+                    for="cart-discount"
+                    class="visually-hidden"
+                  >
+                    Discount Code
+                  </label>
+                  <input
+                    id="cart-discount"
+                    class="cart-discount__input flex-1 border border-black p-8"
+                    name="discount"
+                    placeholder="Discount Code"
+                    js-cart-discount-form-input
+                  >
+                  <button
+                    type="button"
+                    class="btn btn--atc h-auto"
+                    js-cart-discount-form-submit
+                  >
+                    Apply
+                  </button>
+              </div>
+              <div
+                class="cart-discount__error hidden"
+                role="alert"
+                js-cart-discount-error
+              >
+                <small
+                  class="cart-discount__error-text cart-primary-typography hidden"
+                  js-cart-discount-error-discount-code
+                >
+                Discount code cannot be applied to your cart
+                </small>
+                <small
+                  class="cart-discount__error-text cart-primary-typography hidden"
+                  js-cart-discount-error-shipping
+                >
+                  Shipping discounts are shown at checkout after adding an address
+                </small>
+              </div>
+              <ul class="cart-discount__codes flex flex-col gap-y-8 pt-8">
+                {% for discount_code in discount_codes %}
+                  <li
+                    class="cart-discount__pill flex items-center gap-x-8 bg-papyrus-light py-4 px-8 rounded-[6px] w-fit f0-mono"
+                    data-discount-code="{{ discount_code }}"
+                    aria-label="{{ 'accessibility.discount_applied' | t: code: discount_code }}"
+                  >
+                    <p class="cart-discount__pill-code" js-cart-discount-pill-code>
+                      {{ discount_code }}
+                    </p>
+                    <button
+                      type="button"
+                      class="cart-discount__pill-remove w-12 h-12 flex items-center justify-center"
+                      aria-label="Remove discount code"
+                      data-discount-code="{{ discount_code }}"
+                      js-cart-discount-pill-remove
+                    >
+                      {% render 'icon-close' %}
+                    </button>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div class="cart-drawer__totals">
-          <div class="totals flex justify-between mb-xxs" role="status">
+          <div class="totals flex justify-between" role="status">
             <h2 class="totals__subtotal s2">Estimated Total:</h2>
             <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
           </div>

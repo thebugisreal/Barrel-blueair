@@ -7,7 +7,7 @@
   endif
 %}
 
-<div class="cart_shipping-motivator--container mb-lg max-w-[550px] mx-auto">
+<div class="cart_shipping-motivator--container mb-md max-w-[550px] mx-auto">
   <div class="shipping-motivator__message text-center p4">
     {% if cart == empty %}
       {{ settings.shipping_threshold_message_empty }}
@@ -19,7 +19,7 @@
       {% endif %}
     {% endif %}
   </div>
-  <div class="shipping-threshold__wrapper relative flex mt-md">
+  <div class="shipping-threshold__wrapper relative flex mt-xxs">
     <progress class="shipping-threshold__bar w-full h-[8px] rounded-[100px] overflow-hidden" max="100" value="{{ percentage }}" cart-total="{{ cart.total_price }}">
     </progress>
   </div>

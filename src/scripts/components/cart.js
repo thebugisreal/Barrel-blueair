@@ -32,6 +32,18 @@ class CartItems extends HTMLElement {
       this.onCartUpdate();
     });
 
+    console.log("CHECK ME", this)
+    this.discountFormBtn = document.querySelector('.cart-drawer-discounts [js-cart-discount-form-submit]');
+    this.discountFormInput = document.querySelector('.cart-drawer-discounts [js-cart-discount-form-input]');
+    this.discountFormBtn?.addEventListener('click', this.applyDiscount);
+
+    this.discountPillRemove = document.querySelectorAll('.cart-drawer-discounts [js-cart-discount-pill-remove]');
+    this.discountPillRemove?.forEach((pill) => {
+      pill.addEventListener('click', this.removeDiscount);
+    });
+
+    console.log("CHECK ME", this.discountFormBtn)
+
     this.checkIneligibleCartItems();
     this.checkGWP();
   }
@@ -357,6 +369,191 @@ class CartItems extends HTMLElement {
     const cartDrawerItemElements = this.querySelectorAll(`#CartDrawer-Item-${line} loading-spinner`);
     
     [...cartItemElements, ...cartDrawerItemElements].forEach((spinner) => spinner.removeAttribute("loading"));
+  }
+
+  applyDiscount = async (event) => {
+    event.preventDefault();
+    console.log('CHECKING')
+    const cartDiscountError = document.querySelector('.cart-drawer-discounts [js-cart-discount-error]');
+    const cartDiscountErrorDiscountCode = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-discount-code]');
+    const cartDiscountErrorShipping = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-shipping]');
+
+    const discountCodeValue = this.discountFormInput.value;
+
+    try {
+      const existingDiscounts = this.existingDiscounts();
+      if (existingDiscounts.includes(discountCodeValue)) {
+        return;
+      }
+
+      cartDiscountError.classList.add('hidden');
+      cartDiscountErrorDiscountCode.classList.add('hidden');
+      cartDiscountErrorShipping.classList.add('hidden');
+
+      const response = await fetch(window.Shopify.routes.root + 'cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          discount: [...existingDiscounts, discountCodeValue].join(','),
+          sections: this.getSectionsToRender().map((section) => section.section),
+          sections_url: window.location.pathname,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (
+        data.discount_codes.find((discount) => {
+          return discount.code === discountCodeValue && discount.applicable === false;
+        })
+      ) {
+        this.discountFormInput.value = '';
+        this.handleDiscountError('discount_code');
+        return;
+      }
+
+      const newHtml = data.sections[this.dataset.sectionId];
+      const parsedHtml = new DOMParser().parseFromString(newHtml, 'text/html');
+      const section = parsedHtml.getElementById(`shopify-section-${this.dataset.sectionId}`);
+      const discountCodes = section?.querySelectorAll('.cart-discount__pill-code') || [];
+
+      if (section) {
+        const codes = Array.from(discountCodes)
+          .map((element) => (element instanceof HTMLLIElement ? element.dataset.discountCode : null))
+          .filter(Boolean);
+        // Before morphing, we need to check if the shipping discount is applicable in the UI
+        // we check the liquid logic compared to the cart payload to assess whether we leveraged
+        // a valid shipping discount code.
+        if (
+          codes.length === existingDiscounts.length &&
+          codes.every((code) => existingDiscounts.includes(code)) &&
+          data.discount_codes.find((discount) => {
+            return discount.code === discountCodeValue && discount.applicable === true;
+          })
+        ) {
+          this.handleDiscountError('shipping');
+          this.discountFormInput.value = '';
+          // return;
+        }
+      }
+
+      this.disconnectedCallback();
+      
+      // Update cart sections directly instead of using onCartUpdate
+      this.getSectionsToRender().forEach((section) => {
+        const elementToReplace =
+          document.getElementById(section.id)?.querySelector(section.selector) || document.getElementById(section.id);
+        if (elementToReplace && data.sections[section.section]) {
+          elementToReplace.innerHTML = this.getSectionInnerHTML(
+            data.sections[section.section],
+            section.selector
+          );
+        }
+      });
+      
+      // Reattach event listeners to new DOM elements
+      this.connectedCallback();
+      
+      // Publish cart update event
+      theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  handleDiscountError = (errorType) => {
+    const cartDiscountError = document.querySelector('.cart-drawer-discounts [js-cart-discount-error]');
+    const cartDiscountErrorDiscountCode = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-discount-code]');
+    const cartDiscountErrorShipping = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-shipping]');
+
+    const target = errorType === 'discount_code' ? cartDiscountErrorDiscountCode : cartDiscountErrorShipping;
+    cartDiscountError.classList.remove('hidden');
+    target.classList.remove('hidden');   
+  }
+
+  existingDiscounts = () => {
+    const discountCodes = [];
+    const existingDiscounts = document.querySelectorAll('.cart-drawer-discounts [js-cart-discount-pill-code]');
+    existingDiscounts.forEach((discount) => {
+      discountCodes.push(discount.textContent.trim());
+    });
+    return discountCodes;
+  }
+
+  updateCheckoutUrls = () => {
+    const discountCodes = this.existingDiscounts();
+    const discountParam = discountCodes.length > 0 ? `?discount=${discountCodes.join(',')}` : '';
+    
+    // Update cart page checkout form
+    const cartPageForm = document.getElementById('CartPage-Form');
+    if (cartPageForm) {
+      const newAction = `${window.routes.cart_url}${discountParam}`;
+      cartPageForm.action = newAction;
+    }
+    
+    // Update cart drawer checkout form
+    const cartDrawerForm = document.getElementById('CartDrawer-Form');
+    if (cartDrawerForm) {
+      const newAction = `${window.routes.cart_url}${discountParam}`;
+      cartDrawerForm.action = newAction;
+    }
+  }
+
+  removeDiscount = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const discountCode = event.currentTarget.dataset.discountCode;
+    if (!discountCode) return;
+
+    const existingDiscounts = this.existingDiscounts();
+    const index = existingDiscounts.indexOf(discountCode);
+    // if (index === -1) return;
+
+    existingDiscounts.splice(index, 1);
+    
+    try {
+      const response = await fetch(window.Shopify.routes.root + 'cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          discount: [...existingDiscounts].join(','),
+          sections: this.getSectionsToRender().map((section) => section.section),
+          sections_url: window.location.pathname,
+        }),
+      });
+
+      const data = await response.json();
+
+      this.disconnectedCallback();
+      
+      // Update cart sections directly instead of using onCartUpdate
+      this.getSectionsToRender().forEach((section) => {
+        const elementToReplace =
+          document.getElementById(section.id)?.querySelector(section.selector) || document.getElementById(section.id);
+        if (elementToReplace && data.sections[section.section]) {
+          elementToReplace.innerHTML = this.getSectionInnerHTML(
+            data.sections[section.section],
+            section.selector
+          );
+        }
+      });
+      
+      // Reattach event listeners to new DOM elements
+      this.connectedCallback();
+      
+      // Update checkout URLs with discount codes (after DOM update)
+      this.updateCheckoutUrls();
+      
+      // Publish cart update event
+      theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

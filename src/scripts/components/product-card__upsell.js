@@ -26,12 +26,17 @@ class ProductCardUpsell extends HTMLElement {
     
     _submitSingle(e) {
       e.preventDefault();
-      console.log('e.target', e.target);
+      
       let variantId = e.target.dataset.variantId
+      let isGift = e.target.dataset.isGift
+
       let data = {
         items: [{
           'id': variantId,
-          'quantity': 1
+          'quantity': 1,
+          'properties': {
+            '_isGift': isGift
+          }
         }],
         sections: this.getSectionsToRender().map((section) => section.section)
       }
