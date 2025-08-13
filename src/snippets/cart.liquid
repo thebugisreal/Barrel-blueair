@@ -1,6 +1,10 @@
 {% assign cart_variants = '' %}
+{% assign gwp_present = false %}
 {% for item in cart.items %}
   {% assign cart_variants = cart_variants | append: item.variant_id | append: ',' %}
+  {% if item.properties['_isGWP'] %}
+    {% assign gwp_present = true %}
+  {% endif %}
 {% endfor %}
 {% assign subscription_index = 0 %}
 
@@ -61,6 +65,7 @@
                   endif
                 endif
               %}
+              {% unless item.properties['_isGWP'] %} 
               <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" {% if item.properties['_isGWP'] %} data-is-gwp="true" data-var-id="{{ item.variant_id }}" {% endif %} js-cart-item>
                 <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                 <div class="flex gap-md">
@@ -183,9 +188,52 @@
                   {% assign subscription_index = subscription_index | plus: 1 %}
                 {% endif %}
               </div>
+              {% endunless %}
               {%- endfor -%}
             </div>
             {% comment %} END Cart Items  {% endcomment %}
+
+          {% comment %} Gift with Purchases (non-threshold) {% endcomment %}
+              {% if gwp_present == true %}
+                {%- capture gwp_carousel_options -%}
+                  {
+                    "slidesPerView": 1,
+                    "pagination": {
+                      "el": ".swiper-gwp-pagination",
+                      "type": "fraction"
+                    },
+                    "navigation": {
+                      "nextEl": ".swiper-gwp-next",
+                      "prevEl": ".swiper-gwp-prev"
+                    }
+                  }
+                {%- endcapture -%}
+                <div class="cart-drawer__gwp-container my-lg">
+                  <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
+                      <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
+                        <div class="flex justify-between items-center mb-md">
+                          <h1 class="cart-drawer-gwp__title s1 font-900">Your Free Gift</h1>
+                          <div class="swiper-nav-container flex gap-xxs items-center">
+                            <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                            <div class="swiper-gwp-pagination w-fit p6"></div>
+                            <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
+                          </div>
+                        </div>
+
+                        <div class="swiper-wrapper">
+                            {% for item in cart.items %}
+                              {% if item.properties['_isGWP'] %}
+                              <div class="swiper-slide" js-carousel-slide>
+                                {% render 'product-card__upsell' product:item, section_id: section.id, gwp:true %}
+                              </div>
+                              {% endif %}
+                            {% endfor %}
+                        </div>
+                      </div>
+                  </s-carousel>
+                </div>
+              {% endif %}
+            {% comment %} END Gift with Purchases {% endcomment %}
 
             {% comment %} Upsell Products {% endcomment %}
             {% assign display_carousel = false %}
