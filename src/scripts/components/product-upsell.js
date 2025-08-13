@@ -218,6 +218,10 @@ class ProductUpsell extends HTMLElement {
         return; // done
       }
 
+      // If no color-name element exists, this product has no color variants
+      // Don't add any color information
+      return;
+
       // 2) Otherwise, remove any previously injected color spans (defensive)
       this.upsellTitle.querySelectorAll('.injected-color-name').forEach(el => el.remove());
 
