@@ -924,7 +924,7 @@ class ProductMain extends HTMLElement {
               btn.querySelector(this._selectors.atcText).textContent = 'Add to Cart';
             }
           }
-          btn.remsoveAttribute('disabled');
+          btn.removeAttribute('disabled');
         });
       } else {
         this.buttons.forEach((btn) => {
