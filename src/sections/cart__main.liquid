@@ -237,12 +237,15 @@
                   {%- endfor -%}
 
                   {% comment %} Gift with Purchases (non-threshold) {% endcomment %}
-                  {% if settings.gwp1 != blank or settings.gwp2 != blank%}
-                    {% assign gwp_1_variant = settings.gwp1.variants[0] %}
-                    {% assign gwp_2_variant = settings.gwp2.variants[0] %}
-                  {% endif %}
+
 
                   {% if settings.gwp1 != blank or settings.gwp2 != blank or gwp_present == true %}
+                    {% if settings.gwp1 != blank or settings.gwp2 != blank%}
+                      {% assign gwp_1_variant = settings.gwp1.variants[0] %}
+                      {% assign gwp_2_variant = settings.gwp2.variants[0] %}
+                    {% endif %}
+
+
                     {%- capture gwp_carousel_options -%}
                       {
                         "slidesPerView": 1,
@@ -256,8 +259,8 @@
                         }
                       }
                     {%- endcapture -%}
-                    <div class="cart-drawer__gwp-container my-[32px]">
-                      <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
+                    <div class="cart-drawer__gwp-container my-[32px] grid grid-cols-1">
+                      <s-carousel class="block relative" data-options='{{ gwp_carousel_options }}'>
                           <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
                             <div class="flex justify-between items-center mb-sm">
                               <h1 class="cart-drawer-gwp__title s1 font-900">Your Free Gift</h1>
@@ -271,10 +274,9 @@
                             <div class="swiper-wrapper">
                                 {% for item in cart.items %}
                                   {% if item.properties['_isGWP'] %}
-                                  
-                                  <div class="swiper-slide" js-carousel-slide>
-                                    {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true, claimed: true %}
-                                  </div>
+                                    <div class="swiper-slide" js-carousel-slide>
+                                      {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true, claimed: true %}
+                                    </div>
                                   {% endif %}
                                 {% endfor %}
 
@@ -282,18 +284,20 @@
                                   <div class="swiper-slide" js-carousel-slide>
                                     {% if cart_variants contains gwp_1_variant.id  %}
                                       {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true, claimed: true %}
-                                    {% else  %}
+                                    {% else %}
                                       {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
                                     {% endif %}
                                   </div>
                                 {% endif %}
 
                                 {% if settings.gwp2 != blank %}
-                                  {% if cart_variants contains gwp_2_variant.id  %}
-                                    {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true, claimed: true %}
-                                  {% else  %}
-                                    {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
-                                  {% endif %}
+                                  <div class="swiper-slide" js-carousel-slide>
+                                    {% if cart_variants contains gwp_2_variant.id  %}
+                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true, claimed: true %}
+                                    {% else  %}
+                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
+                                    {% endif %}
+                                  </div>
                                 {% endif %}
                             </div>
                           </div>
