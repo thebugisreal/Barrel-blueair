@@ -491,9 +491,6 @@
                               data-discount-code="{{ discount_code }}"
                               aria-label="{{ 'accessibility.discount_applied' | t: code: discount_code }}"
                             >
-                              <p class="cart-discount__pill-code" js-cart-discount-pill-code>
-                                {{ discount_code }}
-                              </p>
                               <button
                                 type="button"
                                 class="cart-discount__pill-remove w-12 h-12 flex items-center justify-center"
@@ -501,8 +498,12 @@
                                 data-discount-code="{{ discount_code }}"
                                 js-cart-discount-pill-remove
                               >
-                                {% render 'icon-close' %}
+                                {% render 'icon-close-no-border' %}
                               </button>
+                              <p class="cart-discount__pill-code" js-cart-discount-pill-code>
+                                {{ discount_code }}
+                              </p>
+   
                             </li>
                           {% endfor %}
                         </ul>

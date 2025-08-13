@@ -135,3 +135,18 @@ cart-remove-button .cart-remove-button:focus-visible {
     @apply block;
   }
 }
+
+.cart-discount__pill {
+  @apply
+  px-8
+  py-4
+  bg-[#40C1AC]
+  rounded-full;
+}
+
+.cart-discount__pill-code {
+  @apply
+  font-400
+  text-12
+  text-black;
+}
