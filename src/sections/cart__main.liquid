@@ -75,8 +75,7 @@
                         endif
                       endif
                     %}
-                  {% unless item.properties['_isGWP'] %} 
-                      <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" js-cart-item>
+                      <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}"  {% if item.properties['_isGWP'] %} data-is-gwp="true" data-var-id="{{ item.variant_id }}" {% endif %} {% if item.properties['_isGift'] %}data-is-gift-product="true"{% endif %}  js-cart-item>
                       <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                       <div class="flex justify-between gap-sm tabletl:gap-md">
                         <div class="flex gap-md w-full">
@@ -137,6 +136,7 @@
                                 {%- endfor -%}
                               </ul>
                             {% endif %}
+
                             <div class="cart-price cart-price--mobile tabletp:hidden">
                               {%- if item.original_line_price != item.final_line_price -%}
                                 <div class="cart-item__discounted-prices p1">
@@ -159,6 +159,9 @@
                                 </span>
                               {%- endif -%}
                             </div>
+                            {% if item.properties['_isGWP'] or item.properties['_isGift'] %}
+                              <p>Gift</p>
+                            {% endif %}
     
                             {% assign disable_quantity_selector = false %}
                             {% if item.product.metafields.seed.two_pack_filter_subscription_disable_quantity_selector_in_cart == true and item.selling_plan_allocation != blank and item.quantity > 1 %}
@@ -231,7 +234,6 @@
                         </div>
                       {% endif %}
                       </div>
-                    {% endunless %}
                   {%- endfor -%}
 
                   {% comment %}
@@ -327,21 +329,27 @@
                                   {% if item.properties['_isGWP'] %}
                                   
                                   <div class="swiper-slide" js-carousel-slide>
-                                    {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true %}
+                                    {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true, claimed: true %}
                                   </div>
                                   {% endif %}
                                 {% endfor %}
 
                                 {% if settings.gwp1 != blank %}
                                   <div class="swiper-slide" js-carousel-slide>
-                                    {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
+                                    {% if cart_variants contains gwp_1_variant.id  %}
+                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true, claimed: true %}
+                                    {% else  %}
+                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
+                                    {% endif %}
                                   </div>
                                 {% endif %}
 
                                 {% if settings.gwp2 != blank %}
-                                  <div class="swiper-slide" js-carousel-slide>
+                                  {% if cart_variants contains gwp_2_variant.id  %}
+                                    {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true, claimed: true %}
+                                  {% else  %}
                                     {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
-                                  </div>
+                                  {% endif %}
                                 {% endif %}
                             </div>
                           </div>

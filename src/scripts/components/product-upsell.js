@@ -26,6 +26,7 @@ class ProductUpsell extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log('I AM RUNNING')
     this.variantBtns = this.querySelectorAll(this._selectors.variantBtn);
     this.atcBtn = this.querySelector(this._selectors.atcBtn);
     this.bisBtn = this.querySelector(this._selectors.bisBtn);
@@ -77,10 +78,34 @@ class ProductUpsell extends HTMLElement {
 
     this.cart.setActiveElement(document.activeElement);
 
+    console.log('checking!!!!', target)
+    
     let data = {
       items: [{ id: target.dataset.variantId, quantity: 1 }],
       sections: this.cart.getSectionsToRender().map((section) => section.id)
     };
+
+    if(target.dataset.isGift == 'true') {
+      let data = {
+      items: [
+        { 
+          id: target.dataset.variantId,
+          quantity: 1,
+          properties: { 
+            '_isGift': true
+          }
+        }
+      ],
+      sections: this.cart.getSectionsToRender().map((section) => section.id)
+      };
+    } else {
+      let data = {
+      items: [{ id: target.dataset.variantId, quantity: 1 }],
+      sections: this.cart.getSectionsToRender().map((section) => section.id)
+      };
+    }
+
+    console.log("the data", data)
 
     fetch(window.Shopify.routes.root + 'cart/add.js', {
       method: 'POST',
