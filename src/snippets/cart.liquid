@@ -10,7 +10,7 @@
 
 <cart-drawer>
   <div id="cart" class="cart-drawer flex flex-col h-full" js-cart-drawer-contents>
-    <h3 class="text-center mb-md px-md">{{ settings.cart_title }}</h3>
+    <h3 class="mb-xs px-md">{{ settings.cart_title }}</h3>
     {% if cart == empty %}
       <p class="p4 text-center" js-empty-cart>
       </p>
@@ -408,7 +408,7 @@
 
           assign discount_codes = discount_codes | uniq
         %}
-        <div class="cart__discounts cart-drawer-discounts">
+        <div class="cart__discounts cart-drawer-discounts mb-sm">
           <div class="cart-discount">
             <div class="details-content">
               <div class="cart-discount__content p2 btn btn--white-rounded !bg-white !text-black w-full justify-between">
