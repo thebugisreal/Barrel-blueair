@@ -32,17 +32,17 @@ class CartItems extends HTMLElement {
       this.onCartUpdate();
     });
 
-    console.log("CHECK ME", this)
-    this.discountFormBtn = document.querySelector('.cart-drawer-discounts [js-cart-discount-form-submit]');
-    this.discountFormInput = document.querySelector('.cart-drawer-discounts [js-cart-discount-form-input]');
+    console.log("CHECK ME")
+    this.discountFormBtn = this.querySelector('[js-cart-discount-form-submit]');
+    this.discountFormInput = this.querySelector('[js-cart-discount-form-input]');
     this.discountFormBtn?.addEventListener('click', this.applyDiscount);
 
-    this.discountPillRemove = document.querySelectorAll('.cart-drawer-discounts [js-cart-discount-pill-remove]');
+    this.discountPillRemove = this.querySelectorAll('[js-cart-discount-pill-remove]');
     this.discountPillRemove?.forEach((pill) => {
       pill.addEventListener('click', this.removeDiscount);
     });
 
-    console.log("CHECK ME", this.discountFormBtn)
+    console.log("CHECK ME", this)
 
     this.checkIneligibleCartItems();
     this.checkGWP();
@@ -374,9 +374,9 @@ class CartItems extends HTMLElement {
   applyDiscount = async (event) => {
     event.preventDefault();
     console.log('CHECKING')
-    const cartDiscountError = document.querySelector('.cart-drawer-discounts [js-cart-discount-error]');
-    const cartDiscountErrorDiscountCode = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-discount-code]');
-    const cartDiscountErrorShipping = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-shipping]');
+    const cartDiscountError = this.querySelector('[js-cart-discount-error]');
+    const cartDiscountErrorDiscountCode = this.querySelector('[js-cart-discount-error-discount-code]');
+    const cartDiscountErrorShipping = this.querySelector('[js-cart-discount-error-shipping]');
 
     const discountCodeValue = this.discountFormInput.value;
 
@@ -464,9 +464,9 @@ class CartItems extends HTMLElement {
   }
 
   handleDiscountError = (errorType) => {
-    const cartDiscountError = document.querySelector('.cart-drawer-discounts [js-cart-discount-error]');
-    const cartDiscountErrorDiscountCode = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-discount-code]');
-    const cartDiscountErrorShipping = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-shipping]');
+    const cartDiscountError = this.querySelector('[js-cart-discount-error]');
+    const cartDiscountErrorDiscountCode = this.querySelector('[js-cart-discount-error-discount-code]');
+    const cartDiscountErrorShipping = this.querySelector('[js-cart-discount-error-shipping]');
 
     const target = errorType === 'discount_code' ? cartDiscountErrorDiscountCode : cartDiscountErrorShipping;
     cartDiscountError.classList.remove('hidden');
@@ -475,7 +475,7 @@ class CartItems extends HTMLElement {
 
   existingDiscounts = () => {
     const discountCodes = [];
-    const existingDiscounts = document.querySelectorAll('.cart-drawer-discounts [js-cart-discount-pill-code]');
+    const existingDiscounts = this.querySelectorAll('[js-cart-discount-pill-code]');
     existingDiscounts.forEach((discount) => {
       discountCodes.push(discount.textContent.trim());
     });

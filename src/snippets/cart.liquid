@@ -195,63 +195,6 @@
             </div>
             {% comment %} END Cart Items  {% endcomment %}
 
-
-            {% comment %}
-            OLD GWP
-            {% if settings.gwp1 != blank or settings.gwp2 != blank%}
-              {% assign gwp_1_variant = settings.gwp1.variants[0] %}
-              {% assign gwp_2_variant = settings.gwp2.variants[0] %}
-
-              {% unless cart_variants contains gwp_1_variant.id and cart_variants contains gwp_2_variant.id %}
-                {%- capture gwp_carousel_options -%}
-                  {
-                    "slidesPerView": 1,
-                    "pagination": {
-                      "el": ".swiper-gwp-pagination",
-                      "type": "fraction"
-                    },
-                    "navigation": {
-                      "nextEl": ".swiper-gwp-next",
-                      "prevEl": ".swiper-gwp-prev"
-                    }
-                  }
-                {%- endcapture -%}
-                <div class="cart-drawer__gwp-container my-[32px]">
-                  <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
-                      <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
-                        <div class="flex justify-between items-center mb-sm">
-                          <h1 class="cart-drawer-gwp__title s1 font-900">Select Your Free Gift</h1>
-                          <div class="swiper-nav-container flex gap-xxs items-center">
-                            <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
-                            <div class="swiper-gwp-pagination w-fit p6"></div>
-                            <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
-                          </div>
-                        </div>
-
-                        <div class="swiper-wrapper">
-                          {% unless cart_variants contains gwp_1_variant.id %}
-                            {% if settings.gwp1 != blank %}
-                              <div class="swiper-slide" js-carousel-slide>
-                                {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-
-                          {% unless cart_variants contains gwp_2_variant.id %}
-                            {% if settings.gwp2 != blank %}
-                              <div class="swiper-slide" js-carousel-slide>
-                                {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
-                              </div>
-                            {% endif %}
-                          {% endunless %}
-                        </div>
-                      </div>
-                  </s-carousel>
-                </div>
-              {% endunless %}
-            {% endif %}
-            {% endcomment %}
-
           {% comment %} Gift with Purchases (non-threshold) {% endcomment %}
             {% if settings.gwp1 != blank or settings.gwp2 != blank%}
               {% assign gwp_1_variant = settings.gwp1.variants[0] %}
@@ -467,8 +410,8 @@
         %}
         <div class="cart__discounts cart-drawer-discounts">
           <div class="cart-discount">
-            <div class="details-content mt-16">
-              <div class="cart-discount__content flex gap-x-16">
+            <div class="details-content">
+              <div class="cart-discount__content p2 btn btn--white-rounded w-full justify-between">
                   <label
                     for="cart-discount"
                     class="visually-hidden"
@@ -477,7 +420,7 @@
                   </label>
                   <input
                     id="cart-discount"
-                    class="cart-discount__input flex-1 border border-black p-8"
+                    class="cart-discount__input flex-1 border border-black p-0"
                     name="discount"
                     placeholder="Discount Code"
                     js-cart-discount-form-input
@@ -487,7 +430,9 @@
                     class="btn btn--atc h-auto"
                     js-cart-discount-form-submit
                   >
-                    Apply
+                    <span class="btn__arrow !bg-blue !text-white">
+                      {% render 'icon-arrow-right' %}
+                    </span>
                   </button>
               </div>
               <div
