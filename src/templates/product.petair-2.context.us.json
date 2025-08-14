@@ -17,32 +17,25 @@
       "type": "section__custom-instagram-feed",
       "disabled": false,
       "settings": {
-        "header-fc2540fbc35a4820079a827745e9fc73": null,
-        "margin_top_mobile": "mt-0",
+        "header-f9a6115110ee60a7a8cba086c7060fdb": null,
+        "margin_top_mobile": "mt-xl",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
         "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
+        "margin_top_desktop": "desktop:mt-lg",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
+        "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "header-8b02242d5f20ec19b75522e1de6ec4f2": null,
+        "header-ae6c97c345de8afcef288480b3d1f219": null,
         "color": "bg-white text-blue",
-        "header-bd5b34430868e26f767b09d12d4cf1ca": null,
-        "title": "",
-        "title_style": "h2",
+        "header-69c4a84ed666abc56827be223dec822a": null,
+        "title": "Pet-Tested, <br> Parent-Approved",
+        "title_style": "h4",
         "subtext": "",
-        "subtext_style": "s2",
+        "subtext_style": "p1",
         "instagram_tag": ""
       },
       "blocks": {
-        "video_UtBFN": {
-          "type": "video",
-          "disabled": false,
-          "settings": {
-            "video": "shopify://files/videos/IG Reel_cleointhecity_PetAir Pro.mp4"
-          }
-        },
         "image_yBcyT": {
           "type": "image",
           "disabled": false,
@@ -51,17 +44,42 @@
             "image_desktop": null
           }
         },
+        "video_UtBFN": {
+          "type": "video",
+          "disabled": false,
+          "settings": {
+            "video": "shopify://files/videos/IG Reel_cleointhecity_PetAir Pro.mp4"
+          }
+        },
+        "image_QYJhV": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image_mobile": "shopify://shop_images/3_f5e1699a-4707-4cbc-8eb7-6613f4ec3843.png",
+            "image_desktop": null
+          }
+        },
+        "image_3Tn3D": {
+          "type": "image",
+          "disabled": false,
+          "settings": {
+            "image_mobile": "shopify://shop_images/4_e24515de-edda-42ef-b8b4-01b1e4b0a4b6.png",
+            "image_desktop": null
+          }
+        },
         "video_4q8WY": {
           "type": "video",
           "disabled": false,
           "settings": {
-            "video": null
+            "video": "shopify://files/videos/Video draft with text.mov"
           }
         }
       },
       "block_order": [
-        "video_UtBFN",
         "image_yBcyT",
+        "video_UtBFN",
+        "image_QYJhV",
+        "image_3Tn3D",
         "video_4q8WY"
       ],
       "name": "Custom Instagram Feed"
@@ -85,6 +103,11 @@
       "settings": {},
       "blocks": {}
     },
+    "section_image_text_grid_NwP3Er": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
     "product_image_text_product_EitePb": {
       "disabled": true,
       "settings": {},
@@ -94,15 +117,11 @@
       "disabled": true,
       "settings": {},
       "blocks": {}
-    },
-    "section_image_text_grid_NwP3Er": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
     }
   },
   "order": [
     "main",
+    "section_custom_instagram_feed_gj9L7",
     "product_image_text_6MPkRA",
     "product_custom_tabs_acewb9",
     "section_image_blocks_A9wwV3",
@@ -110,7 +129,6 @@
     "product_filters_tPXVJP",
     "product_slideshow_f7BaaR",
     "product_app_tabs_BzryrE",
-    "section_custom_instagram_feed_gj9L7",
     "section_image_text_grid_NwP3Er",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",

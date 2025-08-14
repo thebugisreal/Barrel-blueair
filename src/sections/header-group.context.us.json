@@ -21,9 +21,9 @@
       "blocks": {
         "announcement_QGYni": {
           "type": "announcement",
-          "disabled": false,
+          "disabled": true,
           "settings": {
-            "header-698c785cdb36d7e9266f60d7d7efc551": null,
+            "header-f36a6bfcf63920cfe3cb42f1ca9f87a6": null,
             "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
             "url": "shopify://collections/air-purifier-filters"
           }
@@ -39,7 +39,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-a1b9df7c8209eb3424225946bda205f2": null,
+            "header-2ec6a09a8809fcf93c75196136703e18": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
@@ -48,7 +48,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-2b7d9930616a737f53d79fb262927f27": null,
+            "header-e5dd06320bf7342a4f25e2ba06eb7082": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": "shopify://collections/sale"
           }
@@ -57,18 +57,18 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "header-1d1383a814fe46b732acf5f45067ee57": null,
+            "header-a82027735c1d2213e63a272ba3a28a9c": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
           }
         }
       },
       "block_order": [
-        "announcement_QGYni",
         "announcement_A6AHyV",
         "announcement_XMHEL",
         "announcement_KRB8N",
-        "announcement_QLGEH"
+        "announcement_QLGEH",
+        "announcement_QGYni"
       ]
     }
   }

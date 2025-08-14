@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.petair-beds.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "product_image_text_6MPkRA": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "product_app_tabs_BzryrE": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "product_video_WFRqMh": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    }
+  },
+  "order": [
+    "main",
+    "product_custom_tabs_acewb9",
+    "product_image_text_6MPkRA",
+    "section_image_blocks_A9wwV3",
+    "product_filters_tPXVJP",
+    "product_slideshow_f7BaaR",
+    "product_video_WFRqMh",
+    "product_app_tabs_BzryrE",
+    "section_image_text_grid_NwP3Er",
+    "section_embed_9mLjVz",
+    "product_brands_3gV3EU",
+    "product_image_text_product_EitePb",
+    "section_text_banner_rmDttx",
+    "product_perks_FacAhx",
+    "product_accordion_6QWP9F",
+    "product_recommendations_Ha8zrk",
+    "product_footnotes_izYTTQ",
+    "bazaarvoice_reviews_g6D6HN"
+  ]
+}

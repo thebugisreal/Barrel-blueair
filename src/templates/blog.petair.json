@@ -21,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -34,10 +34,11 @@
       "blocks": {
         "link_8U7aNQ": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify:\/\/shop_images\/Group_48097731.svg",
+            "image": "shopify://shop_images/Group_48097731.svg",
             "svg_html": ""
           }
         },
@@ -46,7 +47,7 @@
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
-            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
+            "image": "shopify://shop_images/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -55,7 +56,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
+            "image": "shopify://shop_images/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -64,7 +65,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify:\/\/shop_images\/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
+            "image": "shopify://shop_images/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
             "svg_html": ""
           }
         }
@@ -85,7 +86,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 1,
-        "num_cols_desktop": 4,
+        "num_cols_desktop": 3,
         "max_width": "1440px",
         "color": "bg-white text-blue"
       }
@@ -139,6 +140,7 @@
         "video_agGEVg",
         "video_DyXLtE"
       ],
+      "disabled": true,
       "settings": {
         "anchor_id": "videos",
         "margin_top_mobile": "mt-md",
@@ -170,7 +172,7 @@
         "padding_bottom_desktop": "desktop:pb-lg",
         "max_width": "80ch",
         "color": "bg-white text-blue",
-        "title": "Blue Pure Troubleshooting",
+        "title": "PetAir Troubleshooting",
         "title_style": "h4",
         "blog": "",
         "tag": "Troubleshooting"
@@ -179,105 +181,27 @@
     "section_faq_specs_instructions_yaLwFD": {
       "type": "section__faq-specs-instructions",
       "blocks": {
-        "block_iqRdJj": {
-          "type": "block",
-          "settings": {
-            "title": "Blue Pure Mini Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_3.png",
-            "video_link_text": "",
-            "video_link_url": "",
-            "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Mini_Max_Manual_-_English_10.3.24.pdf?v=1740161162",
-            "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/mini-max-1"
-          }
-        },
-        "block_cwtmmP": {
-          "type": "block",
-          "settings": {
-            "title": "Blue Pure 511i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_4.png",
-            "video_link_text": "",
-            "video_link_url": "",
-            "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_511i_Max_User_Manual_-_English_10.3.24.pdf?v=1740161829",
-            "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/511i-max"
-          }
-        },
-        "block_q8PRWn": {
-          "type": "block",
-          "settings": {
-            "title": "Blue Pure 411a Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_4.png",
-            "video_link_text": "",
-            "video_link_url": "",
-            "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_411a_Max_User_Manual_-_English_10.3.24.pdf?v=1740161885",
-            "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/411a-max"
-          }
-        },
-        "block_bGih4a": {
-          "type": "block",
-          "settings": {
-            "title": "Blue Pure 411i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_4.png",
-            "video_link_text": "How it works",
-            "video_link_url": "",
-            "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_411i_Max_User_Manual_-_English_10.3.24.pdf?v=1740161918",
-            "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/411i-max"
-          }
-        },
-        "block_KJXYyQ": {
-          "type": "block",
-          "settings": {
-            "title": "Blue Pure 311i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_5.png",
-            "video_link_text": "How it works",
-            "video_link_url": "",
-            "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_311i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162016",
-            "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/311i-max-1"
-          }
-        },
-        "block_JEaEGQ": {
-          "type": "block",
-          "settings": {
-            "title": "Blue Pure 311i+ Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_5.png",
-            "video_link_text": "How it works",
-            "video_link_url": "",
-            "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_311iplus_Max_user_manual_-_English_07.30.24.pdf?v=1740162059",
-            "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/311i-max-2"
-          }
-        },
         "block_N9tFUz": {
           "type": "block",
           "settings": {
-            "title": "Blue Pure 211i Max",
-            "image": "shopify:\/\/shop_images\/new_Blue_Pure_411_Auto_6.png",
+            "title": "PetAir Pro",
+            "image": "shopify://shop_images/PetAir_Pro_plp_card.png",
             "video_link_text": "How it works",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/Blue_Pure_211i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162064",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/PetAir_P3i_User_Manual_EN_FR_6-19-25.pdf?v=1750352120",
+            "manual_2_link_text": "",
+            "manual_2_link_url": "",
+            "manual_3_link_text": "",
+            "manual_3_link_url": "",
+            "manual_4_link_text": "",
+            "manual_4_link_url": "",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/211i-max-1"
+            "product_link_url": "shopify://collections/petair-pro-filters-accessories"
           }
         }
       },
       "block_order": [
-        "block_iqRdJj",
-        "block_cwtmmP",
-        "block_q8PRWn",
-        "block_bGih4a",
-        "block_KJXYyQ",
-        "block_JEaEGQ",
         "block_N9tFUz"
       ],
       "settings": {
@@ -291,8 +215,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 1,
-        "num_cols_desktop": 3,
-        "max_width": "1440px",
+        "num_cols_desktop": 1,
+        "max_width": "500px",
         "color": "bg-white text-blue",
         "title": "User Manuals & Replacement Filters",
         "title_style": "h4"
@@ -312,7 +236,7 @@
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width": "80ch",
         "color": "bg-white text-blue",
-        "title": "Blue Pure Max FAQs",
+        "title": "PetAir Pro FAQs",
         "title_style": "h4"
       }
     },
@@ -428,6 +352,12 @@
             "topic": "classic-pro"
           }
         },
+        "topic_CWjYMR": {
+          "type": "topic",
+          "settings": {
+            "topic": "pet-air"
+          }
+        },
         "topic_nKazPq": {
           "type": "topic",
           "settings": {
@@ -467,6 +397,7 @@
         "topic_DedYi7",
         "topic_7ijgjd",
         "topic_H8czMm",
+        "topic_CWjYMR",
         "topic_nKazPq",
         "topic_HADU7f",
         "topic_WGq669",
@@ -506,7 +437,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }
