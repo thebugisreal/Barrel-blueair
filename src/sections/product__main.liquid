@@ -593,18 +593,30 @@
                           <product-upsell class="product-upsell__item flex flex-col">
                             <div class="product-upsell__buybox flex-1 flex flex-col justify-between gap-md">
                               <div class="flex gap-xs justify-between">
-                                <div class="flex">
-                                  {% assign prefilter_image = upsell.upsell_1_image_upload %}
-                                  {% if prefilter_image != blank %}
-                                    <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
-                                      {% render 'lazy-image' image: prefilter_image %}
-                                    </div>
-                                  {% endif %}
+                                   <div class="flex">
+                                    {% assign prefilter_image = upsell.upsell_1_image_upload %}
+                                    {% if prefilter_image != blank %}
+                                      <div class="product-upsell__variant-image max-w-[100px] flex flex-col">
+                                        {% if upsell_current_variant.image != blank %}
+                                          {% render 'lazy-image' image: upsell_current_variant.image %}
+                                        {% else %}
+                                          {% render 'lazy-image' image: prefilter_image %}
+                                        {% endif %}
+                                      </div>
+                                    {% endif %}
 
                                   <div class="flex flex-col m-auto">
                                     {% assign upsell_product = upsell.upsell_1_product.value %}
                                     {% if upsell_product != blank %}
                                       {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
+                                      
+                                      {% liquid
+                                        assign color_option = false
+                                        assign filter_type_option = false
+                                        if upsell_product.options_by_name['color'] != blank
+                                          assign color_option = upsell_product.options_by_name['color'].position | minus: 1
+                                        endif
+                                      %}
                                       
                                       {% if upsell.upsell_1_heading != blank %}
                                         <div class="product-upsell__title flex s2 mb-xxxs gap-xs" js-upsell-title data-base-title="{{ upsell.upsell_1_heading | strip }}">
@@ -614,14 +626,6 @@
                                       {% if upsell.upsell_1_short_desc != blank %}
                                         <div class="product-upsell__description p4 mb-xxxs">{{ upsell.upsell_1_short_desc }}</div>
                                       {% endif %}
-                                      
-                                      {% liquid
-                                        assign color_option = false
-                                        assign filter_type_option = false
-                                        if upsell_product.options_by_name['color'] != blank
-                                          assign color_option = upsell_product.options_by_name['color'].position | minus: 1
-                                        endif
-                                      %}
                                       
                                       {% if color_option != false %}
                                         <div class="product-upsell__variants-container">
