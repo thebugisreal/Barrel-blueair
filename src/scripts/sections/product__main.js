@@ -440,7 +440,11 @@ class ProductMain extends HTMLElement {
     }
 
     const relatedSubscriptions = this.subscription.querySelectorAll(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
-    relatedSubscriptions[1]?.click();
+    if (relatedSubscriptions[1]) {
+      relatedSubscriptions[1].click();
+    } else if (relatedSubscriptions[0]) {
+      relatedSubscriptions[0].click();
+    }
     
     const prevSelectedTrigger = this.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
     if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
