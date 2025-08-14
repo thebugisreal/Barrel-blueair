@@ -336,6 +336,7 @@
       "sold_out": "售罄",
       "unavailable": "不可用",
       "vendor": "小贩",
+      "compatible_with": "兼容",
       "video_exit_message": "{{ title }}在同一窗口中打开全屏视频。",
       "xr_button": "在您的空间中查看",
       "xr_button_label": "在您的空间中查看，在增强现实窗口中加载项目"

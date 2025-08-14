@@ -255,7 +255,7 @@
                     <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.blair_plpShortDescription }}</p>
                   {% endif %}
                   {% if product.metafields.seed.blair_filterSupportModels != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">Compatible with {{ product.metafields.seed.blair_filterSupportModels }}</p>
+                    <p class="product__short-description p2 desktop:mt-xxs">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
                   {% endif %}
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}

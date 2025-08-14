@@ -220,6 +220,7 @@
       "sold_out": "Ausverkauft",
       "unavailable": "Nicht verfügbar",
       "vendor": "Verkäufer",
+      "compatible_with": "Kompatibel mit",
       "video_exit_message": "{{ title }} Öffnet das Vollbildvideo im selben Fenster.",
       "xr_button": "Blick auf Ihren Raum",
       "xr_button_label": "Sehen Sie sich in Ihrem Raum an, lädt Element im Augmented Reality -Fenster auf",

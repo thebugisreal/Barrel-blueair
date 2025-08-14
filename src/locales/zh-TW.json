@@ -221,6 +221,7 @@
     "product": {
       "on_sale": "銷售",
       "vendor": "小販",
+      "compatible_with": "相容",
       "add_to_cart": "加入購物車",
       "description": "描述",
       "product_variants": "產品變體",

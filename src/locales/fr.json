@@ -368,6 +368,7 @@
       "sold_out": "Épuisé",
       "unavailable": "Indisponible",
       "vendor": "Fournisseur",
+      "compatible_with": "Compatible avec",
       "video_exit_message": "{{ title }} ouvre la vidéo en plein écran dans la même fenêtre.",
       "xr_button": "Vue dans votre espace",
       "xr_button_label": "Visualisez dans votre espace, chargez l'élément dans la fenêtre de réalité augmentée",
