@@ -581,7 +581,7 @@
                     {% if product.metafields.seed.upsells_heading != blank %}
                       <div class="product-upsells__heading s2 mb-md cheese">{{ product.metafields.seed.upsells_heading }}</div>
                     {% endif %}
-                    <div class="product-upsells__items grid grid-cols-1 gap-md tabletl:gap-0">
+                    <div class="product-upsells__items grid grid-cols-1 gap-md">
                       {% for object in product.metafields.seed.upsells.value %}
                         {% if forloop.first %}
                           {% assign upsell_object = object%}
@@ -611,7 +611,7 @@
                                 {% endif %}
                               {% endif %}
                               <div class="flex gap-xs justify-between flex-wrap">
-                                  <div class="flex flex-[10] tabletl:flex-auto">
+                                  <div class="flex flex-[10] tabletp:flex-auto">
                                   {% assign prefilter_image = upsell.upsell_1_image_upload %}
                                   {% if prefilter_image != blank %}
                                     <div class="product-upsell__variant-image max-w-[80px] tabletl:max-w-[100px] flex flex-col">
@@ -622,7 +622,7 @@
                                       {% endif %}
                                     </div>
                                   {% endif %}
-                                  <div class="flex flex-col m-auto ml-sm tabletl:ml-auto">
+                                  <div class="flex flex-col m-auto ml-sm">
                                     {% assign upsell_product = upsell.upsell_1_product.value %}
                                     {% if upsell_product != blank %}
                                       {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
@@ -725,7 +725,7 @@
                                 {% endif %}
                               {% endif %}
                               <div class="flex gap-xs justify-between flex-wrap">
-                                  <div class="flex flex-[10] tabletl:flex-auto">
+                                  <div class="flex flex-[10] tabletp:flex-auto">
                                   {% assign prefilter_image = upsell.upsell_2_image_upload %}
                                   {% if prefilter_image != blank %}
                                     <div class="product-upsell__variant-image max-w-[80px] tabletl:max-w-[100px] flex flex-col">
@@ -736,7 +736,7 @@
                                       {% endif %}
                                     </div>
                                   {% endif %}
-                                  <div class="flex flex-col m-auto ml-sm tabletl:ml-auto">
+                                  <div class="flex flex-col m-auto ml-sm">
                                     {% assign upsell_product = upsell.upsell_2_product.value %}
                                     {% if upsell_product != blank %}
                                       {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
@@ -841,7 +841,7 @@
                                   {% endif %}
                                 {% endif %}
                                 <div class="flex gap-xs justify-between flex-wrap">
-                                    <div class="flex flex-[10] tabletl:flex-auto">
+                                    <div class="flex flex-[10] tabletp:flex-auto">
                                     {% assign prefilter_image = upsell.upsell_3_image_upload %}
                                     {% if prefilter_image != blank %}
                                       <div class="product-upsell__variant-image max-w-[80px] tabletl:max-w-[100px] flex flex-col">
@@ -852,7 +852,7 @@
                                         {% endif %}
                                       </div>
                                     {% endif %}
-                                    <div class="flex flex-col m-auto ml-sm tabletl:ml-auto">
+                                    <div class="flex flex-col m-auto ml-sm">
                                       {% assign upsell_product = upsell.upsell_3_product.value %}
                                       {% if upsell_product != blank %}
                                         {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
@@ -958,7 +958,7 @@
                                   {% endif %}
                                 {% endif %}
                                 <div class="flex gap-xs justify-between flex-wrap">
-                                    <div class="flex flex-[10] tabletl:flex-auto">
+                                    <div class="flex flex-[10] tabletp:flex-auto">
                                     {% assign prefilter_image = upsell.upsell_4_image_upload %}
                                     {% if prefilter_image != blank %}
                                       <div class="product-upsell__variant-image max-w-[80px] tabletl:max-w-[100px] flex flex-col">
@@ -969,7 +969,7 @@
                                         {% endif %}
                                       </div>
                                     {% endif %}
-                                    <div class="flex flex-col m-auto ml-sm tabletl:ml-auto">
+                                    <div class="flex flex-col m-auto ml-sm">
                                       {% assign upsell_product = upsell.upsell_4_product.value %}
                                       {% if upsell_product != blank %}
                                         {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
