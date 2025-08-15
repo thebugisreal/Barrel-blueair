@@ -17,7 +17,7 @@
       "type": "section__custom-instagram-feed",
       "disabled": false,
       "settings": {
-        "header-9b86b26e95ea7d354392360df906d247": null,
+        "header-2fb8d2df08cc1ebeea1e0967bed24e85": null,
         "margin_top_mobile": "mt-xl",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
@@ -26,9 +26,9 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "header-6aaf9731cf4cde3dae249da83f4e5290": null,
+        "header-73dbb5a5c669d6eaececdd0e8027efec": null,
         "color": "bg-white text-blue",
-        "header-87209299e7b7492a74dac8a7645bd6a1": null,
+        "header-bb5cfbd8cb3410b6646d5b60fed2cddb": null,
         "title": "Pet-Tested, <br> Parent-Approved",
         "title_style": "h4",
         "subtext": "",
@@ -87,12 +87,12 @@
     "main": {
       "settings": {},
       "blocks": {
-        "product_options_GLfTKf": {
-          "disabled": false,
-          "settings": {}
-        },
         "filter_options_XPQVUh": {
           "disabled": true,
+          "settings": {}
+        },
+        "product_options_GLfTKf": {
+          "disabled": false,
           "settings": {}
         }
       }
@@ -120,6 +120,13 @@
     "bazaarvoice_reviews_g6D6HN": {
       "disabled": true,
       "settings": {},
+      "blocks": {}
+    },
+    "product_recommendations_Ha8zrk": {
+      "disabled": false,
+      "settings": {
+        "intent": "complementary"
+      },
       "blocks": {}
     }
   },

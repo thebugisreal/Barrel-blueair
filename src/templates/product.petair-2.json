@@ -115,7 +115,6 @@
         },
         "upsells_ndPfKj": {
           "type": "upsells",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
