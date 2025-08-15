@@ -62,6 +62,22 @@
     border-blue;
   }
 
+  .btn--white-outline {
+    @apply p-xxs
+    pl-sm
+    pr-sm
+    rounded-[30px]
+    border
+    border-blue
+    text-blue
+    bg-transparent;
+  }
+
+  .btn--white-outline .btn__arrow {
+    @apply bg-white
+    text-blue;
+  }
+
   /* focus and focus-visible styles should be the same. */
   .btn:focus .btn__arrow {
     @apply text-white

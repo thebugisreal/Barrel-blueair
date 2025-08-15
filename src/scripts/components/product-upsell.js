@@ -5,10 +5,11 @@ class ProductUpsell extends HTMLElement {
     this._selectors = {
       variantBtn: '[js-product-upsell-variant]',
       atcBtn: '[js-product-upsell-atc]',
+      addedBtn: '[js-product-upsell-added]',
       bisBtn: '[js-klaviyo-bis-modal-trigger]',
       upsellTitle: '[js-upsell-title]',
       price: '[js-product-upsell-price]',
-      currentColorLabel: '[js-product-upsell-current-color-label]',
+      mainImage: '.product-upsell__variant-image, [class*="product-upsell__variant-image"]',
       cartDrawer: '#CartDrawer',
       cart: 'cart-drawer',
       error: '[js-product-upsell-error]'
@@ -28,14 +29,22 @@ class ProductUpsell extends HTMLElement {
   connectedCallback() {
     this.variantBtns = this.querySelectorAll(this._selectors.variantBtn);
     this.atcBtn = this.querySelector(this._selectors.atcBtn);
+    this.addedBtn = this.querySelector(this._selectors.addedBtn);
     this.bisBtn = this.querySelector(this._selectors.bisBtn);
     this.upsellTitle = this.querySelector(this._selectors.upsellTitle);
     this.price = this.querySelector(this._selectors.price);
-    this.currentColorLabel = this.querySelector(this._selectors.currentColorLabel);
+    this.mainImage = this.querySelector(this._selectors.mainImage);
     this.cartDrawer = document.querySelector(this._selectors.cartDrawer);
     this.cart = document.querySelector(this._selectors.cart);
     this.error = this.querySelector(this._selectors.error);
   
+    console.log('ProductUpsell initialized:', {
+      variantBtns: this.variantBtns.length,
+      upsellTitle: !!this.upsellTitle,
+      mainImage: !!this.mainImage,
+      mainImageElement: this.mainImage
+    });
+    
     this._initBis();
     this._setListeners();
   }
@@ -53,6 +62,11 @@ class ProductUpsell extends HTMLElement {
 
   _setListeners() {
     this.variantBtns.forEach((variantBtn) => {
+      console.log('Setting up variant button:', {
+        title: variantBtn.title,
+        variantImage: variantBtn.dataset.variantImage,
+        variantId: variantBtn.dataset.variantId
+      });
       variantBtn.addEventListener('click', this._variantBtnOnClick);
     });
     this.atcBtn.addEventListener('click', this._addToCart);
@@ -100,6 +114,12 @@ class ProductUpsell extends HTMLElement {
 
         this.cart.renderContents(response);
         this.cartDrawer.open();
+        
+        // Show "Added" button
+        if (this.atcBtn && this.addedBtn) {
+          this.atcBtn.classList.add('hidden');
+          this.addedBtn.classList.remove('hidden');
+        }
       })
       .catch((e) => {
         this._handleErrorMessage(e.description);
@@ -112,6 +132,7 @@ class ProductUpsell extends HTMLElement {
 
   _variantBtnOnClick = (evt) => {
     evt.preventDefault();
+    evt.stopPropagation(); // Prevent theme.js from interfering
 
     this._handleErrorMessage();
     
@@ -125,8 +146,100 @@ class ProductUpsell extends HTMLElement {
     if (prevSelectedBtn) prevSelectedBtn.dataset.selected = 'false';
     target.dataset.selected = 'true';
 
-    if (this.currentColorLabel) {
-      this.currentColorLabel.textContent = target.title;
+    // Update the main product image if this variant has an image
+    console.log('Debug image update:', {
+      mainImage: this.mainImage,
+      variantImage: target.dataset.variantImage,
+      target: target,
+      mainImageSelector: this._selectors.mainImage
+    });
+    
+    if (this.mainImage && target.dataset.variantImage) {
+      const img = this.mainImage.querySelector('img');
+      console.log('Found img element:', img);
+      
+      if (img) {
+        const oldSrc = img.src;
+        console.log('Updating img src from:', oldSrc, 'to:', target.dataset.variantImage);
+        img.src = target.dataset.variantImage;
+        img.srcset = target.dataset.variantImage;
+        
+        // Force browser to reload the image by adding a cache-busting parameter
+        if (img.src.includes('?')) {
+          img.src = img.src + '&cb=' + Date.now();
+        } else {
+          img.src = img.src + '?cb=' + Date.now();
+        }
+        
+        // Verify the update actually happened
+        setTimeout(() => {
+          console.log('Image src after update:', img.src);
+          console.log('Update successful:', img.src !== oldSrc);
+        }, 10);
+      }
+      
+      // Also update picture element if it exists
+      const picture = this.mainImage.querySelector('picture');
+      console.log('Found picture element:', picture);
+      
+      if (picture) {
+        const pictureImg = picture.querySelector('img');
+        if (pictureImg) {
+          console.log('Updating picture img src from:', pictureImg.src, 'to:', target.dataset.variantImage);
+          pictureImg.src = target.dataset.variantImage;
+          pictureImg.srcset = target.dataset.variantImage;
+          console.log('Picture img updated successfully to:', pictureImg.src);
+        }
+      }
+    } else {
+      console.log('Missing mainImage or variantImage:', {
+        mainImage: !!this.mainImage,
+        variantImage: !!target.dataset.variantImage,
+        mainImageElement: this.mainImage
+      });
+    }
+
+    if (this.upsellTitle) {
+      const baseTitle = this.upsellTitle.getAttribute('data-base-title') || this.upsellTitle.textContent.trim();
+      const colorName = target.title;
+
+      console.log('Debug: Updating title with color:', colorName);
+      
+      if (!this.upsellTitle.getAttribute('data-base-title')) {
+        this.upsellTitle.setAttribute('data-base-title', baseTitle);
+      }
+
+      // 1) If the template already includes a .color-name element, just update it.
+      const templateColor = this.upsellTitle.querySelector('.color-name');
+      if (templateColor) {
+        templateColor.textContent = colorName;
+        templateColor.classList.add('s3', 'italic');
+        templateColor.style.fontWeight = '400';
+        return; // done
+      }
+
+      // If no color-name element exists, this product has no color variants
+      // Don't add any color information
+      return;
+
+      // 2) Otherwise, remove any previously injected color spans (defensive)
+      this.upsellTitle.querySelectorAll('.injected-color-name').forEach(el => el.remove());
+
+      // 3) Create a single color span and insert it (before the price if present)
+      const colorSpan = document.createElement('span');
+      colorSpan.className = 's3 italic injected-color-name color-name';
+      colorSpan.style.fontWeight = '400';
+      colorSpan.textContent = colorName;
+
+      const priceEl = this.upsellTitle.querySelector('.price-display, .s3.price-display, .s3.price-span, .price-span');
+
+      if (priceEl) {
+        // insert the color span before the price (with space separators)
+        priceEl.before(' ', colorSpan, ' ');
+      } else {
+        // fallback: append to the end with separator
+        this.upsellTitle.append(' | ', colorSpan);
+      }
     }
 
     this.atcBtn.setAttribute('data-variant-id', target.dataset.variantId);
@@ -134,12 +247,14 @@ class ProductUpsell extends HTMLElement {
       this.atcBtn.querySelector('.btn__text').textContent = 'Add to Cart';
       this.atcBtn.removeAttribute('disabled');
       this.atcBtn.classList.remove('hidden');
+      this.addedBtn.classList.add('hidden');
       this.bisBtn.classList.add('hidden');
     } else {
       this.atcBtn.querySelector('.btn__text').textContent = 'Out of Stock';
       this.atcBtn.setAttribute('disabled', '');
       this.bisBtn.classList.remove('hidden');
       this.atcBtn.classList.add('hidden');
+      this.addedBtn.classList.add('hidden');
     }
 
     this.price.textContent = target.dataset.price;
