@@ -496,7 +496,8 @@ class WarrantyDevices extends HTMLElement {
           dateOfPurchase: form.purchase_date.value,
           wherePurchased: form.place_of_purchase.value,
           name: form.device_name.value,
-          country: form.country.value
+          country: form.country.value,
+          region: "US"
         };
         try {
           await registerDevice(formData);
