@@ -17,7 +17,7 @@
       "type": "section__custom-instagram-feed",
       "disabled": false,
       "settings": {
-        "header-f9a6115110ee60a7a8cba086c7060fdb": null,
+        "header-9b86b26e95ea7d354392360df906d247": null,
         "margin_top_mobile": "mt-xl",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
@@ -26,9 +26,9 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "header-ae6c97c345de8afcef288480b3d1f219": null,
+        "header-6aaf9731cf4cde3dae249da83f4e5290": null,
         "color": "bg-white text-blue",
-        "header-69c4a84ed666abc56827be223dec822a": null,
+        "header-87209299e7b7492a74dac8a7645bd6a1": null,
         "title": "Pet-Tested, <br> Parent-Approved",
         "title_style": "h4",
         "subtext": "",
@@ -89,6 +89,10 @@
       "blocks": {
         "product_options_GLfTKf": {
           "disabled": false,
+          "settings": {}
+        },
+        "filter_options_XPQVUh": {
+          "disabled": true,
           "settings": {}
         }
       }
