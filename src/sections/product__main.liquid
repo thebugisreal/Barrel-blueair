@@ -576,7 +576,7 @@
                 {% if is_transactional %}
                 {% assign upsell_data = product.metafields.custom.seed_upsells.value %}
 
-                {% if product.metafields.seed.upsells != blank %}
+                {% if product.metafields.seed.upsells != blank or product.metafields.custom.seed_upsells != blank %}
                   <div class="product__upsells py-md border-t border-gray {{ spacing }}">
                     {% if product.metafields.seed.upsells_heading != blank %}
                       <div class="product-upsells__heading s2 mb-md cheese">{{ product.metafields.seed.upsells_heading }}</div>
