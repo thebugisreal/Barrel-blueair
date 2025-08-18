@@ -317,7 +317,6 @@
         },
         "topic_7tpDBh": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "blue-signature"
           }
@@ -346,16 +345,16 @@
             "topic": "3-in-1"
           }
         },
-        "topic_H8czMm": {
-          "type": "topic",
-          "settings": {
-            "topic": "classic-pro"
-          }
-        },
         "topic_CWjYMR": {
           "type": "topic",
           "settings": {
             "topic": "pet-air"
+          }
+        },
+        "topic_H8czMm": {
+          "type": "topic",
+          "settings": {
+            "topic": "classic-pro"
           }
         },
         "topic_nKazPq": {
@@ -384,6 +383,7 @@
         },
         "topic_VaK6Ty": {
           "type": "topic",
+          "disabled": true,
           "settings": {
             "topic": "sense"
           }
@@ -396,8 +396,8 @@
         "topic_RDjTDR",
         "topic_DedYi7",
         "topic_7ijgjd",
-        "topic_H8czMm",
         "topic_CWjYMR",
+        "topic_H8czMm",
         "topic_nKazPq",
         "topic_HADU7f",
         "topic_WGq669",

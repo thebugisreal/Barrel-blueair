@@ -21,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_3b3f198c-30bf-4562-8857-8f757e1da372.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_3b83682b-612b-4d91-93a8-6249844e7c9b.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_3b3f198c-30bf-4562-8857-8f757e1da372.png",
+        "image_desktop": "shopify://shop_images/business_desktop_3b83682b-612b-4d91-93a8-6249844e7c9b.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -220,6 +220,12 @@
             "topic": "3-in-1"
           }
         },
+        "topic_qbqHmV": {
+          "type": "topic",
+          "settings": {
+            "topic": "pet-air"
+          }
+        },
         "topic_H8czMm": {
           "type": "topic",
           "settings": {
@@ -252,6 +258,7 @@
         },
         "topic_VaK6Ty": {
           "type": "topic",
+          "disabled": true,
           "settings": {
             "topic": "sense"
           }
@@ -264,6 +271,7 @@
         "topic_RDjTDR",
         "topic_DedYi7",
         "topic_7ijgjd",
+        "topic_qbqHmV",
         "topic_H8czMm",
         "topic_nKazPq",
         "topic_HADU7f",
@@ -304,7 +312,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

@@ -17,7 +17,7 @@
       "type": "section__custom-instagram-feed",
       "disabled": false,
       "settings": {
-        "header-2fb8d2df08cc1ebeea1e0967bed24e85": null,
+        "header-24d441dbda7823fe1cab6aeeddd56e07": null,
         "margin_top_mobile": "mt-xl",
         "margin_bottom_mobile": "mb-0",
         "padding_top_mobile": "pt-0",
@@ -26,9 +26,9 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xl",
         "padding_bottom_desktop": "desktop:pb-0",
-        "header-73dbb5a5c669d6eaececdd0e8027efec": null,
+        "header-20a1989414c16ee6418721df70745e82": null,
         "color": "bg-white text-blue",
-        "header-bb5cfbd8cb3410b6646d5b60fed2cddb": null,
+        "header-8e2393a158084bdb6b1943622ccd3b53": null,
         "title": "Pet-Tested, <br> Parent-Approved",
         "title_style": "h4",
         "subtext": "",
@@ -95,10 +95,24 @@
           "disabled": false,
           "settings": {}
         }
-      }
+      },
+      "block_order": [
+        "title_bjfNAe",
+        "room_tag_UqfcUw",
+        "short_description_FGhrqT",
+        "star_rating_rYzLXJ",
+        "product_badge_TcD3K4",
+        "filter_options_XPQVUh",
+        "product_options_GLfTKf",
+        "atc_BURfeB",
+        "upsells_ndPfKj",
+        "experience_NzTf78",
+        "additional_features_H7XdFi",
+        "shipping_warranty_Rg4jpP"
+      ]
     },
     "product_image_text_6MPkRA": {
-      "disabled": true,
+      "disabled": false,
       "settings": {},
       "blocks": {}
     },
@@ -117,16 +131,16 @@
       "settings": {},
       "blocks": {}
     },
-    "bazaarvoice_reviews_g6D6HN": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
     "product_recommendations_Ha8zrk": {
       "disabled": false,
       "settings": {
         "intent": "complementary"
       },
+      "blocks": {}
+    },
+    "bazaarvoice_reviews_g6D6HN": {
+      "disabled": true,
+      "settings": {},
       "blocks": {}
     }
   },

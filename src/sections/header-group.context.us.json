@@ -19,27 +19,27 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_QGYni": {
-          "type": "announcement",
-          "disabled": true,
-          "settings": {
-            "header-f36a6bfcf63920cfe3cb42f1ca9f87a6": null,
-            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
-            "url": "shopify://collections/air-purifier-filters"
-          }
-        },
         "announcement_A6AHyV": {
-          "disabled": false,
+          "disabled": true,
           "settings": {
             "announcement": "LIMITED EDITION: Shop new ComfortPure™ 3-in-1 Midnight while it lasts",
             "url": "shopify://products/comfortpure™-3-in-1-t10i-air-purifier-midnight"
+          }
+        },
+        "announcement_af7Ww": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-3fb43d719529b4e2a6e11086bac43e46": null,
+            "announcement": "NEW: PetAir Pro is here <u> SHOP NOW</u>",
+            "url": "shopify://products/petair"
           }
         },
         "announcement_XMHEL": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-2ec6a09a8809fcf93c75196136703e18": null,
+            "header-c271ff119791402459d7aaaccb4858bc": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
@@ -48,7 +48,7 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-e5dd06320bf7342a4f25e2ba06eb7082": null,
+            "header-f08997b2a76ce144a7d258d4601b9e29": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": "shopify://collections/sale"
           }
@@ -57,16 +57,26 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "header-a82027735c1d2213e63a272ba3a28a9c": null,
+            "header-588df07e680b6e0247cd3c8e004423c4": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
+          }
+        },
+        "announcement_QGYni": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "header-6b90176c1ba598529b9c77a20bee16a3": null,
+            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
+            "url": "shopify://collections/air-purifier-filters"
           }
         }
       },
       "block_order": [
-        "announcement_A6AHyV",
+        "announcement_af7Ww",
         "announcement_XMHEL",
         "announcement_KRB8N",
+        "announcement_A6AHyV",
         "announcement_QLGEH",
         "announcement_QGYni"
       ]

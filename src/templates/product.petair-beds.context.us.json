@@ -18,15 +18,26 @@
       "settings": {},
       "blocks": {}
     },
+    "product_video_WFRqMh": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    },
     "product_app_tabs_BzryrE": {
       "disabled": true,
       "settings": {},
       "blocks": {}
     },
-    "product_video_WFRqMh": {
-      "disabled": false,
+    "main": {
       "settings": {},
-      "blocks": {}
+      "blocks": {
+        "experience_NzTf78": {
+          "settings": {
+            "margin_bottom_mobile": "mb-md",
+            "margin_bottom_desktop": "desktop:mb-md"
+          }
+        }
+      }
     }
   },
   "order": [
