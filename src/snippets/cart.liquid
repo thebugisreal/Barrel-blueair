@@ -171,18 +171,12 @@
                           id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
                         >
-                          <button
-                            type="button"
-                            class="button button--tertiary cart-remove-button underline"
-                            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-                          >
-                            Remove item
-                          </button>
-                        </cart-remove-button>
-                        
-      
-                        <div id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
-                        </div>
+                          {{ 'sections.cart.remove_item' | t }}
+                        </button>
+                      </cart-remove-button>
+                      
+    
+                      <div id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
                       </div>
                     </div>
                   </div>
@@ -481,8 +475,8 @@
         </div>
 
         <div class="cart-drawer__totals">
-          <div class="totals flex justify-between" role="status">
-            <h2 class="totals__subtotal s2">Estimated Total:</h2>
+          <div class="totals flex justify-between mb-xxs" role="status">
+            <h2 class="totals__subtotal s2">{{ 'sections.cart.estimated_total' | t }}</h2>
             <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
           </div>
           {% if localization.country == 'Deutschland' or localization.country == 'Germany' %}

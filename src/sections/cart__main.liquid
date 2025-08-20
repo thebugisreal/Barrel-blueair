@@ -212,7 +212,7 @@
                                   class="button button--tertiary cart-remove-button underline"
                                   aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                                 >
-                                  Remove item
+                                  {{ 'sections.cart.remove_item' | t }}
                                 </button>
                               </cart-remove-button>
 
@@ -516,8 +516,8 @@
                   </div>
 
                   <div class="cart__totals">
-                    <div class="totals flex justify-between" role="status">
-                      <h2 class="totals__subtotal s2">Estimated Total:</h2>
+                    <div class="totals flex justify-between mb-xxs" role="status">
+                      <h2 class="totals__subtotal s2">{{ 'sections.cart.estimated_total' | t }}</h2>
                       <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
                     </div>
                     {% if localization.country == 'Deutschland' or localization.country == 'Germany' %}
