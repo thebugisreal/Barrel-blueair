@@ -23,6 +23,7 @@ class CountrySelectModal extends HTMLElement {
         { country: "AL", languages: [ { code:"EN", label: "English"} ] },
         { country: "DZ", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "AD", languages: [ { code:"EN", label: "English"} ] },
+        { country: "AE", languages: [ { code: "EN", label: "English" } ]},
         { country: "AO", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "AC", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "AU", languages: [ { code:"EN", label: "English"} ] },
