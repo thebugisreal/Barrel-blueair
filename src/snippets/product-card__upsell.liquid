@@ -1,4 +1,4 @@
-<product-card-upsell class="{% if gwp %} product-card__gwp {% elsif new_gwp %} product-card__gwp{% else %} product-card__upsell {% endif %} flex gap-sm p-md {% if claimed %}claimed opacity-50{% endif %}">
+<product-card-upsell class="{% if gwp %} product-card__gwp {% elsif new_gwp %} product-card__gwp{% else %} product-card__upsell {% endif %} flex gap-sm p-md">
     {% if new_gwp %}
         <div class="image-container w-1/2 max-w-[160px]">
             <img class="cart-item__image" src="{{ product.image | image_url: width: 300 }}" alt="{{ product.image.alt | escape }}" loading="lazy">
@@ -26,8 +26,6 @@
                 {% if product.price > 0 %}
                 <p>A <span>{{ product.price | money }}</span> value</p>
                 {% endif %}
-                <div class="flex items-center justify-start"> <p class="mr-8">CLAIMED</p> <span class="gwp-check block w-[12px]">{% render 'icon-check'  %}</span>
-                </div>
             </div>
         {% else %}
             {% if claimed %}
@@ -35,8 +33,6 @@
                     {% if product.price > 0 %}
                     <p>A <span>{{ product.price | money }}</span> value</p>
                     {% endif %}
-                    <div class="flex items-center justify-start"> <p class="mr-8">CLAIMED</p> <span class="gwp-check block w-[12px]">{% render 'icon-check'  %}</span>
-                    </div>
                 </div>
             {% else %}
             <button class="product-card__atc underline mt-xs" data-is-gift="{% if gwp %}true{% else %}false{% endif %}" data-variant-id="{{ product.selected_or_first_available_variant.id }}" {% unless product.selected_or_first_available_variant.available or claimed %} disabled {% endunless %} js-quick-add>
