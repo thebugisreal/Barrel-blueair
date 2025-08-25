@@ -15,7 +15,11 @@
     <div class="content-container w-1/2 flex flex-col justify-center items-end">
         <div class="text-content w-full">
             <h1 class="p1 my-xxxs">
-              {% render 'product-title-intl', product: product %}
+                {% if new_gwp %}
+                    {% render 'product-title-intl', product: product.product %}
+                {% else %}
+                    {% render 'product-title-intl', product: product %}
+                {% endif %}
             </h1>
             {% unless  product.selected_or_first_available_variant.title == "Default Title" %}
                 <p class="p4 my-xxxs">{{ product.selected_or_first_available_variant.title }}</p>
@@ -23,16 +27,12 @@
         </div>
         {% if new_gwp %}
             <div class="gwp__text-section min-w-full">
-                {% if product.price > 0 %}
-                <p>A <span>{{ product.price | money }}</span> value</p>
-                {% endif %}
+                <p>Free</p>
             </div>
         {% else %}
             {% if claimed %}
                 <div class="gwp__text-section min-w-full">
-                    {% if product.price > 0 %}
-                    <p>A <span>{{ product.price | money }}</span> value</p>
-                    {% endif %}
+                    <p>Free </p>
                 </div>
             {% else %}
             <button class="product-card__atc underline mt-xs" data-is-gift="{% if gwp %}true{% else %}false{% endif %}" data-variant-id="{{ product.selected_or_first_available_variant.id }}" {% unless product.selected_or_first_available_variant.available or claimed %} disabled {% endunless %} js-quick-add>
