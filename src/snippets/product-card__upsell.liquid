@@ -1,40 +1,60 @@
-<product-card-upsell class="{% if gwp %} product-card__gwp {% else %} product-card__upsell {% endif %} flex gap-sm p-md">
-    {% if product.featured_image != blank %}
+<product-card-upsell class="{% if gwp %} product-card__gwp {% elsif new_gwp %} product-card__gwp{% else %} product-card__upsell {% endif %} flex gap-sm p-md">
+    {% if new_gwp %}
         <div class="image-container w-1/2 max-w-[160px]">
-            <a href="{{ product.url }}" aria-label="View {{ product.title }}">
-                {% render 'lazy-image' image:product.featured_image %}
-            </a>
+            <img class="cart-item__image" src="{{ product.image | image_url: width: 300 }}" alt="{{ product.image.alt | escape }}" loading="lazy">
         </div>
+    {% else %}
+        {% if product.featured_image != blank %}
+            <div class="image-container w-1/2 max-w-[160px]">
+                <a href="{{ product.url }}" aria-label="View {{ product.title }}">
+                        {% render 'lazy-image' image:product.featured_image %}
+                    {% endif %}
+                </a>
+            </div>
     {% endif %}
     <div class="content-container w-1/2 flex flex-col justify-center items-end">
         <div class="text-content w-full">
             <h1 class="p1 my-xxxs">
-              {% render 'product-title-intl', product: product %}
+                {% if new_gwp %}
+                    {% render 'product-title-intl', product: product.product %}
+                {% else %}
+                    {% render 'product-title-intl', product: product %}
+                {% endif %}
             </h1>
             {% unless  product.selected_or_first_available_variant.title == "Default Title" %}
                 <p class="p4 my-xxxs">{{ product.selected_or_first_available_variant.title }}</p>
             {% endunless %}
-            <p class="p1 font-700">{{ product.price | money }}</p>
         </div>
-
-        <button class="product-card__atc underline mt-xs" data-variant-id="{{ product.selected_or_first_available_variant.id }}" {% unless product.selected_or_first_available_variant.available %} disabled {% endunless %} js-quick-add>
-            {% if gwp %}
-                {% if cart.total_price > settings.gwp_threshold %}
+        {% if new_gwp %}
+            <div class="gwp__text-section min-w-full">
+                <p>Free</p>
+            </div>
+        {% else %}
+            {% if claimed %}
+                <div class="gwp__text-section min-w-full">
+                    <p>Free </p>
+                </div>
+            {% else %}
+            <button class="product-card__atc underline mt-xs" data-is-gift="{% if gwp %}true{% else %}false{% endif %}" data-variant-id="{{ product.selected_or_first_available_variant.id }}" {% unless product.selected_or_first_available_variant.available or claimed %} disabled {% endunless %} js-quick-add>
+                {% if gwp %}
+                    {% if cart.total_price > settings.gwp_threshold %}
+                        {% if product.selected_or_first_available_variant.available %}
+                            Claim Gift
+                        {% else %}
+                            Sold Out
+                        {% endif %}
+                    {% else %}
+                        Increase Cart Total
+                    {% endif %}
+                {% else %}
                     {% if product.selected_or_first_available_variant.available %}
-                        Claim Gift
+                        Add to Cart
                     {% else %}
                         Sold Out
                     {% endif %}
-                {% else %}
-                    Increase Cart Total
                 {% endif %}
-            {% else %}
-                {% if product.selected_or_first_available_variant.available %}
-                    Add to Cart
-                {% else %}
-                    Sold Out
-                {% endif %}
+            </button>
             {% endif %}
-        </button>
+        {% endif %}
     </div>
 </product-card-upsell>

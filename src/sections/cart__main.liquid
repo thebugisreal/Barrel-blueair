@@ -1,6 +1,10 @@
+{% assign gwp_present = false %}
 {% assign cart_variants = '' %}
 {% for item in cart.items %}
   {% assign cart_variants = cart_variants | append: item.variant_id | append: ',' %}
+  {% if item.properties['_isGWP'] %}
+    {% assign gwp_present = true %}
+  {% endif %}
 {% endfor %}
 {% assign subscription_index = 0 %}
 
@@ -71,7 +75,7 @@
                         endif
                       endif
                     %}
-                    <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}" js-cart-item>
+                      <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}"  {% if item.properties['_isGWP'] %} data-is-gwp="true" data-var-id="{{ item.variant_id }}" {% endif %} {% if item.properties['_isGift'] %}data-is-gift-product="true"{% endif %}  js-cart-item>
                       <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
                       <div class="flex justify-between gap-sm tabletl:gap-md">
                         <div class="flex gap-md w-full">
@@ -132,6 +136,7 @@
                                 {%- endfor -%}
                               </ul>
                             {% endif %}
+
                             <div class="cart-price cart-price--mobile tabletp:hidden">
                               {%- if item.original_line_price != item.final_line_price -%}
                                 <div class="cart-item__discounted-prices p1">
@@ -154,6 +159,9 @@
                                 </span>
                               {%- endif -%}
                             </div>
+                            {% if item.properties['_isGWP'] or item.properties['_isGift'] %}
+                              <p>Gift</p>
+                            {% endif %}
     
                             {% assign disable_quantity_selector = false %}
                             {% if item.product.metafields.seed.two_pack_filter_subscription_disable_quantity_selector_in_cart == true and item.selling_plan_allocation != blank and item.quantity > 1 %}
@@ -225,8 +233,78 @@
                           {% assign subscription_index = subscription_index | plus: 1 %}
                         </div>
                       {% endif %}
-                    </div>
+                      </div>
                   {%- endfor -%}
+
+                  {% comment %} Gift with Purchases (non-threshold) {% endcomment %}
+
+
+                  {% if settings.gwp1 != blank or settings.gwp2 != blank or gwp_present == true %}
+                    {% if settings.gwp1 != blank or settings.gwp2 != blank%}
+                      {% assign gwp_1_variant = settings.gwp1.variants[0] %}
+                      {% assign gwp_2_variant = settings.gwp2.variants[0] %}
+                    {% endif %}
+
+
+                    {%- capture gwp_carousel_options -%}
+                      {
+                        "slidesPerView": 1,
+                        "pagination": {
+                          "el": ".swiper-gwp-pagination",
+                          "type": "fraction"
+                        },
+                        "navigation": {
+                          "nextEl": ".swiper-gwp-next",
+                          "prevEl": ".swiper-gwp-prev"
+                        }
+                      }
+                    {%- endcapture -%}
+                    <div class="cart-drawer__gwp-container my-[32px] grid grid-cols-1">
+                      <s-carousel class="block relative" data-options='{{ gwp_carousel_options }}'>
+                          <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
+                            <div class="flex justify-between items-center mb-sm">
+                              <h1 class="cart-drawer-gwp__title s1 font-900">Your Free Gift</h1>
+                              <div class="swiper-nav-container flex gap-xxs items-center">
+                                <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
+                                <div class="swiper-gwp-pagination w-fit p6"></div>
+                                <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
+                              </div>
+                            </div>
+
+                            <div class="swiper-wrapper">
+                                {% for item in cart.items %}
+                                  {% if item.properties['_isGWP'] %}
+                                    <div class="swiper-slide" js-carousel-slide>
+                                      {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true, claimed: true %}
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if settings.gwp1 != blank %}
+                                  <div class="swiper-slide" js-carousel-slide>
+                                    {% if cart_variants contains gwp_1_variant.id  %}
+                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true, claimed: true %}
+                                    {% else %}
+                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
+
+                                {% if settings.gwp2 != blank %}
+                                  <div class="swiper-slide" js-carousel-slide>
+                                    {% if cart_variants contains gwp_2_variant.id  %}
+                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true, claimed: true %}
+                                    {% else  %}
+                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
+                            </div>
+                          </div>
+                      </s-carousel>
+                    </div>
+                  {% endif %}
+                  {% comment %} END Gift with Purchases (non-threshold) {% endcomment %}
 
                   {% comment %} Upsell Products {% endcomment %}
                   {% assign display_carousel = false %}
@@ -273,7 +351,7 @@
                     <div class="cart-drawer__upsell-container grid grid-cols-1">
                       <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
                           <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
-                            <div class="flex justify-between items-center mb-md">
+                            <div class="flex justify-between items-center mb-sm">
                               <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
                               <div class="swiper-nav-container flex gap-xxs items-center">
                                 <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
@@ -327,60 +405,7 @@
                   {% endif %}
                   {% comment %} END Upsell Products {% endcomment %}
 
-                  {% comment %} Gift with Purchases {% endcomment %}
-                  {% if settings.gwp1 != blank or settings.gwp2 != blank %}
-                    {% assign gwp_1_variant = settings.gwp1.variants[0] %}
-                    {% assign gwp_2_variant = settings.gwp2.variants[0] %}
-      
-                    {% unless cart_variants contains gwp_1_variant.id and cart_variants contains gwp_2_variant.id %}
-                      {%- capture gwp_carousel_options -%}
-                        {
-                          "slidesPerView": 1,
-                          "pagination": {
-                            "el": ".swiper-gwp-pagination",
-                            "type": "fraction"
-                          },
-                          "navigation": {
-                            "nextEl": ".swiper-gwp-next",
-                            "prevEl": ".swiper-gwp-prev"
-                          }
-                        }
-                      {%- endcapture -%}
-                      <div class="cart-drawer__gwp-container grid grid-cols-1">
-                        <s-carousel class="block {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
-                            <div id="CartGwp-{{section.id}}" class="swiper w-full max-w-full" js-carousel>
-                              <div class="flex justify-between items-center mb-md">
-                                <h1 class="cart-drawer-gwp__title s1 font-900">Select Your Free Gift</h1>
-                                <div class="swiper-nav-container flex gap-xxs items-center">
-                                  <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
-                                  <div class="swiper-gwp-pagination w-fit p6"></div>
-                                  <div class="swiper-gwp-next w-[24px] p-xxs">{% render 'icon-caret-right' %}</div>
-                                </div>
-                              </div>
-      
-                              <div class="swiper-wrapper">
-                                {% unless cart_variants contains gwp_1_variant.id %}
-                                  {% if settings.gwp1 != blank %}
-                                    <div class="swiper-slide" js-carousel-slide>
-                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
-                                    </div>
-                                  {% endif %}
-                                {% endunless %}
-      
-                                {% unless cart_variants contains gwp_2_variant.id %}
-                                  {% if settings.gwp2 != blank %}
-                                    <div class="swiper-slide" js-carousel-slide>
-                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
-                                    </div>
-                                  {% endif %}
-                                {% endunless %}
-                              </div>
-                            </div>
-                        </s-carousel>
-                      </div>
-                    {% endunless %}
-                  {% endif %}
-                  {% comment %} END Gift with Purchases {% endcomment %}
+
 
                   <div id="CartPage-CartErrors" role="alert"></div>
                 </div>
@@ -406,8 +431,92 @@
                       </cart-note>
                     </details>
                   {%- endif -%}
+
+                  {% liquid
+                    assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+                    for item in cart.items
+                      for allocation in item.line_level_discount_allocations
+                        if allocation.discount_application.type == 'discount_code'
+                          assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
+                        endif
+                      endfor
+                    endfor
+
+                    assign discount_codes = discount_codes | uniq
+                  %}
+
+                  <div class="cart__discounts mb-sm">
+                    <div class="cart-discount">
+                      <div class="details-content">
+                        <div class="cart-discount__content p2 btn btn--white-rounded !bg-white !text-black w-full justify-between">
+                            <label
+                              for="cart-discount"
+                              class="visually-hidden"
+                            >
+                              Discount Code
+                            </label>
+                            <input
+                              id="cart-discount"
+                              class="cart-discount__input flex-1"
+                              name="discount"
+                              placeholder="Discount Code"
+                              js-cart-discount-form-input
+                            >
+                            <button
+                              type="button"
+                              class="btn btn--atc h-auto"
+                              js-cart-discount-form-submit
+                            >
+                               <span class="btn__arrow !bg-blue !text-white">{% render 'icon-arrow-right' %}</span>
+                            </button>
+                        </div>
+                        <div
+                          class="cart-discount__error hidden"
+                          role="alert"
+                          js-cart-discount-error
+                        >
+                          <small
+                            class="cart-discount__error-text cart-primary-typography hidden"
+                            js-cart-discount-error-discount-code
+                          >
+                          Discount code cannot be applied to your cart
+                          </small>
+                          <small
+                            class="cart-discount__error-text cart-primary-typography hidden"
+                            js-cart-discount-error-shipping
+                          >
+                            Shipping discounts are shown at checkout after adding an address
+                          </small>
+                        </div>
+                        <ul class="cart-discount__codes flex flex-col gap-y-8 pt-8">
+                          {% for discount_code in discount_codes %}
+                            <li
+                              class="cart-discount__pill flex items-center gap-x-8 bg-papyrus-light py-4 px-8 rounded-[6px] w-fit f0-mono"
+                              data-discount-code="{{ discount_code }}"
+                              aria-label="{{ 'accessibility.discount_applied' | t: code: discount_code }}"
+                            >
+                              <button
+                                type="button"
+                                class="cart-discount__pill-remove w-12 h-12 flex items-center justify-center"
+                                aria-label="Remove discount code"
+                                data-discount-code="{{ discount_code }}"
+                                js-cart-discount-pill-remove
+                              >
+                                {% render 'icon-close-no-border' %}
+                              </button>
+                              <p class="cart-discount__pill-code" js-cart-discount-pill-code>
+                                {{ discount_code }}
+                              </p>
+   
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="cart__totals">
-                    <div class="totals flex justify-between mb-xxs" role="status">
+                    <div class="totals flex justify-between" role="status">
                       <h2 class="totals__subtotal s2">Estimated Total:</h2>
                       <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
                     </div>

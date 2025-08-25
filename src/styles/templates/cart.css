@@ -10,6 +10,18 @@
     margin: 0; 
 }
 
+[data-is-gwp] .cart-item__quantity-wrapper {
+  @apply hidden;
+}
+
+[data-is-gwp] {
+  @apply hidden;
+}
+
+[data-is-gift-product] quantity-input {
+  @apply hidden;
+}
+
 
 .quantity__button polygon,
 .quantity__button rect {
@@ -126,4 +138,19 @@ cart-remove-button .cart-remove-button:focus-visible {
   .cart-item-subscription__tooltip:hover::after {
     @apply block;
   }
+}
+
+.cart-discount__pill {
+  @apply
+  px-8
+  py-4
+  bg-[#40C1AC]
+  rounded-full;
+}
+
+.cart-discount__pill-code {
+  @apply
+  font-400
+  text-12
+  text-black;
 }

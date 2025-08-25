@@ -91,10 +91,12 @@ class ProductUpsell extends HTMLElement {
 
     this.cart.setActiveElement(document.activeElement);
 
+    
     let data = {
       items: [{ id: target.dataset.variantId, quantity: 1 }],
       sections: this.cart.getSectionsToRender().map((section) => section.id)
     };
+
 
     fetch(window.Shopify.routes.root + 'cart/add.js', {
       method: 'POST',

@@ -24,6 +24,7 @@ class CartItems extends HTMLElement {
   cartUpdateUnsubscriber = undefined;
 
   connectedCallback() {
+    this.cart = document.querySelector('cart-drawer');
     this.cartUpdateUnsubscriber = theme.utils.subscriptions.subscribe(window.PUB_SUB_EVENTS.cartUpdate, (event) => {
       if (event.source === 'cart-items') {
         return;
@@ -31,12 +32,103 @@ class CartItems extends HTMLElement {
       this.onCartUpdate();
     });
 
+    this.discountFormBtn = document.querySelector('.cart-drawer-discounts [js-cart-discount-form-submit]');
+    this.discountFormInput = document.querySelector('.cart-drawer-discounts [js-cart-discount-form-input]');
+    this.discountFormBtn?.addEventListener('click', this.applyDiscount);
+
+    this.discountPillRemove = document.querySelectorAll('.cart-drawer-discounts [js-cart-discount-pill-remove]');
+    this.discountPillRemove?.forEach((pill) => {
+      pill.addEventListener('click', this.removeDiscount);
+    });
+
+
     this.checkIneligibleCartItems();
+    this.checkGWP();
   }
 
   disconnectedCallback() {
     if (this.cartUpdateUnsubscriber) {
       this.cartUpdateUnsubscriber();
+    }
+  }
+
+  fetchCart = async () => {
+    const response = await fetch('/cart.js');
+    return response.json();
+  }
+
+  checkGWP = async () => {
+    const newCart = await this.fetchCart();
+
+    let hasGwpList = [];
+    let isGwpList = [];
+
+    newCart.items.forEach((item) => {
+      if(item.properties['_gwp-product']) {
+        let itemObject = {};
+
+        itemObject.gwpProductId = parseInt(item.properties['_gwp-product']);
+        itemObject.parentProductId = parseInt(item.properties['_parent-product']);
+
+        hasGwpList.push(itemObject)
+      }
+      if(item.properties['_isGWP']) {
+        let giftObject = {};
+        
+        giftObject.isGWP = item.properties['_isGWP'];
+        giftObject.parentProductId = item.properties['_parentProductId'];
+        giftObject.giftId = item.properties['_giftId'];
+        giftObject.lineItemKey = item.key;
+
+        isGwpList.push(giftObject)
+      }
+    })
+
+
+    const missingGifts = hasGwpList.filter((expected) => {
+      return !isGwpList.some(actual => 
+        parseInt(actual.giftId) === expected.gwpProductId
+      );
+    });
+
+    if (missingGifts.length > 0) {
+
+      missingGifts.forEach((product) => {
+        const gwpData = {
+          items: [
+            { 
+              id: product.gwpProductId, 
+              quantity: 1,
+              properties: { 
+                '_isGWP': true,
+                '_parentProductId': product.parentProductId,
+                '_giftId': product.gwpProductId 
+              }
+            }
+          ],
+          sections: this.cart.getSectionsToRender().map((section) => section.id)
+        };
+        this.cart._updateCartItems('add', gwpData, true);
+      });
+    }
+
+    const orphanedGifts = isGwpList.filter((actual) => {
+      return !hasGwpList.some(expected =>
+        expected.gwpProductId === parseInt(actual.giftId)
+      );
+    });
+    
+    if (orphanedGifts.length > 0) {
+      orphanedGifts.forEach((gift) => {
+
+        const gwpRemovalData = {
+            id: gift.lineItemKey,
+            quantity: 0,
+            sections: this.cart.getSectionsToRender().map((section) => section.id)
+        }
+
+        this.cart._updateCartItems('change', gwpRemovalData, true);
+      })
     }
   }
 
@@ -276,6 +368,191 @@ class CartItems extends HTMLElement {
     
     [...cartItemElements, ...cartDrawerItemElements].forEach((spinner) => spinner.removeAttribute("loading"));
   }
+
+  applyDiscount = async (event) => {
+    event.preventDefault();
+    console.log('CHECKING')
+    const cartDiscountError = document.querySelector('.cart-drawer-discounts [js-cart-discount-error]');
+    const cartDiscountErrorDiscountCode = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-discount-code]');
+    const cartDiscountErrorShipping = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-shipping]');
+
+    const discountCodeValue = this.discountFormInput.value;
+
+    try {
+      const existingDiscounts = this.existingDiscounts();
+      if (existingDiscounts.includes(discountCodeValue)) {
+        return;
+      }
+
+      cartDiscountError.classList.add('hidden');
+      cartDiscountErrorDiscountCode.classList.add('hidden');
+      cartDiscountErrorShipping.classList.add('hidden');
+
+      const response = await fetch(window.Shopify.routes.root + 'cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          discount: [...existingDiscounts, discountCodeValue].join(','),
+          sections: this.getSectionsToRender().map((section) => section.section),
+          sections_url: window.location.pathname,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (
+        data.discount_codes.find((discount) => {
+          return discount.code === discountCodeValue && discount.applicable === false;
+        })
+      ) {
+        this.discountFormInput.value = '';
+        this.handleDiscountError('discount_code');
+        return;
+      }
+
+      const newHtml = data.sections[this.dataset.sectionId];
+      const parsedHtml = new DOMParser().parseFromString(newHtml, 'text/html');
+      const section = parsedHtml.getElementById(`shopify-section-${this.dataset.sectionId}`);
+      const discountCodes = section?.querySelectorAll('.cart-discount__pill-code') || [];
+
+      if (section) {
+        const codes = Array.from(discountCodes)
+          .map((element) => (element instanceof HTMLLIElement ? element.dataset.discountCode : null))
+          .filter(Boolean);
+        // Before morphing, we need to check if the shipping discount is applicable in the UI
+        // we check the liquid logic compared to the cart payload to assess whether we leveraged
+        // a valid shipping discount code.
+        if (
+          codes.length === existingDiscounts.length &&
+          codes.every((code) => existingDiscounts.includes(code)) &&
+          data.discount_codes.find((discount) => {
+            return discount.code === discountCodeValue && discount.applicable === true;
+          })
+        ) {
+          this.handleDiscountError('shipping');
+          this.discountFormInput.value = '';
+          // return;
+        }
+      }
+
+      this.disconnectedCallback();
+      
+      // Update cart sections directly instead of using onCartUpdate
+      this.getSectionsToRender().forEach((section) => {
+        const elementToReplace =
+          document.getElementById(section.id)?.querySelector(section.selector) || document.getElementById(section.id);
+        if (elementToReplace && data.sections[section.section]) {
+          elementToReplace.innerHTML = this.getSectionInnerHTML(
+            data.sections[section.section],
+            section.selector
+          );
+        }
+      });
+      
+      // Reattach event listeners to new DOM elements
+      this.connectedCallback();
+      
+      // Publish cart update event
+      theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  handleDiscountError = (errorType) => {
+    const cartDiscountError = document.querySelector('.cart-drawer-discounts [js-cart-discount-error]');
+    const cartDiscountErrorDiscountCode = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-discount-code]');
+    const cartDiscountErrorShipping = document.querySelector('.cart-drawer-discounts [js-cart-discount-error-shipping]');
+
+    const target = errorType === 'discount_code' ? cartDiscountErrorDiscountCode : cartDiscountErrorShipping;
+    cartDiscountError.classList.remove('hidden');
+    target.classList.remove('hidden');   
+  }
+
+  existingDiscounts = () => {
+    const discountCodes = [];
+    const existingDiscounts = document.querySelectorAll('.cart-drawer-discounts [js-cart-discount-pill-code]');
+    existingDiscounts.forEach((discount) => {
+      discountCodes.push(discount.textContent.trim());
+    });
+    return discountCodes;
+  }
+
+  updateCheckoutUrls = () => {
+    const discountCodes = this.existingDiscounts();
+    const discountParam = discountCodes.length > 0 ? `?discount=${discountCodes.join(',')}` : '';
+    
+    // Update cart page checkout form
+    const cartPageForm = document.getElementById('CartPage-Form');
+    if (cartPageForm) {
+      const newAction = `${window.routes.cart_url}${discountParam}`;
+      cartPageForm.action = newAction;
+    }
+    
+    // Update cart drawer checkout form
+    const cartDrawerForm = document.getElementById('CartDrawer-Form');
+    if (cartDrawerForm) {
+      const newAction = `${window.routes.cart_url}${discountParam}`;
+      cartDrawerForm.action = newAction;
+    }
+  }
+
+  removeDiscount = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const discountCode = event.currentTarget.dataset.discountCode;
+    if (!discountCode) return;
+
+    const existingDiscounts = this.existingDiscounts();
+    const index = existingDiscounts.indexOf(discountCode);
+    // if (index === -1) return;
+
+    existingDiscounts.splice(index, 1);
+    
+    try {
+      const response = await fetch(window.Shopify.routes.root + 'cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          discount: [...existingDiscounts].join(','),
+          sections: this.getSectionsToRender().map((section) => section.section),
+          sections_url: window.location.pathname,
+        }),
+      });
+
+      const data = await response.json();
+
+      this.disconnectedCallback();
+      
+      // Update cart sections directly instead of using onCartUpdate
+      this.getSectionsToRender().forEach((section) => {
+        const elementToReplace =
+          document.getElementById(section.id)?.querySelector(section.selector) || document.getElementById(section.id);
+        if (elementToReplace && data.sections[section.section]) {
+          elementToReplace.innerHTML = this.getSectionInnerHTML(
+            data.sections[section.section],
+            section.selector
+          );
+        }
+      });
+      
+      // Reattach event listeners to new DOM elements
+      this.connectedCallback();
+      
+      // Update checkout URLs with discount codes (after DOM update)
+      this.updateCheckoutUrls();
+      
+      // Publish cart update event
+      theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 class CartNote extends HTMLElement {
@@ -299,7 +576,7 @@ class CartDrawer extends HTMLElement {
 
   connectedCallback() {
     const myCartWatcher = new CartWatcher;
-    myCartWatcher.init();
+    myCartWatcher.init(this);
     window.addEventListener("cart_changed", this._handleCartChange.bind(this));
 
 
@@ -373,6 +650,39 @@ class CartDrawer extends HTMLElement {
   setActiveElement(element) {
     this.activeElement = element;
   }
+
+_updateCartItems = (type, data, render = true) => {
+  this.setActiveElement(document.activeElement); 
+
+  return fetch(window.Shopify.routes.root + `cart/${type}.js`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      sessionStorage.setItem('noCartWatcherHandle', 'true');
+
+      if (response.status) {
+        this._handleErrorMessage?.(response.description); 
+        this.subscriptionError = true;
+        return response;
+      }
+
+      if (!this.subscriptionError && render && this.renderContents) {
+        this.renderContents(response);
+      }
+
+      return response;
+    })
+    .catch((e) => {
+      this._handleErrorMessage?.(e.description);
+      console.error(e);
+    })
+    .finally(() => {
+      this.loading?.removeAttribute('loading');
+    });
+}
 }
 
 
@@ -632,18 +942,23 @@ class CartSubscription extends HTMLElement {
 
 class CartWatcher {
 
-  init() {
+  init(cartInstance) {
+    this.cart = cartInstance; 
+
     this.emitCartChanges().then(() => {
       this.observeCartChanges();
     });
   }
+  
 
   async fetchCart() {
     const response = await fetch('/cart.js');
     return response.json();
   }
+
   async emitCartChanges() {
     const newCart = await this.fetchCart();
+
     const event = new CustomEvent("cart_changed", { detail: newCart });
     window.dispatchEvent(event);
   }
