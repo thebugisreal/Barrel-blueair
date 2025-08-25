@@ -104,13 +104,13 @@
               {% case media.media_type %}
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
-                    {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
+                    {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center' %}
                     
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
                     {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
                       {% for media in product.metafields.seed.quantity_options_images.value %}
                         <span class="absolute top-0 bottom-0 right-0 left-0" data-quanity="{{ product.metafields.seed.quantity_option.value[forloop.index] | split: '|' | last | strip }}" js-quanity-option-image>
-                          {% render 'lazy-image' image: media alt: media.alt picture_classes: 'h-full' img_classes: 'w-full h-full object-cover object-center' %}
+                          {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center' %}
                         </span>
                       {% endfor %}
                       {% assign first_render_quantity_options_images = false %}
