@@ -21,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Blueair Support",
@@ -246,7 +246,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify://pages/contact-us",
+        "cta_url": "shopify:\/\/pages\/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--white-rounded"
       }

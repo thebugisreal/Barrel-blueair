@@ -21,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -37,7 +37,7 @@
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify://shop_images/Group_48097731.svg",
+            "image": "shopify:\/\/shop_images\/Group_48097731.svg",
             "svg_html": ""
           }
         },
@@ -46,7 +46,7 @@
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
-            "image": "shopify://shop_images/Group_48097732.svg",
+            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -55,7 +55,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify://shop_images/Group_48097728.svg",
+            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -64,7 +64,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify://shop_images/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
+            "image": "shopify:\/\/shop_images\/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
             "svg_html": ""
           }
         }
@@ -167,11 +167,11 @@
           "type": "block",
           "settings": {
             "title": "2-in-1 DH3i",
-            "image": "shopify://shop_images/support-2in1.png",
+            "image": "shopify:\/\/shop_images\/support-2in1.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/2-in-1_User_Manual_-_English_12.4.2024.pdf?v=1740163219",
+            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/2-in-1_User_Manual_-_English_12.4.2024.pdf?v=1740163219",
             "manual_2_link_text": "",
             "manual_2_link_url": "",
             "manual_3_link_text": "",
@@ -179,7 +179,7 @@
             "manual_4_link_text": "",
             "manual_4_link_url": "",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify://products/2in1-purify-humidify-dh3i"
+            "product_link_url": "shopify:\/\/products\/2in1-purify-humidify-dh3i"
           }
         }
       },
@@ -422,7 +422,7 @@
         "title_style": "h1",
         "subtext": "",
         "subtext_style": "h5",
-        "cta_url": "shopify://pages/support",
+        "cta_url": "shopify:\/\/pages\/support",
         "cta_text": "Back to Support",
         "cta_style": "btn",
         "text_align_mobile": "text-center",
@@ -454,7 +454,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify://pages/contact-us",
+        "cta_url": "shopify:\/\/pages\/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

@@ -110,24 +110,24 @@
         "label": "Free Shipping Threshold",
         "info": "Integer number of cents. So if it's $49.99, input 4999."
       },
-	  {
-		"type": "header",
-		"content": "VAT Messages"
-	  },
-	  {
-		"type": "text",
-		"id": "taxes_included_msg",
-		"label": "Non-EU Taxes Message",
-		"default": "Taxes calculated at checkout",
-		"info": "If left blank message will show 'Taxes calculated at checkout'"
-	  },
-	  {
-		"type": "text",
-		"id": "vat_included_msg",
-		"label": "EU VAT Message",
-		"default": "Including VAT",
-		"info": "If left blank message will show 'Including VAT'"
-	  },
+      {
+        "type": "header",
+        "content": "VAT Messages"
+      },
+      {
+        "type": "text",
+        "id": "taxes_included_msg",
+        "label": "Non-EU Taxes Message",
+        "default": "Taxes calculated at checkout",
+        "info": "If left blank message will show 'Taxes calculated at checkout'"
+      },
+      {
+        "type": "text",
+        "id": "vat_included_msg",
+        "label": "EU VAT Message",
+        "default": "Including VAT",
+        "info": "If left blank message will show 'Including VAT'"
+      },
       {
         "type": "header",
         "content": "Gift with Purchases"
