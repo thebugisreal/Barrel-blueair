@@ -17,7 +17,7 @@
       "settings": {
         "title": "Breathe better, live better",
         "subtext": "",
-        "cta_url": "shopify:\/\/collections\/air-purifiers",
+        "cta_url": "shopify://collections/explore",
         "cta_text": "Explore"
       },
       "blocks": {}
@@ -63,24 +63,24 @@
     },
     "section_testimonial_tabs_Rtbxp9": {
       "settings": {
-        "image": "shopify:\/\/shop_images\/Blueair_MostAwarded_UK_2025.png"
+        "image": "shopify://shop_images/Blueair_MostAwarded_UK_2025.png"
       },
       "blocks": {
         "tab_jd3pnn": {
           "settings": {
-            "logo": "shopify:\/\/shop_images\/White_BestBuy_2025.svg",
+            "logo": "shopify://shop_images/White_BestBuy_2025.svg",
             "text": "“The Blueair Blue Max 3250i is an affordable and extremely effective air purifier under £200, with impressive performance across multiple air quality indicators, an easy-to-use design and low noise levels.”"
           }
         },
         "tab_4aKxxr": {
           "settings": {
-            "logo": "shopify:\/\/shop_images\/GHI_APPROVED_2025_511i_fd70521c-01df-4adc-8f7a-75002f8bbae1.png",
+            "logo": "shopify://shop_images/GHI_APPROVED_2025_511i_fd70521c-01df-4adc-8f7a-75002f8bbae1.png",
             "text": "\"Looking for an air purifier that’s compact, efficient and smartly designed for smaller living spaces? Blueair’s 511i Max Smart model ticks all the boxes, and then some\""
           }
         },
         "tab_BxmkPU": {
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Which_Mini_Max.png",
+            "logo": "shopify://shop_images/Which_Mini_Max.png",
             "text": "\"Quiet on all speed settings, easy to use, and energy efficient\" <br>\n [Blue Pure Mini Max]"
           }
         }
@@ -98,9 +98,9 @@
     },
     "section_text_banner_KHYtRe": {
       "settings": {
-        "title": "Explore our best-sellers",
         "padding_top_desktop": "desktop:pt-lg",
-        "padding_bottom_desktop": "desktop:pb-lg"
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "title": "Explore our best-sellers"
       },
       "blocks": {}
     },
