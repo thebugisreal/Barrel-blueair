@@ -170,6 +170,32 @@
         }, 1000);
       </script>
     {% endif %}
+    {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
+      <script type="text/javascript">
+        function OptanonWrapper() {
+          // Check consent state from OneTrust
+          var analyticsConsent = OnetrustActiveGroups.indexOf('C0002') > -1; // Example: Analytics category
+          var marketingConsent = OnetrustActiveGroups.indexOf('C0003') > -1; // Example: Marketing category
+          // Sync with Shopify customerPrivacy API
+          if (window.Shopify && window.Shopify.customerPrivacy) {
+             window.Shopify.customerPrivacy.setTrackingConsent({
+              analytics: analyticsConsent,
+              marketing: marketingConsent,
+            });
+          }
+        }
 
+        // Wait for OnetrustActiveGroups to be available before calling OptanonWrapper
+        function waitForOneTrust() {
+          if (typeof OnetrustActiveGroups !== 'undefined' && OnetrustActiveGroups) {
+            OptanonWrapper();
+          } else {
+            setTimeout(waitForOneTrust, 100);
+          }
+        }
+
+        waitForOneTrust();
+      </script>
+    {% endif %}
   </body>
 </html>
