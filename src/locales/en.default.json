@@ -265,7 +265,9 @@
       },
       "update": "Update",
       "estimated_total": "Estimated total:",
-      "remove_item": "Remove item"
+      "remove_item": "Remove item",
+      "cta": "Go to Checkout",
+      "cta_secondary": "View Cart Page"
     },
     "footer": {
       "social_placeholder": "Follow us on social media!",

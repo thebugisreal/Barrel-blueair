@@ -544,7 +544,7 @@
           
                   <div class="cart__ctas" {{ block.shopify_attributes }}>
                     <button class="cart__checkout-button p2 btn btn--blue-rounded w-full justify-between" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
-                      <span class="btn__text">Go to Checkout</span>
+                      <span class="btn__text">{{ 'sections.cart.cta' | t }}</span>
                       <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
                     </button>
                   </div>

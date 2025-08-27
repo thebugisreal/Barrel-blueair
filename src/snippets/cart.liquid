@@ -503,9 +503,14 @@
 
         <div class="cart-drawer__ctas" {{ block.shopify_attributes }}>
           <button class="cart__checkout-button p2 btn btn--blue-rounded w-full justify-between mb-sm" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
-            <span class="btn__text">Go to Checkout</span>
+            <span class="btn__text">{{ 'sections.cart.cta' | t }}</span>
             <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
           </button>
+
+          <a href="{{ routes.cart_url }}" class="cart__checkout-button p2 btn w-fit mx-auto" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
+            <span class="btn__text">{{ 'sections.cart.cta_secondary' | t }}</span>
+            <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+          </a>
         </div>
       </div>
     {% endif %}

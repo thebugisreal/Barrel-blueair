@@ -91,7 +91,9 @@
       },
       "update": "Aktualisieren",
       "estimated_total": "Geschätzte Gesamtsumme:",
-      "remove_item": "Artikel entfernen"
+      "remove_item": "Artikel entfernen",
+      "cta": "Zur Kasse gehen",
+      "cta_secondary": "Warenkorbseite anzeigen"
     },
     "footer": {
       "social_placeholder": "Folgen Sie uns in den sozialen Medien!",
