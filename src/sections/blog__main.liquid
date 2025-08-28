@@ -58,10 +58,10 @@
 
     <ul class="blog-articles mt-md grid grid-cols-1 gap-x-lg mx-lg gap-y-xl tabletl:mt-lg tabletl:mx-0 tabletl:grid-cols-3" role="list">
       {%- for article in blog.articles -%}
-        {% unless first_article == article  %}
-        <li class="blog-articles__article h-auto">
-          {%- render 'article-card', article: article -%}
-        </li>
+        {% unless first_article == article or article.metafields.seed.hide_on_non_transactional == true %}
+          <li class="blog-articles__article h-auto">
+            {%- render 'article-card', article: article -%}
+          </li>
         {% endunless %}
       {%- endfor -%}
       </ul>
