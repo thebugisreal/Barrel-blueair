@@ -13,7 +13,14 @@
 <product-upsell class="product-upsell__item flex flex-col">
     <div class="product-upsell__buybox flex-1 flex flex-col justify-between tabletl:gap-md">
       {% if upsell_product != blank %}
-        {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
+        {% assign upsell_current_variant = upsell_product.variants.first %}
+        {% for variant in upsell_product.variants %}
+          {% assign variant_title = variant.title | downcase %}
+          {% unless variant.title contains 'subscription' %}
+            {% assign upsell_current_variant = variant %}
+            {% break %}
+          {% endunless %}
+        {% endfor %}
         
         {% liquid
           assign color_option = false
@@ -25,7 +32,9 @@
         
         {% if upsell_heading != blank %}
           <div class="product-upsell__title p3 tabletl:text-18 mb-xxxs gap-xxs tabletl:gap-xs flex tabletl:hidden" js-upsell-title data-base-title="{{ upsell_heading | strip }}">
-            <span class="title-base">{{ upsell_heading | strip }}</span>{% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %} <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+            <span class="title-base">{{ upsell_heading | strip }}</span>
+            {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %}
+            <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
           </div>
         {% endif %}
       {% endif %}
@@ -43,7 +52,6 @@
           {% endif %}
           <div class="flex flex-col m-auto ml-sm">
             {% if upsell_product != blank %}
-              {% assign upsell_current_variant = upsell_product.selected_or_first_available_variant %}
               
               {% liquid
                 assign color_option = false
@@ -52,10 +60,12 @@
                   assign color_option = upsell_product.options_by_name['color'].position | minus: 1
                 endif
               %}
-              
+        
               {% if upsell_heading != blank %}
                 <div class="product-upsell__title p3 tabletl:text-18 mb-xxxs gap-xxs tabletl:gap-xs hidden tabletl:flex" js-upsell-title data-base-title="{{ upsell_heading | strip }}">
-                  <span class="title-base">{{ upsell_heading | strip }}</span>{% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %} <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+                  <span class="title-base">{{ upsell_heading | strip }}</span>
+                  {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %} 
+                    <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
                 </div>
               {% endif %}
               {% if upsell_short_desc != blank %}
@@ -88,7 +98,7 @@
                     {% endfor %}
                   </div>
                 </div>
-              {% endif %}
+              {% endif %}              
             {% endif %}
           </div>
         </div>
@@ -107,7 +117,7 @@
             <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
               <span class="btn__text">Added</span>
             </button>
-            <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded px-sm {% if upsell_current_variant.available %}hidden{% endif %}" js-klaviyo-bis-modal-trigger>
+            <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded px-sm {% if upsell_current_variant.available %}hidden{% endif %}" data-variant-id="{{ upsell_current_variant.id }}" data-variant-title="{{ upsell_current_variant.title }}" js-klaviyo-bis-modal-trigger>
               <span class="btn__text">
                 Notify Me
               </span>

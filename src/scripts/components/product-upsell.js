@@ -203,7 +203,7 @@ class ProductUpsell extends HTMLElement {
 
   _openBisModal(evt) {
     evt.stopImmediatePropagation();
-    this._updateBisModal();
+    this._updateBisModal(evt);
     this.bisModal.open();
   }
 
@@ -278,10 +278,10 @@ class ProductUpsell extends HTMLElement {
         });
   }
   
-  _updateBisModal() {
+  _updateBisModal(evt) {
     this._resetBisModal();
     this._updateBisTitle();
-    this._insertBisSelect();
+    this._insertBisSelect(evt);
     this._handleBisVariantChange();
   }
 
@@ -297,7 +297,7 @@ class ProductUpsell extends HTMLElement {
     this.bisModal.querySelector(this._klaviyoBis.productTitle).textContent = this.upsellTitle.textContent;
   }
 
-  _insertBisSelect() {
+  _insertBisSelect(evt) {
     const unavailableVariants = this.querySelectorAll(`${this._selectors.variantBtn}[data-available="false"]`);
     const selectedVariant = this.querySelector(`${this._selectors.variantBtn}[data-selected="true"]`);
 
@@ -309,6 +309,7 @@ class ProductUpsell extends HTMLElement {
     const bisSelect = document.createElement('div');
     bisSelect.classList.add('form__field');
     bisSelect.setAttribute('js-bis-select', '');
+    if (unavailableVariants && selectedVariant) {
     bisSelect.innerHTML = `
       <label for="bis-variant" class="form__label sr-only">Select Variant</label>
       <select id="bis-variant" name="variant" class="form__element px-sm py-xs border border-gray">
@@ -317,6 +318,17 @@ class ProductUpsell extends HTMLElement {
         `).join('')}
       </select>
     `;
+    } else {
+      
+      bisSelect.innerHTML = `
+        <label for="bis-variant" class="form__label sr-only">Select Variant</label>
+        <select id="bis-variant" name="variant" class="form__element px-sm py-xs border border-gray">
+          <option value="${evt.currentTarget.dataset.variantId}" selected>${evt.currentTarget.dataset.variantTitle}</option>
+        </select>
+      `;
+    }
+
+    console.log('bisSelect', bisSelect);
 
     const emailField = this.bisForm.querySelector('[js-bis-email-field]');
     this.bisForm.insertBefore(bisSelect, emailField);
