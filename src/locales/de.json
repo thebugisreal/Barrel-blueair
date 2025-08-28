@@ -71,7 +71,7 @@
     "cart": {
       "title": "Dein Wagen",
       "caption": "Karren Artikel",
-      "remove_title": "Entfernen {{ title }}",
+      "remove_title": "{{ title }} entfernen",
       "subtotal": "Zwischensumme",
       "new_subtotal": "Neues Subtotal",
       "note": "Bestellen Sie besondere Anweisungen",
@@ -93,7 +93,12 @@
       "estimated_total": "Geschätzte Gesamtsumme:",
       "remove_item": "Artikel entfernen",
       "cta": "Zur Kasse gehen",
-      "cta_secondary": "Warenkorbseite anzeigen"
+      "cta_secondary": "Warenkorbseite anzeigen",
+      "recommended": "Empfohlen",
+      "start_shopping": "starten Sie einkaufen",
+      "discount_code": "Rabattcode",
+      "discount_code_error": "Rabattcode kann nicht auf Ihren Warenkorb angewendet werden",
+      "discount_error_shipping": "Versandrabatte werden nach der Eingabe einer Adresse an der Kasse angezeigt"
     },
     "footer": {
       "social_placeholder": "Folgen Sie uns in den sozialen Medien!",

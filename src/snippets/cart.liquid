@@ -10,10 +10,10 @@
 
 <cart-drawer>
   <div id="cart" class="cart-drawer flex flex-col h-full" js-cart-drawer-contents>
-    <h3 class="mb-xs px-md">{{ settings.cart_title }}</h3>
+    <h3 class="mb-xs px-md">{{ 'sections.cart.title' | t }}</h3>
     {% if cart == empty %}
       <p class="p4 text-center" js-empty-cart>
-        Start shopping to qualify for free shipping!
+        {{ settings.shipping_threshold_message_empty }}
       </p>
     {% endif %}
 
@@ -28,7 +28,7 @@
       <form action="{{ routes.cart_url }}" id="CartDrawer-Form" class="cart-drawer__form" method="post">
         <div id="CartDrawer-CartItems" class="drawer__contents">
           {%- if cart != empty -%}
-            <p class="s1 mb-sm">Your Items</p>
+            <p class="s1 mb-sm">{{ 'sections.cart.title' | t }}</p>
 
             {% comment %} Cart Items  {% endcomment %}
             <div class="drawer__cart-items-wrapper flex flex-col gap-md mb-md">
@@ -171,6 +171,11 @@
                           id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
                         >
+                        <button
+                          type="button"
+                          class="button button--tertiary cart-remove-button underline"
+                          aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                        >
                           {{ 'sections.cart.remove_item' | t }}
                         </button>
                       </cart-remove-button>
@@ -304,7 +309,7 @@
                 <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
                     <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
                       <div class="flex justify-between items-center mb-sm">
-                        <h1 class="cart-drawer-upsell__title s1 font-900">Recommended</h1>
+                        <h1 class="cart-drawer-upsell__title s1 font-900">{{ 'sections.cart.recommended' | t }}</h1>
                         <div class="swiper-nav-container flex gap-xxs items-center">
                           <div class="swiper-upsell-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
                           <div class="swiper-upsell-pagination w-fit p6"></div>
@@ -411,13 +416,13 @@
                     for="cart-discount"
                     class="visually-hidden"
                   >
-                    Discount Code
+                    {{ 'sections.cart.discount_code' | t }}
                   </label>
                   <input
                     id="cart-discount"
                     class="cart-discount__input flex-1"
                     name="discount"
-                    placeholder="Discount Code"
+                    placeholder="{{ 'sections.cart.discount_code' | t }}"
                     js-cart-discount-form-input
                   >
                   <button
@@ -439,13 +444,13 @@
                   class="cart-discount__error-text cart-primary-typography hidden"
                   js-cart-discount-error-discount-code
                 >
-                Discount code cannot be applied to your cart
+                {{ 'sections.cart.discount_code_error' | t }}
                 </small>
                 <small
                   class="cart-discount__error-text cart-primary-typography hidden"
                   js-cart-discount-error-shipping
                 >
-                  Shipping discounts are shown at checkout after adding an address
+                  {{ 'sections.cart.discount_error_shipping' | t }}
                 </small>
               </div>
               <ul class="cart-discount__codes flex flex-col gap-y-8 pt-8">

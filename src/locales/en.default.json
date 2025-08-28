@@ -267,7 +267,12 @@
       "estimated_total": "Estimated total:",
       "remove_item": "Remove item",
       "cta": "Go to Checkout",
-      "cta_secondary": "View Cart Page"
+      "cta_secondary": "View Cart Page",
+      "recommended": "Recommended",
+      "start_shopping": "start shopping",
+      "discount_code": "Discount Code",
+      "discount_code_error": "Discount code cannot be applied to your cart",
+      "discount_error_shipping": "Shipping discounts are shown at checkout after adding an address"
     },
     "footer": {
       "social_placeholder": "Follow us on social media!",
