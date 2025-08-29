@@ -71,7 +71,7 @@
     "cart": {
       "title": "Dein Wagen",
       "caption": "Karren Artikel",
-      "remove_title": "{{ title }} entfernen",
+      "remove_title": "Entfernen {{ title }}",
       "subtotal": "Zwischensumme",
       "new_subtotal": "Neues Subtotal",
       "note": "Bestellen Sie besondere Anweisungen",
@@ -89,17 +89,7 @@
         "total": "Gesamt",
         "quantity": "Menge"
       },
-      "update": "Aktualisieren",
-      "estimated_total": "Geschätzte Gesamtsumme:",
-      "remove_item": "Artikel entfernen",
-      "cta": "Zur Kasse gehen",
-      "cta_secondary": "Warenkorbseite anzeigen",
-      "recommended": "Empfohlen",
-      "start_shopping": "starten Sie einkaufen",
-      "discount_code": "Rabattcode",
-      "discount_code_error": "Rabattcode kann nicht auf Ihren Warenkorb angewendet werden",
-      "discount_error_shipping": "Versandrabatte werden nach der Eingabe einer Adresse an der Kasse angezeigt",
-      "your_free_gift": "Ihr kostenloses Geschenk"
+      "update": "Aktualisieren"
     },
     "footer": {
       "social_placeholder": "Folgen Sie uns in den sozialen Medien!",
@@ -234,8 +224,6 @@
       "video_exit_message": "{{ title }} Öffnet das Vollbildvideo im selben Fenster.",
       "xr_button": "Blick auf Ihren Raum",
       "xr_button_label": "Sehen Sie sich in Ihrem Raum an, lädt Element im Augmented Reality -Fenster auf",
-      "claim_gift": "Geschenk beanspruchen",
-      "increase_cart_total": "Warenkorb erhöhen",
       "accordions": {
         "additional_features": {
           "label": "Zusätzliche Funktionen",
