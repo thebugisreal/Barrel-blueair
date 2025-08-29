@@ -272,7 +272,8 @@
       "start_shopping": "start shopping",
       "discount_code": "Discount Code",
       "discount_code_error": "Discount code cannot be applied to your cart",
-      "discount_error_shipping": "Shipping discounts are shown at checkout after adding an address"
+      "discount_error_shipping": "Shipping discounts are shown at checkout after adding an address",
+      "your_free_gift": "Your Free Gift"
     },
     "footer": {
       "social_placeholder": "Follow us on social media!",

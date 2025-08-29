@@ -98,7 +98,8 @@
       "start_shopping": "starten Sie einkaufen",
       "discount_code": "Rabattcode",
       "discount_code_error": "Rabattcode kann nicht auf Ihren Warenkorb angewendet werden",
-      "discount_error_shipping": "Versandrabatte werden nach der Eingabe einer Adresse an der Kasse angezeigt"
+      "discount_error_shipping": "Versandrabatte werden nach der Eingabe einer Adresse an der Kasse angezeigt",
+      "your_free_gift": "Ihr kostenloses Geschenk"
     },
     "footer": {
       "social_placeholder": "Folgen Sie uns in den sozialen Medien!",

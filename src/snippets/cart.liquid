@@ -179,8 +179,8 @@
                           {{ 'sections.cart.remove_item' | t }}
                         </button>
                       </cart-remove-button>
+                    </div>
                       
-    
                       <div id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
                       </div>
                     </div>
@@ -219,7 +219,7 @@
                   <s-carousel class="block relative {% if cart.total_price < settings.gwp_threshold %} gwp__limit-not-met {% endif %}" data-options='{{ gwp_carousel_options }}'>
                       <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
                         <div class="flex justify-between items-center mb-sm">
-                          <h1 class="cart-drawer-gwp__title s1 font-900">Your Free Gift</h1>
+                          <h1 class="cart-drawer-gwp__title s1 font-900">{{ 'sections.cart.your_free_gift' | t }}</h1>
                           <div class="swiper-nav-container flex gap-xxs items-center">
                             <div class="swiper-gwp-prev w-[24px] p-xxs">{% render 'icon-caret-left' %}</div>
                             <div class="swiper-gwp-pagination w-fit p6"></div>
