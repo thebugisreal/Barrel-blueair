@@ -1,0 +1,130 @@
+{% comment %} 
+
+@param upsell_product - the product object
+@param upsell_heading - the heading of the upsell
+@param upsell_short_desc - the short description of the upsell
+@param upsell_image - the image to display for the upsell
+
+@example
+
+{% endcomment %}
+
+
+<product-upsell class="product-upsell__item flex flex-col">
+    <div class="product-upsell__buybox flex-1 flex flex-col justify-between tabletl:gap-md">
+      {% if upsell_product != blank %}
+        {% assign upsell_current_variant = upsell_product.variants.first %}
+        {% for variant in upsell_product.variants %}
+          {% assign variant_title = variant.title | downcase %}
+          {% unless variant.title contains 'subscription' %}
+            {% assign upsell_current_variant = variant %}
+            {% break %}
+          {% endunless %}
+        {% endfor %}
+        
+        {% liquid
+          assign color_option = false
+          assign filter_type_option = false
+          if upsell_product.options_by_name['color'] != blank
+            assign color_option = upsell_product.options_by_name['color'].position | minus: 1
+          endif
+        %}
+        
+        {% if upsell_heading != blank %}
+          <div class="product-upsell__title p3 tabletl:text-18 mb-xxxs gap-xxs tabletl:gap-xs flex tabletl:hidden" js-upsell-title data-base-title="{{ upsell_heading | strip }}">
+            <span class="title-base">{{ upsell_heading | strip }}</span>
+            {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %}
+            <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+          </div>
+        {% endif %}
+      {% endif %}
+      <div class="flex gap-xs justify-between flex-wrap">
+          <div class="flex flex-[10] tabletp:flex-auto">
+          {% assign prefilter_image = upsell_image %}
+          {% if prefilter_image != blank %}
+            <div class="product-upsell__variant-image max-w-[80px] tabletl:max-w-[100px] flex flex-col">
+              {% if upsell_current_variant.image != blank %}
+                {% render 'lazy-image' image: upsell_current_variant.image, img_classes: 'bg-blue-light' %}
+              {% else %}
+                {% render 'lazy-image' image: prefilter_image, img_classes: 'bg-blue-light' %}
+              {% endif %}
+            </div>
+          {% endif %}
+          <div class="flex flex-col m-auto ml-sm">
+            {% if upsell_product != blank %}
+              
+              {% liquid
+                assign color_option = false
+                assign filter_type_option = false
+                if upsell_product.options_by_name['color'] != blank
+                  assign color_option = upsell_product.options_by_name['color'].position | minus: 1
+                endif
+              %}
+        
+              {% if upsell_heading != blank %}
+                <div class="product-upsell__title p3 tabletl:text-18 mb-xxxs gap-xxs tabletl:gap-xs hidden tabletl:flex" js-upsell-title data-base-title="{{ upsell_heading | strip }}">
+                  <span class="title-base">{{ upsell_heading | strip }}</span>
+                  {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %} 
+                    <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+                </div>
+              {% endif %}
+              {% if upsell_short_desc != blank %}
+                <div class="product-upsell__description p4 mb-xxxs">{{ upsell_short_desc }}</div>
+              {% endif %}
+              
+              {% if color_option != false %}
+                <div class="product-upsell__variants-container flex">
+                  <div class="product-upsell__variants flex justify-start flex-wrap gap-xxs tabletl:gap-xs">
+                    {% assign upsell_product_swatch_objects = upsell_product.metafields.seed.swatches.value %}
+                    {% for upsell_variant in upsell_product.variants %}
+                      {% assign upsell_swatch_object = upsell_product_swatch_objects | where: "name", upsell_variant.options[color_option] | first %}
+                      <div>
+                        <button type="button" 
+                           class="product-upsell__variant product-upsell__variant--color w-[22px] h-[22px] rounded-full" 
+                           data-variant-id="{{ upsell_variant.id }}"
+                           data-available="{{ upsell_variant.available }}"
+                           data-price="{{ upsell_variant.price | money }}"
+                           data-selected="{% if upsell_variant.options[color_option] == upsell_current_variant.options[color_option] %}true{% else %}false{% endif %}"
+                           title="{{ upsell_variant.options[color_option] }}"
+                           data-variant-image="{{ upsell_variant.image | img_url: '300x' }}"
+                           js-product-upsell-variant>
+                          <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ upsell_swatch_object.color }};">
+                            {% if upsell_swatch_object.image != blank %}
+                              <img src="{{ upsell_swatch_object.image.value | img_url: '22x'}}" alt="{{ upsell_variant.options[color_option] }}" class="block h-full w-full">
+                            {% endif %} 
+                          </div>
+                        </button>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}              
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs w-full tabletl:w-auto flex-[5] tabletp:flex-auto">
+          {% if upsell_product != blank %}
+            <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+              <span class="btn__text">
+                {% if upsell_current_variant.available %}
+                  Add to Cart
+                {% else %}
+                  Out of Stock
+                {% endif %}
+              </span>
+            </button>
+            <button type="button" class="product-upsell__added-btn btn btn--white-outline hidden" data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-added>
+              <span class="btn__text">Added</span>
+            </button>
+            <button type="button" class="product-upsell__bis-btn btn btn--blue-rounded px-sm {% if upsell_current_variant.available %}hidden{% endif %}" data-variant-id="{{ upsell_current_variant.id }}" data-variant-title="{{ upsell_current_variant.title }}" js-klaviyo-bis-modal-trigger>
+              <span class="btn__text">
+                Notify Me
+              </span>
+            </button>
+            <p class="p6 hidden text-right w-full leading-[1.1]" js-product-upsell-error></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </product-upsell>
