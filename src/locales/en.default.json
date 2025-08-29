@@ -170,7 +170,9 @@
       "compatible_with": "Compatible with",
       "video_exit_message": "{{ title }} opens full screen video in same window.",
       "xr_button": "View in your space",
-      "xr_button_label": "View in your space, loads item in augmented reality window"
+      "xr_button_label": "View in your space, loads item in augmented reality window",
+      "claim_gift": "Claim Gift",
+      "increase_cart_total": "Increase Cart Total"
     },
     "modal": {
       "label": "Media gallery"
@@ -261,7 +263,17 @@
         "total": "Total",
         "quantity": "Quantity"
       },
-      "update": "Update"
+      "update": "Update",
+      "estimated_total": "Estimated total:",
+      "remove_item": "Remove item",
+      "cta": "Go to Checkout",
+      "cta_secondary": "View Cart Page",
+      "recommended": "Recommended",
+      "start_shopping": "start shopping",
+      "discount_code": "Discount Code",
+      "discount_code_error": "Discount code cannot be applied to your cart",
+      "discount_error_shipping": "Shipping discounts are shown at checkout after adding an address",
+      "your_free_gift": "Your Free Gift"
     },
     "footer": {
       "social_placeholder": "Follow us on social media!",

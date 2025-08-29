@@ -68,18 +68,18 @@
             {% if gwp %}
                 {% if cart.total_price > settings.gwp_threshold %}
                     {% if variant.available %}
-                        Claim Gift
+                        {{ 'products.product.claim_gift' | t }}
                     {% else %}
-                        Sold Out
+                        {{ 'products.product.sold_out' | t }}
                     {% endif %}
                 {% else %}
-                    Increase Cart Total
+                    {{ 'products.product.increase_cart_total' | t }}
                 {% endif %}
             {% else %}
                 {% if variant.available %}
-                    Add to Cart
+                    {{ 'products.product.add_to_cart' | t }}
                 {% else %}
-                    Sold Out
+                    {{ 'products.product.sold_out' | t }}
                 {% endif %}
             {% endif %}
         </button>

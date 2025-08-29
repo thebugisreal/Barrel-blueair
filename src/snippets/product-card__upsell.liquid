@@ -48,12 +48,19 @@
                     {% endif %}
                 {% else %}
                     {% if product.selected_or_first_available_variant.available %}
-                        Add to Cart
+                        {{ 'products.product.claim_gift' | t }}
                     {% else %}
-                        Sold Out
+                        {{ 'products.product.sold_out' | t }}
                     {% endif %}
+                {% else %}
+                    {{ 'products.product.increase_cart_total' | t }}
                 {% endif %}
-            </button>
+            {% else %}
+                {% if product.selected_or_first_available_variant.available %}
+                    {{ 'products.product.add_to_cart' | t }}
+                {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                {% endif %}
             {% endif %}
         {% endif %}
     </div>
