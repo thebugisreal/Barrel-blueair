@@ -15,7 +15,21 @@
   "sections": {
     "main": {
       "settings": {},
-      "blocks": {}
+      "blocks": {},
+      "block_order": [
+        "title_bjfNAe",
+        "room_tag_UqfcUw",
+        "short_description_FGhrqT",
+        "star_rating_rYzLXJ",
+        "product_badge_TcD3K4",
+        "filter_options_XPQVUh",
+        "product_options_GLfTKf",
+        "atc_BURfeB",
+        "upsells_ndPfKj",
+        "experience_NzTf78",
+        "additional_features_H7XdFi",
+        "shipping_warranty_Rg4jpP"
+      ]
     }
   }
 }

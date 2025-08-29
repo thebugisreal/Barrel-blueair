@@ -16,13 +16,13 @@
     "hero": {
       "settings": {
         "color": "bg-blue text-white",
-        "image_mobile": "shopify:\/\/shop_images\/PetAir_Homepage_Mobile.png",
-        "image_desktop": "shopify:\/\/shop_images\/PetAir_Homepage_Desktop.png",
-        "title": "The only pet bed <br> that cleans your air",
+        "image_mobile": "shopify://shop_images/LaborDay_Homepage_Mobile.png",
+        "image_desktop": "shopify://shop_images/LaborDay_Homepage_Desktop.png",
+        "title": "Save up to 50% <br>  Labor Day Weekend",
         "title_style": "h3",
-        "subtext": "Meet PetAir Pro <br>\nAvailable only on Blueair.com",
+        "subtext": "Recharge your mind & body <br> with the comfort of fresh air",
         "subtext_style": "h6",
-        "cta_url": "shopify:\/\/collections\/petair-pro",
+        "cta_url": "shopify://collections/sale",
         "cta_text": "Shop now",
         "cta_style": "btn btn--white-rounded",
         "text_align_mobile": "text-left",
@@ -38,14 +38,14 @@
       "blocks": {
         "customization_kjnCLm": {
           "settings": {
-            "image_mobile": "shopify:\/\/shop_images\/Image_3_4_428cad6c-9d2f-4596-b6d3-b6f70f315b51.jpg"
+            "image_mobile": "shopify://shop_images/Image_3_4_428cad6c-9d2f-4596-b6d3-b6f70f315b51.jpg"
           }
         }
       }
     },
     "section_testimonial_tabs_Rtbxp9": {
       "settings": {
-        "image": "shopify:\/\/shop_images\/Blueair_MostAwarded_2025.png"
+        "image": "shopify://shop_images/Blueair_MostAwarded_2025.png"
       },
       "blocks": {}
     },

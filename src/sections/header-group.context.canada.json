@@ -19,22 +19,22 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_R6VDy": {
+        "announcement_UXXQK": {
           "type": "announcement",
-          "disabled": true,
+          "disabled": false,
           "settings": {
-            "header-141cca0a94ec3bf7d60a4d0d4b893e2d": null,
-            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
-            "url": "shopify:\/\/collections\/air-purifier-filters"
+            "header-5dc0a028687061f40b74dfabc76dad4c": null,
+            "announcement": "Labour Day Savings: Up to 50% off <u>  SHOP NOW</u>",
+            "url": "shopify://collections/canada-sale"
           }
         },
         "announcement_YLKFbB": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-3a782046ed0e59b14a15f5515278c6f1": null,
+            "header-518bf114e96878c6bdde25c92370d469": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
-            "url": "shopify:\/\/collections\/canada-sale"
+            "url": "shopify://collections/canada-sale"
           }
         },
         "announcement_A6AHyV": {
@@ -47,13 +47,23 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-1d97a647a99056e45a50dff0274a02fb": null,
+            "header-8a0f29f616054e594dc10efee4ed9ab3": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": ""
+          }
+        },
+        "announcement_R6VDy": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "header-2acf67c2a432c25ac4f13b0ef08805ec": null,
+            "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
+            "url": "shopify://collections/air-purifier-filters"
           }
         }
       },
       "block_order": [
+        "announcement_UXXQK",
         "announcement_YLKFbB",
         "announcement_A6AHyV",
         "announcement_9ieDxY",

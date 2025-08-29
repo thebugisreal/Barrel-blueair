@@ -13,6 +13,21 @@
     "market": "us"
   },
   "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "experience_NzTf78": {
+          "settings": {
+            "margin_bottom_mobile": "mb-md",
+            "margin_bottom_desktop": "desktop:mb-md"
+          }
+        },
+        "star_rating_rYzLXJ": {
+          "disabled": false,
+          "settings": {}
+        }
+      }
+    },
     "product_image_text_6MPkRA": {
       "disabled": true,
       "settings": {},
@@ -28,16 +43,10 @@
       "settings": {},
       "blocks": {}
     },
-    "main": {
+    "bazaarvoice_reviews_g6D6HN": {
+      "disabled": false,
       "settings": {},
-      "blocks": {
-        "experience_NzTf78": {
-          "settings": {
-            "margin_bottom_mobile": "mb-md",
-            "margin_bottom_desktop": "desktop:mb-md"
-          }
-        }
-      }
+      "blocks": {}
     }
   },
   "order": [
