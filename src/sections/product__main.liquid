@@ -482,7 +482,7 @@
                             {% for icon_object in product.metafields.seed.experience_icons.value %}
                               <li class="product-experience__icon flex flex-col items-center gap-xs">
                                 <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                                <div class="p4 text-center">{{ icon_object.text }}</div>
+                                <div class="p4 text-center" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
                               </li>
                             {% endfor %}
                           </ul>
