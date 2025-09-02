@@ -16,12 +16,12 @@
     "hero": {
       "settings": {
         "color": "bg-blue text-white",
-        "image_mobile": "shopify://shop_images/LaborDay_Homepage_Mobile.png",
-        "image_desktop": "shopify://shop_images/LaborDay_Homepage_Desktop.png",
-        "title": "Save up to 50% <br> Labour Day Weekend",
+        "image_mobile": "shopify://shop_images/Sale_mobile.png",
+        "image_desktop": "shopify://shop_images/sale_desktop.jpg",
+        "title": "Meet the new <br> Blue Signature™",
         "title_style": "h3",
-        "subtext": "Recharge your mind & body <br> with the comfort of fresh air",
-        "cta_url": "shopify://collections/canada-sale",
+        "subtext": "The most powerful, compact <br> air purifier you can get",
+        "cta_url": "shopify://collections/blue-signature™",
         "cta_text": "Shop now",
         "cta_style": "btn btn--white-rounded"
       },

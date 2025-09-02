@@ -16,13 +16,13 @@
     "hero": {
       "settings": {
         "color": "bg-blue text-white",
-        "image_mobile": "shopify://shop_images/LaborDay_Homepage_Mobile.png",
-        "image_desktop": "shopify://shop_images/LaborDay_Homepage_Desktop.png",
-        "title": "Save up to 50% <br>  Labor Day Weekend",
+        "image_mobile": "shopify://shop_images/PetAir_Homepage_Mobile.png",
+        "image_desktop": "shopify://shop_images/PetAir_Homepage_Desktop.png",
+        "title": "The only pet bed <br> that cleans your air",
         "title_style": "h3",
-        "subtext": "Recharge your mind & body <br> with the comfort of fresh air",
+        "subtext": "Meet PetAir Pro <br> Available now only on Blueair.com",
         "subtext_style": "h6",
-        "cta_url": "shopify://collections/sale",
+        "cta_url": "shopify://collections/petair-pro",
         "cta_text": "Shop now",
         "cta_style": "btn btn--white-rounded",
         "text_align_mobile": "text-left",

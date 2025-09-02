@@ -27,10 +27,10 @@
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-xxl",
-            "padding_bottom_desktop": "desktop:pb-xl",
+            "padding_top_desktop": "desktop:pt-md",
+            "padding_bottom_desktop": "desktop:pb-md",
             "max_width_desktop": "135ch",
-            "richtext": "<p>Your home should be your place of rest, but unseen forces can quietly drain your energy, disrupt your focus, and affect your health. These invisible stressors don’t always make themselves known right away—but over time, they can impact your overall wellness. <br/><br/> <br/><br/>The good news? With a few mindful adjustments, you can reduce these hidden disruptors and create a more balanced, restorative living space. </p>",
+            "richtext": "<p>Your home should be your place of rest, but unseen forces can quietly drain your energy, disrupt your focus, and affect your health. These invisible stressors don’t always make themselves known right away—but over time, they can impact your overall wellness. <br/><br/>The good news? With a few mindful adjustments, you can reduce these hidden disruptors and create a more balanced, restorative living space. </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
@@ -64,14 +64,13 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "135ch",
-            "richtext": "<h3><strong>Invisible Stressors Hiding in Plain Sight</strong></h3><h5><em>Indoor Air Pollutants</em></h5><p>Dust, pollen, smoke, VOCs (volatile organic componds), pet dander, and even cooking fumes can build<br/>up in your home’s air. Over time, breathing in these pollutants can cause<br/>allergy flare-ups, affect concentration, and reduce sleep quality.  </p><h5><em>Electromagnetic & Noise Clutter</em></h5><p>From the constant presence of Wi-Fi and devices to the low hum of appliances, unseen tech exposure and subtle noise may leave your nervous system in a state of low-level stress.</p><h5><em>Poor Lighting & Airflow</em></h5><p>Dim, artificial lighting and stale, stagnant air can make you feel sluggish and interfere with your natural wake-sleep rhythm.</p><h5><em>Chemical Overload</em></h5><p>Cleaning products, synthetic fragrances, and off-gassing from new furniture or flooring release irritants that can linger in the air and affect your long-term health.</p><p> </p><h3><strong>Home Wellness Reset: Fixing Invisible Stressors Holistically</strong></h3><h3></h3><p>Building a healthier home starts from layering small,<br/>impactful changes that address different types of stressors.</p><h5><em>Air Wellness — Purify and Refresh</em></h5><p>An air purifier can help remove pollutants, allergens, and odors, creating a cleaner breathing environment. Today’s leading air wellness solutions combine powerful filtration with design that complements your home in style and comfort or wellbeing.</p><h5><em>Natural Rhythm and Light</em></h5><p>Maximize natural light<br/>during the day and use warm, dim lighting in the evening to support your<br/>circadian rhythm. Open windows when possible, to circulate fresh air.</p><h5><em>Noise Mindfulness</em></h5><p>Soft furnishings like rugs, curtains, and upholstered furniture can help absorb sound. Consider adding white-noise machines or calming playlists to mask disruptive background sounds.</p><h5><em>Green, Clean Living</em></h5><p>Switch to non-toxic, fragrance-free cleaning products and choose low-VOC plants to naturally improve air quality. Always ventilate when using any products with strong scents or<br/>chemicals.</p>",
+            "richtext": "<h4><strong>Invisible Stressors Hiding in Plain Sight</strong></h4><p></p><p></p><h5>Indoor Air Pollutants</h5><p>    <br/>Dust, pollen, smoke, VOCs (volatile organic compounds), pet dander, and even cooking fumes can build up in your home’s air. Over time, breathing in these pollutants can cause allergy flare-ups, affect concentration, and reduce sleep quality.  </p><p></p><p></p><h5>Electromagnetic & Noise Clutter</h5><p>    <br/>From the constant presence of Wi-Fi and devices to the low hum of appliances, unseen tech exposure and subtle noise may leave your nervous system in a state of low-level stress.</p><p></p><p></p><h5>Poor Lighting & Airflow</h5><p>    <br/>Dim, artificial lighting and stale, stagnant air can make you feel sluggish and interfere with your natural wake-sleep rhythm.</p><p></p><p></p><h5>Chemical Overload</h5><p>    <br/>Cleaning products, synthetic fragrances, and off-gassing from new furniture or flooring release irritants that can linger in the air and affect your long-term health.</p><p></p><h4>Home Wellness Reset: Fixing Invisible Stressors Holistically</h4><p> <br/>Building a healthier home starts from layering small, impactful changes that address different types of stressors.</p><p></p><p></p><h5>Air Wellness — Purify and Refresh</h5><p>    <br/>An air purifier can help remove pollutants, allergens, and odors, creating a cleaner breathing environment. Today’s leading air wellness solutions combine powerful filtration with design that complements your home in style and comfort or well-being?</p><p></p><p></p><h5>Natural Rhythm and Light</h5><p>    <br/>Maximize natural light during the day and use warm, dim lighting in the evening to support your circadian rhythm. Open windows when possible, to circulate fresh air.</p><p></p><p></p><h5>Noise Mindfulness</h5><p>    <br/>Soft furnishings like rugs, curtains, and upholstered furniture can help absorb sound. Consider adding white-noise machines or calming playlists to mask disruptive background sounds.</p><p></p><p></p><h5>Green, Clean Living</h5><p>    <br/>Switch to non-toxic, fragrance-free cleaning products and choose low-VOC plants to naturally improve air quality. Always ventilate when using any products with strong scents or chemicals.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
         "image_caption_Xi6zz4": {
           "type": "image_caption",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -82,7 +81,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Image_4_3.png",
+            "image": "shopify://shop_images/homepage-purifiers-mobile.jpg",
+            "image_desktop": "shopify://shop_images/homepage-purifiers-mobile.jpg",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -99,8 +99,8 @@
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "95ch",
-            "richtext": "<h4>The Ocean’s Role in Our World</h4><p></p><p>The oceans are more than just vast bodies of water — they are essential to life on Earth. Scientists estimate that nearly half of the oxygen we breathe is produced by the ocean*, much of it from plankton — tiny, floating plants, algae, and bacteria that photosynthesize. One tiny organism, Prochlorococcus, produces up to 20% of the oxygen in our entire biosphere, which is more than all the tropical rainforests on land combined!</p><p>As an air care brand, Blueair knows that clean air is vital to health and well-being, and our oceans play a significant role in providing the oxygen that we need. That’s why we’re proud to join forces with 4ocean to protect these vital ecosystems from the devastating impact of plastic pollution. Keeping the oceans clean helps to ensure that they can continue to support life both underwater and on land.</p>",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>Spotlight: Air Wellness as a Foundation of Home Comfort</strong></h4><p></p><p>While home wellness is about more than just the air you breathe, clean indoor air plays a critical role in reducing invisible stress.</p><h5><em>Why air wellness matters:</em></h5><p>    <br/> - Promotes calm and clarity by removing airborne irritants that affect focus and mood.   <br/> - Supports respiratory health, especially for those with allergies or sensitivities.   <br/> - Enhances daily rituals—like relaxing in the evening or starting your day—by ensuring each breath is clean and refreshing.</p><p></p><h4><strong>Latest innovations from Blueair</strong></h4><p></p><p>Blueair’s newest solutions, like the Blueair Blue Signature™ with 7-stage filtration and OdorFence™ technology, remove pollutants and odors effectively while blending into your décor. For a multi-purpose option, the Blueair ComfortPure™ 3-in-1 T10i offers purification, cooling, and heating in one, making it easy to maintain clean, comfortable air year-round.</p><p></p><h4><strong>Creating a Healthier Home, One Step at a Time</strong></h4><p></p><p>You don’t need to tackle every stressor at once. Start with one change—like refreshing your air or improving your lighting—and build from there. Over time, these small shifts can create a home environment that restores your energy, supports your health, and helps you feel your best.</p><p></p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }

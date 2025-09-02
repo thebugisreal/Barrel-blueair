@@ -19,29 +19,11 @@
         "bg_color": "bg-blue-light text-blue"
       },
       "blocks": {
-        "announcement_9XNKY": {
-          "type": "announcement",
-          "disabled": false,
-          "settings": {
-            "header-863f7d725aa660ab64c288fb10fb5059": null,
-            "announcement": "Labor Day Savings: Up to 50% off  <u> SHOP NOW</u>",
-            "url": "shopify://collections/sale"
-          }
-        },
-        "announcement_af7Ww": {
-          "type": "announcement",
-          "disabled": true,
-          "settings": {
-            "header-6cada894a62c3ff94702f3eb1f436759": null,
-            "announcement": "Get a Free Scratch Bed TODAY ONLY with every PetAir Pro",
-            "url": "shopify://products/petair"
-          }
-        },
         "announcement_XMHEL": {
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-8cba51d66cb4ca94a5d1bf403edafbbb": null,
+            "header-ad56f61aa8ff966db95582a4ffc9c0ae": null,
             "announcement": "Free Shipping on Orders +$35",
             "url": ""
           }
@@ -50,9 +32,18 @@
           "type": "announcement",
           "disabled": false,
           "settings": {
-            "header-439947d5fce1baed6ad2395a946f0952": null,
+            "header-57942500009e5720c3fcda0dd83956ab": null,
             "announcement": "30-Day Home Trial | Free Extended Warranty",
             "url": "shopify://collections/sale"
+          }
+        },
+        "announcement_af7Ww": {
+          "type": "announcement",
+          "disabled": false,
+          "settings": {
+            "header-4f80e94db1d7e2cda0bcf0de470c0174": null,
+            "announcement": "Limited time only: Save $100 on PetAir Pro with Code PETAIR100",
+            "url": "shopify://products/petair"
           }
         },
         "announcement_A6AHyV": {
@@ -66,7 +57,7 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "header-b31f027b89444a2b221784e8f73db016": null,
+            "header-0d61730834adb4d2f9b3289d37679bc9": null,
             "announcement": "Introducing Blue Signature™: Engineered to Perform. Designed to Impress.",
             "url": "shopify://collections/blue-signature™"
           }
@@ -75,17 +66,16 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "header-98185300734cdefb1e35510a64de7f24": null,
+            "header-cb83bb01c6ff8cf34c42e7e24e8cd48c": null,
             "announcement": "LIMITED TIME ONLY: Subscribe & save 25% on your first filter",
             "url": "shopify://collections/air-purifier-filters"
           }
         }
       },
       "block_order": [
-        "announcement_9XNKY",
+        "announcement_af7Ww",
         "announcement_XMHEL",
         "announcement_KRB8N",
-        "announcement_af7Ww",
         "announcement_A6AHyV",
         "announcement_QLGEH",
         "announcement_QGYni"
