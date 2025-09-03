@@ -1,0 +1,16 @@
+# Ignore all context files in templates
+templates/*context*
+templates/**/*context*
+
+# Ignore specific context file patterns
+templates/product.context.*.json
+templates/page.*.context.*.json
+templates/index.context.*.json
+
+# Ignore context files in sections folder
+sections/*context*
+sections/**/*context*
+
+# Ignore specific header/footer group context files
+sections/header-group.context.*.json
+sections/footer-group.context.*.json 
