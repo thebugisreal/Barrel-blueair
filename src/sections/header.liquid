@@ -62,6 +62,8 @@
     <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs py-sm">
       <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block" js-open-desktop-search>{% render 'icon-search' %}</button>
       {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
+      {% elsif shop.permanent_domain == 'uk-blueair.myshopify.com' %}
+        <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
       {% else %}
       {% if is_transactional == true %}
         {% if customer %}
