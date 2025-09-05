@@ -198,6 +198,15 @@
         </li>
       {% endif %}
       <li class="site-footer__item w-full mt-sm desktop:w-auto desktop:mt-0 desktop:order-first">&copy; Blueair {{  "now" | date: '%Y' }} </li>
+      {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
+        <li class="site-footer__item w-full mt-sm desktop:w-auto desktop:mt-0 desktop:order-first">
+          Distributed in the UK by: Stearn Electric Company Limited T/A Beam Group<br>
+          Registered Address: Votec House, Hambridge Lane, Newbury, RG14 5TN, England<br>
+          Company Registration No: 00201097   VAT Number: GB927202736<br>
+          Phone: +44 (0) 1954 231 616    Email: contact@blueair.co.uk<br>
+          Address: Unit 400, Buckingway Business Park, Swavesey, Cambridge, CB24 4UQ
+      </li>
+      {% endif %}
     </ul>
   </div>
 
