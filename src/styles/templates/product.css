@@ -130,6 +130,28 @@
   @apply hidden;
 }
 
+/* upsell clickable links */
+.upsell-link {
+  @apply text-current
+  no-underline
+  hover:no-underline
+  focus:no-underline;
+}
+
+.upsell-link:hover {
+  @apply text-blue;
+}
+
+.upsell-image-link {
+  @apply block
+  w-full
+  h-full;
+}
+
+.upsell-image-link:hover {
+  @apply opacity-90;
+}
+
 /* subscription */
 .product__subscription[data-selected="true"],
 .product__non-subscription[data-selected="true"] {
