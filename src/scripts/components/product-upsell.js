@@ -211,18 +211,17 @@ class ProductUpsell extends HTMLElement {
   }
 
   _updateUpsellLinks(variantId) {
-    // Get the base product URL from the first upsell link
-    const baseUrl = this.upsellLinks[0]?.href?.split('?')[0] || '';
-    
-    // Update all upsell links to include the variant parameter
+    // Update only the links within this specific upsell component
     this.upsellLinks.forEach(link => {
+      const baseUrl = link.href.split('?')[0];
       if (baseUrl) {
         link.href = `${baseUrl}?variant=${variantId}`;
       }
     });
 
-    // Update all upsell image links to include the variant parameter
+    // Update only the image links within this specific upsell component
     this.upsellImageLinks.forEach(link => {
+      const baseUrl = link.href.split('?')[0];
       if (baseUrl) {
         link.href = `${baseUrl}?variant=${variantId}`;
       }
