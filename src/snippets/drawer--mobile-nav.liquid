@@ -189,11 +189,11 @@
                                   {% render 'room-icon', size: 'medium', width: '18px' %}
                                 {% elsif grandchild_link.title contains 'Large' %}
                                   {% render 'room-icon', size: 'large', width: '18px' %}
-                                {% elsif grandchild_link.title contains 'Extralarge' %}
+                                {% elsif grandchild_link.title contains 'Extra' %}
                                   {% render 'room-icon', size: 'extralarge', width: '18px' %}
                                 {% endif %}
                               {% endif %}
-                              <div class="mobile=nav__title-container flex justify-start items-center">
+                              <div class="mobile-nav__title-container flex justify-start items-center">
                                 <span>{{ grandchild_link.title }}</span>
                                 {% if grandchild_link.object.metafields.seed.megamenu_bubble_text != blank %}
                                   <span class="megamenu__bubble p-xxs rounded-[30px] text-body ml-xxs {% if grandchild_link.object.metafields.seed.megamenu_bubble_color == 'dark blue' %}bg-blue text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'regular blue' %}bg-blue-medium text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'white' %}bg-white text-black{% else %}{% endif %}"> {{ grandchild_link.object.metafields.seed.megamenu_bubble_text }} </span>
