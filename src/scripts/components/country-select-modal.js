@@ -197,62 +197,122 @@ class CountrySelectModal extends HTMLElement {
       }
   
     }
-  
+
+    _getUpdatedPathname(country, language) {
+      let pathname = window.location.pathname == '/' ? '' : window.location.pathname;
+      
+      // First, handle special cases that don't need pattern replacement
+      if (country === 'us') {
+        return pathname; // US doesn't use country/language in URL
+      } else if (country === 'gb') {
+        return pathname; // GB redirects to .co.uk domain
+      } else if (country === 'de' && language === 'de') {
+        // German DE is the root language, remove any existing language/country patterns
+        const countryLanguagePattern = /\/[a-z]{2}-[a-z]{2}\//g;
+        const enPattern = /\/en\//g;
+        const euPattern = /\/en-eu\//g;
+        
+        // Remove all language/country patterns
+        pathname = pathname.replace(countryLanguagePattern, '/');
+        pathname = pathname.replace(enPattern, '/');
+        pathname = pathname.replace(euPattern, '/');
+        
+        // Clean up any double slashes
+        pathname = pathname.replace(/\/+/g, '/');
+        
+        return pathname;
+      }
+      
+      // Regular expression to match country/language patterns like /en-tw/, /en-id/, etc.
+      // This matches patterns like /xx-xx/ where xx are 2-letter codes
+      const countryLanguagePattern = /\/[a-z]{2}-[a-z]{2}\//g;
+      
+      // Check if there's an existing country/language pattern to replace
+      if (countryLanguagePattern.test(pathname)) {
+        // Replace existing pattern with new one
+        if (country === 'de' && language === 'en') {
+          // German EN uses /en pattern
+          pathname = pathname.replace(countryLanguagePattern, '/en/');
+        } else if (country === 'eu') {
+          // EU uses /en-eu pattern
+          pathname = pathname.replace(countryLanguagePattern, '/en-eu/');
+        } else {
+          // Standard pattern
+          pathname = pathname.replace(countryLanguagePattern, `/${language}-${country}/`);
+        }
+      } else {
+        // No existing pattern, add new one
+        if (country === 'de' && language === 'en') {
+          // German EN uses /en pattern
+          pathname = `/en${pathname}`;
+        } else if (country === 'eu') {
+          // EU uses /en-eu pattern
+          pathname = `/en-eu${pathname}`;
+        } else {
+          // Standard pattern
+          pathname = `/${language}-${country}${pathname}`;
+        }
+      }
+      
+      return pathname;
+    }
+
     _submitForm = () => {
       const country = this.selectedCountry.toLowerCase();
       const language = this.selectedLanguage.toLowerCase();
+      const pathname = this._getUpdatedPathname(country, language);
 
       if (this.dataset.domain == '5ef43d-4a.myshopify.com') {
         if (country == 'us') {
-          window.location.href = `https://www.blueair.com/`
+          window.location.href = `https://www.blueair.com${pathname}`
         } else if (country == 'ca'){
-          window.location.href = `https://www.blueair.com/${language}-${country}`
+          window.location.href = `https://www.blueair.com${pathname}`
         } else if (country == 'gb'){
-          window.location.href = `https://blueair.co.uk` 
+          window.location.href = `https://blueair.co.uk${pathname}` 
         } else if (country == 'de' && language == 'de'){
-          window.location.href = 'https://blueair.co/'
+          window.location.href = `https://blueair.co${pathname}`
         } else if (country == 'de' && language == 'en'){
-          window.location.href = 'https://blueair.co/en'
+          window.location.href = `https://blueair.co${pathname}`
         } else if (country == 'eu'){
-          window.location.href = 'https://blueair.co/en-eu'
+          window.location.href = `https://blueair.co${pathname}`
         } else {
-          window.location.href = `https://blueair.co/${language}-${country}`
+          window.location.href = `https://blueair.co${pathname}`
         }
       }
 
       if (this.dataset.domain == 'blueeudev.myshopify.com') {
         if (country == 'us') {
-          window.location.href = `https://www.blueair.com/`
+          window.location.href = `https://www.blueair.com${pathname}`
         } else if (country == 'ca'){
-          window.location.href = `https://www.blueair.com/${language}-${country}`
+          window.location.href = `https://www.blueair.com${pathname}`
         }else if (country == 'gb'){
-          window.location.href = `https://blueair.co.uk` 
+          window.location.href = `https://blueair.co.uk${pathname}` 
         } else if (country == 'de' && language == 'de'){
-          window.location.href = 'https://blueair.co/'
+          window.location.href = `https://blueair.co${pathname}`
         } else if (country == 'de' && language == 'en'){
-          window.location.href = 'https://blueair.co/en'
+          window.location.href = `https://blueair.co${pathname}`
         } else if (country == 'eu'){
-          window.location.href = 'https://blueair.co/en-eu'
+          window.location.href = `https://blueair.co${pathname}`
         } else {
-          window.location.href = `https://blueair.co/${language}-${country}`
+          window.location.href = `https://blueair.co${pathname}`
         }
       }
 
       if (this.dataset.domain == 'uk-blueair.myshopify.com') {
         if (country == 'us') {
-          window.location.href = `https://www.blueair.com/`
+          window.location.href = `https://www.blueair.com${pathname}`
         } else if (country == 'ca'){
-          window.location.href = `https://www.blueair.com/${language}-${country}`
+          window.location.href = `https://www.blueair.com${pathname}`
         } else if (country == 'gb'){
-          window.location.href = `https://blueair.co.uk`
+          window.location.href = `https://blueair.co.uk${pathname}`
         } else if (country == 'de' && language == 'de'){
-          window.location.href = 'https://blueair.co/'
+          window.location.href = `https://blueair.co${pathname}`
         } else if (country == 'de' && language == 'en'){
-          window.location.href = 'https://blueair.co/en'
+          window.location.href = `https://blueair.co${pathname}`
         }  else if (country == 'eu'){
-          window.location.href = 'https://blueair.co/en-eu'
+          window.location.href = `https://blueair.co${pathname}`
         } else {
-          window.location.href = `https://blueair.co/${language}-${country}`
+          window.location.href = `https://blueair.co${pathname}`
         }
       } 
     }
