@@ -32,9 +32,11 @@
         
         {% if upsell_heading != blank %}
           <div class="product-upsell__title p3 tabletl:text-18 mb-xxxs gap-xxs tabletl:gap-xs flex tabletl:hidden" js-upsell-title data-base-title="{{ upsell_heading | strip }}">
-            <span class="title-base">{{ upsell_heading | strip }}</span>
-            {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %}
-            <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+            <a href="{{ upsell_product.url }}?variant={{ upsell_current_variant.id }}" class="upsell-link flex items-center gap-xxs tabletl:gap-xs">
+              <span class="title-base">{{ upsell_heading | strip }}</span>
+              {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %}
+              <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+            </a>
           </div>
         {% endif %}
       {% endif %}
@@ -43,11 +45,13 @@
           {% assign prefilter_image = upsell_image %}
           {% if prefilter_image != blank %}
             <div class="product-upsell__variant-image max-w-[80px] tabletl:max-w-[100px] flex flex-col">
-              {% if upsell_current_variant.image != blank %}
-                {% render 'lazy-image' image: upsell_current_variant.image, img_classes: 'bg-blue-light' %}
-              {% else %}
-                {% render 'lazy-image' image: prefilter_image, img_classes: 'bg-blue-light' %}
-              {% endif %}
+              <a href="{{ upsell_product.url }}?variant={{ upsell_current_variant.id }}" class="upsell-image-link">
+                {% if upsell_current_variant.image != blank %}
+                  {% render 'lazy-image' image: upsell_current_variant.image, img_classes: 'bg-blue-light' %}
+                {% else %}
+                  {% render 'lazy-image' image: prefilter_image, img_classes: 'bg-blue-light' %}
+                {% endif %}
+              </a>
             </div>
           {% endif %}
           <div class="flex flex-col m-auto ml-sm">
@@ -63,9 +67,11 @@
         
               {% if upsell_heading != blank %}
                 <div class="product-upsell__title p3 tabletl:text-18 mb-xxxs gap-xxs tabletl:gap-xs hidden tabletl:flex" js-upsell-title data-base-title="{{ upsell_heading | strip }}">
-                  <span class="title-base">{{ upsell_heading | strip }}</span>
-                  {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %} 
+                  <a href="{{ upsell_product.url }}?variant={{ upsell_current_variant.id }}" class="upsell-link flex items-center gap-xxs tabletl:gap-xs">
+                    <span class="title-base">{{ upsell_heading | strip }}</span>
+                    {% if color_option != false %} <span class="p4 price-span">|</span> <span class="p4 tabletl:text-18 italic color-name">{{ upsell_current_variant.options[color_option] }}</span>{% endif %} 
                     <span class="p4 tabletl:text-18 price-display" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+                  </a>
                 </div>
               {% endif %}
               {% if upsell_short_desc != blank %}

@@ -12,7 +12,9 @@ class ProductUpsell extends HTMLElement {
       mainImage: '.product-upsell__variant-image, [class*="product-upsell__variant-image"]',
       cartDrawer: '#CartDrawer',
       cart: 'cart-drawer',
-      error: '[js-product-upsell-error]'
+      error: '[js-product-upsell-error]',
+      upsellLink: '.upsell-link',
+      upsellImageLink: '.upsell-image-link'
     }
 
     this._klaviyoBis = {
@@ -37,6 +39,8 @@ class ProductUpsell extends HTMLElement {
     this.cartDrawer = document.querySelector(this._selectors.cartDrawer);
     this.cart = document.querySelector(this._selectors.cart);
     this.error = this.querySelector(this._selectors.error);
+    this.upsellLinks = this.querySelectorAll(this._selectors.upsellLink);
+    this.upsellImageLinks = this.querySelectorAll(this._selectors.upsellImageLink);
     
     this._initBis();
     this._setListeners();
@@ -201,6 +205,27 @@ class ProductUpsell extends HTMLElement {
         price.textContent = target.dataset.price;
       });
     }
+
+    // Update upsell links to point to the selected variant
+    this._updateUpsellLinks(target.dataset.variantId);
+  }
+
+  _updateUpsellLinks(variantId) {
+    // Update only the links within this specific upsell component
+    this.upsellLinks.forEach(link => {
+      const baseUrl = link.href.split('?')[0];
+      if (baseUrl) {
+        link.href = `${baseUrl}?variant=${variantId}`;
+      }
+    });
+
+    // Update only the image links within this specific upsell component
+    this.upsellImageLinks.forEach(link => {
+      const baseUrl = link.href.split('?')[0];
+      if (baseUrl) {
+        link.href = `${baseUrl}?variant=${variantId}`;
+      }
+    });
   }
 
   _openBisModal(evt) {
