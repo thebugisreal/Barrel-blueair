@@ -2,7 +2,7 @@ class ProductUpsell extends HTMLElement {
   constructor() {
     super();
 
-    this.  _selectors = {
+    this._selectors = {
       variantBtn: '[js-product-upsell-variant]',
       atcBtn: '[js-product-upsell-atc]',
       addedBtn: '[js-product-upsell-added]',
