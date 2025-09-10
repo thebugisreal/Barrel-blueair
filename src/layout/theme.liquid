@@ -139,11 +139,19 @@
           let showModal = false;
 
           if ((country === 'US' || country === 'CA') && currentUrl !== 'blueair.com') {
+            if (sessionStorage.getItem('isInitialVisit')) {
+              return; // Don't show modal for returning visitors
+            }
             showModal = true;
+            sessionStorage.setItem('isInitialVisit', 'true');
           } else if (country === 'GB' && currentUrl !== 'blueair.co.uk') {
             showModal = true;
           } else if (!['US', 'CA', 'GB'].includes(country) && currentUrl !== 'blueair.co') {
+            if (sessionStorage.getItem('isInitialVisit')) {
+              return; // Don't show modal for returning visitors
+            }
             showModal = true;
+            sessionStorage.setItem('isInitialVisit', 'true');
           } else if (currentUrl === 'blueair.co') {
             if (sessionStorage.getItem('isInitialVisit')) {
               return;
