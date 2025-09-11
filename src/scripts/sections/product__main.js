@@ -794,6 +794,7 @@ class ProductMain extends HTMLElement {
         this.cart.getSectionsToRender().map((section) => section.id)
       );
       formData.append('sections_url', window.location.pathname);
+      formData.append('properties[_compare_at_price]', this.currentPriceCompareAt);
       this.cart.setActiveElement(document.activeElement);
     }
     config.body = formData;
