@@ -50,6 +50,17 @@
         // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
       </script>
       <!-- End Affirm -->
+      <!-- Amazon Adversting Script -->
+      <script>
+        !function(w,d,s,t,a){if(w.amzn)return;w.amzn=a=function(){w.amzn.q.push([arguments,(new Date).getTime()])};a.q=[];a.version="0.0";s=d.createElement("script");s.src="https://c.amazon-adsystem.com/aat/amzn.js";s.id="amzn-pixel";s.async=true;t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t)}(window,document);
+        amzn("setRegion", "NA");
+        amzn("addTag", "7bfb4402-e53c-4bc2-9fe6-97c3c32b6a93");
+
+        {% if template.name == 'index' %}
+          amzn("trackEvent", "Homepage");
+        {% endif %}
+      </script>
+       <!-- End Amazon Adversting Script -->
     {% endif %}
     {{ content_for_header }}
   
