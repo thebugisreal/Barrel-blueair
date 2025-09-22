@@ -29,7 +29,7 @@
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-xxl",
             "padding_bottom_desktop": "desktop:pb-xl",
-            "max_width_desktop": "95ch",
+            "max_width_desktop": "135ch",
             "richtext": "<p>At Blueair, we’ve always been committed to improving the air we breathe, and now we’re expanding that mission to the oceans we rely on. We’re excited to announce our partnership with 4ocean, a leading force in the global effort to tackle the ocean plastic crisis. Together, we’re proud to launch the Pull a Pound campaign — an initiative that will remove one pound of ocean plastic & trash for every new filter subscription purchased through our website.</p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"

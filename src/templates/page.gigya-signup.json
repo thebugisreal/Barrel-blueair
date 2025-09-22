@@ -38,7 +38,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify://pages/contact-us",
+        "cta_url": "shopify:\/\/pages\/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--white-rounded"
       }

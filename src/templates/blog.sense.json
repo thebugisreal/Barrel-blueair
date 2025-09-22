@@ -21,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -38,8 +38,8 @@
           "settings": {
             "link_anchor_id": "how-to-videos",
             "title": "How To Use Videos",
-            "image": "shopify:\/\/shop_images\/account-warranty.png",
-            "svg_html": "<svg class=\"icon icon--video\" viewbox=\"0 0 128 128\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"M64,32.29c.23,0,22.92,0,37.9,1.08l.66.06c2,.18,4.16.39,6.28,2.58l0,0,0,0c1,1,2.14,4.54,2.53,7.07a156,156,0,0,1,1,16.71v8.24a156.82,156.82,0,0,1-1,16.72c-.37,2.47-1.54,6.06-2.52,7l0,0,0,0c-2.11,2.18-4.32,2.39-6.27,2.58l-.68.07c-14.72,1-36.89,1.1-37.89,1.1-1.15,0-28-.27-36.57-1-.51-.08-1-.15-1.58-.21-2.28-.27-4.87-.58-6.73-2.51l0,0,0,0c-1-1-2.14-4.53-2.52-7.05a156,156,0,0,1-1-16.71V59.86a156.79,156.79,0,0,1,1-16.71c.39-2.55,1.55-6.09,2.53-7.07l0,0,0,0c2.12-2.19,4.33-2.39,6.28-2.58l.66-.06c15-1.07,37.67-1.08,37.89-1.08H64m0-6.5H64s-23.09,0-38.48,1.1c-2.15.25-6.83.27-11,4.59-3.29,3.3-4.37,10.79-4.37,10.79A162.25,162.25,0,0,0,9,59.86V68.1a162.19,162.19,0,0,0,1.1,17.59s1.07,7.49,4.37,10.78c4.19,4.32,9.68,4.19,12.13,4.65,8.8.83,37.4,1.09,37.4,1.09s23.11,0,38.51-1.13c2.15-.25,6.84-.28,11-4.6,3.29-3.29,4.37-10.78,4.37-10.78A162.26,162.26,0,0,0,119,68.11V59.87a162.27,162.27,0,0,0-1.1-17.59s-1.07-7.49-4.37-10.79c-4.18-4.32-8.87-4.35-11-4.59C87.11,25.79,64,25.79,64,25.79Z\"><\/path><polygon points=\"54.13 47.61 54.13 80.39 82.12 64 54.13 47.61\"><\/polygon><\/svg>"
+            "image": "shopify://shop_images/account-warranty.png",
+            "svg_html": "<svg class=\"icon icon--video\" viewbox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64,32.29c.23,0,22.92,0,37.9,1.08l.66.06c2,.18,4.16.39,6.28,2.58l0,0,0,0c1,1,2.14,4.54,2.53,7.07a156,156,0,0,1,1,16.71v8.24a156.82,156.82,0,0,1-1,16.72c-.37,2.47-1.54,6.06-2.52,7l0,0,0,0c-2.11,2.18-4.32,2.39-6.27,2.58l-.68.07c-14.72,1-36.89,1.1-37.89,1.1-1.15,0-28-.27-36.57-1-.51-.08-1-.15-1.58-.21-2.28-.27-4.87-.58-6.73-2.51l0,0,0,0c-1-1-2.14-4.53-2.52-7.05a156,156,0,0,1-1-16.71V59.86a156.79,156.79,0,0,1,1-16.71c.39-2.55,1.55-6.09,2.53-7.07l0,0,0,0c2.12-2.19,4.33-2.39,6.28-2.58l.66-.06c15-1.07,37.67-1.08,37.89-1.08H64m0-6.5H64s-23.09,0-38.48,1.1c-2.15.25-6.83.27-11,4.59-3.29,3.3-4.37,10.79-4.37,10.79A162.25,162.25,0,0,0,9,59.86V68.1a162.19,162.19,0,0,0,1.1,17.59s1.07,7.49,4.37,10.78c4.19,4.32,9.68,4.19,12.13,4.65,8.8.83,37.4,1.09,37.4,1.09s23.11,0,38.51-1.13c2.15-.25,6.84-.28,11-4.6,3.29-3.29,4.37-10.78,4.37-10.78A162.26,162.26,0,0,0,119,68.11V59.87a162.27,162.27,0,0,0-1.1-17.59s-1.07-7.49-4.37-10.79c-4.18-4.32-8.87-4.35-11-4.59C87.11,25.79,64,25.79,64,25.79Z\"></path><polygon points=\"54.13 47.61 54.13 80.39 82.12 64 54.13 47.61\"></polygon></svg>"
           }
         },
         "link_KTJaHi": {
@@ -47,7 +47,7 @@
           "settings": {
             "link_anchor_id": "troubleshooting",
             "title": "Troubleshooting",
-            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
+            "image": "shopify://shop_images/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -56,7 +56,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
+            "image": "shopify://shop_images/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -65,7 +65,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify:\/\/shop_images\/Group_48097729.svg",
+            "image": "shopify://shop_images/Group_48097729.svg",
             "svg_html": ""
           }
         }
@@ -163,11 +163,11 @@
           "type": "block",
           "settings": {
             "title": "Sense+",
-            "image": "shopify:\/\/shop_images\/Sense_black.png",
+            "image": "shopify://shop_images/Sense_black.png",
             "video_link_text": "How it works",
-            "video_link_url": "https:\/\/vimeo.com\/706885432",
+            "video_link_url": "https://vimeo.com/706885432",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/sense-user-manual-12.23.2024.pdf?v=1742834339",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/sense-user-manual-12.23.2024.pdf?v=1742834339",
             "manual_2_link_text": "",
             "manual_2_link_url": "",
             "manual_3_link_text": "",
@@ -175,7 +175,7 @@
             "manual_4_link_text": "",
             "manual_4_link_url": "",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/sense"
+            "product_link_url": "shopify://collections/sense"
           }
         }
       },
@@ -329,6 +329,13 @@
             "topic": "pet-air"
           }
         },
+        "topic_PVjzdY": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "mini-restful"
+          }
+        },
         "topic_H8czMm": {
           "type": "topic",
           "settings": {
@@ -375,6 +382,7 @@
         "topic_DedYi7",
         "topic_7ijgjd",
         "topic_R9UrW6",
+        "topic_PVjzdY",
         "topic_H8czMm",
         "topic_nKazPq",
         "topic_HADU7f",
@@ -415,7 +423,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }

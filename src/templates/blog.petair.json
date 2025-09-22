@@ -21,8 +21,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify://shop_images/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "",
@@ -38,7 +38,7 @@
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify:\/\/shop_images\/Group_48097731.svg",
+            "image": "shopify://shop_images/Group_48097731.svg",
             "svg_html": ""
           }
         },
@@ -47,7 +47,7 @@
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
-            "image": "shopify:\/\/shop_images\/Group_48097732.svg",
+            "image": "shopify://shop_images/Group_48097732.svg",
             "svg_html": ""
           }
         },
@@ -56,7 +56,7 @@
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
-            "image": "shopify:\/\/shop_images\/Group_48097728.svg",
+            "image": "shopify://shop_images/Group_48097728.svg",
             "svg_html": ""
           }
         },
@@ -65,7 +65,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify:\/\/shop_images\/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
+            "image": "shopify://shop_images/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
             "svg_html": ""
           }
         }
@@ -185,11 +185,11 @@
           "type": "block",
           "settings": {
             "title": "PetAir Pro",
-            "image": "shopify:\/\/shop_images\/PetAir_Pro_plp_card.png",
+            "image": "shopify://shop_images/PetAir_Pro_plp_card.png",
             "video_link_text": "How it works",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0881\/6030\/5438\/files\/PetAir_P3i_User_Manual_EN_FR_6-19-25.pdf?v=1750352120",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/PetAir_P3i_User_Manual_EN_FR_6-19-25.pdf?v=1750352120",
             "manual_2_link_text": "",
             "manual_2_link_url": "",
             "manual_3_link_text": "",
@@ -197,7 +197,7 @@
             "manual_4_link_text": "",
             "manual_4_link_url": "",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify:\/\/collections\/petair-pro-filters-accessories"
+            "product_link_url": "shopify://collections/petair-pro-filters-accessories"
           }
         }
       },
@@ -351,6 +351,13 @@
             "topic": "pet-air"
           }
         },
+        "topic_k38H6X": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "mini-restful"
+          }
+        },
         "topic_H8czMm": {
           "type": "topic",
           "settings": {
@@ -397,6 +404,7 @@
         "topic_DedYi7",
         "topic_7ijgjd",
         "topic_CWjYMR",
+        "topic_k38H6X",
         "topic_H8czMm",
         "topic_nKazPq",
         "topic_HADU7f",
@@ -437,7 +445,7 @@
         "color": "bg-blue text-white non-color-revert",
         "title": "Not finding what you need? We can help.",
         "title_style": "h4",
-        "cta_url": "shopify:\/\/pages\/contact-us",
+        "cta_url": "shopify://pages/contact-us",
         "cta_text": "Contact Support",
         "cta_style": "btn btn--transparent-rounded"
       }
