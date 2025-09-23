@@ -199,6 +199,23 @@ class ProductMain extends HTMLElement {
     return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
   }
 
+  _deselectAllSubscriptions() {
+    // Deselect main subscription
+    this.subscription.dataset.selected = 'false';
+    this._toggleFilterSubscriptionFormInputs(false);
+    
+    // Deselect additional subscription
+    const additionalSubscription = this.querySelector('[js-additional-subscription]');
+    if (additionalSubscription) {
+      additionalSubscription.dataset.selected = 'false';
+      const additionalFormInputs = additionalSubscription.querySelectorAll('[js-filter-subscription-form-input]');
+      additionalFormInputs.forEach(input => input.setAttribute('disabled', ''));
+    }
+    
+    // Deselect non-subscription
+    this.nonSubscriptionToggle.dataset.selected = 'false';
+  }
+
   _handleSubscription() {
     if (!this.subscription) {
       return;
@@ -210,7 +227,7 @@ class ProductMain extends HTMLElement {
     this.subscriptionPrice = this.subscription.querySelector(this._selectors.subscriptionPrice);
     this.filterSubscriptionVariants = this.subscription.querySelectorAll(this._selectors.filterSubscriptionVariant);
     this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
-    this.filterSubscriptionMasterFrequencies = this.subscription.querySelectorAll(this._selectors.filterSubscriptionMasterFrequency);
+    this.filterSubscriptionMasterFrequencies = this.querySelectorAll(this._selectors.filterSubscriptionMasterFrequency);
     this.filterSubscriptionFormInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionFormInput);
     this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
@@ -262,39 +279,67 @@ class ProductMain extends HTMLElement {
         return;
       }
 
+      this._deselectAllSubscriptions();
       this.subscription.dataset.selected = 'true';
-      this.nonSubscriptionToggle.dataset.selected = 'false';
 
-      if (this.subscriptionSelectedOnLoad) {
-        if (this.selectedFilterSubscriptionVariant) {
-          if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
-            this._toggleFilterSubscriptionFormInputs(true);
-          }
-          this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
-        } else if (this.subscriptionType == '2in1_purify_humidify') {
-          if (this.purifyHumidifySubscriptionAvailable) {
-            this._toggleFilterSubscriptionFormInputs(true);
-          }
-          this._updateAtcStateOnFilterChange(false);
+      // Always initialize the subscription when opened
+      if (this.selectedFilterSubscriptionVariant) {
+        if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
+          this._toggleFilterSubscriptionFormInputs(true);
+        }
+        this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
+      } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
+        this._toggleFilterSubscriptionFormInputs(true);
+        this._updateAtcStateOnFilterChange(false);
+        // Select the first master frequency option
+        const firstMasterFrequency = this.filterSubscriptionMasterFrequencies[0];
+        if (firstMasterFrequency) {
+          firstMasterFrequency.click();
         }
       } else {
         const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
         if (filterSubscriptionVariantToBeSelectedOnLoad) {
           filterSubscriptionVariantToBeSelectedOnLoad.click();
-        } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
-          this._toggleFilterSubscriptionFormInputs(true);
-          this._updateAtcStateOnFilterChange(false);
-          // Select the first master frequency option
-          const firstMasterFrequency = this.filterSubscriptionMasterFrequencies[0];
-          if (firstMasterFrequency) {
-            firstMasterFrequency.click();
-          }
         }
-        this.subscriptionSelectedOnLoad = true;
       }
 
       this._updateAtcSubscriptionPrice();
     });
+
+    // Handle additional subscription toggle
+    const additionalSubscriptionToggle = this.querySelector('[js-additional-subscription-toggle]');
+    if (additionalSubscriptionToggle) {
+      additionalSubscriptionToggle.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        
+        const additionalSubscription = evt.currentTarget.closest('[js-additional-subscription]');
+        if (additionalSubscription.dataset.selected == 'true') {
+          return;
+        }
+
+        this._deselectAllSubscriptions();
+        additionalSubscription.dataset.selected = 'true';
+
+        // Enable form inputs for additional subscription
+        const additionalFormInputs = additionalSubscription.querySelectorAll('[js-filter-subscription-form-input]');
+        additionalFormInputs.forEach(input => input.removeAttribute('disabled'));
+
+        // Always initialize the additional subscription when opened
+        if (additionalSubscription.dataset.type == '2in1_purify_humidify') {
+          // For 2in1_purify_humidify, select first master frequency
+          const firstMasterFrequency = additionalSubscription.querySelector('[js-filter-subscription-master-frequency]');
+          if (firstMasterFrequency) {
+            firstMasterFrequency.click();
+          }
+        } else {
+          // For other types, try to select the first available variant
+          const firstVariant = additionalSubscription.querySelector('[js-fitler-subscription-variant][current-on-load]');
+          if (firstVariant) {
+            firstVariant.click();
+          }
+        }
+      });
+    }
 
     this.nonSubscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
@@ -303,8 +348,8 @@ class ProductMain extends HTMLElement {
         return;
       }
 
+      this._deselectAllSubscriptions();
       evt.currentTarget.dataset.selected = 'true';
-      this.subscription.dataset.selected = 'false';
 
       this._toggleFilterSubscriptionFormInputs(false);
       this._updateAtcStateOnFilterChange(this.nonSubscriptionToggle);
@@ -558,8 +603,12 @@ class ProductMain extends HTMLElement {
     const selectedFrequency = triggerTarget.dataset.frequency;
     const frequency = parseInt(selectedFrequency.toLowerCase().replace('months', '').trim());
 
+    // Find the subscription container that contains this master frequency button
+    const subscriptionContainer = triggerTarget.closest('[js-subscription]');
+    const sellingPlansGroups = subscriptionContainer.querySelectorAll('[js-filter-subscription-selling-plans-group]');
+    
     // Update all filter subscription inputs with the selected frequency
-    this.filterSubscriptionSellingPlansGroups.forEach((group, index) => {
+    sellingPlansGroups.forEach((group, index) => {
       const variantId = group.dataset.variant;
       
       // Find the selling plan that matches the selected frequency for this variant
@@ -574,45 +623,46 @@ class ProductMain extends HTMLElement {
         }
       }
 
-      if (targetSellingPlan) {
-        // Update the form inputs for this filter product
-        const filterSubscriptionSelectedVariantInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
-        const filterSubscriptionSelectedVariantSellingPlanInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
-        
-        if (filterSubscriptionSelectedVariantInputTarget) {
-          filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
-        }
-        if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
-          filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', targetSellingPlan.dataset.sellingPlanId);
-        }
+        if (targetSellingPlan) {
+          // Update the form inputs for this filter product
+          const filterSubscriptionSelectedVariantInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
+          const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
+          
+          if (filterSubscriptionSelectedVariantInputTarget) {
+            filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
+          }
+          if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
+            filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', targetSellingPlan.dataset.sellingPlanId);
+          }
 
-        const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${index + 1}][properties[_Frequency]]"]`);
-        const filterSubscriptionFrequencyIntegerInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${index + 1}][properties[_frequency_integer]]"]`);
-        
-        if (filterSubscriptionFrequencyInputTarget) {
-          filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
-        }
-        if (filterSubscriptionFrequencyIntegerInputTarget) {
-          filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
-        }
+          const filterSubscriptionFrequencyInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${index + 1}][properties[_Frequency]]"]`);
+          const filterSubscriptionFrequencyIntegerInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${index + 1}][properties[_frequency_integer]]"]`);
+          
+          if (filterSubscriptionFrequencyInputTarget) {
+            filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
+          }
+          if (filterSubscriptionFrequencyIntegerInputTarget) {
+            filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
+          }
 
-        const filterSubscriptionFirstOrderDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${index + 1}][properties[First Order Date]]"]`);
-        const filterSubscriptionOgDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${index + 1}][properties[_og_first_order_place_date]]"]`);
-        
-        if (filterSubscriptionFirstOrderDateInputTarget && filterSubscriptionOgDateInputTarget) {
-          const date = new Date();
-          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
-          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
-          filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
-          filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
+          const filterSubscriptionFirstOrderDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${index + 1}][properties[First Order Date]]"]`);
+          const filterSubscriptionOgDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${index + 1}][properties[_og_first_order_place_date]]"]`);
+          
+          if (filterSubscriptionFirstOrderDateInputTarget && filterSubscriptionOgDateInputTarget) {
+            const date = new Date();
+            const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+            const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+            filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
+            filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
+          }
         }
-      }
     });
 
-    // Update temp ID for all items
-    if (this.filterSubscriptionTempIdInputs.length > 0) {
+    // Update temp ID for all items in this subscription
+    const tempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input]');
+    if (tempIdInputs.length > 0) {
       const tempId = Date.now();
-      this.filterSubscriptionTempIdInputs.forEach((input) => {
+      tempIdInputs.forEach((input) => {
         input.setAttribute('value', `subscription${tempId}`);
       });
     }
