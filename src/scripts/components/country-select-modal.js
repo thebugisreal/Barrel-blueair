@@ -198,65 +198,6 @@ class CountrySelectModal extends HTMLElement {
   
     }
 
-    _getUpdatedPathname(country, language) {
-      let pathname = window.location.pathname == '/' ? '' : window.location.pathname;
-      
-      // First, handle special cases that don't need pattern replacement
-      if (country === 'us') {
-        return pathname; // US doesn't use country/language in URL
-      } else if (country === 'gb') {
-        return pathname; // GB redirects to .co.uk domain
-      } else if (country === 'de' && language === 'de') {
-        // German DE is the root language, remove any existing language/country patterns
-        const countryLanguagePattern = /\/[a-z]{2}-[a-z]{2}\//g;
-        const enPattern = /\/en\//g;
-        const euPattern = /\/en-eu\//g;
-        
-        // Remove all language/country patterns
-        pathname = pathname.replace(countryLanguagePattern, '/');
-        pathname = pathname.replace(enPattern, '/');
-        pathname = pathname.replace(euPattern, '/');
-        
-        // Clean up any double slashes
-        pathname = pathname.replace(/\/+/g, '/');
-        
-        return pathname;
-      }
-      
-      // Regular expression to match country/language patterns like /en-tw/, /en-id/, etc.
-      // This matches patterns like /xx-xx/ where xx are 2-letter codes
-      const countryLanguagePattern = /\/[a-z]{2}-[a-z]{2}\//g;
-      
-      // Check if there's an existing country/language pattern to replace
-      if (countryLanguagePattern.test(pathname)) {
-        // Replace existing pattern with new one
-        if (country === 'de' && language === 'en') {
-          // German EN uses /en pattern
-          pathname = pathname.replace(countryLanguagePattern, '/en/');
-        } else if (country === 'eu') {
-          // EU uses /en-eu pattern
-          pathname = pathname.replace(countryLanguagePattern, '/en-eu/');
-        } else {
-          // Standard pattern
-          pathname = pathname.replace(countryLanguagePattern, `/${language}-${country}/`);
-        }
-      } else {
-        // No existing pattern, add new one
-        if (country === 'de' && language === 'en') {
-          // German EN uses /en pattern
-          pathname = `/en${pathname}`;
-        } else if (country === 'eu') {
-          // EU uses /en-eu pattern
-          pathname = `/en-eu${pathname}`;
-        } else {
-          // Standard pattern
-          pathname = `/${language}-${country}${pathname}`;
-        }
-      }
-      
-      return pathname;
-    }
-
     _cleanPathname = () => {
       const pathURL = window.pathURL;
       
