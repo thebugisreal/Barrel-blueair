@@ -118,7 +118,39 @@
           Customize Your Subscription
         </div>
         <div class="filter-subscriptions">
-          {% unless pdp_type == '2in1_purify_humidify' %}
+          {% if pdp_type == '2in1_purify_humidify' %}
+            <div class="p6 font-700 mb-xxxs mt-sm">Choose Shipping Frequency</div>
+            <div class="filter-subscriptions__master-frequency-selector">
+              {% comment %} Use the exact same frequency options logic as individual selectors {% endcomment %}
+              {% for filter_product in filter_subscriptions limit: 1 %}
+                {% assign first_filter_product = filter_product %}
+                {% assign first_filter_variant = filter_product.variants[0] %}
+                {% if filter_product.variants[1].title contains 'subscription' or filter_product.variants[1].title contains 'Subscription' %}
+                  {% assign first_filter_variant = filter_product.variants[1] %}
+                {% endif %}
+              {% endfor %}
+              <div class="filter-subscriptions__master-frequency-buttons flex flex-wrap gap-xxs">
+                {% if subscription.frequency_options_override != blank or first_filter_product.metafields.seed.subscription_frequency_options != blank %}
+                  {% if subscription.frequency_options_override != blank %}
+                    {% assign frequency_options = subscription.frequency_options_override.value %}
+                  {% else %}
+                    {% assign frequency_options = first_filter_product.metafields.seed.subscription_frequency_options.value %}
+                  {% endif %}
+                  {% for frequency_option in frequency_options %}
+                    <button type="button" data-selected="false" data-frequency="{{ frequency_option }}" class="filter-subscription__master-frequency flex-1 rounded-[2px] border border-gray p-xxs p-3 font-500 text-blue" js-filter-subscription-master-frequency>
+                      {{ frequency_option }}
+                    </button>
+                  {% endfor %}
+                {% else %}
+                  {% for selling_plan_allocation in first_filter_variant.selling_plan_allocations %}
+                    <button type="button" data-selected="false" data-frequency="{{ selling_plan_allocation.selling_plan.options[0].value }}" class="filter-subscription__master-frequency flex-1 rounded-[2px] border border-gray p-xxs p-3 font-500 text-blue" js-filter-subscription-master-frequency>
+                      {{ selling_plan_allocation.selling_plan.options[0].value }}
+                    </button>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
             <div class="p6 font-700 mb-xxxs mt-sm {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">Select Filter</div>
             <div class="filter-subscriptions__filters flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">
               {% assign filter_count = 0 %}
@@ -166,7 +198,7 @@
                 {% endif %}
               {% endfor %}
             </div>
-          {% endunless %}
+          {% endif %}
           {% for filter_product in filter_subscriptions %}
             {% assign filter_variant = filter_product.variants[0] %}
             {% if pdp_type != 'filter' %}
@@ -175,7 +207,7 @@
               {% endif %}
             {% endif %}
             {% if filter_variant.selling_plan_allocations.size > 0 %}
-              <div class="filter-subscription__selling-plans-group {% if pdp_type != '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
+              <div class="filter-subscription__selling-plans-group {% if pdp_type == '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
                 {% if filter_product.metafields.seed.filter_subscription_description != blank and pdp_type != '2in1_purify_humidify' %}
                   <div class="filter-subscription__description p4 mt-xxs">
                     {{ filter_product.metafields.seed.filter_subscription_description }}

@@ -23,6 +23,7 @@ class ProductMain extends HTMLElement {
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
+      filterSubscriptionMasterFrequency: '[js-filter-subscription-master-frequency]',
       filterSubscriptionFormInput: '[js-filter-subscription-form-input]',
       filterSubscriptionSelectedVariantInput: '[js-filter-subscription-selected-variant-input]',
       filterSubscriptionSelectedVariantSellingPlanInput: '[js-filter-subscription-selected-variant-selling-plan-input]',
@@ -209,6 +210,7 @@ class ProductMain extends HTMLElement {
     this.subscriptionPrice = this.subscription.querySelector(this._selectors.subscriptionPrice);
     this.filterSubscriptionVariants = this.subscription.querySelectorAll(this._selectors.filterSubscriptionVariant);
     this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
+    this.filterSubscriptionMasterFrequencies = this.subscription.querySelectorAll(this._selectors.filterSubscriptionMasterFrequency);
     this.filterSubscriptionFormInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionFormInput);
     this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
@@ -249,6 +251,10 @@ class ProductMain extends HTMLElement {
       sellingPlan.addEventListener('click' , this._filterSubscriptionSellingPlanOnClick);
     });
     
+    this.filterSubscriptionMasterFrequencies.forEach((masterFrequency) => {
+      masterFrequency.addEventListener('click', this._filterSubscriptionMasterFrequencyOnClick);
+    });
+    
     this.subscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
 
@@ -278,9 +284,11 @@ class ProductMain extends HTMLElement {
         } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
           this._toggleFilterSubscriptionFormInputs(true);
           this._updateAtcStateOnFilterChange(false);
-          this.filterSubscriptionSellingPlansGroups.forEach((group) => {
-            group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
-          });
+          // Select the first master frequency option
+          const firstMasterFrequency = this.filterSubscriptionMasterFrequencies[0];
+          if (firstMasterFrequency) {
+            firstMasterFrequency.click();
+          }
         }
         this.subscriptionSelectedOnLoad = true;
       }
@@ -307,9 +315,11 @@ class ProductMain extends HTMLElement {
       if (filterSubscriptionVariantToBeSelectedOnLoad) {
         filterSubscriptionVariantToBeSelectedOnLoad.click();
       } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
-        this.filterSubscriptionSellingPlansGroups.forEach((group) => {
-          group.querySelector(this._selectors.filterSubscriptionSellingPlan)?.click();
-        });
+        // Select the first master frequency option
+        const firstMasterFrequency = this.filterSubscriptionMasterFrequencies[0];
+        if (firstMasterFrequency) {
+          firstMasterFrequency.click();
+        }
       }
     }
 
@@ -523,6 +533,83 @@ class ProductMain extends HTMLElement {
       }
     }
 
+    if (this.filterSubscriptionTempIdInputs.length > 0) {
+      const tempId = Date.now();
+      this.filterSubscriptionTempIdInputs.forEach((input) => {
+        input.setAttribute('value', `subscription${tempId}`);
+      });
+    }
+  }
+
+  _filterSubscriptionMasterFrequencyOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt.currentTarget;
+    if (triggerTarget.dataset.selected == 'true') {
+      return;
+    }
+
+    // Deselect all other master frequency options
+    this.filterSubscriptionMasterFrequencies.forEach((frequency) => {
+      frequency.dataset.selected = 'false';
+    });
+    triggerTarget.dataset.selected = 'true';
+
+    const selectedFrequency = triggerTarget.dataset.frequency;
+    const frequency = parseInt(selectedFrequency.toLowerCase().replace('months', '').trim());
+
+    // Update all filter subscription inputs with the selected frequency
+    this.filterSubscriptionSellingPlansGroups.forEach((group, index) => {
+      const variantId = group.dataset.variant;
+      
+      // Find the selling plan that matches the selected frequency for this variant
+      const sellingPlanButtons = group.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
+      let targetSellingPlan = null;
+      
+      for (const button of sellingPlanButtons) {
+        const buttonFrequency = parseInt(button.textContent.toLowerCase().replace('months', '').trim());
+        if (buttonFrequency === frequency) {
+          targetSellingPlan = button;
+          break;
+        }
+      }
+
+      if (targetSellingPlan) {
+        // Update the form inputs for this filter product
+        const filterSubscriptionSelectedVariantInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
+        const filterSubscriptionSelectedVariantSellingPlanInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
+        
+        if (filterSubscriptionSelectedVariantInputTarget) {
+          filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
+        }
+        if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
+          filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', targetSellingPlan.dataset.sellingPlanId);
+        }
+
+        const filterSubscriptionFrequencyInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${index + 1}][properties[_Frequency]]"]`);
+        const filterSubscriptionFrequencyIntegerInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${index + 1}][properties[_frequency_integer]]"]`);
+        
+        if (filterSubscriptionFrequencyInputTarget) {
+          filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
+        }
+        if (filterSubscriptionFrequencyIntegerInputTarget) {
+          filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
+        }
+
+        const filterSubscriptionFirstOrderDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${index + 1}][properties[First Order Date]]"]`);
+        const filterSubscriptionOgDateInputTarget = this.subscription.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${index + 1}][properties[_og_first_order_place_date]]"]`);
+        
+        if (filterSubscriptionFirstOrderDateInputTarget && filterSubscriptionOgDateInputTarget) {
+          const date = new Date();
+          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+          filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
+          filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
+        }
+      }
+    });
+
+    // Update temp ID for all items
     if (this.filterSubscriptionTempIdInputs.length > 0) {
       const tempId = Date.now();
       this.filterSubscriptionTempIdInputs.forEach((input) => {
