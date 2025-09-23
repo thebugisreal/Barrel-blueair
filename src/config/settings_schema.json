@@ -349,5 +349,15 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "Purple Dot",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_purpledot",
+        "label": "Turn on Purple Dot integration"
+      }
+    ]
   }
 ]

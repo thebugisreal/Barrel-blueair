@@ -443,6 +443,9 @@
                   </button>
                   <p class="affirm-as-low-as mx-auto tabletl:order-first" data-page-type="product" data-amount="{{current_variant.price}}"></p>
                 </div>
+                {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+                  <div class="pd-waitlist-info-container"></div>
+                {% endif %}
                 <p class="hidden p2 font-700" js-error-message></p>
               {% endif %}
               {% when 'experience' %}

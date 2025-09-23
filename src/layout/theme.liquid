@@ -65,6 +65,10 @@
     </script>
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    {% if settings.use_purpledot and shop.permanent_domain == '5ef43d-4a.myshopify.com' %} 
+      {% render 'purple-dot' %}
+    {% endif %}
   </head>
   
   {%- capture body_classes -%}

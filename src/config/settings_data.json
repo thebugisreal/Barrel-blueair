@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "use_purpledot": true,
     "newsletter_heading": "Already Subscribed",
     "newsletter_text": "<p><strong>You are currently subscribed to receive our marketing emails.</strong></p><p>Click Unsubscribe to be removed from our marketing emails list.</p>",
     "newsletter_cta_text": "",

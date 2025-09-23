@@ -1,0 +1,11 @@
+<script>
+window.PurpleDotConfig = {
+  shopifyCart: {{ cart | json }},
+  shopifyCartString: {{ cart | json | json }},
+  shopifyCartSignature: {{ cart | json | hmac_sha256: '0624bf9c-7313-4fcd-a14d-3bc1c6a299f2' | json }},
+  prefillEmail: '{{ customer.email }}',
+  prefillShippingAddress: {{ customer.default_address | json }},
+};
+</script>
+
+<script src="https://www.purpledotprice.com/api/v1/init.js?apiKey=63b5ae3d-f8d7-4f88-9496-3ec4c032875b"></script>
