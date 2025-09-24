@@ -187,6 +187,7 @@ class CountrySelectModal extends HTMLElement {
       this.select.addEventListener('change', this._handleCountryChange.bind(this));
       this.selectedCountry = this.select.value;
 
+      this._checkAutoRedirect();
       if (this.languageSelect) {
         this.selectedLanguage = this.languageSelect.value;
         this.languageSelect.addEventListener('change', this._handleLanguageChange.bind(this));
@@ -196,6 +197,28 @@ class CountrySelectModal extends HTMLElement {
         this.submitBtn.addEventListener('click', this._submitForm )
       }
   
+    }
+
+    _checkAutoRedirect = () => {
+      const searchParams = new URLSearchParams(window.location.search);
+
+      if(searchParams.get('manual-redirect') == 'true') {
+        theme.utils.setCookie('seedManualRedirect', true, 30);
+      }
+
+      const manualRedirect = theme.utils.getCookie('seedManualRedirect');
+
+      if (manualRedirect == 'true') {
+        return;
+      }
+
+      if (window.permanent_domain == `blueeudev.myshopify.com`) {
+        if (Shopify.country == 'US') {
+          window.location.href = `https://www.blueair.com`
+        }else{
+          return;
+        }
+      }
     }
 
     _cleanPathname = () => {
@@ -233,17 +256,17 @@ class CountrySelectModal extends HTMLElement {
         this.form.submit();
       }else{
         if (country == 'us') {
-          window.location.href = `${target}`
+          window.location.href = `${target}?manual-redirect=true`
         } else if (country == 'ca'){
-          window.location.href = `${target}/${language}-${country}`
+          window.location.href = `${target}/${language}-${country}?manual-redirect=true`
         } else if (country == 'gb'){
-          window.location.href = `${target}` 
+          window.location.href = `${target}?manual-redirect=true` 
         } else if (country == 'de' && language == 'de'){
-          window.location.href = `${target}`
+          window.location.href = `${target}?manual-redirect=true`
         } else if (country == 'de' && language == 'en'){
-          window.location.href = `${target}/en`
+          window.location.href = `${target}/en?manual-redirect=true`
         } else if (country == 'eu'){
-          window.location.href = `${target}/en-eu`
+          window.location.href = `${target}/en-eu?manual-redirect=true`
         }
       }
     }
