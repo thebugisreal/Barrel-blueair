@@ -1,0 +1,120 @@
+{% comment %}
+  PDP Buystack Carousel
+  
+  Renders a carousel of media (images/videos) with descriptions from product metafield
+  
+  @param {object} product - Product object
+  @param {string} section_id - Unique section ID for carousel controls
+  @param {string} carousel_classes - Additional CSS classes for carousel container
+  @param {string} slide_classes - Additional CSS classes for slides
+  @param {string} title - Optional title to display above carousel
+{% endcomment %}
+
+{% liquid
+  assign carousel_items = product.metafields.seed.pdp_buystack_carousel.value
+  assign carousel_id = 'pdp-buystack-carousel-' | append: section_id
+%}
+
+{% if carousel_items != blank %}
+  <div class="pdp-buystack-carousel__header flex justify-between items-center mb-md tabletp:mb-[54px]">
+    {% if title != blank %}
+      <h2 class="pdp-buystack-carousel__title text-18 font-700 m-0 leading-tight tabletp:text-22">{{ title }}</h2>
+    {% else %}
+      <div></div>
+    {% endif %}
+    
+    {% comment %} Desktop navigation arrows {% endcomment %}
+    <div class="pdp-buystack-carousel__nav hidden tabletp:flex gap-xs">
+      <button class="swiper-button-prev swiper-button-prev--{{ carousel_id }} w-[20px] h-[20px] rounded-full items-center justify-center text-blue hover:bg-gray-light transition-colors !block !static" style="--swiper-navigation-size: 20px;" type="button">
+      </button>
+      <button class="swiper-button-next swiper-button-next--{{ carousel_id }} w-[20px] h-[20px] rounded-full items-center justify-center text-blue hover:bg-gray-light transition-colors !block !static" style="--swiper-navigation-size: 20px;" type="button">
+      </button>
+    </div>
+  </div>
+  
+  {%- capture carousel_options -%}
+    {
+      "slidesPerView": 2.5,
+      "spaceBetween": 8,
+      "loop": false,
+      "autoHeight": true,
+      "centeredSlides": false,
+      "freeMode": false,
+      "watchOverflow": true,
+      "navigation": {
+        "enabled": true,
+        "nextEl": ".swiper-button-next--{{ carousel_id }}",
+        "prevEl": ".swiper-button-prev--{{ carousel_id }}"
+      },
+      "breakpoints": {
+        "1024": {
+          "slidesPerView": 4,
+          "spaceBetween": 8
+        }
+      }
+    }
+  {%- endcapture -%}
+
+
+  <div class="pdp-buystack-carousel {{ carousel_classes }} w-full max-w-full">
+    <s-carousel data-options='{{ carousel_options }}' class="block">
+      <div id="{{ carousel_id }}" class="swiper w-full overflow-hidden" js-carousel>
+        <div class="swiper-wrapper w-[calc(100vw-1.5rem)] tabletp:w-auto grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2 tabletp:grid-cols-4 tabletp:gap-2 [&.swiper-wrapper-initialized]:!grid-none [&.swiper-wrapper-initialized]:!flex">
+          {% for item in carousel_items %}
+            <div class="swiper-slide {{ slide_classes }}" js-carousel-slide>
+              <div class="pdp-buystack-carousel__slide relative h-full">
+                {% if item.media != blank %}
+                  <div class="pdp-buystack-carousel__media relative">
+                    {% case item.media.value.media_type %}
+                      {% when 'image' %}
+                        {% render 'lazy-image', 
+                           image: item.media.value, 
+                           loading: 'lazy',
+                           picture_classes: 'w-full aspect-[9/16]',
+                           img_classes: 'w-full h-full object-cover rounded-lg' %}
+                      {% when 'video' %}
+                        <div class="video-container aspect-[9/16] rounded-lg overflow-hidden">
+                          <video 
+                            class="w-full h-full object-cover"
+                            no-controls
+                            muted
+                            playsinline
+                            preload="metadata"
+                            poster="{% if item.media.value.preview_image %}{{ item.media.value.preview_image | image_url: width: 800 }}{% endif %}"
+                          >
+                            {% for source in item.media.value.sources %}
+                              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                            {% endfor %}
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      {% else %}
+                        {% comment %} Fallback for other media types {% endcomment %}
+                        {% if item.media.value.preview_image %}
+                          {% render 'lazy-image', 
+                             image: item.media.value.preview_image, 
+                             loading: 'lazy',
+                             picture_classes: 'w-full aspect-[9/16]',
+                             img_classes: 'w-full h-full object-cover rounded-lg' %}
+                        {% endif %}
+                    {% endcase %}
+                    
+                    {% if item.description != blank %}
+                      <div class="pdp-buystack-carousel__description absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-xxxs rounded-b-lg">
+                        <div class="rte text-14 text-white">
+                          {{ item.description | metafield_tag }}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+
+      </div>
+    </s-carousel>
+  </div>
+{% endif %}
