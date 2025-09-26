@@ -1009,9 +1009,9 @@ class ProductMain extends HTMLElement {
           ? `background-image: url('${product.swatchImage}'); background-size: cover; background-position: center;`
           : `background-color: ${product.colorHex}`;
         if (product.handle != currentProductHandle) {
-          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${!window.location.pathname.includes('/en-us/') ? (window.location.pathname.split('/products/')[0] + product.url) : product.url}" class="product-related-color w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span></a>`
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${!window.location.pathname.includes('/en-us/') ? (window.location.pathname.split('/products/')[0] + product.url) : product.url}" class="product-related-color w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-swatch="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span></a>`
         } else {
-          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-color-current w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-color="${product.color}" js-related-option-swatch><span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span></div>`
+          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-color-current w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-swatch="${product.color}" js-related-option-swatch><span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span></div>`
         }
       }
     })
