@@ -144,16 +144,21 @@
                                     {% endif %}
                                 {% when 'blog' %}
                                     {% if block.settings.blog != blank %}
-                                        {% for article in block.settings.blog.articles limit:block.settings.article_pulled%}
-                                            <div class="swiper-slide h-auto" js-carousel-slide>
-                                             {% if german_market%}
-                                                {% render 'article-card' article:article %}
-                                            {% else %}
-                                                {% unless article.metafields.seed.hide_on_non_transactional == true %}
-                                                    {% render 'article-card' article:article %}
-                                                {% endunless %}
+                                        {% assign articles_rendered = 0 %}
+                                        {% for article in block.settings.blog.articles %}
+                                            {% if articles_rendered < block.settings.article_pulled %}
+                                                {% if german_market %}
+                                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                                        {% render 'article-card' article:article %}
+                                                    </div>
+                                                    {% assign articles_rendered = articles_rendered | plus: 1 %}
+                                                {% elsif article.metafields.seed.hide_on_non_transactional != true %}
+                                                    <div class="swiper-slide h-auto" js-carousel-slide>
+                                                        {% render 'article-card' article:article %}
+                                                    </div>
+                                                    {% assign articles_rendered = articles_rendered | plus: 1 %}
+                                                {% endif %}
                                             {% endif %}
-                                            </div>
                                         {% endfor %}
                                     {% endif %}
                                 {% when 'image_content' %}
