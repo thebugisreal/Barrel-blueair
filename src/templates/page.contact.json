@@ -245,7 +245,7 @@
     },
     "section_hero_XWdJgJ": {
       "type": "section__hero",
-      "disabled": true,
+      "disabled": false,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -257,7 +257,8 @@
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
         "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
-        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",        "content_height_mobile": "",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",        
+        "content_height_mobile": "",
         "content_height_desktop": "",
         "title": "Need Product Support? We can help",
         "title_style": "h3",
