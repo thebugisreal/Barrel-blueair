@@ -100,7 +100,7 @@
       {% endif %}
     {% endif %}
 
-    <main id="MainContent" class="main drawer-background modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}">
+    <main id="MainContent" class="main drawer-background modal-background buystack-modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}">
       {{ content_for_layout }}
     </main>
 

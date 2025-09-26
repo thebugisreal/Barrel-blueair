@@ -33,6 +33,7 @@ window.theme = window.theme || {};
 // =require components/compare-grid.js
 // =require components/faq.js
 // =require components/product-viewer.js
+// =require components/buystack-modal.js
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -72,6 +73,7 @@ customElements.define('country-select', CountrySelect);
 customElements.define('country-select-modal', CountrySelectModal);
 
 customElements.define('image-caption-modal', ImageCaptionModal);
+customElements.define('buystack-modal', BuystackModal);
 /*================ Sections ================*/
 // =require sections/collection__grid.js
 // =require sections/product__main.js

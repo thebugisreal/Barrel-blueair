@@ -1,0 +1,113 @@
+/**
+ * Buystack Modal Styles
+ * --------------------------------------------------------------------
+ * Custom styles for the buystack modal component
+ * Using custom Tailwind classes from the project config
+ */
+
+/* Modal open state */
+buystack-modal.open {
+  @apply block opacity-100 z-[99999999999];
+}
+
+/* Modal container positioning and dimensions */
+.buystack-modal__container {
+  /* Desktop: Phone-like dimensions and positioning */
+  @screen tabletp {
+    width: 300px;
+    height: 533px; /* 9:16 aspect ratio */
+    transform: translateY(100%);
+  }
+}
+
+/* Modal container animation when open */
+buystack-modal.open .buystack-modal__container {
+  transform: translateY(0);
+}
+
+/* Navigation arrow positioning */
+.buystack-modal__nav--up {
+  top: 50%;
+  transform: translateY(-100%);
+  margin-top: -20px;
+}
+
+.buystack-modal__nav--down {
+  top: 50%;
+  transform: translateY(0%);
+  margin-top: 20px;
+}
+
+.pdp-buystack-carousel .swiper:not(.swiper-initialized) .swiper-wrapper {
+  @apply !flex !flex-nowrap !overflow-x-auto;
+  gap: 8px; /* Match Swiper spaceBetween */
+  
+  /* Hide scrollbar for premium feel */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.pdp-buystack-carousel .swiper:not(.swiper-initialized) .swiper-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.pdp-buystack-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+  @apply !flex-shrink-0;
+  /* Mobile: ~40% width to show 2.5 slides */
+  width: calc(40% - 3.2px);
+}
+
+/* Desktop: 4 slides per view */
+@screen tabletl {
+  .pdp-buystack-carousel .swiper:not(.swiper-initialized) .swiper-slide {
+    width: calc(25% - 6px); /* 4 slides with 8px gaps */
+  }
+}
+
+
+/* Mobile responsive adjustments - below tabletp breakpoint */
+@media (max-width: 767px) {
+  .buystack-modal__close {
+    @apply top-md right-md w-40 h-40;
+  }
+  
+  .buystack-modal__nav {
+    @apply w-48 h-48 right-md;
+  }
+  
+  .buystack-modal__description {
+    @apply p-md text-16;
+  }
+}
+
+/* Disabled state for navigation */
+.buystack-modal__nav:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Body class when modal is open */
+.js-buystack-modal-open {
+  @apply !overflow-visible;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .buystack-modal__nav,
+  .buystack-modal__close {
+    @apply bg-black border-2 border-white;
+  }
+  
+  .buystack-modal__description {
+    @apply bg-black bg-opacity-90;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  buystack-modal,
+  .buystack-modal__container,
+  .buystack-modal__nav,
+  .buystack-modal__close {
+    @apply transition-none;
+  }
+}
