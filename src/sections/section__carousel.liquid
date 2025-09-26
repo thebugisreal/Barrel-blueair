@@ -52,6 +52,11 @@
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 
+{% assign german market = blank %}
+{% if localization.country.market.handle == "germany" or shop.locale == "de" %}
+{% assign german_market = true %}
+{% endif %}
+
 <div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
     <div class="section__carousel-container mx-auto">
         <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
@@ -127,15 +132,27 @@
                                     {% endif %}
                                 {% when 'article' %}
                                     {% if block.settings.article != blank %}
-                                        <div class="swiper-slide h-auto" js-carousel-slide>
+                                        <div class="swiper-slide h-auto" js-carousel-slide data="{{block.settings.article}}">
+                                        {% if german_market%}
                                             {% render 'article-card' article:block.settings.article %}
+                                        {% else %}
+                                            {% unless article.metafields.seed.hide_on_non_transactional == true %}
+                                                {% render 'article-card' article:block.settings.article %}
+                                            {% endunless %}
+                                        {% endif %}
                                         </div>
                                     {% endif %}
                                 {% when 'blog' %}
                                     {% if block.settings.blog != blank %}
                                         {% for article in block.settings.blog.articles limit:block.settings.article_pulled%}
                                             <div class="swiper-slide h-auto" js-carousel-slide>
+                                             {% if german_market%}
                                                 {% render 'article-card' article:article %}
+                                            {% else %}
+                                                {% unless article.metafields.seed.hide_on_non_transactional == true %}
+                                                    {% render 'article-card' article:article %}
+                                                {% endunless %}
+                                            {% endif %}
                                             </div>
                                         {% endfor %}
                                     {% endif %}

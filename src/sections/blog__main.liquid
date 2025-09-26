@@ -1,5 +1,9 @@
 {%- paginate blog.articles by 9 -%}
   {% assign first_article = articles[blog.metafields.seed.featured_article] %}
+  {% assign german market = blank %}
+  {% if localization.country.market.handle == "germany" or shop.locale == "de" %}
+    {% assign german_market = true %}
+  {% endif %}
 
   <div class="blog mb-xl tabletl:px-xl">
     <h1 class="blog__title text-center h2 mt-xl tabletl:mt-xxl">{{ blog.title | escape }}</h1>
@@ -58,11 +62,17 @@
 
     <ul class="blog-articles mt-md grid grid-cols-1 gap-x-lg mx-lg gap-y-xl tabletl:mt-lg tabletl:mx-0 tabletl:grid-cols-3" role="list">
       {%- for article in blog.articles -%}
-        {% unless first_article == article or article.metafields.seed.hide_on_non_transactional == true %}
+        {% if german_market %}
           <li class="blog-articles__article h-auto">
             {%- render 'article-card', article: article -%}
           </li>
-        {% endunless %}
+        {% else %}
+          {% unless first_article == article or article.metafields.seed.hide_on_non_transactional == true %}
+            <li class="blog-articles__article h-auto">
+              {%- render 'article-card', article: article -%}
+            </li>
+          {% endunless %}
+        {% endif %}
       {%- endfor -%}
       </ul>
 
