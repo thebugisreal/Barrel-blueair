@@ -120,7 +120,7 @@
                   </div>
                 {% when 'video' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
-                    {{ media | video_tag: controls: true, autoplay: false, loop: true, mute: false }}
+                    {{ media | video_tag: controls: false, autoplay: true, loop: true, mute: false }}
                   </div>
                 {% when 'external_video' %}              
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
