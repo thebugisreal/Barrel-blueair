@@ -90,8 +90,11 @@
                             muted
                             playsinline
                             preload="metadata"
-                            autoplay
+                            {% if forloop.first %}
+                              autoplay
+                            {% endif %}
                             poster="{% if item.media.value.preview_image %}{{ item.media.value.preview_image | image_url: width: 800 }}{% endif %}"
+                            data-video-index="{{ forloop.index0 }}"
                           >
                             {% for source in item.media.value.sources %}
                               <source src="{{ source.url }}" type="{{ source.mime_type }}">
@@ -129,17 +132,22 @@
   </div>
 
   {% comment %} Buystack Modal {% endcomment %}
-  <buystack-modal id="buystack-modal-{{ section_id }}" 
-    class="hidden fixed inset-0 z-50 opacity-0 transition-all duration-300 ease-in-out" 
-    open="[js-buystack-modal-open]" 
+  <buystack-modal
+    id="buystack-modal-{{ section_id }}"
+    class="hidden fixed inset-0 z-50 opacity-0 transition-all duration-300 ease-in-out"
+    open="[js-buystack-modal-open]"
     close="[js-buystack-modal-close]"
     data-carousel-id="{{ carousel_id }}"
   >
     <div class="buystack-modal__container absolute bg-black overflow-hidden transition-all duration-300 ease-out inset-0 rounded-none tabletp:bottom-8 tabletp:right-8 tabletp:top-auto tabletp:left-auto tabletp:rounded-3xl tabletp:shadow-2xl">
-      <button class="buystack-modal__close absolute top-16 left-16 z-10 w-32 h-32 flex items-center justify-center bg-black bg-opacity-50 rounded-full text-white transition-all duration-200 hover:bg-opacity-70" js-buystack-modal-close aria-label="Close modal">
+      <button
+        class="buystack-modal__close absolute top-16 left-16 z-10 w-32 h-32 flex items-center justify-center bg-black bg-opacity-50 rounded-full text-white transition-all duration-200 hover:bg-opacity-70"
+        js-buystack-modal-close
+        aria-label="Close modal"
+      >
         {% render 'icon-close' %}
       </button>
-      
+
       <div class="buystack-modal__carousel-container relative w-full h-full">
         {%- capture modal_carousel_options -%}
           {
@@ -165,17 +173,24 @@
         {%- endcapture -%}
 
         <s-carousel data-options="{{ modal_carousel_options | escape }}" class="buystack-modal__carousel w-full h-full">
-          
-          <div id="buystack-modal-carousel-{{ section_id }}" class="swiper w-full h-full" js-buystack-carousel js-carousel>
+          <div
+            id="buystack-modal-carousel-{{ section_id }}"
+            class="swiper w-full h-full"
+            js-buystack-carousel
+            js-carousel
+          >
             <div class="swiper-wrapper w-full h-full">
               {% for item in carousel_items %}
-                <div class="swiper-slide buystack-modal__slide relative w-full h-full flex items-center justify-center" data-slide-index="{{ forloop.index0 }}">
+                <div
+                  class="swiper-slide buystack-modal__slide relative w-full h-full flex items-center justify-center"
+                  data-slide-index="{{ forloop.index0 }}"
+                >
                   <div class="buystack-modal__media-container relative w-full h-full">
                     {% if item.media != blank %}
                       {% case item.media.value.media_type %}
                         {% when 'video' %}
                           <div class="buystack-modal__video-container relative w-full h-full">
-                            <video 
+                            <video
                               class="buystack-modal__video w-full h-full object-cover"
                               muted
                               playsinline
@@ -211,7 +226,7 @@
                             </div>
                           {% endif %}
                       {% endcase %}
-                      
+
                       {% if item.description != blank %}
                         <div class="buystack-modal__description absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-sm text-sm leading-relaxed">
                           <div class="rte text-white">
@@ -226,14 +241,16 @@
             </div>
 
             <!-- Navigation arrows -->
-            <button class="buystack-modal__nav swiper-button-prev buystack-modal__nav--up absolute !left-auto !right-16 !w-32 !h-32 !rotate-90 flex items-center justify-center bg-black bg-opacity-50 rounded-full text-white transition-all duration-200 hover:bg-opacity-70 z-10 border-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" 
-              type="button" 
+            <button
+              class="buystack-modal__nav swiper-button-prev buystack-modal__nav--up absolute !left-auto !right-16 !w-32 !h-32 !rotate-90 flex items-center justify-center bg-black bg-opacity-50 rounded-full text-white transition-all duration-200 hover:bg-opacity-70 z-10 border-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              type="button"
               aria-label="Previous video"
               style="--swiper-navigation-size: 12px;"
             ></button>
 
-            <button class="buystack-modal__nav swiper-button-next buystack-modal__nav--down absolute !left-auto !right-16 !w-32 !h-32 !rotate-90 flex items-center justify-center bg-black bg-opacity-50 rounded-full text-white transition-all duration-200 hover:bg-opacity-70 z-10 border-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" 
-              type="button" 
+            <button
+              class="buystack-modal__nav swiper-button-next buystack-modal__nav--down absolute !left-auto !right-16 !w-32 !h-32 !rotate-90 flex items-center justify-center bg-black bg-opacity-50 rounded-full text-white transition-all duration-200 hover:bg-opacity-70 z-10 border-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              type="button"
               aria-label="Next video"
               style="--swiper-navigation-size: 12px;"
             ></button>

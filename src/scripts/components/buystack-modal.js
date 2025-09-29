@@ -11,10 +11,6 @@
  * - Keyboard and touch navigation support
  * - Accessible focus management
  *
- * @usage
- * <buystack-modal id="buystack-modal">
- *   <!-- Modal content generated in Liquid -->
- * </buystack-modal>
  *
  * @emits buystack-modal:open on document
  * @emits buystack-modal:close on document
@@ -38,11 +34,19 @@ class BuystackModal extends FocusableWidget {
     };
 
     this.swiper = null;
+    this.mainCarouselSwiper = null;
+    this.mainCarouselContainer = null;
+    this.videos = []; // Array of video elements only
+    this.isChainPlaying = false;
+    this.currentVideoIndex = 0;
   }
 
   connectedCallback() {
+    // super.connectedCallback();
+    this._findMainCarouselContainer();
     this._initializeCarouselSlides();
     this._initEventListeners();
+    this._initializeMainCarouselAutoplay();
   }
 
   disconnectedCallback() {
@@ -53,17 +57,20 @@ class BuystackModal extends FocusableWidget {
   }
 
   /**
+   * Find and cache the main carousel container
+   */
+  _findMainCarouselContainer() {
+    this.mainCarouselContainer = document.querySelector(`#${this.dataset.carouselId}`);
+  }
+
+  /**
    * Initialize carousel slides with click handlers
    */
   _initializeCarouselSlides() {
-    // Wait for DOM to be ready and find the carousel container
+    // Wait for DOM to be ready and use cached carousel container
     const checkForCarousel = () => {
-
-      const carouselContainer = document.querySelector(`#${this.dataset.carouselId}`);
-      console.log(carouselContainer);
-      
-      if (carouselContainer) {
-        this._setupSlideHandlers(carouselContainer);
+      if (this.mainCarouselContainer) {
+        this._setupSlideHandlers(this.mainCarouselContainer);
       } else {
         // If carousel not found, try again after a short delay
         setTimeout(checkForCarousel, 100);
@@ -245,5 +252,195 @@ class BuystackModal extends FocusableWidget {
   close() {
     this._pauseAllVideos();
     super.close();
+  }
+
+  /**
+   * Initialize main carousel autoplay chain functionality
+   */
+  _initializeMainCarouselAutoplay() {
+    const checkForMainCarousel = () => {
+      if (this.mainCarouselContainer) {
+        this._setupMainCarouselChain(this.mainCarouselContainer);
+      } else {
+        setTimeout(checkForMainCarousel, 100);
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkForMainCarousel);
+    } else {
+      checkForMainCarousel();
+    }
+  }
+
+  /**
+   * Setup autoplay chain for main carousel
+   */
+  _setupMainCarouselChain(carouselContainer) {
+    // Get reference to main carousel swiper
+    const carouselElement = carouselContainer.closest('.pdp-buystack-carousel').querySelector('s-carousel');
+    
+    if (carouselElement) {
+      const waitForSwiper = () => {
+        if (carouselElement.carousel) {
+          this.mainCarouselSwiper = carouselElement.carousel;
+          this._initializeVideoChain(carouselContainer);
+        } else {
+          setTimeout(waitForSwiper, 100);
+        }
+      };
+      waitForSwiper();
+    }
+  }
+
+  /**
+   * Initialize video chain events
+   */
+  _initializeVideoChain(carouselContainer) {
+    const videos = carouselContainer.querySelectorAll('video[data-video-index]');
+    this.videos = Array.from(videos); // Cache video elements
+    
+    this.videos.forEach((video, videoArrayIndex) => {
+      // Listen for video ended event
+      video.addEventListener('ended', () => {
+        this._handleMainVideoEnded(videoArrayIndex);
+      });
+
+      // Listen for user interaction to pause chain
+      video.addEventListener('play', () => {
+        if (videoArrayIndex === this.currentVideoIndex) {
+          this.isChainPlaying = true;
+        }
+      });
+
+      video.addEventListener('pause', () => {
+        // Don't stop chain if video ended naturally
+        if (!video.ended) {
+          this.isChainPlaying = false;
+        }
+      });
+
+      // Add hover functionality
+      video.addEventListener('mouseenter', () => {
+        this._handleVideoHover(videoArrayIndex);
+      });
+
+      video.addEventListener('mouseleave', () => {
+        this._handleVideoUnhover(videoArrayIndex);
+      });
+    });
+
+    // Listen for manual swiper navigation
+    if (this.mainCarouselSwiper) {
+      this.mainCarouselSwiper.on('slideChange', () => {
+        this._handleManualSlideChange();
+      });
+    }
+
+    // Start the chain with first video
+    this.isChainPlaying = true;
+    this.currentVideoIndex = 0;
+  }
+
+  /**
+   * Handle video ended in main carousel
+   */
+  _handleMainVideoEnded(videoArrayIndex) {
+    if (!this.isChainPlaying) return;
+
+    const nextVideoIndex = videoArrayIndex + 1;
+    
+    if (nextVideoIndex < this.videos.length) {
+      // Play next video in array
+      this.currentVideoIndex = nextVideoIndex;
+      this._playVideoByArrayIndex(nextVideoIndex);
+    } else {
+      // End of video chain
+      this.isChainPlaying = false;
+      // Optionally restart: this._restartVideoChain();
+    }
+  }
+
+  /**
+   * Play video by array index
+   */
+  _playVideoByArrayIndex(arrayIndex) {
+    if (arrayIndex >= 0 && arrayIndex < this.videos.length) {
+      const video = this.videos[arrayIndex];
+      video.currentTime = 0;
+      video.play().catch(e => {
+        console.log('Autoplay prevented for main carousel video:', e);
+        this.isChainPlaying = false;
+      });
+    }
+  }
+
+  /**
+   * Handle video hover - pause chain and play hovered video
+   */
+  _handleVideoHover(videoArrayIndex) {
+    // Pause chain
+    this.isChainPlaying = false;
+    
+    // Pause all videos
+    this._pauseAllMainCarouselVideos();
+    
+    // Play hovered video and update current index
+    this.currentVideoIndex = videoArrayIndex;
+    this._playVideoByArrayIndex(videoArrayIndex);
+  }
+
+  /**
+   * Handle video unhover - resume chain from current video
+   */
+  _handleVideoUnhover(videoArrayIndex) {
+    // Resume chain from current video
+    this.isChainPlaying = true;
+  }
+
+  /**
+   * Handle manual slide change (user interaction)
+   */
+  _handleManualSlideChange() {
+    if (!this.mainCarouselSwiper) return;
+    
+    const newIndex = this.mainCarouselSwiper.activeIndex;
+    
+    // Pause all videos first
+    this._pauseAllMainCarouselVideos();
+    
+    // Update current index
+    this.currentVideoIndex = newIndex;
+    
+    // Find if current slide has a video and resume chain
+    const currentSlideVideo = this.videos.find(video => 
+      parseInt(video.dataset.videoIndex, 10) === newIndex
+    );
+    
+    if (currentSlideVideo) {
+      const videoArrayIndex = this.videos.indexOf(currentSlideVideo);
+      this.currentVideoIndex = videoArrayIndex;
+      this._playVideoByArrayIndex(videoArrayIndex);
+      this.isChainPlaying = true;
+    }
+  }
+
+
+  /**
+   * Pause all videos in main carousel
+   */
+  _pauseAllMainCarouselVideos() {
+    this.videos.forEach(video => {
+      video.pause();
+    });
+  }
+
+  /**
+   * Restart video chain from beginning
+   */
+  _restartVideoChain() {
+    this.currentVideoIndex = 0;
+    this.isChainPlaying = true;
+    this._playVideoByArrayIndex(0);
   }
 }
