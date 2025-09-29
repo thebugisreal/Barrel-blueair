@@ -818,11 +818,15 @@ class ProductMain extends HTMLElement {
           return;
         }
 
-        if (!this.error)
+        if (!this.error) {
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', productVariantId: formData.get('id') });
           this.error = false;
           this.cart.renderContents(response);
           this.cartDrawer.open();
+          
+          // Track cart addition with Amazon Advertising
+          amzn('trackEvent', 'AddToCart');
+        }
         })
         .catch((e) => {
           this.handleErrorMessage(e.description)
