@@ -59,7 +59,6 @@
         },
         "filter_options_XPQVUh": {
           "type": "filter_options",
-          "disabled": true,
           "settings": {}
         },
         "product_options_GLfTKf": {
@@ -78,6 +77,15 @@
             "margin_bottom_mobile": "mb-md",
             "margin_top_desktop": "desktop:mt-sm",
             "margin_bottom_desktop": "desktop:mb-lg"
+          }
+        },
+        "upsells_ndPfKj": {
+          "type": "upsells",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
           }
         },
         "experience_NzTf78": {
@@ -112,16 +120,6 @@
             "icon_3_image": "shopify://shop_images/Group_3532.svg",
             "icon_3_text": "Free extended warranty"
           }
-        },
-        "upsells_ndPfKj": {
-          "type": "upsells",
-          "disabled": true,
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0"
-          }
         }
       },
       "block_order": [
@@ -133,10 +131,10 @@
         "filter_options_XPQVUh",
         "product_options_GLfTKf",
         "atc_BURfeB",
+        "upsells_ndPfKj",
         "experience_NzTf78",
         "additional_features_H7XdFi",
-        "shipping_warranty_Rg4jpP",
-        "upsells_ndPfKj"
+        "shipping_warranty_Rg4jpP"
       ],
       "settings": {
         "buybox_max_width": "80ch"
@@ -144,7 +142,6 @@
     },
     "product_custom_tabs_acewb9": {
       "type": "product__custom-tabs",
-      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -193,7 +190,6 @@
     },
     "product_video_WFRqMh": {
       "type": "product__video",
-      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -256,6 +252,75 @@
         "section_max_width_desktop": "1440px"
       }
     },
+    "section_image_text_grid_NwP3Er": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_Jj7E6p": {
+          "type": "block",
+          "settings": {
+            "title": "91%",
+            "title_style": "h2",
+            "subtext": "find it easy to use <br> and maintain⁵",
+            "subtext_style": "p2"
+          }
+        },
+        "block_EJkn6p": {
+          "type": "block",
+          "settings": {
+            "title": "80%",
+            "title_style": "h2",
+            "subtext": "of people slept more <br> comfortable",
+            "subtext_style": "p2"
+          }
+        },
+        "block_Qhdt9K": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "97%",
+            "title_style": "h2",
+            "subtext": "find it easy to use <br> and maintain⁵",
+            "subtext_style": "p2"
+          }
+        },
+        "block_KkfhwF": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "92%",
+            "title_style": "h2",
+            "subtext": "would recommend <br> to a friend⁵",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "block_Jj7E6p",
+        "block_EJkn6p",
+        "block_Qhdt9K",
+        "block_KkfhwF"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/Frame_1308.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-first",
+        "image_position_desktop": "left",
+        "image_width": 45,
+        "title": "Feel the difference <br> with Mini Restful™",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
+      }
+    },
     "section_embed_9mLjVz": {
       "type": "section__embed",
       "disabled": true,
@@ -299,75 +364,6 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px",
         "color": "text-blue"
-      }
-    },
-    "section_image_text_grid_NwP3Er": {
-      "type": "section__image-text-grid",
-      "blocks": {
-        "block_Jj7E6p": {
-          "type": "block",
-          "settings": {
-            "title": "91%",
-            "title_style": "h2",
-            "subtext": "slept more <br> comfortably²",
-            "subtext_style": "p2"
-          }
-        },
-        "block_Qhdt9K": {
-          "type": "block",
-          "settings": {
-            "title": "100%",
-            "title_style": "h2",
-            "subtext": "found it easy to <br> use & maintain²",
-            "subtext_style": "p2"
-          }
-        },
-        "block_KkfhwF": {
-          "type": "block",
-          "disabled": true,
-          "settings": {
-            "title": "92%",
-            "title_style": "h2",
-            "subtext": "would recommend <br> to a friend⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_EJkn6p": {
-          "type": "block",
-          "disabled": true,
-          "settings": {
-            "title": "89%",
-            "title_style": "h2",
-            "subtext": "prefer it over any <br> other air purifier⁵",
-            "subtext_style": "p2"
-          }
-        }
-      },
-      "block_order": [
-        "block_Jj7E6p",
-        "block_Qhdt9K",
-        "block_KkfhwF",
-        "block_EJkn6p"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/Frame_1308_bf330090-6773-4b2f-86ef-cc7121f9491f.png",
-        "image_inset_mobile": false,
-        "image_position_mobile": "order-first",
-        "image_position_desktop": "left",
-        "image_width": 45,
-        "title": "Feel the difference with <br> a DreamWell™ Humidifier",
-        "title_style": "h3",
-        "text_max_width": "",
-        "section_max_width_desktop": ""
       }
     },
     "section_text_banner_rmDttx": {
@@ -461,7 +457,7 @@
         "limit": 4,
         "intent": "related",
         "max_width_desktop": "100%",
-        "color": "bg-gray-light text-blue"
+        "color": "bg-white text-blue"
       }
     },
     "product_footnotes_izYTTQ": {
@@ -504,10 +500,10 @@
     "product_filters_tPXVJP",
     "product_slideshow_f7BaaR",
     "product_app_tabs_BzryrE",
+    "section_image_text_grid_NwP3Er",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
     "product_image_text_product_EitePb",
-    "section_image_text_grid_NwP3Er",
     "section_text_banner_rmDttx",
     "product_perks_FacAhx",
     "product_tech_specs_jEUNXD",
