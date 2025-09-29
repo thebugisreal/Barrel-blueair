@@ -824,8 +824,9 @@ class ProductMain extends HTMLElement {
           this.cart.renderContents(response);
           this.cartDrawer.open();
           
-          // Track cart addition with Amazon Advertising
-          amzn('trackEvent', 'AddToCart');
+          if (window.Shopify.shop === '5ef43d-4a.myshopify.com') {
+            amzn('trackEvent', 'AddToCart');
+          }
         }
         })
         .catch((e) => {
