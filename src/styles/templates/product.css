@@ -91,6 +91,11 @@
   p-xxxs;
 }
 
+.filter-subscription__master-frequency[data-selected="true"] {
+  @apply border-blue
+  bg-white;
+}
+
 .product-upsell__variant--color[data-selected="false"]:focus:not(:focus-visible) {
   @apply border-0
   p-0;
