@@ -5,7 +5,7 @@
     "setup": "yarn install && cp ./node_modules/@madebyseed/seed-cli-tools/seed.config.example.js ./seed.config.js"
   },
   "devDependencies": {
-    "@madebyseed/seed-cli-tools": "^2.4.0"
+    "@madebyseed/seed-cli-tools": "^3.0.2"
   },
   "dependencies": {
     "minimist": "^1.2.8"
