@@ -212,10 +212,9 @@
         },
         "block_fAXDTd": {
           "type": "block",
-          "disabled": true,
           "settings": {
             "title": "DreamWell H38i",
-            "image": "shopify://shop_images/support-humidifier.png",
+            "image": "shopify://shop_images/H38i_Bundle_400.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
@@ -232,10 +231,9 @@
         },
         "block_QBtL3L": {
           "type": "block",
-          "disabled": true,
           "settings": {
             "title": "DreamWell H76i",
-            "image": "shopify://shop_images/support-humidifier.png",
+            "image": "shopify://shop_images/H76i_Bundle_400.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
@@ -267,8 +265,8 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 1,
-        "num_cols_desktop": 1,
-        "max_width": "500px",
+        "num_cols_desktop": 3,
+        "max_width": "1440px",
         "color": "bg-white text-blue",
         "title": "User Manuals & Replacement Filters",
         "title_style": "h4"
@@ -405,7 +403,6 @@
         },
         "topic_4DzMU6": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "mini-restful"
           }
@@ -436,6 +433,7 @@
         },
         "topic_jirpDa": {
           "type": "topic",
+          "disabled": true,
           "settings": {
             "topic": "pro"
           }

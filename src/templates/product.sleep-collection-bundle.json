@@ -92,9 +92,9 @@
           "type": "experience",
           "settings": {
             "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
+            "margin_bottom_mobile": "mb-sm",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0"
+            "margin_bottom_desktop": "desktop:mb-sm"
           }
         },
         "additional_features_H7XdFi": {
@@ -219,75 +219,6 @@
         "color": "text-blue"
       }
     },
-    "section_image_text_grid_NwP3Er": {
-      "type": "section__image-text-grid",
-      "blocks": {
-        "block_Jj7E6p": {
-          "type": "block",
-          "settings": {
-            "title": "91%",
-            "title_style": "h2",
-            "subtext": "find it easy to use <br> and maintain⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_EJkn6p": {
-          "type": "block",
-          "settings": {
-            "title": "80%",
-            "title_style": "h2",
-            "subtext": "of people slept more <br> comfortable",
-            "subtext_style": "p2"
-          }
-        },
-        "block_Qhdt9K": {
-          "type": "block",
-          "disabled": true,
-          "settings": {
-            "title": "97%",
-            "title_style": "h2",
-            "subtext": "find it easy to use <br> and maintain⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_KkfhwF": {
-          "type": "block",
-          "disabled": true,
-          "settings": {
-            "title": "92%",
-            "title_style": "h2",
-            "subtext": "would recommend <br> to a friend⁵",
-            "subtext_style": "p2"
-          }
-        }
-      },
-      "block_order": [
-        "block_Jj7E6p",
-        "block_EJkn6p",
-        "block_Qhdt9K",
-        "block_KkfhwF"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xl",
-        "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/Frame_1308.png",
-        "image_inset_mobile": false,
-        "image_position_mobile": "order-first",
-        "image_position_desktop": "left",
-        "image_width": 45,
-        "title": "Feel the difference <br> with Mini Restful™",
-        "title_style": "h3",
-        "text_max_width": "",
-        "section_max_width_desktop": ""
-      }
-    },
     "product_slideshow_f7BaaR": {
       "type": "product__slideshow",
       "settings": {
@@ -319,6 +250,73 @@
         "image_position_desktop": "tabletl:flex-row",
         "max_width_desktop": "109ch",
         "section_max_width_desktop": "1440px"
+      }
+    },
+    "section_image_text_grid_NwP3Er": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_Jj7E6p": {
+          "type": "block",
+          "settings": {
+            "title": "91%",
+            "title_style": "h2",
+            "subtext": "found the Mini Restful™ <br> easy to use & maintain⁵",
+            "subtext_style": "p2"
+          }
+        },
+        "block_EJkn6p": {
+          "type": "block",
+          "settings": {
+            "title": "80%",
+            "title_style": "h2",
+            "subtext": "slept more comfortably <br>  with Mini Restful™",
+            "subtext_style": "p2"
+          }
+        },
+        "block_KkfhwF": {
+          "type": "block",
+          "settings": {
+            "title": "100%",
+            "title_style": "h2",
+            "subtext": "found the DreamWell™ <br> easy to use & maintain²",
+            "subtext_style": "p2"
+          }
+        },
+        "block_Qhdt9K": {
+          "type": "block",
+          "settings": {
+            "title": "91%",
+            "title_style": "h2",
+            "subtext": "slept more comfortably² <br> with DreamWell™",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "block_Jj7E6p",
+        "block_EJkn6p",
+        "block_KkfhwF",
+        "block_Qhdt9K"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xl",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/Frame_1308.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-first",
+        "image_position_desktop": "left",
+        "image_width": 45,
+        "title": "Feel the difference",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
       }
     },
     "section_embed_9mLjVz": {
@@ -409,6 +407,7 @@
     },
     "product_tech_specs_jEUNXD": {
       "type": "product__tech-specs",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -498,9 +497,9 @@
     "section_image_blocks_A9wwV3",
     "product_video_WFRqMh",
     "product_filters_tPXVJP",
-    "section_image_text_grid_NwP3Er",
     "product_slideshow_f7BaaR",
     "product_app_tabs_BzryrE",
+    "section_image_text_grid_NwP3Er",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
     "product_image_text_product_EitePb",

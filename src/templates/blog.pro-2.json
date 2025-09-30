@@ -317,7 +317,6 @@
         },
         "topic_DqkXKP": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "mini-restful"
           }
@@ -348,6 +347,7 @@
         },
         "topic_jirpDa": {
           "type": "topic",
+          "disabled": true,
           "settings": {
             "topic": "pro"
           }

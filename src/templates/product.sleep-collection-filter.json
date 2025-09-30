@@ -140,6 +140,21 @@
         "buybox_max_width": "80ch"
       }
     },
+    "product_slideshow_f7BaaR": {
+      "type": "product__slideshow",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "80ch",
+        "color": "bg-gray-athans text-blue"
+      }
+    },
     "product_custom_tabs_acewb9": {
       "type": "product__custom-tabs",
       "settings": {
@@ -169,27 +184,12 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px",
-        "color": "text-blue"
-      }
-    },
-    "section_image_blocks_A9wwV3": {
-      "type": "section__image-blocks",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "title": "",
-        "title_style": "h2",
-        "title_color": ""
+        "color": "bg-gray-athans text-blue"
       }
     },
     "product_video_WFRqMh": {
       "type": "product__video",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -217,90 +217,6 @@
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "100%",
         "color": "text-blue"
-      }
-    },
-    "section_image_text_grid_NwP3Er": {
-      "type": "section__image-text-grid",
-      "blocks": {
-        "block_Jj7E6p": {
-          "type": "block",
-          "settings": {
-            "title": "91%",
-            "title_style": "h2",
-            "subtext": "find it easy to use <br> and maintain⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_EJkn6p": {
-          "type": "block",
-          "settings": {
-            "title": "80%",
-            "title_style": "h2",
-            "subtext": "of people slept more <br> comfortable",
-            "subtext_style": "p2"
-          }
-        },
-        "block_Qhdt9K": {
-          "type": "block",
-          "disabled": true,
-          "settings": {
-            "title": "97%",
-            "title_style": "h2",
-            "subtext": "find it easy to use <br> and maintain⁵",
-            "subtext_style": "p2"
-          }
-        },
-        "block_KkfhwF": {
-          "type": "block",
-          "disabled": true,
-          "settings": {
-            "title": "92%",
-            "title_style": "h2",
-            "subtext": "would recommend <br> to a friend⁵",
-            "subtext_style": "p2"
-          }
-        }
-      },
-      "block_order": [
-        "block_Jj7E6p",
-        "block_EJkn6p",
-        "block_Qhdt9K",
-        "block_KkfhwF"
-      ],
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xl",
-        "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/Frame_1308.png",
-        "image_inset_mobile": false,
-        "image_position_mobile": "order-first",
-        "image_position_desktop": "left",
-        "image_width": 45,
-        "title": "Feel the difference <br> with Mini Restful™",
-        "title_style": "h3",
-        "text_max_width": "",
-        "section_max_width_desktop": ""
-      }
-    },
-    "product_slideshow_f7BaaR": {
-      "type": "product__slideshow",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "80ch",
-        "color": "bg-gray-athans text-blue"
       }
     },
     "product_app_tabs_BzryrE": {
@@ -366,32 +282,6 @@
         "color": "text-blue"
       }
     },
-    "section_text_banner_rmDttx": {
-      "type": "section__text-banner",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "1024px",
-        "color": "bg-white text-blue",
-        "image": "shopify://shop_images/b-corp-image.png",
-        "image_position_desktop": "desktop:order-first",
-        "title": "Proud to be a Certified B Corp",
-        "title_style": "h3",
-        "subtext": "As a B Corp, we’re part of a global community of businesses that meet high standards of social and environmental impact.",
-        "subtext_style": "s3",
-        "cta_url": "shopify://pages/why-clean-air",
-        "cta_text": "",
-        "cta_style": "btn",
-        "text_align_mobile": "text-left",
-        "text_align_desktop": "desktop:text-left"
-      }
-    },
     "product_perks_FacAhx": {
       "type": "product__perks",
       "settings": {
@@ -444,6 +334,8 @@
     },
     "product_recommendations_Ha8zrk": {
       "type": "product__recommendations",
+      "disabled": true,
+      "name": "Product - Recommendations",
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -457,7 +349,7 @@
         "limit": 4,
         "intent": "related",
         "max_width_desktop": "100%",
-        "color": "bg-white text-blue"
+        "color": "bg-gray-light text-blue"
       }
     },
     "product_footnotes_izYTTQ": {
@@ -493,18 +385,15 @@
   },
   "order": [
     "main",
+    "product_slideshow_f7BaaR",
     "product_custom_tabs_acewb9",
     "product_image_text_6MPkRA",
-    "section_image_blocks_A9wwV3",
     "product_video_WFRqMh",
     "product_filters_tPXVJP",
-    "section_image_text_grid_NwP3Er",
-    "product_slideshow_f7BaaR",
     "product_app_tabs_BzryrE",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
     "product_image_text_product_EitePb",
-    "section_text_banner_rmDttx",
     "product_perks_FacAhx",
     "product_tech_specs_jEUNXD",
     "product_accordion_6QWP9F",

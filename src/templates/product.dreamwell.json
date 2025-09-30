@@ -219,39 +219,6 @@
         "color": "text-blue"
       }
     },
-    "product_slideshow_f7BaaR": {
-      "type": "product__slideshow",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "80ch",
-        "color": "bg-gray-athans text-blue"
-      }
-    },
-    "product_app_tabs_BzryrE": {
-      "type": "product__app-tabs",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "color": "text-blue",
-        "image_position_mobile": "flex-col",
-        "image_position_desktop": "tabletl:flex-row",
-        "max_width_desktop": "109ch",
-        "section_max_width_desktop": "1440px"
-      }
-    },
     "section_image_text_grid_NwP3Er": {
       "type": "section__image-text-grid",
       "blocks": {
@@ -315,10 +282,43 @@
         "image_position_mobile": "order-first",
         "image_position_desktop": "left",
         "image_width": 45,
-        "title": "Feel the difference with <br> a DreamWell™ Humidifier",
+        "title": "Feel the difference with a <br> DreamWell™ Humidifier",
         "title_style": "h3",
         "text_max_width": "",
         "section_max_width_desktop": ""
+      }
+    },
+    "product_slideshow_f7BaaR": {
+      "type": "product__slideshow",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "80ch",
+        "color": "bg-gray-athans text-blue"
+      }
+    },
+    "product_app_tabs_BzryrE": {
+      "type": "product__app-tabs",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "tabletl:flex-row",
+        "max_width_desktop": "109ch",
+        "section_max_width_desktop": "1440px"
       }
     },
     "section_embed_9mLjVz": {
@@ -498,9 +498,9 @@
     "section_image_blocks_A9wwV3",
     "product_video_WFRqMh",
     "product_filters_tPXVJP",
+    "section_image_text_grid_NwP3Er",
     "product_slideshow_f7BaaR",
     "product_app_tabs_BzryrE",
-    "section_image_text_grid_NwP3Er",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
     "product_image_text_product_EitePb",
