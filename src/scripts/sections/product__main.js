@@ -61,7 +61,6 @@ class ProductMain extends HTMLElement {
     this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
     this.addToCart = this.querySelector(this._selectors.addToCart)
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
-    this._toggleStickyBar();
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -83,6 +82,11 @@ class ProductMain extends HTMLElement {
     if (this.optionSwatchesContainers.length > 0) {
       this.optionSwatchesContainers.forEach((option) => this._initOptionSwatches(option));
     }
+  }
+
+  disconnectedCallback() {
+    this._disconnectStickyBarObserver();
+    window.removeEventListener("popstate", this._popStateRender);
   }
 
   _checkCartSubscriptionEdit = () => {
@@ -165,8 +169,7 @@ class ProductMain extends HTMLElement {
     const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
     this.stickyAtcClicked = false;
 
-    this._toggleStickyBar();
-    document.addEventListener('scroll', this._toggleStickyBar);
+    this._initStickyBarObserver();
     this.stickyAtcBtns.forEach((stickyAtc) => {
       stickyAtc.addEventListener('click', this._stickyAtcOnClick);
     });
@@ -177,14 +180,53 @@ class ProductMain extends HTMLElement {
     });
   }
 
-  _toggleStickyBar = () => {
-    this.stickyBars.forEach((stickyBar) => {
-      if (this._checkVisible(this.addToCart)) {
-        stickyBar.classList.add('hidden');
-      } else {
-          stickyBar.classList.remove('hidden');
+  _initStickyBarObserver = () => {
+    if (!this.addToCart) return;
+
+    const observeTarget = this.addToCart;
+    
+    this.stickyBarVisible = false;
+    this.isUpdating = false;
+
+    this.debouncedStickyBarUpdate = theme.utils.debounce((shouldShowStickyBar) => {
+      if (this.isUpdating) return;
+      
+      this.isUpdating = true;
+      
+      // Double-check the state hasn't changed during debounce delay
+      if (shouldShowStickyBar !== this.stickyBarVisible) {
+        this.stickyBarVisible = shouldShowStickyBar;
+        
+        this.stickyBars.forEach((stickyBar) => {
+          if (shouldShowStickyBar) {
+            stickyBar.classList.remove('hidden');
+          } else {
+            stickyBar.classList.add('hidden');
+          }
+        });
       }
-    });
+      
+      // Reset the updating flag after DOM settles
+      requestAnimationFrame(() => {
+        this.isUpdating = false;
+      });
+    }, 150); 
+
+    this.stickyBarObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const shouldShowStickyBar = !entry.isIntersecting;
+        
+        // Only update if state actually changed and we're not currently updating
+        if (shouldShowStickyBar !== this.stickyBarVisible && !this.isUpdating) {
+          this.debouncedStickyBarUpdate(shouldShowStickyBar);
+        }
+      });
+      }, {
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0 
+      });
+
+    this.stickyBarObserver.observe(observeTarget);
   }
   
   _stickyAtcOnClick = (evt) => {
@@ -193,10 +235,15 @@ class ProductMain extends HTMLElement {
     this.addToCart.click();
   }
 
-  _checkVisible(elm) {
-    var rect = elm.getBoundingClientRect();
-    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  
+  _disconnectStickyBarObserver = () => {
+    if (this.stickyBarObserver) {
+      this.stickyBarObserver.disconnect();
+      this.stickyBarObserver = null;
+    }
+    
+    // Clean up debounced function reference
+    this.debouncedStickyBarUpdate = null;
   }
 
   _deselectAllSubscriptions() {
