@@ -61,10 +61,10 @@
     }
   {%- endcapture -%}
 
-  <div class="pdp-buystack-carousel {{ carousel_classes }} w-full max-w-full">
+  <div class="pdp-buystack-carousel {{ carousel_classes }} tabletp:w-full tabletp:max-w-full">
     <s-carousel data-options="{{ carousel_options | escape }}" class="block">
       <div id="{{ carousel_id }}" class="swiper w-full overflow-hidden" js-carousel>
-        <div class="swiper-wrapper w-[calc(100vw-1.5rem)] tabletp:w-auto">
+        <div class="swiper-wrapper w-full tabletp:w-auto">
           {% for item in carousel_items %}
             <div class="swiper-slide {{ slide_classes }}" js-carousel-slide>
               <div
