@@ -107,7 +107,7 @@
     {% if template.name == 'product' %}
       {% render 'modal--klaviyo-bis' %}
       {% if is_transactional and template.suffix != 'coming-soon' %}
-        {% render 'product-sticky-bar' %}
+        {% comment %}{% render 'product-sticky-bar' %}{% endcomment %}
       {% endif %}
     {% endif %}
 
