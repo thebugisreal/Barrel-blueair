@@ -243,6 +243,36 @@ theme.utils = {
     };
   },
 
+  /**
+   * Throttle function: ensures fn is only called once every wait ms.
+   * @param {Function} fn - Function to throttle
+   * @param {number} wait - Milliseconds to wait
+   * @returns {Function}
+   */
+  throttle(fn, wait = 100) {
+    let lastTime = 0;
+    let timeout;
+    return function(...args) {
+      const now = Date.now();
+      const remaining = wait - (now - lastTime);
+      if (remaining <= 0) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        lastTime = now;
+        fn.apply(this, args);
+      } else if (!timeout) {
+        timeout = setTimeout(() => {
+          lastTime = Date.now();
+          timeout = null;
+          fn.apply(this, args);
+        }, remaining);
+      }
+    };
+  },
+
+
   getSiblings(element, selector) {
     let siblings = [];
     let targets;

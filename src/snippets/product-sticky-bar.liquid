@@ -23,7 +23,7 @@
   endif
 -%}
 
-<div class="product__sticky-bar hidden sticky top-[var(--header-height)] left-0 w-full z-[2] px-md py-sm gap-md bg-white flex items-center justify-between tabletl:items-center desktop:px-xl" js-product-sticky-bar>
+<div class="product__sticky-bar hidden fixed top-[var(--header-height)] left-0 w-full z-[2] px-md py-sm gap-md bg-white flex items-center justify-between tabletl:items-center desktop:px-xl" js-product-sticky-bar>
     <div class="flex flex-col flex-1">
         <div class="product-sticky-bar__title s1">
           {% if product.metafields.seed.product_card_title != blank %}
