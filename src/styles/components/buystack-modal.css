@@ -64,6 +64,22 @@ buystack-modal.open .buystack-modal__container {
   }
 }
 
+/* Make carousel section full viewport width on mobile */
+@media (max-width: 1023px) {
+  .pdp-buystack-carousel {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+  }
+  
+  .pdp-buystack-carousel .swiper-wrapper {
+    padding-left: 1.5rem;
+  }
+}
+
 
 /* Mobile responsive adjustments - below tabletp breakpoint */
 @media (max-width: 767px) {
