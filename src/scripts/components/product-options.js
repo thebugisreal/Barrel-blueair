@@ -128,7 +128,7 @@ class ProductOptions extends HTMLElement {
     const { variants } = this._product;
 
     return variants.find((variant) =>
-      selectedOptions.every((option) => option.value === variant[option.index].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, ''))
+      selectedOptions.every((option) => option.value === variant[option.index].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, ''))
     );
   }
 

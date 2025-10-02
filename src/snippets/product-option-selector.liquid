@@ -24,6 +24,9 @@
     %}
 {%- endcomment -%}
 
+{% assign color = 'color,colore,couleur,colour,颜色,لون,色,색,สี,顏色' %}
+{% assign color = color | split: ',' %}
+
 {% case type %}
   {% when 'select' %}
     <div class="product-option {% if option.values.size == 1 %} sr-only {% endif %}">
@@ -56,7 +59,7 @@
     <div class="product-option {% if has_subscription_variant == true or  option.values.size == 1 %} sr-only {% endif %}">
       <div class="product-option__swatch product-swatch">
         <div class="product-swatch__header p3">Select {{ option.name }}</div>
-          <div class="product-swatch__container {% if option_name_handle == 'color' %}flex flex-wrap{% else %}grid grid-cols-1 desktop:grid-cols-3{% endif %} gap-xxs mt-xxxs">
+          <div class="product-swatch__container {% if color contains option_name_handle %}flex flex-wrap{% else %}grid grid-cols-1 desktop:grid-cols-3{% endif %} gap-xxs mt-xxxs">
             {% for value in option.values %}
               {% assign value_lowercased = value | downcase %}
               {% unless value_lowercased contains 'subscription' %}
@@ -74,9 +77,9 @@
                     js-product-option-selector>
                   <label 
                     for="{{ input_id }}"
-                    class="product-swatch__label {% if option_name_handle == 'color' %}product-swatch__label--color{% else %}product-swatch__label--non-color{% endif %}"
+                    class="product-swatch__label {% if color contains option_name_handle %}product-swatch__label--color{% else %}product-swatch__label--non-color{% endif %}"
                     title="{{ value }}">
-                    {% if option_name_handle == 'color' %}
+                    {% if color contains option_name_handle %}
                       {% assign swatch_objects = product.metafields.seed.swatches.value %}
                       {% assign swatch_object = swatch_objects | where: "name", value | first %}
                       <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
