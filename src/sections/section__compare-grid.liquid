@@ -22,9 +22,11 @@
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
+            {% unless shop.permanent_domain contains 'eu' and localization.language.iso_code != 'de' %}
             <li class="compare__item">
                 <p class="p1">Price</p>
             </li>
+            {% endunless %}
             <li class="compare__item">
               {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
                 <p class="p1">Recommended max room size (sq ft) </p>
@@ -115,9 +117,11 @@
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
+            {% unless shop.permanent_domain contains 'eu' and localization.language.iso_code != 'de' %}
             <li class="compare__item">
                 <p class="p1">N/A</p>
             </li>
+            {% endunless %}
             <li class="compare__item">
                 <p class="p1">-</p>
             </li>
