@@ -526,7 +526,9 @@
                               <span class="p4">
                                 {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
                                   {{ 'products.product.accordions.additional_features.yes' | t }}, <a href="/pages/subscribe" class="link link--underline underline-offset-1">{{ 'products.product.accordions.additional_features.via_blueair_app' | t }}</a>
-                                {% elsif product.metafields.seed.blair_productSpecification_timer == 'no' or product.metafields.seed.blair_productSpecification_timer == 'No' or product.metafields.seed.blair_productSpecification_timer == 'NO' %}
+                                {% elsif product.metafields.seed.blair_productSpecification_timer == '1' or product.metafields.seed.blair_productSpecification_timer == 'Yes' or product.metafields.seed.blair_productSpecification_timer == 'yes'  %}
+                                  {{ 'products.product.accordions.additional_features.yes' | t }}
+                                {% elsif product.metafields.seed.blair_productSpecification_timer == '0' or product.metafields.seed.blair_productSpecification_timer == 'No' or product.metafields.seed.blair_productSpecification_timer == 'no' %}
                                   {{ 'products.product.accordions.additional_features.no' | t }}
                                 {% else %}
                                   {{ product.metafields.seed.blair_productSpecification_timer }}
