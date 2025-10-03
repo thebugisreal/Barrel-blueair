@@ -385,11 +385,11 @@
                     <div class="product__realted-colors-container mt-sm mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 text-12 text-blue mb-xxs">Type: {{color.label}}</span>
+                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Type: {{color.label}}</span>
                           <div class="product__related-colors flex flex-wrap gap-xs"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_material}}"
-                            data-option="color"
+                            data-option="material"
                             js-product-option-swatches-container>
                           </div>
                         </div>

@@ -1219,7 +1219,9 @@ class ProductMain extends HTMLElement {
           ? (window.location.pathname.split('/products/')[0] + p.url)
           : p.url;
   
-        const baseClasses = 'w-[22px] h-[22px] rounded-full flex relative';
+        const baseClasses = optionKind === 'material' 
+          ? 'w-40 h-40 rounded-full flex relative'
+          : 'w-[22px] h-[22px] rounded-full flex relative';
         const aria = optionKind === 'material'
           ? `${p.title} – Type ${label}`
           : `${p.title} in ${label} color`;
