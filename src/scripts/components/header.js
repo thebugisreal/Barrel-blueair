@@ -19,6 +19,9 @@ class SiteHeader extends HTMLElement {
     this.announcementBar = this.querySelector(this._selectors.announcementBar);
     this.navItems = this.querySelectorAll(this._selectors.navItem)
     this.navMenus = this.querySelectorAll(this._selectors.navMenu)
+    
+    sessionStorage.removeItem("hideAnnouncement");
+
     this.mobileSubnavTriggers = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavTrigger}`);
     this.mobileSubnavCloseBtns = document.querySelectorAll(`${this._selectors.mobileNavDrawer} ${this._selectors.mobileSubnavClose}`);
 
