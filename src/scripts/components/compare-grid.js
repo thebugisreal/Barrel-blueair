@@ -11,15 +11,13 @@ class CompareGrid extends HTMLElement {
     this._labelsObserver = null;
   }
   
-  connectedCallback() {
-    this.atcBtn = this.querySelector(this.selectors.atcBtn);
-    this.moneyFormat = `${(window.currency && window.currency.symbol) || "$"}{{amount}}`;
-    this.additionalColumn = this.querySelector(this.selectors.additionalColumn);
-
-    this.initCompareGrid();
-    this.setListeners();
-    this._observeLabelsColumn(); // <— watch the labels column for “Price” appearing/disappearing
-  }
+    connectedCallback() {
+      this.atcBtn = this.querySelector(this.selectors.atcBtn)
+      this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
+      this.additionalColumn = this.querySelector(this.selectors.additionalColumn)
+      this.initCompareGrid()
+      this.setListeners()
+    }
 
   disconnectedCallback() {
     if (this._labelsObserver) {
@@ -64,9 +62,12 @@ class CompareGrid extends HTMLElement {
 
     this._handeleHeightChange();
 
-    // If the labels column does NOT include a Price row, remove the first data row (the price row) in each product column
-    this._prunePriceRowIfNoLabel();
-  }
+    _createDataColumn(product, index) {
+      const columnContainer =  document.createElement('ul')
+      columnContainer.classList.add('compare__grid-item')
+      columnContainer.setAttribute('js-compare-item', '')
+      columnContainer.dataset.productId = product.id
+      columnContainer.dataset.index = index
 
   _handeleHeightChange() {
     // Adjusting Height 
@@ -111,7 +112,9 @@ class CompareGrid extends HTMLElement {
     const labels = this.querySelector('.compare__grid-info-column');
     if (!labels || this._labelsObserver) return;
 
-    let lastHadPrice = this._hasPriceLabel();
+      // Compare Price
+      const productComparePriceContainer = this._createCompareItem(theme.utils.formatMoney(product.price, this.moneyFormat));
+      productComparePriceContainer.classList.add('compare__price')
 
     this._labelsObserver = new MutationObserver(() => {
       const nowHasPrice = this._hasPriceLabel();

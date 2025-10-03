@@ -5,6 +5,14 @@
     border-gray
 }
 
+.compare__price {
+    @apply hidden
+}
+
+[data-country="DE"] .compare__price {
+    @apply block
+}
+
 .compare-product__title {
     @apply sticky 
     bg-white 

@@ -8,7 +8,7 @@
   endif
 -%}
 
-<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl max-w-[100vw] overflow-x-auto tabletl:overflow-x-visible" data-country="{{ localization.country.iso_code }}">
+<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl max-w-[100vw] overflow-x-auto tabletl:overflow-x-visible" {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}data-country="{{ localization.country.iso_code }}"{% endif %}>
     <compare-grid class="compare__grid grid grid-cols-3 relative min-w-[500px] tabletl:grid-cols-4 tabletl:min-w-0">
         {% comment %} Compare Grid Info Column {% endcomment %}
         <ul class="compare__grid-info-column border-r border-gray">
@@ -28,11 +28,9 @@
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
-            {% unless shop.permanent_domain contains 'eu' and localization.language.iso_code != 'de' %}
-            <li class="compare__item">
+            <li class="compare__item compare__price">
                 <p class="p1">Price</p>
             </li>
-            {% endunless %}
             <li class="compare__item">
               {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
                 <p class="p1">Recommended max room size (sq ft) </p>
@@ -123,11 +121,9 @@
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
-            {% unless shop.permanent_domain contains 'eu' and localization.language.iso_code != 'de' %}
-            <li class="compare__item">
+            <li class="compare__item compare__price">
                 <p class="p1">N/A</p>
             </li>
-            {% endunless %}
             <li class="compare__item">
                 <p class="p1">-</p>
             </li>
