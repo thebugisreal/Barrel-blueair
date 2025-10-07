@@ -96,38 +96,29 @@
         "video_UiJcNE": {
           "type": "video",
           "settings": {
-            "youtube_id": "jfDLrCqYXa4"
+            "video": "shopify://files/videos/Getting Started.mp4",
+            "youtube_id": ""
           }
         },
         "video_JaH9CC": {
           "type": "video",
           "settings": {
-            "youtube_id": "V3NONnvGwlM"
+            "video": "shopify://files/videos/Filter Change.mp4",
+            "youtube_id": ""
           }
         },
         "video_yMrxDw": {
           "type": "video",
           "settings": {
-            "youtube_id": "wLWJ2efkG9A"
+            "video": "shopify://files/videos/General Tips.mp4",
+            "youtube_id": ""
           }
         },
         "video_QJKQGX": {
           "type": "video",
           "settings": {
-            "youtube_id": "WTrvKi5SfMQ"
-          }
-        },
-        "video_agGEVg": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "youtube_id": "MlO_NUUTC8"
-          }
-        },
-        "video_DyXLtE": {
-          "type": "video",
-          "settings": {
-            "youtube_id": "hIPwjRoArAo"
+            "video": "shopify://files/videos/BlueSignature.mp4",
+            "youtube_id": ""
           }
         }
       },
@@ -135,11 +126,8 @@
         "video_UiJcNE",
         "video_JaH9CC",
         "video_yMrxDw",
-        "video_QJKQGX",
-        "video_agGEVg",
-        "video_DyXLtE"
+        "video_QJKQGX"
       ],
-      "disabled": true,
       "settings": {
         "anchor_id": "videos",
         "margin_top_mobile": "mt-md",

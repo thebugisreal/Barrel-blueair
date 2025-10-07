@@ -443,6 +443,7 @@
     },
     "product_recommendations_Ha8zrk": {
       "type": "product__recommendations",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",

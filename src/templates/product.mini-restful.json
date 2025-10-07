@@ -444,6 +444,7 @@
     },
     "product_recommendations_Ha8zrk": {
       "type": "product__recommendations",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -504,9 +505,9 @@
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
     "product_image_text_product_EitePb",
+    "product_tech_specs_jEUNXD",
     "section_text_banner_rmDttx",
     "product_perks_FacAhx",
-    "product_tech_specs_jEUNXD",
     "product_accordion_6QWP9F",
     "product_recommendations_Ha8zrk",
     "product_footnotes_izYTTQ",

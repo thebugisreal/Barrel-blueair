@@ -140,6 +140,11 @@
         "type": "shopify://apps/redirect-pro-404-seo/blocks/tracker/68d49184-0465-4c21-8d3d-e051f7921c3f",
         "disabled": false,
         "settings": {}
+      },
+      "1248957848723945065": {
+        "type": "shopify://apps/mntn/blocks/tracking-pixel/d40b5b2f-bf84-4a06-b576-832ad24a8652",
+        "disabled": false,
+        "settings": {}
       }
     }
   }

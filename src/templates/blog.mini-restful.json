@@ -184,6 +184,7 @@
           "type": "block",
           "settings": {
             "title": "Mini Restful SC9i",
+            "image": "shopify://shop_images/2_87434101-9662-47b3-90ad-b9401f194be0.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
@@ -195,7 +196,7 @@
             "manual_4_link_text": "",
             "manual_4_link_url": "",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify://products/blue-signature-replacement-filter"
+            "product_link_url": "shopify://collections/mini-restful™-filter"
           }
         },
         "block_N9tFUz": {

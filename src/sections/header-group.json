@@ -27,7 +27,7 @@
         "announcement_A6AHyV"
       ],
       "settings": {
-        "header_nav_desktop": "us-nav-bar",
+        "header_nav_desktop": "us-new-nav-bar",
         "bg_color": "bg-white text-blue"
       }
     }

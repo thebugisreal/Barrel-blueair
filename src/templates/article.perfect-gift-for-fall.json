@@ -30,7 +30,7 @@
             "padding_top_desktop": "desktop:pt-xxl",
             "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "135ch",
-            "richtext": "<p>A good night’s sleep is one of the most powerful ways to restore your body and mind. Yet many people overlook a key part of sleep health: the air you breathe and the environment that surrounds you. At Blueair, we believe that creating a soothing, clean, and restorative bedroom atmosphere is just as important as having the right mattress or bedtime routine. </p><p>That’s why we’re proud to introduce two new innovations in our Sleep Collection — the DreamWell™ Humidifier and the Mini Restful™ Air Purifier.  </p><p>Thoughtfully designed to improve your sleep quality, each product blends Scandinavian design with science-backed benefits, helping you breathe, rest, and wake more naturally. </p>",
+            "richtext": "<p>As the air turns crisp, pumpkin spice lattes return, and cozy nights indoors become the norm, fall is the perfect time to focus on comfort and well-being. It’s also a season filled with gifting opportunities—whether you’re preparing for Amazon’s Fall Prime sales, early holiday shopping, or simply surprising someone you love “just because.” </p><p>One thoughtful, unexpected gift that truly makes a difference? <span style=\"text-decoration:underline\"><strong>A Blueair air purifier.</strong></span> </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
@@ -47,8 +47,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Blog_Image_1.png",
-            "image_desktop": "shopify://shop_images/Blog_Image_1.png",
+            "image": "shopify://shop_images/Blog_Image_c782cb50-4ddf-4279-97fc-ed4e5be29a1b.png",
+            "image_desktop": "shopify://shop_images/Blog_Image_c782cb50-4ddf-4279-97fc-ed4e5be29a1b.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -57,95 +57,69 @@
         "text_e9yarP": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-md",
+            "margin_top_mobile": "mt-lg",
             "margin_bottom_mobile": "mb-lg",
-            "padding_top_mobile": "pt-md",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-md",
-            "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-md",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>DreamWell™ Humidifier: The Science of Sleep Meets Sensorial Comfort</strong></h4><p></p><p>Dry air can make it harder to sleep soundly — leading to congestion, irritated skin, and restless nights. The DreamWell™ Humidifier  helps maintain a comfortable, breathable atmosphere that supports restful sleep. </p><p></p><ul><li>360° InvisibleMist™ Technology  </li></ul><p></p><ul><li>Provides optimal humidity all night long with clean, mist-free hydration  A multi-sensorial design creates a soothing sleep environment that goes beyond simple humidity control. </li></ul><p></p><ul><li>With its easy-to-clean design, DreamWell™ is as practical as it is beautiful, blending seamlessly into your sleep space. </li></ul><p></p><p> By maintaining an ideal balance of humidity, DreamWell™ creates an environment that encourages deeper relaxation and supports your body’s natural overnight recovery- helping you wake up feeling refreshed and restored. </p>",
-            "richtext_alignment": "text-left",
-            "richtext_style": "p2"
-          }
-        },
-        "image_caption_TWbzwr": {
-          "type": "image_caption",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Blog_Image_2_1.png",
-            "image_desktop": "shopify://shop_images/Blog_Image_2_1.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>The Season of Cozy—and Allergies</strong></h4><p></p><p>Fall is all about layering blankets and enjoying warm drinks, but it also brings seasonal challenges: <br/><br/>- Ragweed pollen peaks in many areas, triggering sneezes and itchy eyes. <br/>- Mold spores rise as leaves pile up and damp weather sets in. <br/>- Indoor air pollution increases when windows close and heaters kick on. <br/><br/>A Blueair purifier is more than just a sleek home accessory—it’s a way to protect your loved ones from the allergens and pollutants that can get in the way of fully enjoying the season. </p><p></p><h4><strong>Why Blueair Is a Gift That Shows You Care</strong></h4><p></p><p>When you give a Blueair product, you’re not just gifting a device—you’re gifting health, comfort, and peace of mind. Here’s why it stands out: </p><ol><li>HEPASilent™ Technology – Removes up to 99.97% of airborne particles down to 0.1 microns, including pollen, dust, and pet dander. </li><li>Whisper-quiet operation – Perfect for bedrooms, nurseries, or home offices without disrupting cozy moments. </li><li>Scandinavian design – Sleek, minimalist design means it looks as good as it works. </li><li>Energy efficient – Ideal for round-the-clock use without spiking electricity bills. </li></ol><p> </p><p>These features make Blueair not only practical, but also an elegant and thoughtful gift choice. </p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
           }
         },
         "text_Ub47yL": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-md",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-md",
             "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>Mini Restful™ Air Purifier: Fresh Air Meets Sunrise Calm</strong></h4><p></p><p>Sleep isn’t just about what happens while you rest — it’s about how you wake, too. The Mini Restful™ Air Purifier is the first and only purifier with an integrated sunrise clock, combining the benefits of clean air with natural light therapy. </p><p></p><ul><li>Fresh air dome technology delivers quiet, efficient purification right where you sleep. </li></ul><p></p><ul><li>A gentle sunrise simulation helps you wake more naturally, easing the transition from sleep to day. </li></ul><p></p><ul><li>Soft mood lighting and app-based personalization allow you to create a bedtime and morning routine tailored to your needs. </li></ul><p></p><p>This unique combination supports both your nighttime rest and your morning energy, all while keeping your bedroom air clean and healthy. </p>",
+            "richtext": "<h4><strong>Gifting Ideas for Fall</strong></h4><p></p><p>Whether you’re shopping for family, friends, or even coworkers, there’s a Blueair model that fits perfectly: </p><ul><li><strong>For the homebody:</strong> A purifier in the living room helps make movie nights healthier and more comfortable. </li><li><strong>For parents:</strong> Cleaner air in nurseries and playrooms helps little ones sleep soundly and breathe easier.  </li><li><strong>For pet lovers:</strong> Keep dander and odors at bay while creating a fresher, more inviting home. </li><li><strong>For students or professionals:</strong> A desktop purifier for dorms or home offices helps boost focus and well-being. </li></ul><p></p><h1></h1><h4><strong>The Perfect Timing: Amazon Fall Prime Sales</strong></h4><p></p><p>Amazon’s Fall Prime sales are the perfect time to grab deals on big-ticket items like Blueair. If you’re planning for the holidays, or want to surprise someone this season, taking advantage of seasonal discounts makes this premium gift even more accessible. </p><p>With fast shipping and special offers, you can check off your list early while giving a gift that truly lasts. </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
-        "image_text_MikMKz": {
-          "type": "image_text",
+        "image_caption_34fmbF": {
+          "type": "image_caption",
           "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-xl",
-            "padding_top_mobile": "pt-md",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-md",
-            "padding_bottom_desktop": "desktop:pb-xl",
-            "max_width_desktop": "80ch",
-            "color": "text-blue",
-            "title": "Get started",
-            "title_style": "h4",
-            "richtext": "<p>Find the perfect device to compliment your perfect nightly routine.</p>",
-            "cta_url": "shopify://collections/sleep-collection",
-            "cta_text": "Explore now",
-            "cta_style": "btn btn--blue-rounded",
-            "text_padding_left_desktop": "desktop:pl-0",
-            "text_padding_right_desktop": "desktop:pr-0",
-            "image_mobile": "shopify://shop_images/H38i_Bundle_400.png",
-            "image_placement_mobile": "flex-col",
-            "image_placement_desktop": "tabletl:flex-row-reverse"
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-sm",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-sm",
+            "padding_top_desktop": "desktop:pt-lg",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Blog_Image2.png",
+            "image_desktop": "shopify://shop_images/Blog_Image2.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
           }
         },
-        "text_caefyH": {
+        "text_YjUCLt": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-md",
             "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
+            "padding_top_desktop": "desktop:pt-sm",
+            "padding_bottom_desktop": "desktop:pb-lg",
             "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>Make Sleep a Ritual with Blueair</strong></h4><p></p><p>Both the DreamWell™ Humidifier and the Mini Restful™ Air Purifier are part of Blueair’s mission to reimagine sleep wellness through better air. With beautifully designed, easy-to-use technology, our Sleep Collection helps you transform your bedroom into a sanctuary where your body can truly restore. </p><p>Explore the Sleep Collection today and discover how the right environment can change the way you sleep — and the way you wake. </p><p></p><ul><li>Fresh air dome technology delivers quiet, efficient purification right where you sleep. </li></ul><p></p><ul><li>A gentle sunrise simulation helps you wake more naturally, easing the transition from sleep to day. </li></ul><p></p><ul><li>Soft mood lighting and app-based personalization allow you to create a bedtime and morning routine tailored to your needs. </li></ul><p></p><p>This unique combination supports both your nighttime rest and your morning energy, all while keeping your bedroom air clean and healthy. </p>",
+            "richtext": "<h4><strong>Final Thoughts</strong></h4><p></p><p>As the days get shorter and we spend more time indoors, a Blueair purifier is a thoughtful, health-conscious gift that brings comfort, wellness, and style into any home. This fall, give your loved ones more than just a present—give them clean air to breathe, every day.</p><p></p><p></p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -155,10 +129,9 @@
         "text_QNqwkC",
         "image_caption_KnqYBR",
         "text_e9yarP",
-        "image_caption_TWbzwr",
         "text_Ub47yL",
-        "image_text_MikMKz",
-        "text_caefyH"
+        "image_caption_34fmbF",
+        "text_YjUCLt"
       ],
       "settings": {}
     },

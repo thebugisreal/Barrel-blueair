@@ -113,11 +113,11 @@
             "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "icon_1_image": "shopify://shop_images/Group_3530.svg",
+            "icon_1_image": "shopify:\/\/shop_images\/Group_3530.svg",
             "icon_1_text": "Free & fast shipping",
-            "icon_2_image": "shopify://shop_images/Group_3531.svg",
+            "icon_2_image": "shopify:\/\/shop_images\/Group_3531.svg",
             "icon_2_text": "30 day home trial",
-            "icon_3_image": "shopify://shop_images/Group_3532.svg",
+            "icon_3_image": "shopify:\/\/shop_images\/Group_3532.svg",
             "icon_3_text": "Free extended warranty"
           }
         }
@@ -249,7 +249,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>"
+        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https:\/\/player.vimeo.com\/video\/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"><\/iframe><\/div><script src=\"https:\/\/player.vimeo.com\/api\/player.js\"><\/script>"
       }
     },
     "product_brands_3gV3EU": {

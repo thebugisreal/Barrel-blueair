@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "product__main",
@@ -99,7 +99,9 @@
         },
         "buystack_carousel_hjBgtb": {
           "type": "buystack_carousel",
+          "disabled": true,
           "settings": {
+            "title": "See What People Think!",
             "margin_top_mobile": "mt-md",
             "margin_bottom_mobile": "mb-md",
             "margin_top_desktop": "desktop:mt-md",
