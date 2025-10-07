@@ -73,6 +73,7 @@
         name: "{{ cart.currency.name }}",
         code: "{{ cart.currency.iso_code }}"
       };
+      window.permanent_domain = `{{shop.permanent_domain}}`
     </script>
 
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
@@ -101,7 +102,9 @@
     {% render 'drawer--cart' %}
     {% render 'drawer--mobile-filter' %}
     {% render 'drawer--desktop-search' %}
-    {% render 'modal--country-selector' %}
+    {% if request.design_mode == false %}
+      {% render 'modal--country-selector' %}
+    {% endif %}
 
     {% include 'region-check' %}
     {% if template.name == 'product' %}
@@ -147,53 +150,6 @@
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
-    {% if request.design_mode == false %}
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const country = Shopify.country;
-          const currentUrl = window.location.hostname.replace('www.', '');
-
-          let showModal = false;
-
-          if ((country === 'US' || country === 'CA') && currentUrl !== 'blueair.com') {
-            if (sessionStorage.getItem('isInitialVisit')) {
-              return; // Don't show modal for returning visitors
-            }
-            showModal = true;
-            sessionStorage.setItem('isInitialVisit', 'true');
-          } else if (country === 'GB' && currentUrl !== 'blueair.co.uk') {
-            showModal = true;
-          } else if (!['US', 'CA', 'GB'].includes(country) && currentUrl !== 'blueair.co') {
-            if (sessionStorage.getItem('isInitialVisit')) {
-              return; // Don't show modal for returning visitors
-            }
-            showModal = true;
-            sessionStorage.setItem('isInitialVisit', 'true');
-          } else if (currentUrl === 'blueair.co') {
-            if (sessionStorage.getItem('isInitialVisit')) {
-              return;
-            }
-
-            sessionStorage.setItem('isInitialVisit', 'true');
-
-            if (country !== 'DE') {
-              showModal = true;
-            }
-          }
-
-          if (showModal) {
-            const welcomeModal = document.querySelector('#CountryMarketSelectModal');
-            const countrySelector = welcomeModal?.querySelector('country-select-modal [js-country-select]');
-
-            if (welcomeModal && countrySelector) {
-              countrySelector.value = country;
-              countrySelector.dispatchEvent(new Event('change'));
-              welcomeModal.open();
-            }
-          }
-        });
-      </script>
-    {% endif %}
 
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' or shop.permanent_domain == 'blueeudev.myshopify.com' %}
       {% if is_transactional %}
