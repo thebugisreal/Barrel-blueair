@@ -518,7 +518,7 @@
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
-                {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifiConnectivity != blank %}
+                {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifi != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
                       <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
@@ -528,10 +528,16 @@
                       </button>
                       <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="true" js-accordion-content>
                         <ul class="product-additional-features__list pb-md">
-                          {% if product.metafields.seed.blair_wifiConnectivity != blank %}
+                          {% if product.metafields.seed.blair_wifi != blank %}
                             <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
                               <span class="p3">{{ 'products.product.accordions.additional_features.wifi_connectivity' | t }}</span>
-                              <span class="p4">{% if product.metafields.seed.blair_wifiConnectivity == '1' or product.metafields.seed.blair_wifiConnectivity == 'Yes' or product.metafields.seed.blair_wifiConnectivity == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
+                              <span class="p4">
+                                {% if product.metafields.seed.blair_wifi == true %}
+                                  {{ 'products.product.accordions.additional_features.yes' | t }}
+                                {% else %}
+                                  {{ 'products.product.accordions.additional_features.no' | t }}
+                                {% endif %}
+                              </span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_timer != blank %}
@@ -540,10 +546,14 @@
                               <span class="p4">
                                 {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
                                   {{ 'products.product.accordions.additional_features.yes' | t }}, <a href="/pages/subscribe" class="link link--underline underline-offset-1">{{ 'products.product.accordions.additional_features.via_blueair_app' | t }}</a>
-                                {% else %}
+                                {% elsif product.metafields.seed.blair_productSpecification_timer == '1' or product.metafields.seed.blair_productSpecification_timer == 'Yes' or product.metafields.seed.blair_productSpecification_timer == 'yes'  %}
+                                  {{ 'products.product.accordions.additional_features.yes' | t }}
+                                {% elsif product.metafields.seed.blair_productSpecification_timer == '0' or product.metafields.seed.blair_productSpecification_timer == 'No' or product.metafields.seed.blair_productSpecification_timer == 'no' %}
                                   {{ 'products.product.accordions.additional_features.no' | t }}
+                                {% else %}
+                                  {{ product.metafields.seed.blair_productSpecification_timer }}
                                 {% endif %}
-                            </span>
+                              </span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
