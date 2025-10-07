@@ -207,7 +207,7 @@
               {% endif %}
             {% endif %}
             {% if filter_variant.selling_plan_allocations.size > 0 %}
-              <div class="filter-subscription__selling-plans-group {% if pdp_type == '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
+              <div class="filter-subscription__selling-plans-group {% if pdp_type != '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
                 {% if filter_product.metafields.seed.filter_subscription_description != blank and pdp_type != '2in1_purify_humidify' %}
                   <div class="filter-subscription__description p4 mt-xxs">
                     {{ filter_product.metafields.seed.filter_subscription_description }}
