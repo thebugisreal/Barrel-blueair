@@ -61,13 +61,15 @@ class CompareGrid extends HTMLElement {
     }
 
     this._handeleHeightChange();
+  }
 
-    _createDataColumn(product, index) {
-      const columnContainer =  document.createElement('ul')
-      columnContainer.classList.add('compare__grid-item')
-      columnContainer.setAttribute('js-compare-item', '')
-      columnContainer.dataset.productId = product.id
-      columnContainer.dataset.index = index
+  _createDataColumn(product, index) {
+    const columnContainer =  document.createElement('ul')
+    columnContainer.classList.add('compare__grid-item')
+    columnContainer.setAttribute('js-compare-item', '')
+    columnContainer.dataset.productId = product.id
+    columnContainer.dataset.index = index
+  }
 
   _handeleHeightChange() {
     // Adjusting Height 
