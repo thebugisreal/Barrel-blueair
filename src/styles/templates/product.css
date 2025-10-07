@@ -348,6 +348,12 @@ s-carousel.pointer-event {
   border-blue;
 }
 
+/* Material swatches - larger size */
+.product__related-color-current.w-40::after{
+  @apply w-[50px]
+  h-[50px];
+}
+
 .product-related-color:focus::after{
   content: '';
   @apply block
@@ -361,6 +367,11 @@ s-carousel.pointer-event {
   rounded-full
   border
   border-blue;
+}
+
+.product-related-color.w-40:focus::after{
+  @apply w-[50px]
+  h-[50px];
 }
 
 .product-related-color:focus-visible::after{
@@ -378,6 +389,11 @@ s-carousel.pointer-event {
   border-blue;
 }
 
+.product-related-color.w-\[32px\]:focus-visible::after{
+  @apply w-[50px]
+  h-[50px];
+}
+
 @media screen(desktop) {
   .product-related-color:hover::after{
     content: '';
@@ -392,6 +408,11 @@ s-carousel.pointer-event {
     rounded-full
     border
     border-blue;
+  }
+
+  .product-related-color.w-40:hover::after{
+    @apply w-[50px]
+    h-[50px];
   }
 }
 

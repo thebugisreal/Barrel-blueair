@@ -1180,52 +1180,92 @@ class ProductMain extends HTMLElement {
   }
 
   async _initOptionSwatches(option) {
-    const currentProductHandle = option.dataset.handle;
-    const collectionHandle = option.dataset.collection;
-    const targetURL = `/collections/all/${collectionHandle}?view=json`;
-    const optionSwatchesJSON = await this._getRelatedSwatchesJSON(targetURL);
-    let optionSwatchesMarkup = '';
-
-    optionSwatchesJSON.forEach((product) => {
-      if (option.dataset.option == 'size') {
-        if (product.handle != currentProductHandle) {
-          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${product.url}" class="product__related-size p-xxs w-[99px] h-[25px] rounded-[3px] bg-white text-blue border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch js-option-swatch-link>${product.size}</a>`
-        } else {
-          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-size-current p-xxs w-[99px] h-[25px] rounded-[3px] bg-blue text-white border border-blue flex justify-center items-center" data-swatch="${product.size}" js-related-option-swatch>${product.size}</div>`
-        }
-      } else if (option.dataset.option == 'color') {
-        const swatchStyle = product.swatchImage && product.swatchImage !== ''
-          ? `background-image: url('${product.swatchImage}'); background-size: cover; background-position: center;`
-          : `background-color: ${product.colorHex}`;
-        if (product.handle != currentProductHandle) {
-          optionSwatchesMarkup = `${optionSwatchesMarkup}<a href="${!window.location.pathname.includes('/en-us/') ? (window.location.pathname.split('/products/')[0] + product.url) : product.url}" class="product-related-color w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-swatch="${product.color}" js-related-option-swatch js-option-swatch-link><span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span></a>`
-        } else {
-          optionSwatchesMarkup = `${optionSwatchesMarkup}<div class="product__related-color-current w-[22px] h-[22px] rounded-full flex relative" aria-label="${product.title } in ${product.color} color" data-swatch="${product.color}" js-related-option-swatch><span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span></div>`
+    try {
+      const currentProductHandle = option.dataset.handle;                      
+      const collectionTagRaw = option.dataset.collection || '';                
+      const optionKind = (option.dataset.option || '').toLowerCase();          
+  
+      const looksEncoded = /%[0-9A-F]{2}/i.test(collectionTagRaw) || !collectionTagRaw.includes(':');
+      const tagForUrl = looksEncoded ? collectionTagRaw : encodeURIComponent(collectionTagRaw);
+      const targetURL = `/collections/all/${tagForUrl}?view=json`;
+  
+      const products = await this._getRelatedSwatchesJSON(targetURL);
+      if (!Array.isArray(products) || products.length === 0) {
+        console.warn('[pdp swatches] No products for', collectionTagRaw);
+        return;
+      }
+  
+      if (optionKind === 'material') {
+        const labelEl = option.closest('.product__related-color')?.querySelector('.product__related-color-label');
+        if (labelEl) {
+          const txt = (labelEl.textContent || '').trim();
+          if (/^Type:\s*$/.test(txt)) {
+            const current = products.find(p => p.handle === currentProductHandle) || products[0];
+            if (current?.colorTitle) labelEl.textContent = `Type: ${current.colorTitle}`;
+          }
         }
       }
-    })
-
-    option.insertAdjacentHTML('beforeend', optionSwatchesMarkup);
-
-    const swatches = option.querySelectorAll('[js-related-option-swatch]');
-    Array.from(swatches).sort((a, b) =>
-      a.dataset.swatch.toLowerCase().localeCompare(b.dataset.swatch.toLowerCase())
-    ).forEach(el => el.parentNode.appendChild(el));
-
-    this._optionSwatchLinksOnClick();
+  
+      let html = '';
+      products.forEach((p) => {
+        const label = p.colorTitle || p.color || p.title; // you have "colorTitle" in the JSON
+        const swatchStyle = (p.swatchImage && p.swatchImage !== '')
+          ? `background-image:url('${p.swatchImage}');background-size:cover;background-position:center;`
+          : (p.colorHex ? `background-color:${p.colorHex};` : '');
+  
+        const isCurrent = p.handle === currentProductHandle;
+  
+        const href = !window.location.pathname.includes('/en-us/')
+          ? (window.location.pathname.split('/products/')[0] + p.url)
+          : p.url;
+  
+        const baseClasses = optionKind === 'material' 
+          ? 'w-40 h-40 rounded-full flex relative'
+          : 'w-[22px] h-[22px] rounded-full flex relative';
+        const aria = optionKind === 'material'
+          ? `${p.title} – Type ${label}`
+          : `${p.title} in ${label} color`;
+  
+        if (isCurrent) {
+          html += `
+            <div class="product__related-color-current ${baseClasses}" aria-label="${aria}" data-swatch="${label}" js-related-option-swatch>
+              <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
+            </div>`;
+        } else {
+          html += `
+            <a href="${href}" class="product-related-color ${baseClasses}" aria-label="${aria}" data-swatch="${label}" js-related-option-swatch js-option-swatch-link>
+              <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
+            </a>`;
+        }
+      });
+  
+      option.insertAdjacentHTML('beforeend', html);
+      const swatches = option.querySelectorAll('[js-related-option-swatch]');
+      Array.from(swatches)
+        .sort((a, b) => a.dataset.swatch.toLowerCase().localeCompare(b.dataset.swatch.toLowerCase()))
+        .forEach(el => el.parentNode.appendChild(el));
+  
+      this._optionSwatchLinksOnClick();
+    } catch (err) {
+      console.error('[pdp swatches] init failed', err);
+    }
   }
+  
+  
 
   _getRelatedSwatchesJSON(url) {
     return fetch(url)
-      .then(response => response.text())
+      .then(r => r.text())
       .then((text) => {
-        const html = text;
-        const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
-        const JSONcontainer = parsedHTML.querySelector('[js-collection-json]');
-        const parsedJSON = JSON.parse(JSONcontainer.innerHTML);
-        return parsedJSON;
-      })
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        const script = doc.querySelector('script[js-collection-json]');
+        if (!script) throw new Error('JSON container [js-collection-json] not found at ' + url);
+        const raw = (script.textContent || script.innerHTML || '').trim();
+        return JSON.parse(raw);
+      });
   }
+  
+  
 
   _optionSwatchLinksOnClick = () => {
     const swatchLinks = this.querySelectorAll('[js-option-swatch-link]');
