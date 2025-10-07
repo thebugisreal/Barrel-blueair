@@ -46,7 +46,8 @@ class ProductMain extends HTMLElement {
       quantityVariant: '[js-quantity-variant]',
       quanityOptionImages: '[js-quanity-option-image]',
       optionSwatchesContainers: '[js-product-option-swatches-container]',
-      relatedOptionSwatch: '[js-related-option-swatch]'
+      relatedOptionSwatch: '[js-related-option-swatch]',
+      filterPackQuantity: '[js-filter-pack-quantity]'
     };
   }
 
@@ -61,6 +62,7 @@ class ProductMain extends HTMLElement {
     this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
     this.addToCart = this.querySelector(this._selectors.addToCart)
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this.filterPackQuantity = this.querySelectorAll(this._selectors.filterPackQuantity);
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -73,6 +75,7 @@ class ProductMain extends HTMLElement {
     this.currentPriceCompareAt = parseInt(this.dataset.currentPriceCompareAt);
     
     this._checkCartSubscriptionEdit();
+    this._handleFilterPack();
     this._handleStickyBar();
     this._handleSubscription();
     this._handleQuantityVariant();
@@ -82,6 +85,34 @@ class ProductMain extends HTMLElement {
     if (this.optionSwatchesContainers.length > 0) {
       this.optionSwatchesContainers.forEach((option) => this._initOptionSwatches(option));
     }
+  }
+
+  _handleFilterPack = () => {
+    if (!this.filterPackQuantity) {
+      return;
+    }
+
+    this.filterPackQuantity.forEach((button) => {
+      button.addEventListener('change', this._filterPackQuantityOnClick.bind(this));
+    });
+  }
+
+  _filterPackQuantityOnClick = (evt) => {
+    evt.preventDefault();
+    this.filterPackQuantity.forEach((quantity) => {
+      quantity.checked = false;
+    });
+
+    const imageIndex = evt.currentTarget.dataset.imageIndex;
+
+    const carousels = this.querySelectorAll(this._selectors.carousel);
+    carousels.forEach((carousel) => {
+      carousel.swiper.slideTo(imageIndex);
+    });
+
+    evt.currentTarget.checked = true;
+    const filterQuantity = evt.currentTarget.value;
+    this.dataset.filterQuantity = filterQuantity;
   }
 
   disconnectedCallback() {
@@ -960,6 +991,7 @@ class ProductMain extends HTMLElement {
     }
 
     const formData = new FormData(this.form);
+    formData.append('quantity', this.dataset.filterQuantity);
 
     if (this.pdpToEditCartSubscription != false) {
       if (this.nonSubscriptionToggle.dataset.selected == 'true') {

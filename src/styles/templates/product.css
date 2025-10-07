@@ -398,3 +398,12 @@ s-carousel.pointer-event {
 .product__image-text .metafield-rich_text_field p {
   @apply text-18;
 }
+
+.product__filter-pack-item-button-text + input:checked {
+  @apply border-blue;
+}
+
+.product-filter-pack__input:checked + .product-filter-pack__label {
+  @apply bg-blue
+  text-white;
+}
