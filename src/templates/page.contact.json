@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -71,14 +62,14 @@
         "padding_bottom_mobile": "pb-lg",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "padding_top_desktop": "desktop:pt-xs",
+        "padding_bottom_desktop": "desktop:pb-xs",
         "max_width_desktop": "",
         "color": "bg-white text-blue",
         "image_position_desktop": "desktop:order-first",
         "title": "",
         "title_style": "h1",
-        "subtext": "Please reach out to your local distributor for assistance",
+        "subtext": "Blueair.co.uk Customer Service",
         "subtext_style": "h6",
         "cta_url": "",
         "cta_text": "",
@@ -87,8 +78,26 @@
         "text_align_desktop": "desktop:text-center"
       }
     },
+    "section_text_HcngmD": {
+      "type": "section__text",
+      "name": "Text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "109ch",
+        "richtext": "<p>We’re here to help. You can contact our friendly support team using the contact form below, by sending us an email at <strong>contact@blueair.co.uk. <\/strong><\/p><p>Our opening times are between:<\/p><p>Monday - Friday | <strong>08:00 - 16:00<\/strong><br\/>Saturday |<strong> Closed<\/strong><br\/>Sunday | <strong>Closed<\/strong><br\/>Bank Holidays | <strong>Closed<\/strong><\/p>",
+        "richtext_style": "p2"
+      }
+    },
     "section_embed_GWNkVD": {
       "type": "section__embed",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -212,6 +221,7 @@
         "customization_XYBgLz",
         "customization_twJMpa"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-lg",
@@ -235,6 +245,7 @@
     },
     "section_hero_XWdJgJ": {
       "type": "section__hero",
+      "disabled": false,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -245,10 +256,11 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
+        "image_mobile": "shopify:\/\/shop_images\/Technology_mobile_0450623b-e5bf-4aaf-ac80-7d132c8b4178.png",
+        "image_desktop": "shopify:\/\/shop_images\/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",        
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Need Support? We can help",
+        "title": "Need Product Support? We can help",
         "title_style": "h3",
         "subtext": "Get product help and answers from the Blueair customer support team.",
         "subtext_style": "s2",
@@ -274,6 +286,7 @@
     "main",
     "section_hero_MWKKLh",
     "section_text_banner_NnPEqy",
+    "section_text_HcngmD",
     "section_embed_GWNkVD",
     "section_embed_7Gdzyj",
     "section_embed_hBxRjM",
