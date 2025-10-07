@@ -18,7 +18,7 @@
                     <li class="blog__first-article-tag tag-small py-xxs px-xs border border-gray rounded-[60px]"> {{ tag }} </li>
                   {% endfor %}
                 </ul>
-                <p class="blog__first-article-date p4">Updated {{ first_article.created_at | date: "%b %d, %Y"}}</p>
+                <p class="blog__first-article-date p4">Updated {{ first_article.published_at | date: "%b %d, %Y"}}</p>
               </div>
               <h2 class="blog__first-article-title mt-sm tabletl:mt-md h3">{{ first_article.title }}</h2>
             </header>
