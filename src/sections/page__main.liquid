@@ -1,9 +1,25 @@
+{% liquid
+  assign title_alignment = page.metafields.seed.page_title_text_alignment
+
+  if title_alignment != blank
+    case title_alignment
+      when 'Left'
+        assign title_alignment = 'text-left'
+      when 'Center'
+        assign title_alignment = 'text-center'
+      when 'Right'
+        assign title_alignment = 'text-right'
+    endcase
+  endif
+%}
+
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
+
 <div class="page px-md desktop:px-xl {{ margins_paddings }}">
   <div class="page__wrapper mx-auto max-w-[var(--max-width)]" style="--max-width: {% if section.settings.max_width != blank %}{{ section.settings.max_width }}{% else %}unset{% endif %};">
-    <h1 class="page__title h2 mb-md">
+    <h1 class="page__title h2 mb-md {{ title_alignment }}">
       {{ page.title | escape }}
     </h1>
     <div class="rte">
