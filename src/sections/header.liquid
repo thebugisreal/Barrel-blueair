@@ -6,6 +6,11 @@
             "slidesPerView": 1,
             "cssMode": true,
             "loop": true,
+            {% if section.settings.autoplay %}
+              "autoplay": {
+                "delay": {{ section.settings.autoplay_speed }}
+              },
+            {% endif %}
             "autoHeight": false,
             "navigation": {
               "enabled": true,
@@ -139,7 +144,23 @@
         }
       ],
       "default": "bg-white text-blue"
-    }  
+    },
+    {
+      "type": "header",
+      "content": "Announcement Bar Carousel Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "autoplay_speed",
+      "label": "Autoplay Speed (ms)",
+      "default": 5000
+    }
   ],
   "blocks": [
     {
