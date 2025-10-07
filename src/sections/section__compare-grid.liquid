@@ -1,8 +1,14 @@
 {% capture margins_paddings %}
     {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
+{%-liquid 
+  assign hide_price = false
+  if shop.permanent_domain contains 'eu' and localization.country.iso_code != 'DE'
+    assign hide_price = true
+  endif
+-%}
 
-<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl max-w-[100vw] overflow-x-auto tabletl:overflow-x-visible">
+<div class="compare__grid-container {{ margins_paddings }} px-lg {{ section.settings.color }} tabletl:px-xl max-w-[100vw] overflow-x-auto tabletl:overflow-x-visible" {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}data-country="{{ localization.country.iso_code }}"{% endif %}>
     <compare-grid class="compare__grid grid grid-cols-3 relative min-w-[500px] tabletl:grid-cols-4 tabletl:min-w-0">
         {% comment %} Compare Grid Info Column {% endcomment %}
         <ul class="compare__grid-info-column border-r border-gray">
@@ -22,7 +28,7 @@
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
-            <li class="compare__item">
+            <li class="compare__item compare__price">
                 <p class="p1">Price</p>
             </li>
             <li class="compare__item">
@@ -115,7 +121,7 @@
             <li class="compare__title">
                 <p class="s1">Overview</p>
             </li>
-            <li class="compare__item">
+            <li class="compare__item compare__price">
                 <p class="p1">N/A</p>
             </li>
             <li class="compare__item">
