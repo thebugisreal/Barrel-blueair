@@ -1041,7 +1041,7 @@ class ProductMain extends HTMLElement {
     if (this.currentSwatch && variant.options[this.swatchOption] != this.currentSwatch) {
       this.currentSwatch = variant.options[this.swatchOption];
       this.currentSwatchLabel.textContent = this.currentSwatch;
-      if (this.dataset.shopDomain == '5ef43d-4a') { // Need to update this to the actual shop domain blueeudev
+      if (this.dataset.shopDomain == 'blueeudev') {
         this._updateImageCarouselEU(this.currentSwatch);
       } else {
         this._updateImageCarousel(this.currentSwatch);
