@@ -1212,30 +1212,49 @@ class ProductMain extends HTMLElement {
         const swatchStyle = (p.swatchImage && p.swatchImage !== '')
           ? `background-image:url('${p.swatchImage}');background-size:cover;background-position:center;`
           : (p.colorHex ? `background-color:${p.colorHex};` : '');
-  
+
         const isCurrent = p.handle === currentProductHandle;
-  
+
         const href = !window.location.pathname.includes('/en-us/')
           ? (window.location.pathname.split('/products/')[0] + p.url)
           : p.url;
-  
-        const baseClasses = optionKind === 'material' 
-          ? 'w-40 h-40 rounded-full flex relative'
-          : 'w-[22px] h-[22px] rounded-full flex relative';
-        const aria = optionKind === 'material'
-          ? `${p.title} – Type ${label}`
-          : `${p.title} in ${label} color`;
-  
-        if (isCurrent) {
-          html += `
-            <div class="product__related-color-current ${baseClasses}" aria-label="${aria}" data-swatch="${label}" js-related-option-swatch>
-              <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
-            </div>`;
+
+        // Handle size options differently from color/material options
+        if (optionKind === 'size') {
+          const aria = `${p.title} – Size ${p.size || label}`;
+          const sizeLabel = p.size || label;
+
+          if (isCurrent) {
+            html += `
+              <div class="product__related-size-current" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch>
+                ${sizeLabel}
+              </div>`;
+          } else {
+            html += `
+              <a href="${href}" class="product-related-size" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch js-option-swatch-link>
+                ${sizeLabel}
+              </a>`;
+          }
         } else {
-          html += `
-            <a href="${href}" class="product-related-color ${baseClasses}" aria-label="${aria}" data-swatch="${label}" js-related-option-swatch js-option-swatch-link>
-              <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
-            </a>`;
+          // Original color/material swatch logic
+          const baseClasses = optionKind === 'material' 
+            ? 'w-40 h-40 rounded-full flex relative'
+            : 'w-[22px] h-[22px] rounded-full flex relative';
+          const aria = optionKind === 'material'
+            ? `${p.title} – Type ${label}`
+            : `${p.title} in ${label} color`;
+
+          if (isCurrent) {
+            html += `
+              <div class="product__related-color-current ${baseClasses}" aria-label="${aria}" data-swatch="${label}" js-related-option-swatch>
+                <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
+              </div>`;
+          } else {
+            html += `
+              <a href="${href}" class="product-related-color ${baseClasses}" aria-label="${aria}" data-swatch="${label}" js-related-option-swatch js-option-swatch-link>
+                <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
+              </a>`;
+          }
         }
       });
   
