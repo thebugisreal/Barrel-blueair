@@ -5,7 +5,7 @@
 {% if product.metafields.seed.pdp_brands != blank %}
     <div class="product__brands {{ margins_paddings }} {{ section.settings.color }} px-md tabletl:px-xl">
       <h3 class="font-900 text-center mb-lg pb-xs tabletl:mb-xxl tabletl:pb-0">Independently proven performance</h3>
-      <ul class="product__brands-container grid grid-cols-2 gap-x-md gap-y-lg tabletl:flex tabletl:justify-between tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
+      <ul class="product__brands-container grid grid-cols-3 gap-x-md gap-y-lg tabletl:flex tabletl:justify-between tabletl:max-w-[var(--max-w-desktop)] tabletl:mx-auto"  style="--max-w-desktop:{{ section.settings.max_width_desktop }}">
         {% for image in product.metafields.seed.pdp_brands.value %}
             <li class="product__brands text-center">
               <div class="image-container h-[110px] tabletl:h-[100px]">
