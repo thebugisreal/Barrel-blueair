@@ -1,0 +1,73 @@
+{% if product.metafields.seed.pdp_image_text_grid != blank %}
+    {% liquid 
+        assign image_text_grid = product.metafields.seed.pdp_image_text_grid.value
+        assign image_mobile = image_text_grid.image_mobile.value
+        assign image_desktop = image_text_grid.image_desktop.value
+        assign title = image_text_grid.title.value
+        assign title_style = image_text_grid.title_style.value
+        assign text_max_width = image_text_grid.text_max_width.value
+        assign section_max_width_desktop = image_text_grid.section_max_width_desktop.value
+        assign image_inset_mobile = image_text_grid.image_inset_mobile.value
+        assign image_position_desktop = image_text_grid.image_position_desktop.value | downcase
+        assign image_width = image_text_grid.image_width_desktop.value
+     %}
+
+     {% capture margin_top_mobile %}{% render 'translate-metaobject-settings' setting: 'margin_top_mobile', value:image_text_grid.margin_top_mobile.value %}{% endcapture %}
+     {% capture margin_bottom_mobile %}{% render 'translate-metaobject-settings' setting: 'margin_bottom_mobile', value:image_text_grid.margin_bottom_mobile.value %}{% endcapture %}
+     {% capture padding_top_mobile %}{% render 'translate-metaobject-settings' setting: 'padding_top_mobile', value:image_text_grid.padding_top_mobile.value %}{% endcapture %}
+     {% capture padding_bottom_mobile %}{% render 'translate-metaobject-settings' setting: 'padding_bottom_mobile', value:image_text_grid.padding_bottom_mobile.value %}{% endcapture %}
+     {% capture margin_top_desktop %}{% render 'translate-metaobject-settings' setting: 'margin_top_desktop', value:image_text_grid.margin_top_desktop.value %}{% endcapture %}
+     {% capture margin_bottom_desktop %}{% render 'translate-metaobject-settings' setting: 'margin_bottom_desktop', value:image_text_grid.margin_bottom_desktop.value %}{% endcapture %}
+     {% capture padding_top_desktop %}{% render 'translate-metaobject-settings' setting: 'padding_top_desktop', value:image_text_grid.padding_top_desktop.value %}{% endcapture %}
+     {% capture padding_bottom_desktop %}{% render 'translate-metaobject-settings' setting: 'padding_bottom_desktop', value:image_text_grid.padding_bottom_desktop.value %}{% endcapture %}
+     {% capture text_color %}{% render 'translate-metaobject-settings' setting: 'color', value:image_text_grid.color.value %}{% endcapture %}
+     {% capture image_position_mobile %}{% render 'translate-metaobject-settings' setting: 'image_position_mobile', value:image_text_grid.image_position_mobile.value %}{% endcapture %}
+
+    {% capture margins_paddings %}
+        {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
+    {% endcapture %}
+    <div class="section__image-text-grid {{ margins_paddings }} {{ text_color }} {% if section_max_width_desktop != blank %} desktop:px-0 {% else %} desktop:px-xl{% endif %}">
+    <div class="flex flex-col gap-lg desktop:flex-row desktop:items-center desktop:gap-[136px] desktop:mx-auto desktop:max-w-[var(--section-max-width-desktop)]"  style="--section-max-width-desktop: {{ section_max_width_desktop}}">
+        <div class="image-text-grid__grid-container px-md desktop:px-0 desktop:flex-1">
+        <div class="image-text-grid__grid-wrapper {% if image_position_desktop == 'left' %}desktop:mr-auto{% else %}desktop:ml-auto{% endif %} desktop:max-w-[var(--desktop-text-max-width)]" style="--desktop-text-max-width: {% if text_max_width != blank  %}{{ text_max_width }}{% else %}unset{% endif %};">
+            {% if title != blank %}
+            <h2 class="image-text-grid__title {{ title_style }} mb-lg desktop:pb-xs">{{ title }}</h2>
+            {% endif %}
+            <div class="image-text-grid__grid grid grid-cols-2 gap-x-md gap-y-lg">
+            {% for block in image_text_grid.blocks.value %}
+                {% liquid 
+                    assign title = block.title.value
+                    assign title_style = block.title_style.value
+                    assign subtext = block.subtext.value
+                    assign subtext_style = block.subtext_style.value
+                %}
+                <div class="image-text-grid__block">
+                {% if title != blank %}
+                    <h3 class="image-text-grid-block__title {{ title_style }} mb-xxs">{{ title }}</h3>
+                {% endif %}
+                {% if subtext != blank %}
+                    <p class="image-text-grid-block__subtext {{ subtext_style }}">{{ subtext }}</p>
+                {% endif %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        </div>
+        <div class="image-text-grid__image {% unless image_inset_mobile %}px-md desktop:px-0{% endunless %} {{ image_position_mobile }} {% if image_position_desktop == 'left' %}desktop:order-first{% else %}desktop:order-last{% endif %} desktop:w-[var(--desktop-image-width)]" style="--desktop-image-width: {{ image_width }}%;" >
+        {% render 'lazy-image' image: image_mobile image_desktop: image_desktop, alt: title %}
+        </div>
+    </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "PDP - Image & Text Grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "PDP - Image & Text Grid"
+    }
+  ]
+}
+{% endschema %}

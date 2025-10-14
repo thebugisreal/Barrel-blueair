@@ -1,0 +1,183 @@
+{% comment %} 
+    @param setting {string}
+    @param value {string}
+{% endcomment %}
+
+{% case setting %}
+    {% when 'margin_top_mobile' %}
+        {% case value %}
+            {% when 'none' %}
+                mt-0
+            {% when 'XS' %}
+                mt-xs
+            {% when 'SM' %}
+                mt-sm
+            {% when 'MD' %}
+                mt-md
+            {% when 'LG' %}
+                mt-lg
+            {% when 'XL' %}
+                mt-xl
+            {% when '2XL' %}
+                mt-xxl
+            {% when '3XL' %}
+                mt-xxxl
+        {% endcase %}
+    {% when 'margin_bottom_mobile' %}
+        {% case value %}
+            {% when 'none' %}
+                mb-0
+            {% when 'XS' %}
+                mb-xs
+            {% when 'SM' %}
+                mb-sm
+            {% when 'MD' %}
+                mb-md
+            {% when 'LG' %}
+                mb-lg
+            {% when 'XL' %}
+                mb-xl
+            {% when '2XL' %}
+                mb-xxl
+            {% when '3XL' %}
+                mb-xxxl
+        {% endcase %}
+    {% when 'padding_top_mobile' %}
+        {% case value %}
+            {% when 'none' %}
+                pt-0
+            {% when 'XS' %}
+                pt-xs
+            {% when 'SM' %}
+                pt-sm
+            {% when 'MD' %}
+                pt-md
+            {% when 'LG' %}
+                pt-lg
+            {% when 'XL' %}
+                pt-xl
+            {% when '2XL' %}
+                pt-xxl
+            {% when '3XL' %}
+                pt-xxxl
+        {% endcase %}
+    {% when 'padding_bottom_mobile' %}
+        {% case value %}
+            {% when 'none' %}
+                pb-0
+            {% when 'XS' %}
+                pb-xs
+            {% when 'SM' %}
+                pb-sm
+            {% when 'MD' %}
+                pb-md
+            {% when 'LG' %}
+                pb-lg
+            {% when 'XL' %}
+                pb-xl
+            {% when '2XL' %}
+                pb-xxl
+            {% when '3XL' %}
+                pb-xxxl
+        {% endcase %}
+    {% when 'margin_top_desktop' %}
+        {% case value %}
+            {% when 'none' %}
+                desktop:mt-0
+            {% when 'XS' %}
+                desktop:mt-xs
+            {% when 'SM' %}
+                desktop:mt-sm
+            {% when 'MD' %}
+                desktop:mt-md
+            {% when 'LG' %}
+                desktop:mt-lg
+            {% when 'XL' %}
+                desktop:mt-xl
+            {% when '2XL' %}
+                desktop:mt-xxl
+            {% when '3XL' %}
+                desktop:mt-xxxl
+        {% endcase %}
+    {% when 'margin_bottom_desktop' %}
+        {% case value %}
+            {% when 'none' %}
+                desktop:mb-0
+            {% when 'XS' %}
+                desktop:mb-xs
+            {% when 'SM' %}
+                desktop:mb-sm
+            {% when 'MD' %}
+                desktop:mb-md
+            {% when 'LG' %}
+                desktop:mb-lg
+            {% when 'XL' %}
+                desktop:mb-xl
+            {% when '2XL' %}
+                desktop:mb-xxl
+            {% when '3XL' %}
+                desktop:mb-xxxl
+        {% endcase %}
+    {% when 'padding_top_desktop' %}
+        {% case value %}
+            {% when 'none' %}
+                desktop:pt-0
+            {% when 'XS' %}
+                desktop:pt-xs
+            {% when 'SM' %}
+                desktop:pt-sm
+            {% when 'MD' %}
+                desktop:pt-md
+            {% when 'LG' %}
+                desktop:pt-lg
+            {% when 'XL' %}
+                desktop:pt-xl
+            {% when '2XL' %}
+                desktop:pt-xxl
+            {% when '3XL' %}
+                desktop:pt-xxxl
+        {% endcase %}
+    {% when 'padding_bottom_desktop' %}
+        {% case value %}
+            {% when 'none' %}
+                desktop:pb-0
+            {% when 'XS' %}
+                desktop:pb-xs
+            {% when 'SM' %}
+                desktop:pb-sm
+            {% when 'MD' %}
+                desktop:pb-md
+            {% when 'LG' %}
+                desktop:pb-lg
+            {% when 'XL' %}
+                desktop:pb-xl
+            {% when '2XL' %}
+                desktop:pb-xxl
+            {% when '3XL' %}
+                desktop:pb-xxxl
+        {% endcase %}
+    {% when 'color' %}
+        {% case value %}
+            {% when 'None (white bg & blue text)' %}
+                bg-white text-blue
+            {% when 'Blue' %}
+                bg-blue-sky text-blue
+            {% when 'Green' %}
+                bg-green-light text-green-dark
+            {% when 'Pink' %}
+                bg-pink-light text-pink-dark
+            {% when 'Yellow' %}
+                bg-yellow-light text-yellow-dark
+            {% when 'Brown' %}
+                bg-brown-light text-brown-dark
+            {% when 'Gray' %}
+                bg-blue-light text-blue
+        {% endcase %}
+    {% when 'image_position_mobile' %}
+        {% case value %}
+            {% when 'Top' %}
+                order-first
+            {% when 'Bottom' %}
+                order-last
+        {% endcase %}
+{% endcase %}
