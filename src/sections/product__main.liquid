@@ -1,4 +1,6 @@
-<script src="https://static.truemed.com/widgets/product-page-widget.min.js" defer></script>
+{% if section.settings.show_truemed %}
+  <script src="https://static.truemed.com/widgets/product-page-widget.min.js" defer></script>
+{% endif %}
 {% include 'region-check' %}
 {%- liquid 
   assign current_variant = product.selected_or_first_available_variant
@@ -462,8 +464,10 @@
                     </div>
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
-                  <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
+                  {% if section.settings.show_truemed %}
+                    <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
 tm_qual_gjiapmwgps"></div>
+                  {% endif %}
                   <p class="affirm-as-low-as mx-auto text-12" data-page-type="product" data-amount="{{current_variant.price}}"></p>
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
@@ -864,6 +868,11 @@ tm_qual_gjiapmwgps"></div>
       "id": "buybox_max_width",
       "label": "Buybox Content Max Width - Desktop",
       "info": "Make sure to include units"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_truemed",
+      "label": "Show Truemed"
     }
   ],
   "blocks": [
