@@ -1041,7 +1041,12 @@ class ProductMain extends HTMLElement {
     if (this.currentSwatch && variant.options[this.swatchOption] != this.currentSwatch) {
       this.currentSwatch = variant.options[this.swatchOption];
       this.currentSwatchLabel.textContent = this.currentSwatch;
-      this._updateImageCarousel(this.currentSwatch);
+      if (this.dataset.shopDomain == 'blueeudev') {
+        this._updateImageCarouselEU(this.currentSwatch);
+      } else {
+        this._updateImageCarousel(this.currentSwatch);
+      }
+  
     }
     this._updateStickyBar(variant)
     if (variant) {
@@ -1070,6 +1075,32 @@ class ProductMain extends HTMLElement {
       });
     }
 
+  }
+
+  _updateImageCarouselEU(swatchName) {
+    console.log('updateImageCarouselEU', swatchName);
+    let current_thumb_slides_count = 0
+    for (const slide of this.thumbSlides) {
+      if (slide.dataset.swatch == swatchName) {
+        break;
+      }
+      current_thumb_slides_count++;
+    }
+
+    console.log('current_thumb_slides_count', current_thumb_slides_count);
+
+    const carousels = this.querySelectorAll(this._selectors.carousel);
+    carousels.forEach((carousel) => {
+      carousel.swiper.slideTo(current_thumb_slides_count);
+
+      if (carousel.hasAttribute('is-thumb-carousel')) {
+        if (parseInt(carousel.dataset.slideCount) < 2) {
+          carousel.querySelector('[js-pdp-thumb-next]').classList.add('hide-thumb-carousel');
+        } else {
+          carousel.querySelector('[js-pdp-thumb-next]').classList.remove('hide-thumb-carousel');
+        }
+      }
+    });
   }
 
   _updateImageCarousel(swatchName) {
