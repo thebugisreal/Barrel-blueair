@@ -109,10 +109,10 @@
           </div>
         </div>
 
-        <div class="product-upsell__atc-container flex justify-end items-center flex-wrap gap-xxs w-full tabletl:w-auto flex-[5] tabletp:flex-auto">
+        <div class="product-upsell__atc-container flex justify-end items-center flex-nowrap tabletl:flex-wrap gap-xxs w-full tabletl:w-auto flex-[5] tabletp:flex-auto">
           {% if upsell_product != blank %}
             <button type="button" class="product-upsell__atc btn btn--blue-rounded pr-sm {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
-              <span class="btn__text">
+              <span class="btn__text whitespace-nowrap tabletl:whitespace-normal">
                 {% if upsell_current_variant.available %}
                   Add to Cart
                 {% else %}
