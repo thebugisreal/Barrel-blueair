@@ -27,10 +27,10 @@
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "135ch",
-            "richtext": "<p>A good night’s sleep is one of the most powerful ways to restore your body and mind. Yet many people overlook a key part of sleep health: the air you breathe and the environment that surrounds you. At Blueair, we believe that creating a soothing, clean, and restorative bedroom atmosphere is just as important as having the right mattress or bedtime routine. </p><p>That’s why we’re proud to introduce two new innovations in our Sleep Collection — the DreamWell™ Humidifier and the Mini Restful™ Air Purifier.  </p><p>Thoughtfully designed to improve your sleep quality, each product blends Scandinavian design with science-backed benefits, helping you breathe, rest, and wake more naturally. </p>",
+            "richtext": "<h4><strong>Introduction: Why This Conversation Matters</strong> </h4><p> </p><p>Every year, <strong>Mental Health Wellness Day</strong> invites us to pause and reflect on what supports our well-being. While much of the conversation focuses on therapy, mindfulness, and lifestyle choices, one piece often goes overlooked: the space we live in. </p><p>Our environments are not neutral — they’re active participants in our mental health. A cluttered desk can spike stress. A stuffy room can drain focus. A poorly ventilated bedroom can disturb sleep. Conversely, a clean, light-filled space feels like a breath of fresh air — literally. </p><p>At Blueair, we believe mental clarity begins with something simple but powerful: the air around us. Because <em>health starts with air</em>. </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
@@ -43,12 +43,12 @@
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Blog_Image_1.png",
-            "image_desktop": "shopify://shop_images/Blog_Image_1.png",
+            "image": "shopify://shop_images/20250825_1002final.jpg",
+            "image_desktop": "shopify://shop_images/20250825_1002final.jpg",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -57,34 +57,34 @@
         "text_e9yarP": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-md",
+            "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-lg",
-            "padding_top_mobile": "pt-md",
+            "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-md",
+            "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-md",
-            "padding_bottom_desktop": "desktop:pb-0",
+            "padding_top_desktop": "desktop:pt-xs",
+            "padding_bottom_desktop": "desktop:pb-xs",
             "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>DreamWell™ Humidifier: The Science of Sleep Meets Sensorial Comfort</strong></h4><p></p><p>Dry air can make it harder to sleep soundly — leading to congestion, irritated skin, and restless nights. The DreamWell™ Humidifier  helps maintain a comfortable, breathable atmosphere that supports restful sleep. </p><p></p><ul><li>360° InvisibleMist™ Technology  </li></ul><p></p><ul><li>Provides optimal humidity all night long with clean, mist-free hydration  A multi-sensorial design creates a soothing sleep environment that goes beyond simple humidity control. </li></ul><p></p><ul><li>With its easy-to-clean design, DreamWell™ is as practical as it is beautiful, blending seamlessly into your sleep space. </li></ul><p></p><p> By maintaining an ideal balance of humidity, DreamWell™ creates an environment that encourages deeper relaxation and supports your body’s natural overnight recovery- helping you wake up feeling refreshed and restored. </p>",
+            "richtext": "<h4><strong>The Science of Space and the Mind</strong> </h4><p> </p><p>The connection between physical environments and mental states is well established: </p><p></p><ul><li><strong>Clutter = Cognitive Overload.</strong> Research published in <em>Personality and Social Psychology Bulletin</em> found that women with cluttered homes had higher levels of cortisol, the stress hormone. Constant visual reminders of disorganization overload the brain, making it harder to focus or relax. </li><li><strong>Air Quality = Brain Function.</strong> Harvard T.H. Chan School of Public Health researchers discovered that participants working in well-ventilated, low-pollution environments scored 61% higher on cognitive tasks than those in polluted spaces. Clean air literally sharpens thinking. </li><li><strong>Sleep + Air.</strong> According to Blueair consumer research, 60% of people say poor air care disrupts their sleep. Given that sleep quality directly influences mood, memory, and resilience, air becomes a hidden driver of mental wellness. </li></ul><p> </p><p>It’s no wonder 87% of consumers believe air quality strongly impacts health.  The science is clear: your environment is shaping your mind. </p><p> </p><h4><strong>Air Health: The Overlooked Pillar of Wellness</strong> </h4><p> </p><p>In the U.S., wellness is big business. Americans embrace meditation apps, adaptogenic teas, infrared saunas, cold plunges, and wearable sleep trackers. The wellness market is worth $6 trillion globally.  But amid all these innovations, air — the thing we take 20,000 breaths of per day — is often left out of the conversation. </p><ul><li><strong>Invisible, Yet Essential.</strong> The Environmental Protection Agency (EPA) reports that indoor air can be 2–5 times more polluted than outdoor air, filled with dust, allergens, mold spores, and volatile organic compounds (VOCs). These invisible pollutants can impact both physical and mental health. </li></ul><p></p><ul><li><strong>Mind + Air Connection.</strong> Studies link poor indoor air to increased anxiety, slower cognitive processing, and higher fatigue levels. It’s not just about breathing easier — it’s about thinking clearer and feeling calmer. </li></ul><p></p><ul><li><strong>Holistic Air Health.</strong> At Blueair, we call this Air Health — a lifestyle-driven approach  </li></ul>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
-        "image_caption_TWbzwr": {
+        "image_caption_ktCHCh": {
           "type": "image_caption",
           "settings": {
-            "margin_top_mobile": "mt-0",
+            "margin_top_mobile": "mt-md",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
+            "padding_top_mobile": "pt-md",
             "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-lg",
+            "padding_bottom_desktop": "desktop:pb-lg",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Blog_Image_2_1.png",
-            "image_desktop": "shopify://shop_images/Blog_Image_2_1.png",
+            "image": "shopify://shop_images/Blog_Image_3a69dc2e-a001-430f-a4f6-37aabb355be5.png",
+            "image_desktop": "shopify://shop_images/Blog_Image_3a69dc2e-a001-430f-a4f6-37aabb355be5.png",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -95,57 +95,14 @@
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-md",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-md",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>Mini Restful™ Air Purifier: Fresh Air Meets Sunrise Calm</strong></h4><p></p><p>Sleep isn’t just about what happens while you rest — it’s about how you wake, too. The Mini Restful™ Air Purifier is the first and only purifier with an integrated sunrise clock, combining the benefits of clean air with natural light therapy. </p><p></p><ul><li>Fresh air dome technology delivers quiet, efficient purification right where you sleep. </li></ul><p></p><ul><li>A gentle sunrise simulation helps you wake more naturally, easing the transition from sleep to day. </li></ul><p></p><ul><li>Soft mood lighting and app-based personalization allow you to create a bedtime and morning routine tailored to your needs. </li></ul><p></p><p>This unique combination supports both your nighttime rest and your morning energy, all while keeping your bedroom air clean and healthy. </p>",
-            "richtext_alignment": "text-left",
-            "richtext_style": "p2"
-          }
-        },
-        "image_text_MikMKz": {
-          "type": "image_text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-xl",
-            "padding_top_mobile": "pt-md",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-md",
-            "padding_bottom_desktop": "desktop:pb-xl",
-            "max_width_desktop": "80ch",
-            "color": "text-blue",
-            "title": "Get started",
-            "title_style": "h4",
-            "richtext": "<p>Find the perfect device to compliment your perfect nightly routine.</p>",
-            "cta_url": "shopify://collections/sleep-collection",
-            "cta_text": "Explore now",
-            "cta_style": "btn btn--blue-rounded",
-            "text_padding_left_desktop": "desktop:pl-0",
-            "text_padding_right_desktop": "desktop:pr-0",
-            "image_mobile": "shopify://shop_images/H38i_Bundle_400.png",
-            "image_placement_mobile": "flex-col",
-            "image_placement_desktop": "tabletl:flex-row-reverse"
-          }
-        },
-        "text_caefyH": {
-          "type": "text",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-md",
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
             "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>Make Sleep a Ritual with Blueair</strong></h4><p></p><p>Both the DreamWell™ Humidifier and the Mini Restful™ Air Purifier are part of Blueair’s mission to reimagine sleep wellness through better air. With beautifully designed, easy-to-use technology, our Sleep Collection helps you transform your bedroom into a sanctuary where your body can truly restore. </p><p>Explore the Sleep Collection today and discover how the right environment can change the way you sleep — and the way you wake. </p><p></p><ul><li>Fresh air dome technology delivers quiet, efficient purification right where you sleep. </li></ul><p></p><ul><li>A gentle sunrise simulation helps you wake more naturally, easing the transition from sleep to day. </li></ul><p></p><ul><li>Soft mood lighting and app-based personalization allow you to create a bedtime and morning routine tailored to your needs. </li></ul><p></p><p>This unique combination supports both your nighttime rest and your morning energy, all while keeping your bedroom air clean and healthy. </p>",
+            "richtext": "<h4><strong>Curating Spaces That Support Mental Clarity</strong> </h4><p> </p><p>The good news: small changes to your physical environment can yield outsized benefits for mental clarity. Here are four trends shaping how Americans are curating healthier spaces: </p><p> </p><p><strong>1. Declutter + Purify</strong> </p><p>The rise of minimalism, Marie Kondo’s “spark joy” philosophy, and the <em>Swedish lagom</em> movement highlight the mental relief of living with less. Pair a decluttered space with purified air, and you multiply the calming effect — removing both visible and invisible distractions. </p><p><strong>2. Natural Light + Air Flow</strong> </p><p>Sunlight boosts serotonin (the “feel-good” hormone), while filtered air reduces irritants that cause fatigue. Together, they form an environment primed for creativity and focus. It’s why biophilic design — bringing natural elements indoors — is one of the top wellness design trends of 2025. </p><p><strong>3. Sleep-Supportive Spaces</strong> </p><p>The global fascination with “sleep optimization” (think sleep tourism, weighted blankets, and circadian lighting) shows how seriously we’re taking rest. Cleaner air reduces allergens and nighttime congestion, leading to deeper, more restorative sleep. Your bedroom isn’t just a place to rest — it’s a recovery zone. </p><p><strong>4. Micro-Moments of Calm</strong> </p><p>Americans are embracing “reset rituals” — short daily practices like mindful breathing or stretching. Doing these in fresh, purified air amplifies their effects, since the body responds to both internal focus and external environment. </p><p> </p><h4><strong>Blueair: Aligning with the Wellness Movement</strong> </h4><p> </p><p>For nearly three decades, Blueair has pioneered solutions that transform air care into a lifestyle. We’re not just an appliance brand — we’re specialists in Air Health: </p><p> </p><ul><li><strong>Performance You Can Trust.</strong> Swedish-engineered, award-winning filtration that removes up to 99.97% of airborne particles — from pollen to VOCs. </li><li><strong>Design That Fits Your Life.</strong> Minimalist, Scandinavian-inspired designs blend seamlessly into homes, enhancing the aesthetic rather than cluttering it. </li><li><strong>Everyday Wellness Impact.</strong> From improving sleep and focus to supporting skin and respiratory health, our products integrate into daily rituals without you even noticing — until you feel the difference. </li></ul><p> </p><h4><strong>A Breath for Clarity</strong> </h4><p> </p><p>This Mental Health Wellness Day, pause for a moment. Take a deep breath. Ask yourself: is my space supporting my mental clarity, or clouding it? </p><p>By decluttering, inviting light, and optimizing the air you breathe, you create an environment that nurtures calm, focus, and resilience. With Blueair, every breath becomes a step toward better balance. </p><p>Because when your environment is optimized, so are you. </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -155,10 +112,8 @@
         "text_QNqwkC",
         "image_caption_KnqYBR",
         "text_e9yarP",
-        "image_caption_TWbzwr",
-        "text_Ub47yL",
-        "image_text_MikMKz",
-        "text_caefyH"
+        "image_caption_ktCHCh",
+        "text_Ub47yL"
       ],
       "settings": {}
     },
