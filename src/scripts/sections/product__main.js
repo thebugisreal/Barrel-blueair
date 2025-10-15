@@ -99,10 +99,12 @@ class ProductMain extends HTMLElement {
 
   _filterPackQuantityOnClick = (evt) => {
     evt.preventDefault();
+    // Check if the quantity is already selected
     this.filterPackQuantity.forEach((quantity) => {
       quantity.checked = false;
     });
 
+    // Update the image index
     const imageIndex = evt.currentTarget.dataset.imageIndex;
 
     const carousels = this.querySelectorAll(this._selectors.carousel);
@@ -111,8 +113,22 @@ class ProductMain extends HTMLElement {
     });
 
     evt.currentTarget.checked = true;
-    const filterQuantity = evt.currentTarget.value;
-    this.dataset.filterQuantity = filterQuantity;
+
+    // Update the filter quantity
+    this.currentQuantity = evt.currentTarget.value;
+
+    // Update the prices
+    if (this.subscription) {
+      if (this.selectedFilterSubscriptionVariant && this.subscriptionPrice) {
+        this._updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
+      }
+    }
+    this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
+  }
+
+  _formatPrice = (priceString) => {
+    priceString = +priceString.replace('$', '').replace(',', '');
+    return priceString * 100;
   }
 
   disconnectedCallback() {
@@ -991,7 +1007,7 @@ class ProductMain extends HTMLElement {
     }
 
     const formData = new FormData(this.form);
-    formData.append('quantity', this.dataset.filterQuantity);
+    formData.append('quantity', this.currentQuantity);
 
     if (this.pdpToEditCartSubscription != false) {
       if (this.nonSubscriptionToggle.dataset.selected == 'true') {
