@@ -1,5 +1,13 @@
 window.theme = window.theme || {};
 
+// Apply safari-glass-ui class to body if iOS 26 or higher in order to account for safari glass UI.
+document.addEventListener("DOMContentLoaded", () => {
+    if(theme.utils.isIOS26()){
+        document.body.classList.add("safari-glass-ui")
+        document.documentElement.classList.add("safari-glass-ui")
+    }
+});
+
 /*================ Global ================*/
 // =require global/shopify_common.js
 // =require global/config.js

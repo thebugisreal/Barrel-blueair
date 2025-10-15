@@ -17,7 +17,7 @@
           <div class="blog__first-article-text-container px-lg tabletl:pl-0 tabletl:pr-lg tabletl:w-1/2 tabletl:mx-auto tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
             <header class="blog__first-article-header py-sm tabletl:pt-0 tabletl:pb-md">
               <div class="blog__first-article-tag-container flex items-center gap-xs tabletl:gap-sm">
-                <ul class="blog__first-article-tags flex">
+                <ul class="blog__first-article-tags flex gap-xxs">
                   {% for tag in first_article.tags %}
                     <li class="blog__first-article-tag tag-small py-xxs px-xs border border-gray rounded-[60px]"> {{ tag }} </li>
                   {% endfor %}

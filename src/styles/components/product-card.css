@@ -24,7 +24,7 @@
 }
 
 .product-card__atc:disabled {
-  @apply pr-sm
+  @apply px-sm
   py-xs
   !bg-gray
   !text-white

@@ -347,5 +347,24 @@ theme.utils = {
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  },
+
+  isIOS26() {
+    if (typeof navigator === "undefined") return false;
+    const ua = navigator.userAgent;
+  
+    // Check if it's an iPhone (not iPad or iPod)
+    const isIPhone = /iPhone/.test(ua);
+    if (!isIPhone) return false;
+  
+    // Check for Safari/Browser version (e.g., "Version/26.0.1")
+    const versionMatch = ua.match(/Version\/([\d.]+)/);
+    if (!versionMatch) return false;
+  
+    const version = versionMatch[1].split(".").map(Number);
+    const majorVersion = version[0];
+    
+    return majorVersion >= 26 ? true : false;
   }
+
 }

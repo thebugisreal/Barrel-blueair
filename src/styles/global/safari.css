@@ -1,0 +1,10 @@
+/* Disable the Glass UI for drawers on iOS 26 or higher */
+body.safari-glass-ui {
+    overflow: auto;
+    height: 100%;
+}
+  
+html.safari-glass-ui {
+    overflow: hidden;
+    height: 100%;
+}
