@@ -60,7 +60,7 @@
 <div class="section__carousel {{ margins_paddings }} {{ section.settings.color }} {% if section.settings.enable_centered_carousel %} carousel-centered {% else %} carousel-normal {% endif %}" style="--max-width-desktop: {{ section.settings.max_width_desktop }}; ">
     <div class="section__carousel-container mx-auto">
         <header class="section__carousel-header {% if section.settings.enable_title_link_same_link %} enable-title-link-same-line tabletl:mb-lg tabletl:flex tabletl:justify-between tabletl:items-center {% endif %} tabletl:px-xl">
-            <div class="section__carousel-text-container mx-md mb-md tabletl:mx-0">
+            <div class="section__carousel-text-container mx-md mb-md tabletl:m-0">
                 {% if section.settings.title != blank %}
                     {% liquid
                         assign title_tag = 'p'

@@ -1335,8 +1335,9 @@ class ProductMain extends HTMLElement {
       .then((responseText) => {
         const html = new DOMParser().parseFromString(responseText, 'text/html');
 
-        const oldSections = document.querySelectorAll('.shopify-section');
-        const newSections = html.querySelectorAll('.shopify-section');
+        const oldSections = document.querySelectorAll('#MainContent .shopify-section');
+        const newSections = html.querySelectorAll('#MainContent .shopify-section');
+
         oldSections.forEach((section, index) => {
           section.innerHTML = newSections[index].innerHTML;
         })
