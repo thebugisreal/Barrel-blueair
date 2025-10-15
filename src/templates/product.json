@@ -149,7 +149,8 @@
         "shipping_warranty_Rg4jpP"
       ],
       "settings": {
-        "buybox_max_width": "80ch"
+        "buybox_max_width": "80ch",
+        "show_truemed": false
       }
     },
     "product_slideshow_f7BaaR": {

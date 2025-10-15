@@ -137,7 +137,8 @@
         "shipping_warranty_Rg4jpP"
       ],
       "settings": {
-        "buybox_max_width": "80ch"
+        "buybox_max_width": "80ch",
+        "show_truemed": false
       }
     },
     "product_custom_tabs_acewb9": {
@@ -366,6 +367,21 @@
         "color": "text-blue"
       }
     },
+    "product_tech_specs_jEUNXD": {
+      "type": "product__tech-specs",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "1440px",
+        "color": "bg-blue-light text-blue"
+      }
+    },
     "section_text_banner_rmDttx": {
       "type": "section__text-banner",
       "settings": {
@@ -405,21 +421,6 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1440px",
         "color": "bg-blue-darkSky text-blue"
-      }
-    },
-    "product_tech_specs_jEUNXD": {
-      "type": "product__tech-specs",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "1440px",
-        "color": "bg-blue-light text-blue"
       }
     },
     "product_accordion_6QWP9F": {

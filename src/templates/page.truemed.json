@@ -35,18 +35,18 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
-        "color": "bg-white text-blue",
-        "image_mobile": "shopify://shop_images/filters_mobile.png",
-        "image_desktop": "shopify://shop_images/filter_desktop.png",
+        "color": "bg-blue text-white",
+        "image_mobile": "shopify://shop_images/HSA_MOBILE.png",
+        "image_desktop": "shopify://shop_images/HSA_desktop_756f4ae7-a1c6-4858-a643-4827f5f5d67e.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Fresh filters, <br>fresh air",
+        "title": "",
         "title_style": "h2",
-        "subtext": "Never forget to change your filter again",
-        "subtext_style": "h6",
-        "cta_url": "shopify://pages/subscribe-quiz",
-        "cta_text": "Get started",
-        "cta_style": "btn btn--blue-rounded",
+        "subtext": "How to use your FSA/HSA on Blueair.com",
+        "subtext_style": "h2",
+        "cta_url": "shopify://collections/air-purifiers",
+        "cta_text": "Shop now",
+        "cta_style": "btn btn--white-rounded",
         "text_align_mobile": "text-left",
         "hor_align_mobile": "justify-start",
         "ver_align_mobile": "items-start",
@@ -61,64 +61,90 @@
         "enable_bg_clickabe_url": false
       }
     },
+    "section_text_banner_6nhyiF": {
+      "type": "section__text-banner",
+      "name": "Text Banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-lg",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Blueair  x TrueMed",
+        "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
     "section_content_panels_DLjfCE": {
       "type": "section__content-panels",
       "blocks": {
         "customization_LrVefR": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify://shop_images/1_04005b04-232a-46be-90bd-00b0ff3f3598.png",
-            "image_position": "order-last pb-sm",
+            "image_mobile": "shopify://shop_images/hsa_1.png",
+            "image_position": "order-first",
             "enable_padding": true,
             "content_position": "items-center",
             "content_spacing": "",
-            "title": "Step 1",
-            "title_style": "h4",
-            "subtext": "Find the right filter for your device and needs",
-            "subtext_style": "h6",
+            "title": "Checkout",
+            "title_style": "s2",
+            "subtext": "Find the TrueMed logo during checkout. Exit the \"Shop Pay\" pop-up if prompted.",
+            "subtext_style": "s3",
             "subtext_alignment": "text-center",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
-            "color": "bg-blue-light text-blue"
+            "color": "bg-white text-blue"
           }
         },
         "customization_7Qjxdx": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify://shop_images/2_61046643-a347-4c72-aba9-f6bab45f88fd.png",
-            "image_position": "order-last pb-sm",
+            "image_mobile": "shopify://shop_images/hsa_2.png",
+            "image_position": "order-first",
             "enable_padding": true,
             "content_position": "items-center",
             "content_spacing": "",
-            "title": "Step 2",
-            "title_style": "h4",
-            "subtext": "Select a delivery schedule, edit or cancel anytime",
-            "subtext_style": "h6",
+            "title": "Complete Health Assessment",
+            "title_style": "s2",
+            "subtext": "Take a quick, private health survey. A licensed provider will review your answers to determine eligibility.",
+            "subtext_style": "s3",
             "subtext_alignment": "text-center",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
-            "color": "bg-blue-light text-blue"
+            "color": "bg-white text-blue"
           }
         },
         "customization_xYLEwj": {
           "type": "customization",
           "settings": {
-            "image_mobile": "shopify://shop_images/test-1.png",
-            "image_position": "order-last pb-sm",
+            "image_mobile": "shopify://shop_images/hsa_3.png",
+            "image_position": "order-first",
             "enable_padding": true,
             "content_position": "items-center",
             "content_spacing": "",
-            "title": "Step 3",
-            "title_style": "h4",
-            "subtext": "Quickly swap your dirty filter  and enjoy fresh air",
-            "subtext_style": "h6",
+            "title": "Make your purchase",
+            "title_style": "s2",
+            "subtext": "Pay with your HSA/FSA card or a credit card. If you use a regular credit card, follow the guide included with your LMN to submit your purchase for reimbursement.",
+            "subtext_style": "s3",
             "subtext_alignment": "text-center",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
-            "color": "bg-blue-light text-blue"
+            "color": "bg-white text-blue"
           }
         }
       },
@@ -130,130 +156,78 @@
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xl",
+        "padding_bottom_desktop": "desktop:pb-xl",
         "carousel_mobile": false,
         "num_cols_mobile": 1,
         "num_cols_desktop": 3,
         "color": "bg-white text-blue",
-        "title": "Subscribe & save 15% on every replacement filter",
+        "title": "Quick & Easy Checkout",
         "title_style": "h4",
-        "cta_url": "shopify://pages/subscribe-quiz",
-        "cta_text": "Subscribe now",
-        "cta_style": "btn btn--blue-rounded",
+        "cta_url": "shopify://collections/air-purifiers",
+        "cta_text": "",
+        "cta_style": "btn",
         "content_max_width_desktop": ""
       }
     },
-    "section_text_banner_7DNmiw": {
-      "type": "section__text-banner",
-      "disabled": true,
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "max_width_desktop": "",
-        "color": "bg-blue-light text-blue",
-        "image": "shopify://shop_images/collection-nav-filters.webp",
-        "image_position_desktop": "desktop:order-first",
-        "title": "Save 15% on a filter subscription",
-        "title_style": "h3",
-        "subtext": "",
-        "subtext_style": "h5",
-        "cta_url": "shopify://pages/subscribe-quiz",
-        "cta_text": "Subscribe Now",
-        "cta_style": "btn btn--blue-rounded",
-        "text_align_mobile": "text-left",
-        "text_align_desktop": "desktop:text-left"
-      }
-    },
-    "section_image_text_qcC67Y": {
-      "type": "section__image-text",
-      "disabled": true,
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "color": "bg-blue-light text-blue",
-        "image_mobile": "shopify://shop_images/collection-nav-filters.webp",
-        "image_position_mobile": "order-last",
-        "image_position_desktop": "left",
-        "image_width": 35,
-        "title": "Save 15% on filter subscriptions",
-        "title_style": "h3",
-        "subtext": "",
-        "subtext_style": "s3",
-        "cta_url": "shopify://pages/subscribe-quiz",
-        "cta_text": "Subscribe Now",
-        "cta_style": "btn btn--blue-rounded",
-        "text_max_width": "",
-        "max_width_desktop": ""
-      }
-    },
-    "section_content_panels_9mhd8T": {
+    "section_content_panels_6QhRwH": {
       "type": "section__content-panels",
       "blocks": {
-        "customization_rNPdEw": {
+        "customization_43pXGF": {
           "type": "customization",
           "settings": {
+            "image_mobile": "shopify://shop_images/hsa_1.png",
             "image_position": "order-first",
-            "enable_padding": false,
-            "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Choose a filter",
-            "title_style": "h4",
-            "subtext": "Select a filter for the air purifier model you own.",
-            "subtext_style": "p2",
-            "subtext_alignment": "text-left",
+            "enable_padding": true,
+            "content_position": "items-center",
+            "content_spacing": "",
+            "title": "Make your purchase",
+            "title_style": "s2",
+            "subtext": "Do not pay with an HSA/FSA card during checkout. After your purchase, check your confirmation screen or receipt email for a link to the Truemed survey.",
+            "subtext_style": "s3",
+            "subtext_alignment": "text-center",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
             "color": "bg-white text-blue"
           }
         },
-        "customization_YHK6bP": {
+        "customization_AJJyeb": {
           "type": "customization",
           "settings": {
+            "image_mobile": "shopify://shop_images/hsa_2.png",
             "image_position": "order-first",
-            "enable_padding": false,
-            "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Set your preferences",
-            "title_style": "h4",
-            "subtext": "Tell us when you want to receive your filters with free shipping¹",
-            "subtext_style": "p2",
-            "subtext_alignment": "text-left",
+            "enable_padding": true,
+            "content_position": "items-center",
+            "content_spacing": "",
+            "title": "Complete Health Assessment",
+            "title_style": "s2",
+            "subtext": "Take a quick, private health survey. A licensed provider will review your answers to determine eligibility. If eligible, you'll receive a Letter of Medical Necessity (LMN) within 1-2 days. Note: The survey must be taken on the same day as your purchase.",
+            "subtext_style": "s3",
+            "subtext_alignment": "text-center",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
             "color": "bg-white text-blue"
           }
         },
-        "customization_dxLknE": {
+        "customization_RFXeJ9": {
           "type": "customization",
           "settings": {
+            "image_mobile": "shopify://shop_images/hsa_3.png",
             "image_position": "order-first",
-            "enable_padding": false,
-            "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Sit back, we got this",
-            "title_style": "h4",
-            "subtext": "Enjoy clean air regularly, while you're a member.",
-            "subtext_style": "p2",
-            "subtext_alignment": "text-left",
+            "enable_padding": true,
+            "content_position": "items-center",
+            "content_spacing": "",
+            "title": "Submit for HSA/FSA reimbursement",
+            "title_style": "s2",
+            "subtext": "Follow the guide included with your LMN to submit your purchase for reimbursement. Claims are usually paid out in 2-4 weeks.",
+            "subtext_style": "s3",
+            "subtext_alignment": "text-center",
             "cta_url": "",
             "cta_text": "",
             "cta_style": "btn",
@@ -262,95 +236,26 @@
         }
       },
       "block_order": [
-        "customization_rNPdEw",
-        "customization_YHK6bP",
-        "customization_dxLknE"
+        "customization_43pXGF",
+        "customization_AJJyeb",
+        "customization_RFXeJ9"
       ],
-      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
         "margin_top_desktop": "desktop:mt-0",
         "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
+        "padding_top_desktop": "desktop:pt-xl",
+        "padding_bottom_desktop": "desktop:pb-xl",
         "carousel_mobile": false,
         "num_cols_mobile": 1,
         "num_cols_desktop": 3,
         "color": "bg-white text-blue",
-        "title": "Joining is easy",
-        "title_style": "h3",
-        "cta_url": "shopify://pages/subscribe-quiz",
-        "cta_text": "Get Started",
-        "cta_style": "btn btn--blue-rounded",
-        "content_max_width_desktop": ""
-      }
-    },
-    "section_content_panels_kyU9Dj": {
-      "type": "section__content-panels",
-      "blocks": {
-        "customization_BntYbT": {
-          "type": "customization",
-          "settings": {
-            "image_mobile": "shopify://shop_images/seed-subscribe-contentimg4.webp",
-            "image_position": "order-first",
-            "enable_padding": true,
-            "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Exceptional purifiers, third-party verified",
-            "title_style": "h5",
-            "subtext": "",
-            "subtext_style": "p1",
-            "subtext_alignment": "text-left",
-            "cta_url": "shopify://collections/air-purifiers",
-            "cta_text": "Discover Purifiers",
-            "cta_style": "btn btn--white-rounded",
-            "color": "bg-white text-blue"
-          }
-        },
-        "customization_FjHRnA": {
-          "type": "customization",
-          "settings": {
-            "image_mobile": "shopify://shop_images/seed-subscribe-contentimg5.png",
-            "image_position": "order-first",
-            "enable_padding": true,
-            "content_position": "items-start",
-            "content_spacing": "justify-between",
-            "title": "Filter and accessories for all your needs",
-            "title_style": "h5",
-            "subtext": "",
-            "subtext_style": "p1",
-            "subtext_alignment": "text-left",
-            "cta_url": "shopify://collections/air-purifier-filters",
-            "cta_text": "Discover Filters and Accessories",
-            "cta_style": "btn btn--white-rounded",
-            "color": "bg-white text-blue"
-          }
-        }
-      },
-      "block_order": [
-        "customization_BntYbT",
-        "customization_FjHRnA"
-      ],
-      "disabled": true,
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxxl",
-        "padding_bottom_desktop": "desktop:pb-xxxl",
-        "carousel_mobile": false,
-        "num_cols_mobile": 1,
-        "num_cols_desktop": 2,
-        "color": "bg-blue-light text-blue",
-        "title": "",
-        "title_style": "h2",
-        "cta_url": "",
+        "title": "Subscription Reimbursement Guide",
+        "title_style": "h4",
+        "cta_url": "shopify://collections/air-purifiers",
         "cta_text": "",
         "cta_style": "btn",
         "content_max_width_desktop": ""
@@ -397,6 +302,7 @@
         "image_ejekEy",
         "video_hJh9L7"
       ],
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-xl",
         "margin_bottom_mobile": "mb-0",
@@ -413,16 +319,123 @@
         "subtext_style": "s2",
         "instagram_tag": ""
       }
+    },
+    "section_product_grid_TUjzEA": {
+      "type": "section__product-grid",
+      "name": "Product Grid",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-md",
+        "padding_bottom_desktop": "desktop:pb-lg",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "Shop Air Care",
+        "title_style": "h4",
+        "collection": "air-purifiers",
+        "num_products": 3
+      }
+    },
+    "section_accordion_hzBq3m": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_dAG9J9": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "How does using my HSA/FSA account save me money?",
+            "title_style": "s1",
+            "richtext": "<p>HSA/FSA accounts were created so individuals could use pre-tax money to pay for expenses used to treat, mitigate, or prevent a diagnosed medical condition. Because HSA/FSAs use pre-tax money, you’re getting more purchasing power for your dollars. Rather than pay taxes on income and then spend it on health items, qualified customers can use pre-tax funds to invest in their health.  An individual can contribute up to $4,300 pretax to their HSA per year, or $8,550 for a family (plus an additional $1,000 if you are at least 55 years old). Individuals can contribute up to $3,300 pretax to their FSA per year (with an additional $500 in employer contributions allowed). Using pre-tax dollars through your FSA/HSA may provide tax savings, depending on your individual tax situation. For more information on eligible expenses, refer to <a href=\"https://www.irs.gov/publications/p502\" target=\"_blank\">IRS Publication 502 </a>and <a href=\"https://www.irs.gov/publications/p969\" target=\"_blank\">IRS Publication 969.</a></p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_cxtQff": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What are FSA and HSA accounts?",
+            "title_style": "s1",
+            "richtext": "<p>Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) are tax-free accounts that can be used to pay for qualified health expenses. These accounts are usually set up and managed by an HSA or FSA administrator, and you should have access to said HSA/FSA administrator through your employer (ask your HR department!).  HSAs are typically associated with a high-deductible health plan, and funds do not expire. FSAs are independent of your health plan, and funds elections occur in October-November each year for the following calendar year. FSA funds expire every calendar year.  Unfortunately, HSAs and FSAs are not available outside of the US, and self-employed individuals (who do not have an HSA from a previous employment) do not qualify for HSAs or FSAs.<br/><br/></p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_nbTN8L": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "When should I use my FSA/HSA dollars?",
+            "title_style": "s1",
+            "richtext": "<p>Yes. The free Blueair app is required to set up and personalize your device. Through the app, you can create & edit your alarms, choose your preferred sounds and light settings, and adjust routines anytime.<br/><br/></p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_fzyyPV": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is a Letter of Medical Necessity?",
+            "title_style": "s1",
+            "richtext": "<p>In order to determine whether certain products or services are legitimate expenses for treating, mitigating, or preventing a diagnosed medical condition, HSA/FSA plan administrators often require a letter from a licensed practitioner. This letter is called a “Letter of Medical Necessity.”  Some Blueair products, may be eligible for FSA/HSA reimbursement when accompanied by a Letter of Medical Necessity from your healthcare provider or a healthcare provider from Truemed. Please consult your FSA/HSA plan administrator to confirm the eligibility of specific products and to understand what documentation is required for reimbursement.<br/><br/></p>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_9ckkQc": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is Truemed?",
+            "title_style": "s1",
+            "richtext": "<p>Truemed partners with merchants and brands to enable qualified customers to use HSA/FSA funds on qualified products and services that are used to treat, mitigate, or prevent a diagnosed medical condition. Truemed partners with a network of individual practitioners who evaluate customers’ eligibility and issue Letters of Medical Necessity to qualifying customers, thereby saving customers money on legitimate medical expenditures.  Truemed is backed by best-in-class investors, including functional medicine pioneer Mark Hyman and founders from Thrive Market, Eight Sleep and Levels.  <br/></p><ul><li><a href=\"https://www.loom.com/share/b3de03c30ce643af907490184ac5b35a?sid=efeaae85-323d-4200-a9a9-974afb962146\" target=\"_blank\">Reimbursement flow video walk through</a></li><li><a href=\"https://www.loom.com/share/639b96a01e0d451e9b964fdaa799c0e0?sid=ec8d07f2-ad0b-4aed-b76f-c5d204a72d5a\" target=\"_blank\">Payment integration flow video walk through</a></li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_G9kDKY": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "I don’t live in the US. Can I still get reimbursed with Truemed?",
+            "title_style": "s1",
+            "richtext": "<p>Unfortunately, Truemed is currently only available in the United States.<br/><br/></p>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_dAG9J9",
+        "accordion_item_cxtQff",
+        "accordion_item_nbTN8L",
+        "accordion_item_fzyyPV",
+        "accordion_item_9ckkQc",
+        "accordion_item_G9kDKY"
+      ],
+      "name": "Accordion",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-md",
+        "title": "Common questions",
+        "title_style": "h3",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
     }
   },
   "order": [
     "main",
     "section_hero_xnfkBi",
+    "section_text_banner_6nhyiF",
     "section_content_panels_DLjfCE",
-    "section_text_banner_7DNmiw",
-    "section_image_text_qcC67Y",
-    "section_content_panels_9mhd8T",
-    "section_content_panels_kyU9Dj",
-    "section_custom_instagram_feed_ib78Ry"
+    "section_content_panels_6QhRwH",
+    "section_custom_instagram_feed_ib78Ry",
+    "section_product_grid_TUjzEA",
+    "section_accordion_hzBq3m"
   ]
 }
