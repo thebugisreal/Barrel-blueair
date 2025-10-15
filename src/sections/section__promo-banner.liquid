@@ -1,0 +1,609 @@
+{% capture margins_paddings %}
+  {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+
+{% if section.settings.enable_clickable_url and section.settings.cta_url != blank %}
+  <a href="{{ section.settings.cta_url }}" class="section__promo-banner {{ margins_paddings }}" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
+{% else %}
+  <div class="section__promo-banner {{ margins_paddings }}" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
+{% endif %}
+  
+  <div class="promo-banner__wrapper">
+    <div class="promo-banner__content">
+      
+      {% if section.settings.tag_text != blank %}
+        <div class="promo-banner__tag">
+          <span class="tag__text">{{ section.settings.tag_text }}</span>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.main_text != blank %}
+        <div class="promo-banner__main-text">
+          <h2 class="main-text">{{ section.settings.main_text }}</h2>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.sub_text != blank %}
+        <div class="promo-banner__sub-text">
+          <p class="sub-text">{{ section.settings.sub_text }}</p>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
+        <div class="promo-banner__cta">
+          <a href="{{ section.settings.cta_url }}" class="cta-button">
+            {{ section.settings.cta_text }}
+          </a>
+        </div>
+      {% endif %}
+      
+    </div>
+  </div>
+
+{% if section.settings.enable_clickable_url and section.settings.cta_url != blank %}
+  </a>
+{% else %}
+  </div>
+{% endif %}
+
+<style>
+  .section__promo-banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .promo-banner__wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .promo-banner__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .promo-banner__tag {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tag__text {
+    background-color: {{ section.settings.tag_background_color | default: '#BAE6FF' }};
+    color: {{ section.settings.tag_text_color | default: '#002955' }};
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .promo-banner__main-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .main-text {
+    color: {{ section.settings.main_text_color | default: '#FFFFFF' }};
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+  
+  .promo-banner__sub-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sub-text {
+    color: {{ section.settings.sub_text_color | default: '#FFFFFF' }};
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  
+  .promo-banner__cta {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cta-button {
+    background-color: {{ section.settings.cta_background_color | default: '#BAE6FF' }};
+    color: {{ section.settings.cta_text_color | default: '#002955' }};
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .promo-banner__content {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .main-text {
+      font-size: 1rem;
+    }
+    
+    .sub-text {
+      font-size: 0.75rem;
+    }
+    
+    .cta-button {
+      padding: 0.375rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+  
+  /* Desktop responsive */
+  @media (min-width: 769px) {
+    .promo-banner__content {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+    
+    .main-text {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Promotional Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top - Mobile",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom - Mobile",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pt-sm"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pb-sm"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:mt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:mb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pt-md"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pb-md"
+    },
+    {
+      "type": "text",
+      "id": "section_max_width",
+      "label": "Section Max Width",
+      "info": "Maximum width for the banner section. Include units (e.g., 1200px, 100%)",
+      "default": "100%"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#002955",
+      "info": "Main background color for the banner"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+      "info": "Small promotional tag (e.g., 'LIMITED EDITION')"
+    },
+    {
+      "type": "color",
+      "id": "tag_background_color",
+      "label": "Tag Background Color",
+      "default": "#BAE6FF"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#002955"
+    },
+    {
+      "type": "text",
+      "id": "main_text",
+      "label": "Main Text",
+      "info": "Primary promotional message"
+    },
+    {
+      "type": "color",
+      "id": "main_text_color",
+      "label": "Main Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "label": "Sub Text",
+      "info": "Secondary descriptive text"
+    },
+    {
+      "type": "color",
+      "id": "sub_text_color",
+      "label": "Sub Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "info": "Call-to-action button text"
+    },
+    {
+      "type": "color",
+      "id": "cta_background_color",
+      "label": "CTA Background Color",
+      "default": "#BAE6FF"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA Text Color",
+      "default": "#002955"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_clickable_url",
+      "label": "Make entire banner clickable",
+      "info": "When enabled, the entire banner becomes clickable to the CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promotional Banner",
+      "settings": {
+        "background_color": "#002955",
+        "main_text": "NEW AIR PURIFICATION TECHNOLOGY",
+        "sub_text": "breathe better, live better",
+        "cta_text": "EXPLORE NOW",
+        "tag_text": "LIMITED TIME"
+      }
+    }
+  ]
+}
+{% endschema %}

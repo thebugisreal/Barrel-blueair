@@ -2,13 +2,13 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 {% if section.settings.enable_bg_clickabe_url and section.settings.cta_url != blank %}
-  <a href="{{section.settings.cta_url}}" class="section__hero {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
+  <a href="{{section.settings.cta_url}}" class="section__hero {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %} {% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
 {% else %}
-  <div class="section__hero {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
+  <div class="section__hero {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %} {% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
 {% endif %}
   <div class="hero__wrapper relative">
     {% if section.settings.image_mobile != blank %}
-      <div class="hero__image">
+      <div class="hero__image" style="{% if section.settings.image_mobile_max_width != blank %}max-width: {{ section.settings.image_mobile_max_width }};{% endif %} {% if section.settings.image_desktop_max_width != blank %}@media (min-width: 768px) { max-width: {{ section.settings.image_desktop_max_width }}; }{% endif %}">
         {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover'%}
       </div>
     {% endif %}
@@ -778,6 +778,24 @@
       "id": "section_max_width_desktop",
       "label": "Section Max Width - Desktop",
       "info": "Make sure to include units"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "info": "Solid background color for banners without images"
+    },
+    {
+      "type": "text",
+      "id": "image_mobile_max_width",
+      "label": "Image Mobile Max Width",
+      "info": "Maximum width for mobile image. Make sure to include units"
+    },
+    {
+      "type": "text",
+      "id": "image_desktop_max_width",
+      "label": "Image Desktop Max Width", 
+      "info": "Maximum width for desktop image. Make sure to include units"
     },
     {
       "type": "checkbox",
