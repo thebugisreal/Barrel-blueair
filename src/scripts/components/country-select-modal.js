@@ -268,6 +268,8 @@ class CountrySelectModal extends HTMLElement {
           window.location.href = `${target}/en?manual-redirect=true`
         } else if (country == 'eu'){
           window.location.href = `${target}/en-eu?manual-redirect=true`
+        } else{
+          window.location.href = `${target}/${language}-${country}?manual-redirect=true`
         }
       }
     }
