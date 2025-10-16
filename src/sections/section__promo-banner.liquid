@@ -8,9 +8,15 @@
   <div class="section__promo-banner {{ margins_paddings }} flex justify-center items-center" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
 {% endif %}
   
-  {% if section.settings.image_mobile != blank %}
+  {% if section.settings.image_mobile != blank or section.settings.image_desktop != blank %}
     <div class="promo-banner__image" style="{% if section.settings.image_mobile_max_width != blank %}max-width: {{ section.settings.image_mobile_max_width }};{% endif %} {% if section.settings.image_desktop_max_width != blank %}@media (min-width: 768px) { max-width: {{ section.settings.image_desktop_max_width }}; }{% endif %}">
-      {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover w-full h-auto' %}
+      {% if section.settings.image_mobile != blank and section.settings.image_desktop != blank %}
+        {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover w-full h-auto' %}
+      {% elsif section.settings.image_mobile != blank %}
+        {% render 'lazy-image', image: section.settings.image_mobile, img_classes:'object-cover w-full h-auto' %}
+      {% elsif section.settings.image_desktop != blank %}
+        {% render 'lazy-image', image: section.settings.image_desktop, img_classes:'object-cover w-full h-auto' %}
+      {% endif %}
     </div>
   {% endif %}
 
