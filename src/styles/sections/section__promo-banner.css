@@ -1,0 +1,9 @@
+.promo-banner__image {
+  max-width: var(--mobile-max-width, 100%);
+}
+
+@media (min-width: 768px) {
+  .promo-banner__image {
+    max-width: var(--desktop-max-width, var(--mobile-max-width, 100%));
+  }
+}
