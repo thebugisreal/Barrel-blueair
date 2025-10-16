@@ -3,9 +3,9 @@
 {% endcapture %}
 
 {% if section.settings.enable_clickable_url and section.settings.cta_url != blank %}
-  <a href="{{ section.settings.cta_url }}" class="section__promo-banner {{ margins_paddings }} flex justify-center items-center" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
+  <a href="{{ section.settings.cta_url }}" class="section__promo-banner {{ margins_paddings }} flex justify-center items-center mx-auto" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
 {% else %}
-  <div class="section__promo-banner {{ margins_paddings }} flex justify-center items-center" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
+  <div class="section__promo-banner {{ margins_paddings }} flex justify-center items-center mx-auto" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
 {% endif %}
   
   {% if section.settings.image_mobile != blank or section.settings.image_desktop != blank %}
