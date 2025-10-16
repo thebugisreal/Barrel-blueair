@@ -3,42 +3,16 @@
 {% endcapture %}
 
 {% if section.settings.enable_clickable_url and section.settings.cta_url != blank %}
-  <a href="{{ section.settings.cta_url }}" class="section__promo-banner {{ margins_paddings }}" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
+  <a href="{{ section.settings.cta_url }}" class="section__promo-banner {{ margins_paddings }} flex justify-center items-center" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
 {% else %}
-  <div class="section__promo-banner {{ margins_paddings }}" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
+  <div class="section__promo-banner {{ margins_paddings }} flex justify-center items-center" style="background-color: {{ section.settings.background_color }}; max-width: {{ section.settings.section_max_width }};">
 {% endif %}
   
-  <div class="promo-banner__wrapper">
-    <div class="promo-banner__content">
-      
-      {% if section.settings.tag_text != blank %}
-        <div class="promo-banner__tag">
-          <span class="tag__text">{{ section.settings.tag_text }}</span>
-        </div>
-      {% endif %}
-      
-      {% if section.settings.main_text != blank %}
-        <div class="promo-banner__main-text">
-          <h2 class="main-text">{{ section.settings.main_text }}</h2>
-        </div>
-      {% endif %}
-      
-      {% if section.settings.sub_text != blank %}
-        <div class="promo-banner__sub-text">
-          <p class="sub-text">{{ section.settings.sub_text }}</p>
-        </div>
-      {% endif %}
-      
-      {% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
-        <div class="promo-banner__cta">
-          <a href="{{ section.settings.cta_url }}" class="cta-button">
-            {{ section.settings.cta_text }}
-          </a>
-        </div>
-      {% endif %}
-      
+  {% if section.settings.image_mobile != blank %}
+    <div class="promo-banner__image" style="{% if section.settings.image_mobile_max_width != blank %}max-width: {{ section.settings.image_mobile_max_width }};{% endif %} {% if section.settings.image_desktop_max_width != blank %}@media (min-width: 768px) { max-width: {{ section.settings.image_desktop_max_width }}; }{% endif %}">
+      {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover w-full h-auto' %}
     </div>
-  </div>
+  {% endif %}
 
 {% if section.settings.enable_clickable_url and section.settings.cta_url != blank %}
   </a>
@@ -46,129 +20,6 @@
   </div>
 {% endif %}
 
-<style>
-  .section__promo-banner {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .promo-banner__wrapper {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  
-  .promo-banner__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .promo-banner__tag {
-    display: flex;
-    align-items: center;
-  }
-  
-  .tag__text {
-    background-color: {{ section.settings.tag_background_color | default: '#BAE6FF' }};
-    color: {{ section.settings.tag_text_color | default: '#002955' }};
-    padding: 0.25rem 0.75rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .promo-banner__main-text {
-    display: flex;
-    align-items: center;
-  }
-  
-  .main-text {
-    color: {{ section.settings.main_text_color | default: '#FFFFFF' }};
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin: 0;
-  }
-  
-  .promo-banner__sub-text {
-    display: flex;
-    align-items: center;
-  }
-  
-  .sub-text {
-    color: {{ section.settings.sub_text_color | default: '#FFFFFF' }};
-    font-size: 0.875rem;
-    margin: 0;
-  }
-  
-  .promo-banner__cta {
-    display: flex;
-    align-items: center;
-  }
-  
-  .cta-button {
-    background-color: {{ section.settings.cta_background_color | default: '#BAE6FF' }};
-    color: {{ section.settings.cta_text_color | default: '#002955' }};
-    padding: 0.5rem 1.5rem;
-    border-radius: 2rem;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-  
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .promo-banner__content {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    
-    .main-text {
-      font-size: 1rem;
-    }
-    
-    .sub-text {
-      font-size: 0.75rem;
-    }
-    
-    .cta-button {
-      padding: 0.375rem 1rem;
-      font-size: 0.875rem;
-    }
-  }
-  
-  /* Desktop responsive */
-  @media (min-width: 769px) {
-    .promo-banner__content {
-      flex-direction: row;
-      gap: 1.5rem;
-    }
-    
-    .main-text {
-      font-size: 1.5rem;
-    }
-  }
-</style>
 
 {% schema %}
 {
@@ -519,72 +370,35 @@
     },
     {
       "type": "header",
-      "content": "Content"
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image - Mobile"
     },
     {
       "type": "text",
-      "id": "tag_text",
-      "label": "Tag Text",
-      "info": "Small promotional tag (e.g., 'LIMITED EDITION')"
+      "id": "image_mobile_max_width",
+      "label": "Image Mobile Max Width",
+      "info": "Maximum width for mobile image. Make sure to include units"
     },
     {
-      "type": "color",
-      "id": "tag_background_color",
-      "label": "Tag Background Color",
-      "default": "#BAE6FF"
-    },
-    {
-      "type": "color",
-      "id": "tag_text_color",
-      "label": "Tag Text Color",
-      "default": "#002955"
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Desktop"
     },
     {
       "type": "text",
-      "id": "main_text",
-      "label": "Main Text",
-      "info": "Primary promotional message"
-    },
-    {
-      "type": "color",
-      "id": "main_text_color",
-      "label": "Main Text Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "text",
-      "id": "sub_text",
-      "label": "Sub Text",
-      "info": "Secondary descriptive text"
-    },
-    {
-      "type": "color",
-      "id": "sub_text_color",
-      "label": "Sub Text Color",
-      "default": "#FFFFFF"
+      "id": "image_desktop_max_width",
+      "label": "Image Desktop Max Width",
+      "info": "Maximum width for desktop image. Make sure to include units"
     },
     {
       "type": "url",
       "id": "cta_url",
-      "label": "CTA URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text",
-      "info": "Call-to-action button text"
-    },
-    {
-      "type": "color",
-      "id": "cta_background_color",
-      "label": "CTA Background Color",
-      "default": "#BAE6FF"
-    },
-    {
-      "type": "color",
-      "id": "cta_text_color",
-      "label": "CTA Text Color",
-      "default": "#002955"
+      "label": "CTA URL",
+      "info": "URL to link to when banner is clicked"
     },
     {
       "type": "checkbox",
@@ -595,14 +409,7 @@
   ],
   "presets": [
     {
-      "name": "Promotional Banner",
-      "settings": {
-        "background_color": "#002955",
-        "main_text": "NEW AIR PURIFICATION TECHNOLOGY",
-        "sub_text": "breathe better, live better",
-        "cta_text": "EXPLORE NOW",
-        "tag_text": "LIMITED TIME"
-      }
+      "name": "Promotional Banner"
     }
   ]
 }

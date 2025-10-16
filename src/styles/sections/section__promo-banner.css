@@ -1,0 +1,10 @@
+.section__promo-banner {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-banner__image {
+  width: 100%;
+  height: auto;
+}
