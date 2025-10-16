@@ -665,7 +665,7 @@ tm_qual_gjiapmwgps"></div>
                 {% if product.metafields.seed.upsells != blank or product.metafields.custom.seed_upsells != blank %}
                   <div class="product__upsells py-md border-t border-gray {{ spacing }}">
                     {% if product.metafields.seed.upsells_heading != blank %}
-                      <div class="product-upsells__heading s2 mb-md cheese">{{ product.metafields.seed.upsells_heading }}</div>
+                      <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
                     {% endif %}
                     <div class="product-upsells__items grid grid-cols-1 gap-md">
                       {% for upsell in upsell_data %}
