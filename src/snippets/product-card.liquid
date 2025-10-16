@@ -203,23 +203,6 @@
       <div class="product-card__short-description p2 mt-xxxs">{{ product.metafields.seed.blair_plpShortDescription }}</div>
     {% endif %}
 
-    {% if related_tag_color != blank %}
-        <h4>Debug Info:</h4>
-        <p><strong>Current Product:</strong> {{ product.title }}</p>
-        <p><strong>Tag:</strong> {{ related_tag_color }}</p>
-        <p><strong>egg Current Color:</strong> {{ product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last }}</p>
-        <p><strong>Related Products Found:</strong></p>
-        {% for related_product in collections.all.products %}
-          {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
-            <div style="background: #f0f0f0; padding: 10px; margin: 5px 0; border: 1px solid #ccc;">
-              <p><strong>Related Product:</strong> {{ related_product.title }}</p>
-              <p><strong>Related Tag:</strong> {{ related_tag_color }}</p>
-              <p><strong>Related Color:</strong> {{ related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last }}</p>
-            </div>
-          {% endif %}
-        {% endfor %}
-    {% endif %}
-
     {% if color_option != false %}
       <div class="product-card__swatches-container mt-sm">
         <div class="product-card__current-swatch font-700">
