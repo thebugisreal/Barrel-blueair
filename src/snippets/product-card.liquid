@@ -3,11 +3,19 @@
   assign color_option = false
   assign filter_type_option = false
   assign refurbished_air_purifiers = false
+  assign related_tag_color = blank
+  
   if product.options_by_name['color'] != blank
     assign color_option = product.options_by_name['color'].position | minus: 1
   elsif product.metafields.seed.product_card_filter_products != blank
     assign filter_type_option = true
   endif
+  
+  for tag in product.tags
+    if tag contains 'product-family-color:'
+      assign related_tag_color = tag
+    endif
+  endfor
 
   if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
   assign transactional_countries = 'US,CA' | split: ',' 
@@ -127,6 +135,23 @@
           {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
         </div>
       {% endfor %}
+    {% elsif related_tag_color != blank %}
+      <div class="product-card__image aspect-square" data-swatch="{{ product.title | split: '™ ' | last | split: ' ' | last }}" js-product-card-image>
+        {% if product.metafields.seed.product_card_image != blank %}
+          {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+        {% else %}
+          {% render 'lazy-image' image: product.featured_image %}
+        {% endif %}
+      </div>
+      {% for swatch_product in collection.products %}
+        {% if swatch_product.tags contains related_tag_color and swatch_product.handle != product.handle %}
+          {% assign color_name = swatch_product.metafields['shopify.color-pattern'] | default: swatch_product.title | split: ' in ' | last %}
+          <div class="product-card__image aspect-square hidden" data-swatch="{{ color_name }}" js-product-card-image>
+            {% assign image = swatch_product.metafields.seed.product_card_image | default: swatch_product.featured_image %}
+            {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
+          </div>
+        {% endif %}
+      {% endfor %}
     {% else %}
       <div class="product-card__image aspect-square">
         {% if product.metafields.seed.product_card_image != blank %}
@@ -176,6 +201,23 @@
     
     {% if product.metafields.seed.blair_plpShortDescription != blank %}
       <div class="product-card__short-description p2 mt-xxxs">{{ product.metafields.seed.blair_plpShortDescription }}</div>
+    {% endif %}
+
+    {% if related_tag_color != blank %}
+        <h4>Debug Info:</h4>
+        <p><strong>Current Product:</strong> {{ product.title }}</p>
+        <p><strong>Tag:</strong> {{ related_tag_color }}</p>
+        <p><strong>egg Current Color:</strong> {{ product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last }}</p>
+        <p><strong>Related Products Found:</strong></p>
+        {% for related_product in collections.all.products %}
+          {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
+            <div style="background: #f0f0f0; padding: 10px; margin: 5px 0; border: 1px solid #ccc;">
+              <p><strong>Related Product:</strong> {{ related_product.title }}</p>
+              <p><strong>Related Tag:</strong> {{ related_tag_color }}</p>
+              <p><strong>Related Color:</strong> {{ related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
     {% endif %}
 
     {% if color_option != false %}
@@ -249,9 +291,81 @@
               </div>
             </button>
           {% endfor %}
+          
+          {% if related_tag_color != blank %}
+            {% for related_product in collection.products %}
+              {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
+                {% assign related_swatch_objects = related_product.metafields.seed.swatches.value %}
+                {% assign related_color_name = related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last %}
+                {% assign related_swatch_object = related_swatch_objects | where: "name", related_color_name | first %}
+                <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+                  data-swatch="{{ related_color_name }}"
+                  data-available="{{ related_product.available }}"
+                  data-price="{{ related_product.variants[0].compare_at_price }}|{{ related_product.variants[0].price }}" 
+                  data-selected="false"
+                  data-url="{{ related_product.url }}"
+                  title="{{ related_color_name }}"
+                  js-product-card-swatch>
+                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ related_swatch_object.color }};">
+                    {% if related_swatch_object.image != blank %}
+                      <img src="{{ related_swatch_object.image.value | img_url: '36x'}}" alt="{{ related_color_name }}" class="block h-full w-full">
+                    {% endif %}
+                  </div>
+                </button>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
         </div>
       </div>
-    {% endif %}
+      {% elsif related_tag_color != blank %}
+        <div class="product-card__swatches-container mt-sm">
+          <div class="product-card__current-swatch font-700">
+            <span>3 Color: </span>
+            <span js-product-card-current-swatch-label>{{ product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last }}</span>
+          </div>
+          <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
+            {% assign current_color = product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last %}
+            {% assign current_swatch_objects = product.metafields.seed.swatches.value %}
+            {% assign current_swatch_object = current_swatch_objects | where: "name", current_color | first %}
+            <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+              data-swatch="{{ current_color }}"
+              data-available="{{ product.available }}"
+              data-price="{{ product.variants[0].compare_at_price }}|{{ product.variants[0].price }}" 
+              data-selected="true"
+              data-url="{{ product.url }}"
+              title="{{ current_color }}"
+              js-product-card-swatch>
+              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ current_swatch_object.color }};">
+                {% if current_swatch_object.image != blank %}
+                  <img src="{{ current_swatch_object.image.value | img_url: '36x'}}" alt="{{ current_color }}" class="block h-full w-full">
+                {% endif %}
+              </div>
+            </button>
+            
+            {% for related_product in collections.all.products %}
+              {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
+                {% assign swatch_objects = related_product.metafields.seed.swatches.value %}
+                {% assign color_name = related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last %}
+                {% assign swatch_object = swatch_objects | where: "name", color_name | first %}
+                <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+                  data-swatch="{{ color_name }}"
+                  data-available="{{ related_product.available }}"
+                  data-price="{{ related_product.variants[0].compare_at_price }}|{{ related_product.variants[0].price }}" 
+                  data-selected="false"
+                  data-url="{{ related_product.url }}"
+                  title="{{ color_name }}"
+                  js-product-card-swatch>
+                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
+                    {% if swatch_object.image != blank %}
+                      <img src="{{ swatch_object.image.value | img_url: '36x'}}" alt="{{ color_name }}" class="block h-full w-full">
+                    {% endif %}
+                  </div>
+                </button>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
       
     <div class="product-card__price-wrapper text-16 mt-md flex justify-start items-center gap-sm {% if hide_price_and_tag %}!hidden{% endif %}" js-product-card-price>
       {% if current_variant.compare_at_price > current_variant.price %}
