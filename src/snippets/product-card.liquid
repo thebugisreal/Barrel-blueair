@@ -136,7 +136,12 @@
         </div>
       {% endfor %}
     {% elsif related_tag_color != blank %}
-      <div class="product-card__image aspect-square" data-swatch="{{ product.title | split: '™ ' | last | split: ' ' | last }}" js-product-card-image>
+      {% if product.title contains ' in ' %}
+        {% assign main_color_name = product.title | split: ' in ' | last %}
+      {% else %}
+        {% assign main_color_name = product.title | split: '™ ' | last %}
+      {% endif %}
+       <div class="product-card__image aspect-square" data-swatch="{{ main_color_name }}" js-product-card-image>
         {% if product.metafields.seed.product_card_image != blank %}
           {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
         {% else %}
@@ -145,7 +150,11 @@
       </div>
       {% for swatch_product in collection.products %}
         {% if swatch_product.tags contains related_tag_color and swatch_product.handle != product.handle %}
-          {% assign color_name = swatch_product.metafields['shopify.color-pattern'] | default: swatch_product.title | split: ' in ' | last %}
+          {% if swatch_product.title contains ' in ' %}
+            {% assign color_name = swatch_product.title | split: ' in ' | last %}
+          {% else %}
+            {% assign color_name = swatch_product.title | split: '™ ' | last %}
+          {% endif %}
           <div class="product-card__image aspect-square hidden" data-swatch="{{ color_name }}" js-product-card-image>
             {% assign image = swatch_product.metafields.seed.product_card_image | default: swatch_product.featured_image %}
             {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
@@ -259,7 +268,7 @@
         <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
           {% assign swatch_objects = product.metafields.seed.swatches.value %}
           {% for swatch_object in swatch_objects %}
-            <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+            <button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
               data-swatch="{{ swatch_object.name }}"
               data-available="{{ product.available }}"
               data-price="{{ product.variants[0].compare_at_price }}|{{ product.variants[0].price }}" 
@@ -279,9 +288,13 @@
             {% for related_product in collection.products %}
               {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
                 {% assign related_swatch_objects = related_product.metafields.seed.swatches.value %}
-                {% assign related_color_name = related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last %}
+                {% if product.title contains ' in ' %}
+                  {% assign related_color_name = related_product.title | split: ' in ' | last %}
+                {% else %}
+                  {% assign related_color_name = related_product.title | split: '™ ' | last %}
+                {% endif %}
                 {% assign related_swatch_object = related_swatch_objects | where: "name", related_color_name | first %}
-                <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+                <button class="egg2 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
                   data-swatch="{{ related_color_name }}"
                   data-available="{{ related_product.available }}"
                   data-price="{{ related_product.variants[0].compare_at_price }}|{{ related_product.variants[0].price }}" 
@@ -298,19 +311,34 @@
               {% endif %}
             {% endfor %}
           {% endif %}
+          {% if related_tag_color != blank %}
+            {% for related_product in collections.all.products %}
+              {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
+                {% if related_product.title contains ' in ' %}
+                  {% assign related_color_name = related_product.title | split: ' in ' | last %}
+                {% else %}
+                  {% assign related_color_name = related_product.title | split: '™ ' | last %}
+                {% endif %}
+                <div class="product-card__image aspect-square hidden" data-swatch="{{ related_color_name }}" js-product-card-image>
+                  {% assign image = related_product.metafields.seed.product_card_image | default: related_product.featured_image %}
+                  {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
         </div>
       </div>
       {% elsif related_tag_color != blank %}
         <div class="product-card__swatches-container mt-sm">
           <div class="product-card__current-swatch font-700">
-            <span>3 Color: </span>
+            <span>Color: </span>
             <span js-product-card-current-swatch-label>{{ product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last }}</span>
           </div>
           <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
             {% assign current_color = product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last %}
             {% assign current_swatch_objects = product.metafields.seed.swatches.value %}
             {% assign current_swatch_object = current_swatch_objects | where: "name", current_color | first %}
-            <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+            <button class="egg3 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
               data-swatch="{{ current_color }}"
               data-available="{{ product.available }}"
               data-price="{{ product.variants[0].compare_at_price }}|{{ product.variants[0].price }}" 
@@ -330,7 +358,7 @@
                 {% assign swatch_objects = related_product.metafields.seed.swatches.value %}
                 {% assign color_name = related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last %}
                 {% assign swatch_object = swatch_objects | where: "name", color_name | first %}
-                <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+                <button class="egg4 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
                   data-swatch="{{ color_name }}"
                   data-available="{{ related_product.available }}"
                   data-price="{{ related_product.variants[0].compare_at_price }}|{{ related_product.variants[0].price }}" 
