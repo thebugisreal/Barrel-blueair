@@ -258,13 +258,20 @@ class ProductMain extends HTMLElement {
             stickyBar.classList.add('hidden');
           }
         });
+        
+        // Add/remove body class for layout adjustments
+        if (shouldShowStickyBar) {
+          document.body.classList.add('sticky-bar-visible');
+        } else {
+          document.body.classList.remove('sticky-bar-visible');
+        }
       }
       
       // Reset the updating flag after DOM settles
       requestAnimationFrame(() => {
         this.isUpdating = false;
       });
-    }, 150); 
+    }, 500); 
 
     this.stickyBarObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
