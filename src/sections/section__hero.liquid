@@ -2,16 +2,21 @@
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
 {% if section.settings.enable_bg_clickabe_url and section.settings.cta_url != blank %}
-  <a href="{{section.settings.cta_url}}" class="section__hero {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
+  <a href="{{section.settings.cta_url}}" class="section__hero {% if section.settings.video_mobile != blank %}section__hero--video{% endif %} {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
 {% else %}
-  <div class="section__hero {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
+  <div class="section__hero {% if section.settings.video_mobile != blank %}section__hero--video{% endif %} {{ margins_paddings }} {{ section.settings.color }} {% unless section.settings.image_mobile != blank or section.settings.video_mobile != blank %} tabletl:px-xl {% endunless %}" style="{% if section.settings.content_max_height_mobile != blank  %}--max-h-mobile: {{ section.settings.content_max_height_mobile }};{% endif %} {% if section.settings.content_max_height_desktop != blank  %}--max-h-desktop: {{ section.settings.content_max_height_desktop }};{% endif %}">
 {% endif %}
   <div class="hero__wrapper relative">
-    {% if section.settings.image_mobile != blank %}
+    {% if section.settings.video_mobile != blank %}
+      <div class="hero__video">
+        {{ section.settings.video_mobile | video_tag: autoplay: section.settings.video_autoplay, loop: section.settings.video_loop, muted: section.settings.video_muted, controls: false, class: 'hero__video-element w-full h-full object-cover' }}
+      </div>
+    {% elsif section.settings.image_mobile != blank %}
       <div class="hero__image">
         {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover'%}
       </div>
     {% endif %}
+
 
     {% capture alignments %}
       {{ section.settings.text_align_mobile }} {{ section.settings.hor_align_mobile }} {{ section.settings.ver_align_mobile }} {{ section.settings.text_align_desktop }} {{ section.settings.hor_align_desktop }} {{ section.settings.ver_align_desktop }}
@@ -448,6 +453,36 @@
       "type": "image_picker",
       "id": "image_desktop",
       "label": "Image - Desktop"
+    },
+    {
+      "type": "header",
+      "content": "Video Background (Will priortize over images)"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Autoplay Video",
+      "default": true,
+      "info": "Video will start playing automatically"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "Loop Video",
+      "default": true,
+      "info": "Video will loop continuously"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_muted",
+      "label": "Mute Video",
+      "default": true,
+      "info": "Video will be muted (required for autoplay on most browsers)"
     },
     {
       "type": "header",
