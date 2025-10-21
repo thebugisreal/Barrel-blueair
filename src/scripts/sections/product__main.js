@@ -124,6 +124,13 @@ class ProductMain extends HTMLElement {
       }
     }
     this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
+
+    // Update the filter quantity label
+    
+    const filterQuantityLabel = this.querySelector('[js-filter-subscription-quantity-label]');
+    if (filterQuantityLabel) {
+      filterQuantityLabel.textContent = `${evt.currentTarget.value} replacement filter${ parseInt(evt.currentTarget.value) > 1 ? 's' : '' }`;
+    }
   }
 
   _formatPrice = (priceString) => {
@@ -677,6 +684,11 @@ class ProductMain extends HTMLElement {
       this.filterSubscriptionTempIdInputs.forEach((input) => {
         input.setAttribute('value', `subscription${tempId}`);
       });
+    }
+
+    const packQuantityDuration = this.querySelector('[js-filter-subscription-quantity-duration]');
+    if (packQuantityDuration) {
+      packQuantityDuration.textContent = ` ${triggerTarget.textContent}`;
     }
   }
 

@@ -629,6 +629,23 @@
                 {% endcapture %}
                 {% if product.metafields.seed.pdp_filter_quantity != blank %}
                   <ul class="product__filter-pack flex gap-xs {{ spacing }}">
+                    <li class="product__filter-pack-item">
+                      <input 
+                        id="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}" 
+                        class="product-filter-pack__input visually-hidden"
+                        type="checkbox" 
+                        name="quantity"
+                        checked
+                        value="1"
+                        autocomplete="off"
+                        data-image-index="0"
+                        js-filter-pack-quantity>
+                      <label
+                        for="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}"
+                        class="product-filter-pack__label btn btn--white-outline text-14 flex justify-start items-center gap-xs">
+                          <span class="flex-1">1 pack</span>
+                      </label>
+                    </li>
                     {% for filter in product.metafields.seed.pdp_filter_quantity.value %}
                       <li class="product__filter-pack-item">
                           <input 
@@ -642,14 +659,12 @@
                             js-filter-pack-quantity>
                           <label
                             for="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}"
-                            class="product-filter-pack__label btn btn--white-outline text-18 flex justify-start items-center gap-xs">
+                            class="product-filter-pack__label btn btn--white-outline text-14 flex justify-start items-center gap-xs">
                               <span class="flex-1">{{ filter.quantity }} pack{% if filter.quantity > 1 %}s{% endif %}</span>
                           </label>
                       </li>
                     {% endfor %}
                   </ul>
-                {% else %}
-                  No Filter Pack
                 {% endif %}
             {% endcase %}
           {% endfor %}
