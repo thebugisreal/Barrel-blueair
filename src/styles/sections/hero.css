@@ -3,7 +3,8 @@
   desktop:pt-xl
 }
 
-.hero__content-wrapper.no-image {
+.hero__content-wrapper.no-image,
+.hero__content-wrapper.no-video {
   height: var(--height-mobile, unset);
 }
 
@@ -14,8 +15,38 @@
   max-height: var(--max-h-mobile, unset);
 }
 
+/* Video styles */
+.hero__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero__video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: var(--max-h-mobile, unset);
+}
+
+/* Hero wrapper with video needs proper height */
+.section__hero--video .hero__wrapper {
+  position: relative;
+  min-height: 400px;
+  height: var(--max-h-mobile, 60vh);
+}
+
+.hero__content-wrapper {
+  z-index: 2;
+}
+
 @media screen(desktop) {
-  .hero__content-wrapper.no-image {
+  .hero__content-wrapper.no-image,
+  .hero__content-wrapper.no-video {
     height: var(--height-desktop, unset);
   }
 
@@ -26,5 +57,12 @@
   .hero__image img {
     max-height: var(--max-h-desktop, unset);
   }
-  
+
+  .hero__video-element {
+    max-height: var(--max-h-desktop, unset);
+  }
+
+  .section__hero--video .hero__wrapper {
+    height: var(--max-h-desktop, 70vh);
+  }
 }
