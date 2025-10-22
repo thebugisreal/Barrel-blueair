@@ -197,7 +197,9 @@ class CountrySelectModal extends HTMLElement {
       if (this.submitBtn) {
         this.submitBtn.addEventListener('click', this._submitForm )
       }
-  
+
+      // No need for close listeners since we track when modal is shown, not dismissed
+
     }
 
     _checkAutoRedirect = () => {
@@ -208,15 +210,94 @@ class CountrySelectModal extends HTMLElement {
       }
 
       const manualRedirect = theme.utils.getCookie('seedManualRedirect');
+      const modalShown = theme.utils.getCookie('countryModalShown');
 
-      if (manualRedirect == 'true') {
+      if (manualRedirect == 'true' || modalShown == 'true') {
         return;
       }
 
+      // Get current country from the select element
+      const currentCountry = this.select ? this.select.value : null;
+      console.log('Current country detected:', currentCountry);
+      
+      // Handle URL path corrections for blueeudev.myshopify.com
       if (window.permanent_domain == `blueeudev.myshopify.com`) {
-        if (Shopify.country == 'US') {
+        const currentPath = window.location.pathname;
+        
+        // Redirect /de-us/ to /
+        if (currentPath.startsWith('/de-us')) {
+          const newPath = currentPath.replace('/de-us', '');
+          console.log('Redirecting /de-us/ to /:', newPath);
+          window.location.href = window.location.origin + newPath;
+          return;
+        }
+        
+        // Redirect /en-us/ to /en/
+        if (currentPath.startsWith('/en-us')) {
+          const newPath = currentPath.replace('/en-us', '/en');
+          console.log('Redirecting /en-us/ to /en/:', newPath);
+          window.location.href = window.location.origin + newPath;
+          return;
+        }
+      }
+      
+      if (window.permanent_domain == `blueeudev.myshopify.com`) {
+        if (currentCountry == 'US') {
           window.location.href = `https://www.blueair.com`
-        }else{
+        } else if (currentCountry == 'GB' || currentCountry == 'CA') {
+          // Auto-open the country modal for GB and CA visitors
+          console.log(`${currentCountry} visitor detected on blueeudev, attempting to open modal...`);
+          setTimeout(() => {
+            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
+            if (modalTrigger) {
+              console.log('Modal trigger found, clicking...');
+              modalTrigger.click();
+              // Set cookie to remember modal was shown
+              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
+              console.log('Modal shown, cookie set');
+            } else {
+              console.log('Modal trigger not found');
+            }
+          }, 100);
+        } else {
+          return;
+        }
+      } else if (window.permanent_domain == `5ef43d-4a.myshopify.com`) {
+        if (currentCountry !== 'US' && currentCountry !== 'CA') {
+          // Auto-open the country modal for all non-US/CA visitors on US site
+          console.log(`Non-US/CA visitor (${currentCountry}) detected on US site, attempting to open modal...`);
+          setTimeout(() => {
+            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
+            if (modalTrigger) {
+              console.log('Modal trigger found, clicking...');
+              modalTrigger.click();
+              // Set cookie to remember modal was shown
+              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
+              console.log('Modal shown, cookie set');
+            } else {
+              console.log('Modal trigger not found');
+            }
+          }, 100);
+        } else {
+          return;
+        }
+      } else if (window.permanent_domain == `uk-blueair.myshopify.com`) {
+        if (currentCountry !== 'GB') {
+          // Auto-open the country modal for all non-GB visitors on UK site
+          console.log(`Non-GB visitor (${currentCountry}) detected on UK site, attempting to open modal...`);
+          setTimeout(() => {
+            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
+            if (modalTrigger) {
+              console.log('Modal trigger found, clicking...');
+              modalTrigger.click();
+              // Set cookie to remember modal was shown
+              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
+              console.log('Modal shown, cookie set');
+            } else {
+              console.log('Modal trigger not found');
+            }
+          }, 100);
+        } else {
           return;
         }
       }
@@ -321,4 +402,5 @@ class CountrySelectModal extends HTMLElement {
       
       return option
     }
+
   }
