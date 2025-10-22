@@ -129,7 +129,7 @@ class ProductMain extends HTMLElement {
     
     const filterQuantityLabel = this.querySelector('[js-filter-subscription-quantity-label]');
     if (filterQuantityLabel) {
-      filterQuantityLabel.textContent = `${evt.currentTarget.value} replacement filter${ parseInt(evt.currentTarget.value) > 1 ? 's' : '' }`;
+      filterQuantityLabel.textContent = `${evt.currentTarget.value} Replacement Filter${ parseInt(evt.currentTarget.value) > 1 ? 's' : '' }`;
     }
   }
 
