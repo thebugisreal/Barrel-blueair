@@ -76,7 +76,7 @@
         "max_width_desktop": "",
         "color": "bg-white text-blue",
         "image_position_desktop": "desktop:order-first",
-        "title": "Blueair  x TrueMed",
+        "title": "Blueair  x Truemed",
         "title_style": "h3",
         "subtext": "",
         "subtext_style": "h5",
@@ -100,7 +100,7 @@
             "content_spacing": "",
             "title": "Checkout",
             "title_style": "s2",
-            "subtext": "Find the TrueMed logo during checkout. Exit the \"Shop Pay\" pop-up if prompted.",
+            "subtext": "Find the Truemed logo during checkout. Exit the \"Shop Pay\" pop-up if prompted.",
             "subtext_style": "s3",
             "subtext_alignment": "text-center",
             "cta_url": "",
@@ -187,7 +187,7 @@
             "content_spacing": "",
             "title": "Make your purchase",
             "title_style": "s2",
-            "subtext": "Do not pay with an HSA/FSA card during checkout. After your purchase, check your confirmation screen or receipt email for a link to the Truemed survey.",
+            "subtext": "Do not pay with an HSA/FSA card during checkout. After your purchase, check your order confirmation screen for a link to the Truemed survey.",
             "subtext_style": "s3",
             "subtext_alignment": "text-center",
             "cta_url": "",
@@ -368,7 +368,7 @@
           "settings": {
             "title": "When should I use my FSA/HSA dollars?",
             "title_style": "s1",
-            "richtext": "<p>Yes. The free Blueair app is required to set up and personalize your device. Through the app, you can create & edit your alarms, choose your preferred sounds and light settings, and adjust routines anytime.<br/><br/></p>",
+            "richtext": "<p>You can use your HSA/FSA dollars all year long. However, FSA dollars expire at the end of the year and unused money may not rollover into the next year. Make sure to spend the rest of your FSA dollars before December 31st — use it, so you don’t lose it!</p>",
             "richtext_style": "p2"
           }
         },
