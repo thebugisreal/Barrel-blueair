@@ -177,6 +177,9 @@ class CountrySelectModal extends HTMLElement {
     }
   
     init() {
+      // Handle URL redirects immediately for Safari compatibility
+      this._handleUrlRedirects();
+      
       this.form = this.querySelector(this._selectors.form);
       this.select = this.querySelector(this._selectors.select);
       this.languageSelect = this.querySelector(this._selectors.languageSelect)
@@ -184,7 +187,7 @@ class CountrySelectModal extends HTMLElement {
       this.languageInputLabel = this.querySelector(this._selectors.languageInputLabel)
       this.countryLabel = this.querySelector(this._selectors.countryLabel)
       this.submitBtn = this.querySelector(this._selectors.submitBtn)
-  
+
       this.select.addEventListener('change', this._handleCountryChange.bind(this));
       this.selectedCountry = this.select.value;
 
@@ -200,6 +203,36 @@ class CountrySelectModal extends HTMLElement {
 
       // No need for close listeners since we track when modal is shown, not dismissed
 
+    }
+
+    _handleUrlRedirects = () => {
+      // Handle URL path corrections for blueeudev.myshopify.com
+      if (window.permanent_domain == `blueeudev.myshopify.com`) {
+        const currentPath = window.location.pathname;
+        
+        // Redirect /de-us/ to /
+        if (currentPath.startsWith('/de-us')) {
+          const newPath = currentPath.replace('/de-us', '');
+          console.log('Redirecting /de-us/ to /:', newPath);
+          const newUrl = window.location.origin + newPath;
+          
+          // Immediate redirect for Safari compatibility
+          window.location.replace(newUrl);
+          return true; // Indicate redirect happened
+        }
+        
+        // Redirect /en-us/ to /en/
+        if (currentPath.startsWith('/en-us')) {
+          const newPath = currentPath.replace('/en-us', '/en');
+          console.log('Redirecting /en-us/ to /en/:', newPath);
+          const newUrl = window.location.origin + newPath;
+          
+          // Immediate redirect for Safari compatibility
+          window.location.replace(newUrl);
+          return true; // Indicate redirect happened
+        }
+      }
+      return false; // No redirect needed
     }
 
     _checkAutoRedirect = () => {
@@ -219,27 +252,6 @@ class CountrySelectModal extends HTMLElement {
       // Get current country from the select element
       const currentCountry = this.select ? this.select.value : null;
       console.log('Current country detected:', currentCountry);
-      
-      // Handle URL path corrections for blueeudev.myshopify.com
-      if (window.permanent_domain == `blueeudev.myshopify.com`) {
-        const currentPath = window.location.pathname;
-        
-        // Redirect /de-us/ to /
-        if (currentPath.startsWith('/de-us')) {
-          const newPath = currentPath.replace('/de-us', '');
-          console.log('Redirecting /de-us/ to /:', newPath);
-          window.location.href = window.location.origin + newPath;
-          return;
-        }
-        
-        // Redirect /en-us/ to /en/
-        if (currentPath.startsWith('/en-us')) {
-          const newPath = currentPath.replace('/en-us', '/en');
-          console.log('Redirecting /en-us/ to /en/:', newPath);
-          window.location.href = window.location.origin + newPath;
-          return;
-        }
-      }
       
       if (window.permanent_domain == `blueeudev.myshopify.com`) {
         if (currentCountry == 'US') {
