@@ -212,60 +212,13 @@
       <div class="product-card__short-description p2 mt-xxxs">{{ product.metafields.seed.blair_plpShortDescription }}</div>
     {% endif %}
 
-    {% if color_option != false %}
-      <div class="product-card__swatches-container mt-sm">
-        <div class="product-card__current-swatch font-700">
-          <span>Color: </span>
-          <span js-product-card-current-swatch-label>{{ current_variant.options[color_option] }}</span>
-        </div>
-        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
-          {% assign swatch_objects = product.metafields.seed.swatches.value %}
-          {% for variant in product.variants %}
-            {% assign swatch_object = swatch_objects | where: "name", variant.options[color_option] | first %}
-            <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
-              data-swatch="{{ variant.options[color_option] }}"
-              data-available="{{ variant.available }}"
-              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
-              data-selected="{% if variant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
-              data-url="{{ variant.url }}"
-              title="{{ variant.options[color_option] }}"
-              js-product-card-swatch>
-              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
-                {% if swatch_object.image != blank %}
-                  <img src="{{ swatch_object.image.value | img_url: '36x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
-                {% endif %}
-              </div>
-            </button>
-          {% endfor %}
-        </div>
-      </div>
-    {% elsif filter_type_option != false %}
-      <div class="product-card__swatches-container mt-sm">
-        <p class="font-700">Choose from various filter types</p>
-        <div class="product-card__swatches flex flex-wrap gap-sm mt-xxs">
-          {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
-            <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
-              data-swatch="{{ swatch_product.variants[0].title }}"  
-              data-available="{{ swatch_product.available }}"
-              data-price="{{ swatch_product.variants[0].compare_at_price }}|{{ swatch_product.variants[0].price }}" 
-              data-url="{{ swatch_product.url }}"
-              data-selected="{% if swatch_product.variants[0].title == product.variants[0].title %}true{% else %}false{% endif %}"
-              js-product-card-filter-swatch>
-              <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
-                <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>
-              </span>
-              <span class="font-700">{{ swatch_product.variants[0].title}}</span>
-            </button>
-          {% endfor %}
-        </div>
-      </div>
-    {% elsif product.metafields.seed.swatches != blank %}
+    {% if product.metafields.seed.swatches != blank %}
       <div class="product-card__swatches-container mt-sm">
         <div class="product-card__current-swatch font-700">
           <span>Color: </span>
           <span js-product-card-current-swatch-label>{{ product.title | split: '™ ' | last | split: ' ' | last }}</span>
         </div>
-        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
+        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs" js-find-swatches="{% if related_tag_color != blank %}true{% else %}false{% endif %}" data-color-family-name="{{ related_tag_color }}">
           {% assign swatch_objects = product.metafields.seed.swatches.value %}
           {% for swatch_object in swatch_objects %}
             <button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
@@ -283,100 +236,9 @@
               </div>
             </button>
           {% endfor %}
-          
-          {% if related_tag_color != blank %}
-            {% for related_product in collection.products %}
-              {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
-                {% assign related_swatch_objects = related_product.metafields.seed.swatches.value %}
-                {% if product.title contains ' in ' %}
-                  {% assign related_color_name = related_product.title | split: ' in ' | last %}
-                {% else %}
-                  {% assign related_color_name = related_product.title | split: '™ ' | last %}
-                {% endif %}
-                {% assign related_swatch_object = related_swatch_objects | where: "name", related_color_name | first %}
-                <button class="egg2 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
-                  data-swatch="{{ related_color_name }}"
-                  data-available="{{ related_product.available }}"
-                  data-price="{{ related_product.variants[0].compare_at_price }}|{{ related_product.variants[0].price }}" 
-                  data-selected="false"
-                  data-url="{{ related_product.url }}"
-                  title="{{ related_color_name }}"
-                  js-product-card-swatch>
-                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ related_swatch_object.color }};">
-                    {% if related_swatch_object.image != blank %}
-                      <img src="{{ related_swatch_object.image.value | img_url: '36x'}}" alt="{{ related_color_name }}" class="block h-full w-full">
-                    {% endif %}
-                  </div>
-                </button>
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-          {% if related_tag_color != blank %}
-            {% for related_product in collections.all.products %}
-              {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
-                {% if related_product.title contains ' in ' %}
-                  {% assign related_color_name = related_product.title | split: ' in ' | last %}
-                {% else %}
-                  {% assign related_color_name = related_product.title | split: '™ ' | last %}
-                {% endif %}
-                <div class="product-card__image aspect-square hidden" data-swatch="{{ related_color_name }}" js-product-card-image>
-                  {% assign image = related_product.metafields.seed.product_card_image | default: related_product.featured_image %}
-                  {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
-                </div>
-              {% endif %}
-            {% endfor %}
-          {% endif %}
         </div>
       </div>
-      {% elsif related_tag_color != blank %}
-        <div class="product-card__swatches-container mt-sm">
-          <div class="product-card__current-swatch font-700">
-            <span>Color: </span>
-            <span js-product-card-current-swatch-label>{{ product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last }}</span>
-          </div>
-          <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
-            {% assign current_color = product.metafields['shopify.color-pattern'] | default: product.title | split: ' in ' | last %}
-            {% assign current_swatch_objects = product.metafields.seed.swatches.value %}
-            {% assign current_swatch_object = current_swatch_objects | where: "name", current_color | first %}
-            <button class="egg3 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
-              data-swatch="{{ current_color }}"
-              data-available="{{ product.available }}"
-              data-price="{{ product.variants[0].compare_at_price }}|{{ product.variants[0].price }}" 
-              data-selected="true"
-              data-url="{{ product.url }}"
-              title="{{ current_color }}"
-              js-product-card-swatch>
-              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ current_swatch_object.color }};">
-                {% if current_swatch_object.image != blank %}
-                  <img src="{{ current_swatch_object.image.value | img_url: '36x'}}" alt="{{ current_color }}" class="block h-full w-full">
-                {% endif %}
-              </div>
-            </button>
-            
-            {% for related_product in collections.all.products %}
-              {% if related_product.tags contains related_tag_color and related_product.handle != product.handle %}
-                {% assign swatch_objects = related_product.metafields.seed.swatches.value %}
-                {% assign color_name = related_product.metafields['shopify.color-pattern'] | default: related_product.title | split: ' in ' | last %}
-                {% assign swatch_object = swatch_objects | where: "name", color_name | first %}
-                <button class="egg4 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
-                  data-swatch="{{ color_name }}"
-                  data-available="{{ related_product.available }}"
-                  data-price="{{ related_product.variants[0].compare_at_price }}|{{ related_product.variants[0].price }}" 
-                  data-selected="false"
-                  data-url="{{ related_product.url }}"
-                  title="{{ color_name }}"
-                  js-product-card-swatch>
-                  <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
-                    {% if swatch_object.image != blank %}
-                      <img src="{{ swatch_object.image.value | img_url: '36x'}}" alt="{{ color_name }}" class="block h-full w-full">
-                    {% endif %}
-                  </div>
-                </button>
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      {% endif %}
+    {% endif %}
       
     <div class="product-card__price-wrapper text-16 mt-md flex justify-start items-center gap-sm {% if hide_price_and_tag %}!hidden{% endif %}" js-product-card-price>
       {% if current_variant.compare_at_price > current_variant.price %}
