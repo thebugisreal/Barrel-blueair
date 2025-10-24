@@ -239,7 +239,7 @@
 
 @media screen and (max-width: 1023px) {
   body.sticky-bar-visible .product__layout {
-    padding-top: 80px;
+    padding-top: var(--sticky-bar-height);
   }
 }
 

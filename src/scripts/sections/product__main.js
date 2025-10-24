@@ -77,6 +77,7 @@ class ProductMain extends HTMLElement {
     this._checkCartSubscriptionEdit();
     this._handleFilterPack();
     this._handleStickyBar();
+    this._watchWindowResize();
     this._handleSubscription();
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
@@ -254,8 +255,10 @@ class ProductMain extends HTMLElement {
         this.stickyBars.forEach((stickyBar) => {
           if (shouldShowStickyBar) {
             stickyBar.classList.remove('hidden');
+            document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
           } else {
             stickyBar.classList.add('hidden');
+            document.documentElement.style.setProperty('--sticky-bar-height', `0px`)
           }
         });
         
@@ -1422,6 +1425,16 @@ class ProductMain extends HTMLElement {
 
   _popStateRender = () => {
     this._renderSwatchLink(document.location)
+  }
+
+  _watchWindowResize = () => {
+    window.addEventListener('resize', this._setVariables)
+  }
+
+  _setVariables = () => {
+    this.stickyBars.forEach((stickyBar) => {
+      document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
+    })
   }
 
 }
