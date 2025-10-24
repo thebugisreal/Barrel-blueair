@@ -11,3 +11,11 @@ s-modal {
 .modal-background:before {
   @apply z-[4];
 }
+
+s-drawer#CartDrawer {
+  @apply z-[100];
+}
+
+.js-drawer-open.cart-drawer-open .drawer-background:after {
+  @apply z-[80];
+}
