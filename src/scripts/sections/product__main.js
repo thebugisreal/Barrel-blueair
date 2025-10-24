@@ -76,8 +76,11 @@ class ProductMain extends HTMLElement {
     
     this._checkCartSubscriptionEdit();
     this._handleFilterPack();
-    this._handleStickyBar();
-    this._watchWindowResize();
+    
+    if (window.innerWidth <= 768) {
+      this._handleStickyBar();
+      this._watchWindowResize();
+    }
     this._handleSubscription();
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
@@ -258,7 +261,6 @@ class ProductMain extends HTMLElement {
             document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
           } else {
             stickyBar.classList.add('hidden');
-            document.documentElement.style.setProperty('--sticky-bar-height', `0px`)
           }
         });
         
