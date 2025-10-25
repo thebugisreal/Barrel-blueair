@@ -13,12 +13,14 @@ class ProductCard extends HTMLElement {
       productCompareProduct: '[js-product-compare-product]',
       productCompareInfo:'[js-product-compare-info]',
       filterSwatch: '[js-product-card-filter-swatch]',
-      quickAdd: '[js-quick-add]'
+      quickAdd: '[js-quick-add]',
+      swatchPopulate: '[js-populate-swatch]'
     }
   }
 
   connectedCallback() {
     this.soldOutTag = this.querySelector(this._selectors.soldOutTag);
+    this.swatchPopulate = this.querySelector(this._selectors.swatchPopulate)
     this.swatches = this.querySelectorAll(this._selectors.swatch);
     this.filterSwatches = this.querySelectorAll(this._selectors.filterSwatch)
     this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
@@ -39,7 +41,50 @@ class ProductCard extends HTMLElement {
       }
     }
 
+    this._initRelatedSwatches();
+
     this._setListeners();
+  }
+
+  _initRelatedSwatches() {
+    const self = this;
+
+    if(this.swatchPopulate) {
+      const swatchFamily = this.swatchPopulate.dataset.swatchFamily
+      const url = `/collections/all/${swatchFamily}?view=json`
+
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+
+            const productJson = html.querySelector('[js-collection-json]')
+            const parsedJson = JSON.parse(productJson.textContent) 
+
+            self._populateSwatches(parsedJson)
+        })
+        .catch(e => {
+          console.error(e);
+        });
+    }
+  }
+
+  _populateSwatches(products) {
+    console.log('the products', products)
+    const placeToAppend = this.swatchPopulate;
+
+    products.forEach((swatch) => {
+      console.log('the swatch', swatch)
+      const swatchButton = `<button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="false" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
+              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: ;">
+                  <img src="${swatch.swatchImage}" alt="Nordic Fog" class="block h-full w-full">
+              </div>
+      </button>`
+
+      placeToAppend.insertAdjacentHTML('beforeend', swatchButton)
+    })
+
   }
 
   _setListeners() {
