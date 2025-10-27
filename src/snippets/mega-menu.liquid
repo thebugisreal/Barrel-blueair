@@ -50,14 +50,14 @@
                   <li class="mega-menu__item {% unless forloop.last %}mb-sm{% endunless %}">
                     <a href="{{ grandchild_link.url }}" class="mega-menu__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ grandchild_link.title }}">
                       {% if child_link_handle contains 'room-size' %}
-                        {% if grandchild_link.title contains 'Small' %}
-                          {% render 'room-icon', size: 'small', width: '18px' %}
-                        {% elsif grandchild_link.title contains 'Medium' %}
-                          {% render 'room-icon', size: 'medium', width: '18px' %}
-                        {% elsif grandchild_link.title contains 'Large' %}
-                          {% render 'room-icon', size: 'large', width: '18px' %}
-                        {% elsif grandchild_link.title contains 'Extra' %}
+                        {% if grandchild_link.url contains 'extralarge' %}
                           {% render 'room-icon', size: 'extralarge', width: '18px' %}
+                        {% elsif grandchild_link.url contains 'large' %}
+                          {% render 'room-icon', size: 'large', width: '18px' %}
+                        {% elsif grandchild_link.url contains 'medium' %}
+                          {% render 'room-icon', size: 'medium', width: '18px' %}
+                        {% elsif grandchild_link.url contains 'small' %}
+                          {% render 'room-icon', size: 'small', width: '18px' %}
                         {% endif %}
                       {% endif %}
                       <div class="megamenu__title-container flex justify-start items-start">
