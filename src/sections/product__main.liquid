@@ -109,7 +109,9 @@
               {% endunless %}
 
               {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
-                {% assign hide_media = false %}
+                {% unless hide_country == user_country %}
+                  {% assign hide_media = false %}
+                {% endunless %}
               {% endif %}
               
               {% case media.media_type %}
@@ -185,7 +187,9 @@
                 {% endif %}
               {% endif %}
               {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
-                {% assign hide_media = false %}
+                {% unless hide_country == user_country %}
+                  {% assign hide_media = false %}
+                {% endunless %}
               {% endif %}
               {% case media.media_type %}
                 {% when 'image' %}
