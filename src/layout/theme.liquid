@@ -9,11 +9,18 @@
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
       <!-- Google Tag Manager -->
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-58FXRQCH');</script>
+      <script>
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-58FXRQCH');
+      </script>
       <!-- End Google Tag Manager -->
     {% endif %}
     {% if settings.favicon != blank %}
@@ -35,18 +42,51 @@
 
     {%- comment -%} Redirect Account Addresses Page {%- endcomment -%}
     {% if template.name == 'addresses' %}
-      <script> location.href = '{{ routes.account_url }}' </script>
+      <script>
+        location.href = '{{ routes.account_url }}';
+      </script>
     {% endif %}
     {% render 'onetrust' %}
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
-      <script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey=3_ySPsrsHSXFGBAm5bIySMyifZ29wt6LFIsiaU4QLEVlaz5MOEhi5cEJrKaWn_Glcv"></script>
+      <script
+        type="text/javascript"
+        lang="javascript"
+        src="https://cdns.gigya.com/js/gigya.js?apikey=3_ySPsrsHSXFGBAm5bIySMyifZ29wt6LFIsiaU4QLEVlaz5MOEhi5cEJrKaWn_Glcv"
+      ></script>
       <!-- Affirm -->
       <script>
         _affirm_config = {
-          public_api_key:  "0JDSO1NZ3ZHRQF0R",
-          script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+          public_api_key: '0JDSO1NZ3ZHRQF0R',
+          script: 'https://cdn1.affirm.com/js/v2/affirm.js',
         };
-        (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+        (function (l, g, m, e, a, f, b) {
+          var d,
+            c = l[m] || {},
+            h = document.createElement(f),
+            n = document.getElementsByTagName(f)[0],
+            k = function (a, b, c) {
+              return function () {
+                a[b]._.push([c, arguments]);
+              };
+            };
+          c[e] = k(c, e, 'set');
+          d = c[e];
+          c[a] = {};
+          c[a]._ = [];
+          d._ = [];
+          c[a][b] = k(c, a, b);
+          a = 0;
+          for (b = 'set add save post open empty reset on off trigger ready setProduct'.split(' '); a < b.length; a++)
+            d[b[a]] = k(c, e, b[a]);
+          a = 0;
+          for (b = ['get', 'token', 'url', 'items']; a < b.length; a++) d[b[a]] = function () {};
+          h.async = !0;
+          h.src = g[f];
+          n.parentNode.insertBefore(h, n);
+          delete g[f];
+          d(g);
+          l[m] = c;
+        })(window, _affirm_config, 'affirm', 'checkout', 'ui', 'script', 'ready');
         // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
       </script>
       <!-- End Affirm -->
@@ -60,45 +100,58 @@
           amzn("trackEvent", "Homepage");
         {% endif %}
       </script>
-       <!-- End Amazon Adversting Script -->
+      <!-- End Amazon Adversting Script -->
     {% endif %}
     {{ content_for_header }}
-  
+
     {{ 'vendor.css' | asset_url | stylesheet_tag }}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
 
     <script>
       window.currency = {
-        symbol: "{{ cart.currency.symbol }}",
-        name: "{{ cart.currency.name }}",
-        code: "{{ cart.currency.iso_code }}"
+        symbol: '{{ cart.currency.symbol }}',
+        name: '{{ cart.currency.name }}',
+        code: '{{ cart.currency.iso_code }}',
       };
-      window.permanent_domain = `{{shop.permanent_domain}}`
+      window.permanent_domain = `{{shop.permanent_domain}}`;
     </script>
 
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
 
-    {% if settings.use_purpledot and shop.permanent_domain == '5ef43d-4a.myshopify.com' %} 
+    {% if settings.use_purpledot and shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
       {% render 'purple-dot' %}
     {% endif %}
   </head>
-  
+
   {%- capture body_classes -%}
     template-{{template.name}} {% if template.suffix %}template--{{template.suffix}}{% endif %}
   {%- endcapture -%}
-  <body {% if template.name == 'login' %}id="recover"{% endif %} class="{{body_classes | strip}}">
+  <body
+    {% if template.name == 'login' %}
+      id="recover"
+    {% endif %}
+    class="{{body_classes | strip}}"
+  >
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
+      {{ 'accessibility.skip_to_text' | t }}
     </a>
     {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
       <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-58FXRQCH"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-58FXRQCH"
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        ></iframe
+      ></noscript>
       <!-- End Google Tag Manager (noscript) -->
     {% endif %}
 
     {% sections 'header-group' %}
-  
+
     {% render 'drawer--cart' %}
     {% render 'drawer--mobile-filter' %}
     {% render 'drawer--desktop-search' %}
@@ -114,7 +167,10 @@
       {% endif %}
     {% endif %}
 
-    <main id="MainContent" class="main drawer-background modal-background buystack-modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}">
+    <main
+      id="MainContent"
+      class="main drawer-background modal-background buystack-modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}"
+    >
       {{ content_for_layout }}
     </main>
 
@@ -141,24 +197,23 @@
       window.klaviyo = {
         apiKeyUS: '{{ settings.klaviyo_api_key_us }}',
         apiKeyUK: '{{ settings.klaviyo_api_key_uk }}',
-        apiKeyEU: '{{ settings.klaviyo_api_key_eu }}'
+        apiKeyEU: '{{ settings.klaviyo_api_key_eu }}',
       };
-      window.pathURL = `{{ canonical_url | replace: 'https://', '' | replace: shop.domain, '' }}`
-      window.domain = `https://{{shop.domain}}`
+      window.pathURL = `{{ canonical_url | replace: 'https://', '' | replace: shop.domain, '' }}`;
+      window.domain = `https://{{shop.domain}}`;
     </script>
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
-
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' or shop.permanent_domain == 'blueeudev.myshopify.com' %}
       {% if is_transactional %}
-        {% render 'sprinklr-chat' %}
+        {% comment %} {% render 'sprinklr-chat' %} {% endcomment %}
       {% endif %}
     {% endif %}
     {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
       <script type="text/javascript">
-        setTimeout(function() {
+        setTimeout(function () {
           var script = document.createElement('script');
           script.src = 'https://static.ordergroove.com/3488d6a745bd4989b67ebc6b0ad38ad6/msi.js';
           document.head.appendChild(script);
@@ -173,7 +228,7 @@
           var marketingConsent = OnetrustActiveGroups.indexOf('C0003') > -1; // Example: Marketing category
           // Sync with Shopify customerPrivacy API
           if (window.Shopify && window.Shopify.customerPrivacy) {
-             window.Shopify.customerPrivacy.setTrackingConsent({
+            window.Shopify.customerPrivacy.setTrackingConsent({
               analytics: analyticsConsent,
               marketing: marketingConsent,
             });
@@ -192,5 +247,7 @@
         waitForOneTrust();
       </script>
     {% endif %}
+
+    {% render 'zendesk-chat' %}
   </body>
 </html>
