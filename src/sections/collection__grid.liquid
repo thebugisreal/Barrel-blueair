@@ -56,14 +56,14 @@
                       js-collection-link>
                       {% if collection.metafields.seed.collection_links_heading contains 'Room Size' %}
                         <div class="p-sm hidden desktop:block">
-                          {% if link.title contains 'Small' %}
-                            {% render 'room-icon', size: 'small', width: '64px' %}
-                          {% elsif link.title contains 'Medium' %}
-                            {% render 'room-icon', size: 'medium', width: '64px' %}
-                          {% elsif link.title contains 'Large' %}
-                            {% render 'room-icon', size: 'large', width: '64px' %}
-                          {% elsif link.title contains 'Extra' %}
+                          {% if link.url contains 'extralarge' %}
                             {% render 'room-icon', size: 'extralarge', width: '64px' %}
+                          {% elsif link.url contains 'large' %}
+                            {% render 'room-icon', size: 'large', width: '64px' %}
+                          {% elsif link.url contains 'medium' %}
+                            {% render 'room-icon', size: 'medium', width: '64px' %}
+                          {% elsif link.url contains 'small' %}
+                            {% render 'room-icon', size: 'small', width: '64px' %}
                           {% endif %}
                         </div>
                       {% elsif link.object.metafields.seed.collection_link_image != blank %}
