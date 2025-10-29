@@ -80,19 +80,22 @@
               {% assign media_swatch = '' %}
               {% assign country_tag = '' %}
               {% assign hide_media = false %}
+              {% assign show_country = blank %}
+              {% assign hide_country = blank %}
               {% assign alt_text = media.alt | downcase | strip %}
-              {% if alt_text contains 'country:' %}
-                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
-                {% if show_country != user_country %}
-                  {% assign hide_media = true %}
-                {% endif %}
-              {% endif %}
+
               {% if alt_text contains 'country-hide:' %}
                 {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
                 {% if hide_country == user_country %}
                   {% assign hide_media = true %}
                 {% endif %}
+              {% elsif alt_text contains 'country:' %}
+                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
+                {% if show_country != user_country %}
+                  {% assign hide_media = true %}
+                {% endif %}
               {% endif %}
+
               {% assign active_thumb = false %}
               {% if current_swatch != blank %}
                 {% assign media_swatch = media.alt | strip %}
@@ -109,9 +112,22 @@
               {% endunless %}
 
               {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
-                {% unless hide_country == user_country %}
+                {% if current_swatch != blank %}
+                  {% if media_swatch == current_swatch and media_swatch == 'All' %}
+                    {% assign hide_media = false %}
+                  {% endif %}
+                {% endif %}
+                {% if hide_country != blank %}
+                  {% if hide_country != user_country %}
+                    {% assign hide_media = false %}
+                  {% endif %}
+                {% elsif show_country != blank %}
+                  {% if show_country == user_country %}
+                    {% assign hide_media = false %}
+                  {% endif %}
+                {% else %}
                   {% assign hide_media = false %}
-                {% endunless %}
+                {% endif %}
               {% endif %}
               
               {% case media.media_type %}
@@ -167,30 +183,48 @@
             {% for media in product.media %}
               {% assign media_swatch = '' %}
               {% assign hide_media = false %}
+              {% assign show_country = blank %}
+              {% assign hide_country = blank %}
               {% assign alt_text = media.alt | downcase | strip %}
-              {% if alt_text contains 'country:' %}
-                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
-                {% if show_country != user_country %}
-                  {% assign hide_media = true %}
-                {% endif %}
-              {% endif %}
+
               {% if alt_text contains 'country-hide:' %}
                 {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
                 {% if hide_country == user_country %}
                   {% assign hide_media = true %}
                 {% endif %}
+              {% elsif alt_text contains 'country:' %}
+                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
+                {% if show_country != user_country %}
+                  {% assign hide_media = true %}
+                {% endif %}
               {% endif %}
+
               {% if current_swatch != blank %}
                 {% assign media_swatch = media.alt | strip %}
                 {% if media_swatch != current_swatch and media_swatch != 'All' %}
                   {% assign hide_media = true %}
                 {% endif %}
               {% endif %}
+
               {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
-                {% unless hide_country == user_country %}
+                {% if current_swatch != blank %}
+                  {% if media_swatch == current_swatch and media_swatch == 'All' %}
+                    {% assign hide_media = false %}
+                  {% endif %}
+                {% endif %}
+                {% if hide_country != blank %}
+                  {% if hide_country != user_country %}
+                    {% assign hide_media = false %}
+                  {% endif %}
+                {% elsif show_country != blank %}
+                  {% if show_country == user_country %}
+                    {% assign hide_media = false %}
+                  {% endif %}
+                {% else %}
                   {% assign hide_media = false %}
-                {% endunless %}
+                {% endif %}
               {% endif %}
+
               {% case media.media_type %}
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
