@@ -23,22 +23,22 @@
   endif
 -%}
 
-<div class="product__sticky-bar hidden fixed top-[var(--header-height)] left-0 w-full z-[2] px-md py-sm gap-md bg-white flex items-center justify-between tabletl:items-center desktop:px-xl" js-product-sticky-bar>
+<div class="product__sticky-bar hidden fixed top-[var(--header-height)] left-0 w-full z-[2] px-md py-xxs gap-md bg-white flex items-center justify-between tabletl:items-center desktop:px-xl" js-product-sticky-bar>
     <div class="flex flex-col flex-1">
-        <div class="product-sticky-bar__title s1">
+        <div class="product-sticky-bar__title s1 text-16">
           {% if product.metafields.seed.product_card_title != blank %}
             {{ product.metafields.seed.product_card_title  }}
           {% else %}
             {{ product.title }}
           {% endif %}
         </div>
-        <p class="p1 tabletl:hidden" js-sticky-price>{{ current_variant.price | money }}</p>
+        <p class="p1 text-14 tabletl:hidden" js-sticky-price>{{ current_variant.price | money }}</p>
     </div>
 
     <div class="product-sticky-bar__atc-wrapper relative flex gap-md items-center">
         <p class="s1 hidden tabletl:block" js-sticky-price>{{ current_variant.price | money }}</p>
         <button class="product__atc btn btn--blue-rounded pr-sm" {% if atc_disabled %} disabled {% endif %} type="button" js-sticky-atc>
-            <span class="product-sticky-bar__atc btn__text" js-atc-text>{{ atc_text }}</span>
+            <span class="product-sticky-bar__atc btn__text text-14" js-atc-text>{{ atc_text }}</span>
         </button>
         <loading-spinner js-sticky-loader style="--width: 24px; --height: 24px; --background: #F5F5F580; --color: #002955;"></loading-spinner>
     </div>  
