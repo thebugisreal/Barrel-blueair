@@ -628,7 +628,7 @@
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {% endcapture %}
                 {% if product.metafields.seed.pdp_filter_quantity != blank %}
-                  <ul class="product__filter-pack flex gap-xs {{ spacing }}">
+                  <ul class="product__filter-pack flex gap-xs flex-wrap {{ spacing }}">
                     <li class="product__filter-pack-item">
                       <input 
                         id="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}" 

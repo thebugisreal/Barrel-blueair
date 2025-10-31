@@ -403,6 +403,10 @@ s-carousel.pointer-event {
   @apply border-blue;
 }
 
+.product-filter-pack__input + .product-filter-pack__label {
+  @apply whitespace-nowrap;
+}
+
 .product-filter-pack__input:checked + .product-filter-pack__label {
   @apply bg-blue
   text-white;
