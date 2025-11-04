@@ -76,7 +76,11 @@ class ProductMain extends HTMLElement {
     
     this._checkCartSubscriptionEdit();
     this._handleFilterPack();
-    this._handleStickyBar();
+    
+    if (window.innerWidth <= 768) {
+      this._handleStickyBar();
+      this._watchWindowResize();
+    }
     this._handleSubscription();
     this._handleQuantityVariant();
     this.addEventListener("variant:change", this._handleVariantChange);
@@ -254,17 +258,25 @@ class ProductMain extends HTMLElement {
         this.stickyBars.forEach((stickyBar) => {
           if (shouldShowStickyBar) {
             stickyBar.classList.remove('hidden');
+            document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
           } else {
             stickyBar.classList.add('hidden');
           }
         });
+        
+        // Add/remove body class for layout adjustments
+        if (shouldShowStickyBar) {
+          document.body.classList.add('sticky-bar-visible');
+        } else {
+          document.body.classList.remove('sticky-bar-visible');
+        }
       }
       
       // Reset the updating flag after DOM settles
       requestAnimationFrame(() => {
         this.isUpdating = false;
       });
-    }, 150); 
+    }, 500); 
 
     this.stickyBarObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -1415,6 +1427,16 @@ class ProductMain extends HTMLElement {
 
   _popStateRender = () => {
     this._renderSwatchLink(document.location)
+  }
+
+  _watchWindowResize = () => {
+    window.addEventListener('resize', this._setVariables)
+  }
+
+  _setVariables = () => {
+    this.stickyBars.forEach((stickyBar) => {
+      document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
+    })
   }
 
 }

@@ -225,6 +225,22 @@
   -moz-box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
   -webkit-box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
   box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.product__layout {
+  position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+  body.sticky-bar-visible .product__layout {
+    padding-top: var(--sticky-bar-height);
+  }
 }
 
 @media screen(desktop) {
