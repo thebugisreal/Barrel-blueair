@@ -1,0 +1,125 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Every October, cobwebs drape across mantels, candles flicker in pumpkins, and fog machines hiss their eerie mist into the night. You dim the lights, cue the playlist, and wait for that perfect spooky vibe to settle in. But somewhere between the fake spiderwebs and real dust bunnies, something else creeps in — that unmistakable <em>musty</em> smell. </p><p>You know the one. </p><p>It’s the scent of closed windows, candles burned a little too long, and air that’s been haunted by one too many movie nights. Luckily, the only thing scarier than bad air is ignoring it — and Blueair’s filters are here to save the night. </p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-md",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-md",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Blog_Image-1_1_1.png",
+            "image_desktop": "shopify://shop_images/Blog_Image-1_1_1.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>The Ghosts You Can’t See</strong> </h4><p></p><p>Not all ghosts go “boo.” Some float around unseen — in the form of tiny particles like dust, pet dander, smoke, and pollen. These invisible visitors can linger in the air long after your Halloween party’s over, sneaking into your lungs and making the air feel heavy and stale. </p><p>That’s where Blueair’s HEPASilent™ technology comes inr: a combination of mechanical and electrostatic filtration that traps 99.97% of airborne particles down to 0.1 microns — the kind you can’t see, but that you definitely do breathe. </p><p>So, while your decorations might scream “haunted,” your air will whisper “fresh.” </p><p> </p><h4><strong>A Filter for Every Home</strong> </h4><p></p><p>Every haunted house has its own kind of atmosphere — and every Blueair filter has its own way of keeping it fresh. </p><p>If your home feels like a castle under constant siege from dust or pollen, the <strong>Particle Filter</strong> will come to your rescue. It captures those microscopic intruders, helping your air become pure and crisp. </p><p>If your Halloween style leans toward scented candles, fog machines, or an overenthusiastic use of room spray, you’ll want the <strong>Particle + Carbon Filter</strong> (sometimes called <strong>DualProtection</strong>). It adds a layer of activated carbon to trap odors and gases — the kind of smells that love to linger long after your guests have gone home. </p><p>And for those battling true horror — smoke, smog, or heavy kitchen fumes — the <strong>SmokeBlock Filter</strong> is the hero of the hour. Packed with extra carbon, it fights the toughest airborne villains. Think of it as your air purifier’s heavy-duty armor. </p><p>Even the humble <strong>Pre-Filter</strong>, that washable outer layer on many Blueair models, deserves some spotlight. It catches larger particles — pet hair, lint, the occasional cobweb — before they ever reach the main filter. </p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_Xi6zz4": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-lg",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Blog_Image-2_1_1.png",
+            "image_desktop": "shopify://shop_images/Blog_Image-2_1_1.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-md",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-lg",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>When the Filter Needs a Refresh</strong> </h4><p></p><p>Over time, Blueair filters fill up with everything they’ve captured — dust, smoke, particles, and odors — and that’s when they need a well-earned retirement. </p><p>Most filters last around six to nine months, depending on how often you run your purifier (and how spooky your environment gets). When it’s time, your Blueair app or device light will give you a gentle nudge. </p><p>Changing a filter is as easy - pop the old one out, slide the new one in, and reset the indicator. Voilà — your air is refreshed, and your purifier is ready for another season of keeping the monsters (and allergens) at bay. </p><p> </p><h4><strong>The Freshest Kind of Fright</strong> </h4><p></p><p>This Halloween, let your house be spooky for the right reasons. Keep your skeletons in the closet (and the dust bunnies out of the air). Between Blueair’s powerful HEPASilent™ purification and their lineup of filters — from <strong>Particle</strong> to <strong>SmokeBlock</strong> — you’ll have all the tools you need to keep your air fresh, your lungs happy, and your haunted vibe perfectly chill. </p><p>Because there’s nothing scarier than bad air — and nothing sweeter than breathing easy after a night of fright. </p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_Xi6zz4",
+        "text_Ub47yL"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck"
+  ]
+}
