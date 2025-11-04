@@ -46,7 +46,8 @@ class ProductMain extends HTMLElement {
       quantityVariant: '[js-quantity-variant]',
       quanityOptionImages: '[js-quanity-option-image]',
       optionSwatchesContainers: '[js-product-option-swatches-container]',
-      relatedOptionSwatch: '[js-related-option-swatch]'
+      relatedOptionSwatch: '[js-related-option-swatch]',
+      filterPackQuantity: '[js-filter-pack-quantity]'
     };
   }
 
@@ -61,6 +62,7 @@ class ProductMain extends HTMLElement {
     this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
     this.addToCart = this.querySelector(this._selectors.addToCart)
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this.filterPackQuantity = this.querySelectorAll(this._selectors.filterPackQuantity);
 
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
@@ -73,6 +75,7 @@ class ProductMain extends HTMLElement {
     this.currentPriceCompareAt = parseInt(this.dataset.currentPriceCompareAt);
     
     this._checkCartSubscriptionEdit();
+    this._handleFilterPack();
     this._handleStickyBar();
     this._handleSubscription();
     this._handleQuantityVariant();
@@ -82,6 +85,57 @@ class ProductMain extends HTMLElement {
     if (this.optionSwatchesContainers.length > 0) {
       this.optionSwatchesContainers.forEach((option) => this._initOptionSwatches(option));
     }
+  }
+
+  _handleFilterPack = () => {
+    if (!this.filterPackQuantity) {
+      return;
+    }
+
+    this.filterPackQuantity.forEach((button) => {
+      button.addEventListener('change', this._filterPackQuantityOnClick.bind(this));
+    });
+  }
+
+  _filterPackQuantityOnClick = (evt) => {
+    evt.preventDefault();
+    // Check if the quantity is already selected
+    this.filterPackQuantity.forEach((quantity) => {
+      quantity.checked = false;
+    });
+
+    // Update the image index
+    const imageIndex = evt.currentTarget.dataset.imageIndex;
+
+    const carousels = this.querySelectorAll(this._selectors.carousel);
+    carousels.forEach((carousel) => {
+      carousel.swiper.slideTo(imageIndex);
+    });
+
+    evt.currentTarget.checked = true;
+
+    // Update the filter quantity
+    this.currentQuantity = evt.currentTarget.value;
+
+    // Update the prices
+    if (this.subscription) {
+      if (this.selectedFilterSubscriptionVariant && this.subscriptionPrice) {
+        this._updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
+      }
+    }
+    this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
+
+    // Update the filter quantity label
+    
+    const filterQuantityLabel = this.querySelector('[js-filter-subscription-quantity-label]');
+    if (filterQuantityLabel) {
+      filterQuantityLabel.textContent = `${evt.currentTarget.value} Replacement Filter${ parseInt(evt.currentTarget.value) > 1 ? 's' : '' }`;
+    }
+  }
+
+  _formatPrice = (priceString) => {
+    priceString = +priceString.replace('$', '').replace(',', '');
+    return priceString * 100;
   }
 
   disconnectedCallback() {
@@ -631,6 +685,11 @@ class ProductMain extends HTMLElement {
         input.setAttribute('value', `subscription${tempId}`);
       });
     }
+
+    const packQuantityDuration = this.querySelector('[js-filter-subscription-quantity-duration]');
+    if (packQuantityDuration) {
+      packQuantityDuration.textContent = ` ${triggerTarget.textContent}`;
+    }
   }
 
   _filterSubscriptionMasterFrequencyOnClick = (evt) => {
@@ -960,6 +1019,7 @@ class ProductMain extends HTMLElement {
     }
 
     const formData = new FormData(this.form);
+    formData.append('quantity', this.currentQuantity);
 
     if (this.pdpToEditCartSubscription != false) {
       if (this.nonSubscriptionToggle.dataset.selected == 'true') {

@@ -73,6 +73,13 @@
                   </div>
                 {% endif %}
                 <ul class="product-subscription-description__bullets mt-xxxs">
+                  {% if product.metafields.seed.pdp_filter_quantity != blank %}
+                    <li class="product-subscription-description__bullet flex"> 
+                      <div>
+                        <span js-filter-subscription-quantity-label>1 Replacement Filter</span> every <span js-filter-subscription-quantity-duration> 6 months</span>
+                      </div>
+                    </li>
+                  {% endif %}
                   {% for bullet in subscription[description_bullets_handle].value %}
                     <li class="product-subscription-description__bullet flex">{{ bullet }}</li>
                   {% endfor %}
