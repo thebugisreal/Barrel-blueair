@@ -360,7 +360,7 @@
 
 {% if product.metafields.seed.additional_subscription != blank %}
   {% comment %} Use the same subscription object for additional subscription {% endcomment %}
-  {% assign additional_subscription = subscription %}
+  {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
   {% assign additional_filter_subscriptions = filter_subscriptions %}
   {% assign additional_subscription_selected = false %}
   {% assign additional_airpurifier_type_two_pack = airpurifier_type_two_pack %}
