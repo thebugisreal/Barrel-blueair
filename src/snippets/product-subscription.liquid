@@ -366,7 +366,7 @@
   {% assign additional_airpurifier_type_two_pack = airpurifier_type_two_pack %}
   {% assign additional_pdp_type = pdp_type %}
 
-  <div class="product__subscription-container flex flex-col gap-sm">
+  <div class="product__subscription-container flex flex-col gap-sm mt-md">
     <div class="product__subscription product__subscription--additional border border-blue rounded-[3px] relative mt-sm" data-type="{{ additional_pdp_type }}" data-selected="{% if additional_subscription_selected %}true{% else %}false{% endif %}" js-subscription js-additional-subscription {% if additional_airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
       <button type="button" class="product-subscription__toggle px-xs py-md desktop:px-md flex items-center gap-sm w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle js-additional-subscription-toggle>
         <div class="checkbox w-[22px] min-w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
