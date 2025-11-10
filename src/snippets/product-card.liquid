@@ -265,24 +265,11 @@
           <span>Color: </span>
           <span js-product-card-current-swatch-label>{{ product.title | split: '™ ' | last | split: ' ' | last }}</span>
         </div>
-    <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs" {% if related_tag_color != blank %} data-swatch-family="{{ related_tag_color }}" js-populate-swatch {% endif %}>
-          {% assign swatch_objects = product.metafields.seed.swatches.value %}
-          {% for swatch_object in swatch_objects %}
-            <button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
-              data-swatch="{{ swatch_object.name }}"
-              data-available="{{ product.available }}"
-              data-price="{{ product.variants[0].compare_at_price }}|{{ product.variants[0].price }}" 
-              data-selected="true"
-              data-url="{{ product.url }}"
-              title="{{ swatch_object.name }}"
-              js-product-card-swatch>
-              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
-                {% if swatch_object.image != blank %}
-                  <img src="{{ swatch_object.image.value | img_url: '36x'}}" alt="{{ swatch_object.name }}" class="block h-full w-full">
-                {% endif %}
-              </div>
-            </button>
-          {% endfor %}
+        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs" {% if related_tag_color != blank %} data-swatch-family="{{ related_tag_color }}" data-default-color="{{ product.colorTitle }}" js-populate-swatch {% endif %}>
+              {% assign swatch_objects = product.metafields.seed.swatches.value %}
+              {% for swatch_object in swatch_objects %}
+
+              {% endfor %}
         </div>
       </div>
     {% endif %}

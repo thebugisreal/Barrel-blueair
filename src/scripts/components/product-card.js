@@ -42,8 +42,8 @@ class ProductCard extends HTMLElement {
     }
 
     this._initRelatedSwatches();
-
     this._setListeners();
+
   }
 
   _initRelatedSwatches() {
@@ -71,12 +71,18 @@ class ProductCard extends HTMLElement {
   }
 
   _populateSwatches(products) {
-    console.log('the products', products)
     const placeToAppend = this.swatchPopulate;
 
-    products.forEach((swatch) => {
-      console.log('the swatch', swatch)
-      const swatchButton = `<button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="false" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
+    products.forEach((swatch, index) => {
+      let selected;
+
+      if(index == 0) {
+        selected = true;
+      } else {
+        selected = false;
+      }
+
+      const swatchButton = `<button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="${selected}" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
               <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: ;">
                   <img src="${swatch.swatchImage}" alt="Nordic Fog" class="block h-full w-full">
               </div>
@@ -85,9 +91,13 @@ class ProductCard extends HTMLElement {
       placeToAppend.insertAdjacentHTML('beforeend', swatchButton)
     })
 
+    this.swatches = this.querySelectorAll(this._selectors.swatch);
+
+    this._setListeners();
   }
 
   _setListeners() {
+
     this.swatches.forEach((swatch) => {
       swatch.addEventListener('click', this._swatchOnClick);
     });
