@@ -910,11 +910,18 @@ tm_qual_gjiapmwgps"></div>
 
 {% include 'region-check' %}
 {% if is_transactional %}
+  {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+    {% assign public_api_key = settings.klaviyo_api_key_us %}
+  {% elsif shop.permanent_domain == 'blueeudev.myshopify.com' %}
+    {% assign public_api_key = settings.klaviyo_api_key_eu %}
+  {% elsif shop.permanent_domain == 'uk-blueair.myshopify.com' %}
+    {% assign public_api_key = settings.klaviyo_api_key_uk %}
+  {% endif %}
   <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
   <script>
       var klaviyo = klaviyo || [];
       klaviyo.init({
-        account: "WaDDdd",
+        account: "{{ public_api_key }}",
         platform: "shopify"
       });
       klaviyo.enable("backinstock",{ 
