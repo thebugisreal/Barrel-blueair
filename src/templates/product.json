@@ -57,6 +57,15 @@
             "margin_bottom_desktop": "desktop:mb-sm"
           }
         },
+        "filter_pack_LEkaPP": {
+          "type": "filter_pack",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
+        },
         "filter_options_XPQVUh": {
           "type": "filter_options",
           "settings": {}
@@ -139,6 +148,7 @@
         "short_description_FGhrqT",
         "star_rating_rYzLXJ",
         "product_badge_TcD3K4",
+        "filter_pack_LEkaPP",
         "filter_options_XPQVUh",
         "product_options_GLfTKf",
         "atc_BURfeB",
