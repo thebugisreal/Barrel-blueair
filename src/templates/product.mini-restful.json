@@ -476,6 +476,7 @@
     },
     "bazaarvoice_reviews_g6D6HN": {
       "type": "bazaarvoice__reviews",
+      "disabled": true,
       "settings": {
         "margin_top_mobile": "mt-0",
         "margin_bottom_mobile": "mb-0",
@@ -488,6 +489,22 @@
         "max_width_desktop": "100%",
         "color": "text-blue"
       }
+    },
+    "1762967962abbde4ec": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_EBpTxe": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_EBpTxe"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -509,6 +526,7 @@
     "product_accordion_6QWP9F",
     "product_recommendations_Ha8zrk",
     "product_footnotes_izYTTQ",
-    "bazaarvoice_reviews_g6D6HN"
+    "bazaarvoice_reviews_g6D6HN",
+    "1762967962abbde4ec"
   ]
 }
