@@ -1,3 +1,14 @@
+{% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+  {% if localization.country.iso_code != 'US' %}
+    {% capture locale_url %}/{{localization.language.iso_code | split: '-' | first | handle}}-{{localization.country.iso_code | handle}}{% endcapture %}
+  {% endif %}
+{% elsif shop.permanent_domain == 'blueeudev.myshopify.com' %}
+  {% if localization.country.iso_code != 'DE' %}
+    {% capture locale_url %}/{{localization.language.iso_code | split: '-' | first | handle}}-{{localization.country.iso_code | handle}}{% endcapture %}
+  {% endif %}
+{% endif %}
+
+
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
@@ -10,7 +21,7 @@
       {% for block in section.blocks %}
         {% if block.settings.topic != blank %}
           {% assign topic_metaobject = block.settings.topic %}
-          <a href="{{ topic_metaobject.link }}" class="faq-topics__block px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
+          <a href="{{locale_url}}{{ topic_metaobject.link }}" class="faq-topics__block px-sm py-md rounded-[8px] text-blue bg-blue-light !no-underline flex flex-col justify-center items-center gap-sm">
             <div class="faq-topic__title p1 text-center">{{ topic_metaobject.title }}</div>
             {% if topic_metaobject.svg_html != blank %}
               <div class="faq-topic__svg">
