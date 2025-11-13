@@ -54,6 +54,8 @@ theme.utils = {
      * @param {HTMLElement} [elementToFocus = container] - 1st element to focus in 
      */
     trapFocus(container, elementToFocus = container) {
+      if (!container) return;
+      
       var elements = theme.utils.a11y.getFocusableElements(container);
       var first = elements[0];
       var last = elements[elements.length - 1];
@@ -96,7 +98,9 @@ theme.utils = {
       document.addEventListener('focusout', theme.utils.a11y._trapFocusHandlers.focusout);
       document.addEventListener('focusin', theme.utils.a11y._trapFocusHandlers.focusin);
     
-      elementToFocus.focus();
+      if (elementToFocus && typeof elementToFocus.focus === 'function') {
+        elementToFocus.focus();
+      }
     },
 
     /**

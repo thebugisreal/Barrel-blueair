@@ -314,7 +314,15 @@ class CartItems extends HTMLElement {
             ? theme.utils.a11y.trapFocus(cartDrawerWrapper, lineItem.querySelector(`[name="${name}"]`))
             : lineItem.querySelector(`[name="${name}"]`).focus();
         } else if (parsedState.item_count === 0 && cartDrawerWrapper) {
-          theme.utils.a11y.trapFocus(cartDrawerWrapper.querySelector('[js-empty-cart]'), cartDrawerWrapper.querySelector('[js-cart-continue-link]'));
+          const emptyCartContainer = cartDrawerWrapper.querySelector('[js-empty-cart]');
+          const continueLink = cartDrawerWrapper.querySelector('[js-cart-continue-link]');
+          if (emptyCartContainer && continueLink) {
+            theme.utils.a11y.trapFocus(emptyCartContainer, continueLink);
+          } else if (emptyCartContainer) {
+            theme.utils.a11y.trapFocus(emptyCartContainer);
+          } else if (continueLink) {
+            continueLink.focus();
+          }
         } else if (document.querySelector('[js-cart-item]') && cartDrawerWrapper) {
           theme.utils.a11y.trapFocus(cartDrawerWrapper, document.querySelector('[js-cart-item-image]'));
         }
@@ -324,7 +332,9 @@ class CartItems extends HTMLElement {
         console.log(error)
         this.querySelectorAll('.loading-overlay').forEach((overlay) => overlay.classList.add('hidden'));
         const errors = document.getElementById('cart-errors') || document.getElementById('CartDrawer-CartErrors');
-        errors.textContent = `There was an error while updating your cart. Please try again.`;
+        if (errors) {
+          errors.textContent = `There was an error while updating your cart. Please try again.`;
+        }
       })
       .finally(() => {
         this.disableLoading(line);
