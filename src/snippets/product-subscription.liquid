@@ -361,10 +361,30 @@
 {% if product.metafields.seed.additional_subscription != blank %}
   {% comment %} Use the same subscription object for additional subscription {% endcomment %}
   {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
-  {% assign additional_filter_subscriptions = filter_subscriptions %}
+  {% assign additional_filter_subscriptions = additional_subscription.filter_subscriptions.value %}
   {% assign additional_subscription_selected = false %}
-  {% assign additional_airpurifier_type_two_pack = airpurifier_type_two_pack %}
-  {% assign additional_pdp_type = pdp_type %}
+  {% assign additional_airpurifier_type_two_pack = false %}
+
+  {% if additional_subscription.pdp_type == 'Filter' %}
+    {% assign additional_pdp_type = 'filter' %}
+    {% assign additional_subscription_selected = true %}
+  {% elsif additional_subscription.pdp_type == 'Air Purifier + Filter' %}
+    {% assign additional_pdp_type = 'airpurifier_and_filter' %}
+    {% if additional_subscription.two_pack_quantity_override.value == false or additional_subscription.two_pack_quantity_override.value == true %}
+      {% if additional_subscription.two_pack_quantity_override.value == true %}
+        {% assign additional_airpurifier_type_two_pack = true %}
+      {% endif %}
+    {% else %}
+      {% for filter_product in additional_filter_subscriptions %}
+        {% if filter_product.variants[1].selling_plan_allocations.size > 0 and filter_product.metafields.seed.quantity_option.value contains '2 Pack | 2' %}
+          {% assign additional_airpurifier_type_two_pack = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    {% assign additional_pdp_type = '2in1_purify_humidify' %}
+  {% endif %}
 
   <div class="product__subscription-container flex flex-col gap-sm mt-sm">
     <div class="product__subscription product__subscription--additional border border-blue rounded-[3px] relative mt-sm" data-type="{{ additional_pdp_type }}" data-selected="{% if additional_subscription_selected %}true{% else %}false{% endif %}" js-subscription js-additional-subscription {% if additional_airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
