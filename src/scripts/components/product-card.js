@@ -14,13 +14,15 @@ class ProductCard extends HTMLElement {
       productCompareInfo:'[js-product-compare-info]',
       filterSwatch: '[js-product-card-filter-swatch]',
       quickAdd: '[js-quick-add]',
-      swatchPopulate: '[js-populate-swatch]'
+      swatchPopulate: '[js-populate-swatch]',
+      imagePopulate: '[js-populate-image]'
     }
   }
 
   connectedCallback() {
     this.soldOutTag = this.querySelector(this._selectors.soldOutTag);
     this.swatchPopulate = this.querySelector(this._selectors.swatchPopulate)
+    this.imagePopulate = this.querySelector(this._selectors.imagePopulate)
     this.swatches = this.querySelectorAll(this._selectors.swatch);
     this.filterSwatches = this.querySelectorAll(this._selectors.filterSwatch)
     this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
@@ -72,23 +74,39 @@ class ProductCard extends HTMLElement {
 
   _populateSwatches(products) {
     const placeToAppend = this.swatchPopulate;
+    console.log('card', this)
+    const mainImage = this.querySelector('[js-product-card-main-image]');
+    const mainImageData = mainImage.dataset.swatch;
+    const imagesToAppend = this.imagePopulate;
 
     products.forEach((swatch, index) => {
-      let selected;
+      let selected = 'false';
+      let swatchOrder = 'order-2'
 
-      if(index == 0) {
-        selected = true;
-      } else {
-        selected = false;
-      }
 
-      const swatchButton = `<button class="egg product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="${selected}" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
+      if(swatch.color == mainImageData) {
+        selected = 'true'
+        swatchOrder = 'order-1'
+      } 
+
+      const swatchButton = `<button class="egg order-1 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full ${swatchOrder}" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="${selected}" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
               <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: ;">
                   <img src="${swatch.swatchImage}" alt="Nordic Fog" class="block h-full w-full">
               </div>
       </button>`
 
+      console.log('swatchButton', swatchButton)
+
+      const swatchImage = `<div class="product-card__image aspect-square hidden" data-swatch="${ swatch.color }" js-product-card-image>
+            <img class="product-card__inner-image" src="${ swatch.swatchProductImage }"/>
+      </div>`
+
       placeToAppend.insertAdjacentHTML('beforeend', swatchButton)
+
+      if(swatch.color !== mainImageData) {
+        imagesToAppend.insertAdjacentHTML('beforeend', swatchImage)
+      }
+
     })
 
     this.swatches = this.querySelectorAll(this._selectors.swatch);
