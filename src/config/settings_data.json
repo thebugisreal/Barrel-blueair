@@ -147,6 +147,13 @@
         "type": "shopify://apps/mntn/blocks/tracking-pixel/d40b5b2f-bf84-4a06-b576-832ad24a8652",
         "disabled": false,
         "settings": {}
+      },
+      "733389323033596483": {
+        "type": "shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": true
+        }
       }
     }
   }
