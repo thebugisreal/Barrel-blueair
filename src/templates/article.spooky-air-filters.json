@@ -27,8 +27,8 @@
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-xl",
-            "padding_bottom_desktop": "desktop:pb-lg",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "135ch",
             "richtext": "<p>Every October, cobwebs drape across mantels, candles flicker in pumpkins, and fog machines hiss their eerie mist into the night. You dim the lights, cue the playlist, and wait for that perfect spooky vibe to settle in. But somewhere between the fake spiderwebs and real dust bunnies, something else creeps in — that unmistakable <em>musty</em> smell. </p><p>You know the one. </p><p>It’s the scent of closed windows, candles burned a little too long, and air that’s been haunted by one too many movie nights. Luckily, the only thing scarier than bad air is ignoring it — and Blueair’s filters are here to save the night. </p>",
             "richtext_alignment": "text-left",
@@ -43,9 +43,9 @@
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-md",
+            "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-md",
+            "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "1096px",
             "image": "shopify://shop_images/Blog_Image-1_1_1.png",
             "image_desktop": "shopify://shop_images/Blog_Image-1_1_1.png",
@@ -57,26 +57,26 @@
         "text_e9yarP": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-0",
+            "margin_top_mobile": "mt-lg",
             "margin_bottom_mobile": "mb-lg",
-            "padding_top_mobile": "pt-lg",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-xl",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-lg",
             "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>The Ghosts You Can’t See</strong> </h4><p></p><p>Not all ghosts go “boo.” Some float around unseen — in the form of tiny particles like dust, pet dander, smoke, and pollen. These invisible visitors can linger in the air long after your Halloween party’s over, sneaking into your lungs and making the air feel heavy and stale. </p><p>That’s where Blueair’s HEPASilent™ technology comes inr: a combination of mechanical and electrostatic filtration that traps 99.97% of airborne particles down to 0.1 microns — the kind you can’t see, but that you definitely do breathe. </p><p>So, while your decorations might scream “haunted,” your air will whisper “fresh.” </p><p> </p><h4><strong>A Filter for Every Home</strong> </h4><p></p><p>Every haunted house has its own kind of atmosphere — and every Blueair filter has its own way of keeping it fresh. </p><p>If your home feels like a castle under constant siege from dust or pollen, the <strong>Particle Filter</strong> will come to your rescue. It captures those microscopic intruders, helping your air become pure and crisp. </p><p>If your Halloween style leans toward scented candles, fog machines, or an overenthusiastic use of room spray, you’ll want the <strong>Particle + Carbon Filter</strong> (sometimes called <strong>DualProtection</strong>). It adds a layer of activated carbon to trap odors and gases — the kind of smells that love to linger long after your guests have gone home. </p><p>And for those battling true horror — smoke, smog, or heavy kitchen fumes — the <strong>SmokeBlock Filter</strong> is the hero of the hour. Packed with extra carbon, it fights the toughest airborne villains. Think of it as your air purifier’s heavy-duty armor. </p><p>Even the humble <strong>Pre-Filter</strong>, that washable outer layer on many Blueair models, deserves some spotlight. It catches larger particles — pet hair, lint, the occasional cobweb — before they ever reach the main filter. </p>",
+            "richtext": "<h4><strong>The Ghosts You Can’t See</strong> </h4><p></p><p>Not all ghosts go “boo.” Some float around unseen — in the form of tiny particles like dust, pet dander, smoke, and pollen. These invisible visitors can linger in the air long after your Halloween party’s over, sneaking into your lungs and making the air feel heavy and stale. </p><p>That’s where Blueair’s HEPASilent™ technology comes inr: a combination of mechanical and electrostatic filtration that traps 99.97% of airborne particles down to 0.1 microns — the kind you can’t see, but that you definitely do breathe. </p><p>So, while your decorations might scream “haunted,” your air will whisper “fresh.” </p><p></p><p></p><h4><strong>A Filter for Every Home</strong></h4><h4> </h4><p>Every haunted house has its own kind of atmosphere — and every Blueair filter has its own way of keeping it fresh. </p><p>If your home feels like a castle under constant siege from dust or pollen, the <strong>Particle Filter</strong> will come to your rescue. It captures those microscopic intruders, helping your air become pure and crisp. </p><p>If your Halloween style leans toward scented candles, fog machines, or an overenthusiastic use of room spray, you’ll want the <strong>Particle + Carbon Filter</strong> (sometimes called <strong>DualProtection</strong>). It adds a layer of activated carbon to trap odors and gases — the kind of smells that love to linger long after your guests have gone home. </p><p>And for those battling true horror — smoke, smog, or heavy kitchen fumes — the <strong>SmokeBlock Filter</strong> is the hero of the hour. Packed with extra carbon, it fights the toughest airborne villains. Think of it as your air purifier’s heavy-duty armor. </p><p>And finally, our <strong>Pre-Filter</strong>, that washable outer layer on many Blueair models, deserves some spotlight. It catches larger particles — pet hair, lint, the occasional cobweb — before they ever reach the main filter. </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
-        "image_caption_Xi6zz4": {
+        "image_caption_qy8nHW": {
           "type": "image_caption",
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-lg",
+            "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
@@ -93,16 +93,16 @@
         "text_Ub47yL": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-0",
+            "margin_top_mobile": "mt-md",
             "margin_bottom_mobile": "mb-md",
             "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-md",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-xl",
             "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-lg",
+            "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-lg",
             "max_width_desktop": "135ch",
-            "richtext": "<h4><strong>When the Filter Needs a Refresh</strong> </h4><p></p><p>Over time, Blueair filters fill up with everything they’ve captured — dust, smoke, particles, and odors — and that’s when they need a well-earned retirement. </p><p>Most filters last around six to nine months, depending on how often you run your purifier (and how spooky your environment gets). When it’s time, your Blueair app or device light will give you a gentle nudge. </p><p>Changing a filter is as easy - pop the old one out, slide the new one in, and reset the indicator. Voilà — your air is refreshed, and your purifier is ready for another season of keeping the monsters (and allergens) at bay. </p><p> </p><h4><strong>The Freshest Kind of Fright</strong> </h4><p></p><p>This Halloween, let your house be spooky for the right reasons. Keep your skeletons in the closet (and the dust bunnies out of the air). Between Blueair’s powerful HEPASilent™ purification and their lineup of filters — from <strong>Particle</strong> to <strong>SmokeBlock</strong> — you’ll have all the tools you need to keep your air fresh, your lungs happy, and your haunted vibe perfectly chill. </p><p>Because there’s nothing scarier than bad air — and nothing sweeter than breathing easy after a night of fright. </p>",
+            "richtext": "<h4><strong>When the Filter Needs a Refresh</strong> </h4><p></p><p>Over time, Blueair filters fill up with everything they’ve captured — dust, smoke, particles, and odors — and that’s when they need a well-earned retirement. </p><p>Most filters last around six to nine months, depending on how often you run your purifier (and how spooky your environment gets). When it’s time, your Blueair app or device light will give you a gentle nudge. </p><p>Changing a filter is as easy - pop the old one out, slide the new one in, and reset the indicator. Voilà — your air is refreshed, and your purifier is ready for another season of keeping the monsters (and allergens) at bay. </p><h4><strong>The Freshest Kind of Fright</strong> </h4><p></p><p>This Halloween, let your house be spooky for the right reasons. Keep your skeletons in the closet (and the dust bunnies out of the air). Between Blueair’s powerful HEPASilent™ purification and their lineup of filters — from <strong>Particle</strong> to <strong>SmokeBlock</strong> — you’ll have all the tools you need to keep your air fresh, your lungs happy, and your haunted vibe perfectly chill. </p><p>Because there’s nothing scarier than bad air — and nothing sweeter than breathing easy after a night of fright. </p>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
@@ -112,14 +112,227 @@
         "text_QNqwkC",
         "image_caption_KnqYBR",
         "text_e9yarP",
-        "image_caption_Xi6zz4",
+        "image_caption_qy8nHW",
         "text_Ub47yL"
       ],
       "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
     }
   },
   "order": [
     "main",
-    "article_content_zMAJck"
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
   ]
 }
