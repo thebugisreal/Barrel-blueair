@@ -110,11 +110,11 @@
             "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "icon_1_image": "shopify:\/\/shop_images\/Group_3530.svg",
+            "icon_1_image": "shopify://shop_images/Group_3530.svg",
             "icon_1_text": "Free & fast shipping",
-            "icon_2_image": "shopify:\/\/shop_images\/Group_3531.svg",
+            "icon_2_image": "shopify://shop_images/Group_3531.svg",
             "icon_2_text": "30 day home trial",
-            "icon_3_image": "shopify:\/\/shop_images\/Group_3532.svg",
+            "icon_3_image": "shopify://shop_images/Group_3532.svg",
             "icon_3_text": "Free extended warranty"
           }
         }
@@ -134,7 +134,8 @@
         "shipping_warranty_Rg4jpP"
       ],
       "settings": {
-        "buybox_max_width": "80ch"
+        "buybox_max_width": "80ch",
+        "show_truemed": false
       }
     },
     "product_slideshow_f7BaaR": {
@@ -246,7 +247,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https:\/\/player.vimeo.com\/video\/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"><\/iframe><\/div><script src=\"https:\/\/player.vimeo.com\/api\/player.js\"><\/script>"
+        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>"
       }
     },
     "product_brands_3gV3EU": {
@@ -329,6 +330,22 @@
         "cta_style": "btn"
       }
     },
+    "17629679157cef392e": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_KUj3yP": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_KUj3yP"
+      ],
+      "settings": {}
+    },
     "product_recommendations_Ha8zrk": {
       "type": "product__recommendations",
       "disabled": true,
@@ -379,22 +396,6 @@
         "max_width_desktop": "100%",
         "color": "text-blue"
       }
-    },
-    "17629679157cef392e": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_widget_KUj3yP": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "{{product}}",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_widget_KUj3yP"
-      ],
-      "settings": {}
     }
   },
   "order": [
@@ -411,9 +412,9 @@
     "product_perks_FacAhx",
     "product_tech_specs_jEUNXD",
     "product_accordion_6QWP9F",
+    "17629679157cef392e",
     "product_recommendations_Ha8zrk",
     "product_footnotes_izYTTQ",
-    "bazaarvoice_reviews_g6D6HN",
-    "17629679157cef392e"
+    "bazaarvoice_reviews_g6D6HN"
   ]
 }

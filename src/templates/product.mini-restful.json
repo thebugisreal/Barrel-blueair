@@ -110,11 +110,11 @@
             "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "icon_1_image": "shopify:\/\/shop_images\/Group_3530.svg",
+            "icon_1_image": "shopify://shop_images/Group_3530.svg",
             "icon_1_text": "Free & fast shipping",
-            "icon_2_image": "shopify:\/\/shop_images\/Group_3531.svg",
+            "icon_2_image": "shopify://shop_images/Group_3531.svg",
             "icon_2_text": "30 day home trial",
-            "icon_3_image": "shopify:\/\/shop_images\/Group_3532.svg",
+            "icon_3_image": "shopify://shop_images/Group_3532.svg",
             "icon_3_text": "Free extended warranty"
           }
         }
@@ -134,7 +134,8 @@
         "shipping_warranty_Rg4jpP"
       ],
       "settings": {
-        "buybox_max_width": "80ch"
+        "buybox_max_width": "80ch",
+        "show_truemed": false
       }
     },
     "product_custom_tabs_acewb9": {
@@ -274,7 +275,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Frame_1308.png",
+        "image_mobile": "shopify://shop_images/Frame_1308.png",
         "image_inset_mobile": false,
         "image_position_mobile": "order-first",
         "image_position_desktop": "left",
@@ -330,7 +331,7 @@
         "margin_bottom_desktop": "desktop:mb-0",
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
-        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https:\/\/player.vimeo.com\/video\/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"><\/iframe><\/div><script src=\"https:\/\/player.vimeo.com\/api\/player.js\"><\/script>"
+        "embed": "<div style=\"padding:56.25% 0 0 0;position:relative;\"><iframe src=\"https://player.vimeo.com/video/1063248700?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479\" frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media\" style=\"position:absolute;top:0;left:0;width:100%;height:100%;\" title=\"Air designed for less odors\"></iframe></div><script src=\"https://player.vimeo.com/api/player.js\"></script>"
       }
     },
     "product_brands_3gV3EU": {
@@ -363,6 +364,21 @@
         "color": "text-blue"
       }
     },
+    "product_tech_specs_jEUNXD": {
+      "type": "product__tech-specs",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "1440px",
+        "color": "bg-blue-light text-blue"
+      }
+    },
     "section_text_banner_rmDttx": {
       "type": "section__text-banner",
       "settings": {
@@ -376,13 +392,13 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "max_width_desktop": "1024px",
         "color": "bg-white text-blue",
-        "image": "shopify:\/\/shop_images\/b-corp-image.png",
+        "image": "shopify://shop_images/b-corp-image.png",
         "image_position_desktop": "desktop:order-first",
         "title": "Proud to be a Certified B Corp",
         "title_style": "h3",
         "subtext": "As a B Corp, we’re part of a global community of businesses that meet high standards of social and environmental impact.",
         "subtext_style": "s3",
-        "cta_url": "shopify:\/\/pages\/why-clean-air",
+        "cta_url": "shopify://pages/why-clean-air",
         "cta_text": "",
         "cta_style": "btn",
         "text_align_mobile": "text-left",
@@ -404,21 +420,6 @@
         "color": "bg-blue-darkSky text-blue"
       }
     },
-    "product_tech_specs_jEUNXD": {
-      "type": "product__tech-specs",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "1440px",
-        "color": "bg-blue-light text-blue"
-      }
-    },
     "product_accordion_6QWP9F": {
       "type": "product__accordion",
       "settings": {
@@ -438,6 +439,22 @@
         "cta_text": "",
         "cta_style": "btn"
       }
+    },
+    "1762967962abbde4ec": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_EBpTxe": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_EBpTxe"
+      ],
+      "settings": {}
     },
     "product_recommendations_Ha8zrk": {
       "type": "product__recommendations",
@@ -488,22 +505,6 @@
         "max_width_desktop": "100%",
         "color": "text-blue"
       }
-    },
-    "1762967962abbde4ec": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_widget_EBpTxe": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "{{product}}",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_widget_EBpTxe"
-      ],
-      "settings": {}
     }
   },
   "order": [
@@ -523,9 +524,9 @@
     "section_text_banner_rmDttx",
     "product_perks_FacAhx",
     "product_accordion_6QWP9F",
-    "product_recommendations_Ha8zrk",
+    "1762967962abbde4ec",
     "product_footnotes_izYTTQ",
-    "bazaarvoice_reviews_g6D6HN",
-    "1762967962abbde4ec"
+    "product_recommendations_Ha8zrk",
+    "bazaarvoice_reviews_g6D6HN"
   ]
 }
