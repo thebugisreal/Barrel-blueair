@@ -503,7 +503,7 @@ class ProductMain extends HTMLElement {
     if (!discountSubscriptionPrice) {
       return;
     }
-    if (this.stickyPrices.length > 0) {
+    if (this.stickyPrices && this.stickyPrices.length > 0) {
       this.stickyPrices.forEach((price) => {
         price.textContent = discountSubscriptionPrice.textContent;
       });
@@ -557,7 +557,7 @@ class ProductMain extends HTMLElement {
         btn.removeAttribute('disabled');
       }
     });
-    if (this.stickyPrices.length > 0) {
+    if (this.stickyPrices && this.stickyPrices.length > 0) {
       this.stickyPrices.forEach((price) => {
         price.textContent = btnPrice;
       });
