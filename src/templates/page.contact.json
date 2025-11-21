@@ -93,16 +93,16 @@
     "section_content_panels_yJFBaF": {
       "type": "section__content-panels",
       "blocks": {
-        "customization_d9x7Pd": {
+        "customization_e6cyjU": {
           "type": "customization",
           "settings": {
             "image_position": "order-first",
             "enable_padding": true,
             "content_position": "items-center",
             "content_spacing": "justify-between",
-            "title": "Call Us",
+            "title": "Chat Us",
             "title_style": "h4",
-            "subtext": "1-888-258-3247",
+            "subtext": "Click the bubble bottom right.",
             "subtext_style": "p2",
             "subtext_alignment": "text-center",
             "cta_url": "",
@@ -129,16 +129,16 @@
             "color": "bg-blue-light text-blue"
           }
         },
-        "customization_e6cyjU": {
+        "customization_d9x7Pd": {
           "type": "customization",
           "settings": {
             "image_position": "order-first",
             "enable_padding": true,
             "content_position": "items-center",
             "content_spacing": "justify-between",
-            "title": "Chat Us",
+            "title": "Call Us",
             "title_style": "h4",
-            "subtext": "Click the bubble bottom right.",
+            "subtext": "1-888-258-3247",
             "subtext_style": "p2",
             "subtext_alignment": "text-center",
             "cta_url": "",
@@ -149,9 +149,9 @@
         }
       },
       "block_order": [
-        "customization_d9x7Pd",
+        "customization_e6cyjU",
         "customization_XCckhA",
-        "customization_e6cyjU"
+        "customization_d9x7Pd"
       ],
       "disabled": true,
       "settings": {
@@ -173,33 +173,6 @@
         "cta_text": "",
         "cta_style": "btn",
         "content_max_width_desktop": ""
-      }
-    },
-    "section_text_banner_AHeady": {
-      "type": "section__text-banner",
-      "disabled": true,
-      "name": "Text Banner",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-lg",
-        "padding_bottom_mobile": "pb-lg",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-0",
-        "max_width_desktop": "",
-        "color": "bg-white text-blue",
-        "image_position_desktop": "desktop:order-first",
-        "title": "",
-        "title_style": "h1",
-        "subtext": "Monday - Friday (8am - 5pm Central Time)",
-        "subtext_style": "h6",
-        "cta_url": "",
-        "cta_text": "",
-        "cta_style": "btn",
-        "text_align_mobile": "text-center",
-        "text_align_desktop": "desktop:text-center"
       }
     },
     "section_embed_GWNkVD": {
@@ -352,14 +325,14 @@
     "section_hero_XWdJgJ": {
       "type": "section__hero",
       "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-0",
-        "padding_bottom_desktop": "desktop:pb-0",
+        "margin_top_mobile": "mt-md",
+        "margin_bottom_mobile": "mb-md",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-lg",
+        "padding_bottom_desktop": "desktop:pb-lg",
         "color": "bg-white text-blue",
         "image_mobile": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "video_autoplay": true,
@@ -394,7 +367,6 @@
     "section_hero_MWKKLh",
     "section_text_banner_NnPEqy",
     "section_content_panels_yJFBaF",
-    "section_text_banner_AHeady",
     "section_embed_GWNkVD",
     "section_embed_7Gdzyj",
     "section_embed_hBxRjM",
