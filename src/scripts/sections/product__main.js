@@ -1031,7 +1031,6 @@ class ProductMain extends HTMLElement {
     }
 
     const formData = new FormData(this.form);
-    formData.append('quantity', this.currentQuantity);
 
     if (this.pdpToEditCartSubscription != false) {
       if (this.nonSubscriptionToggle.dataset.selected == 'true') {
