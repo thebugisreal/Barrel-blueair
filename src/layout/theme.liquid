@@ -40,6 +40,8 @@
 
     {% render 'meta-tags' %}
 
+    {% render 'hreflang' %}
+
     {%- comment -%} Redirect Account Addresses Page {%- endcomment -%}
     {% if template.name == 'addresses' %}
       <script>
