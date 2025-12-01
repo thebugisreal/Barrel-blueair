@@ -358,9 +358,8 @@
   </button>
 </div>
 
-
+{% if product.metafields.seed.additional_subscription != blank %}
   {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
-  {% assign additional_subscription = shop.metaobjects['Subscription']['511-i-max-marie-kondo-bundle'] %}
   {% assign additional_filter_subscriptions = additional_subscription.filter_subscriptions.value %}
   {% assign additional_subscription_selected = false %}
   {% assign additional_airpurifier_type_two_pack = false %}
@@ -683,3 +682,4 @@
       {% endif %}
     </div>
   </div>
+{% endif %}
