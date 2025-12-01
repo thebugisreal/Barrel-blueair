@@ -358,9 +358,9 @@
   </button>
 </div>
 
-{% if product.metafields.seed.additional_subscription != blank %}
-  {% comment %} Use the same subscription object for additional subscription {% endcomment %}
+
   {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
+  {% assign additional_subscription = shop.metaobjects['Subscription']['511-i-max-marie-kondo-bundle'] %}
   {% assign additional_filter_subscriptions = additional_subscription.filter_subscriptions.value %}
   {% assign additional_subscription_selected = false %}
   {% assign additional_airpurifier_type_two_pack = false %}
@@ -563,7 +563,62 @@
                 {% endfor %}
               </div>
             {% endif %}
-            {% for filter_product in additional_filter_subscriptions %}
+            {% for filter_products in additional_filter_subscriptions %}
+              {% if forloop.first %}
+                {% assign additional_filter_product = filter_products %}
+              {% endif %}
+            {% endfor%}
+            {% assign additional_filter_variant = additional_filter_product.variants[0] %}
+            {% if additional_pdp_type != 'filter' %}
+              {% if additional_filter_product.variants[1].title contains 'subscription' or additional_filter_product.variants[1].title contains 'Subscription' %}
+                {% assign additional_filter_variant = additional_filter_product.variants[1] %}
+              {% endif %}
+            {% endif %}
+            {% if additional_filter_variant.selling_plan_allocations.size > 0 %}
+              <div class="filter-subscription__selling-plans-group {% if additional_pdp_type == '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ additional_filter_variant.id }}" js-filter-subscription-selling-plans-group>
+                {% if additional_filter_product.metafields.seed.filter_subscription_description != blank and additional_pdp_type != '2in1_purify_humidify' %}
+                  <div class="filter-subscription__description p4 mt-xxs">
+                    {{ additional_filter_product.metafields.seed.filter_subscription_description }}
+                  </div>
+                {% endif %}
+                <div class="p6 font-700 mt-sm mb-xxxs {% if additional_filter_variant.available == false %}text-gray{% endif %}">
+                  {% if additional_pdp_type == '2in1_purify_humidify' %}
+                    {% if additional_filter_variant.title contains 'Wick' or additional_filter_variant.title contains 'wick' %}
+                      Choose Wick Shipping Frequency
+                    {% else %}
+                      Choose Filter Shipping Frequency
+                    {% endif %}
+                  {% else %}
+                    Choose Frequency
+                  {% endif %}
+                </div>  
+                <div class="filter-subscription__selling-plans flex flex-wrap gap-xxs">
+                  {% if additional_subscription.frequency_options_override != blank or additional_filter_product.metafields.seed.subscription_frequency_options != blank %}
+                    {% if additional_subscription.frequency_options_override != blank %}
+                      {% assign frequency_options = additional_subscription.frequency_options_override.value %}
+                    {% else %}
+                      {% assign frequency_options = additional_filter_product.metafields.seed.subscription_frequency_options.value %}
+                    {% endif %}
+                    {% for frequency_option in frequency_options %}
+                      {% for selling_plan_allocation in additional_filter_variant.selling_plan_allocations %}
+                        {% if frequency_option == selling_plan_allocation.selling_plan.options[0].value %}
+                          <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ additional_filter_variant.id }}" {% if additional_filter_variant.available == false %}disabled{% endif %} {% if additional_pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray p-xxs p-3 font-500 text-blue" js-filter-subscription-selling-plan>
+                            {{ selling_plan_allocation.selling_plan.options[0].value }}
+                          </button>
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  {% else %}
+                    {% for selling_plan_allocation in additional_filter_variant.selling_plan_allocations %}
+                      <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ additional_filter_variant.id }}" {% if additional_filter_variant.available == false %}disabled{% endif %} {% if additional_pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray p-xxs p-3 font-500 text-blue" js-filter-subscription-selling-plan>
+                        {{ selling_plan_allocation.selling_plan.options[0].value }}
+                      </button>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+            {% for filter_product in additional_filter_subscriptions offset: 1 %}
               {% assign filter_variant = filter_product.variants[0] %}
               {% if additional_pdp_type != 'filter' %}
                 {% if filter_product.variants[1].title contains 'subscription' or filter_product.variants[1].title contains 'Subscription' %}
@@ -571,7 +626,7 @@
                 {% endif %}
               {% endif %}
               {% if filter_variant.selling_plan_allocations.size > 0 %}
-                <div class="filter-subscription__selling-plans-group {% if additional_pdp_type == '2in1_purify_humidify' %}hidden{% endif %}" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
+                <div class="filter-subscription__selling-plans-group hidden" data-variant="{{ filter_variant.id }}" js-filter-subscription-selling-plans-group>
                   {% if filter_product.metafields.seed.filter_subscription_description != blank and additional_pdp_type != '2in1_purify_humidify' %}
                     <div class="filter-subscription__description p4 mt-xxs">
                       {{ filter_product.metafields.seed.filter_subscription_description }}
@@ -628,4 +683,3 @@
       {% endif %}
     </div>
   </div>
-{% endif %}
