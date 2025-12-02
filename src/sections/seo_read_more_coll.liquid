@@ -1,0 +1,74 @@
+{% if collection.description != blank %}
+
+  <div class="seo-collection-wrapper">
+  
+    <!-- Short Preview (HTML safely rendered by Shopify) -->
+    <div class="seo-preview">
+      {{ collection.description | truncatewords: 30 }}
+    </div>
+  
+    <!-- Full Content -->
+    <div class="seo-full" style="display:none;">
+      {{ collection.description }}
+    </div>
+  
+    <button class="seo-toggle-btn">Read More</button>
+  
+  </div>
+  
+  <style>
+    .h2 {
+      font-size: 28px;
+  }
+    .h3 {
+      font-size: 24px !important;
+  }
+  .seo-collection-wrapper {
+    margin: 40px auto;
+    max-width: 900px;
+    line-height: 1.7;
+  }
+  .seo-toggle-btn {
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: #052147;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const preview = document.querySelector(".seo-preview");
+    const full = document.querySelector(".seo-full");
+    const btn = document.querySelector(".seo-toggle-btn");
+  
+    btn.addEventListener("click", function () {
+      if (full.style.display === "none") {
+        full.style.display = "block";
+        preview.style.display = "none";
+        btn.innerText = "Read Less";
+      } else {
+        full.style.display = "none";
+        preview.style.display = "block";
+        btn.innerText = "Read More";
+      }
+    });
+  });
+  </script>
+  
+  {% endif %}
+  
+  {% schema %}
+  {
+    "name": "SEO Collection Content",
+    "settings": [],
+    "presets": [
+      {
+        "name": "SEO Collection Content"
+      }
+    ]
+  }
+  {% endschema %}
+  
