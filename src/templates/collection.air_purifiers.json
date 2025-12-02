@@ -16,9 +16,15 @@
         "enable_collection_description": true,
         "hide_links": false
       }
+    },
+    "seo_read_more_coll_Y3p39U": {
+      "type": "seo_read_more_coll",
+      "name": "SEO Collection Content",
+      "settings": {}
     }
   },
   "order": [
-    "product-grid"
+    "product-grid",
+    "seo_read_more_coll_Y3p39U"
   ]
 }

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -27,11 +36,14 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-blue text-white",
-        "image_mobile": "shopify:\/\/shop_images\/app_mobile_cda0ef61-0868-43f0-b459-70e3eaf8c727.png",
-        "image_desktop": "shopify:\/\/shop_images\/app_mobile_e53f0392-b8b8-4c76-aeed-c90763067181.png",
+        "image_mobile": "shopify://shop_images/app_mobile_cda0ef61-0868-43f0-b459-70e3eaf8c727.png",
+        "image_desktop": "shopify://shop_images/app_mobile_e53f0392-b8b8-4c76-aeed-c90763067181.png",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "Discover the<br> Blueair app",
+        "title": "Discover the Blueair app",
         "title_style": "h2",
         "subtext": "",
         "subtext_style": "h5",
@@ -86,13 +98,13 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Frame_4054_b7701bfc-8411-4775-9a47-a874e15065be.png",
+        "image_mobile": "shopify://shop_images/Frame_4054_b7701bfc-8411-4775-9a47-a874e15065be.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
         "title": "Easily control all your devices in one spot",
         "title_style": "h4",
-        "subtext": "Monitor air quality in every room and adjust settings for multiple devices at once, \u2028all from our homepage.",
+        "subtext": "Monitor air quality in every room and adjust settings for multiple devices at once,  all from our homepage.",
         "subtext_style": "p2",
         "cta_url": "",
         "cta_text": "",
@@ -113,7 +125,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Frame_4055.png",
+        "image_mobile": "shopify://shop_images/Frame_4055.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
@@ -141,7 +153,7 @@
         "padding_top_desktop": "desktop:pt-xxxl",
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "color": "bg-blue-light text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/app-split3.png",
+        "image_mobile": "shopify://shop_images/app-split3.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
@@ -187,7 +199,7 @@
         "icon_idHTWc": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Cooling_Mode.png",
+            "icon": "shopify://shop_images/Cooling_Mode.png",
             "icon_fixed_width": "60",
             "title": "Cooling",
             "title_style": "s4"
@@ -196,7 +208,7 @@
         "icon_VgBfLH": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Eco_Mode.png",
+            "icon": "shopify://shop_images/Eco_Mode.png",
             "icon_fixed_width": "60",
             "title": "Eco-Mode",
             "title_style": "s4"
@@ -205,7 +217,7 @@
         "icon_7HJBfM": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Main_Mode_Button.png",
+            "icon": "shopify://shop_images/Main_Mode_Button.png",
             "icon_fixed_width": "60",
             "title": "Auto",
             "title_style": "s4"
@@ -214,7 +226,7 @@
         "icon_PEfqym": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Setting.png",
+            "icon": "shopify://shop_images/Setting.png",
             "icon_fixed_width": "60",
             "title": "Settings",
             "title_style": "s4"
@@ -223,7 +235,7 @@
         "icon_phcMjR": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/On-Off.png",
+            "icon": "shopify://shop_images/On-Off.png",
             "icon_fixed_width": "60",
             "title": "Power",
             "title_style": "s4"
@@ -232,7 +244,7 @@
         "icon_QCbBCy": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/FanSpeed.png",
+            "icon": "shopify://shop_images/FanSpeed.png",
             "icon_fixed_width": "60",
             "title": "Fan Modes",
             "title_style": "s4"
@@ -241,7 +253,7 @@
         "icon_WQpPxF": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Brightness.png",
+            "icon": "shopify://shop_images/Brightness.png",
             "icon_fixed_width": "60",
             "title": "Brightness",
             "title_style": "s4"
@@ -250,7 +262,7 @@
         "icon_KYcXtp": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Night_Mode.png",
+            "icon": "shopify://shop_images/Night_Mode.png",
             "icon_fixed_width": "60",
             "title": "Night Mode",
             "title_style": "s4"
@@ -259,7 +271,7 @@
         "icon_zWmacc": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Lock.png",
+            "icon": "shopify://shop_images/Lock.png",
             "icon_fixed_width": "60",
             "title": "Lock",
             "title_style": "s4"
@@ -268,7 +280,7 @@
         "icon_FDUPUL": {
           "type": "icon",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Home.png",
+            "icon": "shopify://shop_images/Home.png",
             "icon_fixed_width": "60",
             "title": "Welcome Mode",
             "title_style": "s4"
@@ -321,7 +333,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Frame_4056_6c40fd03-6dd5-42c2-890a-423654f98521.png",
+        "image_mobile": "shopify://shop_images/Frame_4056_6c40fd03-6dd5-42c2-890a-423654f98521.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "right",
         "image_width": 50,
@@ -348,7 +360,7 @@
         "padding_top_desktop": "desktop:pt-xxl",
         "padding_bottom_desktop": "desktop:pb-xxl",
         "color": "bg-white text-blue",
-        "image_mobile": "shopify:\/\/shop_images\/Frame_4057.png",
+        "image_mobile": "shopify://shop_images/Frame_4057.png",
         "image_position_mobile": "order-last",
         "image_position_desktop": "left",
         "image_width": 50,
@@ -409,7 +421,7 @@
         "title_alignment_desktop": "tabletl:text-left",
         "subtext": "All of our wifi enable products are compatible with the Blueair app.",
         "subtext_style": "p2",
-        "url": "shopify:\/\/collections\/air-purifiers",
+        "url": "shopify://collections/air-purifiers",
         "url_text": "Shop All",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",
@@ -429,7 +441,7 @@
         "quote_MkLcT4": {
           "type": "quote",
           "settings": {
-            "quote": "The scheduling is nice as well, I can have my systems turned on in the bedrooms prior to our arrival home from school\/work and it's just nice.",
+            "quote": "The scheduling is nice as well, I can have my systems turned on in the bedrooms prior to our arrival home from school/work and it's just nice.",
             "author": "Heather"
           }
         }
@@ -463,7 +475,7 @@
           "settings": {
             "text": "Access filter lifetime & manage subscriptions",
             "text_style": "s1",
-            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon1.png"
+            "icon": "shopify://shop_images/seed-apppage-hero2-icon1.png"
           }
         },
         "text_L3trJn": {
@@ -471,7 +483,7 @@
           "settings": {
             "text": "Control multiple devices at once",
             "text_style": "s1",
-            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon2.png"
+            "icon": "shopify://shop_images/seed-apppage-hero2-icon2.png"
           }
         },
         "text_NeMRqQ": {
@@ -479,7 +491,7 @@
           "settings": {
             "text": "Monitor environmental changes with AQI",
             "text_style": "s1",
-            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon3.png"
+            "icon": "shopify://shop_images/seed-apppage-hero2-icon3.png"
           }
         },
         "text_QKkLm7": {
@@ -487,7 +499,7 @@
           "settings": {
             "text": "Easily build a personalized schedule",
             "text_style": "s1",
-            "icon": "shopify:\/\/shop_images\/seed-apppage-hero2-icon4.png"
+            "icon": "shopify://shop_images/seed-apppage-hero2-icon4.png"
           }
         }
       },
@@ -522,7 +534,7 @@
           "settings": {
             "title": "Why should I download the Blueair app?",
             "title_style": "s1",
-            "richtext": "<p>The Blueair app makes it effortless to monitor and control your devices from anywhere, so you can breathe easier at home and beyond.<\/p><p>Get real-time air quality updates, set schedules, and optimize your device's performance with just a few taps.<\/p>",
+            "richtext": "<p>The Blueair app makes it effortless to monitor and control your devices from anywhere, so you can breathe easier at home and beyond.</p><p>Get real-time air quality updates, set schedules, and optimize your device's performance with just a few taps.</p>",
             "richtext_style": "p2"
           }
         },
@@ -531,7 +543,7 @@
           "settings": {
             "title": "What can I do in the Blueair app?",
             "title_style": "s1",
-            "richtext": "<p>Turn your device on or off remotely, adjust fan speeds and modes to match your needs, and monitor real-time air quality insights to stay informed about pollutants in your home. <\/p><p>The app also allows you to set schedules so your purifier runs automatically when you need it most and sends filter change alerts to keep your device running at peak performance.<\/p><p><\/p>",
+            "richtext": "<p>Turn your device on or off remotely, adjust fan speeds and modes to match your needs, and monitor real-time air quality insights to stay informed about pollutants in your home. </p><p>The app also allows you to set schedules so your purifier runs automatically when you need it most and sends filter change alerts to keep your device running at peak performance.</p><p></p>",
             "richtext_style": "p2"
           }
         },
@@ -540,7 +552,7 @@
           "settings": {
             "title": "How do I connect my device to the Blueair app?",
             "title_style": "s1",
-            "richtext": "<p>Connecting your purifier is simple. First, plug in and power on your device.<\/p><p>Then, download the Blueair app from the App Store or Google Play, log in or create an account, and tap “Add Device.”<\/p><p>Follow the on-screen instructions, ensuring your phone is connected to a 2.4GHz Wi-Fi network. <\/p>",
+            "richtext": "<p>Connecting your purifier is simple. First, plug in and power on your device.</p><p>Then, download the Blueair app from the App Store or Google Play, log in or create an account, and tap “Add Device.”</p><p>Follow the on-screen instructions, ensuring your phone is connected to a 2.4GHz Wi-Fi network. </p>",
             "richtext_style": "p2"
           }
         }
@@ -563,7 +575,7 @@
         "title_style": "h3",
         "max_width_desktop": "80ch",
         "bg_color": "text-blue",
-        "cta_url": "shopify:\/\/pages\/support",
+        "cta_url": "shopify://pages/support",
         "cta_text": "Read all FAQs",
         "cta_style": "btn"
       }

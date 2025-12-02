@@ -1,0 +1,419 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-sm",
+            "margin_bottom_mobile": "mb-sm",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-sm",
+            "max_width_desktop": "135ch",
+            "richtext": "<h3><strong>Air Optimized for Health™</strong></h3><p></p><p>At Blueair, we know that <em>health starts with air </em>— and we believe the best proof of that comes from trusted, independent voices. Our commitment to quality continues to earn recognition from respected third parties, most recently from Consumer Reports, which has just named Blueair the <strong>Best Air Purifier Brand of 2025. <br/></strong></p><p>This recognition reinforces our decades- long commitment to delivering cleaner, healthier air, and reflects the confidence that leading independent organizations put into our brand’s quality and performance.</p><p>The award honors our ongoing mission to design products that don’t just purify air — they optimize it for everyday wellbeing. From sleep to family health and comfort, Blueair transforms air care into <em>Air Health™</em>: intelligent, design forward innovation that supports better living in every breath.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "text_UJUwwY": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-sm",
+            "margin_bottom_mobile": "mb-sm",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-sm",
+            "padding_bottom_desktop": "desktop:pb-sm",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>Why Consumer Reports Chose Blueair</strong></h4><p></p><p>Consumer Reports, one of the world’s most trusted independent product reviewers, evaluated major air purifier brands based on performance, reliability, noise level, and owner usage. Blueair stood out across the board — earning top marks for consistent performance, innovation, and customer satisfaction.</p><p>This recognition reflects what we’ve built since our founding in Sweden in 1996: a brand defined by quiet power, thoughtful design, and measurable impact.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "text_CdTqbR": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-sm",
+            "margin_bottom_mobile": "mb-sm",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-sm",
+            "padding_bottom_desktop": "desktop:pb-sm",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>Diving into what sets Blueair apart:</strong></h4><p></p><p>Below are just a few examples of how Blueair’s strategy is humanizing air care, helping us stand out from competition: </p><p><strong>Proven performance</strong> — Our HEPASilent™ technology captures 99.97% of airborne particles down to 0.1 microns, combining electrostatic and mechanical filtration for superior clean-air delivery.</p><p><strong>Quietly powerful</strong> — Blueair purifiers deliver best-in-class air cleaning while operating whisper-quiet — essential for sleep, productivity, and peace of mind.</p><p><strong>Design-forward wellness</strong> — Rooted in Swedish innovation, every purifier is crafted to complement modern living spaces beautifully and effortlessly.</p><p><strong>Trusted globally</strong> — Blueair has been leading the air purifier industry for nearly 30 years, with millions of satisfied customers worldwide.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_QBGK76": {
+          "type": "image_caption",
+          "disabled": true,
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-xxl",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
+            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "classic-pro-cp7i",
+            "product_image_override": "shopify://shop_images/Classic_Pro_CP7i.png"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Blog_Image_88414fe6-6948-46ee-af05-fab90d825829.png",
+            "image_desktop": "shopify://shop_images/Blog_Image_88414fe6-6948-46ee-af05-fab90d825829.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>Our Vision: Health Begins Here</strong></h4><p></p><p>This recognition from Consumer Reports reinforces Blueair’s purpose — to create a future where health isn’t reactive, but instead, is built into everything around us. </p><p>We are proud to lead the Air Health category as the trusted name in home wellness, where technology, design, and connectivity intersect to create air optimized for every life stage, every lifestyle, and every home.</p><p>The truth is simple: <em>Health starts with air. </em>And Blueair is here to make that air better — beautifully, intelligently, and effortlessly.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/Blog_Image-1_0b20357b-baaf-41ff-a7a5-c51c02daa9a1.png",
+            "image_desktop": "shopify://shop_images/Blog_Image-1_0b20357b-baaf-41ff-a7a5-c51c02daa9a1.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>Join the Movement Toward Air Health</strong></h4><p></p><p>Experience why Blueair was named the <strong>Best Air Purifier Brand of 2025 </strong>by Consumer Reports.  Explore our wide portfolio to discover what air care product is right for your space, whether it’s for your family, your sleep, or your peace of mind.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "text_UJUwwY",
+        "text_CdTqbR",
+        "image_caption_QBGK76",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_qy8nHW",
+        "text_Ub47yL"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    },
+    "section_product_grid_3htapE": {
+      "type": "section__product-grid",
+      "name": "Product Grid",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "carousel_mobile": true,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-white text-blue",
+        "title": "Shop the Collection",
+        "title_style": "h4",
+        "collection": "consumer-reports",
+        "num_products": 3
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah",
+    "section_product_grid_3htapE"
+  ]
+}
