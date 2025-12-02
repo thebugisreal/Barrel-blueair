@@ -71,7 +71,7 @@
         },
         "product_options_GLfTKf": {
           "type": "product_options",
-          "disabled": true,
+          "disabled": false,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",

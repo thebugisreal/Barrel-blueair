@@ -89,6 +89,28 @@ class ProductMain extends HTMLElement {
     if (this.optionSwatchesContainers.length > 0) {
       this.optionSwatchesContainers.forEach((option) => this._initOptionSwatches(option));
     }
+    this._initGiftCardSelects();
+  }
+
+  _initGiftCardSelects = () => {
+    const selectWrappers = this.querySelectorAll('.product-option__select-wrapper');
+    selectWrappers.forEach((wrapper) => {
+      const select = wrapper.querySelector('.product-option__select');
+      const displayValue = wrapper.querySelector('.product-option__select-value');
+      
+      if (!select || !displayValue) return;
+
+      const updateDisplay = () => {
+        const selectedOption = select.options[select.selectedIndex];
+        if (selectedOption) {
+          displayValue.textContent = selectedOption.textContent;
+        }
+      };
+
+      select.addEventListener('change', updateDisplay);
+      
+      updateDisplay();
+    });
   }
 
   _handleFilterPack = () => {
@@ -1130,6 +1152,11 @@ class ProductMain extends HTMLElement {
   };
 
   _updateStickyBar(variant) {
+    // Only update sticky bar if it was initialized (mobile view)
+    if (!this.stickyAtcBtns || !this.stickySelectOptionsBtns) {
+      return;
+    }
+
     if (variant) {
       this.stickyAtcBtns.forEach((stickyAtc) => {
         stickyAtc.classList.remove('hidden')
