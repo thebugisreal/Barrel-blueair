@@ -3,11 +3,19 @@
   assign color_option = false
   assign filter_type_option = false
   assign refurbished_air_purifiers = false
+  assign related_tag_color = blank
+  
   if product.options_by_name['color'] != blank
     assign color_option = product.options_by_name['color'].position | minus: 1
   elsif product.metafields.seed.product_card_filter_products != blank
     assign filter_type_option = true
   endif
+  
+  for tag in product.tags
+    if tag contains 'product-family-color:'
+      assign related_tag_color = tag
+    endif
+  endfor
 
   if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
   assign transactional_countries = 'US,CA' | split: ',' 
@@ -100,7 +108,7 @@
 %}
 
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link aria-label="Shop {{ product.title }}">
+  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link aria-label="Shop {{ product.title }}" js-populate-image>
     {% comment %} Product Card Top Tag {% endcomment %}
      {% if product.metafields.seed.product_card_top_tags != blank %}
       <div class="product-card__top-tag absolute top-sm left-sm">
@@ -127,6 +135,18 @@
           {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
         </div>
       {% endfor %}
+    {% elsif related_tag_color != blank %}
+      {% for color in product.metafields.shopify['color-pattern'].value limit: 1 %}
+        {% assign main_color_name = color.label %}
+      {% endfor %}
+       <div class="product-card__image aspect-square" data-swatch='{{ main_color_name }}' js-product-card-image js-product-card-main-image>
+        {% if product.metafields.seed.product_card_image != blank %}
+          {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+        {% else %}
+          {% render 'lazy-image' image: product.featured_image %}
+        {% endif %}
+      </div>
+
     {% else %}
       <div class="product-card__image aspect-square">
         {% if product.metafields.seed.product_card_image != blank %}
@@ -223,6 +243,16 @@
               <span class="font-700">{{ swatch_product.variants[0].title}}</span>
             </button>
           {% endfor %}
+        </div>
+      </div>
+    {% elsif product.metafields.seed.swatches != blank %}
+      <div class="product-card__swatches-container mt-sm">
+        <div class="product-card__current-swatch font-700">
+          <span>Color: </span>
+          <span js-product-card-current-swatch-label>{{ product.title | split: '™ ' | last | split: ' ' | last }}</span>
+        </div>
+        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs" {% if related_tag_color != blank %} data-swatch-family="{{ related_tag_color }}" data-default-color="{{ product.colorTitle }}" js-populate-swatch {% endif %}>
+
         </div>
       </div>
     {% endif %}

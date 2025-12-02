@@ -13,12 +13,16 @@ class ProductCard extends HTMLElement {
       productCompareProduct: '[js-product-compare-product]',
       productCompareInfo:'[js-product-compare-info]',
       filterSwatch: '[js-product-card-filter-swatch]',
-      quickAdd: '[js-quick-add]'
+      quickAdd: '[js-quick-add]',
+      swatchPopulate: '[js-populate-swatch]',
+      imagePopulate: '[js-populate-image]'
     }
   }
 
   connectedCallback() {
     this.soldOutTag = this.querySelector(this._selectors.soldOutTag);
+    this.swatchPopulate = this.querySelector(this._selectors.swatchPopulate)
+    this.imagePopulate = this.querySelector(this._selectors.imagePopulate)
     this.swatches = this.querySelectorAll(this._selectors.swatch);
     this.filterSwatches = this.querySelectorAll(this._selectors.filterSwatch)
     this.currentSwatchLabel = this.querySelector(this._selectors.currentSwatchLabel);
@@ -39,10 +43,79 @@ class ProductCard extends HTMLElement {
       }
     }
 
+    this._initRelatedSwatches();
+    this._setListeners();
+
+  }
+
+  _initRelatedSwatches() {
+    const self = this;
+
+    if(this.swatchPopulate) {
+      const swatchFamily = this.swatchPopulate.dataset.swatchFamily
+      const url = `/collections/all/${swatchFamily}?view=json`
+
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+
+            const productJson = html.querySelector('[js-collection-json]')
+            const parsedJson = JSON.parse(productJson.textContent) 
+
+            self._populateSwatches(parsedJson)
+        })
+        .catch(e => {
+          console.error(e);
+        });
+    }
+  }
+
+  _populateSwatches(products) {
+    const placeToAppend = this.swatchPopulate;
+    console.log('card', this)
+    const mainImage = this.querySelector('[js-product-card-main-image]');
+    const mainImageData = mainImage.dataset.swatch;
+    const imagesToAppend = this.imagePopulate;
+
+    products.forEach((swatch, index) => {
+      let selected = 'false';
+      let swatchOrder = 'order-2'
+
+
+      if(swatch.color == mainImageData) {
+        selected = 'true'
+        swatchOrder = 'order-1'
+      } 
+
+      const swatchButton = `<button class="egg order-1 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full ${swatchOrder}" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="${selected}" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
+              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: ;">
+                  <img src="${swatch.swatchImage}" alt="Nordic Fog" class="block h-full w-full">
+              </div>
+      </button>`
+
+      console.log('swatchButton', swatchButton)
+
+      const swatchImage = `<div class="product-card__image aspect-square hidden" data-swatch="${ swatch.color }" js-product-card-image>
+            <img class="product-card__inner-image" src="${ swatch.swatchProductImage }"/>
+      </div>`
+
+      placeToAppend.insertAdjacentHTML('beforeend', swatchButton)
+
+      if(swatch.color !== mainImageData) {
+        imagesToAppend.insertAdjacentHTML('beforeend', swatchImage)
+      }
+
+    })
+
+    this.swatches = this.querySelectorAll(this._selectors.swatch);
+
     this._setListeners();
   }
 
   _setListeners() {
+
     this.swatches.forEach((swatch) => {
       swatch.addEventListener('click', this._swatchOnClick);
     });
