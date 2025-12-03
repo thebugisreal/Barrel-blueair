@@ -7,6 +7,18 @@
   @apply hidden;
 }
 
+.GiftWizard-gift-button.gwbutton, button.GiftWizard-gift-button.gwbutton {
+  @apply h-[50px];
+}
+
+.flex.flex-col.gap-md:has(.GiftWizard-gift-button) {
+  @apply gap-xs;
+}
+
+.flex.flex-col.gap-md:has(.GiftWizard-gift-button) .product__atc {
+  @apply !mb-0;
+}
+
 /* product carousel */
 .product__thumb-carousel:has(.hide-thumb-carousel) {
   @apply hidden;

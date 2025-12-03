@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "main": {
       "type": "product__main",
@@ -16,9 +16,19 @@
           "type": "title",
           "settings": {
             "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-sm",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-sm"
+          }
+        },
+        "text_jaipi6": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0"
+            "margin_bottom_desktop": "desktop:mb-0",
+            "text": "<p>You can’t go wrong with a gift card. Choose an amount and write a personalized message to make this gift your own.<br/><br/></p>"
           }
         },
         "room_tag_UqfcUw": {
@@ -50,6 +60,7 @@
         },
         "experience_NzTf78": {
           "type": "experience",
+          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -71,7 +82,6 @@
         },
         "product_options_GLfTKf": {
           "type": "product_options",
-          "disabled": false,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -127,6 +137,7 @@
       },
       "block_order": [
         "title_bjfNAe",
+        "text_jaipi6",
         "room_tag_UqfcUw",
         "short_description_FGhrqT",
         "product_badge_TcD3K4",
