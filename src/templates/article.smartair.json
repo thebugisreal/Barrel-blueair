@@ -1,0 +1,414 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>What Makes Smart Air Purifiers Cost More Than Basic Models</strong></h4><p>Anyone shopping for an air purifier sees the same problem: prices jump when you add smart features. A basic purifier might cost $100. Add WiFi, sensors, and app control, and you are looking at $300 to $600. The question is simple: does the extra money actually get you something useful?</p><p>Not every smart feature matters. Some genuinely improve your life. Others sound impressive but do nothing practical. This guide shows which features solve real problems and which ones just look good on the marketing materials.</p><h4><strong>Does Advanced Filtration Actually Work Better Than Basic HEPA</strong></h4>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_Xi6zz4": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-xl",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "800px",
+            "image": "shopify://shop_images/image1.jpg",
+            "image_desktop": "shopify://shop_images/image1.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Before worrying about smart stuff, the core job matters most: can the purifier actually clean your air. A smart purifier that cannot filter well is completely useless.</p><p>Most older purifiers use plain mechanical HEPA filters. Air gets forced through very dense material, and particles get trapped. This works, but it requires a lot of pressure and power. Newer purifiers mix mechanical and electrostatic filtration. Blueair calls this HEPASilent™ technology. The combination removes 99.97% of particles as small as 0.1 microns, including viruses, bacteria, pollen, dust, and pet dander.</p><p>The practical difference shows up in real numbers. HEPASilent™ technology delivers higher CADR (Clean Air Delivery Rate) performance than mechanical-only filtration at the lower noise level and power consumption. The Blue Pure 211i Max cleans 635 square feet in just 12.5 minutes. Basic HEPA filters cannot match that speed.</p><p>So if air quality problems exist at home, filter quality decides whether you actually get better air or just waste money.</p><h4><strong>Does a WiFi Air Purifier Actually Save You Time and Money</strong></h4>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_b4iy4c": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "800px",
+            "image": "shopify://shop_images/image5.jpg",
+            "image_desktop": "shopify://shop_images/image5.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>A <strong>wifi air purifier</strong> sounds like a luxury. But look at how people actually use purifiers, and the benefits become clear. WiFi connectivity means you control your purifier from your phone, from anywhere.</p><p>Real examples: Your bedroom purifier can start running 15 minutes before you get home, so the air is fresh when you arrive. You can schedule it to run automatically before bed each night without touching it once. You get phone alerts when filters need replacement, whether you are at work or on vacation.</p><p>The Blue Pure 211i Max and Blue Pure 311i+ Max both offer full WiFi and app control. Real-time monitoring shows PM1, PM2.5, and PM10 levels. You can set custom schedules, track outdoor air quality, and get filter replacement alerts on your phone.</p><p>Who actually needs this. WiFi air purifier control makes sense if you work long hours, manage multiple rooms, or care about cutting your power bill. If your purifier sits in one location and you adjust it once per week, the extra cost does not justify the feature. Simpler models work fine for that situation.</p><p>Check the<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=25&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 311i Max</span></a> and<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=5&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 211i Max</span></a> to see models with WiFi so you can compare.</p><h4><strong>Does an Air Quality Sensor Justify the Price Premium</strong></h4>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_yNQzkF": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "800px",
+            "image": "shopify://shop_images/image4.jpg",
+            "image_desktop": "shopify://shop_images/image4.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_eiGfCz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>An <strong>air quality sensor</strong> separates smart purifiers from basic ones. A standard purifier runs at the same speed all the time. A smart purifier with a good sensor responds to what is actually happening in your room.</p><p>Good sensors detect three main things:</p><p><strong>Tiny Particles (PM2.5 and PM10):</strong> Small particles get deep into lungs and cause respiratory issues, especially for people with asthma or allergies. Real sensors show what is actually in your air instead of you guessing.</p><p><strong>Harmful Gases (VOCs):</strong> Furniture, paint, and common products release invisible gases. Sensors can spot these and tell your purifier to work harder.</p><p><strong>Humidity and Temperature:</strong> Keeping humidity between 40-60% helps you breathe easier and stops dust mites and mold. Knowing actual levels helps you maintain a healthier space.</p><p>The Blue Pure 311i Max includes integrated PM2.5 sensors that directly control how hard the purifier works. Sensor data feeds into the most valuable smart feature: auto mode.</p><h4><strong>Does Voice Control Add Real Value or Just Sound Cool</strong></h4><p><strong>Voice control</strong> through Alexa or Google Home seems nice to have. In practice, it matters if you actually use voice commands in your home.</p><p>The Blue Pure 311i+ Max works with both Alexa and Google Home. You can say \"Alexa, turn on the purifier\" or \"Hey Google, increase the fan.\" This means one less thing to find on your phone or adjust manually.</p><p>For people with mobility issues or those managing multiple devices, voice control saves genuine effort. For others, it is simply a convenience feature. Not essential, but useful if you already use smart speakers.</p><h4><strong>How Do You Compare Purifiers for Different Room Sizes</strong></h4><p>Room size is crucial. A purifier that is too weak for your space will run constantly and still not clean the air. A purifier too powerful for your space wastes energy and costs more than necessary.</p><p>The rule of thumb: a purifier should provide three air changes per hour (ACH). For a 300 square foot room with 8-foot ceilings, you need at least 120 CADR. The Blue Pure 311i Max with 250 CADR comfortably handles 387 square feet. The Blue Pure 211i Max with 410 CADR handles large open living areas up to 635 square feet.</p><p>Matching purifier size to your space is more important than any smart feature. An undersized smart purifier still does not solve your air quality problem.</p><h4><strong>Which Air Purifier Is Worth Buying Right Now</strong></h4>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_HTNmpE": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "800px",
+            "image": "shopify://shop_images/image3.jpg",
+            "image_desktop": "shopify://shop_images/image3.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_cMzJxn": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>The answer depends on your specific needs and budget.</p><p><strong>For small spaces under 400 square feet.</strong> Check the <a href=\"https://www.blueair.com/products/blue-pure-511i-max?_pos=1&_sid=a497ef20b&_ss=r\"><span style=\"text-decoration:underline\">Blue Pure 511i Max</span></a> for compact bedroom solutions, or try the<a href=\"https://www.blueair.com/products/2in1-purify-humidify-dh3i?_pos=1&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">ComfortPure 3-in-1 DH3i</span></a> if you need integrated heating and cooling. The <a href=\"https://www.blueair.com/products/dustmagnet-5400-series?_pos=1&_sid=dc634e191&_ss=r\"><span style=\"text-decoration:underline\">DustMagnet™</span></a> at $169.99 offers apartments and offices excellent value with 141 CADR, WiFi connectivity, and auto mode. Filters last 6-9 months.</p><p>Why it works: smart features meet practical performance at a price point that does not break the bank.</p><p><strong>For medium spaces 400 to 700 square feet.</strong> The<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=25&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 311i Max</span></a> at $249.99 represents the sweet spot for most households. At 250 CADR, it cleans large living areas effectively. The choice between this and the 311i+ Max depends on whether voice control matters to you.</p><p>The decision: if you already use Alexa or Google Home, the 311i+ Max at $299.99 makes sense. Otherwise, the standard 311i Max gives you 95% of the value at lower cost.</p><p><strong>For large spaces over 700 square feet.</strong> The<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=5&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 211i Max</span></a> at $349.99 stands as the premium choice. Its 410 CADR handles open-concept living areas. Features like PM1, PM2.5, and PM10 monitoring provide comprehensive air quality information. The 46W energy consumption on high speed remains efficient compared to other purifiers in this performance level.</p><p>Multiple reviewers, including Wirecutter, specifically praised this model for combining powerful performance with practical design, confirming that premium pricing reflects genuine capability.</p><p>Compare all options with the<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=5&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 211i Max</span></a>,<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=25&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 311i Max</span></a>, and<a href=\"https://www.blueair.com/products/mini-restful-midnight?_pos=2&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Mini Restful</span></a> side by side.</p><h4><strong>What Features Should You Prioritize When Comparing Models</strong></h4><p>Choose in this order of importance:</p><p><strong>First: Correct CADR for your space.</strong> A beautiful purifier with weak performance solves nothing. Match the CADR to your room size using the three air changes per hour rule.</p><p><strong>Second: Quiet operation.</strong> Noise between 23-50 dB allows normal conversation. Anything above 50 dB becomes annoying in bedrooms or offices. If a purifier runs constantly because it is too weak, the noise becomes a real problem.</p><p><strong>Third: Filter costs and replacement frequency.</strong> Some purifiers demand expensive filters every three months. Good models stretch filters to 6-9 months. Blueair filters cost $29.99-$50 depending on the model.</p><p><strong>Fourth: Fit your lifestyle.</strong> You will use your purifier more if it matches your space and how you actually live. Compact models like the Blue Pure 511i Max at 4.2 lbs move between rooms easily. Larger units serve as focal points in living spaces.</p><p><strong>Fifth: Smart features that match your needs.</strong> If you are rarely home, WiFi control matters less. If you manage allergies, real-time air quality monitoring becomes more valuable.</p><p>Explore the<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=25&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 311i Max</span></a> to see how integrated sensors control performance in real-time.</p><h4><strong>Are Smart Air Filters Actually Worth the Price Premium</strong></h4><p>The honest answer: partially yes.</p><p>Smart features cost approximately $50-100 more than equivalent mechanical-only purifiers. Premium pricing makes sense if you actually use the features, particularly auto mode and real-time monitoring. Someone who checks the app daily and adjusts based on air quality gets measurable value.</p><p>But if smart features gather dust while your purifier runs on manual mode, you overpaid. A non-smart purifier with better filtration beats an underutilized smart purifier every time.</p><p>The value calculation: auto mode alone saves $20-30 annually in electricity costs. Over 5-7 years, the typical purifier lifespan is $100-210 in energy savings, potentially offsetting the premium cost of smart features.</p><p><strong>Smart features are worth paying for if:</strong></p><ul><li>You want convenience and do not want to manually adjust the device</li><li>You care about energy efficiency and lower power bills</li><li>You have multiple spaces and want centralized control</li><li>Your lifestyle benefits from remote monitoring</li></ul><p><strong>Smart features are not necessary if:</strong></p><ul><li>Budget is your primary concern and basic purification solves your air quality issues</li><li>You prefer simplicity and minimal technology</li><li>You plan minimal use, only activating when needed</li></ul><p>Compare smart and traditional options by checking the<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=5&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 211i Max</span></a> for core purification and the<a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify?_pos=3&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">2-in-1 Pro Purify + Humidify</span></a> for multi-function needs.</p><h4><strong>How Smart Features Work in Real Life Situations</strong></h4><p><strong>Auto mode in practice:</strong> A bedroom runs the Blue Pure 311i Max in auto mode. At night when air quality is good, the purifier operates at fan speed 1, consuming 10W and producing 23 dB, basically inaudible. When cooking occurs on an adjacent floor and odors infiltrate, the air quality sensor detects PM2.5 spikes, and auto mode shifts to fan speed 3-4, consuming 25-30W and producing 35-40 dB. After cooking finishes and air quality recovers, the purifier automatically returns to low speed.</p><p>Compare this to manual mode, where the purifier runs perpetually at maximum speed (60W, 50 dB, maximum noise and electricity waste) or requires remembering to adjust speeds throughout the day.</p><p><strong>WiFi air purifier and app control in real situations:</strong> The Blue Pure 211i Max app connectivity becomes particularly useful when traveling. Returning from a weekend trip with concerns about stale air accumulation, you activate the purifier remotely 30 minutes before arriving home, ensuring fresh air upon arrival. The app simultaneously displays outdoor air quality readings, helping determine whether to open windows or rely solely on the purifier.</p><p>For allergy sufferers, receiving air quality alerts enables proactive management, taking medication preventatively when sensors detect pollen spikes rather than reactively after symptoms begin.</p><h4><strong>What Does the Science Say About Smart Air Purifier Features</strong></h4><p>Research from <a href=\"https://hsph.harvard.edu/news/office-air-quality-may-affect-employees-cognition-productivity/\"><span style=\"text-decoration:underline\">Harvard T.H. Chan School of Public Health</span></a> found that workers in environments with higher air quality showed measurably improved cognitive function with benefits including faster response times and better decision-making. While this research does not exclusively address smart features, it underscores that investing in genuinely effective air purification matters.</p><p>According to the EPA's Residential Air Cleaners: A Technical Summary, CADR ratings provide the most reliable metric for evaluating purifier effectiveness. The scientific testing protocol (GB/T18801-2015) ensures consistent evaluation across manufacturers, making CADR the feature to prioritize over marketing claims.</p><p>The combination of HEPASilent™ technology with intelligent sensor-based auto mode addresses what the National Institutes of Health identified as critical in hospital settings: simultaneously reducing noise while maintaining particle removal efficiency. This principle applies equally to residential spaces where occupants spend 16 plus hours daily.</p><p><strong>Making Your Final Decision</strong></p><p>Smart air purifiers solve real problems when you match the right features to your needs. The purifier that is right for you is not the one with the most features or the highest price, but the one that solves your specific air quality problem while fitting your budget and lifestyle.</p><p>A weak smart purifier with impressive app control still leaves you with bad air. A powerful basic purifier with no connectivity solves your air quality problem just fine. Match your priorities to your situation, and you will make a purchase you actually value.</p><h4><strong>FAQs</strong></h4><p><strong>Which air purifier is worth buying for my space?</strong></p><p>Size matters most. Measure your room square footage and choose a CADR accordingly. The Blue Pure 411i Max works for under 400 square feet, the 311i Max for 400-700 square feet, and the 211i Max for 700 plus square feet. Within your size range, choose based on budget and whether WiFi features matter to you.</p><p><strong>What features should you look for?</strong></p><p>Prioritize proper CADR for your space, quiet operation under 50 dB, reasonable filter costs and replacement frequency, and smart features that match your actual lifestyle.</p><p><strong>Are smart air filters actually worth it?</strong></p><p>Yes, if you use them. Auto mode and real-time monitoring deliver genuine value through energy savings and convenience. No, if you rarely interact with the app and let smart features go unused.</p><p><strong>What should you avoid when buying?</strong></p><p>Avoid undersized purifiers regardless of smart features, unnecessary gimmick features, and buying without checking warranty details. Focus on CADR rating and filter costs before considering smart features.</p><p>Explore the<a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify?_pos=3&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">2-in-1 Pro Purify + Humidify</span></a> and<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=5&_sid=aa6f929d5&_ss=r\"> <span style=\"text-decoration:underline\">Blue Pure 211i Max</span></a> to compare comprehensive solutions with complete specifications.</p><h4><strong>Bibliography and Scientific References</strong></h4><ol><li>EPA (2008). Residential Air Cleaners: A Technical Summary. 3rd Edition.<br/></li><li>Harvard T.H. Chan School of Public Health (2015). Green Office Environments Linked with Higher Cognitive Function. October 2015.<br/></li><li>National Institutes of Health (2019). Mapping sources of noise in an intensive care unit. August 2019.<br/></li><li>GB/T18801-2015 Standard. Particulate Matter CADR testing protocol for air purification devices.<br/></li><li>Blueair Medical White Paper (2016). Providing Clean Air and Peace of Mind for Your Patients, Providers, Staff, and Others. Internal testing documentation on HEPASilent™ technology performance.<br/></li><li>Blueair Technical Documentation. HEPASilent™ Technology Performance Data. Comparative CADR analysis with mechanical-only filtration.</li></ol>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_Xi6zz4",
+        "text_e9yarP",
+        "image_caption_b4iy4c",
+        "text_Ub47yL",
+        "image_caption_yNQzkF",
+        "text_eiGfCz",
+        "image_caption_HTNmpE",
+        "text_cMzJxn"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}
