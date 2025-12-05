@@ -31,22 +31,31 @@
   {% when 'select' %}
     <div class="product-option {% if option.values.size == 1 %} sr-only {% endif %}">
       {% capture input_id %}option-{{ option.name }}-{{ section.id }}-{{ product.id }}{% endcapture %}
-      <label for="{{ input_id }}">
+      <label for="{{ input_id }}" class="sr-only">
         {{ option.name }}
       </label>
 
-      <select
-        id="{{ input_id }}"
-        js-product-option-selector
-        data-index="option{{ option.position }}">
-        {% for value in option.values %}
-          <option
-            value="{{ value | handle }}"
-            {% if option.selected_value == value %}selected="selected"{% endif %}>
-              {{ value }}
-          </option>
-        {% endfor %}
-      </select>
+      <div class="product-option__select-wrapper relative">
+        <select
+          id="{{ input_id }}"
+          class="product-option__select"
+          js-product-option-selector
+          data-index="option{{ option.position }}">
+          {% for value in option.values %}
+            <option
+              value="{{ value | handle }}"
+              {% if option.selected_value == value %}selected="selected"{% endif %}>
+                {{ value }}
+            </option>
+          {% endfor %}
+        </select>
+        <div class="product-option__select-display" aria-hidden="true">
+          <span class="product-option__select-value">{{ option.selected_value | default: option.values.first }}</span>
+          <svg class="product-option__select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
     </div>
 
   {% when 'swatch' %}

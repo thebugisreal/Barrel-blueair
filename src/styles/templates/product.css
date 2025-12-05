@@ -7,6 +7,18 @@
   @apply hidden;
 }
 
+.GiftWizard-gift-button.gwbutton, button.GiftWizard-gift-button.gwbutton {
+  @apply h-[50px];
+}
+
+.flex.flex-col.gap-md:has(.GiftWizard-gift-button) {
+  @apply gap-xs;
+}
+
+.flex.flex-col.gap-md:has(.GiftWizard-gift-button) .product__atc {
+  @apply !mb-0;
+}
+
 /* product carousel */
 .product__thumb-carousel:has(.hide-thumb-carousel) {
   @apply hidden;
@@ -37,6 +49,56 @@
 /* product option selector */
 .product-swatch__label--color {
   @apply block w-[50px] min-w-[50px] h-[50px] p-xxxs border border-transparent rounded-full;
+}
+
+.product-option__select-wrapper {
+  @apply relative w-full mt-xxxs;
+}
+
+.product-option__select {
+  @apply absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.product-option__select-display {
+  @apply w-full py-xs px-sm border border-gray rounded-[2px] bg-white flex items-center justify-between cursor-pointer;
+  min-height: 44px;
+  transition: border-color 0.2s ease;
+}
+
+.product-option__select-value {
+  @apply text-14 text-blue flex-1;
+  font-weight: 400;
+}
+
+.product-option__select-arrow {
+  @apply flex-shrink-0 ml-xs text-blue;
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.product-option__select:focus + .product-option__select-display {
+  @apply border-blue outline-none;
+}
+
+.product-option__select:focus-visible + .product-option__select-display {
+  @apply border-blue outline-2 outline-offset-2 outline-blue;
+}
+
+.product-option__select:hover + .product-option__select-display {
+  @apply border-blue;
+}
+
+.product-option__select:active + .product-option__select-display .product-option__select-arrow {
+  transform: rotate(180deg);
+}
+
+@media screen(desktop) {
+  .product-option__select-display:hover {
+    @apply border-blue;
+  }
 }
 
 .product-swatch__label--non-color {

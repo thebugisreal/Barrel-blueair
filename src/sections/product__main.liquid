@@ -389,11 +389,17 @@
                   %}
 
                   {% unless product.has_only_default_variant %}
+                  {%- liquid
+                    assign option_type = 'swatch'
+                    if template.suffix == 'gift-card'
+                      assign option_type = 'select'
+                    endif
+                  -%}
                   <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
                     {% for option in product.options_with_values %}
                       {% render 'product-option-selector' 
                         option: option
-                        type: 'swatch'
+                        type: option_type
                         section_id: section.id
                         product_id: product.id
                         current_variant: current_variant
