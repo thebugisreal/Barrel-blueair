@@ -674,20 +674,6 @@ class ProductMain extends HTMLElement {
     if (!subscriptionContainer) return;
 
     const subscriptionType = subscriptionContainer.dataset.type;
-    const isAdditionalSubscription = subscriptionContainer.hasAttribute('js-additional-subscription');
-    const variantId = triggerTarget.dataset.variant;
-    const sellingPlanId = triggerTarget.dataset.sellingPlanId;
-    const frequency = triggerTarget.textContent.trim();
-    const index = triggerTarget.dataset.index || 'N/A';
-    
-    console.log('=== Shipping Frequency Selected ===');
-    console.log('Subscription Type:', isAdditionalSubscription ? 'Additional Subscription' : 'Main Subscription');
-    console.log('Subscription PDP Type:', subscriptionType);
-    console.log('Selected Frequency:', frequency);
-    console.log('Variant ID:', variantId);
-    console.log('Selling Plan ID:', sellingPlanId);
-    console.log('Item Index:', index);
-    console.log('Button Element:', triggerTarget);
 
     if (subscriptionType == '2in1_purify_humidify') {
       const prevSelectedTrigger = triggerTarget.closest(this._selectors.filterSubscriptionSellingPlansGroup).querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
@@ -769,8 +755,6 @@ class ProductMain extends HTMLElement {
       }
     }
 
-    console.log('===================================');
-
     // Update temp ID for all items in this subscription container
     const tempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input]');
     if (tempIdInputs.length > 0) {
@@ -810,14 +794,7 @@ class ProductMain extends HTMLElement {
 
     const selectedFrequency = triggerTarget.dataset.frequency;
     const frequency = parseInt(selectedFrequency.toLowerCase().replace('months', '').trim());
-    const isAdditionalSubscription = subscriptionContainer.hasAttribute('js-additional-subscription');
     const sellingPlansGroups = subscriptionContainer.querySelectorAll('[js-filter-subscription-selling-plans-group]');
-
-    console.log('=== Master Shipping Frequency Selected ===');
-    console.log('Subscription Type:', isAdditionalSubscription ? 'Additional Subscription' : 'Main Subscription');
-    console.log('Selected Master Frequency:', selectedFrequency);
-    console.log('Frequency Integer:', frequency);
-    console.log('Selling Plan Groups:', sellingPlansGroups)
     
     // Update all filter subscription inputs with the selected frequency
     sellingPlansGroups.forEach((group, index) => {
@@ -839,11 +816,6 @@ class ProductMain extends HTMLElement {
         // Update the form inputs for this filter product
         const filterSubscriptionSelectedVariantInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
         const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
-        
-        console.log(`Master Frequency - Updating item ${index + 1}:`);
-        console.log('Variant ID:', variantId);
-        console.log('Selling Plan ID:', targetSellingPlan.dataset.sellingPlanId);
-        console.log('Frequency:', frequency + ' months');
         
         if (filterSubscriptionSelectedVariantInputTarget) {
           filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
@@ -883,8 +855,6 @@ class ProductMain extends HTMLElement {
         input.setAttribute('value', `subscription${tempId}`);
       });
     }
-
-    console.log('========================================');
   }
 
   _initProductForm() {
@@ -1154,32 +1124,15 @@ class ProductMain extends HTMLElement {
       this.cart.setActiveElement(document.activeElement);
     }
     config.body = formData;
-    
-    // Log the form data being sent
-    const formDataObj = {};
-    for (const [key, value] of formData.entries()) {
-      formDataObj[key] = value;
-    }
-    console.log('Cart Add Request - Form Data:', formDataObj);
-    console.log('Cart Add Request - URL:', `${window.routes.cart_add_url}`);
-    
     fetch(`${window.routes.cart_add_url}`, config)
       .then(async (response) => {
-        console.log('Cart Add Response - Status:', response.status, response.statusText);
-        console.log('Cart Add Response - Headers:', Object.fromEntries(response.headers.entries()));
-        console.log('Cart Add Response - OK:', response.ok);
-        console.log('Cart Add Response - Type:', response.type);
-        
-        // Get response text first to log it, then parse as JSON
+        // Get response text first, then parse as JSON
         const responseText = await response.clone().text();
-        console.log('Cart Add Response - Raw Text:', responseText);
         
         // Try to parse as JSON, but handle errors
         try {
           return JSON.parse(responseText);
         } catch (parseError) {
-          console.error('Cart Add Response - JSON Parse Error:', parseError);
-          console.error('Cart Add Response - Could not parse as JSON. Raw response:', responseText);
           // Return an error object if we can't parse
           return {
             status: response.status,
@@ -1189,16 +1142,9 @@ class ProductMain extends HTMLElement {
         }
       })
       .then((response) => {
-        console.log('Cart Add Response - Body:', response);
         sessionStorage.setItem('noCartWatcherHandle', 'true');
         
         if (response.status) {
-          console.error('Cart Add Error - Status:', response.status);
-          console.error('Cart Add Error - Description:', response.description);
-          console.error('Cart Add Error - Message:', response.message);
-          console.error('Cart Add Error - Errors:', response.errors);
-          console.error('Cart Add Error - Full Response:', response);
-          
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartError, {
             source: 'product-form',
             productVariantId: formData.get('id'),
@@ -1225,11 +1171,6 @@ class ProductMain extends HTMLElement {
         }
         })
         .catch((e) => {
-          console.error('Cart Add Exception - Error:', e);
-          console.error('Cart Add Exception - Error Description:', e.description);
-          console.error('Cart Add Exception - Error Message:', e.message);
-          console.error('Cart Add Exception - Error Stack:', e.stack);
-          console.error('Cart Add Exception - Full Error Object:', JSON.stringify(e, Object.getOwnPropertyNames(e)));
           this.handleErrorMessage(e.description)
           console.error(e);
         })
