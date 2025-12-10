@@ -335,34 +335,30 @@ class ProductMain extends HTMLElement {
   }
 
   _deselectAllSubscriptions() {
-    // Deselect main subscription
-    this.subscription.dataset.selected = 'false';
-    this._toggleFilterSubscriptionFormInputs(false);
-    
-    // Deselect additional subscription
-    const additionalSubscription = this.querySelector('[js-additional-subscription]');
-    if (additionalSubscription) {
-      additionalSubscription.dataset.selected = 'false';
-      const additionalFormInputs = additionalSubscription.querySelectorAll('[js-filter-subscription-form-input]');
-      additionalFormInputs.forEach(input => input.setAttribute('disabled', ''));
-    }
+    // Deselect all subscriptions
+    const allSubscriptions = this.querySelectorAll('[js-subscription]');
+    allSubscriptions.forEach((subscription) => {
+      subscription.dataset.selected = 'false';
+      const formInputs = subscription.querySelectorAll('[js-filter-subscription-form-input]');
+      formInputs.forEach(input => input.setAttribute('disabled', ''));
+    });
     
     // Deselect non-subscription
     this.nonSubscriptionToggle.dataset.selected = 'false';
   }
 
   _handleSubscription() {
-    if (!this.subscription) {
+    // Get all subscriptions
+    const allSubscriptions = this.querySelectorAll('[js-subscription]');
+    if (allSubscriptions.length === 0) {
       return;
     }
 
+    this.subscription = allSubscriptions[0];
     this.subscriptionType = this.subscription.dataset.type;
     this.subscriptionToggle = this.subscription.querySelector(this._selectors.subscriptionToggle);
     this.nonSubscriptionToggle = this.querySelector(this._selectors.nonSubscriptionToggle);
     this.subscriptionPrice = this.subscription.querySelector(this._selectors.subscriptionPrice);
-    this.filterSubscriptionVariants = this.subscription.querySelectorAll(this._selectors.filterSubscriptionVariant);
-    this.filterSubscriptionSellingPlans = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
-    this.filterSubscriptionMasterFrequencies = this.querySelectorAll(this._selectors.filterSubscriptionMasterFrequency);
     this.filterSubscriptionFormInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionFormInput);
     this.filterSubscriptionSelectedVariantInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
     this.filterSubscriptionSelectedVariantSellingPlanInput = this.subscription.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
@@ -377,6 +373,11 @@ class ProductMain extends HTMLElement {
       this.currentQuantity = 2;
       this.filterSubscriptionTwoPackQuantityInput = this.querySelector(this._selectors.filterSubscriptionTwoPackQuantityInput);
     }
+
+    // Get all subscription elements
+    this.filterSubscriptionVariants = this.querySelectorAll(this._selectors.filterSubscriptionVariant);
+    this.filterSubscriptionSellingPlans = this.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
+    this.filterSubscriptionMasterFrequencies = this.querySelectorAll(this._selectors.filterSubscriptionMasterFrequency);
 
     if (this.subscriptionType == '2in1_purify_humidify') {
       this.filterSubscriptionSellingPlansGroups = this.querySelectorAll(this._selectors.filterSubscriptionSellingPlansGroup);
@@ -395,6 +396,7 @@ class ProductMain extends HTMLElement {
       }
     }
 
+    // Set event listeners for all subscription elements
     this.filterSubscriptionVariants.forEach((trigger) => {
       trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
     });
@@ -407,92 +409,47 @@ class ProductMain extends HTMLElement {
       masterFrequency.addEventListener('click', this._filterSubscriptionMasterFrequencyOnClick);
     });
     
-    this.subscriptionToggle.addEventListener('click', (evt) => {
-      evt.preventDefault();
-
-      if (this.subscription.dataset.selected == 'true') {
-        return;
-      }
-
-      this._deselectAllSubscriptions();
-      this.subscription.dataset.selected = 'true';
-
-      // Always initialize the subscription when opened
-      if (this.selectedFilterSubscriptionVariant) {
-        if (this.selectedFilterSubscriptionVariant.dataset.available == 'true') {
-          this._toggleFilterSubscriptionFormInputs(true);
-        }
-        this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
-      } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
-        this._toggleFilterSubscriptionFormInputs(true);
-        this._updateAtcStateOnFilterChange(false);
-        // Select the first master frequency option
-        const firstMasterFrequency = this.filterSubscriptionMasterFrequencies[0];
-        if (firstMasterFrequency) {
-          firstMasterFrequency.click();
-        }
-      } else {
-        const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
-        if (filterSubscriptionVariantToBeSelectedOnLoad) {
-          filterSubscriptionVariantToBeSelectedOnLoad.click();
-        }
-      }
-
-      this._updateAtcSubscriptionPrice();
-    });
-
-    // Handle additional subscription toggle and initialize its event listeners
-    const additionalSubscription = this.querySelector('[js-additional-subscription]');
-    if (additionalSubscription) {
-      const additionalSubscriptionToggle = additionalSubscription.querySelector('[js-subscription-toggle]');
-      if (additionalSubscriptionToggle) {
-        additionalSubscriptionToggle.addEventListener('click', (evt) => {
+    // Set toggle handlers for all subscriptions
+    allSubscriptions.forEach((subscription) => {
+      const subscriptionToggle = subscription.querySelector(this._selectors.subscriptionToggle);
+      if (subscriptionToggle) {
+        subscriptionToggle.addEventListener('click', (evt) => {
           evt.preventDefault();
-          
-          if (additionalSubscription.dataset.selected == 'true') {
+
+          if (subscription.dataset.selected == 'true') {
             return;
           }
 
           this._deselectAllSubscriptions();
-          additionalSubscription.dataset.selected = 'true';
+          subscription.dataset.selected = 'true';
 
-          // Enable form inputs for additional subscription
-          const additionalFormInputs = additionalSubscription.querySelectorAll('[js-filter-subscription-form-input]');
-          additionalFormInputs.forEach(input => input.removeAttribute('disabled'));
+          // Enable form inputs for this subscription
+          const formInputs = subscription.querySelectorAll('[js-filter-subscription-form-input]');
+          formInputs.forEach(input => input.removeAttribute('disabled'));
 
-          // Always initialize the additional subscription when opened
-          if (additionalSubscription.dataset.type == '2in1_purify_humidify') {
+          // Initialize subscription when opened
+          const subscriptionType = subscription.dataset.type;
+          if (subscriptionType == '2in1_purify_humidify') {
             // For 2in1_purify_humidify, select first master frequency
-            const firstMasterFrequency = additionalSubscription.querySelector('[js-filter-subscription-master-frequency]');
+            const firstMasterFrequency = subscription.querySelector('[js-filter-subscription-master-frequency]');
             if (firstMasterFrequency) {
               firstMasterFrequency.click();
             }
           } else {
             // For other types, try to select the first available variant
-            const firstVariant = additionalSubscription.querySelector('[js-fitler-subscription-variant][current-on-load]');
+            const firstVariant = subscription.querySelector('[js-fitler-subscription-variant][current-on-load]');
             if (firstVariant) {
               firstVariant.click();
             }
           }
+
+          // Update ATC subscription price only for main subscription
+          if (subscription === this.subscription) {
+            this._updateAtcSubscriptionPrice();
+          }
         });
       }
-
-      // Set up event listeners for additional subscription elements
-      const additionalFilterSubscriptionVariants = additionalSubscription.querySelectorAll(this._selectors.filterSubscriptionVariant);
-      additionalFilterSubscriptionVariants.forEach((trigger) => {
-        trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
-      });
-
-      const additionalFilterSubscriptionSellingPlans = additionalSubscription.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
-      additionalFilterSubscriptionSellingPlans.forEach((sellingPlan) => {
-        sellingPlan.addEventListener('click', this._filterSubscriptionSellingPlanOnClick);
-      });
-
-      const additionalFilterSubscriptionMasterFrequencies = additionalSubscription.querySelectorAll(this._selectors.filterSubscriptionMasterFrequency);
-      additionalFilterSubscriptionMasterFrequencies.forEach((masterFrequency) => {
-        masterFrequency.addEventListener('click', this._filterSubscriptionMasterFrequencyOnClick);
-      });
-    }
+    });
 
     this.nonSubscriptionToggle.addEventListener('click', (evt) => {
       evt.preventDefault();
@@ -717,6 +674,20 @@ class ProductMain extends HTMLElement {
     if (!subscriptionContainer) return;
 
     const subscriptionType = subscriptionContainer.dataset.type;
+    const isAdditionalSubscription = subscriptionContainer.hasAttribute('js-additional-subscription');
+    const variantId = triggerTarget.dataset.variant;
+    const sellingPlanId = triggerTarget.dataset.sellingPlanId;
+    const frequency = triggerTarget.textContent.trim();
+    const index = triggerTarget.dataset.index || 'N/A';
+    
+    console.log('=== Shipping Frequency Selected ===');
+    console.log('Subscription Type:', isAdditionalSubscription ? 'Additional Subscription' : 'Main Subscription');
+    console.log('Subscription PDP Type:', subscriptionType);
+    console.log('Selected Frequency:', frequency);
+    console.log('Variant ID:', variantId);
+    console.log('Selling Plan ID:', sellingPlanId);
+    console.log('Item Index:', index);
+    console.log('Button Element:', triggerTarget);
 
     if (subscriptionType == '2in1_purify_humidify') {
       const prevSelectedTrigger = triggerTarget.closest(this._selectors.filterSubscriptionSellingPlansGroup).querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
@@ -727,9 +698,11 @@ class ProductMain extends HTMLElement {
       const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${triggerTarget.dataset.index}][selling_plan]"]`);
       if (filterSubscriptionSelectedVariantInputTarget) {
         filterSubscriptionSelectedVariantInputTarget.setAttribute('value', triggerTarget.dataset.variant);
+        console.log(`Set variant input [items[${triggerTarget.dataset.index}][id]] to:`, triggerTarget.dataset.variant);
       }
       if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
         filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+        console.log(`Set selling plan input [items[${triggerTarget.dataset.index}][selling_plan]] to:`, triggerTarget.dataset.sellingPlanId);
       }
       
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
@@ -765,9 +738,11 @@ class ProductMain extends HTMLElement {
 
       if (filterSubscriptionSelectedVariantInput) {
         filterSubscriptionSelectedVariantInput.setAttribute('value', triggerTarget.dataset.variant);
+        console.log('Set variant input [id] to:', triggerTarget.dataset.variant);
       }
       if (filterSubscriptionSelectedVariantSellingPlanInput) {
         filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
+        console.log('Set selling plan input [selling_plan] to:', triggerTarget.dataset.sellingPlanId);
       }
       
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
@@ -793,6 +768,8 @@ class ProductMain extends HTMLElement {
         filterSubscriptionOgDateInput.setAttribute('value', formattedOrderDate);
       }
     }
+
+    console.log('===================================');
 
     // Update temp ID for all items in this subscription container
     const tempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input]');
@@ -833,8 +810,14 @@ class ProductMain extends HTMLElement {
 
     const selectedFrequency = triggerTarget.dataset.frequency;
     const frequency = parseInt(selectedFrequency.toLowerCase().replace('months', '').trim());
-
+    const isAdditionalSubscription = subscriptionContainer.hasAttribute('js-additional-subscription');
     const sellingPlansGroups = subscriptionContainer.querySelectorAll('[js-filter-subscription-selling-plans-group]');
+
+    console.log('=== Master Shipping Frequency Selected ===');
+    console.log('Subscription Type:', isAdditionalSubscription ? 'Additional Subscription' : 'Main Subscription');
+    console.log('Selected Master Frequency:', selectedFrequency);
+    console.log('Frequency Integer:', frequency);
+    console.log('Selling Plan Groups:', sellingPlansGroups)
     
     // Update all filter subscription inputs with the selected frequency
     sellingPlansGroups.forEach((group, index) => {
@@ -852,39 +835,44 @@ class ProductMain extends HTMLElement {
         }
       }
 
-        if (targetSellingPlan) {
-          // Update the form inputs for this filter product
-          const filterSubscriptionSelectedVariantInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
-          const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
-          
-          if (filterSubscriptionSelectedVariantInputTarget) {
-            filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
-          }
-          if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
-            filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', targetSellingPlan.dataset.sellingPlanId);
-          }
-
-          const filterSubscriptionFrequencyInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${index + 1}][properties[_Frequency]]"]`);
-          const filterSubscriptionFrequencyIntegerInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${index + 1}][properties[_frequency_integer]]"]`);
-          
-          if (filterSubscriptionFrequencyInputTarget) {
-            filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
-          }
-          if (filterSubscriptionFrequencyIntegerInputTarget) {
-            filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
-          }
-
-          const filterSubscriptionFirstOrderDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${index + 1}][properties[First Order Date]]"]`);
-          const filterSubscriptionOgDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${index + 1}][properties[_og_first_order_place_date]]"]`);
-          
-          if (filterSubscriptionFirstOrderDateInputTarget && filterSubscriptionOgDateInputTarget) {
-            const date = new Date();
-            const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
-            const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
-            filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
-            filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
-          }
+      if (targetSellingPlan) {
+        // Update the form inputs for this filter product
+        const filterSubscriptionSelectedVariantInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
+        const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
+        
+        console.log(`Master Frequency - Updating item ${index + 1}:`);
+        console.log('Variant ID:', variantId);
+        console.log('Selling Plan ID:', targetSellingPlan.dataset.sellingPlanId);
+        console.log('Frequency:', frequency + ' months');
+        
+        if (filterSubscriptionSelectedVariantInputTarget) {
+          filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
         }
+        if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
+          filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', targetSellingPlan.dataset.sellingPlanId);
+        }
+
+        const filterSubscriptionFrequencyInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${index + 1}][properties[_Frequency]]"]`);
+        const filterSubscriptionFrequencyIntegerInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${index + 1}][properties[_frequency_integer]]"]`);
+        
+        if (filterSubscriptionFrequencyInputTarget) {
+          filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
+        }
+        if (filterSubscriptionFrequencyIntegerInputTarget) {
+          filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
+        }
+
+        const filterSubscriptionFirstOrderDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${index + 1}][properties[First Order Date]]"]`);
+        const filterSubscriptionOgDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${index + 1}][properties[_og_first_order_place_date]]"]`);
+        
+        if (filterSubscriptionFirstOrderDateInputTarget && filterSubscriptionOgDateInputTarget) {
+          const date = new Date();
+          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+          filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
+          filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
+        }
+      }
     });
 
     // Update temp ID for all items in this subscription
@@ -895,6 +883,8 @@ class ProductMain extends HTMLElement {
         input.setAttribute('value', `subscription${tempId}`);
       });
     }
+
+    console.log('========================================');
   }
 
   _initProductForm() {
@@ -1164,12 +1154,51 @@ class ProductMain extends HTMLElement {
       this.cart.setActiveElement(document.activeElement);
     }
     config.body = formData;
+    
+    // Log the form data being sent
+    const formDataObj = {};
+    for (const [key, value] of formData.entries()) {
+      formDataObj[key] = value;
+    }
+    console.log('Cart Add Request - Form Data:', formDataObj);
+    console.log('Cart Add Request - URL:', `${window.routes.cart_add_url}`);
+    
     fetch(`${window.routes.cart_add_url}`, config)
-      .then((response) => response.json())
+      .then(async (response) => {
+        console.log('Cart Add Response - Status:', response.status, response.statusText);
+        console.log('Cart Add Response - Headers:', Object.fromEntries(response.headers.entries()));
+        console.log('Cart Add Response - OK:', response.ok);
+        console.log('Cart Add Response - Type:', response.type);
+        
+        // Get response text first to log it, then parse as JSON
+        const responseText = await response.clone().text();
+        console.log('Cart Add Response - Raw Text:', responseText);
+        
+        // Try to parse as JSON, but handle errors
+        try {
+          return JSON.parse(responseText);
+        } catch (parseError) {
+          console.error('Cart Add Response - JSON Parse Error:', parseError);
+          console.error('Cart Add Response - Could not parse as JSON. Raw response:', responseText);
+          // Return an error object if we can't parse
+          return {
+            status: response.status,
+            description: `Failed to parse response. Status: ${response.status} ${response.statusText}. Response: ${responseText.substring(0, 500)}`,
+            rawResponse: responseText
+          };
+        }
+      })
       .then((response) => {
+        console.log('Cart Add Response - Body:', response);
         sessionStorage.setItem('noCartWatcherHandle', 'true');
         
         if (response.status) {
+          console.error('Cart Add Error - Status:', response.status);
+          console.error('Cart Add Error - Description:', response.description);
+          console.error('Cart Add Error - Message:', response.message);
+          console.error('Cart Add Error - Errors:', response.errors);
+          console.error('Cart Add Error - Full Response:', response);
+          
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartError, {
             source: 'product-form',
             productVariantId: formData.get('id'),
@@ -1196,6 +1225,11 @@ class ProductMain extends HTMLElement {
         }
         })
         .catch((e) => {
+          console.error('Cart Add Exception - Error:', e);
+          console.error('Cart Add Exception - Error Description:', e.description);
+          console.error('Cart Add Exception - Error Message:', e.message);
+          console.error('Cart Add Exception - Error Stack:', e.stack);
+          console.error('Cart Add Exception - Full Error Object:', JSON.stringify(e, Object.getOwnPropertyNames(e)));
           this.handleErrorMessage(e.description)
           console.error(e);
         })
