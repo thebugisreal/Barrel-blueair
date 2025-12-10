@@ -320,7 +320,14 @@
       <ul class="product-subscription__tags flex gap-xxs absolute left-md top-0 -translate-y-1/2">
         {% for tag in filter_subscription.tags.value %}
           {% capture tag_cycle %}{% cycle 'odd', 'even' %}{% endcapture %}
-          <li class="product-subscription__tag rounded-[60px] font-500 p6 leading-[1] py-xxs px-xs {% if tag_cycle == 'odd' %}bg-blue text-white{% else %}bg-blue-darkSky{% endif %}">{{ tag }}</li>
+          {%- capture tag_class -%}
+            {%- if is_additional -%}
+              {%- if tag_cycle == 'odd' -%}bg-blue-darkSky{%- else -%}bg-blue text-white{%- endif -%}
+            {%- else -%}
+              {%- if tag_cycle == 'odd' -%}bg-blue text-white{%- else -%}bg-blue-darkSky{%- endif -%}
+            {%- endif -%}
+          {%- endcapture -%}
+          <li class="product-subscription__tag rounded-[60px] font-500 p6 leading-[1] py-xxs px-xs {{ tag_class }}">{{ tag }}</li>
         {% endfor %}
       </ul>
     {% endif %}
