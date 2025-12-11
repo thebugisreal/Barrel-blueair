@@ -17,7 +17,15 @@
 <cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative">
   <div class="flex justify-start items-center gap-xs">
     <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
-    <p class="p3">{% if preselected_subscription.title contains 'Wick' and is_two_in_one_subscription %}Add a Wick Subscription{% else %}Add a Filter Subscription{% endif %}</p>
+    <p class="p3">
+      {% if preselected_subscription.title contains 'Wick' and is_two_in_one_subscription %}
+        Add a Wick Subscription
+      {% elsif preselected_subscription.title contains 'Aroma' and is_two_in_one_subscription %}
+        Add an Aroma Subscription
+      {% else %}
+        Add a Filter Subscription
+      {% endif %}
+    </p>
     <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--add w-[19px] h-[19px] rounded-full"></button>
   </div>
   <div class="border-t border-t-gray mt-sm pt-sm flex items-center gap-xxs">

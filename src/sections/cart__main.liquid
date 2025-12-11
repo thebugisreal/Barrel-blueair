@@ -218,18 +218,31 @@
 
                               <div id="CartMain-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert"></div>
 
-                              {% if item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false  %}
+                              {% if item.product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
+                                {% assign subscription_object = item.product.metafields.seed.additional_subscription.value %}
                                 <div class="hidden tabletp:block tabletl:hidden widescreen:block">
-                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index %}
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
+                                </div>
+                              {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
+                                {% assign subscription_object = item.product.metafields.seed.subscription.value %}
+                                <div class="hidden tabletp:block tabletl:hidden widescreen:block">
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
                                 </div>
                               {% endif %}
                             </div>
                           </div>
                         </div>
                       </div>
-                      {% if item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false  %}
+                      {% if item.product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
                         <div class="tabletp:hidden tabletl:block widescreen:hidden">
-                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index %}
+                          {% assign subscription_object = item.product.metafields.seed.additional_subscription.value %}
+                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
+                          {% assign subscription_index = subscription_index | plus: 1 %}
+                        </div>
+                      {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
+                        <div class="tabletp:hidden tabletl:block widescreen:hidden">
+                          {% assign subscription_object = item.product.metafields.seed.subscription.value %}
+                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
                           {% assign subscription_index = subscription_index | plus: 1 %}
                         </div>
                       {% endif %}
