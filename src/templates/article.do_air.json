@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>If you've spotted dark patches on bathroom tiles or caught a musty smell in your closet, you're facing a common household challenge. The question many homeowners ask is: <strong>do air purifiers help with mold</strong> control? The answer is yes but with important context. While air purifiers cannot eliminate existing mold growth on surfaces, they play a crucial role in capturing airborne mold spores before they settle and multiply throughout your home.</p><p>According to the <a href=\"https://www.epa.gov/indoor-air-quality-iaq\"><span style=\"text-decoration:underline\">Environmental Protection Agency,</span></a> we spend approximately 90% of our time indoors, where air can be up to five times more polluted than outdoor air. For those sensitive to mold, these tiny airborne invaders trigger allergic reactions, respiratory issues, and can significantly impact quality of life. The good news? Advanced air purification technology, combined with proper moisture control, creates a powerful defense against mold-related health concerns.</p><h2><strong>Understanding Mold: The Invisible Indoor Threat</strong></h2><p>Mold encompasses thousands of fungal species that reproduce by releasing microscopic spores into the air. These resilient organisms require just three elements to flourish: moisture, organic material (like wood, drywall, or dust), and temperatures between 60-80°F. Unfortunately, most homes provide all three.</p><p>Mold spores typically measure between 3-40 microns in diameter, with many species producing spores in the 2-10 micron range. Common indoor species include Aspergillus (found on walls and insulation), Cladosporium (thrives on fabrics and wood), Stachybotrys or \"black mold\" (grows on consistently damp materials), and Penicillium (appears on water-damaged materials).</p><p><strong>Health impacts are significant.</strong> People sensitive to mold may experience respiratory symptoms like coughing and wheezing, nasal congestion, eye irritation, skin rashes, and asthma exacerbation. Children and those with compromised immune systems face heightened vulnerability, making indoor air quality management essential for family health.</p><h2><strong>How Air Purifiers Combat Airborne Mold Spores</strong></h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_748041c2-194a-4161-8bbd-bdcb213388a7.jpg",
+            "image_desktop": "shopify://shop_images/image2_748041c2-194a-4161-8bbd-bdcb213388a7.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Here's where air purification technology becomes your ally. <strong>Can air purifiers help with mold</strong> spores circulating through your home? Absolutely when equipped with the right filtration technology.</p><h3><strong>The Science Behind Effective Mold Capture</strong></h3><p>True HEPA filters capture 99.97% of particles as small as 0.3 microns, which falls well within the size range of most mold spores. However, cutting-edge technology goes even further.</p><p>The <a href=\"https://www.blueair.com/products/blue-signature\"><span style=\"text-decoration:underline\"><strong>Blue Signature Series</strong></span></a>* features proprietary HEPASilent™ Technology, which removes 99.97% of airborne particles down to 0.1 microns, significantly smaller than traditional HEPA standards. This Swedish-engineered system combines mechanical and electrostatic filtration, where particles receive an electrical charge that dramatically increases capture efficiency.</p><p><strong>Does an air purifier help with mold</strong> spores specifically? Yes this advanced filtration captures mold spores before they land on surfaces and begin colonizing. The electrostatic enhancement means particles are trapped using less dense filters, resulting in quieter operation and better airflow while maintaining superior capture rates.</p><h3>Why Mechanical & Electrostatic Filtration Outperforms Other Technologies</h3><p>Not all air purification technologies effectively address mold concerns. Here's what you need to know:</p><ul><li><strong>HEPASilent™ technology, Blueair's signature mechanical and electrostatic filtration system is the gold standard</strong> according to EPA guidelines. This dual-action approach physically traps mold spores while electrostatic charging enhances capture efficiency, preventing reintroduction into living spaces. HEPASilent™ outperforms traditional mechanical filtration alone by combining both methods for superior protection.</li><li><strong>Ozone generators present significant concerns</strong>: The California Air Resources Board warns that ozone-generating devices can irritate lungs without effectively killing mold. This makes them an unsuitable choice for homes prioritizing mold remediation and healthy indoor air.</li><li><strong>UV-C light systems show promise in laboratories but real-world effectiveness depends on sufficient exposure time.</strong> As air moves quickly through residential units, spores may not receive adequate UV exposure for deactivation.</li></ul><p>The <a href=\"https://www.blueair.com/products/blue-pure-311i-plus-max\"><span style=\"text-decoration:underline\"><strong>Blue Pure 311i+ Max</strong></span></a>* combines proven HEPASilent filtration with smart sensors for comprehensive mold spore removal, delivering up to 45% more clean air than typical HEPA filtration while operating at 67% quieter than traditional units.</p><h2><strong>Strategic Placement for Maximum Mold Control</strong></h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image1_ea712b09-dec9-4f50-a7a8-a59a1f52e86d.jpg",
+            "image_desktop": "shopify://shop_images/image1_ea712b09-dec9-4f50-a7a8-a59a1f52e86d.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p><strong>Will air purifiers help with mold</strong> equally in all locations? Effectiveness depends heavily on strategic placement.</p><h3><strong>High-Priority Rooms</strong></h3><p><strong>Bedrooms</strong> deserve top priority. We spend roughly one-third of our lives sleeping, making bedroom air quality crucial. Position an air purifier like the <a href=\"https://www.blueair.com/products/blue-pure-311i-plus-max\"><span style=\"text-decoration:underline\"><strong>Blue Pure 311i+ Max</strong></span></a>* within 6-10 feet of your bed. Its whisper-quiet operation won't disturb rest while continuously filtering air throughout the night.</p><p><strong>Basements</strong> often become mold breeding grounds due to dampness and poor ventilation. The <a href=\"https://www.blueair.com/products/blue-pure-211i-max\"><span style=\"text-decoration:underline\"><strong>Blue Pure 211i Max</strong></span></a>* delivers exceptional performance for larger spaces up to 635 square feet, making it ideal for basement family rooms where mold risk runs high.</p><h3><strong>Understanding Air Changes Per Hour</strong></h3><p>Professional recommendations suggest achieving 4-6 air changes per hour (ACH) in mold-prone spaces, meaning the entire room's air volume passes through your purifier 4-6 times hourly. Calculate your needs by measuring room dimensions and selecting an air purifier with a CADR (Clean Air Delivery Rate) that meets or exceeds this requirement.</p><p>Blueair's HEPASilent technology delivers faster room refreshment and better mold spore control than standard filtration. The <a href=\"https://www.blueair.com/products/blue-signature-midnight\"><span style=\"text-decoration:underline\"><strong>Blue Signature Midnight</strong></span></a>* provides powerful performance while maintaining energy consumption lower than a standard light bulb.</p><h2><strong>Beyond Air Purifiers: Comprehensive Mold Prevention</strong></h2><p><strong>Can air purifiers help with mold</strong> on their own? Air purifiers excel at removing airborne spores, but comprehensive mold control requires addressing moisture sources. Think of air purification as one critical component of a multi-faceted approach.</p><h3><strong>Humidity Control Is Critical</strong></h3><p>Maintain indoor relative humidity between 30-50%. Mold growth essentially stops below 60% humidity. Strategies include using dehumidifiers in damp areas, running exhaust fans during cooking and bathing, fixing leaks promptly, and ensuring proper drainage around your home's foundation.</p><p>The innovative <a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify\"><span style=\"text-decoration:underline\"><strong>2-in-1 Pro Purify + Humidify</strong></span></a>* offers dual functionality removing airborne mold spores while maintaining optimal humidity levels through InvisibleMist™ technology. Its anti-microbial filter prevents waterborne mold growth within the unit itself, a common issue with traditional humidifiers.</p><h3><strong>Improve Ventilation and Cleaning</strong></h3><p>Stagnant air allows humidity accumulation and spore concentration. Open windows when outdoor conditions permit. Vacuum frequently using HEPA-filtered vacuums to prevent spore redistribution. Wipe condensation from windows, pipes, and cold surfaces immediately.</p><p>Address water damage within 24-48 hours, as mold can begin growing within this timeframe. Use mold-resistant paint and materials in high-humidity areas. Choose ceramic tile instead of carpet in bathrooms and basements.</p><h2><strong>What to Look for in a Mold-Fighting Air Purifier</strong></h2><p>When evaluating whether <strong>air purifiers help with mold</strong> in your specific situation, prioritize these features:</p><ul><li><strong>True HEPA or Better:</strong> Blueair's HEPASilent technology exceeds standard HEPA requirements, capturing particles down to 0.1 microns providing superior protection against even the smallest mold spores and fragments.</li><li><strong>Activated Carbon Filter:</strong> Eliminates musty odors indicating mold presence. Substantial carbon weight ensures better odor absorption throughout the filter's lifespan.</li><li><strong>Appropriate CADR Ratings:</strong> Check the Clean Air Delivery Rate matches your room size. Undersized units run continuously at high speeds without achieving adequate air changes. Oversized units work intermittently, potentially missing spore release events.</li><li><strong>Smart Sensors:</strong> Advanced units like the Blue Pure 311i+ Max* feature particle sensors detecting air quality changes and adjusting fan speed automatically, ensuring continuous protection even when you're unaware of spore release.</li><li><strong>Energy Efficiency:</strong> Mold control requires 24/7 operation. Blueair's engineering achieves powerful performance using less energy than a 60-watt light bulb, making continuous operation affordable and environmentally responsible.</li><li><strong>Low Noise Output:</strong> You'll only run the purifier consistently if it doesn't disrupt daily life. Blueair's technology operates at 67% quieter than conventional HEPA units, quiet enough for bedrooms, nurseries, and home offices.</li></ul><h2>FAQs</h2><h3><strong>Can air purifiers help with mold that's already growing on surfaces?</strong></h3><p>No, air purifiers cannot kill or remove mold actively growing on walls, ceilings, or other surfaces. However, they play a crucial role during remediation. When you clean visible mold, scrubbing releases thousands of spores into the air. Running a high-efficiency air purifier during and after cleaning captures these disturbed spores, preventing them from settling elsewhere and establishing new colonies.</p><p>For surface mold, combine air purification with proper cleaning: remove contaminated porous materials, clean hard surfaces with EPA-registered mold-killing solutions, address moisture sources, and run your air purifier continuously during and for several days after remediation.</p><h3><strong>Does an air purifier help with mold in rooms without visible growth?</strong></h3><p>Absolutely. Mold spores are ubiquitous in virtually all indoor air. Even without visible colonies, airborne spores trigger allergic reactions in sensitive individuals. Air purifiers reduce background spore levels throughout your home, providing prevention by removing spores before they land, symptom reduction through lower concentrations, and early warning if filters become heavily laden with mold.</p><h3><strong>How long should I run an air purifier for mold control?</strong></h3><p>For effective mold spore management, run your air purifier 24/7. Mold releases spores continuously. Fortunately, modern air purifiers make continuous operation practical. Blueair's energy-efficient design consumes minimal power, adding only $3-7 per month to electricity bills depending on local rates.</p><h3><strong>Which rooms should prioritize air purifier placement?</strong></h3><p>Prioritize bedrooms (6-9 hours daily exposure), bathrooms (high humidity and poor ventilation), and basements (often damp with limited circulation). Secondary priorities include living rooms, home offices, and kitchens. The <a href=\"https://www.blueair.com/products/blue-pure-211i-max\"><span style=\"text-decoration:underline\"><strong>Blue Pure 211i Max</strong></span></a>* offers exceptional value for larger spaces, efficiently purifying up to 674 square feet in 12.5 minutes. </p><p>How we tested this capability to filter mold<strong>:</strong>⁴ Tested on bacteria (S. aureus, K. pneumoniae, P. aeruginosa), virus (MS2) and mold allergen (A.niger) with a minimum reduction rate of 99.9% in 60min.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_qy8nHW",
+        "text_Ub47yL"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}

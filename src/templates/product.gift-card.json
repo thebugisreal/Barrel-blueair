@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "product__main",
@@ -28,7 +28,7 @@
             "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "text": "<p>You can’t go wrong with a gift card. Choose an amount and write a personalized message to make this gift your own.<br/><br/></p>"
+            "text": "<p>Want to give the gift of clean, fresh air - but not sure which device they own, what filter they need, or how big their space is? Skip the guesswork.<br/> <br/>A Blueair eGift Card lets them choose exactly what works for their home - any device, filter, or accessory they want. It’s delivered straight to their inbox with simple instructions, ready to use whenever they are.<br/><br/><em>Clean air, made effortless.</em><br/><br/>Please note: eGift Cards can only be used on domestic orders and are Final Sale. eGift cards cannot be used as a payment method for purchasing eGift cards.</p>"
           }
         },
         "room_tag_UqfcUw": {
