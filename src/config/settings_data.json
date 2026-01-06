@@ -13,7 +13,7 @@
     "newsletter_text": "<p><strong>You are currently subscribed to receive our marketing emails.</strong></p><p>Click Unsubscribe to be removed from our marketing emails list.</p>",
     "newsletter_cta_text": "",
     "add_subscription_url": "shopify://pages/subscribe-quiz",
-    "start_return_url": "https://returns.narvar.com/blueair/returns?locale=en_US",
+    "start_return_url": "https://5ef43d-4a.myshopify.com/apps/returns",
     "shipping_threshold_enabled": true,
     "shipping_threshold": 3500,
     "gwp_threshold": 0,

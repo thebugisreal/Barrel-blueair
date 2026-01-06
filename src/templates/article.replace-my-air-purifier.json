@@ -1,0 +1,376 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Keeping up with filter replacement might not sound exciting, but honestly, it's one of the most important things you can do to keep your purifier working well and your air actually clean.</p><p>Here's the straightforward answer: most filters need replacing every 6 to 12 months. But the exact timing depends on what type of filter you have, how much you're running your purifier, and what's in the air around you.</p><p>Let's talk through what affects replacement timing, what to expect budget-wise, and how to get the most from every filter you buy.</p><h2>How Often Should You Replace Air Purifier Filters?</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image4_4615cbd7-396c-4d07-8f0b-9e29a64aea1a.jpg",
+            "image_desktop": "shopify://shop_images/image4_4615cbd7-396c-4d07-8f0b-9e29a64aea1a.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>The basic rule isn't complicated: standard HEPA filters last 12 months under normal conditions. Carbon filters need replacing every 3-6 months. But \"normal conditions\" are doing a lot of work here.</p><p>What really makes a difference:</p><ul><li>Where you live - High pollution areas, wildfire smoke, heavy pollen seasons all wear filters faster.</li><li>How often you run it - a 24/7 operation shortens filter life compared to occasional use.</li><li>Your household - Pets, cooking, smoking, and allergies all mean more particles in the air.</li><li>Room size match - If your purifier is undersized for the room, it works harder and filters wear faster</li></ul><p>The good news? Modern purifiers don't make you guess. Most include filter change indicators that track actual usage and air quality, not just counting days. When your filter is really saturated, not just at some arbitrary time limit, the purifier tells you.</p><h2>Air Purifier Filter Lifespan by Type</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image1_774a766d-b5b5-43bf-aa2e-6c5e0bd4630a.jpg",
+            "image_desktop": "shopify://shop_images/image1_774a766d-b5b5-43bf-aa2e-6c5e0bd4630a.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_rgzHUd": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Different filters do different jobs, which is why they have different replacement schedules.</p><h3>HEPA Filters (6-12 months)</h3><p>These capture particles down to 0.3 microns, including dust, pollen, pet dander, and mold spores. Most need replacing once a year under normal use. Heavy dust, pet hair, or poor air quality might mean replacement every 6-9 months.</p><p><a href=\"https://www.blueair.com/pages/blueair-performance\">Blueair models capture even smaller particles down to 0.1 microns</a>, which means more thorough cleaning and longer-lasting effectiveness compared to standard HEPA alone.</p><h3>Carbon Filters (3-6 months)</h3><p>These remove odors and gases by absorbing them into carbon pores. Once those pores fill up, they're done. You can't recharge them.</p><p>Homes with pets or cooking smells often replace these every 3 months. Less active use in clean conditions? They might last closer to 6 months.</p><h3>Pre-Filters (Washable, every 2-4 weeks)</h3><p>These catch the big stuff, hair, lint, dust, before it reaches your main filter. Clean them every 2-4 weeks by vacuuming or gently rinsing with water.</p><p>Let them dry completely before reinstalling. Here's why this matters: regular pre-filter cleaning is one of the easiest ways to extend your HEPA filter life by several months.</p><h2>Annual Air Purifier Filter Replacement Costs</h2><p>Here's where budgeting comes in. Annual filter costs typically run $50-$200, depending on your purifier model and how often you replace filters.</p><p>Realistic annual costs by room size:</p><ul><li>Small room units (up to 200 sq ft): $50-$100/year</li><li>Medium room units (200-400 sq ft): $100-$150/year</li><li>Large room units (400+ sq ft): $150-$300/year</li></ul><p>If you run 24/7, add electricity (roughly $20-$50/year, less than running a standard light bulb).</p><p>Your total annual cost? Usually $100-$250. That's genuinely not much for breathing cleaner air every single day.</p><h2>How to Save Money on Air Purifier Filter Replacements</h2><h3>Set up automatic filter subscriptions</h3><p><a href=\"https://www.blueair.com/pages/subscribe\">Blueair's filter subscriptions save upto 15%</a> with automatic delivery. Set it and forget it, cleaner air and lower costs.</p><h3>Buy pre-filter multi-packs</h3><p>Some retailers offer 10-20% off when you buy several filters at once. Stock up during sales.</p><h3>Clean pre-filters consistently</h3><p>This single habit can extend your HEPA filter life by months. It takes 5 minutes and saves real money.</p><h3>Adjust usage for air quality</h3><p>When outside air is clean, run your purifier on a lower speed. You still get good air quality while reducing filter wear.</p><h3>Use genuine filters</h3><p>Cheap third-party filters might save $10 now, but they don't maintain your purifier's performance and might void your warranty. Genuine filters keep everything working as designed.</p><p><a href=\"https://www.blueair.com/collections/air-purifier-filters\">Find genuine replacement filters that match your Blueair purifier's specifications</a> to maintain optimal performance and protect your investment.</p><h2>Signs Your Air Purifier Filter Needs Replacement</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_Q8DrHF": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_a82275e4-f229-41ab-969a-91e036ab01a3.jpg",
+            "image_desktop": "shopify://shop_images/image2_a82275e4-f229-41ab-969a-91e036ab01a3.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Your purifier's indicator light will tell you. But you can also check yourself.</p><p>Visual inspection clues:</p><ul><li>The filter looks dark gray or black.</li><li>Dust comes out when you gently tap it.</li><li>Visible buildup or discoloration</li></ul><p>Performance warning signs:</p><ul><li>Airflow drops even at high speed.</li><li>Your purifier is running louder than usual.</li><li>Odors linger when they used to disappear.</li><li>Allergy symptoms returning or worsening.</li></ul><p>When you see these signs, replacement time has come.</p><h2>What Happens When You Don't Replace Air Purifier Filters on Time</h2><p>Here's the real cost of delaying replacement: you pay more money for worse results.</p><p>A saturated filter forces your motor to work harder, pulling more electricity while delivering less clean air. You're paying more for worse performance. Plus, a clogged filter stops trapping particles effectively and actually starts recirculating them back into your room.</p><p>For families with allergies, asthma, or young children, poor air quality often leads to:</p><ul><li>More doctor visits</li><li>Missed work or school</li><li>Disrupted sleep</li><li>Worsening respiratory symptoms</li></ul><p>The cost of proper filter maintenance is honestly small compared to dealing with those consequences.</p><h2>Getting the Most From Your Air Purifier Filters</h2><p>Simple maintenance keeps everything running efficiently and your costs reasonable:</p><p>✓ Clean pre-filters regularly (every 2-4 weeks)</p><p>✓ Replace filters on schedule (follow the indicator light)</p><p>✓ Use genuine filters that match your purifier</p><p>✓ Run at appropriate speeds for the current air quality</p><p><a href=\"https://www.blueair.com/collections/air-purifier-filters\">Set up automatic filter delivery with Blueair</a> to save both money and the hassle of remembering to order.</p><p>Your family deserves to breathe well at home. Staying on top of this one simple task keeps your investment working exactly as designed.</p><h3>FAQs</h3><p><strong>Q. How long do Blueair filters actually last?</strong></p><p>6-12 months, depending on usage and air quality. The smart indicators in your purifier track your specific usage, so you get alerted when your filter, not some generic timeline, needs replacing.</p><p><strong>Q. Can I wash and reuse HEPA or carbon filters?</strong></p><p>No. Washing damages the fiber structure that traps particles. Only pre-filters are washable. Always check your manufacturer's instructions.</p><p><strong>Q. Are expensive filters really worth the cost?</strong></p><p>Yes. Quality filters maintain your purifier's performance level and keep your warranty valid. Cheap filters often don't fit properly and can reduce effectiveness. You're protecting your investment.</p><p><strong>Q. What's my total annual cost for an air purifier?</strong></p><p>Electricity (24/7 operation): $20-$50</p><p>Filter replacement: $100-$200</p><p>Total: roughly $120-$250 per year for clean air around the clock.</p><p><strong>Q. What if I delay replacement for an air purifier?</strong></p><p>Your purifier works harder, uses more energy, runs louder, and stops cleaning effectively. You lose the main benefit of having a purifier.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_Ub47yL",
+        "image_caption_qy8nHW",
+        "text_rgzHUd",
+        "image_caption_Q8DrHF",
+        "text_e9yarP"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}

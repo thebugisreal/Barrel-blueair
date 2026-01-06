@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>The honest answer? It depends. But here's what research actually tells us: the decision comes down to your home layout, health concerns, and how much pollution you're fighting.</p><p>This matters because household air pollution causes 3.8 million premature deaths annually, with documented links to cardiovascular disease, stroke, and respiratory illness. But here's the encouraging part:<a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC4587002/\"> Studies</a> show that air purifiers reduce indoor particulate matter by 50-80%, with measurable health improvements in just weeks.</p><h2>Air Purifier Coverage: How Much Space Can One Unit Handle?</h2><p>Your purifier's power is measured in CADR (Clean Air Delivery Rate), shown in cubic feet per minute. To know if one unit works for your home, divide your room's volume by the CADR, multiply by 60, and you get ACH (Air Changes Per Hour). Target 4-6 ACH for healthy air.</p><p>Here's the critical finding from<a href=\"https://aaqr.org/articles/aaqr-23-08-oa-0202\"> 2024 research</a>: a purifier placed in one room achieves 78.8% PM2.5 reduction there, but delivers 57.9% reduction in other rooms. This means a single strategically placed unit provides meaningful protection throughout your home, especially if you have central air conditioning or heating.</p><p>If your HVAC system runs, it enhances purifier performance significantly. Air mixing from your heating/cooling system helps distribute cleaned air between rooms, creating a synergistic effect you get for free.</p><h2>Single Room Air Quality: When One Purifier Works Best</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_3594f58c-fb8a-4bcb-96e7-237ea878ad60.jpg",
+            "image_desktop": "shopify://shop_images/image2_3594f58c-fb8a-4bcb-96e7-237ea878ad60.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>One purifier makes sense if your home is small or open-concept, you mainly care about protecting one specific room like a bedroom, you have a high-CADR unit suitable for your space, or you're in a lower-pollution area without major health concerns.</p><p>For bedrooms: A<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=1&_sid=5d30061e5&_ss=r\"> Blue Pure 311i Max</a> Pollen 365 CFM, Dust 314 CFM, Smoke 283 CFM covers the primary space of 387 sq ft in 12.5 minutes, delivering quiet operation for sleep. A<a href=\"https://www.blueair.com/products/3in1-air-purifier-t10i?_pos=1&_sid=2b2b1d90c&_ss=r\"> ComfortPure 3-in-1 T10i</a> (Pollen 132 CFM, Dust 129 CFM, Smoke 113 CFM) suits smaller bedrooms.</p><p>For living rooms: The<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=2&_sid=b50853212&_ss=r\"> Blue Pure 211i Max</a> (Pollen 450 CFM, Dust 452 CFM, Smoke 435 CFM) covers 674 sq ft primary space, ideal for larger living areas.</p><p>Health impact matters here. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC7895332/\">Research</a> shows people with asthma using HEPA-filtered air cleaners experienced significant symptom improvements within 3 months. Those with pet allergies noticed reduced nighttime congestion within 2 weeks.</p><h2>Multiple Air Purifiers Per Room: When You Need Extra Coverage</h2><p>Multiple units make sense if you have multiple floors (at least one per level), your home has distinct separate rooms with closed doors, anyone has serious health concerns like asthma or respiratory issues, you cook frequently (creating pollution from gas appliances and oils), you have pets, or someone smokes indoors.</p><p>Research shows high-pollution homes (measuring above 5 µg/m³ PM2.5) see better results with multiple units, 75-80% reductions, versus modest improvements in already-clean homes. Each additional unit's CADR adds to your total cleaning power.</p><p>Strategic placement: Put your primary purifier where vulnerable family members spend most time, usually a bedroom at night, the living room during the day. Close doors in other rooms and treat them as separate zones. A<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=1&_sid=5d30061e5&_ss=r\"> Blue Pure 311i Max</a> in the master bedroom plus a<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=1&_sid=5d30061e5&_ss=r\"> Blue Pure 311i Max</a> in the living room provides comprehensive household coverage for most mid-sized homes.</p><h2>Whole-House Filtration Strategy for Multi-Room Homes</h2><p>If you have multiple floors and want comprehensive protection, consider one unit per level plus one in high-pollution areas like kitchens. The<a href=\"https://www.blueair.com/products/blue-pure-211i-max?_pos=2&_sid=b50853212&_ss=r\"> Blue Pure 211i Max</a> on your main floor works alongside a<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=1&_sid=5d30061e5&_ss=r\"> Blue Pure 311i Max</a> upstairs. For kitchens specifically, seek units with carbon filters to capture cooking odors and volatile organic compounds.</p><p>That 57.9% secondary room reduction from research means pollution from the main living area naturally reaches bedrooms, supporting the multi-floor strategy. When your central air runs, it helps distribute protection even further.</p><h2>Real-World Air Purifier Effectiveness: What the Research Shows</h2><p>A <a href=\"https://www.sciencedirect.com/science/article/pii/S240584402102079X\">2021 study tested</a> air cleaners in actual homes with real families (not controlled labs). Results:</p><p>Primary room (where purifier sits): 78.8% PM2.5 reduction, 63.9% PM10 reduction.</p><p>Secondary rooms (without the purifier): 57.9% PM2.5 reduction, 60.4% PM10 reduction.</p><p>This means one unit really does help beyond its immediate location. PM2.5 levels dropped from 5.6 µg/m³ to 1.6 µg/m³ in primary rooms, approaching the WHO's annual guideline of 5 µg/m³.</p><p>For health outcomes, people with asthma saw improvements within 2-4 weeks. Cardiovascular markers improved measurably within 48 hours of reduced particulate exposure. This isn't minor; it's protection against stroke and heart disease.</p><h2>Taking the First Step</h2><p>Start by measuring your most-used spaces (length × width × height = cubic footage), match that to a purifier's CADR, and calculate whether you hit 4-6 ACH. Ask yourself: Do I need the whole house clean, or just specific rooms? Do I have health sensitivities requiring multiple units?</p><p>There's no shame in starting small. A single<a href=\"https://www.blueair.com/products/blue-pure-311i-max?_pos=1&_sid=5d30061e5&_ss=r\"> Blue Pure 311i Max</a> in your bedroom provides meaningful household protection while you learn what works best for your space.</p><p>The research is detailed: air purification works, and it works faster than most expect. Your lungs, heart, and long-term health are worth this investment. Starting somewhere, usually where your family spends the most time, is how families improve their indoor air quality. You've got this.</p><h3>FAQs</h3><p><strong>Q. Can one large purifier clean my whole house?</strong></p><p>Partially. If your home is small enough and the unit's CADR is high enough for 4+ ACH throughout, it works. But closed doors significantly reduce effectiveness beyond the primary room. The 57.9% secondary room reduction is good but not ideal for whole-house protection.</p><p><strong>Q. Is one powerful unit better than two smaller units?</strong></p><p>For open spaces, yes. For homes with closed rooms, two smaller units in different zones often work better. The research shows placement matters as much as power.</p><p><strong>Q. How long before I notice improvements?</strong></p><p>Particulate matter reductions happen immediately (24 hours). For symptom relief, asthma sufferers typically see improvements in 2-4 weeks. Cardiovascular benefits appear within 48 hours.</p><p><strong>Q. What if I add a second unit later?</strong></p><p>Perfect approach. Many families start with one unit in their bedroom, where you spend 8 hours per night, then add coverage elsewhere based on results. You'll understand your home's air dynamics better.</p><p><strong>Q. Do I need carbon filters?</strong></p><p>Not always, but yes if you cook frequently, have pets, or deal with odors. HEPA alone captures particles but not volatile organic compounds. Carbon filters add odor removal without complexity.</p><p>Research sources: World Health Organization (Household Air Pollution), Lu et al. 2024 (Portable Air Cleaner Effectiveness), American Lung Association (Air Cleaning Guidance), Lung India (Air Filters and Health), Francis et al. 2003 (Asthma Clinical Outcomes), Bräuner et al. 2008 (Cardiovascular Benefits).</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck"
+  ]
+}

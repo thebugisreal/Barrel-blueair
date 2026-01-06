@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Air purifiers work best in sealed environments, but life doesn't always cooperate. Fresh air feels good, especially on pleasant days. Many people wonder if running their air purifier with windows open defeats the purpose or wastes energy.</p><p>The short answer: you can use an air purifier with open windows, but you'll sacrifice efficiency. Your purifier will work harder, consume more energy, and deliver less effective results. However, certain situations make this trade-off worthwhile.</p><h2>How Air Purifiers Work in Enclosed Spaces</h2><p>Air purifiers clean indoor air by pulling it through filtration systems that trap particles, allergens, and pollutants. In a closed room, the device cycles the same air multiple times, progressively removing contaminants with each pass. The process creates a controlled environment where the purifier gradually improves air quality.</p><p>When windows remain closed, an air purifier can significantly reduce airborne particles in sealed spaces. The <a href=\"https://www.epa.gov/indoor-air-quality-iaq/guide-air-cleaners-home\">Environmental Protection Agency</a> recommends sealed spaces for optimal performance because purifiers need time to filter the total air volume repeatedly.</p><p><a href=\"https://www.blueair.com/pages/blueair-performance\">Blueair's HEPASilent™ technology</a> captures 99.97% of airborne particles down to 0.1 microns through a combination of mechanical and electrostatic filtration. This dual approach delivers cleaner air more efficiently than traditional mechanical filtration alone.</p><h2>What Happens When You Open Windows with Air Purifiers Running</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image1_d0e69ba3-de4c-4221-8dab-311c18ee1a9a.jpg",
+            "image_desktop": "shopify://shop_images/image1_d0e69ba3-de4c-4221-8dab-311c18ee1a9a.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Opening windows introduces outdoor air continuously into your space. Your air purifier must process both the existing indoor air and the constant influx of new outdoor air, pollen, dust, vehicle exhaust, and seasonal allergens.</p><p>Three main issues occur with air purifiers when windows are open:</p><p>Reduced cleaning effectiveness - The purifier can't keep up with the continuous stream of outdoor pollutants. Instead of progressively cleaning a fixed volume of air, it struggles to maintain baseline air quality.</p><p>Increased energy consumption - The device runs longer at higher speeds, consuming more electricity. Modern air purifiers typically use 20-100 watts, but continuous maximum operation increases costs.</p><p>Faster filter degradation - Filters clog more quickly when processing larger volumes of particulate-laden outdoor air. You'll replace filters more frequently, raising maintenance expenses.</p><h2>When Opening Windows with Your Air Purifier Makes Sense</h2><p>Certain situations justify using your air purifier with windows open despite reduced efficiency.</p><p>Poor indoor air quality events - Cooking smoke, cleaning chemical fumes, or paint odors sometimes concentrate indoors. Opening windows for cross-ventilation while running your air purifier helps remove gases and odors faster. Air purifiers excel at capturing particles but have limited effectiveness against volatile organic compounds without specialized carbon filters.</p><p>Outdoor air quality is superior - Check your local Air Quality Index before deciding. When outdoor AQI reads below 50 and indoor sources create pollution, brief window opening paired with your air purifier can help.</p><p>CO2 buildup in tight spaces - Air purifiers don't remove carbon dioxide. Sealed modern homes can accumulate CO2, causing stuffiness and reduced cognitive function. Periodic ventilation maintains healthy oxygen levels, particularly in bedrooms and home offices.</p><h2>Matching Air Purifier Size to Room Dimensions with Open Windows</h2><p>Room size matching matters more with open windows. Air purifiers are rated by clean air delivery rate (CADR), which indicates the volume of filtered air delivered per minute.</p><p>A small air purifier in a large room already struggles to achieve complete air circulation. Adding open windows compounds the problem. The device becomes nearly ineffective because it can't process both the room volume and incoming outdoor air.</p><p>For open-window scenarios, choose an air purifier rated for 1.5 to 2 times your actual room size. The oversized capacity provides headroom to handle additional outdoor air while maintaining reasonable indoor air quality.</p><p><a href=\"https://www.blueair.com/collections/shop-all\">Blueair air purifiers offer models for various room sizes</a>, from compact spaces to large open floor plans. Selecting appropriate capacity ensures adequate performance even in less-than-ideal conditions.</p><h2>Best Practices for Window Ventilation with Your Air Purifier</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image1_121cbdb4-dfaa-4a84-aa99-867455a202b7.jpg",
+            "image_desktop": "shopify://shop_images/image1_121cbdb4-dfaa-4a84-aa99-867455a202b7.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Smart window management maximizes both fresh air benefits and air purifier effectiveness.</p><p>Time your ventilation - Open windows during periods of lowest outdoor pollution. Early morning or late evening typically offer cleaner outdoor air in urban areas. Close windows during high-traffic hours.</p><p>Use partial opening - Crack windows slightly rather than opening them fully. Limited openings allow fresh air exchange while minimizing pollutant influx into your air purifier's workspace.</p><p>Create strategic airflow - Position your air purifier away from open windows. Place the unit centrally or opposite the window so it captures air after mixing occurs.</p><p>Increase air purifier fan speed - Run your purifier on higher settings when windows are open. Higher speeds process more air volume, compensating partially for the open window challenge.</p><p>Monitor and adjust - If you have allergies or respiratory sensitivities, pay attention to symptoms. Increased sneezing or congestion indicates the open window outweighs air purifier benefits.</p><h2>Outdoor Air Quality Index Considerations for Air Purifier Use</h2><p>The Air Quality Index runs from 0 to 500, with lower numbers indicating cleaner air. Keep windows closed when outdoor AQI exceeds 100 and rely entirely on your air purifier. When AQI drops below 50 and indoor conditions warrant ventilation, brief window opening with air purifier use poses minimal risk.</p><p>Weather apps and local environmental agency websites provide real-time AQI data.<a href=\"https://www.blueair.com/pages/blueair-app\"> Many smart air purifiers include air quality sensors</a> that measure indoor particulate levels, helping you compare indoor versus outdoor conditions.</p><h2>Energy Efficiency and Cost Impact of Open-Window Air Purifier Use</h2><p>Running an air purifier continuously with open windows increases electricity costs, though the exact impact varies by model and usage patterns.</p><p>Energy-efficient models minimize this impact. However, the greater concern is filter life rather than electricity consumption.</p><p>Filters represent the primary ongoing expense. Standard filter replacement occurs every 6 to 12 months under normal conditions. Open-window operation can reduce filter life significantly, requiring more frequent replacements.<a href=\"https://www.blueair.com/collections/air-purifier-filters\"> Explore Blueair's filter options</a> to budget for replacement schedules.</p><h3>FAQs</h3><p><strong>Q. How long should I run my air purifier with windows closed? </strong></p><p>Run your air purifier continuously for best results, or at minimum for 4 to 6 hours daily. Most devices need 30 to 60 minutes to complete one full air exchange in appropriately sized rooms. Continuous operation of your air purifier maintains consistently clean air by repeatedly filtering as people move, pets shed, and daily activities generate particles.</p><p><strong>Q. Can air purifiers remove outdoor pollen when windows are open? </strong></p><p>Air purifiers can capture pollen particles that enter through open windows, but they can't keep up with continuous influx. During high pollen seasons, keep windows closed and run your air purifier constantly. Open windows only after pollen counts drop, typically after rain or in evenings.</p><p><strong>Q. Should I open windows if my air purifier has a carbon filter? </strong></p><p>Carbon filters in air purifiers absorb gases and odors that mechanical filters miss. Opening windows helps ventilate indoor chemical pollutants more quickly than relying on carbon filtration alone. For strong paint fumes or cleaning chemical odors, combine window ventilation with your carbon-equipped air purifier for fastest clearance.</p><p><strong>Q. Do air purifiers work better in small or large rooms with windows open? </strong></p><p>Air purifiers perform better in smaller rooms with windows open because they process the total air volume faster. Large rooms with open windows overwhelm most purifiers. If you must ventilate a large space, close most windows and leave one partially open to limit outdoor air influx into your air purifier's workspace.</p><p><strong>Q. Is it wasteful to run an air purifier with windows open? </strong></p><p>Running an air purifier with fully open windows wastes energy and filter life with minimal benefit. However, slightly cracked windows for brief periods while your air purifier runs on high speed can balance fresh air needs with air cleaning. Evaluate the trade-off based on your specific air quality goals and outdoor conditions.<a href=\"https://www.blueair.com/blogs/news/the-complete-guide-to-selecting-an-air-purifier-based-on-room-size\"> Read more about optimizing air purifier placement</a> for your home.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_qy8nHW",
+        "text_Ub47yL"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}

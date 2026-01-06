@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Choosing the right air purifier for your home can feel overwhelming. With dozens of models claiming to remove allergens, smoke, and pollutants, how do you know which one actually works? The answer depends on your room size, specific air quality concerns, and long-term budget for filter replacements.</p><p>According to the EPA, indoor air pollutant concentrations are often 2 to 5 times higher than outdoor levels, making a quality air purifier a worthwhile investment for your family's health. Whether you're managing allergies, living with pets, or concerned about wildfire smoke, understanding what makes an effective air purifier will help you make the right choice.</p><h2>What Makes an Effective Home Air Purifier</h2><p>A truly effective air purifier combines powerful filtration with the right room capacity. CADR (Clean Air Delivery Rate) measures how much clean air a purifier produces per minute. Higher CADR numbers mean faster air cleaning for your space.</p><p>Room coverage matters as much as CADR. An air purifier rated for 300 square feet will struggle in a 600-square-foot living room. For rooms where you spend most time, aim for at least 4.8 air changes per hour (ACH) , the industry standard for adequate coverage.</p><p>Standard HEPA filters capture 99.97% of particles down to 0.3 microns, trapping dust, pollen, and pet dander.<a href=\"https://www.blueair.com/pages/blueair-performance\"> Blueair's HEPASilent™ technology</a> advances beyond standard HEPA by capturing 99.97% of airborne particles down to 0.1 microns through a combination of mechanical and electrostatic filtration. This dual approach delivers cleaner air more efficiently than traditional mechanical filtration alone.</p><h2>Key Features to Look for When Buying an Air Purifier</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3_97c1afc0-d9a7-42b4-8315-b4a5df0951e4.jpg",
+            "image_desktop": "shopify://shop_images/image3_97c1afc0-d9a7-42b4-8315-b4a5df0951e4.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<h3>Filtration System Quality</h3><p>Multiple filtration stages provide comprehensive air cleaning. Pre-filters catch large particles, HEPA filters handle microscopic allergens, and activated carbon filters absorb odors, gases, and VOCs that HEPA filters cannot remove.</p><p>Quality air purifiers use deep carbon beds rather than thin sheets for superior odor removal. If you cook frequently, have pets, or live near wildfire zones, activated carbon filtration is essential for your air purifier.</p><h3>Room Size and Air Purifier Coverage</h3><p>Measure your room's square footage before shopping. Most manufacturers list coverage areas, but CADR ratings differ by particle type (smoke, dust, or pollen). For example, the<a href=\"https://www.blueair.com/products/blue-pure-311i-max\"> Blue Pure 211i Max with 410 CADR</a> handles spaces up to 674 square feet, while the<a href=\"https://www.blueair.com/products/mini-restful-coastal-beige\"> Mini Restful with 93 CADR</a> handles bedrooms up to 140 square feet. Use<a href=\"https://www.blueair.com/blogs/news/the-complete-guide-to-selecting-an-air-purifier-based-on-room-size\"> Blueair's room-sizing guide</a> to match the right purifier to your space.</p><p>Air purifiers work best when positioned centrally with clear space on all sides. Corner placement or tucking units behind furniture reduces effectiveness significantly sometimes by 50% or more.</p><h3>Noise Levels and Energy Efficiency in Air Purifiers</h3><p>Air purifiers run for hours daily, so noise and energy consumption matter. Look for models with multiple fan speeds and quiet sleep modes.<a href=\"https://www.blueair.com/collections/air-purifiers\"> Blueair's air purifiers</a> are engineered for efficient quiet operation, with many models running whisper-quiet on low settings.</p><p>Many quality air purifiers use less energy than a standard light bulb. Energy Star certification indicates strict efficiency standards. Running a 50-watt air purifier 24/7 costs approximately $5-$8 monthly.</p><h3>Smart Features and Monitoring in Modern Air Purifiers</h3><p>Air quality sensors adjust fan speed automatically based on pollution levels. Mobile apps let you monitor air quality remotely and receive filter replacement reminders. Real-time displays show PM2.5 levels with color-coded indicators for at-a-glance status.</p><h2>Understanding Filter Replacement Costs for Air Purifiers</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_df4171cf-f89a-45dd-89e8-502470ef1340.jpg",
+            "image_desktop": "shopify://shop_images/image2_df4171cf-f89a-45dd-89e8-502470ef1340.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Purchase price tells only part of the story. According to Consumer Reports testing of air purifiers, filter costs range from $20 to more than $200 per replacement.</p><p>HEPA filters need replacement every 6 to 12 months depending on usage. Activated carbon filters require changes every 3 months, especially with pets or smokers. Calculate annual filter costs before buying your air purifier, as a cheaper unit may cost more long-term when you factor in filter replacements.</p><p>For example, Blueair's Blue Pure 211i Max uses a $45-$50 filter replaced 1-2 times yearly, while smaller models like the Mini Restful use a $29.99 filter. ComfortPure 3-in-1 models cost $66.99-$89.99 per filter replacement.</p><h2>Who Benefits Most from Investing in Air Purifiers</h2><p>Allergy and Asthma Sufferers Using Air Purifiers</p><p>HEPA filtration removes pollen, dust mites, and mold spores that trigger reactions. Running your air purifier continuously during allergy season reduces sneezing, congestion, and breathing difficulties. Learn more about<a href=\"https://www.blueair.com/blogs/news/air-purifiers-dust-allergies\"> air purifiers for allergies and dust</a> and<a href=\"https://www.blueair.com/blogs/news/asthma\"> asthma relief options</a>. Bedroom placement proves especially beneficial for overnight relief and<a href=\"https://www.blueair.com/blogs/news/how-air-purifiers-improve-sleep-quality-insights-from-real-world-data\"> better sleep quality</a>.</p><p>Pet Owners and Air Purifiers</p><p>Air purifiers with strong pre-filters and activated carbon handle pet hair, dander, and odors effectively.<a href=\"https://www.blueair.com/blogs/news/pet-odor-solutions-nontoxic-sustainable-air-care-that-s-safe-for-pets-and-your-home\"> Discover pet-safe air purification solutions</a> designed for homes with animals. Place air purifier units in rooms where pets spend most time for maximum control. Pet hair clogs filters faster, so regular replacements matter more with air purifiers in pet homes.</p><p>Urban Residents and Air Purifiers for Wildfire Smoke</p><p>City dwellers face elevated exposure to vehicle emissions and smog. Air purifiers create a clean-air sanctuary, filtering harmful particulates and gases.<a href=\"https://www.blueair.com/blogs/news/wildfire-smoke-and-air-purifiers\"> Learn how air purifiers help during wildfire season</a> and read about<a href=\"https://www.blueair.com/blogs/news/smoke\"> smoke removal strategies</a>. During wildfire season, air purifiers with high smoke CADR ratings and activated carbon filtration remove fine particulate matter and smoky odors most effectively.</p><h2>Common Air Purifier Mistakes to Avoid</h2><p>Buying an undersized air purifier wastes money. Always choose a model rated for your room size or larger. Placing air purifiers in corners or behind furniture blocks airflow, reducing efficiency by 50% or more.</p><p>Avoid any air purifier that produces ozone, which irritates lungs and worsens asthma. Look for \"ozone-free\" or \"zero ozone\" labels on your air purifier, especially with respiratory issues at home. Run your air purifier continuously on auto mode rather than only when you remember for consistent air quality.</p><h2>How Blueair Delivers Superior Air Cleaning with Air Purifiers</h2><p>Blueair air purifiers combine Swedish engineering with HEPASilent™ technology. HEPASilent™ uses both mechanical and electrostatic filtration, capturing particles more efficiently while operating quietly.</p><p>Blueair air purifiers capture 99.97% of airborne particles down to 0.1 microns through this advanced dual filtration. The technology is designed to deliver strong performance while running at whisper-quiet levels compared to traditional HEPA-only systems. Learn about<a href=\"https://www.blueair.com/pages/why-clean-air\"> why clean air matters</a> and explore<a href=\"https://www.blueair.com/pages/blueair-purpose\"> Blueair's commitment to your health</a>. As a Certified B Corporation, Blueair meets rigorous environmental and social performance standards.</p><h3>FAQs</h3><p><strong>Q. How long do air purifiers last? </strong></p><p>Quality air purifiers typically last 5 to 10 years with proper maintenance. HEPA filters in air purifiers last 6 to 12 months, while activated carbon filters need replacement every 3 months. Choose reputable air purifier brands with readily available replacement filters.</p><p><strong>Q. Can air purifiers remove viruses? </strong></p><p>HEPA filters in air purifiers can capture airborne virus particles. Viruses often attach to larger droplets that HEPA filtration removes effectively. Air purifiers complement but don't replace ventilation and hygiene practices. HEPASilent™ technology captures particles down to 0.1 microns, enabling effective particle capture.</p><p><strong>Q. Where should I place my air purifier? </strong></p><p>Position your air purifier centrally with 1 to 2 feet of clearance on all sides. Avoid corners or behind furniture. For bedrooms, place your air purifier 6 to 10 feet from your bed. In living areas, position air purifiers near main seating areas.</p><p><strong>Q. Do air purifiers help with smoke odors? </strong></p><p>Air purifiers with activated carbon filters effectively remove smoke odors and particles. Look for air purifier models with substantial carbon weight, not thin sheets. Choose air purifiers with high smoke CADR ratings for cigarette or wildfire smoke. Run air purifiers continuously during smoke events.</p><p><strong>Q. How much electricity do air purifiers use? </strong></p><p>Most modern air purifiers consume 30 to 100 watts on medium speed, comparable to a light bulb. Running an air purifier 24/7, a 50-watt model costs approximately $5 to $8 monthly. Energy-efficient air purifiers use less, and Energy Star certification helps you identify the most efficient models to minimize electricity costs.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_qy8nHW",
+        "text_Ub47yL"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}

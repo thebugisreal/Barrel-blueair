@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>You know that moment when your air purifier chimes and you pause: subscribe or buy filters in bulk? I get it. It's one of those decisions that feels like it should be simpler than it is. Let me walk you through what actually makes sense for your home, without the marketing noise.</p><p>The truth is, the \"better\" choice depends on your real life. Some households absolutely should subscribe. Others genuinely save money by buying in bulk. And some find a hybrid approach works best. Let's figure out which one makes sense for you.</p><h2>Air Filter Subscription Costs vs. Buying Filters in Bulk</h2><p>Here's the straightforward part: Blueair filter subscriptions typically offer 15-20% ongoing discounts plus 25% off your first filter. That's nice, but there's more to consider than just the price tag.</p><p>Take a<a href=\"https://www.blueair.com/products/blue-pure-511i-max-1\"> Blue Pure 511i Max</a>: filters cost $29.99 individually. With filter subscription discounts and the 25% first-filter offer, costs become much more manageable over time. For a<a href=\"https://www.blueair.com/products/blue-pure-211i-max-1\"> Blue Pure 211i Max</a>, individual filters are $69.99, a serious investment if buying multiple filters upfront.</p><p>The real issue: when you buy filters in bulk, you're betting your future needs stay exactly the same. If your life changes, new pets, relocation, growing family, developing allergies, your forecast fails, and you're stuck with excess inventory.</p><h2>Why Filter Replacement Subscriptions Work for Most Families</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image1_7ce1dd74-19bb-4b68-887f-0f7d93630cd0.jpg",
+            "image_desktop": "shopify://shop_images/image1_7ce1dd74-19bb-4b68-887f-0f7d93630cd0.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>A filter subscription lets you adjust whenever you need to. You can pause deliveries when traveling for weeks, skip a month if conditions improve, or resume whenever circumstances change. There's no waste, no locked-in commitment, and no guesswork about future needs.</p><h3>Multi-unit homes particularly benefit</h3><p>One consolidated bill, one automatic filter delivery schedule, one account to manage. Plus, if you upgrade units later, subscription filters always match your current equipment. You don't end up with incompatible filters wasting money.</p><h3>Life happens</h3><p>Pet adoption, family growth, moving to polluted areas, or new allergies all increase how often filters degrade. With automatic filter delivery flexibility, your costs align with reality, not guesses you made months ago.</p><h2>When Buying Air Purifier Filters in Bulk Makes Sense Instead</h2><p>If you have one<a href=\"https://www.blueair.com/products/f3max-replacement-pac-filter-for-311i-max\"> Blue Pure 311i Max</a> in a completely stable situation with no pets, no expected changes, proper climate-controlled storage, buying 3 filters upfront (~$135) might save $12-42 over three years compared to filter replacement subscription costs.</p><p>But you've also locked in money and bet everything on predictions being perfect. What if conditions change? Your bulk inventory becomes a liability, and filters stored improperly may degrade faster than expected.</p><h2>Comparing Filter Types With Your Air Filter Replacement Strategy</h2><p>Blueair offers three filter options, each with different pricing and benefits:</p><p>Particle + Carbon (Standard) - $29.99 to $69.99</p><ul><li>Best for most households</li><li>Handles particles and basic odors</li><li>Most cost-effective choice</li><li>6-9 month lifespan</li></ul><p><a href=\"https://www.blueair.com/products/smokeblock-replacement-filter-for-211i-max\">SmokeBlock</a> (Enhanced Carbon) - $15-20 more per filter</p><ul><li>Double the activated carbon.</li><li>Perfect if you cook frequently or deal with smoke</li><li>Great for wildfire season</li><li>Same 6-9 month lifespan</li></ul><p><a href=\"https://www.blueair.com/products/allergenblock-replacement-filter-for-311i-max\">AllergenBlock</a> (Premium) - $20-25 more per filter</p><ul><li>Extra layers for allergy and asthma sufferers</li><li>Makes a real difference during pollen season</li><li>Investment in better sleep and fewer symptoms</li></ul><p>Subscription advantage: Upgrade to AllergenBlock during spring pollen, switch back to standard filters when needed. Bulk purchasing locks you into one choice for years, which rarely matches your actual needs throughout the seasons.</p><h2>How Filter Replacement Frequency Affects Your Subscription Decision</h2><p>Blueair's standard is 6-9 months, but your home determines the actual lifespan:</p><ul><li>9-12 months: Quiet area, no pets, low pollution</li><li>6-9 months: One or two pets, regular cooking, moderate pollution</li><li>3-6 months: Multiple pets, frequent cooking, high-pollution urban area</li></ul><p>Check your unit's indicator light; it tells you when replacement is actually needed, not calendar dates. This is exactly why automatic filter subscriptions make sense: you can't predict perfectly, so paying only for filters you actually use beats forecasting.</p><h2>Choosing Between Air Filter Subscriptions and Bulk: What Works for You</h2>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3_9e95effc-7798-44d2-933c-731117807b92.jpg",
+            "image_desktop": "shopify://shop_images/image3_9e95effc-7798-44d2-933c-731117807b92.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Choose a filter subscription if:</p><ul><li>You have multiple Blueair units to manage.</li><li>Life might change (new pet, moving, family growth)</li><li>You want flexibility and convenience.</li><li>You prefer small, regular payments over a bulk upfront.</li><li>You travel frequently</li></ul><p>Choose bulk if:</p><ul><li>One unit in stable conditions</li><li>You have climate-controlled storage.</li><li>Your household won't change in 3+ years.</li><li>You genuinely prefer upfront purchases.</li><li>You've calculated the exact needs.</li></ul><p>Honest truth: For most households, subscriptions win due to flexibility, not just cost. That peace of mind is worth $15-25 extra annually.</p><h2>Why Blueair Filters Matter for Your Air Purifier</h2><p>You might wonder if it is generic. Here's the critical difference: Blueair uses HEPASilent™ technology, combining mechanical and electrostatic filtration. Regular HEPA is mechanical only. Blueair's dual approach captures 99.97% of particles down to 0.1 microns, bacteria, viruses, pollen, dust, pet dander, and mold allergens.</p><p>Generic filters don't deliver the same performance because they're not engineered for electrostatic filtration. Blueair filters are specifically designed for this dual system. Using authentic Blueair filters ensures you're getting the performance you invested in.</p><p>With a filter subscription, you're guaranteed authentic Blueair filters every single time. No guessing, no compatibility worries, no wasted money.</p><h2>The Bottom Line: Filter Replacement Subscription or Bulk Purchase</h2><p>Is a filter subscription cheaper than buying in bulk? For stable single-unit homes, maybe $12-42 over three years. But those modest savings don't justify losing flexibility when life inevitably changes.</p><p>A filter subscription gives you:</p><ul><li>Guaranteed 15-20% savings on every filter</li><li>Flexibility to adjust as your life changes</li><li>Zero waste from incompatible filters</li><li>Convenience of automatic delivery</li><li>Peace of mind when circumstances shift</li></ul><p>For most people, that's worth far more than $15-25 extra yearly. Try a subscription for a few months. Experience the convenience. Most people find it's worth it.</p><h3>FAQs</h3><p><strong>Q. What's the actual discount with a Blueair filter subscription?</strong></p><p>25% off your first filter, then ongoing 15-20% savings on every replacement order.</p><p><strong>Q. Can I pause my air filter subscription whenever I need to?</strong></p><p>Yes, pause anytime without penalty. Resume whenever you need filters again.</p><p><strong>Q. Do Blueair filter subscriptions include free shipping?</strong></p><p>Yes, free shipping on all filter subscription orders is included in the service.</p><p><strong>Q. Which filter type should I choose for my filter subscription?</strong></p><p>Start with standard Particle + Carbon. Upgrade to SmokeBlock or AllergenBlock if needed.</p><p><strong>Q. How do I know when my filter actually needs replacement?</strong></p><p>Your unit's indicator light tells you when replacement is needed; don't guess with calendar dates.</p><p><strong>Q. Can I switch between filter types while subscribed?</strong></p><p>Yes, change types anytime. Upgrade during allergies, downgrade when conditions improve.</p><h3>Important Usage Information</h3><p>For optimal performance and safety, Blueair air purifiers are designed for indoor use in normal indoor environments. Do not use the appliance outdoors or in wet environments such as bathrooms, laundry rooms, or pool areas.</p><h3>About the Testing</h3><p>¹ Tested on bacteria (S. aureus, K. pneumoniae, P. aeruginosa), virus (MS2), and mold allergen (A. niger) with a minimum reduction rate of 99.9% in 60 minutes.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_qy8nHW",
+        "text_Ub47yL"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}
