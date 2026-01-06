@@ -267,9 +267,9 @@
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'room_tag' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 {% if is_transactional %}
                   {% if product.metafields.seed.applicableFor != blank %}
                     <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
@@ -282,9 +282,9 @@
                   {% endif %}
                 {% endif %}
               {% when 'title' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 <h1 class="product__title h3 {{ spacing }}">
                   {% render 'product-title-intl', product: product %}
                 </h1>
@@ -292,16 +292,16 @@
                   <p class="product__short-description h5 desktop:my-xxs">{{ current_variant.title }} </p>
                 {% endif %}
               {% when 'text' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 <div class="{{ spacing }} rte">
                   {{block.settings.text}}
                 </div>
               {% when 'short_description' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 <div class="{{ spacing }}">
                   {% if product.metafields.seed.blair_plpShortDescription != blank %}
                     <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.blair_plpShortDescription }}</p>
@@ -320,9 +320,9 @@
                   {% endif %}
                 {% endif %}
               {% when 'star_rating' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 <div class="product__star-rating mt-sm {{ spacing }}">
                   <div data-bv-show="rating_summary" data-bv-product-id="{{product.id}}"></div>
                   <style>
@@ -339,9 +339,9 @@
                 {% if is_transactional %}
                   {% if localization.country.iso_code == 'CA' %}
                     {% if product.metafields.seed.product_tags_canada != blank %}
-                      {% capture spacing %}
+                      {%- capture spacing -%}
                         {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                      {% endcapture %}
+                      {%- endcapture -%}
                       <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
                           <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
@@ -350,9 +350,9 @@
                     {% endif %}
                   {% else %}
                       {% if product.metafields.seed.product_tags != blank %}
-                        {% capture spacing %}
+                        {%- capture spacing -%}
                           {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                        {% endcapture %}
+                        {%- endcapture -%}
                         <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                           {% for tag in product.metafields.seed.product_tags.value %}
                             <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
@@ -377,9 +377,9 @@
                 {% endif %}
               {% when 'product_options' %}
                 {% if is_transactional %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 <div class="{{ spacing }}">
                   {%- comment -%} Product Variant Master Select {%- endcomment -%}
                   {% render 'master-variant-select',
@@ -460,7 +460,12 @@
                   {% endif %}
 
                   {% if enable_subscription %}
-                    {% render 'product-subscription' product: product current_variant: current_variant subscription: subscription filter_subscription_discounted_price: filter_subscription_discounted_price %}
+                    {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: subscription filter_subscription_discounted_price: filter_subscription_discounted_price %}
+                    
+                    {% if product.metafields.seed.additional_subscription != blank %}
+                      {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
+                      {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: additional_subscription filter_subscription_discounted_price: filter_subscription_discounted_price is_additional: true %}
+                    {% endif %}
                   {% endif %}
 
                   {% if product.metafields.seed.quantity_option != blank %}
@@ -492,10 +497,10 @@
               {% endif %}
               {% when 'atc' %}
                 {% if is_transactional %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
-                <div class=" flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">          
+                {%- endcapture -%}
+                <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">          
                   <button 
                     class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center"
                     type="submit" 
@@ -530,9 +535,9 @@ tm_qual_gjiapmwgps"></div>
                 <p class="hidden p2 font-700" js-error-message></p>
               {% endif %}
               {% when 'experience' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 {% if product.metafields.seed.experience_icons != blank or product.metafields.seed.experience_description != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item accordion-item product__experience border-t border-gray" js-accordion-item>
@@ -576,9 +581,9 @@ tm_qual_gjiapmwgps"></div>
                   </s-accordion>
                 {% endif %}
               {% when 'additional_features' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifi != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
@@ -635,9 +640,9 @@ tm_qual_gjiapmwgps"></div>
                   </s-accordion>
                 {% endif %}
               {% when 'shipping_warranty' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 {% if block.settings.icon_1_image != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
                     <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
@@ -664,9 +669,9 @@ tm_qual_gjiapmwgps"></div>
               {% when '@app' %}
                   {% render block %}
               {% when 'upsells' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 {% if is_transactional %}
                 {% assign upsell_data = product.metafields.custom.seed_upsells.value %}
 
@@ -703,9 +708,9 @@ tm_qual_gjiapmwgps"></div>
                 {% endif %}
               {% endif %}
               {% when 'buystack_carousel' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 <div class="{{ spacing }} max-w-full">
                   {% render 'pdp-buystack-carousel', 
                      product: product, 
@@ -715,9 +720,9 @@ tm_qual_gjiapmwgps"></div>
                      title: block.settings.title %}
                 </div>
               {% when 'filter_pack' %}
-                {% capture spacing %}
+                {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {% endcapture %}
+                {%- endcapture -%}
                 {% if product.metafields.seed.pdp_filter_quantity != blank %}
                   <ul class="product__filter-pack flex gap-xs flex-wrap {{ spacing }}">
                     <li class="product__filter-pack-item">

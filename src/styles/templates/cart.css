@@ -84,7 +84,9 @@ cart-remove-button .cart-remove-button:focus-visible {
 
 /* cart subscription */
 .cart-item-subscription__checkbox {
-  @apply w-[22px]
+  @apply max-w-[22px]
+  min-w-[22px]
+  w-[22px]
   h-[22px]
   border
   border-blue

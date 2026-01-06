@@ -1,5 +1,4 @@
 {% liquid 
-  assign subscription_object = item.product.metafields.seed.subscription.value
   assign is_subscribed = false
   assign unit_subscription_service_product = ''
   assign subscription_available = false
@@ -79,7 +78,7 @@
   endif
 %}
 {% if is_subscribed %}
-  {% assign subscription_item = item  %}
+  {% assign subscription_item = item %}
   {% if unit_subscription_service_product != blank %}
     {% assign subscription_item = unit_subscription_service_product  %}
   {% endif %}
