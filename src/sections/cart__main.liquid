@@ -218,8 +218,8 @@
 
                               <div id="CartMain-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert"></div>
 
-                              {% if shop.metaobjects.subscription.dream-well-wick-aroma-subscription != blank and is_unit_subscription_service_product == false %}
-                                {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
+                              {% if product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
+                                {% assign subscription_object = product.metafields.seed.additional_subscription %}
                                 {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
 
                                 {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
@@ -265,9 +265,9 @@
                           </div>
                         </div>
                       </div>
-                      {% if shop.metaobjects.subscription.dream-well-wick-aroma-subscription != blank and is_unit_subscription_service_product == false %}
+                      {% if product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
                         <div class="tabletp:hidden tabletl:block widescreen:hidden">
-                          {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
+                          {% assign subscription_object = product.metafields.seed.additional_subscription %}
                           {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
 
                           {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}

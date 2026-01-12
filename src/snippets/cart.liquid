@@ -186,8 +186,8 @@
                     </div>
                   </div>
 
-                  {% if shop.metaobjects.subscription.dream-well-wick-aroma-subscription != blank and is_unit_subscription_service_product == false %}
-                    {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
+                  {% if product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
+                    {% assign subscription_object = product.metafields.seed.additional_subscription %}
                     {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
 
                     {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
