@@ -799,6 +799,49 @@ class ProductMain extends HTMLElement {
     }
   }
 
+  _updateSubscriptionFormInputs = (subscriptionContainer, itemIndex, variantId, sellingPlanId, frequency, isScentSubscription = false) => {
+    const baseSelector = isScentSubscription ? '[js-scent-subscription-form-input]' : '[js-filter-subscription-form-input]';
+    
+    // Update variant ID
+    const variantInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][id]"]`);
+    if (variantInput) {
+      variantInput.removeAttribute('disabled');
+      variantInput.setAttribute('value', variantId);
+    }
+    
+    // Update selling plan ID
+    const sellingPlanInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][selling_plan]"]`);
+    if (sellingPlanInput && sellingPlanId) {
+      sellingPlanInput.removeAttribute('disabled');
+      sellingPlanInput.setAttribute('value', sellingPlanId);
+    }
+    
+    // Update frequency
+    const frequencyInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[_Frequency]]"]`);
+    const frequencyIntegerInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[_frequency_integer]]"]`);
+    if (frequencyInput) {
+      frequencyInput.removeAttribute('disabled');
+      frequencyInput.setAttribute('value', frequency + ' months');
+    }
+    if (frequencyIntegerInput) {
+      frequencyIntegerInput.removeAttribute('disabled');
+      frequencyIntegerInput.setAttribute('value', frequency);
+    }
+    
+    // Update dates
+    const firstOrderDateInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[First Order Date]]"]`);
+    const ogDateInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[_og_first_order_place_date]]"]`);
+    if (firstOrderDateInput && ogDateInput) {
+      const date = new Date();
+      const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+      const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+      firstOrderDateInput.removeAttribute('disabled');
+      firstOrderDateInput.setAttribute('value', formattedOrderDate);
+      ogDateInput.removeAttribute('disabled');
+      ogDateInput.setAttribute('value', formattedOrderDate);
+    }
+  }
+
   _filterSubscriptionMasterFrequencyOnClick = (evt) => {
     evt.preventDefault();
 
@@ -813,8 +856,8 @@ class ProductMain extends HTMLElement {
 
     // Deselect all other master frequency options within this subscription container
     const masterFrequencies = subscriptionContainer.querySelectorAll('[js-filter-subscription-master-frequency]');
-    masterFrequencies.forEach((frequency) => {
-      frequency.dataset.selected = 'false';
+    masterFrequencies.forEach((freqBtn) => {
+      freqBtn.dataset.selected = 'false';
     });
     triggerTarget.dataset.selected = 'true';
 
@@ -839,119 +882,33 @@ class ProductMain extends HTMLElement {
       }
 
       if (targetSellingPlan) {
-        // Update the form inputs for this filter product
-        const filterSubscriptionSelectedVariantInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${index + 1}][id]"]`);
-        const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${index + 1}][selling_plan]"]`);
-        
-        if (filterSubscriptionSelectedVariantInputTarget) {
-          filterSubscriptionSelectedVariantInputTarget.setAttribute('value', variantId);
-        }
-        if (filterSubscriptionSelectedVariantSellingPlanInputTarget) {
-          filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', targetSellingPlan.dataset.sellingPlanId);
-        }
-
-        const filterSubscriptionFrequencyInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${index + 1}][properties[_Frequency]]"]`);
-        const filterSubscriptionFrequencyIntegerInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${index + 1}][properties[_frequency_integer]]"]`);
-        
-        if (filterSubscriptionFrequencyInputTarget) {
-          filterSubscriptionFrequencyInputTarget.setAttribute('value', frequency + ' months');
-        }
-        if (filterSubscriptionFrequencyIntegerInputTarget) {
-          filterSubscriptionFrequencyIntegerInputTarget.setAttribute('value', frequency);
-        }
-
-        const filterSubscriptionFirstOrderDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFirstOrderDateInput}[name="items[${index + 1}][properties[First Order Date]]"]`);
-        const filterSubscriptionOgDateInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionOgDateInput}[name="items[${index + 1}][properties[_og_first_order_place_date]]"]`);
-        
-        if (filterSubscriptionFirstOrderDateInputTarget && filterSubscriptionOgDateInputTarget) {
-          const date = new Date();
-          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
-          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
-          filterSubscriptionFirstOrderDateInputTarget.setAttribute('value', formattedOrderDate);
-          filterSubscriptionOgDateInputTarget.setAttribute('value', formattedOrderDate);
-        }
+        this._updateSubscriptionFormInputs(subscriptionContainer, index + 1, variantId, targetSellingPlan.dataset.sellingPlanId, frequency);
       }
     });
 
     // Handle scent subscriptions (for 2in1_purify_humidify type)
     if (subscriptionContainer.dataset.type === '2in1_purify_humidify') {
       const filterSubscriptionCount = sellingPlansGroups.length;
+      const selectedScentVariants = Array.from(subscriptionContainer.querySelectorAll(this._selectors.filterSubscriptionVariant))
+        .filter(variant => variant.dataset.selected === 'true' && variant.hasAttribute('js-scent-subscription-variant'));
       
-      // Get all selected scent variants
-      const allVariants = subscriptionContainer.querySelectorAll(this._selectors.filterSubscriptionVariant);
-      const selectedScentVariants = [];
-      
-      allVariants.forEach((variant) => {
-        if (variant.dataset.selected === 'true' && variant.hasAttribute('js-scent-subscription-variant')) {
-          selectedScentVariants.push(variant);
-        }
-      });
-      
-      // Update form inputs for selected scent variants
       selectedScentVariants.forEach((scentVariant, scentIndex) => {
         const scentVariantId = scentVariant.dataset.variant;
         const scentItemIndex = scentVariant.dataset.index || (filterSubscriptionCount + scentIndex + 1);
+        const targetSellingPlanId = scentVariant.getAttribute(`data-selling-plan-${frequency}`);
         
-        // Get selling plan ID from data attribute on the variant button (e.g., data-selling-plan-3="123")
-        let targetSellingPlanId = scentVariant.getAttribute(`data-selling-plan-${frequency}`);
-        
-        // Update form inputs for this scent variant
-        const scentVariantInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][id]"]`);
-        const scentSellingPlanInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][selling_plan]"]`);
-        const scentFrequencyInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_Frequency]]"]`);
-        const scentFrequencyIntegerInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_frequency_integer]]"]`);
-        const scentFirstOrderDateInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[First Order Date]]"]`);
-        const scentOgDateInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_og_first_order_place_date]]"]`);
-        const scentTempIdInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_unitSubscriptionTempId]]"]`);
-        
-        if (scentVariantInput) {
-          scentVariantInput.removeAttribute('disabled');
-          scentVariantInput.setAttribute('value', scentVariantId);
-        }
-        if (scentSellingPlanInput && targetSellingPlanId) {
-          scentSellingPlanInput.removeAttribute('disabled');
-          scentSellingPlanInput.setAttribute('value', targetSellingPlanId);
-        }
-        if (scentFrequencyInput) {
-          scentFrequencyInput.removeAttribute('disabled');
-          scentFrequencyInput.setAttribute('value', frequency + ' months');
-        }
-        if (scentFrequencyIntegerInput) {
-          scentFrequencyIntegerInput.removeAttribute('disabled');
-          scentFrequencyIntegerInput.setAttribute('value', frequency);
-        }
-        if (scentFirstOrderDateInput && scentOgDateInput) {
-          const date = new Date();
-          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
-          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
-          scentFirstOrderDateInput.removeAttribute('disabled');
-          scentFirstOrderDateInput.setAttribute('value', formattedOrderDate);
-          scentOgDateInput.removeAttribute('disabled');
-          scentOgDateInput.setAttribute('value', formattedOrderDate);
-        }
-        if (scentTempIdInput) {
-          scentTempIdInput.removeAttribute('disabled');
+        if (targetSellingPlanId) {
+          this._updateSubscriptionFormInputs(subscriptionContainer, scentItemIndex, scentVariantId, targetSellingPlanId, frequency, true);
         }
       });
     }
 
-    // Update temp ID for all items in this subscription
-    const tempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input]');
-    if (tempIdInputs.length > 0) {
-      const tempId = Date.now();
-      tempIdInputs.forEach((input) => {
-        input.setAttribute('value', `subscription${tempId}`);
-      });
-    }
-    
-    // Also update temp ID for scent subscription inputs
-    const scentTempIdInputs = subscriptionContainer.querySelectorAll('[js-scent-subscription-form-input][name*="properties[_unitSubscriptionTempId]"]');
-    if (scentTempIdInputs.length > 0) {
-      const tempId = Date.now();
-      scentTempIdInputs.forEach((input) => {
-        input.setAttribute('value', `subscription${tempId}`);
-      });
-    }
+    // Update temp ID for all subscription inputs
+    const tempId = Date.now();
+    const allTempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input], [js-scent-subscription-form-input][name*="properties[_unitSubscriptionTempId]"]');
+    allTempIdInputs.forEach((input) => {
+      input.setAttribute('value', `subscription${tempId}`);
+    });
   }
 
   _initProductForm() {
