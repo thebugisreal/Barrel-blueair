@@ -115,13 +115,13 @@
           {% assign counter = 0 %}
           {% for filter_product in filter_subscriptions %}
             {% assign counter = counter | plus: 1 %}
-            <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ counter }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ counter }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
           {% endfor %}
           {% if scent_subscriptions.count != 0 %}
             {% assign counter = counter | plus: 1 %}

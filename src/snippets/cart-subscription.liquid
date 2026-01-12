@@ -80,7 +80,7 @@
     subscription_item: subscription_item
     unit_subscription_service_product: unit_subscription_service_product
     is_two_in_one_subscription: false,
-    has_subscribed_scent: has_subscribed_scent
+    subscribed_scent_product: subscribed_scent_product
     index: index
   %}
 {% elsif subscription_available %}
@@ -91,7 +91,7 @@
     preselected_subscription: preselected_subscription
     preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
     is_two_in_one_subscription: false,
-    has_subscribed_scent: has_subscribed_scent
+    subscribed_scent_product: subscribed_scent_product
     index: index
     two_pack_override: subscription_object.two_pack_quantity_override.value
   %}
@@ -152,7 +152,7 @@
         subscription_item: unit_subscription_service_product
         unit_subscription_service_product: unit_subscription_service_product
         is_two_in_one_subscription: true,
-        has_subscribed_scent: has_subscribed_scent
+        subscribed_scent_product: subscribed_scent_product
         index: index
       %}
     {% elsif product_subscription_available %}
@@ -163,7 +163,7 @@
         preselected_subscription: preselected_subscription
         preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
         is_two_in_one_subscription: true,
-        has_subscribed_scent: has_subscribed_scent
+        subscribed_scent_product: subscribed_scent_product
         index: index
       %}
     {% endif %}
@@ -174,7 +174,7 @@
   {% endcomment %}
   {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
   {% liquid
-    assign has_subscribed_scent = false
+    assign subscribed_scent = false
     assign first_available_scent_product = blank
     assign first_available_scent_variant = blank
     assign first_available_preselected_selling_plan_allocation = blank
@@ -187,12 +187,12 @@
       if item.properties['_unitSubscriptionTempId'] != blank
         for cart_item in cart.items
           if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id
-            assign has_subscribed_scent = true
+            assign subscribed_scent = true
             break
           endif
         endfor
       endif
-      if has_subscribed_scent
+      if subscribed_scent
         break
       endif
       if first_available_scent_product == blank and product_variant.available and product_variant.selling_plan_allocations.size > 0
@@ -222,7 +222,7 @@
     endfor
   %}
   
-  {% if has_subscribed_scent %}
+  {% if subscribed_scent %}
     {% comment %} Show only subscribed scent products {% endcomment %}
     {% for scent_product in scent_subscriptions %}
       {% liquid
@@ -248,7 +248,7 @@
           subscription_item: unit_subscription_service_product
           unit_subscription_service_product: unit_subscription_service_product
           is_two_in_one_subscription: true,
-          has_subscribed_scent: has_subscribed_scent
+          subscribed_scent_product: subscribed_scent_product
           index: index
         %}
       {% endif %}
@@ -267,7 +267,7 @@
       preselected_subscription: preselected_subscription
       preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
       is_two_in_one_subscription: true,
-      has_subscribed_scent: has_subscribed_scent
+      subscribed_scent_product: subscribed_scent_product
       index: index
     %}
   {% endif %}

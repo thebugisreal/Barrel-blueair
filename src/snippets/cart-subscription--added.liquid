@@ -33,8 +33,8 @@
         }
       }{% endif %},
       "isTwoInOneSubscription": {{ is_two_in_one_subscription }},
-      {% if has_subscribed_scent != blank %}
-      "hasSubscribedScent": {{ has_subscribed_scent }},
+      {% if subscribed_scent_product != blank %}
+      "subscribedScent": "{{ subscribed_scent_product }}",
       {% endif %}
       "index": "{{ index }}"
     }

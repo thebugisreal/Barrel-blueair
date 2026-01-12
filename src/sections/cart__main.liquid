@@ -221,22 +221,44 @@
                               {% if shop.metaobjects.subscription.dream-well-wick-aroma-subscription != blank and is_unit_subscription_service_product == false %}
                                 {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
                                 {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
-                                {% assign has_subscribed_scent = false %}
+
                                 {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
-                                  {% assign has_subscribed_scent = true %}
+                                  {% for scent_product in scent_subscriptions %}
+                                    {% assign product_variant = scent_product.variants[1] %}
+                                    {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                      {% for cart_item in cart.items %}
+                                        {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                          {% assign subscribed_scent_product = cart_item.id %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+                                  {% endfor %}
                                 {% endif %}
+
                                 <div class="hidden tabletp:block tabletl:hidden widescreen:block">
-                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object has_subscribed_scent: has_subscribed_scent %}
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
                                 </div>
                               {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
                                 {% assign subscription_object = item.product.metafields.seed.subscription.value %}
                                 {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
-                                {% assign has_subscribed_scent = false %}
+
                                 {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
-                                  {% assign has_subscribed_scent = true %}
+                                  {% for scent_product in scent_subscriptions %}
+                                    {% assign product_variant = scent_product.variants[1] %}
+                                    {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                      {% for cart_item in cart.items %}
+                                        {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                          {% assign subscribed_scent_product = cart_item.id %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+                                  {% endfor %}
                                 {% endif %}
+
                                 <div class="hidden tabletp:block tabletl:hidden widescreen:block">
-                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object has_subscribed_scent: has_subscribed_scent  %}
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
                                 </div>
                               {% endif %}
                             </div>
@@ -247,22 +269,44 @@
                         <div class="tabletp:hidden tabletl:block widescreen:hidden">
                           {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
                           {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
-                          {% assign has_subscribed_scent = false %}
+
                           {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
-                            {% assign has_subscribed_scent = true %}
+                            {% for scent_product in scent_subscriptions %}
+                              {% assign product_variant = scent_product.variants[1] %}
+                              {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                {% for cart_item in cart.items %}
+                                  {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                    {% assign subscribed_scent_product = cart_item.id %}
+                                    {% break %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                            {% endfor %}
                           {% endif %}
-                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
+
+                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
                           {% assign subscription_index = subscription_index | plus: 1 %}
                         </div>
                       {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
                         <div class="tabletp:hidden tabletl:block widescreen:hidden">
                           {% assign subscription_object = item.product.metafields.seed.subscription.value %}
                           {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
-                          {% assign has_subscribed_scent = false %}
+
                           {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
-                            {% assign has_subscribed_scent = true %}
+                            {% for scent_product in scent_subscriptions %}
+                              {% assign product_variant = scent_product.variants[1] %}
+                              {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                {% for cart_item in cart.items %}
+                                  {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                    {% assign subscribed_scent_product = cart_item.id %}
+                                    {% break %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                            {% endfor %}
                           {% endif %}
-                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
+
+                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
                           {% assign subscription_index = subscription_index | plus: 1 %}
                         </div>
                       {% endif %}

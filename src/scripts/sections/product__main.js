@@ -633,17 +633,17 @@ class ProductMain extends HTMLElement {
       }
     } else {
       // Handle filter variant: find and click related selling plans, show/hide selling plan groups
-      const relatedSubscriptions = subscriptionContainer.querySelectorAll(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
+    const relatedSubscriptions = subscriptionContainer.querySelectorAll(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
 
-      if (relatedSubscriptions[1]) {
-        relatedSubscriptions[1].click();
-      } else if (relatedSubscriptions[0]) {
-        relatedSubscriptions[0].click();
-      }
-      
-      const prevSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
+    if (relatedSubscriptions[1]) {
+      relatedSubscriptions[1].click();
+    } else if (relatedSubscriptions[0]) {
+      relatedSubscriptions[0].click();
+    }
+
+    const prevSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
       if (prevSellingPlansGroup) prevSellingPlansGroup.classList.add('hidden');
-      const newSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
+    const newSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
       if (newSellingPlansGroup) newSellingPlansGroup.classList.remove('hidden');
     }
 
@@ -907,8 +907,8 @@ class ProductMain extends HTMLElement {
     const tempId = Date.now();
     const allTempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input], [js-scent-subscription-form-input][name*="properties[_unitSubscriptionTempId]"]');
     allTempIdInputs.forEach((input) => {
-      input.setAttribute('value', `subscription${tempId}`);
-    });
+        input.setAttribute('value', `subscription${tempId}`);
+      });
   }
 
   _initProductForm() {
@@ -919,6 +919,37 @@ class ProductMain extends HTMLElement {
   }
 
   _updateCartItems = (type, data, render = true) => {
+    if (!data) {
+      console.error('_updateCartItems: No data provided');
+      return Promise.reject(new Error('No data provided'));
+    }
+
+    if (type === 'change') {
+      if (!data.id) {
+        console.error('_updateCartItems: Missing id for change operation', data);
+        return Promise.reject(new Error('Missing id parameter for cart change operation'));
+      }
+      if (data.quantity === undefined && !data.selling_plan && (!data.properties || Object.keys(data.properties).length === 0)) {
+        console.error('_updateCartItems: Missing required fields for change operation', data);
+        return Promise.reject(new Error('Missing required fields for cart change operation'));
+      }
+    } else if (type === 'add') {
+      if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
+        console.error('_updateCartItems: Missing or invalid items array for add operation', data);
+        return Promise.reject(new Error('Missing or invalid items array for cart add operation'));
+      }
+      data.items.forEach((item, index) => {
+        if (!item.id) {
+          console.error(`_updateCartItems: Missing id for item ${index} in add operation`, item);
+        }
+        if (item.quantity === undefined) {
+          console.error(`_updateCartItems: Missing quantity for item ${index} in add operation`, item);
+        }
+      });
+    }
+
+    console.log(`_updateCartItems [${type}]:`, JSON.stringify(data, null, 2));
+
     const res = fetch(window.Shopify.routes.root + `cart/${type}.js`, {
       method: 'POST',
       headers: {
@@ -926,26 +957,66 @@ class ProductMain extends HTMLElement {
       },
       body: JSON.stringify(data)
     })
-      .then((response) => response.json())
-      .then((response) => {
+      .then(async (response) => {
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error(`_updateCartItems [${type}] HTTP error ${response.status}:`, errorText);
+          return {
+            status: response.status,
+            description: `HTTP ${response.status}: ${errorText.substring(0, 200)}`
+          };
+        }
+        
+        const responseData = await response.json();
+        console.log(`_updateCartItems [${type}] response:`, responseData);
+
         sessionStorage.setItem('noCartWatcherHandle', 'true');
 
-        if (response.status) {
-          this.handleErrorMessage(response.description);
-          sessionStorage.setItem('cartSubscriptionError', response.description);
-          window.location.href = window.Shopify.routes.root + 'cart';
-          return response;
+        if (responseData.status) {
+          console.error(`_updateCartItems [${type}] failed:`, responseData);
+          this.handleErrorMessage(responseData.description);
+          sessionStorage.setItem('cartSubscriptionError', responseData.description);
+          
+          if (render) {
+            window.location.href = window.Shopify.routes.root + 'cart';
+          }
+          return responseData;
+        }
+
+        if (type === 'change' && responseData.items) {
+          const updatedItem = responseData.items.find(item => {
+            return item.key === data.id || String(item.variant_id) === String(data.id);
+          });
+          
+          if (!updatedItem && data.quantity !== 0) {
+            console.warn(`_updateCartItems [${type}]: Item not found in response`, {
+              requestedId: data.id,
+              cartItems: responseData.items.map(item => ({ key: item.key, variant_id: item.variant_id }))
+            });
+          } else if (updatedItem && data.selling_plan) {
+            const sellingPlanId = updatedItem.selling_plan_allocation?.selling_plan?.id;
+            if (sellingPlanId != data.selling_plan) {
+              console.warn(`_updateCartItems [${type}]: Selling plan mismatch`, {
+                requested: data.selling_plan,
+                actual: sellingPlanId,
+                itemKey: updatedItem.key
+              });
+            } else {
+              console.log(`_updateCartItems [${type}]: Selling plan updated successfully`);
+            }
+          }
         }
 
         if (render) {
           window.location.href = window.Shopify.routes.root + 'cart';
         }
         
-        return response;
+        return responseData;
       })
       .catch((e) => {
-        this.handleErrorMessage(e.description)
-        console.log(e);
+        console.error(`_updateCartItems [${type}] error:`, e);
+        this.handleErrorMessage(e.description || e.message || 'Failed to update cart');
+        return { status: 'error', description: e.message || 'Unknown error' };
       })
       .finally(() => {
         this._enableButtons();
@@ -958,31 +1029,26 @@ class ProductMain extends HTMLElement {
     const init = async () => {
       let index = 1;
       let removeScent = null;
+      let variantId = this.pdpToEditCartSubscription.filter.itemKey.split(':')[0];
       
-      if (this.pdpToEditCartSubscription.hasSubscribedScent && this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
-        // Find the index from js-scent-subscription-form-input via dataset data-index
-        // Only if a js-scent-subscription-variant is selected
+      if (this.pdpToEditCartSubscription.subscribedScent && this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
         const selectedScentVariant = document.querySelector('[js-scent-subscription-variant][data-selected="true"]');
         if (selectedScentVariant) {
           const scentFormInputs = document.querySelectorAll('[js-scent-subscription-form-input]');
           const firstScentFormInput = Array.from(scentFormInputs).find(input => input.hasAttribute('data-index'));
           if (firstScentFormInput && firstScentFormInput.dataset.index) {
             index = parseInt(firstScentFormInput.dataset.index);
-            console.log("Scent subscription index found:", index);
           }
         } else {
           const selectedScentVariant = document.querySelector('[js-scent-subscription-variant][data-selected="false"]').dataset.variant;
+          console.log(selectedScentVariant)
           removeScent = {
             id: selectedScentVariant,
             quantity: 0
           };
         }
       } else if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
-        console.log(this.pdpToEditCartSubscription);
-        const variantId = this.pdpToEditCartSubscription.filter.itemKey.split(':')[0];
-        console.log(variantId);
-        index = this.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[value="${variantId}"]`).dataset.index;
-        console.log(index);
+        index = document.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[value="${variantId}"]`).dataset.index;
       }
 
       const newSelectedSubscription = {};
@@ -1016,8 +1082,6 @@ class ProductMain extends HTMLElement {
         }
       }
 
-      console.log("newSelectedSubscription: ", newSelectedSubscription);
-
       let newQuantity;
       if (newSelectedSubscription.quantity) {
         newQuantity = newSelectedSubscription.quantity;
@@ -1040,141 +1104,217 @@ class ProductMain extends HTMLElement {
       }
 
       let replaceItem = false;
-      if (this.pdpToEditCartSubscription.filter.itemKey.split(':')[0] !== newSelectedSubscription.id) {
+      if (variantId != newSelectedSubscription.id) {
         replaceItem = true;
       }
 
-      if (replaceItem) {
-        const removeData = {
-          id: this.pdpToEditCartSubscription.filter.itemKey,
-          quantity: 0
-        };
-        console.log('removeData:', removeData);
-        const res = await this._updateCartItems('change', removeData, false);
+      const itemsToAdd = [];
+      const itemsToUpdate = [];
+      const itemsToRemove = [];
 
-        if (res && res.status) {
+      const existingItemKey = this.pdpToEditCartSubscription.filter.itemKey;
+
+      if (replaceItem) {
+        if (!existingItemKey) {
+          console.error('Missing itemKey for remove operation');
+          this.handleErrorMessage('Unable to update cart: missing item information');
           return;
         }
+        itemsToRemove.push({
+          id: existingItemKey.split(':')[0],
+          quantity: 0
+        });
 
-        const addData = {
-          items: [
-            { 
-              id: newSelectedSubscription.id, 
-              quantity: parseInt(newQuantity), 
-              selling_plan: parseInt(newSelectedSubscription.selling_plan),
-              properties: newProperties
-            }
-          ]
+        if (!newSelectedSubscription.id) {
+          console.error('Missing variant ID for add operation');
+          this.handleErrorMessage('Unable to add item: missing variant information');
+          return;
         }
-        console.log('addData:', addData);
-        await this._updateCartItems('add', addData, true);
-
-      } else {
-        let render = true;
-        if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
-          render = false;
-        }
-
-        const changeData = {
-          id: this.pdpToEditCartSubscription.filter.itemKey,
-          quantity: parseInt(newQuantity),
-          selling_plan: parseInt(newSelectedSubscription.selling_plan),
+        const addItem = {
+          id: newSelectedSubscription.id.split(':')[0],
+          quantity: 1, 
           properties: newProperties
         };
+        
+        if (newSelectedSubscription.selling_plan) {
+          const sellingPlanValue = parseInt(newSelectedSubscription.selling_plan);
+          if (!isNaN(sellingPlanValue)) {
+            addItem.selling_plan = sellingPlanValue;
+          }
+        }
+        
+        itemsToAdd.push(addItem);
+      } else {
+        if (!existingItemKey) {
+          console.error('Missing itemKey for update operation');
+          this.handleErrorMessage('Unable to update cart: missing item information');
+          return;
+        }
+        
+        const updateItem = {
+          id: existingItemKey,
+          quantity: 1,
+          properties: newProperties
+        };
+        
+        if (newSelectedSubscription.selling_plan) {
+          const sellingPlanValue = parseInt(newSelectedSubscription.selling_plan);
+          if (!isNaN(sellingPlanValue)) {
+            updateItem.selling_plan = sellingPlanValue;
+          }
+        }
+        
+        itemsToUpdate.push(updateItem);
 
         if (removeScent != null) {
-          console.log('removeScent:', removeScent);
-          const removeScentRes = await this._updateCartItems('change', removeScent, false);
+          itemsToRemove.push(removeScent);
+        }
+      }
 
-          if (removeScentRes && removeScentRes.status) {
+      console.log('itemsToAdd:', itemsToAdd);
+      console.log('itemsToUpdate:', itemsToUpdate);
+      console.log('itemsToRemove:', itemsToRemove);
+      
+      try {
+        if (itemsToRemove.length > 0) {
+          for (let i = 0; i < itemsToRemove.length; i++) {
+            const removeItem = itemsToRemove[i];
+            console.log(`Removing item ${i + 1}/${itemsToRemove.length}:`, removeItem);
+            
+            try {
+              const removeResult = await this._updateCartItems('change', removeItem, false);
+              
+              // Wait for the promise to fully resolve
+              if (removeResult && typeof removeResult.then === 'function') {
+                await removeResult;
+              }
+              
+              if (removeResult && removeResult.status) {
+                console.error('Failed to remove item:', removeResult);
+                this.handleErrorMessage(removeResult.description || 'Failed to remove item');
+                return;
+              }
+              
+              console.log(`Remove operation ${i + 1} completed successfully`);
+              
+              // Small delay to ensure cart state is fully updated
+              await new Promise(resolve => setTimeout(resolve, 200));
+            } catch (error) {
+              console.error(`Error removing item ${i + 1}:`, error);
+              this.handleErrorMessage('Failed to remove item');
+              return;
+            }
+          }
+        }
+
+        // Then, update items sequentially - wait for each to finish
+        if (itemsToUpdate.length > 0) {
+          for (let i = 0; i < itemsToUpdate.length; i++) {
+            const updateItem = itemsToUpdate[i];
+            console.log(`Updating item ${i + 1}/${itemsToUpdate.length}:`, updateItem);
+            
+            try {
+              const updateResult = await this._updateCartItems('change', updateItem, false);
+              
+              // Wait for the promise to fully resolve
+              if (updateResult && typeof updateResult.then === 'function') {
+                await updateResult;
+              }
+              
+              if (updateResult && updateResult.status) {
+                console.error('Failed to update item:', updateResult);
+                this.handleErrorMessage(updateResult.description || 'Failed to update item');
+                return;
+              }
+              
+              console.log(`Update operation ${i + 1} completed successfully`);
+              
+              // Small delay to ensure cart state is fully updated
+              await new Promise(resolve => setTimeout(resolve, 200));
+            } catch (error) {
+              console.error(`Error updating item ${i + 1}:`, error);
+              this.handleErrorMessage('Failed to update item');
+              return;
+            }
+          }
+        }
+
+        // Finally, add items - wait for it to finish
+        if (itemsToAdd.length > 0) {
+          console.log(`Adding ${itemsToAdd.length} item(s):`, itemsToAdd);
+          
+          try {
+            const addResult = await this._updateCartItems('add', { items: itemsToAdd }, false);
+            
+            // Wait for the promise to fully resolve
+            if (addResult && typeof addResult.then === 'function') {
+              await addResult;
+            }
+            
+            if (addResult && addResult.status) {
+              console.error('Failed to add items:', addResult);
+              this.handleErrorMessage(addResult.description || 'Failed to add items');
+              return;
+            }
+            
+            console.log('Add operation completed successfully');
+            
+            // Small delay to ensure cart state is fully updated
+            await new Promise(resolve => setTimeout(resolve, 200));
+          } catch (error) {
+            console.error('Error adding items:', error);
+            this.handleErrorMessage('Failed to add items');
             return;
           }
         }
 
-        console.log('changeData:', changeData);
-        const changeRes = await this._updateCartItems('change', changeData, render);
-
-        if (changeRes && changeRes.status) {
-          return;
-        }
-
-        if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
-          let otherItemIndex;
-          if (index == 1 || index == '1') {
-            otherItemIndex = 2;
-          } else {
-            otherItemIndex = 1;
-          }
-          const newOtherItemSelectedSubscription = {};
-          for (const [key, value] of formData.entries()) {
-            if (key == `items[${otherItemIndex}][id]`) {
-              newOtherItemSelectedSubscription['id'] = value;
-            } else if (key == `items[${otherItemIndex}][selling_plan]`) {
-              newOtherItemSelectedSubscription['selling_plan'] = value;
-            } else if (key == `items[${otherItemIndex}][properties[_Frequency]]`) {
-              newOtherItemSelectedSubscription['frequency'] = value;
-            } else if (key == `items[${otherItemIndex}][properties[_frequency_integer]]`) {
-              newOtherItemSelectedSubscription['frequencyInteger'] = value;
-            } else if (key == `items[${otherItemIndex}][properties[First Order Date]]`) {
-              newOtherItemSelectedSubscription['firstOrderDate'] = value;
-            } else if (key == `items[${otherItemIndex}][properties[_og_first_order_place_date]]`) {
-              newOtherItemSelectedSubscription['ogDate'] = value;
-            }
-          }
-
-          const cartSubscriptionElement = this.cart.querySelector(`cart-subscription[data-index="${this.pdpToEditCartSubscription.index}"]`);
-          let otherItemCartSubscriptionElement;
-          if (cartSubscriptionElement.previousElementSibling.tagName == 'CART-SUBSCRIPTION') {
-            otherItemCartSubscriptionElement = cartSubscriptionElement.previousElementSibling;
-          } else if (cartSubscriptionElement.nextElementSibling.tagName == 'CART-SUBSCRIPTION') {
-            otherItemCartSubscriptionElement = cartSubscriptionElement.nextElementSibling;
-          }
-
-          if (otherItemCartSubscriptionElement.querySelector('[js-cart-subscription-checkbox]').dataset.checked == 'true') {
-            const otherItemSubscriptionData = JSON.parse(otherItemCartSubscriptionElement.querySelector('[js-subscription-data-json]').innerHTML);
-            let newOtherItemProperties = otherItemSubscriptionData.filter.properties;
-            if (newOtherItemSelectedSubscription.frequency) {
-              newOtherItemProperties['_Frequency'] = newOtherItemSelectedSubscription.frequency;
-            }
-            if (newOtherItemSelectedSubscription.frequencyInteger) {
-              newOtherItemProperties['_frequency_integer'] = newOtherItemSelectedSubscription.frequencyInteger;
-            }
-            if (newOtherItemSelectedSubscription.firstOrderDate) {
-              newOtherItemProperties['First Order Date'] = newOtherItemSelectedSubscription.firstOrderDate;
-            }
-            if (newOtherItemSelectedSubscription.ogDate) {
-              newOtherItemProperties['_og_first_order_place_date'] = newOtherItemSelectedSubscription.ogDate;
-            }
-
-            const changeData = {
-              id: otherItemSubscriptionData.filter.itemKey,
-              quantity: parseInt(otherItemSubscriptionData.filter.itemQuantity),
-              selling_plan: parseInt(newOtherItemSelectedSubscription.selling_plan),
-              properties: newOtherItemProperties
-            };
-            console.log('changeData (other item):', changeData);
-            await this._updateCartItems('change', changeData, true);
-          } else {
-            const addData = {
-              items: [
-                { 
-                  id: newOtherItemSelectedSubscription.id, 
-                  selling_plan: newOtherItemSelectedSubscription.selling_plan,
-                  quantity: 1,
-                  properties: { 
-                    '_unitSubscriptionTempId': this.pdpToEditCartSubscription.filter.properties._unitSubscriptionTempId,
-                    '_Frequency': newOtherItemSelectedSubscription.frequency,
-                    '_frequency_integer': newOtherItemSelectedSubscription.frequencyInteger,
-                    'First Order Date': newOtherItemSelectedSubscription.firstOrderDate,
-                    '_og_first_order_place_date': newOtherItemSelectedSubscription.ogDate
+        try {
+          const cartResponse = await fetch(`${window.Shopify.routes.root}cart.js`);
+          if (cartResponse.ok) {
+            const cartData = await cartResponse.json();
+            console.log('Cart items before redirect:', cartData.items);
+            console.log('Cart total items:', cartData.items.length);
+            
+            const subscriptionItemsToFix = cartData.items.filter(item => 
+              item.selling_plan_allocation != null && item.quantity !== 1
+            );
+            
+            if (subscriptionItemsToFix.length > 0) {
+              console.log('Found subscription items with quantity != 1:', subscriptionItemsToFix);
+              
+              for (const item of subscriptionItemsToFix) {
+                try {
+                  const fixResult = await this._updateCartItems('change', {
+                    id: item.key,
+                    quantity: 1
+                  }, false);
+                  
+                  if (fixResult && typeof fixResult.then === 'function') {
+                    await fixResult;
                   }
+                  
+                  if (fixResult && fixResult.status) {
+                    console.error(`Failed to fix quantity for item ${item.key}:`, fixResult);
+                  } else {
+                    console.log(`Fixed quantity for item ${item.key} to 1`);
+                  }
+                  
+                  await new Promise(resolve => setTimeout(resolve, 200));
+                } catch (error) {
+                  console.error(`Error fixing quantity for item ${item.key}:`, error);
                 }
-              ]
+              }
             }
-            console.log('addData (other item):', addData);
-            await this._updateCartItems('add', addData, true);
+            
+            window.location.href = window.Shopify.routes.root + 'cart';
           }
+        } catch (error) {
+          console.error('Error fetching cart before redirect:', error);
         }
+      } catch (error) {
+        console.error('Error updating cart:', error);
+        this.handleErrorMessage('Failed to update cart');
+        return;
       }
 
       this.pdpToEditCartSubscription = false;
