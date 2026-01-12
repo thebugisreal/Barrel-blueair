@@ -430,7 +430,12 @@ class ProductMain extends HTMLElement {
           // Initialize subscription when opened
           const subscriptionType = subscription.dataset.type;
           if (subscriptionType == '2in1_purify_humidify') {
-            // For 2in1_purify_humidify, select first master frequency
+            // For 2in1_purify_humidify, try to select the first available scent variant
+            const firstVariant = subscription.querySelector('[js-scent-subscription-variant][current-on-load]');
+            if (firstVariant) {
+              firstVariant.click();
+            }
+            // Then select first master frequency
             const firstMasterFrequency = subscription.querySelector('[js-filter-subscription-master-frequency]');
             if (firstMasterFrequency) {
               firstMasterFrequency.click();
@@ -608,29 +613,50 @@ class ProductMain extends HTMLElement {
       return;
     }
 
-    const relatedSubscriptions = subscriptionContainer.querySelectorAll(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
-    if (relatedSubscriptions[1]) {
-      relatedSubscriptions[1].click();
-    } else if (relatedSubscriptions[0]) {
-      relatedSubscriptions[0].click();
-    }
-    
     // Only deselect within the same subscription container
     const prevSelectedTrigger = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionVariant}[data-selected="true"]`);
     if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
     triggerTarget.dataset.selected = 'true';
 
-    const prevSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
-    prevSellingPlansGroup?.classList.add('hidden');
-    const newSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
-    newSellingPlansGroup?.classList.remove('hidden');
+    // Check if this is a scent subscription variant
+    const isScentVariant = triggerTarget.hasAttribute('js-scent-subscription-variant');
+    
+    if (isScentVariant) {
+      // Handle scent variant: update js-scent-subscription-form-input
+      const scentVariantId = triggerTarget.dataset.variant;
+      const scentItemIndex = triggerTarget.dataset.index;
+      
+      // Update variant ID in scent subscription form inputs
+      const scentVariantInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][id]"]`);
+      if (scentVariantInput) {
+        scentVariantInput.setAttribute('value', scentVariantId);
+      }
+    } else {
+      // Handle filter variant: find and click related selling plans, show/hide selling plan groups
+      const relatedSubscriptions = subscriptionContainer.querySelectorAll(`${this._selectors.filterSubscriptionSellingPlan}[data-variant="${triggerTarget.dataset.variant}"]`);
+
+      if (relatedSubscriptions[1]) {
+        relatedSubscriptions[1].click();
+      } else if (relatedSubscriptions[0]) {
+        relatedSubscriptions[0].click();
+      }
+      
+      const prevSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}:not(.hidden)`);
+      if (prevSellingPlansGroup) prevSellingPlansGroup.classList.add('hidden');
+      const newSellingPlansGroup = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlansGroup}[data-variant="${triggerTarget.dataset.variant}"]`);
+      if (newSellingPlansGroup) newSellingPlansGroup.classList.remove('hidden');
+    }
 
     if (triggerTarget.dataset.available == 'true') {
       const formInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-form-input]');
       formInputs.forEach(input => input.removeAttribute('disabled'));
+      const scentFormInputs = subscriptionContainer.querySelectorAll('[js-scent-subscription-form-input]');
+      scentFormInputs.forEach(input => input.removeAttribute('disabled'));
     } else {
       const formInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-form-input]');
       formInputs.forEach(input => input.setAttribute('disabled', ''));
+      const scentFormInputs = subscriptionContainer.querySelectorAll('[js-scent-subscription-form-input]');
+      scentFormInputs.forEach(input => input.setAttribute('disabled', ''));
     }
 
     // Update subscription price for the appropriate subscription container
@@ -847,11 +873,82 @@ class ProductMain extends HTMLElement {
       }
     });
 
+    // Handle scent subscriptions (for 2in1_purify_humidify type)
+    if (subscriptionContainer.dataset.type === '2in1_purify_humidify') {
+      const filterSubscriptionCount = sellingPlansGroups.length;
+      
+      // Get all selected scent variants
+      const allVariants = subscriptionContainer.querySelectorAll(this._selectors.filterSubscriptionVariant);
+      const selectedScentVariants = [];
+      
+      allVariants.forEach((variant) => {
+        if (variant.dataset.selected === 'true' && variant.hasAttribute('js-scent-subscription-variant')) {
+          selectedScentVariants.push(variant);
+        }
+      });
+      
+      // Update form inputs for selected scent variants
+      selectedScentVariants.forEach((scentVariant, scentIndex) => {
+        const scentVariantId = scentVariant.dataset.variant;
+        const scentItemIndex = scentVariant.dataset.index || (filterSubscriptionCount + scentIndex + 1);
+        
+        // Get selling plan ID from data attribute on the variant button (e.g., data-selling-plan-3="123")
+        let targetSellingPlanId = scentVariant.getAttribute(`data-selling-plan-${frequency}`);
+        
+        // Update form inputs for this scent variant
+        const scentVariantInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][id]"]`);
+        const scentSellingPlanInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][selling_plan]"]`);
+        const scentFrequencyInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_Frequency]]"]`);
+        const scentFrequencyIntegerInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_frequency_integer]]"]`);
+        const scentFirstOrderDateInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[First Order Date]]"]`);
+        const scentOgDateInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_og_first_order_place_date]]"]`);
+        const scentTempIdInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][properties[_unitSubscriptionTempId]]"]`);
+        
+        if (scentVariantInput) {
+          scentVariantInput.removeAttribute('disabled');
+          scentVariantInput.setAttribute('value', scentVariantId);
+        }
+        if (scentSellingPlanInput && targetSellingPlanId) {
+          scentSellingPlanInput.removeAttribute('disabled');
+          scentSellingPlanInput.setAttribute('value', targetSellingPlanId);
+        }
+        if (scentFrequencyInput) {
+          scentFrequencyInput.removeAttribute('disabled');
+          scentFrequencyInput.setAttribute('value', frequency + ' months');
+        }
+        if (scentFrequencyIntegerInput) {
+          scentFrequencyIntegerInput.removeAttribute('disabled');
+          scentFrequencyIntegerInput.setAttribute('value', frequency);
+        }
+        if (scentFirstOrderDateInput && scentOgDateInput) {
+          const date = new Date();
+          const firstOrderDate = new Date(date.setMonth(date.getMonth() + frequency));
+          const formattedOrderDate = `${firstOrderDate.getMonth() + 1}/${firstOrderDate.getDate()}/${firstOrderDate.getFullYear()}`;
+          scentFirstOrderDateInput.removeAttribute('disabled');
+          scentFirstOrderDateInput.setAttribute('value', formattedOrderDate);
+          scentOgDateInput.removeAttribute('disabled');
+          scentOgDateInput.setAttribute('value', formattedOrderDate);
+        }
+        if (scentTempIdInput) {
+          scentTempIdInput.removeAttribute('disabled');
+        }
+      });
+    }
+
     // Update temp ID for all items in this subscription
     const tempIdInputs = subscriptionContainer.querySelectorAll('[js-filter-subscription-temp-id-input]');
     if (tempIdInputs.length > 0) {
       const tempId = Date.now();
       tempIdInputs.forEach((input) => {
+        input.setAttribute('value', `subscription${tempId}`);
+      });
+    }
+    
+    // Also update temp ID for scent subscription inputs
+    const scentTempIdInputs = subscriptionContainer.querySelectorAll('[js-scent-subscription-form-input][name*="properties[_unitSubscriptionTempId]"]');
+    if (scentTempIdInputs.length > 0) {
+      const tempId = Date.now();
+      scentTempIdInputs.forEach((input) => {
         input.setAttribute('value', `subscription${tempId}`);
       });
     }
