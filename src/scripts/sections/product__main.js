@@ -19,7 +19,7 @@ class ProductMain extends HTMLElement {
       subscriptionPrice: '[js-subscription-price]',
       discountSubscriptionPrice: '[js-discount-subscription-price]',
       priceCopy: '[js-price-copy]',
-      filterSubscriptionVariant: '[js-fitler-subscription-variant]',
+      filterSubscriptionVariant: '[js-filter-subscription-variant]',
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
       filterSubscriptionSellingPlan: '[js-filter-subscription-selling-plan]',
@@ -437,7 +437,7 @@ class ProductMain extends HTMLElement {
             }
           } else {
             // For other types, try to select the first available variant
-            const firstVariant = subscription.querySelector('[js-fitler-subscription-variant][current-on-load]');
+            const firstVariant = subscription.querySelector('[js-filter-subscription-variant][current-on-load]');
             if (firstVariant) {
               firstVariant.click();
             }
