@@ -220,13 +220,23 @@
 
                               {% if shop.metaobjects.subscription.dream-well-wick-aroma-subscription != blank and is_unit_subscription_service_product == false %}
                                 {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
+                                {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+                                {% assign has_subscribed_scent = false %}
+                                {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                                  {% assign has_subscribed_scent = true %}
+                                {% endif %}
                                 <div class="hidden tabletp:block tabletl:hidden widescreen:block">
-                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object has_subscribed_scent: has_subscribed_scent %}
                                 </div>
                               {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
                                 {% assign subscription_object = item.product.metafields.seed.subscription.value %}
+                                {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+                                {% assign has_subscribed_scent = false %}
+                                {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                                  {% assign has_subscribed_scent = true %}
+                                {% endif %}
                                 <div class="hidden tabletp:block tabletl:hidden widescreen:block">
-                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object has_subscribed_scent: has_subscribed_scent  %}
                                 </div>
                               {% endif %}
                             </div>
@@ -236,12 +246,22 @@
                       {% if shop.metaobjects.subscription.dream-well-wick-aroma-subscription != blank and is_unit_subscription_service_product == false %}
                         <div class="tabletp:hidden tabletl:block widescreen:hidden">
                           {% assign subscription_object = shop.metaobjects.subscription.dream-well-wick-aroma-subscription %}
+                          {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+                          {% assign has_subscribed_scent = false %}
+                          {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                            {% assign has_subscribed_scent = true %}
+                          {% endif %}
                           {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
                           {% assign subscription_index = subscription_index | plus: 1 %}
                         </div>
                       {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
                         <div class="tabletp:hidden tabletl:block widescreen:hidden">
                           {% assign subscription_object = item.product.metafields.seed.subscription.value %}
+                          {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+                          {% assign has_subscribed_scent = false %}
+                          {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                            {% assign has_subscribed_scent = true %}
+                          {% endif %}
                           {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object %}
                           {% assign subscription_index = subscription_index | plus: 1 %}
                         </div>

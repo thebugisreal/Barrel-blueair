@@ -79,7 +79,8 @@
     item: item
     subscription_item: subscription_item
     unit_subscription_service_product: unit_subscription_service_product
-    is_two_in_one_subscription: false
+    is_two_in_one_subscription: false,
+    has_subscribed_scent: has_subscribed_scent
     index: index
   %}
 {% elsif subscription_available %}
@@ -89,7 +90,8 @@
     pdp_type: subscription_object.pdp_type
     preselected_subscription: preselected_subscription
     preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
-    is_two_in_one_subscription: false
+    is_two_in_one_subscription: false,
+    has_subscribed_scent: has_subscribed_scent
     index: index
     two_pack_override: subscription_object.two_pack_quantity_override.value
   %}
@@ -149,7 +151,8 @@
         item: item
         subscription_item: unit_subscription_service_product
         unit_subscription_service_product: unit_subscription_service_product
-        is_two_in_one_subscription: true
+        is_two_in_one_subscription: true,
+        has_subscribed_scent: has_subscribed_scent
         index: index
       %}
     {% elsif product_subscription_available %}
@@ -159,7 +162,8 @@
         pdp_type: subscription_object.pdp_type
         preselected_subscription: preselected_subscription
         preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
-        is_two_in_one_subscription: true
+        is_two_in_one_subscription: true,
+        has_subscribed_scent: has_subscribed_scent
         index: index
       %}
     {% endif %}
@@ -243,7 +247,8 @@
           item: item
           subscription_item: unit_subscription_service_product
           unit_subscription_service_product: unit_subscription_service_product
-          is_two_in_one_subscription: true
+          is_two_in_one_subscription: true,
+          has_subscribed_scent: has_subscribed_scent
           index: index
         %}
       {% endif %}
@@ -261,7 +266,8 @@
       pdp_type: subscription_object.pdp_type
       preselected_subscription: preselected_subscription
       preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
-      is_two_in_one_subscription: true
+      is_two_in_one_subscription: true,
+      has_subscribed_scent: has_subscribed_scent
       index: index
     %}
   {% endif %}

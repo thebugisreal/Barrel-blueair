@@ -957,9 +957,32 @@ class ProductMain extends HTMLElement {
   _editCartSubscription = (formData) => {
     const init = async () => {
       let index = 1;
-      if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+      let removeScent = null;
+      
+      if (this.pdpToEditCartSubscription.hasSubscribedScent && this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+        // Find the index from js-scent-subscription-form-input via dataset data-index
+        // Only if a js-scent-subscription-variant is selected
+        const selectedScentVariant = document.querySelector('[js-scent-subscription-variant][data-selected="true"]');
+        if (selectedScentVariant) {
+          const scentFormInputs = document.querySelectorAll('[js-scent-subscription-form-input]');
+          const firstScentFormInput = Array.from(scentFormInputs).find(input => input.hasAttribute('data-index'));
+          if (firstScentFormInput && firstScentFormInput.dataset.index) {
+            index = parseInt(firstScentFormInput.dataset.index);
+            console.log("Scent subscription index found:", index);
+          }
+        } else {
+          const selectedScentVariant = document.querySelector('[js-scent-subscription-variant][data-selected="false"]').dataset.variant;
+          removeScent = {
+            id: selectedScentVariant,
+            quantity: 0
+          };
+        }
+      } else if (this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
+        console.log(this.pdpToEditCartSubscription);
         const variantId = this.pdpToEditCartSubscription.filter.itemKey.split(':')[0];
+        console.log(variantId);
         index = this.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[value="${variantId}"]`).dataset.index;
+        console.log(index);
       }
 
       const newSelectedSubscription = {};
@@ -993,6 +1016,8 @@ class ProductMain extends HTMLElement {
         }
       }
 
+      console.log("newSelectedSubscription: ", newSelectedSubscription);
+
       let newQuantity;
       if (newSelectedSubscription.quantity) {
         newQuantity = newSelectedSubscription.quantity;
@@ -1024,9 +1049,10 @@ class ProductMain extends HTMLElement {
           id: this.pdpToEditCartSubscription.filter.itemKey,
           quantity: 0
         };
-        const res = await  this._updateCartItems('change', removeData, false);
+        console.log('removeData:', removeData);
+        const res = await this._updateCartItems('change', removeData, false);
 
-        if (res.status) {
+        if (res && res.status) {
           return;
         }
 
@@ -1040,7 +1066,8 @@ class ProductMain extends HTMLElement {
             }
           ]
         }
-        this._updateCartItems('add', addData, true);
+        console.log('addData:', addData);
+        await this._updateCartItems('add', addData, true);
 
       } else {
         let render = true;
@@ -1054,9 +1081,20 @@ class ProductMain extends HTMLElement {
           selling_plan: parseInt(newSelectedSubscription.selling_plan),
           properties: newProperties
         };
-        const res = await this._updateCartItems('change', changeData, render);
 
-        if (res.status) {
+        if (removeScent != null) {
+          console.log('removeScent:', removeScent);
+          const removeScentRes = await this._updateCartItems('change', removeScent, false);
+
+          if (removeScentRes && removeScentRes.status) {
+            return;
+          }
+        }
+
+        console.log('changeData:', changeData);
+        const changeRes = await this._updateCartItems('change', changeData, render);
+
+        if (changeRes && changeRes.status) {
           return;
         }
 
@@ -1114,7 +1152,8 @@ class ProductMain extends HTMLElement {
               selling_plan: parseInt(newOtherItemSelectedSubscription.selling_plan),
               properties: newOtherItemProperties
             };
-            this._updateCartItems('change', changeData, true);
+            console.log('changeData (other item):', changeData);
+            await this._updateCartItems('change', changeData, true);
           } else {
             const addData = {
               items: [
@@ -1132,7 +1171,8 @@ class ProductMain extends HTMLElement {
                 }
               ]
             }
-            this._updateCartItems('add', addData, true);
+            console.log('addData (other item):', addData);
+            await this._updateCartItems('add', addData, true);
           }
         }
       }
