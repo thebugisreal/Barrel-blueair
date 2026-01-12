@@ -463,7 +463,7 @@
                     {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: subscription filter_subscription_discounted_price: filter_subscription_discounted_price %}
                     
                     {% if product.metafields.seed.additional_subscription != blank %}
-                      {% assign additional_subscription = product.metafields.seed.additional_subscription %}
+                      {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
                       {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: additional_subscription filter_subscription_discounted_price: filter_subscription_discounted_price is_additional: true %}
                     {% endif %}
                   {% endif %}
