@@ -264,65 +264,53 @@
 {% endcomment %}
 {% capture devices_and_warranty %}
   <warranty-devices class="account__section">
-    {% for product in collections['air-purifiers'].products %}
-      <div class="product-data" data-handle="{{ product.handle }}" data-featured-image="{{ product.featured_image | img_url: '600x600' }}" style="display:none;"></div>
-    {% endfor %}
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
       <h4 class="text-40 font-300 mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
       <button class="btn flex justify-center items-center gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
         <span class="btn__text">Register a new device</span>
-        {% comment %} <span class="w-[32px] rounded-full bg-white text-blue">{% render 'icon-arrow-right' %}</span> {% endcomment %}
       </button>
     </div>
 
-    <div class="mt-md grid gap-md hidden" js-device-warranty-form>
+    <div class="mt-md grid gap-md hidden" js-device-warranty-wrapper>
       <div class="account-content">
-        <form id="warranty-device-form" class="warranty-registration-form p-md bg-white w-full max-w-full">
+        <form id="warranty-device-form" class="warranty-registration-form p-md bg-white w-full max-w-full" js-device-warranty-form>
           <!-- Device registration fields start -->
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Device Name</label>
-            <input type="text" name="device_name" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="e.g. Living Room" required>
+            <input type="text" name="name" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="e.g. Living Room" required>
           </div>
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Serial number</label>
-            <input type="text" name="serial_number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
+            <input type="text" name="sn" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
           </div>
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit family</label>
             <div class="select-wrapper relative w-full">
-              <select name="unit_family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
+              <select name="family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
                 <option value="" disabled selected>Select family</option>
-
                 {% for family in shop.metaobjects.unit_family.values %}
-                <option value="{{ family.products_collection }}" data-collection-gid="{{ family.products_collection }}">
-                  {{ family.name }}
-                </option>
-              {% endfor %}
+                  <option data-index="{{ forloop.index0 }}" value="{{ family.collection }}">
+                    {{ family.name }}
+                  </option>
+                {% endfor %}
               </select>
             </div>
           </div>
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit model</label>
-            <select name="unit_model" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
+            <select name="series" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
               <option value="" disabled selected>Select model</option>
-              {% for collection in collections %}
-                {% for product in collection.products %}
-                  <option value="{{ product.id }}" data-image="{{ product.featured_image | img_url: '600x600' }}">
-                    {{ product.title }}
-                  </option>
-                {% endfor %}
-              {% endfor %}
             </select>
           </div>
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Date of purchase</label>
             <div class="relative w-full">
-              <input type="text" name="purchase_date" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY" required>
+              <input type="text" name="dateOfPurchase" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY" required>
               <button type="button" js-calendar-picker class="absolute right-sm top-1/2 -translate-y-1/2 text-[#002D72]">
                 {% render 'icon-calendar' %}
               </button>
@@ -331,7 +319,7 @@
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Place of purchase</label>
-            <select class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" name="place_of_purchase" id="place-of-purchase" required>
+            <select class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" name="wherePurchased" id="place-of-purchase" required>
               <option value="" disabled selected>Select place of purchase</option>
               <option value="Amazon">Amazon</option>
               <option value="Blueair.com">Blueair.com</option>
@@ -339,7 +327,6 @@
               <option value="Costco">Costco</option>
               <option value="Target">Target</option>
               <option value="Best-Buy">Best Buy</option>
-
             </select>
           </div>
 
@@ -353,12 +340,31 @@
             </button>
           </div>
           <input type="hidden" name="country" value="US">
+          <input type="hidden" name="region" value="US">
         </form>
       </div>
     </div>
 
     <div id="device-card-container" class="device-card-content grid"></div>
   </warranty-devices>
+
+  <script type="application/json" id="warranty-unit-families">
+    [
+      {% for family in shop.metaobjects.unit_family.values %}
+        {
+          "id": {{ forloop.index0 }},
+          "name": "{{ family.name }}",
+          "collection": "{{ family.collection }}",
+          "products": [
+            {% for product in family.collection.value.products %}
+              { "id": "{{ product.id }}", "featuredImage": "{{ product.featured_image | image_url: width: 265 }}", "handle": "{{ product.handle }}", "title": "{{ product.title | escape }}" }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  </script>
+
 {% endcapture %}
 
 <script>

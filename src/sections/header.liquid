@@ -70,13 +70,13 @@
       {% elsif shop.permanent_domain == 'uk-blueair.myshopify.com' %}
         <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
       {% else %}
-        {% if is_transactional == true %}
-          {% if customer %}
-            <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
-          {% else %}
-            <a href="{{ settings.user_account_link_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
-          {% endif %}
+      {% if is_transactional == true %}
+        {% if customer %}
+          <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
+        {% else %}
+          <a href="https://store.xecurify.com/moas/broker/login/shopify/www.blueair.com/account?idpname=custom_idp_ZIO" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{% render 'icon-account' %}</a>
         {% endif %}
+      {% endif %}
       {% endif %}
       {% if is_transactional == true %}
       <button class="site-header__icon-link site-header__icon-link--cart w-36 relative" js-open-cart>
@@ -144,25 +144,6 @@
         }
       ],
       "default": "bg-white text-blue"
-<<<<<<< HEAD
-    },
-    {
-      "type": "header",
-      "content": "Announcement Bar Carousel Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "autoplay",
-      "label": "Autoplay",
-      "default": false
-    },
-    {
-      "type": "number",
-      "id": "autoplay_speed",
-      "label": "Autoplay Speed (ms)",
-      "default": 5000
-=======
->>>>>>> 5c2e23e (github code review points addressed:)
     }
   ],
   "blocks": [

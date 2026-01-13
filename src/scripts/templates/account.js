@@ -48,11 +48,23 @@ class Account extends HTMLElement {
     this._setupKlaviyoFormTrigger();
     this._setupCountries();
     this._setupEventListeners();
+    this._saveJwtToken();
+  }
+
+  _saveJwtToken() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (token) {
+      const expirationDate = new Date();
+      expirationDate.setHours(expirationDate.getHours() + 12);
+      document.cookie = `gigya_access_token=${token}; path=/; expires=${expirationDate.toUTCString()};`;
+    }
   }
 
   async _setupKlaviyoNewsletter() {
     let customerEmail = this.dataset.customerEmail;
-    let response = await fetch("https://us-central1-blueair-shopify.cloudfunctions.net/app/klaviyo/customer", { 
+    let response = await fetch("https://us-central1-blueair-shopify.cloudfunctions.net/app/klaviyo/customer", {
       method: "POST",
       body: JSON.stringify({
         "email": customerEmail
@@ -64,7 +76,7 @@ class Account extends HTMLElement {
       .then((response) => response.json())
       .then(({ success, found }) => {
         if (!success) throw new Error('Failed to query klaviyo customer');
-        
+
         if (found) {
           this.accountSubscribed.classList.remove('hidden');
         } else {
@@ -103,7 +115,7 @@ class Account extends HTMLElement {
 
   _setupEventListeners() {
     if (this.ordersPagination) {
-      this.ordersPagination.addEventListener('click', this._addOrders);  
+      this.ordersPagination.addEventListener('click', this._addOrders);
     }
 
     this.openEditAddress.forEach((button) => {
@@ -114,7 +126,7 @@ class Account extends HTMLElement {
       button.addEventListener('click', this._handleDeleteAddress);
     })
 
-    if (this.editAddressModal){
+    if (this.editAddressModal) {
       this.editAddressModal.addEventListener('close', this._handleCloseEditAddress);
     }
 
@@ -124,11 +136,11 @@ class Account extends HTMLElement {
 
     this.returnButtons.forEach((button) => {
       button.addEventListener('click', this._returnToOrderHistory);
-    })   
+    })
 
     if (this.unsubscribeBtn) {
       this.unsubscribeBtn.addEventListener('click', this._handleUnsubscribeClick.bind(this))
-    } 
+    }
 
     document.addEventListener('click', this._closeAccountTriggerAccordion);
     window.addEventListener("klaviyoForms", this._handleKlaviyoEvents.bind(this));
@@ -144,7 +156,7 @@ class Account extends HTMLElement {
   _handleUnsubscribeClick(e) {
     e.preventDefault()
     let customerEmail = this.dataset.customerEmail;
-    let response = fetch("https://us-central1-blueair-shopify.cloudfunctions.net/app/klaviyo/customer/unsubscribe", { 
+    let response = fetch("https://us-central1-blueair-shopify.cloudfunctions.net/app/klaviyo/customer/unsubscribe", {
       method: "POST",
       body: JSON.stringify({
         "email": customerEmail
@@ -185,7 +197,7 @@ class Account extends HTMLElement {
 
     if (newPagination) {
       this.ordersPagination.dataset.url = newPagination.dataset.url;
-    }else{
+    } else {
       this.ordersPagination.remove();
     }
 
@@ -211,7 +223,7 @@ class Account extends HTMLElement {
   _handleOpenEditAddress = (e) => {
     e.stopPropagation();
     const formID = e.currentTarget.dataset.form;
-    const editForm = document.querySelector('#address_form_'+ formID)
+    const editForm = document.querySelector('#address_form_' + formID)
     editForm.classList.remove('hidden');
     this.editAddressModal.open();
     editForm.querySelector('[name="address[first_name]"]').focus();

@@ -1,94 +1,3 @@
-const WARRANTY_API_BASE = 'https://hkgmr8v960.execute-api.eu-west-1.amazonaws.com/prod/c/warranty';
-const LOGIN_API_URL = 'https://hkgmr8v960.execute-api.eu-west-1.amazonaws.com/prod/c/login?client_id=2p2qzjra4vdd943fnl0ndn8kj2&client_secret=2t247rg19d2plhdi1ceqorqnop3op0jdmn9lkl4rj729q0fem3u7';
-const JWT_COOKIE_NAME = 'gigya_access_token';
-const ACCESS_TOKEN_COOKIE_NAME = 'warranty_access_token';
-
-function getCookie(name) {
-  const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
-  return match ? decodeURIComponent(match[1]) : null;
-}
-
-async function exchangeJwtForAccessToken(jwt) {
-  const res = await fetch(LOGIN_API_URL, {
-    method: 'POST',
-    headers: {
-      'idtoken': jwt,
-      'Content-Type': 'application/json'
-    }
-  });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
-      clearAuthTokens();
-      window.location.href = '/account/logout';
-      throw new Error('JWT token expired or invalid. Please log in again.');
-    }
-    throw new Error(err.error || err.message || 'Failed to exchange JWT for access token');
-  }
-  const data = await res.json();
-  if (!data.access_token) throw new Error('No access token returned');
-  return data.access_token;
-}
-
-async function getApiAccessToken() {
-  let accessToken = getCookie(ACCESS_TOKEN_COOKIE_NAME);
-  if (accessToken) return accessToken;
-  const jwt = getCookie(JWT_COOKIE_NAME);
-  if (!jwt) {
-    clearAuthTokens();
-    window.location.href = '/account/logout';
-    throw new Error('Authentication error, please log in again.');
-  }
-  return await exchangeJwtForAccessToken(jwt);
-}
-
-function clearAuthTokens() {
-  document.cookie = `${JWT_COOKIE_NAME}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  document.cookie = `${ACCESS_TOKEN_COOKIE_NAME}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-}
-
-async function getDevices() {
-  const token = await getApiAccessToken();
-  const res = await fetch(WARRANTY_API_BASE, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    if (res.status === 401 || res.status === 403 || data.error?.includes('expired') || data.error?.includes('invalid')) {
-      clearAuthTokens();
-      window.location.href = '/account/logout';
-      throw new Error('Authentication expired. Please log in again.');
-    }
-    throw new Error(data.error || data.message || 'Failed to fetch devices');
-  }
-  return data;
-}
-
-async function registerDevice(formData) {
-  const token = await getApiAccessToken();
-  const res = await fetch(WARRANTY_API_BASE, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-  });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    if (res.status === 401 || res.status === 403 || err.error?.includes('expired') || err.error?.includes('invalid')) {
-      clearAuthTokens();
-      window.location.href = '/account/logout';
-      throw new Error('Authentication expired. Please log in again.');
-    }
-    throw new Error(err.error || err.message || 'Failed to register device');
-  }
-  return res.json();
-}
-
 function formatWarrantyErrorMessage(apiMessage) {
   if (/serial number/i.test(apiMessage)) {
     return "Please enter a valid serial number";
@@ -110,30 +19,40 @@ class WarrantyDevices extends HTMLElement {
       cancelButton: '[js-cancel-warranty-form]',
       successMessage: '.warranty-success-message',
       familySelect: '#unit-family',
-      modelSelect: '#unit-model'
+      modelSelect: '#unit-model',
+      saveButton: '#warranty-save-btn',
+      spinner: '#warranty-save-spinner',
+      formContainer: '[js-device-warranty-wrapper]'
     }
+
+    this.warrantyAPI = new WarrantyAPI();
+
+    /* Selectors */
+    this.formContainer = this.querySelector(this._selectors.formContainer);
+
+    /* Form Elements */
+    this.unitFamilySelect = this.querySelector(this._selectors.familySelect);
+    this.unitModelSelect = this.querySelector(this._selectors.modelSelect);
+    this.form = this.querySelector(this._selectors.warrantyForm);
+
+    /* Buttons */
+    this.saveBtn = this.querySelector(this._selectors.saveButton);
+    this.spinner = this.querySelector(this._selectors.spinner);
+    this.toggleBtn = this.querySelector(this._selectors.toggleWarrantyForm);
+
+    console.log("toggleBtn: ", this.toggleBtn);
+
+
+    /* Script Data */
+    this.families = JSON.parse(document.getElementById('warranty-unit-families').textContent);
   }
 
   connectedCallback() {
-    this.button = this.querySelector(this._selectors.getDeviceButton);
-    if (this.button) {
-      this.button.addEventListener('click', this._renderDevices);
-    }
     this._toggleWarrantyForm();
     this._cancelButton();
-    this._setupTabListener();
     this._dateFormatter();
     this._setupCalendarPicker();
-    this._setupFormHandler();
-    this._setupFamilyModelDropdown();
-    this._productLookup = {};
-    this._familySelectListener();
-
-    document.querySelectorAll('.product-data').forEach(el => {
-      this._productLookup[el.dataset.handle] = {
-        featured_image: el.dataset.featuredImage
-      };
-    });
+    this._initListeners();
 
     this._productImageLookup = {};
     document.querySelectorAll('#unit-model option[data-image][value]').forEach(opt => {
@@ -141,39 +60,76 @@ class WarrantyDevices extends HTMLElement {
     });
   }
 
-  _familySelectListener() {
-    const familySelect = this.querySelector(this._selectors.familySelect);
-    const modelSelect = this.querySelector(this._selectors.modelSelect);
-
-    if (!familySelect || !modelSelect) {
+  _initListeners() {
+    console.log("initListeners");
+    if (!this.unitFamilySelect || !this.unitModelSelect) {
       console.warn('Unit family or model select not found in DOM');
       return;
     }
 
-    familySelect.addEventListener('change', function () {
-      const selectedOption = familySelect.options[familySelect.selectedIndex];
-      const gid = selectedOption.value;
-      const handle = window.collectionGidToHandle[gid];
+    this.unitFamilySelect.addEventListener('change', this._familySelectHandler.bind(this));
+    this.form.addEventListener('submit', this._formSubmitHandler.bind(this));
 
-      modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
+    document.querySelector('input[value="devices-warranty"]').addEventListener('change', this._tabChangeHandler.bind(this));
+    this.toggleBtn.addEventListener('click', this._toggleWarrantyForm.bind(this));
+  }
 
-      if (!handle) return;
+  _familySelectHandler(evt) {
+    const selectedFamilyOption = evt.target.options[evt.target.selectedIndex];
 
-      const models = window.collectionProducts[handle] || [];
-      if (models.length) {
-        models.forEach(function (model) {
-          const opt = document.createElement('option');
-          opt.value = model.id;
-          opt.textContent = model.title;
-          modelSelect.appendChild(opt);
-        });
-      } else {
-        const opt = document.createElement('option');
-        opt.value = '';
-        opt.textContent = 'No models found';
-        modelSelect.appendChild(opt);
-      }
+    this.unitModelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
+
+    const selectedFamily = this.families.find(family => family.id === parseInt(selectedFamilyOption.getAttribute('data-index'), 10));
+    if (!selectedFamily || !selectedFamily.products || !selectedFamily.products.length) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'No models available';
+      this.unitModelSelect.appendChild(opt);
+      return;
+    }
+
+    // Populate model select with products from the selected family
+    selectedFamily.products.forEach(product => {
+      const opt = document.createElement('option');
+      opt.value = product.id;
+      opt.textContent = product.title;
+      this.unitModelSelect.appendChild(opt);
     });
+  }
+
+  async _formSubmitHandler(evt) {
+    evt.preventDefault();
+
+    this.saveBtn.disabled = true;
+    this.saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    this.spinner.setAttribute('loading', '');
+
+    const formData = new FormData(this.form)
+    const result = await this.warrantyAPI.registerDevice(Object.fromEntries(formData));
+
+    if (result.success) {
+      this._showSuccessMessage('Device registered successfully!');
+      this.form.reset();
+      if (this.formContainer) this.formContainer.classList.add('hidden');
+      await this._renderDevices();
+    } else {
+      this._showErrorMessage(formatWarrantyErrorMessage(result.error));
+    }
+
+    // Reset button state
+    this.saveBtn.disabled = false;
+    this.saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    this.spinner.removeAttribute('loading');
+  }
+
+  _tabChangeHandler = (evt) => {
+    if (evt.target.checked) {
+      this._renderDevices(true);
+    }
+  }
+
+  _toggleWarrantyForm = () => {
+    this.formContainer.classList.toggle('hidden');
   }
 
   _renderDevices = async (showLoading = false) => {
@@ -182,32 +138,37 @@ class WarrantyDevices extends HTMLElement {
       console.warn('No .device-card-content found in DOM');
       return;
     }
-    try {
-      if (showLoading) {
-        container.innerHTML = '<p>Loading your devices...</p>';
-      }
-      const devices = await getDevices();
-      if (!devices.length) {
-        container.innerHTML = '<p class="account__rte h-full p2">No devices registered yet.</p>';
-        return;
-      }
-      container.innerHTML = devices.map(device => this._deviceCardHTML(device)).join('');
-    } catch (err) {
-      console.error('Failed to load devices:', err);
+    if (showLoading) {
+      container.innerHTML = '<p>Loading your devices...</p>';
+    }
+
+    const result = await this.warrantyAPI.getDevices();
+
+    if (!result.success) {
+      console.error('Failed to load devices:', result.error);
       container.innerHTML = `
         <div class="account-content block">
           <div class="account__rte h-full p2 bg-[#D6E4F3] text-[#002955]">
-            Failed to load devices: ${err.message}
+            Failed to load devices, please contact support if the problem persists.
           </div>
         </div>
       `;
+      return;
     }
+
+    const devices = result.payload;
+    if (!devices || !devices.length) {
+      container.innerHTML = '<p class="account__rte h-full p2">No devices registered yet.</p>';
+      return;
+    }
+
+    container.innerHTML = devices.map(device => this._deviceCardHTML(device)).join('');
   }
 
   _deviceCardHTML(device) {
     let imageUrl = '';
-    if (this._productImageLookup && device.series) {
-      imageUrl = this._productImageLookup[device.series] || '';
+    if (this.families) {
+      imageUrl = this.families.find(family => family.collection === device.family)?.products.find(product => product.id === device.series)?.featuredImage || '';
     }
 
     let familyGid = device.family;
@@ -219,8 +180,17 @@ class WarrantyDevices extends HTMLElement {
           <div class="my-devices-content flex justify-between p-sm bg-white w-full max-w-full">
             <!-- Image column -->
             <div class="flex mr-20 tabletp:w-1/4">
-              <div class="product-card__image aspect-square overflow-hidden">
-                <img src="${imageUrl}" alt="${this._handleToTitle(handle)}" class="object-cover object-center w-full h-full tabletp:object-contain" />
+              <div class="product-card__image aspect-square overflow-hidden flex items-center justify-center">
+                ${imageUrl ?
+                  `<img src="${imageUrl}" alt="${this._handleToTitle(handle)}" class="object-cover object-center w-full h-full tabletp:object-contain" />`
+                  :
+                  `
+                  <svg viewBox="0 0 141 24" class="logo" xmlns="http://www.w3.org/2000/svg">
+                  <title>Blueair</title>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3552 23.5C17.6264 23.5 22.7103 18.3513 22.7103 12C22.7103 8.95001 21.514 6.02494 19.3845 3.86827C17.255 1.7116 14.3667 0.5 11.3552 0.5C5.08388 0.5 0 5.64873 0 12C0 18.3513 5.08388 23.5 11.3552 23.5ZM126.569 2.65363L125.949 5.61226H121.356L121.965 2.65363H126.569ZM43.9957 2.6537H30.0288L26.0339 21.5451H39.3194C44.966 21.5451 46.7932 18.346 47.3196 15.8264C47.7326 13.7982 47.0512 11.6446 44.966 11.2578V11.1951C46.6466 10.6171 47.8995 9.18121 48.259 7.42097C48.9919 3.9187 46.7106 2.6537 43.9957 2.6537ZM41.9316 15.7218C41.7352 17.0221 40.6185 17.9742 39.3199 17.9486H31.8565L32.7959 13.4532H39.7432C41.529 13.4532 42.2826 14.2477 41.9729 15.7218H41.9316ZM40.5277 10.1705C41.7172 10.2169 42.7421 9.32923 42.8813 8.13185V8.18412C43.1187 6.94003 42.7574 6.09321 40.6928 6.09321H34.3339L33.4771 10.1705H40.5277ZM53.3585 2.6537H57.9625L53.9985 21.5451H49.4048L53.3585 2.6537ZM76.8848 7.35819H72.2911L70.9182 14.4568C70.624 16.8442 68.5631 18.5988 66.1903 18.4818C64.0741 18.4818 63.238 17.52 63.6612 15.565L65.3851 7.35819H60.7811L58.7165 16.9659C57.8288 21.1477 61.2766 22.0782 63.6612 22.0782C65.9571 22.0969 68.1732 21.2254 69.8549 19.6423L69.4626 21.545H73.9118L76.8848 7.35819ZM89.1273 6.83543C83.5892 6.83834 79.413 9.11794 78.2886 14.4568C77.1634 19.7991 80.3531 22.0782 85.9481 22.0782C90.1599 22.0782 93.6283 20.6772 95.6723 17.3109H90.7586C89.7331 18.5817 88.1637 19.2712 86.5468 19.1613C83.45 19.1613 82.5003 17.0704 82.7893 15.7532V15.7009H96.271L96.3432 15.2722C97.4678 9.93291 95.1999 6.83883 89.1273 6.83543ZM89.1273 6.83543L89.1172 6.83543H89.1379L89.1273 6.83543ZM92.0902 12.9514V12.8991H92.0799C92.245 12.1464 91.7702 9.76274 88.3946 9.76274C86.2319 9.63388 84.2199 10.8865 83.3571 12.8991V12.9514H92.0902ZM109.515 6.83543C105.747 6.83543 101.67 7.33725 100.225 11.7072H104.664C105.696 9.74179 106.728 9.61634 108.793 9.61634C111.456 9.61634 112.292 10.1704 112.034 11.31C111.776 12.4495 111.27 12.69 109.866 12.7945L104.901 13.1395C102.052 13.3172 98.8827 14.0595 98.1808 17.4991C97.4788 20.9386 99.7705 22.1095 103.435 22.1095C105.5 22.1095 108.504 21.66 110.413 20.0709C110.346 20.5704 110.346 21.0768 110.413 21.5763H115.007C114.831 20.63 114.86 19.6565 115.09 18.7222L116.555 11.6863C117.123 9.03088 116.163 6.86679 109.577 6.86679L109.515 6.83543ZM105.603 19.3601C107.926 19.3601 110.754 18.2205 111.25 15.8369L111.477 14.6764C110.577 15.0352 109.625 15.2401 108.659 15.2828L105.944 15.5232C104.292 15.6487 103.374 16.1087 103.115 17.3737C102.857 18.6387 103.879 19.3601 105.603 19.3601ZM125.588 7.35819H120.984L118.011 21.545H122.605L125.588 7.35819ZM141 7.12828L140.082 11.4878C139.287 11.2304 138.459 11.0896 137.625 11.0696C134.528 11.0696 132.659 12.6796 132.092 15.4396L130.812 21.5451H126.208L129.191 7.35828H133.63L133.052 10.1392C135.168 7.9751 136.685 7.00283 139.297 7.00283C139.851 6.99482 140.404 7.04033 140.949 7.13874L141 7.12828Z" fill="#002955"></path>
+                  </svg>
+                  `
+                }
               </div>
             </div>
             <!-- Details column -->
@@ -266,16 +236,6 @@ class WarrantyDevices extends HTMLElement {
       .join(' ');
   }
 
-  _toggleWarrantyForm = () => {
-    const toggleBtn = this.querySelector(this._selectors.toggleWarrantyForm);
-    const form = this.querySelector(this._selectors.warrantyForm);
-    if (toggleBtn && form) {
-      toggleBtn.addEventListener('click', () => {
-        form.classList.toggle('hidden');
-      });
-    }
-  }
-
   _cancelButton = () => {
     const cancelBtn = this.querySelector(this._selectors.cancelButton);
     if (cancelBtn) {
@@ -287,17 +247,6 @@ class WarrantyDevices extends HTMLElement {
         }
         if (formContainer) {
           formContainer.classList.add('hidden');
-        }
-      });
-    }
-  }
-
-  _setupTabListener = () => {
-    const devicesWarrantyTab = document.querySelector('input[value="devices-warranty"]');
-    if (devicesWarrantyTab) {
-      devicesWarrantyTab.addEventListener('change', (e) => {
-        if (e.target.checked) {
-          this._renderDevices(true);
         }
       });
     }
@@ -320,7 +269,7 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _setupCalendarPicker = () => {
-    const dateInput = this.querySelector('input[name="purchase_date"]');
+    const dateInput = this.querySelector('input[name="dateOfPurchase"]');
     const calendarBtn = this.querySelector('[js-calendar-picker]');
 
     if (!dateInput || !calendarBtn) return;
@@ -474,48 +423,6 @@ class WarrantyDevices extends HTMLElement {
     });
   }
 
-  _setupFormHandler() {
-    const form = document.getElementById('warranty-device-form');
-    const saveBtn = document.getElementById('warranty-save-btn');
-    const spinner = document.getElementById('warranty-save-spinner');
-    const formContainer = this.querySelector('[js-device-warranty-form]');
-
-
-    if (form && saveBtn && spinner) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        saveBtn.disabled = true;
-        saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
-        spinner.setAttribute('loading', '');
-
-        const formData = {
-          family: form.unit_family.value,
-          series: form.unit_model.value,
-          sn: form.serial_number.value,
-          dateOfPurchase: form.purchase_date.value,
-          wherePurchased: form.place_of_purchase.value,
-          name: form.device_name.value,
-          country: form.country.value,
-          region: "US"
-        };
-        try {
-          await registerDevice(formData);
-          this._showSuccessMessage('Device registered successfully!');
-          form.reset();
-          if (formContainer) formContainer.classList.add('hidden');
-          await this._renderDevices();
-        } catch (err) {
-          this._showErrorMessage(formatWarrantyErrorMessage(err.message));
-        } finally {
-          saveBtn.disabled = false;
-          saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-          spinner.removeAttribute('loading');
-        }
-      });
-    }
-  }
-
   _showSuccessMessage(message) {
     this._clearMessages();
     let msgDiv = document.createElement('div');
@@ -543,34 +450,101 @@ class WarrantyDevices extends HTMLElement {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+}
 
-  _setupFamilyModelDropdown() {
-    let familySelect = this.querySelector('#unit-family');
-    let modelSelect = this.querySelector('#unit-model');
-    if (familySelect && modelSelect) {
-      familySelect.addEventListener('change', function () {
-        const selectedOption = familySelect.options[familySelect.selectedIndex];
-        const handle = selectedOption.getAttribute('data-collection-handle');
-        if (!handle) {
-          modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
-          return;
-        }
-        const models = window.collectionProducts[handle] || [];
-        modelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
-        if (models.length) {
-          models.forEach(function (model) {
-            const opt = document.createElement('option');
-            opt.value = model.id;
-            opt.textContent = model.title;
-            modelSelect.appendChild(opt);
-          });
-        } else {
-          const opt = document.createElement('option');
-          opt.value = '';
-          opt.textContent = 'No models found';
-          modelSelect.appendChild(opt);
+class WarrantyAPI {
+  constructor() {
+    this.apiBase = 'https://hkgmr8v960.execute-api.eu-west-1.amazonaws.com/prod/c/warranty';
+    this.jwtCookie = 'gigya_access_token';
+  }
+
+  getJwtToken() {
+    return theme.utils.getCookie(this.jwtCookie);
+  }
+
+  async getDevices() {
+    try {
+      const jwtToken = this.getJwtToken();
+      if (!jwtToken) {
+        return {
+          success: false,
+          payload: null,
+          error: 'No authentication token found'
+        };
+      }
+
+      const res = await fetch(this.apiBase, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${jwtToken}`
         }
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return {
+          success: false,
+          payload: null,
+          error: data.error || data.message || `HTTP ${res.status}: ${res.statusText}`
+        };
+      }
+
+      return {
+        success: true,
+        payload: data,
+        error: null
+      };
+    } catch (error) {
+      return {
+        success: false,
+        payload: null,
+        error: error.message || 'Failed to fetch devices'
+      };
+    }
+  }
+
+  async registerDevice(formData) {
+    try {
+      const jwtToken = this.getJwtToken();
+      if (!jwtToken) {
+        return {
+          success: false,
+          payload: null,
+          error: 'No authentication token found'
+        };
+      }
+
+      const res = await fetch(this.apiBase, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${jwtToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || (res?.status !== 200 && res?.status !== 201)) {
+        return {
+          success: false,
+          payload: data,
+          error: data.error || data.message || `HTTP ${res.status}: ${res.statusText}`
+        };
+      }
+
+      return {
+        success: true,
+        payload: data,
+        error: null
+      };
+    } catch (error) {
+      return {
+        success: false,
+        payload: null,
+        error: error.message || 'Failed to register device'
+      };
     }
   }
 }

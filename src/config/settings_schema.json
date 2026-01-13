@@ -349,6 +349,7 @@
         "default": true
       }
     ]
+<<<<<<< HEAD
   },
   {
 <<<<<<< HEAD
@@ -401,5 +402,7 @@
 >>>>>>> 5c2e23e (github code review points addressed:)
       }
     ]
+=======
+>>>>>>> f46a1fe (cleaned up warranty implementation)
   }
 ]
