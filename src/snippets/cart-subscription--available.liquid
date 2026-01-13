@@ -22,6 +22,8 @@
         Add a Wick Subscription
       {% elsif preselected_subscription.title contains 'Aroma' and is_two_in_one_subscription %}
         Add an Aroma Subscription
+      {% elsif preselected_subscription.title contains 'Collection' and is_two_in_one_subscription %}
+        Add an Aroma Subscription
       {% else %}
         Add a Filter Subscription
       {% endif %}

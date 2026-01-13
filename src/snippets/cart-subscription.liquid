@@ -2,6 +2,7 @@
   assign is_subscribed = false
   assign unit_subscription_service_product = ''
   assign subscription_available = false
+  
   if item.selling_plan_allocation != blank
     assign is_subscribed = true
   else
@@ -15,79 +16,71 @@
         endif
       endfor
     endif
+    
     if is_subscribed == false
+      comment
+        Determine target variant and product based on pdp_type
+      endcomment
       if subscription_object.pdp_type == 'Filter'
-        if item.variant.available and item.variant.selling_plan_allocations.size > 0
-          assign subscription_available = true
-          assign preselected_subscription = item.variant
-          assign preselected_subscription_selling_plan_allocation = ''
-          if subscription_object.frequency_options_override != blank or item.product.metafields.seed.subscription_frequency_options != blank
-            if subscription_object.frequency_options_override != blank
-              assign frequency_options = subscription_object.frequency_options_override.value
-            else 
-              assign frequency_options = item.product.metafields.seed.subscription_frequency_options.value
-            endif
-            for frequency_option in frequency_options
-              for selling_plan_allocation in preselected_subscription.selling_plan_allocations
-                if frequency_option == selling_plan_allocation.selling_plan.options[0].value
-                  assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
-                  break
-                endif
-              endfor
-              if preselected_subscription_selling_plan_allocation != blank
-                break
-              endif
-            endfor
-          else 
-            assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
-          endif
-        endif
+        assign target_variant = item.variant
+        assign target_product = item.product
       elsif subscription_object.pdp_type == 'Air Purifier + Filter'
         assign filter_subscriptions = subscription_object.filter_subscriptions.value
         for filter_product in filter_subscriptions
           assign filter_variant = filter_product.variants[1]
           if filter_variant.available and filter_variant.selling_plan_allocations.size > 0
-            assign subscription_available = true
-            assign preselected_subscription = filter_variant
-            assign preselected_subscription_selling_plan_allocation = ''
-            if subscription_object.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank
-              if subscription_object.frequency_options_override != blank
-                assign frequency_options = subscription_object.frequency_options_override.value
-              else 
-                assign frequency_options = filter_product.metafields.seed.subscription_frequency_options.value
-              endif
-              for frequency_option in frequency_options
-                for selling_plan_allocation in preselected_subscription.selling_plan_allocations
-                  if frequency_option == selling_plan_allocation.selling_plan.options[0].value
-                    assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
-                    break
-                  endif
-                endfor
-                if preselected_subscription_selling_plan_allocation != blank
-                  break
-                endif
-              endfor
-            else 
-              assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
-            endif
+            assign target_variant = filter_variant
+            assign target_product = filter_product
             break
           endif
         endfor
       endif
+      
+      comment
+        Find preselected subscription selling plan allocation if variant is available
+      endcomment
+      if target_variant and target_variant.available and target_variant.selling_plan_allocations.size > 0
+        assign subscription_available = true
+        assign preselected_subscription = target_variant
+        assign preselected_subscription_selling_plan_allocation = ''
+        
+        if subscription_object.frequency_options_override != blank or target_product.metafields.seed.subscription_frequency_options != blank
+          if subscription_object.frequency_options_override != blank
+            assign frequency_options = subscription_object.frequency_options_override.value
+          else 
+            assign frequency_options = target_product.metafields.seed.subscription_frequency_options.value
+          endif
+          for frequency_option in frequency_options
+            for selling_plan_allocation in preselected_subscription.selling_plan_allocations
+              if frequency_option == selling_plan_allocation.selling_plan.options[0].value
+                assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
+                break
+              endif
+            endfor
+            if preselected_subscription_selling_plan_allocation != blank
+              break
+            endif
+          endfor
+        else 
+          assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
+        endif
+      endif
     endif
   endif
 %}
+
 {% if is_subscribed %}
   {% assign subscription_item = item %}
   {% if unit_subscription_service_product != blank %}
-    {% assign subscription_item = unit_subscription_service_product  %}
+    {% assign subscription_item = unit_subscription_service_product %}
   {% endif %}
   {% render 'cart-subscription--added'
     scope: scope
     item: item
     subscription_item: subscription_item
-    unit_subscription_service_product: unit_subscription_service_product 
-    is_two_in_one_subscription: false
+    unit_subscription_service_product: unit_subscription_service_product
+    is_two_in_one_subscription: false,
+    subscribed_scent_product: subscribed_scent_product
     index: index
   %}
 {% elsif subscription_available %}
@@ -97,75 +90,185 @@
     pdp_type: subscription_object.pdp_type
     preselected_subscription: preselected_subscription
     preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
-    is_two_in_one_subscription: false
+    is_two_in_one_subscription: false,
+    subscribed_scent_product: subscribed_scent_product
     index: index
     two_pack_override: subscription_object.two_pack_quantity_override.value
   %}
-{% elsif subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+{% elsif subscription_object.pdp_type == '2in1 Purify + Humidify' %}  
+  {% comment %}
+    Process filter subscriptions
+  {% endcomment %}
   {% assign filter_subscriptions = subscription_object.filter_subscriptions.value %}
   {% for filter_product in filter_subscriptions %}
     {% liquid
-      assign is_filter_subscribed = false
-      assign filter_subscription_available = false
-      assign filter_variant = filter_product.variants[1]
+      assign is_product_subscribed = false
+      assign product_subscription_available = false
+      assign product_variant = filter_product.variants[1]
       assign unit_subscription_service_product = ''
       assign index = index | plus: 0.1
+      
       if item.properties['_unitSubscriptionTempId'] != blank
         for cart_item in cart.items
-          if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == filter_variant.id
-            assign is_filter_subscribed = true
+          if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id
+            assign is_product_subscribed = true
             assign unit_subscription_service_product = cart_item
             break
           endif
         endfor
       endif
-      if is_filter_subscribed == false
-        if filter_variant.available and filter_variant.selling_plan_allocations.size > 0
-          assign filter_subscription_available = true
-          assign preselected_subscription = filter_variant
-          assign preselected_subscription_selling_plan_allocation = ''
-          if subscription_object.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank
-            if subscription_object.frequency_options_override != blank
-              assign frequency_options = subscription_object.frequency_options_override.value
-            else
-              assign frequency_options = filter_product.metafields.seed.subscription_frequency_options.value
-            endif
-            for frequency_option in frequency_options
-              for selling_plan_allocation in preselected_subscription.selling_plan_allocations
-                if frequency_option == selling_plan_allocation.selling_plan.options[0].value
-                  assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
-                  break
-                endif
-              endfor
-              if preselected_subscription_selling_plan_allocation != blank
+      
+      if is_product_subscribed == false and product_variant.available and product_variant.selling_plan_allocations.size > 0
+        assign product_subscription_available = true
+        assign preselected_subscription = product_variant
+        assign preselected_subscription_selling_plan_allocation = ''
+        
+        if subscription_object.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank
+          if subscription_object.frequency_options_override != blank
+            assign frequency_options = subscription_object.frequency_options_override.value
+          else
+            assign frequency_options = filter_product.metafields.seed.subscription_frequency_options.value
+          endif
+          for frequency_option in frequency_options
+            for selling_plan_allocation in preselected_subscription.selling_plan_allocations
+              if frequency_option == selling_plan_allocation.selling_plan.options[0].value
+                assign preselected_subscription_selling_plan_allocation = selling_plan_allocation
                 break
               endif
             endfor
-          else 
-            assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
-          endif
+            if preselected_subscription_selling_plan_allocation != blank
+              break
+            endif
+          endfor
+        else 
+          assign preselected_subscription_selling_plan_allocation = preselected_subscription.selling_plan_allocations[0]
         endif
       endif
     %}
-    {% if is_filter_subscribed %}
+    {% if is_product_subscribed %}
       {% render 'cart-subscription--added'
         scope: scope
         item: item
         subscription_item: unit_subscription_service_product
-        unit_subscription_service_product: unit_subscription_service_product 
-        is_two_in_one_subscription: true
+        unit_subscription_service_product: unit_subscription_service_product
+        is_two_in_one_subscription: true,
+        subscribed_scent_product: subscribed_scent_product
         index: index
       %}
-    {% elsif filter_subscription_available %}
+    {% elsif product_subscription_available %}
       {% render 'cart-subscription--available'
         scope: scope
         item: item
         pdp_type: subscription_object.pdp_type
         preselected_subscription: preselected_subscription
         preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
-        is_two_in_one_subscription: true
+        is_two_in_one_subscription: true,
+        subscribed_scent_product: subscribed_scent_product
         index: index
       %}
     {% endif %}
   {% endfor %}
+  
+  {% comment %}
+    Process scent subscriptions - show subscribed ones, or first available if none subscribed
+  {% endcomment %}
+  {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+  {% liquid
+    assign subscribed_scent = false
+    assign first_available_scent_product = blank
+    assign first_available_scent_variant = blank
+    assign first_available_preselected_selling_plan_allocation = blank
+    
+    comment
+      First pass: check if any are subscribed, and find first available
+    endcomment
+    for scent_product in scent_subscriptions
+      assign product_variant = scent_product.variants[1]
+      if item.properties['_unitSubscriptionTempId'] != blank
+        for cart_item in cart.items
+          if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id
+            assign subscribed_scent = true
+            break
+          endif
+        endfor
+      endif
+      if subscribed_scent
+        break
+      endif
+      if first_available_scent_product == blank and product_variant.available and product_variant.selling_plan_allocations.size > 0
+        assign first_available_scent_product = scent_product
+        assign first_available_scent_variant = product_variant
+        if subscription_object.frequency_options_override != blank or scent_product.metafields.seed.subscription_frequency_options != blank
+          if subscription_object.frequency_options_override != blank
+            assign frequency_options = subscription_object.frequency_options_override.value
+          else
+            assign frequency_options = scent_product.metafields.seed.subscription_frequency_options.value
+          endif
+          for frequency_option in frequency_options
+            for selling_plan_allocation in first_available_scent_variant.selling_plan_allocations
+              if frequency_option == selling_plan_allocation.selling_plan.options[0].value
+                assign first_available_preselected_selling_plan_allocation = selling_plan_allocation
+                break
+              endif
+            endfor
+            if first_available_preselected_selling_plan_allocation != blank
+              break
+            endif
+          endfor
+        else 
+          assign first_available_preselected_selling_plan_allocation = first_available_scent_variant.selling_plan_allocations[0]
+        endif
+      endif
+    endfor
+  %}
+  
+  {% if subscribed_scent %}
+    {% comment %} Show only subscribed scent products {% endcomment %}
+    {% for scent_product in scent_subscriptions %}
+      {% liquid
+        assign is_product_subscribed = false
+        assign product_variant = scent_product.variants[1]
+        assign unit_subscription_service_product = ''
+        assign index = index | plus: 0.1
+        
+        if item.properties['_unitSubscriptionTempId'] != blank
+          for cart_item in cart.items
+            if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id
+              assign is_product_subscribed = true
+              assign unit_subscription_service_product = cart_item
+              break
+            endif
+          endfor
+        endif
+      %}
+      {% if is_product_subscribed %}
+        {% render 'cart-subscription--added'
+          scope: scope
+          item: item
+          subscription_item: unit_subscription_service_product
+          unit_subscription_service_product: unit_subscription_service_product
+          is_two_in_one_subscription: true,
+          subscribed_scent_product: subscribed_scent_product
+          index: index
+        %}
+      {% endif %}
+    {% endfor %}
+  {% elsif first_available_scent_product != blank %}
+    {% comment %} Show first available scent product {% endcomment %}
+    {% liquid
+      assign index = index | plus: 0.1
+      assign preselected_subscription = first_available_scent_variant
+      assign preselected_subscription_selling_plan_allocation = first_available_preselected_selling_plan_allocation
+    %}
+    {% render 'cart-subscription--available'
+      scope: scope
+      item: item
+      pdp_type: subscription_object.pdp_type
+      preselected_subscription: preselected_subscription
+      preselected_subscription_selling_plan_allocation: preselected_subscription_selling_plan_allocation
+      is_two_in_one_subscription: true,
+      subscribed_scent_product: subscribed_scent_product
+      index: index
+    %}
+  {% endif %}
 {% endif %}

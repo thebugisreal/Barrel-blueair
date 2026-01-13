@@ -33,6 +33,9 @@
         }
       }{% endif %},
       "isTwoInOneSubscription": {{ is_two_in_one_subscription }},
+      {% if subscribed_scent_product != blank %}
+      "subscribedScent": "{{ subscribed_scent_product }}",
+      {% endif %}
       "index": "{{ index }}"
     }
   </script>

@@ -20,6 +20,7 @@
   {% endif %}
 {% else %}
   {% assign pdp_type = '2in1_purify_humidify' %}
+  {% assign scent_subscriptions = filter_subscription.scent_subscriptions.value %}
 {% endif %}
 
 <div class="product__subscription-container flex flex-col gap-sm {% if product.variants.size > 1 or is_additional %}mt-md{% elsif is_additional %}mt-sm{% endif %}">
@@ -111,21 +112,81 @@
           {% endif %}
         {% else %}
           <input type="hidden" disabled name="properties[_unitSubscriptionTempId]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input>
+          {% assign counter = 0 %}
           {% for filter_product in filter_subscriptions %}
-            <input type="hidden" disabled name="items[{{ forloop.index }}][id]" value="" data-index="{{ forloop.index }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ forloop.index }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ forloop.index }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input>
-            <input type="hidden" disabled name="items[{{ forloop.index }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input>
+            {% assign counter = counter | plus: 1 %}
+            <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
           {% endfor %}
+          {% if scent_subscriptions.count != 0 %}
+            {% assign counter = counter | plus: 1 %}
+            {% assign scent_index = counter %}
+            <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input js-scent-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input js-scent-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input js-scent-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input js-scent-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input js-scent-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input js-scent-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input js-scent-subscription-form-input>
+          {% endif %}
         {% endif %}
         <div class="p2 font-700">
           Customize Your Subscription
         </div>
         <div class="filter-subscriptions">
           {% if pdp_type == '2in1_purify_humidify' %}
+            {% if scent_subscriptions.count != 0 %}
+              <div class="p6 font-700 mb-xxxs mt-sm">Select Scent</div>
+              <div class="filter-subscriptions__filters flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs">
+                {% assign scent_count = 0 %}
+                {% for scent_product in scent_subscriptions %}
+                  {% assign scent_variant = scent_product.variants[0] %}
+                  {% if scent_product.variants[1].title contains 'subscription' or scent_product.variants[1].title contains 'Subscription' %}
+                    {% assign scent_variant = scent_product.variants[1] %}
+                  {% endif %}
+
+                  {% if scent_variant.selling_plan_allocations.size > 0 %}
+                    {% assign scent_count = scent_count | plus: 1 %}
+                    {% if scent_count == 1 %}
+                      {% assign scent_current_on_load = true %}
+                    {% else %}
+                      {% assign scent_current_on_load = false %}
+                    {% endif %}
+    
+                    {% comment %} Build selling plan ID data attributes for this scent variant {% endcomment %}
+                    {% assign selling_plan_data_attrs = '' %}
+                    {% for selling_plan_allocation in scent_variant.selling_plan_allocations %}
+                      {% assign plan_frequency_text = selling_plan_allocation.selling_plan.options[0].value | downcase | strip %}
+                      {% assign plan_frequency = plan_frequency_text | replace: 'months', '' | strip | plus: 0 %}
+                      {% assign selling_plan_data_attrs = selling_plan_data_attrs | append: ' data-selling-plan-' | append: plan_frequency | append: '="' | append: selling_plan_allocation.selling_plan.id | append: '"' %}
+                    {% endfor %}
+    
+                    <button type="button" class="filter-subscription__variant p-xxs border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if scent_current_on_load %}current-on-load {% endif %} data-index="{{ scent_index }}" data-selected="false" data-variant="{{ scent_variant.id }}" data-available="{{ scent_variant.available }}"{{ selling_plan_data_attrs }} js-filter-subscription-variant js-scent-subscription-variant>
+                      <div class="p4 font-500">
+                        {% if scent_product.metafields.seed.filter_subscription_label != blank %}
+                          {{ scent_product.metafields.seed.filter_subscription_label }}
+                        {% else %}
+                          {{ scent_product.variants[0].title }}
+                        {% endif %}
+                      </div>
+                      <div class="flex justify-center gap-xxs p6" js-price-copy data-label-price="{{ scent_product.variants[0].selling_plan_allocations[0].price }}" data-label-price-compare-at="{{ scent_product.variants[0].selling_plan_allocations[0].compare_at_price }}" data-price="{{ scent_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ scent_variant.selling_plan_allocations[0].compare_at_price }}">
+                        {% assign label_quantity = 1 %}
+                        {% if scent_product.variants[0].selling_plan_allocations[0].compare_at_price > scent_product.variants[0].selling_plan_allocations[0].price %}
+                          <s>{{ scent_product.variants[0].selling_plan_allocations[0].compare_at_price | times: label_quantity | money }}</s>
+                        {% endif %}
+                        <span class="font-700">{{ scent_product.variants[0].selling_plan_allocations[0].price | times: label_quantity | money }}</span>
+                      </div>
+                    </button>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
             <div class="p6 font-700 mb-xxxs mt-sm">Choose Shipping Frequency</div>
             <div class="filter-subscriptions__master-frequency-selector">
               {% comment %} Use the exact same frequency options logic as individual selectors {% endcomment %}
@@ -183,7 +244,7 @@
                       {% assign current_on_load = false %}
                     {% endif %}
                   {% endif %}
-                  <button type="button" class="filter-subscription__variant p-xxs border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if current_on_load %}current-on-load {% endif %} data-selected="false" data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}" js-fitler-subscription-variant {% if current_on_load == false and pdp_type == 'filter' %}is-variant-link="{{ filter_product.url }}" {% endif %}>
+                  <button type="button" class="filter-subscription__variant p-xxs border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if current_on_load %}current-on-load {% endif %} data-selected="false" data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}" js-filter-subscription-variant {% if current_on_load == false and pdp_type == 'filter' %}is-variant-link="{{ filter_product.url }}" {% endif %}>
                     <div class="p4 font-500">
                       {% if filter_product.metafields.seed.filter_subscription_label != blank %}
                         {{ filter_product.metafields.seed.filter_subscription_label }}
