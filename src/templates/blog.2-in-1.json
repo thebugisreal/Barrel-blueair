@@ -335,6 +335,13 @@
             "topic": "humidifier"
           }
         },
+        "topic_e88zhx": {
+          "type": "topic",
+          "disabled": true,
+          "settings": {
+            "topic": "aroma"
+          }
+        },
         "topic_DedYi7": {
           "type": "topic",
           "settings": {
@@ -385,14 +392,12 @@
         },
         "topic_jirpDa": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "pro"
           }
         },
         "topic_VaK6Ty": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "sense"
           }
@@ -403,6 +408,7 @@
         "topic_xbaQnD",
         "topic_dPNDxQ",
         "topic_RDjTDR",
+        "topic_e88zhx",
         "topic_DedYi7",
         "topic_7ijgjd",
         "topic_zqqArq",
@@ -424,7 +430,7 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 2,
-        "num_cols_desktop": 6,
+        "num_cols_desktop": 5,
         "max_width": "1440px",
         "color": "bg-white text-blue",
         "title": "Help by Product",

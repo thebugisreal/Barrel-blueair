@@ -25,7 +25,7 @@
         "image_desktop": "shopify://shop_images/business_desktop_52115e24-57bb-4607-88cd-f250e82c3306.png",
         "content_height_mobile": "",
         "content_height_desktop": "",
-        "title": "",
+        "title": "Aroma",
         "title_style": "h2"
       }
     },
@@ -38,12 +38,13 @@
           "settings": {
             "link_anchor_id": "videos",
             "title": "How To Use Videos",
-            "image": "shopify://shop_images/account-warranty.png",
-            "svg_html": "<svg class=\"icon icon--video\" viewbox=\"0 0 128 128\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M64,32.29c.23,0,22.92,0,37.9,1.08l.66.06c2,.18,4.16.39,6.28,2.58l0,0,0,0c1,1,2.14,4.54,2.53,7.07a156,156,0,0,1,1,16.71v8.24a156.82,156.82,0,0,1-1,16.72c-.37,2.47-1.54,6.06-2.52,7l0,0,0,0c-2.11,2.18-4.32,2.39-6.27,2.58l-.68.07c-14.72,1-36.89,1.1-37.89,1.1-1.15,0-28-.27-36.57-1-.51-.08-1-.15-1.58-.21-2.28-.27-4.87-.58-6.73-2.51l0,0,0,0c-1-1-2.14-4.53-2.52-7.05a156,156,0,0,1-1-16.71V59.86a156.79,156.79,0,0,1,1-16.71c.39-2.55,1.55-6.09,2.53-7.07l0,0,0,0c2.12-2.19,4.33-2.39,6.28-2.58l.66-.06c15-1.07,37.67-1.08,37.89-1.08H64m0-6.5H64s-23.09,0-38.48,1.1c-2.15.25-6.83.27-11,4.59-3.29,3.3-4.37,10.79-4.37,10.79A162.25,162.25,0,0,0,9,59.86V68.1a162.19,162.19,0,0,0,1.1,17.59s1.07,7.49,4.37,10.78c4.19,4.32,9.68,4.19,12.13,4.65,8.8.83,37.4,1.09,37.4,1.09s23.11,0,38.51-1.13c2.15-.25,6.84-.28,11-4.6,3.29-3.29,4.37-10.78,4.37-10.78A162.26,162.26,0,0,0,119,68.11V59.87a162.27,162.27,0,0,0-1.1-17.59s-1.07-7.49-4.37-10.79c-4.18-4.32-8.87-4.35-11-4.59C87.11,25.79,64,25.79,64,25.79Z\"></path><polygon points=\"54.13 47.61 54.13 80.39 82.12 64 54.13 47.61\"></polygon></svg>"
+            "image": "shopify://shop_images/Group_48097731.svg",
+            "svg_html": ""
           }
         },
         "link_7W6Rz7": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "link_anchor_id": "troubleshoot",
             "title": "Troubleshooting",
@@ -53,6 +54,7 @@
         },
         "link_nCB6rb": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "link_anchor_id": "specs",
             "title": "User Manuals & Replacement Filters",
@@ -65,7 +67,7 @@
           "settings": {
             "link_anchor_id": "faq",
             "title": "FAQ",
-            "image": "shopify://shop_images/Group_48097729.svg",
+            "image": "shopify://shop_images/Group_48097729_69b172a4-98e0-42f7-b129-4d7208a28f2b.svg",
             "svg_html": ""
           }
         }
@@ -86,71 +88,48 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "num_cols_mobile": 1,
-        "num_cols_desktop": 3,
-        "max_width": "1000px",
+        "num_cols_desktop": 1,
+        "max_width": "550px",
         "color": "bg-white text-blue"
-      }
-    },
-    "section_faq_tagged_posts_AwnaCd": {
-      "type": "section__faq-tagged-posts",
-      "settings": {
-        "anchor_id": "",
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-md",
-        "padding_bottom_mobile": "pb-md",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-lg",
-        "padding_bottom_desktop": "desktop:pb-lg",
-        "max_width": "80ch",
-        "color": "bg-white text-blue",
-        "title": "Top questions about Classic Pro",
-        "title_style": "h4",
-        "blog": "",
-        "tag": "Top Questions"
       }
     },
     "section_faq_videos_MD9CKd": {
       "type": "section__faq-videos",
       "blocks": {
-        "video_DyXLtE": {
+        "video_UiJcNE": {
           "type": "video",
           "settings": {
-            "youtube_id": "0UtXz6pDq1U"
+            "video": "shopify://files/videos/Getting Started.mp4",
+            "youtube_id": ""
           }
         },
-        "video_Ppq4AU": {
+        "video_JaH9CC": {
           "type": "video",
           "settings": {
-            "youtube_id": "jkqobon76eU"
+            "video": "shopify://files/videos/Filter Change.mp4",
+            "youtube_id": ""
           }
         },
-        "video_WczChk": {
+        "video_yMrxDw": {
           "type": "video",
           "settings": {
-            "youtube_id": "9Z1X65YKVek"
+            "video": "shopify://files/videos/General Tips.mp4",
+            "youtube_id": ""
           }
         },
-        "video_hEpJ7f": {
+        "video_QJKQGX": {
           "type": "video",
           "settings": {
-            "youtube_id": "PINfDgqtv9k"
-          }
-        },
-        "video_qyEWcF": {
-          "type": "video",
-          "settings": {
-            "youtube_id": "BGuOHK1iqqs"
+            "video": "shopify://files/videos/BlueSignature.mp4",
+            "youtube_id": ""
           }
         }
       },
       "block_order": [
-        "video_DyXLtE",
-        "video_Ppq4AU",
-        "video_WczChk",
-        "video_hEpJ7f",
-        "video_qyEWcF"
+        "video_UiJcNE",
+        "video_JaH9CC",
+        "video_yMrxDw",
+        "video_QJKQGX"
       ],
       "disabled": true,
       "settings": {
@@ -172,6 +151,7 @@
     },
     "section_faq_tagged_posts_zywNXD": {
       "type": "section__faq-tagged-posts",
+      "disabled": true,
       "settings": {
         "anchor_id": "troubleshoot",
         "margin_top_mobile": "mt-0",
@@ -184,7 +164,7 @@
         "padding_bottom_desktop": "desktop:pb-lg",
         "max_width": "80ch",
         "color": "bg-white text-blue",
-        "title": "Classic Pro Troubleshooting",
+        "title": "Blue Signature Troubleshooting",
         "title_style": "h4",
         "blog": "",
         "tag": "Troubleshooting"
@@ -196,12 +176,12 @@
         "block_iqRdJj": {
           "type": "block",
           "settings": {
-            "title": "Classic Pro CP7i",
-            "image": "shopify://shop_images/support-classicpro.png",
+            "title": "Blue Signature SP4i",
+            "image": "shopify://shop_images/bluesig_1.png",
             "video_link_text": "",
             "video_link_url": "",
             "manual_link_text": "User Manual",
-            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Classic_Pro_CP7i_CP9i_Series_-_English_10.3.2024.pdf.pdf?v=1740595112",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Signature_User_Manual_English_5.8.25.pdf?v=1747340958",
             "manual_2_link_text": "",
             "manual_2_link_url": "",
             "manual_3_link_text": "",
@@ -209,13 +189,35 @@
             "manual_4_link_text": "",
             "manual_4_link_url": "",
             "product_link_text": "Replacement Filters",
-            "product_link_url": "shopify://products/classic-pro-cp7i"
+            "product_link_url": "shopify://products/blue-signature-replacement-filter"
+          }
+        },
+        "block_N9tFUz": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "Blue Pure 211i Max",
+            "image": "shopify://shop_images/new_Blue_Pure_411_Auto_6.png",
+            "video_link_text": "How it works",
+            "video_link_url": "",
+            "manual_link_text": "User Manual",
+            "manual_link_url": "https://cdn.shopify.com/s/files/1/0881/6030/5438/files/Blue_Pure_211i_Max_User_Manual_-_English_10.3.24.pdf?v=1740162064",
+            "manual_2_link_text": "",
+            "manual_2_link_url": "",
+            "manual_3_link_text": "",
+            "manual_3_link_url": "",
+            "manual_4_link_text": "",
+            "manual_4_link_url": "",
+            "product_link_text": "Replacement Filters",
+            "product_link_url": "shopify://collections/211i-max-1"
           }
         }
       },
       "block_order": [
-        "block_iqRdJj"
+        "block_iqRdJj",
+        "block_N9tFUz"
       ],
+      "disabled": true,
       "settings": {
         "anchor_id": "specs",
         "margin_top_mobile": "mt-md",
@@ -248,7 +250,7 @@
         "padding_bottom_desktop": "desktop:pb-0",
         "max_width": "80ch",
         "color": "bg-white text-blue",
-        "title": "Classic Pro FAQs",
+        "title": "Aroma FAQs",
         "title_style": "h4"
       }
     },
@@ -327,7 +329,7 @@
             "topic": "blue-pure-max"
           }
         },
-        "topic_ULrz4V": {
+        "topic_CxJjJC": {
           "type": "topic",
           "settings": {
             "topic": "blue-signature"
@@ -345,7 +347,7 @@
             "topic": "humidifier"
           }
         },
-        "topic_eBTdaJ": {
+        "topic_a8gQR4": {
           "type": "topic",
           "disabled": true,
           "settings": {
@@ -364,13 +366,13 @@
             "topic": "3-in-1"
           }
         },
-        "topic_pKxxNb": {
+        "topic_XP9DRq": {
           "type": "topic",
           "settings": {
             "topic": "pet-air"
           }
         },
-        "topic_zT6PTz": {
+        "topic_tKzX9D": {
           "type": "topic",
           "settings": {
             "topic": "mini-restful"
@@ -415,14 +417,14 @@
       },
       "block_order": [
         "topic_GFKt48",
-        "topic_ULrz4V",
+        "topic_CxJjJC",
         "topic_dPNDxQ",
         "topic_RDjTDR",
-        "topic_eBTdaJ",
+        "topic_a8gQR4",
         "topic_DedYi7",
         "topic_7ijgjd",
-        "topic_pKxxNb",
-        "topic_zT6PTz",
+        "topic_XP9DRq",
+        "topic_tKzX9D",
         "topic_H8czMm",
         "topic_nKazPq",
         "topic_HADU7f",
@@ -472,7 +474,6 @@
   "order": [
     "search",
     "section_faq_nav_pwYCAh",
-    "section_faq_tagged_posts_AwnaCd",
     "section_faq_videos_MD9CKd",
     "section_faq_tagged_posts_zywNXD",
     "section_faq_specs_instructions_yaLwFD",
