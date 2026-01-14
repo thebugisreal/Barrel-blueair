@@ -283,28 +283,18 @@
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Serial number</label>
-            <input type="text" name="sn" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
+            <input type="text" name="sn" id="serial-number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
+            <p id="serial-number-error" class="text-[#AA4A44] text-sm hidden"></p>
           </div>
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit family</label>
-            <div class="select-wrapper relative w-full">
-              <select name="family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
-                <option value="" disabled selected>Select family</option>
-                {% for family in shop.metaobjects.unit_family.values %}
-                  <option data-index="{{ forloop.index0 }}" value="{{ family.collection }}">
-                    {{ family.name }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
+            <input type="text" name="family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded bg-gray-100 text-[#002D72]" readonly required>
           </div>
 
           <div class="form-group mb-md">
             <label class="block mb-xs text-[#002D72]">Unit model</label>
-            <select name="series" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" required>
-              <option value="" disabled selected>Select model</option>
-            </select>
+            <input type="text" name="series" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded bg-gray-100 text-[#002D72]" readonly required>
           </div>
 
           <div class="form-group mb-md">
@@ -331,7 +321,7 @@
           </div>
 
           <div class="flex justify-between items-center gap-md">
-            <button type="submit" id="warranty-save-btn" class="w-[174px] btn flex justify-center items-center gap-2 p-xxs pl-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative transition-all duration-200">
+            <button disabled type="submit" id="warranty-save-btn" class="w-[174px] btn flex justify-center items-center gap-2 p-xxs pl-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative transition-all duration-200 opacity-50 cursor-not-allowed">
               <span class="btn-text">Save</span>
               <loading-spinner id="warranty-save-spinner" style="--color: #fff; --width: 16px; --height: 16px;"></loading-spinner>
             </button>

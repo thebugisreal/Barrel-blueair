@@ -19,9 +19,11 @@ class WarrantyDevices extends HTMLElement {
       cancelButton: '[js-cancel-warranty-form]',
       successMessage: '.warranty-success-message',
       familySelect: '#unit-family',
+      serialNumberInput: '#serial-number',
       modelSelect: '#unit-model',
       saveButton: '#warranty-save-btn',
       spinner: '#warranty-save-spinner',
+      serialNumberError: '#serial-number-error',
       formContainer: '[js-device-warranty-wrapper]'
     }
 
@@ -34,14 +36,13 @@ class WarrantyDevices extends HTMLElement {
     this.unitFamilySelect = this.querySelector(this._selectors.familySelect);
     this.unitModelSelect = this.querySelector(this._selectors.modelSelect);
     this.form = this.querySelector(this._selectors.warrantyForm);
+    this.serialNumberInput = this.querySelector(this._selectors.serialNumberInput);
+    this.serialNumberError = this.querySelector(this._selectors.serialNumberError);
 
     /* Buttons */
     this.saveBtn = this.querySelector(this._selectors.saveButton);
     this.spinner = this.querySelector(this._selectors.spinner);
     this.toggleBtn = this.querySelector(this._selectors.toggleWarrantyForm);
-
-    console.log("toggleBtn: ", this.toggleBtn);
-
 
     /* Script Data */
     this.families = JSON.parse(document.getElementById('warranty-unit-families').textContent);
@@ -61,40 +62,80 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _initListeners() {
-    console.log("initListeners");
     if (!this.unitFamilySelect || !this.unitModelSelect) {
-      console.warn('Unit family or model select not found in DOM');
       return;
     }
 
-    this.unitFamilySelect.addEventListener('change', this._familySelectHandler.bind(this));
     this.form.addEventListener('submit', this._formSubmitHandler.bind(this));
+    this.form.addEventListener('change', this._formChangeHandler.bind(this));
+    this.form.addEventListener('input', this._formChangeHandler.bind(this));
 
     document.querySelector('input[value="devices-warranty"]').addEventListener('change', this._tabChangeHandler.bind(this));
     this.toggleBtn.addEventListener('click', this._toggleWarrantyForm.bind(this));
+
+    const debouncedSerialHandler = theme.utils.debounce((evt) => {
+      this._serialNumberInputHandler(evt);
+    }, 500);
+    
+    this.serialNumberInput.addEventListener('input', debouncedSerialHandler);
   }
 
-  _familySelectHandler(evt) {
-    const selectedFamilyOption = evt.target.options[evt.target.selectedIndex];
-
-    this.unitModelSelect.innerHTML = '<option value="" disabled selected>Select model</option>';
-
-    const selectedFamily = this.families.find(family => family.id === parseInt(selectedFamilyOption.getAttribute('data-index'), 10));
-    if (!selectedFamily || !selectedFamily.products || !selectedFamily.products.length) {
-      const opt = document.createElement('option');
-      opt.value = '';
-      opt.textContent = 'No models available';
-      this.unitModelSelect.appendChild(opt);
+  async _serialNumberInputHandler(evt) {
+    const serialNumber = evt.target.value.trim();
+    
+    if (!serialNumber || serialNumber.length < 6) {
+      this.unitFamilySelect.value = '';
+      this.unitModelSelect.value = '';
+      this.serialNumberError.textContent = "";
+      this.serialNumberError.classList.add('hidden');
+      this._formChangeHandler();
       return;
     }
 
-    // Populate model select with products from the selected family
-    selectedFamily.products.forEach(product => {
-      const opt = document.createElement('option');
-      opt.value = product.id;
-      opt.textContent = product.title;
-      this.unitModelSelect.appendChild(opt);
+    try {
+      const result = await this.warrantyAPI.lookupDeviceModel(serialNumber);
+
+      if (!result.success || !result.payload) {
+        this.serialNumberError.textContent = "The serial number you entered is not valid.";
+        this.serialNumberError.classList.remove('hidden');
+        this.unitFamilySelect.value = '';
+        this.unitModelSelect.value = '';
+        this._formChangeHandler();
+        return;
+      }
+
+      const { family: familyName, series: seriesName } = result.payload;
+
+      this.serialNumberError.textContent = "";
+      this.serialNumberError.classList.add('hidden');
+      
+      // Set the family and model inputs
+      this.unitFamilySelect.value = familyName;
+      this.unitModelSelect.value = seriesName;
+      this._formChangeHandler();
+    } catch (error) {
+      console.error('Error looking up device model:', error);
+      this.unitFamilySelect.value = '';
+      this.unitModelSelect.value = '';
+      this._formChangeHandler();
+    }
+  }
+
+  _formChangeHandler() {
+    const requiredFields = this.form.querySelectorAll('[required]');
+    const allFilled = Array.from(requiredFields).every(field => {
+      if (field.tagName === 'SELECT') {
+        return field.value && field.value !== '';
+      }
+      return field.value.trim() !== '';
     });
+
+    this.saveBtn.disabled = !allFilled;
+    if (allFilled) {
+      this.saveBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    } else {
+      this.saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    }
   }
 
   async _formSubmitHandler(evt) {
@@ -460,6 +501,39 @@ class WarrantyAPI {
 
   getJwtToken() {
     return theme.utils.getCookie(this.jwtCookie);
+  }
+
+  async lookupDeviceModel(identifier) {
+    try {
+      const res = await fetch(`${this.apiBase}/device-model?identifier=${encodeURIComponent(identifier)}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${this.getJwtToken()}`
+        }
+        }
+      );
+      const data = await res.json();
+
+      if (!res.ok) {
+        return {
+          success: false,
+          payload: null,
+          error: data.error || data.message || `HTTP ${res.status}: ${res.statusText}`
+        };
+      }
+
+      return {
+        success: true,
+        payload: data,
+        error: null
+      };
+    } catch (error) {
+      return {
+        success: false,
+        payload: null,
+        error: error.message || 'Failed to lookup device model'
+      };
+    }
   }
 
   async getDevices() {
