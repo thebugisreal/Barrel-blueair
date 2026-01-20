@@ -37,6 +37,9 @@
     if tag contains 'product-family-material:'
       assign related_tag_material = tag
     endif
+    if tag contains 'product-family-scent:'
+      assign related_tag_scent = tag
+    endif
     if tag contains 'size:'
       assign size_tag = tag | split: 'size:' | last | capitalize
     endif
@@ -451,7 +454,22 @@
                       {% endfor %}
                     </div>
                   {% endif %}
-                  
+
+                  {% if product.metafields.shopify.color-pattern != blank and related_tag_scent != blank %}
+                    <div class="product__realted-colors-container mt-sm mb-sm">
+                      {% for color in product.metafields.shopify.color-pattern.value %}
+                        <div class="product__related-color">
+                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Scent: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-xs"
+                            data-handle="{{product.handle}}"
+                            data-collection="{{related_tag_scent}}"
+                            data-option="scent"
+                            js-product-option-swatches-container>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
 
                   {% if product.metafields.seed.promo_callout != blank %}
                     <div class="product__promo-callout mb-32 font-700 text-12 text-center bg-blue-darkSky text-blue py-xxs px-xs w-full rounded-[60px]">
