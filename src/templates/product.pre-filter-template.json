@@ -171,6 +171,32 @@
         "image_position_desktop": "tabletl:flex-row"
       }
     },
+    "section_text_banner_BCTJGp": {
+      "type": "section__text-banner",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "1024px",
+        "color": "bg-white text-blue",
+        "image": "shopify://shop_images/b-corp-image.png",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Proud to be a Certified B Corp",
+        "title_style": "h3",
+        "subtext": "As a B Corp, we’re part of a global community of businesses that meet high standards of social and environmental impact.",
+        "subtext_style": "s3",
+        "cta_url": "shopify://pages/why-clean-air",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "text_align_desktop": "desktop:text-left"
+      }
+    },
     "product_image_text_6MPkRA": {
       "type": "product__image-text",
       "settings": {
@@ -349,6 +375,21 @@
       ],
       "settings": {}
     },
+    "product_footnotes_izYTTQ": {
+      "type": "product__footnotes",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "100%",
+        "color": "bg-white text-blue"
+      }
+    },
     "product_recommendations_Ha8zrk": {
       "type": "product__recommendations",
       "disabled": true,
@@ -367,21 +408,6 @@
         "intent": "related",
         "max_width_desktop": "100%",
         "color": "bg-gray-light text-blue"
-      }
-    },
-    "product_footnotes_izYTTQ": {
-      "type": "product__footnotes",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "100%",
-        "color": "bg-white text-blue"
       }
     },
     "bazaarvoice_reviews_g6D6HN": {
@@ -405,6 +431,7 @@
     "main",
     "product_slideshow_f7BaaR",
     "product_custom_tabs_acewb9",
+    "section_text_banner_BCTJGp",
     "product_image_text_6MPkRA",
     "product_video_WFRqMh",
     "product_filters_tPXVJP",

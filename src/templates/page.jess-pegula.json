@@ -1,0 +1,595 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page__main",
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "max_width": "80ch"
+      }
+    },
+    "section_hero_FAdNVm": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-blue text-white",
+        "image_mobile": "shopify://shop_images/Imagetext_1.png",
+        "image_desktop": "shopify://shop_images/Imagetext_1.png",
+        "video_mobile": "shopify://files/videos/Jess_LP_header.mp4",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "Control what<br>you can",
+        "title_style": "h2",
+        "subtext": "Performance begins<br> long before the first serve.",
+        "subtext_style": "h6",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "hor_align_mobile": "justify-center",
+        "ver_align_mobile": "items-center",
+        "text_align_desktop": "desktop:text-left",
+        "hor_align_desktop": "desktop:justify-start",
+        "ver_align_desktop": "desktop:items-center",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "",
+        "content_max_height_mobile": "500px",
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
+      }
+    },
+    "section_image_text_zbjzGt": {
+      "type": "section__image-text",
+      "name": "Image and Text",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/Frame_4054_ed3e1af3-dc3e-4828-805d-daf3ff8e7da9.png",
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 50,
+        "title": "",
+        "title_style": "h4",
+        "subtext": "You cannot control the opponent or the conditions. You can control your environment. <br>\n<br>Jessica Pegula trusts complete air care to support sleep, recovery, and peak performance, & that trust starts with Blueair.",
+        "subtext_style": "h6",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_max_width": "",
+        "max_width_desktop": ""
+      }
+    },
+    "section_image_text_grid_zCpNyz": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_KAaQxP": {
+          "type": "block",
+          "settings": {
+            "title": "",
+            "title_style": "h3",
+            "subtext": "You cannot control the opponent or the conditions. <br> You can control your environment. <br>\n\n<br>Jessica Pegula trusts complete air care to support sleep, recovery, and peak performance, & that trust starts with Blueair.",
+            "subtext_style": "h5"
+          }
+        }
+      },
+      "block_order": [
+        "block_KAaQxP"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-sm",
+        "margin_bottom_mobile": "mb-sm",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-lg",
+        "margin_bottom_desktop": "desktop:mb-lg",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/Frame_4054_ed3e1af3-dc3e-4828-805d-daf3ff8e7da9.png",
+        "image_desktop": "shopify://shop_images/Frame_4054_ed3e1af3-dc3e-4828-805d-daf3ff8e7da9.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-first",
+        "image_position_desktop": "left",
+        "image_width": 50,
+        "title": "",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
+      }
+    },
+    "section_text_banner_HiWkNz": {
+      "type": "section__text-banner",
+      "name": "Text Banner",
+      "settings": {
+        "margin_top_mobile": "mt-lg",
+        "margin_bottom_mobile": "mb-lg",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-md",
+        "max_width_desktop": "",
+        "color": "bg-white text-blue",
+        "image_position_desktop": "desktop:order-first",
+        "title": "Jessica Pegula's go to air care",
+        "title_style": "h2",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-center",
+        "text_align_desktop": "desktop:text-center"
+      }
+    },
+    "section_carousel_zJAxb4": {
+      "type": "section__carousel",
+      "blocks": {
+        "product_ieYLQp": {
+          "type": "product",
+          "settings": {
+            "product": "2-in-1-pro-purify-humidify",
+            "product_card_style": "style2"
+          }
+        },
+        "product_Mpgkia": {
+          "type": "product",
+          "settings": {
+            "product": "blue-signature",
+            "product_card_style": "style2"
+          }
+        },
+        "product_8fb3fr": {
+          "type": "product",
+          "settings": {
+            "product": "mini-restful-coastal-beige",
+            "product_card_style": "style2"
+          }
+        }
+      },
+      "block_order": [
+        "product_ieYLQp",
+        "product_Mpgkia",
+        "product_8fb3fr"
+      ],
+      "name": "Carousel",
+      "settings": {
+        "margin_top_mobile": "mt-sm",
+        "margin_bottom_mobile": "mb-sm",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-sm",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
+        "max_width_desktop": "ch",
+        "color": "bg-white text-blue",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": false,
+        "enable_title_link_same_link": false,
+        "enable_carousel_gutter": true,
+        "title": "",
+        "title_style": "h2",
+        "title_alignment_mobile": "text-left",
+        "title_alignment_desktop": "tabletl:text-center",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "",
+        "url_text": "",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-center"
+      }
+    },
+    "section_hero_EYAqac": {
+      "type": "section__hero",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-sm",
+        "margin_top_desktop": "desktop:mt-xl",
+        "margin_bottom_desktop": "desktop:mb-xl",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "content_height_mobile": "",
+        "content_height_desktop": "",
+        "title": "“You can’t control the conditions of a match — the crowd, the weather, how your opponent plays, but you can control how you rest and recover. Sleep is where I reset, and that’s why I’m excited for this partnership with Blueair to control what I can.”",
+        "title_style": "h3",
+        "subtext": "",
+        "subtext_style": "h5",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "text_align_mobile": "text-left",
+        "hor_align_mobile": "justify-start",
+        "ver_align_mobile": "items-center",
+        "text_align_desktop": "desktop:text-center",
+        "hor_align_desktop": "desktop:justify-center",
+        "ver_align_desktop": "desktop:items-start",
+        "content_max_width_mobile": "",
+        "content_max_width_desktop": "110ch",
+        "content_max_height_mobile": "",
+        "content_max_height_desktop": "",
+        "section_max_width_desktop": "",
+        "enable_bg_clickabe_url": false
+      }
+    },
+    "section_media_QTUHFr": {
+      "type": "section__media",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "gutter_mobile": "px-md",
+        "gutter_desktop": "tabletl:px-xl",
+        "video": "shopify://files/videos/08_BLUEAIR_30_R2_4x3 (1).mp4",
+        "video_embed": "",
+        "enable_autoplay": true,
+        "color": "bg-white text-blue",
+        "section_max_width_desktop": ""
+      }
+    },
+    "section_image_text_grid_Wnajtk": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_G44JaU": {
+          "type": "block",
+          "settings": {
+            "title": "",
+            "title_style": "h2",
+            "subtext": "You cannot control the opponent or the conditions. You can control your environment.<br>\n\n<br>Jessica Pegula trusts complete air care to support sleep, recovery, and peak performance, & that trust starts with Blueair.",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "block_G44JaU"
+      ],
+      "name": "Image and Text Grid",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-0",
+        "padding_bottom_mobile": "pb-sm",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-0",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/Frame_4054_1.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "right",
+        "image_width": 50,
+        "title": "",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
+      }
+    },
+    "section_hotspot_Vq7BWq": {
+      "type": "section__hotspot",
+      "blocks": {
+        "hotspot_7JiLet": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 45,
+            "hotspot_y": 30,
+            "image_mobile": "shopify://shop_images/hotspot-kitchendining.png",
+            "image_desktop": "shopify://shop_images/hotspot-kitchendining.png",
+            "tags": "Large Room, Medium Room",
+            "title": "Kitchen / Dining",
+            "title_style": "s1",
+            "subtext": "Keep the cooking contained and your family breathing easier. Easily clears cooking odors, other cooking irritants and chemicals.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_MHGQtT": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 75,
+            "hotspot_y": 25,
+            "tags": "Medium room, Small Room",
+            "title": "Home Gym",
+            "title_style": "s1",
+            "subtext": "Ensure you are breathing in clear air when you are working out.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_z8J4JA": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 40,
+            "hotspot_y": 72,
+            "tags": "Small Room",
+            "title": "Bathrooms",
+            "title_style": "s1",
+            "subtext": "Keep your bathrooms free of dust and mold.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_pHzRkh": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 80,
+            "hotspot_y": 80,
+            "tags": "Extralarge Room, Large Room",
+            "title": "Basements",
+            "title_style": "s1",
+            "subtext": "Make all spaces comfortable for relaxing, playing, and living.",
+            "subtext_style": "p2"
+          }
+        },
+        "hotspot_UMxVEx": {
+          "type": "hotspot",
+          "settings": {
+            "hotspot_x": 18,
+            "hotspot_y": 65,
+            "tags": "Large Room, Medium Room",
+            "title": "Bedrooms",
+            "title_style": "s1",
+            "subtext": "Our multifunctional 3-in-1 device provides heating or cooling for a comfortable sleep. Every device has our HEPASilent technology to ensure noise is kept to a minimum so your sleep is uninterrupted.",
+            "subtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_7JiLet",
+        "hotspot_MHGQtT",
+        "hotspot_z8J4JA",
+        "hotspot_pHzRkh",
+        "hotspot_UMxVEx"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "open_first_hospot_mobile": true,
+        "color": "bg-blue-light text-blue",
+        "image": "shopify://shop_images/Cross-section-house_1_f94498d7-487c-4502-a399-43f0c3f44912.png",
+        "image_position": "desktop:order-last",
+        "image_width": 60,
+        "title": "Different room sizes require air purifiers with varying capacities to ensure efficient cleaning.",
+        "title_style": "s2",
+        "subtext": "",
+        "subtext_style": "s3",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "enable_hover_display": "hover-display"
+      }
+    },
+    "section_image_tabs_3eCidp": {
+      "type": "section__image-tabs",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "color": "text-blue",
+        "image_position_mobile": "flex-col",
+        "image_position_desktop": "desktop:flex-row",
+        "max_width_desktop": "70ch",
+        "section_max_width_desktop": "1024px",
+        "title": "",
+        "title_style": "h4"
+      }
+    },
+    "section_carousel_cz4iDK": {
+      "type": "section__carousel",
+      "blocks": {
+        "blog_qpr497": {
+          "type": "blog",
+          "settings": {
+            "blog": "news",
+            "article_pulled": 3
+          }
+        }
+      },
+      "block_order": [
+        "blog_qpr497"
+      ],
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "carousel_content_top_spacing_mobile": "mt-md",
+        "scrollbar_top_spacing_mobile": "mt-md",
+        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
+        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
+        "max_width_desktop": "1440px",
+        "color": "bg-blue-light text-blue",
+        "slides_per_view": "1.2",
+        "slides_per_view_desktop": "3",
+        "slides_per_view_extrawide": "3",
+        "carousel_nav": "scrollbar",
+        "enable_carousel_nav_mobile": true,
+        "enable_carousel_nav_desktop": true,
+        "enable_centered_carousel": true,
+        "enable_title_link_same_link": true,
+        "enable_carousel_gutter": true,
+        "title": "Lets Talk Air Wellness",
+        "title_style": "h4",
+        "title_alignment_mobile": "text-center",
+        "title_alignment_desktop": "tabletl:text-center",
+        "subtext": "",
+        "subtext_style": "p2",
+        "url": "shopify://blogs/news",
+        "url_text": "All Blogs",
+        "cta_style": "btn btn--blue-rounded",
+        "cta_position_mobile": "justify-center",
+        "cta_position_desktop": "tabletl:justify-center"
+      }
+    },
+    "section_content_panels_8BWLBy": {
+      "type": "section__content-panels",
+      "blocks": {
+        "customization_3RMFAm": {
+          "type": "customization",
+          "settings": {
+            "image_position": "order-first",
+            "enable_padding": false,
+            "content_position": "items-start",
+            "content_spacing": "justify-between",
+            "title": "Learn More about Blueair",
+            "title_style": "h4",
+            "subtext": "",
+            "subtext_style": "p1",
+            "subtext_alignment": "text-left",
+            "cta_url": "",
+            "cta_text": "",
+            "cta_style": "btn",
+            "color": "bg-blue-light text-blue"
+          }
+        },
+        "media_content_overlay_NnnHq7": {
+          "type": "media-content-overlay",
+          "settings": {
+            "image_mobile": "shopify://shop_images/seed-blueairtech-careers-mobile.jpg",
+            "image_desktop": "shopify://shop_images/seed-blueairtech-careers-desktop.jpg",
+            "title": "",
+            "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "cta_url": "https://careers.usa.blueair.com",
+            "cta_text": "Careers",
+            "cta_style": "btn btn--white-rounded",
+            "horizontal_position": "justify-end",
+            "vertical_position": "items-end",
+            "text_alignment": "text-left",
+            "color": "bg-white text-blue"
+          }
+        },
+        "media_content_overlay_FxDEVn": {
+          "type": "media-content-overlay",
+          "settings": {
+            "image_mobile": "shopify://shop_images/seed-blueairtech-ourstory-mobile.jpg",
+            "image_desktop": "shopify://shop_images/seed-blueairtech-ourstory-desktop.jpg",
+            "title": "",
+            "title_style": "h5",
+            "subtext": "",
+            "subtext_style": "p1",
+            "cta_url": "shopify://pages/blueair-purpose",
+            "cta_text": "Our Story",
+            "cta_style": "btn btn--white-rounded",
+            "horizontal_position": "justify-end",
+            "vertical_position": "items-end",
+            "text_alignment": "text-left",
+            "color": "bg-white text-blue"
+          }
+        }
+      },
+      "block_order": [
+        "customization_3RMFAm",
+        "media_content_overlay_NnnHq7",
+        "media_content_overlay_FxDEVn"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-md",
+        "padding_bottom_mobile": "pb-md",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "carousel_mobile": false,
+        "num_cols_mobile": 1,
+        "num_cols_desktop": 3,
+        "color": "bg-blue-light text-blue",
+        "title": "",
+        "title_style": "h2",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn",
+        "content_max_width_desktop": "1440px"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_hero_FAdNVm",
+    "section_image_text_zbjzGt",
+    "section_image_text_grid_zCpNyz",
+    "section_text_banner_HiWkNz",
+    "section_carousel_zJAxb4",
+    "section_hero_EYAqac",
+    "section_media_QTUHFr",
+    "section_image_text_grid_Wnajtk",
+    "section_hotspot_Vq7BWq",
+    "section_image_tabs_3eCidp",
+    "section_carousel_cz4iDK",
+    "section_content_panels_8BWLBy"
+  ]
+}

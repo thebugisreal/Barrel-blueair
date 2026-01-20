@@ -76,6 +76,16 @@
             "margin_bottom_desktop": "desktop:mb-lg"
           }
         },
+        "buystack_carousel_3XRteV": {
+          "type": "buystack_carousel",
+          "settings": {
+            "title": "Sweet dreams start here",
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "margin_top_desktop": "desktop:mt-md",
+            "margin_bottom_desktop": "desktop:mb-md"
+          }
+        },
         "experience_NzTf78": {
           "type": "experience",
           "settings": {
@@ -129,6 +139,7 @@
         "filter_options_XPQVUh",
         "product_options_GLfTKf",
         "atc_BURfeB",
+        "buystack_carousel_3XRteV",
         "experience_NzTf78",
         "additional_features_H7XdFi",
         "shipping_warranty_Rg4jpP",
@@ -137,21 +148,6 @@
       "settings": {
         "buybox_max_width": "80ch",
         "show_truemed": false
-      }
-    },
-    "product_slideshow_f7BaaR": {
-      "type": "product__slideshow",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "80ch",
-        "color": "bg-gray-athans text-blue"
       }
     },
     "product_custom_tabs_acewb9": {
@@ -186,6 +182,70 @@
         "color": "bg-gray-athans text-blue"
       }
     },
+    "product_slideshow_f7BaaR": {
+      "type": "product__slideshow",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "80ch",
+        "color": "bg-gray-athans text-blue"
+      }
+    },
+    "section_image_text_grid_PRqetb": {
+      "type": "section__image-text-grid",
+      "blocks": {
+        "block_L8qrm4": {
+          "type": "block",
+          "settings": {
+            "title": "84%",
+            "title_style": "h2",
+            "subtext": "felt more calm & restored³",
+            "subtext_style": "h6"
+          }
+        },
+        "block_kpyrt4": {
+          "type": "block",
+          "settings": {
+            "title": "80%",
+            "title_style": "h2",
+            "subtext": "felt relaxed & fell asleep easier³",
+            "subtext_style": "h6"
+          }
+        }
+      },
+      "block_order": [
+        "block_L8qrm4",
+        "block_kpyrt4"
+      ],
+      "name": "Image and Text Grid",
+      "settings": {
+        "margin_top_mobile": "mt-sm",
+        "margin_bottom_mobile": "mb-sm",
+        "padding_top_mobile": "pt-sm",
+        "padding_bottom_mobile": "pb-sm",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-sm",
+        "padding_top_desktop": "desktop:pt-sm",
+        "padding_bottom_desktop": "desktop:pb-sm",
+        "color": "bg-white text-blue",
+        "image_mobile": "shopify://shop_images/image_and_text_grid.png",
+        "image_desktop": "shopify://shop_images/image_and_text_grid.png",
+        "image_inset_mobile": false,
+        "image_position_mobile": "order-last",
+        "image_position_desktop": "left",
+        "image_width": 50,
+        "title": "What you surround yourself with shapes how you feel",
+        "title_style": "h3",
+        "text_max_width": "",
+        "section_max_width_desktop": ""
+      }
+    },
     "product_image_text_product_EitePb": {
       "type": "product__image-text-product",
       "settings": {
@@ -214,32 +274,6 @@
         "padding_bottom_desktop": "desktop:pb-xxxl",
         "max_width_desktop": "100%",
         "color": "text-blue"
-      }
-    },
-    "section_text_banner_DcUMT8": {
-      "type": "section__text-banner",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "1024px",
-        "color": "bg-white text-blue",
-        "image": "shopify://shop_images/b-corp-image.png",
-        "image_position_desktop": "desktop:order-first",
-        "title": "Proud to be a Certified B Corp",
-        "title_style": "h3",
-        "subtext": "As a B Corp, we’re part of a global community of businesses that meet high standards of social and environmental impact.",
-        "subtext_style": "s3",
-        "cta_url": "shopify://pages/why-clean-air",
-        "cta_text": "",
-        "cta_style": "btn",
-        "text_align_mobile": "text-left",
-        "text_align_desktop": "desktop:text-left"
       }
     },
     "product_app_tabs_BzryrE": {
@@ -358,6 +392,21 @@
         "cta_style": "btn"
       }
     },
+    "product_footnotes_izYTTQ": {
+      "type": "product__footnotes",
+      "settings": {
+        "margin_top_mobile": "mt-0",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-xl",
+        "padding_bottom_mobile": "pb-xl",
+        "margin_top_desktop": "desktop:mt-0",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxl",
+        "padding_bottom_desktop": "desktop:pb-xxl",
+        "max_width_desktop": "100%",
+        "color": "bg-white text-blue"
+      }
+    },
     "17629678986b8b1190": {
       "type": "apps",
       "blocks": {
@@ -393,21 +442,6 @@
         "color": "bg-gray-light text-blue"
       }
     },
-    "product_footnotes_izYTTQ": {
-      "type": "product__footnotes",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-xl",
-        "padding_bottom_mobile": "pb-xl",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-xxl",
-        "padding_bottom_desktop": "desktop:pb-xxl",
-        "max_width_desktop": "100%",
-        "color": "bg-white text-blue"
-      }
-    },
     "bazaarvoice_reviews_g6D6HN": {
       "type": "bazaarvoice__reviews",
       "disabled": true,
@@ -427,12 +461,12 @@
   },
   "order": [
     "main",
-    "product_slideshow_f7BaaR",
     "product_custom_tabs_acewb9",
     "product_image_text_6MPkRA",
+    "product_slideshow_f7BaaR",
+    "section_image_text_grid_PRqetb",
     "product_image_text_product_EitePb",
     "product_filters_tPXVJP",
-    "section_text_banner_DcUMT8",
     "product_app_tabs_BzryrE",
     "section_embed_9mLjVz",
     "product_brands_3gV3EU",
@@ -440,9 +474,9 @@
     "product_perks_FacAhx",
     "product_tech_specs_jEUNXD",
     "product_accordion_6QWP9F",
+    "product_footnotes_izYTTQ",
     "17629678986b8b1190",
     "product_recommendations_Ha8zrk",
-    "product_footnotes_izYTTQ",
     "bazaarvoice_reviews_g6D6HN"
   ]
 }
