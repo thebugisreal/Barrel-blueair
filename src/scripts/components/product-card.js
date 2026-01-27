@@ -156,10 +156,11 @@ class ProductCard extends HTMLElement {
             ? `background-image:url('${String(p.swatchImage).replace(/'/g, "\\'")}');background-size:cover;background-position:center;`
             : (p.colorHex ? `background-color:${p.colorHex};` : '');
           const isCurrent = p.handle === currentHandle;
-          const baseClasses = 'product-card__scent-swatch w-[36px] h-[36px] rounded-full flex relative border-2 border-transparent' + (isCurrent ? ' ring-2 ring-blue' : '');
+          const orderClass = isCurrent ? 'order-1' : 'order-2';
+          const baseClasses = `product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full ${orderClass}`;
           const escapedLabel = String(label).replace(/"/g, '&quot;');
           const escapedUrl = (p.url || '').replace(/"/g, '&quot;');
-          html += `<button type="button" class="${baseClasses}" aria-label="Aroma: ${escapedLabel}" data-handle="${p.handle}" data-swatch="${escapedLabel}" data-available="${p.available}" data-price="${p.price || ''}" data-url="${escapedUrl}" data-selected="${isCurrent}" js-product-card-scent-swatch><span class="w-full h-full rounded-full flex overflow-hidden" style="${swatchStyle}"></span></button>`;
+          html += `<button type="button" class="${baseClasses}" aria-label="Aroma: ${escapedLabel}" data-handle="${p.handle}" data-swatch="${escapedLabel}" data-available="${p.available}" data-price="${p.price || ''}" data-url="${escapedUrl}" data-selected="${isCurrent}" title="${escapedLabel}" js-product-card-scent-swatch><div class="block w-full h-full rounded-full overflow-hidden" style="${swatchStyle}"></div></button>`;
         });
         container.insertAdjacentHTML('beforeend', html);
 
@@ -216,9 +217,10 @@ class ProductCard extends HTMLElement {
 
     if (container) {
       container.querySelectorAll('[js-product-card-scent-swatch]').forEach((el) => {
-        el.dataset.selected = el === swatchEl ? 'true' : 'false';
-        el.classList.toggle('ring-2', el === swatchEl);
-        el.classList.toggle('ring-blue', el === swatchEl);
+        const isSelected = el === swatchEl;
+        el.dataset.selected = isSelected ? 'true' : 'false';
+        el.classList.toggle('order-1', isSelected);
+        el.classList.toggle('order-2', !isSelected);
       });
     }
   };

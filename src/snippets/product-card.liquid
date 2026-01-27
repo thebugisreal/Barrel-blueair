@@ -105,6 +105,14 @@
   if product.tags contains "purple-dot-has-variant-on-preorder" 
     assign is_preorder = true
   endif
+
+  assign related_tag_scent = ''
+  for tag in product.tags
+    if tag contains 'product-family-scent:'
+      assign related_tag_scent = tag
+      break
+    endif
+  endfor
 %}
 
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
@@ -136,17 +144,38 @@
         </div>
       {% endfor %}
     {% elsif related_tag_color != blank %}
-      {% for color in product.metafields.shopify['color-pattern'].value limit: 1 %}
-        {% assign main_color_name = color.label %}
-      {% endfor %}
-       <div class="product-card__image aspect-square" data-swatch='{{ main_color_name }}' js-product-card-image js-product-card-main-image>
-        {% if product.metafields.seed.product_card_image != blank %}
-          {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
-        {% else %}
-          {% render 'lazy-image' image: product.featured_image %}
-        {% endif %}
+      {% if related_tag_scent != blank %}
+        <div class="product-card__scent-images block w-full" js-product-card-scent-image-container>
+          <div class="product-card__image aspect-square" data-handle="{{ product.handle }}" js-product-card-image>
+            {% if product.metafields.seed.product_card_image != blank %}
+              {% render 'lazy-image' image: product.metafields.seed.product_card_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+            {% else %}
+              {% render 'lazy-image' image: product.featured_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        {% for color in product.metafields.shopify['color-pattern'].value limit: 1 %}
+          {% assign main_color_name = color.label %}
+        {% endfor %}
+        <div class="product-card__image aspect-square" data-swatch='{{ main_color_name }}' js-product-card-image js-product-card-main-image>
+          {% if product.metafields.seed.product_card_image != blank %}
+            {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+          {% else %}
+            {% render 'lazy-image' image: product.featured_image %}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% elsif related_tag_scent != blank %}
+      <div class="product-card__scent-images block w-full" js-product-card-scent-image-container>
+        <div class="product-card__image aspect-square" data-handle="{{ product.handle }}" js-product-card-image>
+          {% if product.metafields.seed.product_card_image != blank %}
+            {% render 'lazy-image' image: product.metafields.seed.product_card_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+          {% else %}
+            {% render 'lazy-image' image: product.featured_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+          {% endif %}
+        </div>
       </div>
-
     {% else %}
       <div class="product-card__image aspect-square">
         {% if product.metafields.seed.product_card_image != blank %}
@@ -245,12 +274,19 @@
           {% endfor %}
         </div>
       </div>
-    {% elsif product.metafields.seed.blair_plpShortDescription != blank %}
-      <div class="product-card__scent-container mt-sm">
-        <div class="product-card__scent-label font-700">
-          <span>Scent: </span>
-          <span>{{ product.metafields.seed.blair_plpShortDescription }}</span>
-        </div>
+    {% elsif product.metafields.shopify.color-pattern != blank and related_tag_scent != blank %}
+      <div class="product-card__related-scent-container mt-sm mb-sm">
+        {% for color in product.metafields.shopify.color-pattern.value %}
+          <div class="product-card__related-scent">
+            <span class="product-card__related-scent-label block font-700 p3 text-blue mb-xxs">Aroma: <span js-product-card-current-swatch-label>{{ color.label }}</span></span>
+            <div class="product-card__related-scents flex flex-wrap gap-xxs mt-xxs"
+              data-handle="{{product.handle}}"
+              data-collection="{{related_tag_scent}}"
+              data-option="scent"
+              js-product-option-swatches-container>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     {% elsif product.metafields.seed.swatches != blank %}
       <div class="product-card__swatches-container mt-sm">
