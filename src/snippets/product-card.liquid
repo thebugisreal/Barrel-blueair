@@ -245,6 +245,13 @@
           {% endfor %}
         </div>
       </div>
+    {% elsif product.metafields.seed.blair_plpShortDescription != blank %}
+      <div class="product-card__scent-container mt-sm">
+        <div class="product-card__scent-label font-700">
+          <span>Scent: </span>
+          <span>{{ product.metafields.seed.blair_plpShortDescription }}</span>
+        </div>
+      </div>
     {% elsif product.metafields.seed.swatches != blank %}
       <div class="product-card__swatches-container mt-sm">
         <div class="product-card__current-swatch font-700">
