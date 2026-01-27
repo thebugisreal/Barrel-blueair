@@ -1617,6 +1617,7 @@ class ProductMain extends HTMLElement {
       const targetURL = `/collections/all/${tagForUrl}?view=json`;
   
       const products = await this._getRelatedSwatchesJSON(targetURL);
+      console.log('products', products);
       if (!Array.isArray(products) || products.length === 0) {
         console.warn('[pdp swatches] No products for', collectionTagRaw);
         return;

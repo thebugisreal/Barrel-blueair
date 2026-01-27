@@ -344,7 +344,9 @@
             <input type="radio"
               name="AccountSections"
               id="AccountLogOut"
-              onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';"
+              {% comment %} Commented out due to issue with Miniorange/Gigya Logout functionality {% endcomment %}
+              {% comment %} onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';" {% endcomment %}
+              onclick="window.location='https://www.blueair.com/account/logout';"
               class="account-section__input visually-hidden">
             <label 
               for="AccountLogOut" 
