@@ -15,7 +15,9 @@ class ProductCard extends HTMLElement {
       filterSwatch: '[js-product-card-filter-swatch]',
       quickAdd: '[js-quick-add]',
       swatchPopulate: '[js-populate-swatch]',
-      imagePopulate: '[js-populate-image]'
+      imagePopulate: '[js-populate-image]',
+      optionSwatchesContainers: '[js-product-option-swatches-container]',
+      scentImageContainer: '[js-product-card-scent-image-container]'
     }
   }
 
@@ -44,6 +46,7 @@ class ProductCard extends HTMLElement {
     }
 
     this._initRelatedSwatches();
+    this._initScentOptionSwatches();
     this._setListeners();
 
   }
@@ -113,6 +116,112 @@ class ProductCard extends HTMLElement {
 
     this._setListeners();
   }
+
+  async _initScentOptionSwatches() {
+    const containers = this.querySelectorAll(`${this._selectors.optionSwatchesContainers}[data-option="scent"]`);
+    if (!containers.length) return;
+
+    for (const container of containers) {
+      const currentHandle = container.dataset.handle;
+      const collectionTagRaw = container.dataset.collection || '';
+      if (!collectionTagRaw) continue;
+
+      const looksEncoded = /%[0-9A-F]{2}/i.test(collectionTagRaw) || !collectionTagRaw.includes(':');
+      const tagForUrl = looksEncoded ? collectionTagRaw : encodeURIComponent(collectionTagRaw);
+      const targetURL = `/collections/all/${tagForUrl}?view=json`;
+
+      try {
+        const products = await this._getRelatedSwatchesJSON(targetURL);
+        if (!Array.isArray(products) || products.length === 0) continue;
+
+        const imageContainer = this.querySelector(this._selectors.scentImageContainer);
+        if (imageContainer && !this.dataset.scentImagesPopulated) {
+          products.forEach((p) => {
+            if (p.handle === currentHandle) return;
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'product-card__image aspect-square hidden';
+            imgDiv.dataset.handle = p.handle;
+            imgDiv.setAttribute('js-product-card-image', '');
+            imgDiv.innerHTML = `<img class="object-contain w-full h-full" src="${p.swatchProductImage || ''}" alt="${(p.colorTitle || p.title || '').replace(/"/g, '&quot;')}" loading="lazy">`;
+            imageContainer.appendChild(imgDiv);
+          });
+          this.dataset.scentImagesPopulated = 'true';
+        }
+
+        const labelEl = container.closest('.product-card__related-scent')?.querySelector(this._selectors.currentSwatchLabel);
+        let html = '';
+        products.forEach((p) => {
+          const label = p.colorTitle || p.color || p.title || '';
+          const swatchStyle = (p.swatchImage && p.swatchImage !== '')
+            ? `background-image:url('${String(p.swatchImage).replace(/'/g, "\\'")}');background-size:cover;background-position:center;`
+            : (p.colorHex ? `background-color:${p.colorHex};` : '');
+          const isCurrent = p.handle === currentHandle;
+          const baseClasses = 'product-card__scent-swatch w-[36px] h-[36px] rounded-full flex relative border-2 border-transparent' + (isCurrent ? ' ring-2 ring-blue' : '');
+          const escapedLabel = String(label).replace(/"/g, '&quot;');
+          const escapedUrl = (p.url || '').replace(/"/g, '&quot;');
+          html += `<button type="button" class="${baseClasses}" aria-label="Aroma: ${escapedLabel}" data-handle="${p.handle}" data-swatch="${escapedLabel}" data-available="${p.available}" data-price="${p.price || ''}" data-url="${escapedUrl}" data-selected="${isCurrent}" js-product-card-scent-swatch><span class="w-full h-full rounded-full flex overflow-hidden" style="${swatchStyle}"></span></button>`;
+        });
+        container.insertAdjacentHTML('beforeend', html);
+
+        const scentSwatches = container.querySelectorAll('[js-product-card-scent-swatch]');
+        scentSwatches.forEach((el) => {
+          el.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            const t = evt.currentTarget;
+            if (t.dataset.selected === 'true') return;
+            this._scentSwatchOnClick(t, labelEl, container);
+          });
+        });
+      } catch (err) {
+        console.warn('[product-card] scent swatches init failed', err);
+      }
+    }
+  }
+
+  _getRelatedSwatchesJSON(url) {
+    return fetch(url)
+      .then((r) => r.text())
+      .then((text) => {
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        const script = doc.querySelector('script[js-collection-json]');
+        if (!script) throw new Error('JSON container [js-collection-json] not found at ' + url);
+        const raw = (script.textContent || script.innerHTML || '').trim();
+        return JSON.parse(raw);
+      });
+  }
+
+  _updateImageByHandle(handle) {
+    const images = this.querySelectorAll(`${this._selectors.image}[data-handle]`);
+    images.forEach((img) => {
+      if (img.dataset.handle === handle) {
+        img.classList.remove('hidden');
+      } else {
+        img.classList.add('hidden');
+      }
+    });
+  }
+
+  _scentSwatchOnClick = (swatchEl, labelEl, container) => {
+    const handle = swatchEl.dataset.handle;
+    const url = swatchEl.dataset.url;
+    const price = swatchEl.dataset.price;
+    const available = swatchEl.dataset.available === 'true';
+    const label = swatchEl.dataset.swatch || '';
+
+    this._updateImageByHandle(handle);
+    this._updateProductLink(url);
+    this._updatePrice(price);
+    this._toggleSoldOutTag(available);
+    if (labelEl) labelEl.textContent = label;
+
+    if (container) {
+      container.querySelectorAll('[js-product-card-scent-swatch]').forEach((el) => {
+        el.dataset.selected = el === swatchEl ? 'true' : 'false';
+        el.classList.toggle('ring-2', el === swatchEl);
+        el.classList.toggle('ring-blue', el === swatchEl);
+      });
+    }
+  };
 
   _setListeners() {
 
