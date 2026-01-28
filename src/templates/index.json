@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "hero": {
       "type": "section__hero",
@@ -224,6 +224,7 @@
           "type": "tab",
           "settings": {
             "logo": "shopify://shop_images/Wirecutter_7b3546e9-043c-400a-a959-e8672a5483e7.png",
+            "title": "Wirecutter",
             "text": "“The Blue Pure 211i Max aced our tests, and on top of its powerful performance, it stands out for its energy efficiency, quiet operation, user-friendly features, and good looks.”",
             "text_style": "h6"
           }
@@ -232,6 +233,7 @@
           "type": "tab",
           "settings": {
             "logo": "shopify://shop_images/seed-goodhouskeeping-logo-cropped.png",
+            "title": "Good Housekeeping",
             "text": "“Blueair's 311i+ Max was the best at capturing the full range of contaminants floating through the air in a typical home. Its advanced multi-level filtration captures contaminants of all sizes — not just dander and pet hair, but also cooking fumes, dust mites and pollen.”",
             "text_style": "h6"
           }
@@ -240,6 +242,7 @@
           "type": "tab",
           "settings": {
             "logo": "shopify://shop_images/Tech_awards_f33e5f1f-decf-4c47-a35e-93a8e01e25f4.png",
+            "title": "Tech Awards",
             "text": "\"The elegant [ComfortPure™ 3-in-1] did a whole lot more than efficiently cleaning the air in my large living room. It also cooled the space during a few unseasonably hot late-October afternoons and warmed it when the chilly fall weather kicked in.\"",
             "text_style": "h6"
           }
@@ -249,6 +252,7 @@
           "disabled": true,
           "settings": {
             "logo": "shopify://shop_images/seed-wirecutter-logo.png",
+            "title": "",
             "text": "\"BBB Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"",
             "text_style": "h6"
           }
