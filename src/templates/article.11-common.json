@@ -1,0 +1,414 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Placement matters more than many people realize when setting up an air purifier. The right location helps the unit work efficiently, while poor placement can significantly reduce effectiveness. Understanding a few key principles makes finding the ideal spot straightforward.</p><h3><strong>Why Placement Affects Air Purifier Performance</strong></h3><p>Air purifiers work by drawing in contaminated air, filtering out particles, and releasing clean air back into the space. For this cycle to work effectively, the unit needs adequate airflow on all sides. According to the EPA, Americans spend about 90 percent of their time indoors, where<a href=\"https://www.blueair.com/blogs/news/indoor-pollution\"> <span style=\"text-decoration:underline\">pollutant concentrations can be 2 to 5 times higher than outdoor levels</span></a>. Optimizing air purifier placement maximizes the health benefits.</p><p>Position affects how quickly the unit can clean air, whether it captures pollutants at the breathing level, its ability to address specific concerns like pet dander or dust, and energy efficiency overall.</p><h3><strong>Floor Placement Benefits and Considerations</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_KnqYBR": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3_54527faa-bb12-48be-8907-3731a9b2b3c5.jpg",
+            "image_desktop": "shopify://shop_images/image3_54527faa-bb12-48be-8907-3731a9b2b3c5.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Placing an air purifier on the floor works well in many situations, especially for capturing heavier particles. Dust, pet hair, and dander tend to settle toward the ground. A floor-level unit can capture these pollutants before they circulate throughout the room.</p><p>Larger units with powerful motors typically perform well from floor level due to strong airflow capacity.<a href=\"https://www.blueair.com/products/blue-pure-211i-max\"> <span style=\"text-decoration:underline\">The Blue Pure 211i Max</span></a>, for instance, delivers a CADR of 410 CFM and can rapidly clean spaces up to 674 square feet from floor level. Floor placement also offers practical advantages: greater stability, no need to find furniture to support it, and easier access for<a href=\"https://www.blueair.com/collections/air-purifier-filters\"> <span style=\"text-decoration:underline\">filter changes</span></a>.</p><p>If placing the unit on the floor, maintain at least 3 to 4 inches of clearance on all sides. Research shows that moving an air purifier just a few inches from a wall can increase airflow from as little as 5 percent to over 90 percent. Avoid placing it behind furniture, under tables, or near floor-length curtains that could block air intake or output.</p><h3><strong>Elevated Placement for Better Breathing Zone Coverage</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_qy8nHW": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_caecbbd5-1034-40b8-8285-53b9757d402e.jpg",
+            "image_desktop": "shopify://shop_images/image2_caecbbd5-1034-40b8-8285-53b9757d402e.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Ub47yL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-lg",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-lg",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Elevating an air purifier to table height or a dresser can improve performance in specific situations. Positioning it 2 to 5 feet off the ground places it directly in the breathing zone. Most people breathe air from this height range whether sitting, working, or sleeping. An elevated purifier can intercept airborne particles before inhalation.</p><p>Elevated placement also captures lighter pollutants that remain suspended in the air longer, including smoke particles, volatile organic compounds (VOCs), fine particulate matter, and airborne bacteria. Compact units like<a href=\"https://www.blueair.com/products/blue-pure-511i-max\"> <span style=\"text-decoration:underline\">the Blue Pure 511i Max</span></a> or<a href=\"https://www.blueair.com/products/blue-pure-511\"> <span style=\"text-decoration:underline\">Blue Pure 511</span></a> work especially well on nightstands, desks, or shelves while still delivering powerful air cleaning performance.</p><p>When elevating the purifier, ensure the surface is stable and level. Keep the unit away from edges where it could be knocked over. Maintain 3 to 4 inches of clearance around the unit for proper airflow.</p><h3><strong>Bedroom Placement Strategy for an Air Purifier</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_KJNbEV": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_8cfe7c5b-1bb2-49e7-ad32-246fef8c090b.jpg",
+            "image_desktop": "shopify://shop_images/image2_8cfe7c5b-1bb2-49e7-ad32-246fef8c090b.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_qjatJF": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Bedrooms deserve special attention since people spend 6 to 8 hours sleeping in these spaces. Clean air during sleep can improve rest quality and reduce morning congestion. Position the air purifier 6 to 10 feet from the bed when possible. If space is limited, placing it on a nightstand or dresser within the breathing zone works well.</p><p>Point the air intake toward the sleeping area so the air around the bed gets filtered first. Avoid having the airflow blow directly on the face, which can be disruptive. Choose a unit with<a href=\"https://www.blueair.com/blogs/news/quiet-air-purifier\"> <span style=\"text-decoration:underline\">quiet operation for uninterrupted sleep</span></a>. Blueair purifiers featuring<a href=\"https://www.blueair.com/pages/blueair-performance\"> <span style=\"text-decoration:underline\">HEPASilent™ technology</span></a> operate up to 67 percent quieter than traditional HEPA purifiers, making them ideal for bedrooms without disturbing rest.</p><p>For added comfort during sleep, consider pairing your purifier with proper humidity levels.<a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify\"> <span style=\"text-decoration:underline\">The 2-in-1 Pro Purify + Humidify</span></a> combines air purification with humidification technology, addressing both air quality and moisture levels in a single unit.</p><h3><strong>Living Room Placement Strategy for an Air Purifier</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_n83MTT": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image5_5242ed77-6b46-4cc9-8cf2-daa078dcd711.jpg",
+            "image_desktop": "shopify://shop_images/image5_5242ed77-6b46-4cc9-8cf2-daa078dcd711.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_gR8Aip": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Living rooms present unique challenges due to size and multiple pollution sources. Position the unit near seating areas where family members spend the most time. If specific pollution sources exist, like a fireplace, cooking area, or pet zones, placing the purifier nearby helps capture particles at the source.</p><p>Central placement often works best for larger living spaces, allowing clean air to distribute throughout the room.<a href=\"https://www.blueair.com/products/blue-pure-311i-max\"> <span style=\"text-decoration:underline\">Mid-range models like the Blue Pure 311i Max</span></a> handle rooms up to 439 ft² effectively, while<a href=\"https://www.blueair.com/products/blue-pure-311i-plus-max\"> <span style=\"text-decoration:underline\">the Blue Pure 311i+ Max</span></a> extends coverage to 525 ft² with added voice control features. Avoid tucking the unit into corners or behind furniture where airflow becomes restricted.</p><h3><strong>General Placement Principles for Air Purifier</strong></h3><p>Regardless of floor or elevated placement, certain principles maximize effectiveness everywhere in the home.</p><p>Keep 3 to 5 feet of open space in front of the air purifier and at least 3 to 4 inches on all other sides. Walls, furniture, and curtains that block airflow reduce efficiency significantly. Close doors and windows in the room where the unit operates. Air purifiers work best in enclosed spaces. Open windows allow outdoor pollutants to continuously enter, making the purifier work harder without fully cleaning the air.</p><p>Position the unit near pollution sources when known. If dust or allergens originate from a pet bed, kitchen, or entryway, placing the purifier nearby helps capture particles before they spread. A properly sized<a href=\"https://www.blueair.com/blogs/news/the-complete-guide-to-selecting-an-air-purifier-based-on-room-size\"> <span style=\"text-decoration:underline\">air purifier with adequate CADR</span></a> for the room matters more than finding the perfect spot. The right unit size will clean the air effectively, even if placement is not ideal.</p><h3><strong>FAQs</strong></h3><h4><strong>Should I put my air purifier on the floor or a table?</strong></h4><p>Both options work depending on the situation. Floor placement is effective for capturing dust and pet dander, while elevated placement targets the breathing zone more directly. The most important factor is maintaining adequate clearance around the unit for proper airflow.</p><h4><strong>How far should an air purifier be from the wall?</strong></h4><p>Keep the unit at least 3 to 4 inches from walls on all sides. For optimal performance, maintain 3 to 5 feet of open space in front of the unit where the air intake or output is located.</p><h4><strong>Can I put an air purifier in a corner?</strong></h4><p>Corners restrict airflow from multiple directions, reducing efficiency. If corner placement is necessary, pull the unit several feet away from both walls to allow adequate air circulation.</p><h4><strong>Where is the best place for an air purifier in a bedroom?</strong></h4><p>Place the<a href=\"https://www.blueair.com/blogs/news/blog-bedrooms\"> <span style=\"text-decoration:underline\">bedroom unit</span></a> 6 to 10 feet from the bed, either on the floor or elevated on a nightstand or dresser. Position the air intake toward the sleeping area and avoid directing airflow directly at the face.</p><h4><strong>Does an air purifier need to be in the center of a room?</strong></h4><p>Not necessarily. While central placement can help air circulation in large spaces, placement near seating areas or pollution sources often provides better results. Focus on adequate clearance and proximity to where time is spent rather than exact center placement.</p><h4><strong>How does room layout affect air purifier placement?</strong></h4><p>Open floor plans allow<a href=\"https://www.blueair.com/collections/shop-all\"> <span style=\"text-decoration:underline\">one high-capacity purifier</span></a> to serve multiple connected areas. Homes with separate rooms and closed doors benefit from multiple units or strategic placement in the most-used spaces. Smaller bedrooms may need<a href=\"https://www.blueair.com/collections/shop-all/small\"> <span style=\"text-decoration:underline\">compact, efficient models</span></a> while larger living areas require<a href=\"https://www.blueair.com/collections/shop-all/large\"> <span style=\"text-decoration:underline\">units with higher CADR ratings</span></a>.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_KnqYBR",
+        "text_e9yarP",
+        "image_caption_qy8nHW",
+        "text_Ub47yL",
+        "image_caption_KJNbEV",
+        "text_qjatJF",
+        "image_caption_n83MTT",
+        "text_gR8Aip"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}
