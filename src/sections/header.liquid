@@ -31,7 +31,7 @@
               {% for block in section.blocks %}
                   <div class="swiper-slide" js-carousel-slide>
                       {% if block.settings.url != blank %}
-                          <a href="{{ block.settings.url }}" class="announcement p3 font-400 text-center block px-[56px] leading-[18px] tabletp:px-[10%]">{{ block.settings.announcement }}</a>
+                          <a href="{{ block.settings.url }}" class="announcement p3 font-400 text-center block px-[56px] leading-[18px] tabletp:px-[10%]" aria-label="Announcement > {{ block.settings.announcement }}">{{ block.settings.announcement }}</a>
                       {% else %}
                           <div class="announcement p3 font-400 text-center px-[56px] leading-[18px] tabletp:px-[10%]">{{ block.settings.announcement }}</div>
                       {% endif %}
@@ -58,7 +58,7 @@
           </li>
         {% else %}
           <li class="header-desktop-nav__item px-sm flex items-center">
-            <a href="{{ link.url }}" class="header-desktop-nav__link text-16 underline-offset-[12px]" js-nav-item>{{ link.title }}</a>
+            <a href="{{ link.url }}" class="header-desktop-nav__link text-16 underline-offset-[12px]" aria-label="{{ link.title }}" js-nav-item>{{ link.title }}</a>
           </li>
         {% endif %}
       {% endfor %}

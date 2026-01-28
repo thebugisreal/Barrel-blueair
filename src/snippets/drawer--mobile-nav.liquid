@@ -53,7 +53,7 @@
           </li>
         {% else %}
           <li class="mobile-main-nav__item">
-            <a href="{{ link.url }}" class="mobile-main-nav__link link block w-full py-xxs leading-[24px]">
+            <a href="{{ link.url }}" class="mobile-main-nav__link link block w-full py-xxs leading-[24px]" aria-label="{{ link.title }}">
               {{ link.title }}
             </a>
           </li>
@@ -110,7 +110,7 @@
                 <ul class="mobile-child-nav__image-links p-md flex flex-nowrap gap-xs overflow-x-auto">
                   {% for grandchild_link in child_link.links %}
                     <li class="mobile-child-nav__item">
-                      <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link mobile-child-nav__link--image block">
+                      <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link mobile-child-nav__link--image block" aria-label="{{ link.title }} Nav Tile {{ forloop.index }}">
                         {% assign image_link_title = grandchild_link.title %}
                         <div class="w-[124px] min-w-[124px] relative">
                           {% if grandchild_link.title contains '|' %}
@@ -186,7 +186,7 @@
                       <ul class="mobile-child-nav__links">
                         {% for grandchild_link in child_link.links %}
                           <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
-                            <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit">
+                            <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}">
                               {% if child_link_handle contains 'room-size' %}
                                 {% if grandchild_link.url contains 'extralarge' %}
                                   {% render 'room-icon', size: 'extralarge', width: '18px' %}
@@ -211,7 +211,7 @@
                     </div>
                   {% else %}
                     <div class="mobile-child-nav__item mx-md border-t border-blue-light">
-                      <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit">
+                      <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit" aria-label="{{ link.title }}">
                         {% if settings.bcorp_link_url == child_link.url %}
                           <div class="mobile-child-nav__bcorp-link">{% render 'icon-b-default' %}</div>
                         {% else %}
