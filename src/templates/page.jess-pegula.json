@@ -83,7 +83,7 @@
         "image_position_desktop": "left",
         "image_width": 50,
         "title": "",
-        "title_style": "h4",
+        "title_style": "h6",
         "subtext": "You cannot control the opponent or the conditions. You can control your environment. <br>\n<br>Jessica Pegula trusts complete air care to support sleep, recovery, and peak performance, & that trust starts with Blueair.",
         "subtext_style": "h6",
         "cta_url": "",
@@ -277,7 +277,7 @@
         "padding_bottom_desktop": "desktop:pb-xxl",
         "gutter_mobile": "px-md",
         "gutter_desktop": "tabletl:px-xl",
-        "video": "shopify://files/videos/08_BLUEAIR_30_R2_4x3 (1).mp4",
+        "video": "shopify://files/videos/08_BLUEAIR_Hero_16x9_1080_GFX.mp4",
         "video_embed": "",
         "enable_autoplay": true,
         "color": "bg-white text-blue",
@@ -446,7 +446,7 @@
         "blog_qpr497": {
           "type": "blog",
           "settings": {
-            "blog": "news",
+            "blog": "jessica-pegula-x-blueair-1",
             "article_pulled": 3
           }
         }
@@ -478,13 +478,13 @@
         "enable_centered_carousel": true,
         "enable_title_link_same_link": true,
         "enable_carousel_gutter": true,
-        "title": "Lets Talk Air Wellness",
+        "title": "Read All Jessica Pegula x Blueair",
         "title_style": "h4",
         "title_alignment_mobile": "text-center",
         "title_alignment_desktop": "tabletl:text-center",
         "subtext": "",
         "subtext_style": "p2",
-        "url": "shopify://blogs/news",
+        "url": "shopify://blogs/jessica-pegula-x-blueair-1",
         "url_text": "All Blogs",
         "cta_style": "btn btn--blue-rounded",
         "cta_position_mobile": "justify-center",

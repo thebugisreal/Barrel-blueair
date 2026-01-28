@@ -31,7 +31,7 @@
         "title_style": "h1",
         "subtext": "For Jessica Pegula, complete air care that supports sleep, recovery, and consistency is essential.<br>\n\n<br>That is why she chooses Blueair.",
         "subtext_style": "h6",
-        "cta_url": "shopify://collections/air-purifiers-international",
+        "cta_url": "shopify://pages/jessica-pegula",
         "cta_text": "Explore Now",
         "cta_style": "btn btn--white-rounded",
         "text_align_mobile": "text-left",
@@ -45,7 +45,7 @@
         "content_max_height_mobile": "80vh",
         "content_max_height_desktop": "80vh",
         "section_max_width_desktop": "",
-        "enable_bg_clickabe_url": true
+        "enable_bg_clickabe_url": false
       }
     },
     "section_icons_BHyffr": {
@@ -153,7 +153,7 @@
           "type": "customization",
           "settings": {
             "image_mobile": "shopify://shop_images/Image_3_4_2.jpg",
-            "image_desktop": "shopify://shop_images/Image_3_4-1_41f3fd0d-3ff7-4b0a-98c4-67bc4f592280.jpg",
+            "image_desktop": "shopify://shop_images/Image_1.jpg",
             "image_position": "order-first",
             "enable_padding": false,
             "content_position": "items-start",
