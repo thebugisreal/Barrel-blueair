@@ -124,7 +124,7 @@ cart-remove-button .cart-remove-button:focus-visible {
 
 .cart-item-subscription__tooltip--add::after {
   @apply top-[40px];
-  content: "Subscribers get a 15% discount on replacement filters, free shipping, and automatic delivery right when it's time to replace. Tax and shipping fees may apply in some areas.";
+  content: "Subscribers get a 15% discount on recurring orders, free shipping, and automatic delivery right when it's time to replace. Tax and shipping fees may apply in some areas";
 }
 
 .cart-item-subscription__tooltip--pay::after {
