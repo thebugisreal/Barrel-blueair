@@ -27,17 +27,16 @@
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-xxl",
+            "padding_top_desktop": "desktop:pt-xl",
             "padding_bottom_desktop": "desktop:pb-xl",
             "max_width_desktop": "135ch",
-            "richtext": "<h3><strong>How Does an Evaporative Humidifier Work? </strong></h3><p>An evaporative humidifier increases humidity by naturally evaporating water into the air, rather than producing visible mist.</p><p>Blueair humidifiers use advanced evaporative technology to deliver clean, mist-free humidity without white dust or over-humidification.</p><h3><strong>How Do Blueair InvisibleMist Humidifiers Work?</strong></h3><ul><li>Dry air is quietly drawn into the unit<br/><br/></li><li>Water is pumped from the tank to an anti-microbial wick filter<strong><br/><br/></strong></li><li>Air passes through the moistened filter<br/><br/></li><li>Only the moisture the air can absorb is released back into the room<br/><br/></li></ul><p>Because evaporation is self-regulating, the system:</p><ul><li>Prevents over-humidification<br/><br/></li><li>Maintains balanced humidity levels<br/><br/></li></ul><p>Works safely in bedrooms and shared spaces</p>",
+            "richtext": "<p>When an air purifier stops working properly, home air quality suffers. According to the <a href=\"https://www.epa.gov/indoor-air-quality-iaq\"><span style=\"text-decoration:underline\">EPA</span></a>, Americans spend about 90 percent of their time indoors, where pollutant levels can be 2 to 5 times higher than outdoors. Most <a href=\"https://www.blueair.com/collections/air-purifiers\"><span style=\"text-decoration:underline\">air purifier</span></a> problems have straightforward solutions that can be handled at home without professional service.</p><h3><strong>What are the 11 Common Issues and Simple Fixes</strong></h3>",
             "richtext_alignment": "text-left",
             "richtext_style": "s3"
           }
         },
         "image_caption_QBGK76": {
           "type": "image_caption",
-          "disabled": true,
           "settings": {
             "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-0",
@@ -48,28 +47,8 @@
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-xxl",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
-            "image_desktop": "shopify://shop_images/Image_Ratio_Keeper_7928fce2-7bf3-4653-998c-c118b0173fe0.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": "classic-pro-cp7i",
-            "product_image_override": "shopify://shop_images/Classic_Pro_CP7i.png"
-          }
-        },
-        "image_caption_KnqYBR": {
-          "type": "image_caption",
-          "settings": {
-            "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-0",
-            "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Blog_Image_3_674a9d1f-070b-471c-b846-3e0108b7df43.png",
-            "image_desktop": "shopify://shop_images/Blog_Image_3_674a9d1f-070b-471c-b846-3e0108b7df43.png",
+            "image": "shopify://shop_images/image1_db8d80c4-91d8-4a16-a7b9-3c04d695c0d4.jpg",
+            "image_desktop": "shopify://shop_images/image1_db8d80c4-91d8-4a16-a7b9-3c04d695c0d4.jpg",
             "caption": "",
             "caption_style": "p6",
             "product": ""
@@ -78,21 +57,21 @@
         "text_e9yarP": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-lg",
+            "margin_top_mobile": "mt-0",
             "margin_bottom_mobile": "mb-lg",
             "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-lg",
-            "margin_top_desktop": "desktop:mt-lg",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-lg",
+            "padding_bottom_desktop": "desktop:pb-0",
             "max_width_desktop": "135ch",
-            "richtext": "<h3><strong>More about InvisibleMist Technology</strong></h3><p>All Blueair humidifiers use InvisibleMist™ technology, meaning:</p><ul><li>No fog<br/><br/></li><li>No wet floors or furniture<br/><br/></li><li>No white dust from minerals<br/><br/></li></ul><p>The moisture disperses instantly into the air—cleanly and evenly.</p><h3><strong>Maintaining Your Humidifier </strong></h3><p>Any humidifier that uses water can develop mineral buildup over time, especially in areas with hard water.</p><p>Regular maintenance helps:</p><ul><li>Preserve performance<br/><br/></li><li>Prevent mineral buildup and odors<br/><br/></li><li>Extend the life of the wick and internal components<br/><br/></li></ul><p>Blueair humidifiers are designed with <strong>accessible components</strong> to simplify cleaning and wick replacement.</p>",
+            "richtext": "<p><a href=\"https://www.blueair.com/collections/air-purifiers\"><span style=\"text-decoration:underline\">Air purifiers</span></a> work hard every day, yet small issues can reduce performance. Understanding common problems and simple fixes helps maintain clean air, efficiency, and peace of mind at home easily.</p><h4><strong>1. Air Purifier Will Not Turn On</strong></h4><p>A unit that won't power up is frustrating, but the cause is usually simple. Start by checking if the outlet works by plugging in another device. Inspect the power cord for visible damage or loose connections. Many air purifiers have safety features that prevent operation when filters are not properly installed. Open the unit and ensure the filter is correctly seated before trying again.</p><h4><strong>2. Weak or Reduced Airflow</strong></h4><p>Poor airflow typically points to a clogged filter or blocked vents. A filter restricting air movement is the most common cause. Check that all plastic wrapping was removed from the new filter during installation. Vacuum the air intake grills to remove dust buildup. If airflow remains weak after cleaning, the filter likely needs replacement.</p><h4><strong>3. Unusual or Loud Noises</strong></h4><p>Rattling, buzzing, or grinding sounds usually indicate a loose component or obstruction. Turn off the purifier and check for loose filter covers, fallen objects inside the unit, or dust accumulation on fan blades. Ensure the filter sits snugly in its housing. Grinding sounds from the motor suggest the unit may need professional service.<a href=\"https://www.blueair.com/pages/blueair-performance\"> <span style=\"text-decoration:underline\">Air purifiers engineered with HEPASilent™ technology</span></a> operate whisper-quiet, so unusual noise always deserves attention.</p><h4><strong>4. Unpleasant or Strange Odors</strong></h4><p>A musty or burning smell requires immediate investigation. Old or saturated filters are the most common cause. Replace filters that have exceeded their recommended lifespan. For units with activated carbon filters, odor breakthrough indicates the carbon is exhausted.</p><p>Ensure the purifier sits in a dry, well-ventilated area. Moisture can promote mold growth inside the unit. Wipe down the interior housing with a dry cloth during filter changes.</p><h4><strong>5. Controls Not Responding</strong></h4><p>When buttons or touch controls fail to respond, first verify the power connection. Many units have child locks or filter reset requirements that disable controls. Check the user manual for reset procedures. On smart-enabled models, ensure the app is updated, and the WiFi connection is stable. A simple restart often resolves connectivity issues.</p><h4><strong>6. Air Quality Indicator Stays Static</strong></h4><p>If the air quality sensor never changes readings, the sensor needs cleaning. Locate the sensor opening on the unit, typically a small grille or vent. Use a soft cotton swab to gently remove dust from the sensor. Avoid using liquids or compressed air, which can damage sensitive components.</p><h4><strong>7. Filter Replacement Light Will Not Reset</strong></h4><p>After installing a new filter, you may need to reset the filter indicator light. (It was reset automatically for most models) You can visit <a href=\"https://www.blueair.com/pages/support\"><span style=\"text-decoration:underline\">Blueair support</span></a> for additional tips on finding specific filter replacement reset instructions per device. Verify the filter is the correct type for the model. Ensure the filter is fully seated, and the cover is properly closed. Press and hold the fan speed button for 15 seconds. Consult the user manual for model-specific reset instructions.</p><h4><strong>8. Unit Running But Not Cleaning Air</strong></h4><p>When the purifier operates, but air quality does not improve, placement may be the issue. Position the unit at least one foot away from walls and furniture. Close windows and doors in the room for optimal performance. The unit may also be undersized for the space. A bedroom-sized purifier cannot effectively clean a large living area.<a href=\"https://www.blueair.com/blogs/news/the-complete-guide-to-selecting-an-air-purifier-based-on-room-size\"> <span style=\"text-decoration:underline\">Match the purifier size to the actual room dimensions</span></a> for best results.</p><h4><strong>9. Overheating or Auto Shutoff</strong></h4><p>Modern air purifiers include thermal protection that triggers shutoff when the unit overheats. If this occurs, turn off and unplug immediately. Allow the unit to cool for at least 30 minutes. Check for blocked vents or obstructions. Ensure the filter is not severely clogged. Move the unit away from heat sources like radiators or direct sunlight. Frequent overheating may indicate a motor issue requiring professional service.</p><h4><strong>10. Excessive Dust Accumulation Around the Unit</strong></h4><p>If dust collects rapidly near the purifier, the unit is likely working correctly by pulling particles from the air. However, this can also indicate a filter at capacity. Check whether the filter appears grey or heavily soiled. </p><h4><strong>11. Motor Failure or Complete Breakdown</strong></h4><p>A defective motor typically results in no fan operation despite power reaching the unit. Humming without airflow suggests a motor problem. Motor failures usually require manufacturer support or professional repair. Contact customer service to determine whether repair or replacement is available under warranty.</p><h3><strong>Maintenance Tips for Prevention of Air Purifier Issues</strong></h3>",
             "richtext_alignment": "text-left",
             "richtext_style": "p2"
           }
         },
-        "image_caption_qy8nHW": {
+        "image_caption_JxHDYQ": {
           "type": "image_caption",
           "settings": {
             "margin_top_mobile": "mt-0",
@@ -102,61 +81,39 @@
             "margin_top_desktop": "desktop:mt-0",
             "margin_bottom_desktop": "desktop:mb-0",
             "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-0",
+            "padding_bottom_desktop": "desktop:pb-xxl",
             "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Blog_Image-1_1_3921c68f-9a2b-4771-90d6-683988238c0a.png",
-            "image_desktop": "shopify://shop_images/Blog_Image-1_1_3921c68f-9a2b-4771-90d6-683988238c0a.png",
+            "image": "shopify://shop_images/image2_2ad79185-6fad-4d3c-b41a-ab55dfb8985f.jpg",
+            "image_desktop": "shopify://shop_images/image2_2ad79185-6fad-4d3c-b41a-ab55dfb8985f.jpg",
             "caption": "",
             "caption_style": "p6",
             "product": ""
           }
         },
-        "text_Ub47yL": {
+        "text_mcLkfc": {
           "type": "text",
           "settings": {
-            "margin_top_mobile": "mt-md",
-            "margin_bottom_mobile": "mb-md",
-            "padding_top_mobile": "pt-0",
-            "padding_bottom_mobile": "pb-lg",
-            "margin_top_desktop": "desktop:mt-lg",
-            "margin_bottom_desktop": "desktop:mb-lg",
-            "padding_top_desktop": "desktop:pt-0",
-            "padding_bottom_desktop": "desktop:pb-lg",
-            "max_width_desktop": "135ch",
-            "richtext": "<h3><strong>What Makes Blueair’s Pump System Different</strong></h3><p>Unlike basic evaporative humidifiers that rely on passive soaking, Blueair uses a <strong>precision water pump</strong> to deliver the right amount of water to the wick.</p><p>This design:</p><ul><li>Separates the water tank from the wick for cleaner operation<br/><br/></li><li>Helps reduce mineral buildup<br/><br/></li><li>Keeps the wick fresher longer<br/><br/></li><li>Improves hygiene and performance consistency<br/><br/></li></ul><p>Combined with the automatic drying feature, this system minimizes cleaning time while ensuring cleaner humidity output.</p>",
-            "richtext_alignment": "text-left",
-            "richtext_style": "p2"
-          }
-        },
-        "image_caption_nkqiFF": {
-          "type": "image_caption",
-          "disabled": true,
-          "settings": {
             "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
+            "margin_bottom_mobile": "mb-lg",
             "padding_top_mobile": "pt-0",
             "padding_bottom_mobile": "pb-0",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
             "padding_top_desktop": "desktop:pt-0",
             "padding_bottom_desktop": "desktop:pb-0",
-            "max_width_desktop": "1096px",
-            "image": "shopify://shop_images/Jessica_Pegula_Blog_Image_2.png",
-            "image_desktop": "shopify://shop_images/Jessica_Pegula_Blog_Image_2.png",
-            "caption": "",
-            "caption_style": "p6",
-            "product": ""
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Regular maintenance prevents most problems before they start. Clean or vacuum pre-filters every 2 to 4 weeks. Replace main filters according to manufacturer guidelines. Wipe down exterior surfaces monthly. Keep air intake grills free of obstructions. Run the purifier continuously for best results.</p><p><a href=\"https://www.blueair.com/pages/blueair-performance\"><span style=\"text-decoration:underline\">Blueair air purifiers with HEPASilent™ technology</span></a> capture 99.97 percent of airborne particles down to 0.1 microns while using less energy than a standard light bulb. Proper maintenance ensures continued benefits for years.</p><h3><strong>FAQs</strong></h3><h4><strong>How often should I replace my air purifier filter?</strong></h4><p>Most filters need replacement every 6 to 12 months, depending on usage and air quality. Check the filter monthly and replace it when visibly dirty or when performance declines.</p><h4><strong>Why does my air purifier smell like plastic when it's new?</strong></h4><p>New units may emit a slight odor from manufacturing residue. Run the purifier on high in a well-ventilated room for 24 to 48 hours. The smell should dissipate. Persistent odors after this period warrant contacting customer support.</p><h4><strong>Can I wash my air purifier filter?</strong></h4><p>Only pre-filters designed for washing should be cleaned with water. True HEPA and carbon filters lose effectiveness when wet and must be replaced, not washed. Check the user manual for specific guidance on the specific model.</p><h4><strong>How do I know if my air purifier is working?</strong></h4><p>Look for airflow from the output vent and listen for quiet fan operation. Many modern purifiers include air quality indicators showing real-time particle levels. Reduced dust on surfaces and improved allergy symptoms over time also indicate proper function.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
           }
         }
       },
       "block_order": [
         "text_QNqwkC",
         "image_caption_QBGK76",
-        "image_caption_KnqYBR",
         "text_e9yarP",
-        "image_caption_qy8nHW",
-        "text_Ub47yL",
-        "image_caption_nkqiFF"
+        "image_caption_JxHDYQ",
+        "text_mcLkfc"
       ],
       "settings": {}
     },
@@ -370,65 +327,12 @@
         "cta_text": "",
         "cta_style": "btn"
       }
-    },
-    "section_carousel_Dkj48r": {
-      "type": "section__carousel",
-      "blocks": {
-        "blog_KkmBEr": {
-          "type": "blog",
-          "settings": {
-            "blog": "news",
-            "article_pulled": 3
-          }
-        }
-      },
-      "block_order": [
-        "blog_KkmBEr"
-      ],
-      "name": "Carousel",
-      "settings": {
-        "margin_top_mobile": "mt-0",
-        "margin_bottom_mobile": "mb-0",
-        "padding_top_mobile": "pt-0",
-        "padding_bottom_mobile": "pb-0",
-        "margin_top_desktop": "desktop:mt-0",
-        "margin_bottom_desktop": "desktop:mb-0",
-        "padding_top_desktop": "desktop:pt-lg",
-        "padding_bottom_desktop": "desktop:pb-lg",
-        "carousel_content_top_spacing_mobile": "mt-md",
-        "scrollbar_top_spacing_mobile": "mt-md",
-        "carousel_content_top_spacing_desktop": "tabletl:mt-md",
-        "scrollbar_top_spacing_desktop": "tabletl:mt-md",
-        "max_width_desktop": "80ch",
-        "color": "bg-blue-light text-blue",
-        "slides_per_view": "1.8",
-        "slides_per_view_desktop": "3",
-        "slides_per_view_extrawide": "3",
-        "carousel_nav": "scrollbar",
-        "enable_carousel_nav_mobile": true,
-        "enable_carousel_nav_desktop": true,
-        "enable_centered_carousel": false,
-        "enable_title_link_same_link": false,
-        "enable_carousel_gutter": true,
-        "title": "Lets Talk Air Wellness",
-        "title_style": "h4",
-        "title_alignment_mobile": "text-center",
-        "title_alignment_desktop": "tabletl:text-center",
-        "subtext": "",
-        "subtext_style": "p2",
-        "url": "shopify://blogs/news",
-        "url_text": "All Blogs",
-        "cta_style": "btn btn--blue-rounded",
-        "cta_position_mobile": "justify-center",
-        "cta_position_desktop": "tabletl:justify-center"
-      }
     }
   },
   "order": [
     "main",
     "article_content_zMAJck",
     "article_content_CXmqDG",
-    "section_accordion_DgQAah",
-    "section_carousel_Dkj48r"
+    "section_accordion_DgQAah"
   ]
 }

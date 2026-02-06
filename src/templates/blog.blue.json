@@ -478,7 +478,6 @@
         },
         "topic_heDKw6": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "aroma"
           }

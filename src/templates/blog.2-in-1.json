@@ -337,7 +337,6 @@
         },
         "topic_e88zhx": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "aroma"
           }

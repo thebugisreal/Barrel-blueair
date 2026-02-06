@@ -335,7 +335,6 @@
         },
         "topic_zTTD8B": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "aroma"
           }

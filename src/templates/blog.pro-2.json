@@ -299,7 +299,6 @@
         },
         "topic_YbwyDp": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "aroma"
           }

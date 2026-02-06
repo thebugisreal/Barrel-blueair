@@ -124,7 +124,6 @@
         },
         "topic_7Hrexh": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "aroma"
           }

@@ -349,7 +349,6 @@
         },
         "topic_a8gQR4": {
           "type": "topic",
-          "disabled": true,
           "settings": {
             "topic": "aroma"
           }
