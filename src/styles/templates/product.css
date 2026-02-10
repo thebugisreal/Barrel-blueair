@@ -368,11 +368,24 @@ s-carousel.pointer-event {
 
 /* Size options styling */
 .product__related-size-current {
-  @apply p-xxs w-[99px] h-[25px] rounded-[3px] bg-blue text-white border border-blue flex justify-center items-center;
+  @apply p-xxs w-[99px] h-[25px] rounded-[3px] bg-blue text-white border border-blue flex justify-center items-center relative;
 }
 
 .product-related-size {
-  @apply p-xxs w-[99px] h-[25px] rounded-[3px] border border-gray flex justify-center items-center cursor-pointer;
+  @apply p-xxs w-[99px] h-[25px] rounded-[3px] border border-gray flex justify-center items-center cursor-pointer relative;
+}
+
+.product__related-size-option-tag {
+  @apply 
+    absolute
+    bottom-[75%]
+    p-xxxs
+    text-[6px]
+    left-[-8px]
+    whitespace-nowrap
+    text-blue
+    w-fit;
+    background-color: red;
 }
 
 

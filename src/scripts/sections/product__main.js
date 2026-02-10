@@ -1607,6 +1607,7 @@ class ProductMain extends HTMLElement {
   }
 
   async _initOptionSwatches(option) {
+    console.log('initOptionSwatches', option);
     try {
       const currentProductHandle = option.dataset.handle;                      
       const collectionTagRaw = option.dataset.collection || '';                
@@ -1617,6 +1618,7 @@ class ProductMain extends HTMLElement {
       const targetURL = `/collections/all/${tagForUrl}?view=json`;
   
       const products = await this._getRelatedSwatchesJSON(targetURL);
+      console.log('products', products, targetURL);
       if (!Array.isArray(products) || products.length === 0) {
         console.warn('[pdp swatches] No products for', collectionTagRaw);
         return;
@@ -1650,16 +1652,19 @@ class ProductMain extends HTMLElement {
         if (optionKind === 'size') {
           const aria = `${p.title} – Size ${p.size || label}`;
           const sizeLabel = p.size || label;
+          const optionTag = p.optionTag ? `<span class="product__related-size-option-tag">${p.optionTag}</span>` : '';
 
           if (isCurrent) {
             html += `
               <div class="product__related-size-current" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch>
                 ${sizeLabel}
+                ${optionTag}
               </div>`;
           } else {
             html += `
               <a href="${href}" class="product-related-size" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch js-option-swatch-link>
                 ${sizeLabel}
+                ${optionTag}
               </a>`;
           }
         } else {
