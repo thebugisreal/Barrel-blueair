@@ -265,8 +265,16 @@
 {% capture devices_and_warranty %}
   <warranty-devices class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="text-40 font-300 mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
-      <button class="btn flex justify-center items-center gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
+      <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
+      <button class="btn flex justify-center items-center w-full desktop:w-auto gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
+        <span class="btn__text">Register a new device</span>
+      </button>
+    </div>
+
+    <div id="device-card-container" class="device-card-content grid p-sm desktop:p-md mt-md bg-white"></div>
+
+    <div class="w-full flex mt-md">
+      <button class="btn flex justify-center items-center w-full desktop:w-auto gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
         <span class="btn__text">Register a new device</span>
       </button>
     </div>
@@ -335,7 +343,9 @@
       </div>
     </div>
 
-    <div id="device-card-container" class="device-card-content grid"></div>
+    <div class="newly-registered-devices hidden mt-md grid gap-md p-sm desktop:p-md bg-white" js-newly-registered-devices>
+      <div class="newly-registered-devices__cards grid gap-md w-full"></div>
+    </div>
   </warranty-devices>
 
   <script type="application/json" id="warranty-unit-families">
