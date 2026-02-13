@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero": {
       "type": "section__hero",
@@ -21,7 +21,6 @@
         "padding_top_desktop": "desktop:pt-0",
         "padding_bottom_desktop": "desktop:pb-0",
         "color": "bg-blue text-white",
-        "video_mobile": "shopify://files/videos/Jess_LP_header_9bdaf934-2bb5-4e00-8088-595f7145e5fd.mp4",
         "video_autoplay": true,
         "video_loop": true,
         "video_muted": true,
