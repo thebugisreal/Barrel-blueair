@@ -45,26 +45,24 @@
 }
 
 /* Fix for when section__hero is an anchor tag (enable_bg_clickabe_url) */
-a.section__hero {
+.hero__link {
   display: block !important;
   text-decoration: none !important;
   outline: none !important;
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: inherit !important;
 }
 
-a.section__hero:focus,
-a.section__hero:focus-visible,
-a.section__hero:focus:not(:focus-visible),
-a.section__hero:active,
-a.section__hero:visited {
+.hero__link:focus,
+.hero__link:focus-visible,
+.hero__link:focus:not(:focus-visible),
+.hero__link:active,
+.hero__link:visited {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
   text-decoration: none !important;
-  color: inherit !important;
 }
 
 @media screen(desktop) {
