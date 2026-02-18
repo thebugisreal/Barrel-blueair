@@ -106,15 +106,15 @@
             <input type="radio"
               name="AccountSections"
               id="AccountLogOut"
+              {% comment %} Commented out due to issue with Miniorange/Gigya Logout functionality {% endcomment %}
+              {% comment %} onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';" {% endcomment %}
               onclick="window.location='{{ routes.account_logout_url }}';"
               class="account-section__input visually-hidden">
             <label 
               for="AccountLogOut" 
               class="account-section__label flex justify-start items-center gap-xs p-sm">
               <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
-              <span class="account-section-label__text p1 leading-none">
-                <a class="account-section-label__text p1 text-16 font-400 leading-none desktop:text-18" href="{{ routes.account_logout_url }}">Sign Out</a>
-              </span>
+              <span class="account-section-label__text p1 text-16 font-400 leading-none desktop:text-18">Sign Out</span>
             </label>
           </li>
         </ul>
