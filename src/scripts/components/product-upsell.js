@@ -29,7 +29,14 @@ class ProductUpsell extends HTMLElement {
   }
 
   connectedCallback() {
-    this.variantBtns = this.querySelectorAll(this._selectors.variantBtn);
+    this._cacheElements();
+    this._initBis();
+    this._setListeners();
+    this.addEventListener('upsell-swatches-loaded', this._syncFromSelectedVariant);
+    requestAnimationFrame(() => this._syncFromSelectedVariant());
+  }
+
+  _cacheElements() {
     this.atcBtn = this.querySelector(this._selectors.atcBtn);
     this.addedBtn = this.querySelector(this._selectors.addedBtn);
     this.bisBtn = this.querySelector(this._selectors.bisBtn);
@@ -41,30 +48,36 @@ class ProductUpsell extends HTMLElement {
     this.error = this.querySelector(this._selectors.error);
     this.upsellLinks = this.querySelectorAll(this._selectors.upsellLink);
     this.upsellImageLinks = this.querySelectorAll(this._selectors.upsellImageLink);
-    
-    this._initBis();
-    this._setListeners();
   }
 
   _initBis() {
     this.bisModal = document.querySelector(this._klaviyoBis.modal);
+    if (!this.bisModal) return;
+
     this.bisForm = this.bisModal.querySelector(this._klaviyoBis.form);
     this.bisSubmit = this.bisModal.querySelector(this._klaviyoBis.submit);
     this.bisSuccess = this.bisModal.querySelector(this._klaviyoBis.success);
     this.bisError = this.bisModal.querySelector(this._klaviyoBis.error);
 
-    this.bisBtn.addEventListener('click', this._openBisModal.bind(this));
-    this.bisForm.addEventListener('submit', this._handleBisFormSubmit.bind(this));
+    if (this.bisBtn) this.bisBtn.addEventListener('click', this._openBisModal.bind(this));
+    if (this.bisForm) this.bisForm.addEventListener('submit', this._handleBisFormSubmit.bind(this));
   }
 
   _setListeners() {
-    this.variantBtns.forEach((variantBtn) => {
-      variantBtn.addEventListener('click', this._variantBtnOnClick);
-    });
-    this.atcBtn.addEventListener('click', this._addToCart);
+    this.addEventListener('click', this._handleVariantClick);
+    if (this.atcBtn) this.atcBtn.addEventListener('click', this._addToCart);
   }
 
+  _handleVariantClick = (evt) => {
+    const target = evt.target.closest(this._selectors.variantBtn);
+    if (!target || !this.contains(target)) return;
+    evt.preventDefault();
+    evt.stopPropagation();
+    this._variantBtnOnClick(evt, target);
+  };
+
   _handleErrorMessage(errorMessage = false) {
+    if (!this.error) return;
     if (errorMessage) {
       this.error.textContent = errorMessage;
       this.error.classList.remove('hidden');
@@ -83,8 +96,7 @@ class ProductUpsell extends HTMLElement {
 
     this.cart.setActiveElement(document.activeElement);
 
-    
-    let data = {
+    const data = {
       items: [{ id: target.dataset.variantId, quantity: 1 }],
       sections: this.cart.getSectionsToRender().map((section) => section.id)
     };
@@ -108,67 +120,40 @@ class ProductUpsell extends HTMLElement {
 
         this.cart.renderContents(response);
         this.cartDrawer.open();
-        
-        // Show "Added" button
         if (this.atcBtn && this.addedBtn) {
           this.atcBtn.classList.add('hidden');
           this.addedBtn.classList.remove('hidden');
         }
       })
       .catch((e) => {
-        this._handleErrorMessage(e.description);
-        console.log(e);
+        this._handleErrorMessage(e.description || 'Something went wrong');
       })
       .finally(() => {
         target.removeAttribute('disabled');
       });
   }
 
-  _variantBtnOnClick = (evt) => {
-    evt.preventDefault();
-    evt.stopPropagation(); // Prevent theme.js from interfering
-
+  _variantBtnOnClick = (evt, target, forceSync = false) => {
     this._handleErrorMessage();
     
-    const target = evt.currentTarget;
+    target = target || (evt && evt.currentTarget);
+    if (!target) return;
 
-    if (target.dataset.selected == 'true') {
+    if (!forceSync && target.dataset.selected == 'true') {
       return;
     }
 
-    const prevSelectedBtn = this.querySelector(`${this._selectors.variantBtn}[data-selected="true"]`);
-    if (prevSelectedBtn) prevSelectedBtn.dataset.selected = 'false';
-    target.dataset.selected = 'true';
+    const selectedVariantId = target.dataset.variantId;
+    this.querySelectorAll(this._selectors.variantBtn).forEach((btn) => {
+      btn.dataset.selected = btn.dataset.variantId === selectedVariantId ? 'true' : 'false';
+    });
 
-    // Update the main product image if this variant has an image    
     if (this.mainImage && target.dataset.variantImage) {
-      const img = this.mainImage.querySelector('img');      
-      if (img) {
-        img.src = target.dataset.variantImage;
-        img.srcset = target.dataset.variantImage;
-        
-        // Force browser to reload the image by adding a cache-busting parameter
-        if (img.src.includes('?')) {
-          img.src = img.src + '&cb=' + Date.now();
-        } else {
-          img.src = img.src + '?cb=' + Date.now();
-        }
-      }
-      
-      // Also update picture element if it exists
-      const picture = this.mainImage.querySelector('picture');
-      
-      if (picture) {
-        const pictureImg = picture.querySelector('img');
-        if (pictureImg) {
-          pictureImg.src = target.dataset.variantImage;
-          pictureImg.srcset = target.dataset.variantImage;
-        }
-      }
+      this._updateVariantImage(target.dataset.variantImage);
     }
 
-    if (this.upsellTitle) {      
-      this.upsellTitle.forEach(title => {
+    if (this.upsellTitle?.length) {
+      this.upsellTitle.forEach((title) => {
         const baseTitle = title.getAttribute('data-base-title') || title.textContent.trim();
         const colorName = target.title;
 
@@ -185,19 +170,22 @@ class ProductUpsell extends HTMLElement {
       });
     }
 
-    this.atcBtn.setAttribute('data-variant-id', target.dataset.variantId);
-    if (target.dataset.available == 'true') {
-      this.atcBtn.querySelector('.btn__text').textContent = 'Add to Cart';
-      this.atcBtn.removeAttribute('disabled');
-      this.atcBtn.classList.remove('hidden');
-      this.addedBtn.classList.add('hidden');
-      this.bisBtn.classList.add('hidden');
-    } else {
-      this.atcBtn.querySelector('.btn__text').textContent = 'Out of Stock';
-      this.atcBtn.setAttribute('disabled', '');
-      this.bisBtn.classList.remove('hidden');
-      this.atcBtn.classList.add('hidden');
-      this.addedBtn.classList.add('hidden');
+    if (this.atcBtn) {
+      this.atcBtn.setAttribute('data-variant-id', target.dataset.variantId);
+      const btnText = this.atcBtn.querySelector('.btn__text');
+      if (target.dataset.available == 'true') {
+        if (btnText) btnText.textContent = 'Add to Cart';
+        this.atcBtn.removeAttribute('disabled');
+        this.atcBtn.classList.remove('hidden');
+        if (this.addedBtn) this.addedBtn.classList.add('hidden');
+        if (this.bisBtn) this.bisBtn.classList.add('hidden');
+      } else {
+        if (btnText) btnText.textContent = 'Out of Stock';
+        this.atcBtn.setAttribute('disabled', '');
+        if (this.bisBtn) this.bisBtn.classList.remove('hidden');
+        this.atcBtn.classList.add('hidden');
+        if (this.addedBtn) this.addedBtn.classList.add('hidden');
+      }
     }
 
     if (this.price) {
@@ -206,30 +194,50 @@ class ProductUpsell extends HTMLElement {
       });
     }
 
-    // Update upsell links to point to the selected variant
-    this._updateUpsellLinks(target.dataset.variantId);
+    const productUrl = target.dataset.productUrl;
+    this._updateUpsellLinks(target.dataset.variantId, productUrl);
   }
 
-  _updateUpsellLinks(variantId) {
-    // Update only the links within this specific upsell component
-    this.upsellLinks.forEach(link => {
-      const baseUrl = link.href.split('?')[0];
-      if (baseUrl) {
-        link.href = `${baseUrl}?variant=${variantId}`;
-      }
-    });
+  _updateVariantImage(url) {
+    const img = this.mainImage?.querySelector('img');
+    if (img) {
+      const cacheBust = url.includes('?') ? '&cb=' : '?cb=';
+      img.src = url + cacheBust + Date.now();
+      img.srcset = img.src;
+    }
+    const pictureImg = this.mainImage?.querySelector('picture img');
+    if (pictureImg) {
+      pictureImg.src = url;
+      pictureImg.srcset = url;
+    }
+  }
 
-    // Update only the image links within this specific upsell component
-    this.upsellImageLinks.forEach(link => {
-      const baseUrl = link.href.split('?')[0];
-      if (baseUrl) {
-        link.href = `${baseUrl}?variant=${variantId}`;
-      }
+  _updateUpsellLinks(variantId, productUrl) {
+    const baseUrl = productUrl || this.upsellLinks[0]?.href?.split('?')[0];
+    if (!baseUrl) return;
+
+    this.upsellLinks?.forEach((link) => {
+      link.href = `${baseUrl}?variant=${variantId}`;
     });
+    this.upsellImageLinks?.forEach((link) => {
+      link.href = `${baseUrl}?variant=${variantId}`;
+    });
+  }
+
+  _syncFromSelectedVariant = () => {
+    const variantBtns = this.querySelectorAll(this._selectors.variantBtn);
+    if (variantBtns.length === 0) return;
+
+    const selectedBtn = variantBtns[0];
+    variantBtns.forEach((btn, i) => {
+      btn.dataset.selected = i === 0 ? 'true' : 'false';
+    });
+    this._variantBtnOnClick(null, selectedBtn, true);
   }
 
   _openBisModal(evt) {
     evt.stopImmediatePropagation();
+    if (!this.bisModal) return;
     this._updateBisModal(evt);
     this.bisModal.open();
   }
@@ -242,8 +250,7 @@ class ProductUpsell extends HTMLElement {
     const variant = formData.get('variant');
     
     const region = Shopify.shop.replace('.myshopify.com', '');
-    const submitId = '$shopify:::$default:::' + variant;
-    const testId = '$shopify:::$default:::43850333126700';
+    const submitId = `$shopify:::$default:::${variant}`;
 
     let apiKey = '';
     if (region == '5ef43d-4a') {
@@ -281,28 +288,27 @@ class ProductUpsell extends HTMLElement {
       }
     }
     
-    var requestOptions = {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-          "revision":"2024-06-15"
-        },
-        body: JSON.stringify(payload),
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'revision': '2024-06-15'
+      },
+      body: JSON.stringify(payload)
     };
-    
-    fetch(url,requestOptions)
-        .then(result => {
-          if (result.ok) {
-            this.bisSubmit.classList.add('hidden');
-            this.bisSuccess.classList.remove('hidden');
-          } else {
-            this.bisError.classList.remove('hidden');
-          }
-        })
-        .catch(error => {
-          console.log('error', error);
+
+    fetch(url, requestOptions)
+      .then((result) => {
+        if (result.ok) {
+          this.bisSubmit.classList.add('hidden');
+          this.bisSuccess.classList.remove('hidden');
+        } else {
           this.bisError.classList.remove('hidden');
-        });
+        }
+      })
+      .catch(() => {
+        this.bisError.classList.remove('hidden');
+      });
   }
   
   _updateBisModal(evt) {
@@ -320,8 +326,11 @@ class ProductUpsell extends HTMLElement {
   }
 
   _updateBisTitle() {
-    if (!this.upsellTitle) return;
-    this.bisModal.querySelector(this._klaviyoBis.productTitle).textContent = this.upsellTitle.textContent;
+    const titleEl = this.upsellTitle?.[0];
+    const bisTitle = this.bisModal?.querySelector(this._klaviyoBis.productTitle);
+    if (titleEl && bisTitle) {
+      bisTitle.textContent = titleEl.textContent;
+    }
   }
 
   _insertBisSelect(evt) {
@@ -336,8 +345,8 @@ class ProductUpsell extends HTMLElement {
     const bisSelect = document.createElement('div');
     bisSelect.classList.add('form__field');
     bisSelect.setAttribute('js-bis-select', '');
-    if (unavailableVariants && selectedVariant) {
-    bisSelect.innerHTML = `
+    if (unavailableVariants?.length && selectedVariant) {
+      bisSelect.innerHTML = `
       <label for="bis-variant" class="form__label sr-only">Select Variant</label>
       <select id="bis-variant" name="variant" class="form__element px-sm py-xs border border-gray">
         ${Array.from(unavailableVariants).map(variant => `
@@ -346,7 +355,6 @@ class ProductUpsell extends HTMLElement {
       </select>
     `;
     } else {
-      
       bisSelect.innerHTML = `
         <label for="bis-variant" class="form__label sr-only">Select Variant</label>
         <select id="bis-variant" name="variant" class="form__element px-sm py-xs border border-gray">
@@ -354,8 +362,6 @@ class ProductUpsell extends HTMLElement {
         </select>
       `;
     }
-
-    console.log('bisSelect', bisSelect);
 
     const emailField = this.bisForm.querySelector('[js-bis-email-field]');
     this.bisForm.insertBefore(bisSelect, emailField);
