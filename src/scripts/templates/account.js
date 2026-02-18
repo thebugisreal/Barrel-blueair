@@ -49,6 +49,45 @@ class Account extends HTMLElement {
     this._setupCountries();
     this._setupEventListeners();
     this._saveJwtToken();
+    this._openSectionFromUrl();
+  }
+
+  _openSectionFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const section = urlParams.get('section');
+    if (!section) return;
+
+    const tabButton = this.querySelector(`[js-account-tab][aria-controls="${section}-content-panel"]`);
+    const radioInput = document.getElementById(`AccountSection-${section}`);
+    const targetPanel = this.querySelector(`#${section}-content-panel`);
+
+    if (!tabButton || !targetPanel) return;
+
+    // Desktop: check the radio input
+    if (radioInput) {
+      radioInput.checked = true;
+    }
+
+    // Update accordion header label (mobile)
+    const displayLabel = tabButton.dataset.label || tabButton.textContent?.trim();
+    if (this.accountLabel && displayLabel) {
+      this.accountLabel.textContent = displayLabel;
+    }
+
+    // Show target panel, hide others
+    this.querySelectorAll('[role=tabpanel]').forEach((panel) => {
+      panel.setAttribute('aria-hidden', panel.id === `${section}-content-panel` ? 'false' : 'true');
+    });
+
+    // Update tab aria-selected (mobile buttons)
+    this.querySelectorAll('[js-account-tab][role="tab"]').forEach((tab) => {
+      tab.setAttribute('aria-selected', tab.getAttribute('aria-controls') === `${section}-content-panel` ? 'true' : 'false');
+    });
+
+    // Trigger devices load when opening devices-warranty (warranty-devices listens for change event)
+    if (section === 'devices-warranty' && radioInput) {
+      setTimeout(() => radioInput.dispatchEvent(new Event('change', { bubbles: true })), 0);
+    }
   }
 
   _saveJwtToken() {
@@ -78,13 +117,13 @@ class Account extends HTMLElement {
         if (!success) throw new Error('Failed to query klaviyo customer');
 
         if (found) {
-          this.accountSubscribed.classList.remove('hidden');
+          this.accountSubscribed?.classList.remove('hidden');
         } else {
-          this.accountNotSubscribed.classList.remove('hidden');
+          this.accountNotSubscribed?.classList.remove('hidden');
         }
       }).catch((err) => {
         console.log(err)
-        this.accountNotSubscribed.classList.remove('hidden');
+        this.accountNotSubscribed?.classList.remove('hidden');
       })
   }
 
@@ -148,8 +187,8 @@ class Account extends HTMLElement {
 
   _handleKlaviyoEvents(e) {
     if (e.detail.type == 'submit') {
-      this.accountNotSubscribed.classList.add('hidden');
-      this.accountSubscribed.classList.remove('hidden');
+      this.accountNotSubscribed?.classList.add('hidden');
+      this.accountSubscribed?.classList.remove('hidden');
     }
   }
 
@@ -169,35 +208,43 @@ class Account extends HTMLElement {
       .then(({ success }) => {
         if (!success) throw new Error('Failed to query klaviyo customer');
         if (success) {
-          this.accountNotSubscribed.classList.remove('hidden');
-          this.accountSubscribed.classList.add('hidden');
+          this.accountNotSubscribed?.classList.remove('hidden');
+          this.accountSubscribed?.classList.add('hidden');
         } else {
-          this.accountNotSubscribed.classList.add('hidden');
-          this.accountSubscribed.classList.remove('hidden');
+          this.accountNotSubscribed?.classList.add('hidden');
+          this.accountSubscribed?.classList.remove('hidden');
         }
       }).catch((err) => {
         console.log(err)
-        this.accountNotSubscribed.classList.remove('hidden');
+        this.accountNotSubscribed?.classList.remove('hidden');
       })
   }
 
   _addOrders = async () => {
-    const url = this.ordersPagination.dataset.url;
+    const url = this.ordersPagination?.dataset?.url;
+    if (!url) return;
+
     const parsedHTML = await this._getOrders(url);
-    const newOrdersMobile = parsedHTML.querySelector(this._selectors.ordersContainerMobile).innerHTML;
+    const ordersMobileEl = parsedHTML.querySelector(this._selectors.ordersContainerMobile);
     const newOrdersDesktop = parsedHTML.querySelectorAll(this._selectors.orderDesktop);
-    const newOrdersTabs = parsedHTML.querySelector(this._selectors.ordersContainerTabs).innerHTML;
+    const ordersTabsEl = parsedHTML.querySelector(this._selectors.ordersContainerTabs);
     const newPagination = parsedHTML.querySelector(this._selectors.ordersPagination);
 
-    this.ordersContainerMobile.insertAdjacentHTML('beforeend', newOrdersMobile);
-    newOrdersDesktop.forEach(order => {
-      this.ordersContainerDesktop.insertAdjacentHTML('beforeend', order.innerHTML);
-    });
-    this.ordersContainerTabs.insertAdjacentHTML('beforeend', newOrdersTabs);
+    if (ordersMobileEl && this.ordersContainerMobile) {
+      this.ordersContainerMobile.insertAdjacentHTML('beforeend', ordersMobileEl.innerHTML);
+    }
+    if (this.ordersContainerDesktop) {
+      newOrdersDesktop.forEach(order => {
+        this.ordersContainerDesktop.insertAdjacentHTML('beforeend', order.innerHTML);
+      });
+    }
+    if (ordersTabsEl && this.ordersContainerTabs) {
+      this.ordersContainerTabs.insertAdjacentHTML('beforeend', ordersTabsEl.innerHTML);
+    }
 
     if (newPagination) {
       this.ordersPagination.dataset.url = newPagination.dataset.url;
-    } else {
+    } else if (this.ordersPagination) {
       this.ordersPagination.remove();
     }
 
@@ -223,10 +270,13 @@ class Account extends HTMLElement {
   _handleOpenEditAddress = (e) => {
     e.stopPropagation();
     const formID = e.currentTarget.dataset.form;
-    const editForm = document.querySelector('#address_form_' + formID)
+    const editForm = document.querySelector('#address_form_' + formID);
+    if (!editForm) return;
+
     editForm.classList.remove('hidden');
-    this.editAddressModal.open();
-    editForm.querySelector('[name="address[first_name]"]').focus();
+    this.editAddressModal?.open();
+    const focusEl = editForm.querySelector('[name="address[first_name]"]');
+    if (focusEl) focusEl.focus();
   }
 
   _handleDeleteAddress = (e) => {
@@ -246,16 +296,26 @@ class Account extends HTMLElement {
 
   _setAccountLabel = (e) => {
     let label = e.currentTarget.dataset.label;
-    this.accountLabel.innerHTML = label;
+    if (this.accountLabel) this.accountLabel.innerHTML = label;
     this.accountTabs.forEach((button) => {
       if (button.dataset.label == label) {
         button.click();
       }
-    })
+    });
+
+    // Update URL with section param for reload persistence
+    const ariaControls = e.currentTarget.getAttribute('aria-controls');
+    if (ariaControls && ariaControls.endsWith('-content-panel')) {
+      const section = ariaControls.replace(/-content-panel$/, '');
+      const url = new URL(window.location.href);
+      url.searchParams.set('section', section);
+      window.history.replaceState({}, '', url);
+    }
   }
 
   _closeAccountTriggerAccordion = (e) => {
-    if (this.accountTriggerAccordionHeader.contains(e.currentTarget)) {
+    if (!this.accountTriggerAccordionHeader) return;
+    if (this.accountTriggerAccordionHeader.contains(e.target)) {
       return;
     }
 
@@ -267,7 +327,8 @@ class Account extends HTMLElement {
   }
 
   _returnToOrderHistory = (e) => {
-    document.querySelector('label[aria-controls="order-history-content-panel"]').click();
+    const label = document.querySelector('label[aria-controls="order-history-content-panel"]');
+    if (label) label.click();
   }
 
   _tabEventListener = () => {
@@ -288,7 +349,8 @@ class Account extends HTMLElement {
     for (let i = 0; i < tabPanels.length; i++) {
       tabPanels[i].setAttribute('aria-hidden', 'true');
     }
-    this.querySelector(`[id="${tabPanelToOpen}"]`).setAttribute('aria-hidden', 'false');
+    const targetPanel = this.querySelector(`[id="${tabPanelToOpen}"]`);
+    if (targetPanel) targetPanel.setAttribute('aria-hidden', 'false');
   }
 
   _tabListKeydown = (e) => {

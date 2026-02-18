@@ -101,8 +101,10 @@ customElements.define('subscription-quiz', SubscriptionQuiz);
 
 
 /*================ Templates ================*/
+// =require components/warranty-devices.js
 // =require templates/account.js
 // =require templates/login.js
 
+customElements.define('warranty-devices', WarrantyDevices);
 customElements.define("s-account", Account);
 customElements.define("s-login", Login);

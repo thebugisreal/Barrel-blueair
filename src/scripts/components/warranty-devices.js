@@ -45,7 +45,8 @@ class WarrantyDevices extends HTMLElement {
     this.toggleBtns = this.querySelectorAll(this._selectors.toggleWarrantyForm);
 
     /* Script Data */
-    this.families = JSON.parse(document.getElementById('warranty-unit-families').textContent);
+    const familiesEl = document.getElementById('warranty-unit-families');
+    this.families = familiesEl ? JSON.parse(familiesEl.textContent || '[]') : [];
   }
 
   connectedCallback() {
@@ -55,13 +56,13 @@ class WarrantyDevices extends HTMLElement {
     this._initListeners();
 
     this._productImageLookup = {};
-    document.querySelectorAll('#unit-model option[data-image][value]').forEach(opt => {
+    this.querySelectorAll('#unit-model option[data-image][value]').forEach(opt => {
       this._productImageLookup[opt.value] = opt.getAttribute('data-image');
     });
   }
 
   _initListeners() {
-    if (!this.unitFamilySelect || !this.unitModelSelect) {
+    if (!this.form || !this.unitFamilySelect || !this.unitModelSelect) {
       return;
     }
 
@@ -69,24 +70,31 @@ class WarrantyDevices extends HTMLElement {
     this.form.addEventListener('change', this._formChangeHandler.bind(this));
     this.form.addEventListener('input', this._formChangeHandler.bind(this));
 
-    document.querySelector('input[value="devices-warranty"]').addEventListener('change', this._tabChangeHandler.bind(this));
+    const tabInput = document.querySelector('input[value="devices-warranty"]');
+    if (tabInput) {
+      tabInput.addEventListener('change', this._tabChangeHandler.bind(this));
+    }
     this.toggleBtns.forEach(btn => btn.addEventListener('click', this._toggleWarrantyForm.bind(this)));
 
     const debouncedSerialHandler = theme.utils.debounce((evt) => {
       this._serialNumberInputHandler(evt);
     }, 500);
-    
-    this.serialNumberInput.addEventListener('input', debouncedSerialHandler);
+
+    if (this.serialNumberInput) {
+      this.serialNumberInput.addEventListener('input', debouncedSerialHandler);
+    }
   }
 
   async _serialNumberInputHandler(evt) {
     const serialNumber = evt.target.value.trim();
     
     if (!serialNumber || serialNumber.length < 6) {
-      this.unitFamilySelect.value = '';
-      this.unitModelSelect.value = '';
-      this.serialNumberError.textContent = "";
-      this.serialNumberError.classList.add('hidden');
+      if (this.unitFamilySelect) this.unitFamilySelect.value = '';
+      if (this.unitModelSelect) this.unitModelSelect.value = '';
+      if (this.serialNumberError) {
+        this.serialNumberError.textContent = "";
+        this.serialNumberError.classList.add('hidden');
+      }
       this._formChangeHandler();
       return;
     }
@@ -95,8 +103,10 @@ class WarrantyDevices extends HTMLElement {
       const result = await this.warrantyAPI.lookupDeviceModel(serialNumber);
 
       if (!result.success || !result.payload) {
-        this.serialNumberError.textContent = "The serial number you entered is not valid.";
-        this.serialNumberError.classList.remove('hidden');
+        if (this.serialNumberError) {
+          this.serialNumberError.textContent = "The serial number you entered is not valid.";
+          this.serialNumberError.classList.remove('hidden');
+        }
         this.unitFamilySelect.value = '';
         this.unitModelSelect.value = '';
         this._formChangeHandler();
@@ -105,9 +115,11 @@ class WarrantyDevices extends HTMLElement {
 
       const { family: familyName, series: seriesName } = result.payload;
 
-      this.serialNumberError.textContent = "";
-      this.serialNumberError.classList.add('hidden');
-      
+      if (this.serialNumberError) {
+        this.serialNumberError.textContent = "";
+        this.serialNumberError.classList.add('hidden');
+      }
+
       // Set the family and model inputs
       this.unitFamilySelect.value = familyName;
       this.unitModelSelect.value = seriesName;
@@ -121,6 +133,8 @@ class WarrantyDevices extends HTMLElement {
   }
 
   _formChangeHandler() {
+    if (!this.form || !this.saveBtn) return;
+
     const requiredFields = this.form.querySelectorAll('[required]');
     const allFilled = Array.from(requiredFields).every(field => {
       if (field.tagName === 'SELECT') {
@@ -172,6 +186,14 @@ class WarrantyDevices extends HTMLElement {
     if (newlyRegistered && !this.formContainer.classList.contains('hidden')) {
       newlyRegistered.classList.add('hidden');
     }
+    if (!this.formContainer.classList.contains('hidden')) {
+      const formEl = document.getElementById('warranty-device-form');
+      if (formEl) {
+        const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10) || 68;
+        const top = formEl.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
   }
 
   _registeredDevicesHeaderHTML = () => `
@@ -181,7 +203,7 @@ class WarrantyDevices extends HTMLElement {
   `;
 
   _renderDevices = async (showLoading = false) => {
-    const container = document.querySelector('.device-card-content');
+    const container = this.querySelector('.device-card-content');
     if (!container) {
       console.warn('No .device-card-content found in DOM');
       return;
@@ -211,6 +233,13 @@ class WarrantyDevices extends HTMLElement {
     }
 
     container.innerHTML = this._registeredDevicesHeaderHTML() + devices.map(device => this._deviceCardHTML(device)).join('');
+
+    const filterSubscriptionHTML = `
+    <div class="w-full mt-24 pt-16">
+      <a href="https://www.blueair.com/pages/subscribe-quiz" class="inline-flex items-center underline text-16 font-400 leading-[26px] text-blue hover:opacity-80">Add a filter subscription</a>
+    </div>
+    `
+    container.innerHTML += filterSubscriptionHTML;
   }
 
   _deviceCardHTML(device) {
@@ -265,8 +294,8 @@ class WarrantyDevices extends HTMLElement {
     const cancelBtn = this.querySelector(this._selectors.cancelButton);
     if (cancelBtn) {
       cancelBtn.addEventListener('click', () => {
-        const form = this.querySelector(this._selectors.warrantyDeviceForm);
-        const formContainer = this.querySelector(this._selectors.warrantyForm);
+        const form = this.querySelector(this._selectors.warrantyForm);
+        const formContainer = this.querySelector(this._selectors.formContainer);
         if (form) {
           form.reset();
         }
@@ -473,8 +502,8 @@ class WarrantyDevices extends HTMLElement {
                 <p class="text-14 font-400 leading-[28px] font-gilroy">${device.dateOfPurchase || 'N/A'}</p>
               </div>
             </div>
-            <div class="tabletp:w-1/4 flex justify-end items-start">
-              <a href="https://www.blueair.com/pages/subscribe-quiz" class="flex items-center justify-center underline text-16 font-400 leading-[26px] pb-xxs">Add a filter subscription</a>
+            <div class="w-full tabletp:w-1/4 flex-shrink-0 flex justify-start tabletp:justify-end items-start mt-md tabletp:mt-0">
+              <a href="https://www.blueair.com/pages/subscribe-quiz" class="inline-flex items-center underline text-16 font-400 leading-[26px] text-blue hover:opacity-80">Add a filter subscription</a>
             </div>
           </div>
         </div>
