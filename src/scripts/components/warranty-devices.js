@@ -260,15 +260,15 @@ class WarrantyDevices extends HTMLElement {
                 <h3 class="device-card__title text-22 font-400 leading-[28px] font-gilroy">
                   ${displayName}
                 </h3>
-                <p class="text-14 font-400 leading-[28px] font-gilroy">${unitFamily}</p>
+                <p class="text-14 font-400 leading-[22px] font-gilroy">${unitFamily}</p>
               </div>
               <div class="device-card__serial-number flex flex-col gap-4 mb-md">
                 <h3 class="device-card__serial-number text-22 font-400 leading-[28px] font-gilroy">Serial number</h3>
-                <p class="text-14 font-400 leading-[28px] font-gilroy">${device.sn}</p>
+                <p class="text-14 font-400 leading-[22px] font-gilroy">${device.sn}</p>
               </div>
               <div class="device-card__purchase-date flex flex-col gap-4">
                 <h3 class="device-card__purchase-date text-22 font-400 leading-[28px] font-gilroy">Date of purchase</h3>
-                <p class="text-14 font-400 leading-[28px] font-gilroy">${device.dateOfPurchase || 'N/A'}</p>
+                <p class="text-14 font-400 leading-[22px] font-gilroy">${device.dateOfPurchase || 'N/A'}</p>
               </div>
             </div>
           </div>
