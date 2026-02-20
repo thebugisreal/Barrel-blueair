@@ -151,8 +151,38 @@ class WarrantyDevices extends HTMLElement {
     }
   }
 
+  _parseDateOfPurchase(value) {
+    if (!value || typeof value !== 'string') return null;
+    const parts = value.trim().split(/[/-]/);
+    if (parts.length !== 3) return null;
+    const month = parseInt(parts[0], 10) - 1;
+    const day = parseInt(parts[1], 10);
+    const year = parseInt(parts[2], 10);
+    if (isNaN(month) || isNaN(day) || isNaN(year) || month < 0 || month > 11) return null;
+    const date = new Date(year, month, day);
+    if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return null;
+    return date;
+  }
+
+  _isDateInFuture(date) {
+    if (!date || !(date instanceof Date)) return false;
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    return date.getTime() > todayStart.getTime();
+  }
+
   async _formSubmitHandler(evt) {
     evt.preventDefault();
+
+    const dateInput = this.form.querySelector('input[name="dateOfPurchase"]');
+    const dateValue = dateInput?.value?.trim();
+    if (dateValue) {
+      const purchaseDate = this._parseDateOfPurchase(dateValue);
+      if (purchaseDate && this._isDateInFuture(purchaseDate)) {
+        this._showErrorMessage('Date of purchase cannot be in the future.');
+        return;
+      }
+    }
 
     this.saveBtn.disabled = true;
     this.saveBtn.classList.add('opacity-50', 'cursor-not-allowed');
@@ -354,6 +384,7 @@ class WarrantyDevices extends HTMLElement {
       const nextBtn = document.createElement('button');
       nextBtn.innerHTML = '›';
       nextBtn.className = 'text-[#002D72] hover:bg-[#D6E4F3] rounded p-1 text-lg font-bold';
+      nextBtn.type = 'button';
       nextBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
@@ -379,14 +410,23 @@ class WarrantyDevices extends HTMLElement {
       calendar.appendChild(weekdays);
       calendar.appendChild(daysGrid);
 
-      return { calendar, monthYear, daysGrid };
+      return { calendar, monthYear, daysGrid, nextBtn };
     };
 
     const renderCalendar = () => {
-      const { calendar, monthYear, daysGrid } = calendarElements;
+      const { calendar, monthYear, daysGrid, nextBtn } = calendarElements;
 
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
+      const today = new Date();
+      const isViewingCurrentOrFutureMonth =
+        year > today.getFullYear() ||
+        (year === today.getFullYear() && month >= today.getMonth());
+
+      nextBtn.disabled = isViewingCurrentOrFutureMonth;
+      nextBtn.classList.toggle('opacity-50', isViewingCurrentOrFutureMonth);
+      nextBtn.classList.toggle('cursor-not-allowed', isViewingCurrentOrFutureMonth);
+      nextBtn.style.pointerEvents = isViewingCurrentOrFutureMonth ? 'none' : '';
 
       monthYear.textContent = `${new Date(year, month).toLocaleDateString('en-US', { month: 'long' })} ${year}`;
 
@@ -397,7 +437,6 @@ class WarrantyDevices extends HTMLElement {
       const startDate = new Date(firstDay);
       startDate.setDate(startDate.getDate() - firstDay.getDay());
 
-      const today = new Date();
       const threeYearsAgo = new Date();
       threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
 
