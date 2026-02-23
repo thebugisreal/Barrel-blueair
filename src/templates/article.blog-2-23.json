@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>A humidifier that is too small for the room runs constantly and still cannot keep up. One that is too large creates condensation on windows and humidity levels that encourage mold. Getting the size right makes all the difference, and the process is simpler than most people think.</p><p>Here is how to do it in seven steps.</p><h3><strong>How to Choose the Right Humidifier</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_QBGK76": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-xxl",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image2_9741d1a9-01c2-4961-b71e-af55acbd3b06.jpg",
+            "image_desktop": "shopify://shop_images/image2_9741d1a9-01c2-4961-b71e-af55acbd3b06.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_e9yarP": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-lg",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-lg",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<h4><strong>Step 1: Measure the Room</strong></h4><p>Start with the square footage of the room where the humidifier will be used. Length times width. A rough estimate is fine, no need to measure down to the inch.</p><p>A<a href=\"https://www.blueair.com/blogs/news/blog-small-rooms\"> <span style=\"text-decoration:underline\">small bedroom</span></a> or home office under 300 sq ft falls into the small category. A larger bedroom, nursery, or family room between 300 and 500 sq ft is considered medium. An open-plan living area or studio between 500 and 1,000 sq ft is large. Anything above 1,000 sq ft requires a whole-home solution or multiple devices.</p><h4><strong>Step 2: Match Coverage to Product Rating</strong></h4><p>Humidifiers list a maximum coverage area in square footage. The unit chosen should be rated to cover at least the room's actual size. A unit rated for 300 sq ft placed in a 500 sq ft room will struggle and run nonstop. A unit rated for 1,000 sq ft in a 200 sq ft bedroom will over-humidify the space.</p><p>A good rule is to go slightly above the room's square footage, not below. A 350 sq ft rated unit for a 280 sq ft bedroom is a comfortable match.</p><h4><strong>Step 3: Factor in Home Conditions</strong></h4><p>Square footage is only the starting point. Several other factors change what a space actually needs.</p><p><strong>Ceiling height</strong> matters because most coverage ratings assume 8-foot ceilings. Vaulted or 10-foot ceilings increase the air volume being humidified. Adding roughly 10 to 15% to the size estimate accounts for taller rooms.</p><p><strong>Climate and season</strong> play a role, too. In very cold, dry winters, significant moisture is lost through walls and ventilation. A slightly more powerful unit keeps up better during those peak-demand months.</p><p><strong>Drafts and air leaks</strong> are worth considering. Older homes with poor insulation lose humidity faster. If the home is drafty, sizing up is the safer choice.</p><h4><strong>Step 4: Choose the Right Type for the Room</strong></h4><p>For<a href=\"https://www.blueair.com/blogs/news/blog-bedrooms\"> <span style=\"text-decoration:underline\">bedrooms</span></a>, ultrasonic cool mist is the best choice. Nearly silent, safe around kids and pets, and energy-efficient. For anyone who also wants air purification in the same space, the<a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify\"><span style=\"text-decoration:underline\"> Blueair 2-in-1 Pro Purify + Humidify</span></a> covers rooms up to 391 ft² with both functions in one unit using 360-degree InvisibleMist humidification and HEPASilent™ air purification.</p><p>For small rooms and<a href=\"https://www.blueair.com/blogs/news/baby\"> <span style=\"text-decoration:underline\">nurseries</span></a>, a compact cool mist humidifier under 300 sq ft capacity is sufficient. The smaller tank means more frequent refills, but the footprint fits better on a nightstand.</p><p>For a<a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify\"><span style=\"text-decoration:underline\"> large living room</span></a> or open plan, an evaporative or ultrasonic unit rated for at least 500 sq ft is necessary. Large rooms tend to have more airflow, which dries things out faster.</p><p>For the whole house, whole-home humidifiers connect directly to the HVAC system and humidify every room simultaneously. More expensive upfront, but maintenance is lower, and coverage is consistent.</p><h4><strong>Step 5: Look at Tank Size and Daily Output</strong></h4><p>Tank size determines how often refills are needed. Most bedroom humidifiers have tanks between 0.5 and 1.5 gallons. Larger units for living areas go up to 3 to 4 gallons.</p><p>More practically, moisture output in gallons per day is the number that matters most. A unit producing 1 gallon per day can maintain comfortable humidity in most average-sized bedrooms without running dry overnight. For larger spaces, aim for 2 or more gallons per day.</p><p>The<a href=\"https://www.blueair.com/products/2-in-1-pro-purify-humidify\"><span style=\"text-decoration:underline\"> Blueair 2-in-1 Pro</span></a> delivers up to 60 hours of moisture from a 1-gallon tank in auto mode, which for most households means one refill every two to three days in a standard bedroom. (Runtime is based on 68 degrees F, 50% relative humidity in auto mode for a 500 sq ft room. Actual runtime varies with conditions.)</p><h4><strong>Step 6: Prioritize a Built-In Humidity Sensor</strong></h4><p>The most useful feature in any humidifier is a built-in humidity sensor with auto shut-off. Without one, guessing how much moisture is in the air risks over-humidifying the space.</p><p>The<a href=\"https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home\"> <span style=\"text-decoration:underline\">EPA recommends keeping indoor humidity between 30% and 50%</span></a> to balance comfort with health. Going above 50% creates conditions that encourage dust mites and mold growth, which is the opposite of what anyone managing<a href=\"https://www.blueair.com/blogs/news/air-purifiers-dust-allergies\"> <span style=\"text-decoration:underline\">allergies</span></a> or asthma wants. A built-in sensor keeps the room in the right range automatically. More on finding the right<a href=\"https://www.blueair.com/blogs/news/humidity-and-health-finding-the-right-balance-at-home\"> <span style=\"text-decoration:underline\">humidity balance for health</span></a> is worth reading for anyone dealing with respiratory sensitivities.</p><h4><strong>Step 7: Factor in Maintenance Before Buying</strong></h4><p>Every humidifier needs regular cleaning. Ultrasonic models need the tank cleaned every few days to prevent bacterial growth. Evaporative models need the wick replaced every 1 to 3 months. Warm mist units need regular descaling.</p><p>Before buying, check how easy the tank is to access and clean. Wide openings are significantly easier to maintain than narrow ones. Also, check the filter or wick replacement cost and availability, as those ongoing expenses add up over time.</p><h3><strong>Quick Size Reference</strong></h3><p><strong>Room Type</strong></p><p><strong>Square Footage</strong></p><p><strong>Humidifier Capacity to Look For</strong></p><p><strong>Bedroom</strong></p><p>Under 300 sq ft</p><p>200 to 300 sq ft rated</p><p><strong>Medium room or nursery</strong></p><p>300 to 500 sq ft</p><p>350 to 500 sq ft rated</p><p><strong>Large living area</strong></p><p>500 to 1,000 sq ft</p><p>600 to 1,000 sq ft rated</p><p><strong>Open-plan or multiple rooms</strong></p><p>1,000+ sq ft</p><p>Whole-home or multiple units</p><h3><strong>Placement Matters Too</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_VXNDaD": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3_04602b57-fe88-4ac3-96c9-81fa087136de.jpg",
+            "image_desktop": "shopify://shop_images/image3_04602b57-fe88-4ac3-96c9-81fa087136de.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_EWGj8R": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Even the right-sized unit will not perform well if placed in a corner facing a wall. Position the humidifier on an elevated surface near the center of the room for the best moisture distribution. Keep the unit at least a few feet from walls, furniture, and electronics. Avoid pointing the mist directly at a bed or pillows, as concentrated moisture on fabric can encourage mold.</p><p>Getting the right size is the most important decision. Placement is the second. Getting both right delivers a noticeable difference in comfort within a few nights. For help deciding what fits a specific space, the Blueair<a href=\"https://www.blueair.com/pages/guided-selling\"> <span style=\"text-decoration:underline\">guided selling tool</span></a> walks through the key questions in about a minute.</p><h3><strong>FAQs</strong></h3><h4><strong>What size humidifier do I need for a 12x12 bedroom? </strong></h4><p>A 144 sq ft room needs a small personal or tabletop humidifier with a 0.5-1 gallon tank. Any unit rated for 200-300 sq ft will work comfortably in that space.</p><h4><strong>Is it better to get a bigger humidifier than you need? </strong></h4><p>Not necessarily. An oversized humidifier can push humidity above 60%, encouraging mold and dust mites. A unit matched to room size with an auto-shutoff at the right humidity level is the better choice.</p><h4><strong>Can one humidifier work for a whole house? </strong></h4><p>A single portable humidifier typically covers one room effectively. For whole-house coverage, a console humidifier or furnace-integrated unit works better than running multiple portables.</p><h4><strong>How do I know if my humidifier is powerful enough? </strong></h4><p>Check your indoor humidity with a hygrometer. If it stays below 35-40% after running the humidifier for several hours, your unit is likely undersized for the space.</p><h4><strong>Should I get a warm mist or cool mist humidifier for a large room? </strong></h4><p>For large rooms, cool mist evaporative humidifiers tend to distribute moisture more evenly. Warm mist units are quieter but better suited to smaller spaces.</p><h4><strong>How long does a 1-gallon humidifier tank last? </strong></h4><p>A 1-gallon tank on low to auto settings typically lasts 24-60 hours, depending on how dry the air is and how large the space is. Drier climates and larger rooms drain tanks faster.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_QBGK76",
+        "text_e9yarP",
+        "image_caption_VXNDaD",
+        "text_EWGj8R"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}

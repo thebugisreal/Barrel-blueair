@@ -77,6 +77,16 @@
             "margin_bottom_desktop": "desktop:mb-lg"
           }
         },
+        "buystack_carousel_gBHHFa": {
+          "type": "buystack_carousel",
+          "settings": {
+            "title": "A quick reset for fresher air",
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-md",
+            "margin_top_desktop": "desktop:mt-md",
+            "margin_bottom_desktop": "desktop:mb-md"
+          }
+        },
         "experience_NzTf78": {
           "type": "experience",
           "settings": {
@@ -130,6 +140,7 @@
         "filter_options_XPQVUh",
         "product_options_GLfTKf",
         "atc_BURfeB",
+        "buystack_carousel_gBHHFa",
         "experience_NzTf78",
         "additional_features_H7XdFi",
         "shipping_warranty_Rg4jpP",

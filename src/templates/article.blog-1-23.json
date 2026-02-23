@@ -1,0 +1,452 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "article__main",
+      "settings": {
+        "max_width_desktop": "80ch"
+      }
+    },
+    "article_content_zMAJck": {
+      "type": "article__content",
+      "blocks": {
+        "text_QNqwkC": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-xl",
+            "margin_bottom_mobile": "mb-xl",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-xl",
+            "padding_bottom_desktop": "desktop:pb-xl",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Basements are some of the most polluted rooms in any home. Limited ventilation, higher humidity, concrete walls that hold moisture, and stored belongings all create conditions where mold spores, dust mites, VOCs from paint and adhesives, and musty odors build up fast. According to the<a href=\"https://www.epa.gov/mold\"> <span style=\"text-decoration:underline\">EPA</span></a>, one-third to one-half of all structures have damp conditions that encourage pollutants like mold and bacteria, and basements are often where those conditions are worst.</p><p>An air purifier will not fix a foundation crack or a drainage issue, but a well-matched unit makes a real, measurable difference in the air quality down there. Here are five options sized to different basements and different concerns.</p><h3><strong>The 5 Best Basement Air Purifiers</strong></h3><h4><strong>Pick #1: Blueair Blue Pure 211i Max, Best for Large Basements</strong></h4>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "s3"
+          }
+        },
+        "image_caption_aree8w": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image1_bab66ded-9ecf-4a66-89b7-51f5361ceeaf.jpg",
+            "image_desktop": "shopify://shop_images/image1_bab66ded-9ecf-4a66-89b7-51f5361ceeaf.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_WKTiBR": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>For open-plan or full-size basements, the<a href=\"https://www.blueair.com/products/blue-pure-211i-max\"> <span style=\"text-decoration:underline\">Blue Pure 211i Max</span></a> is the strongest option on this list. With a CADR of Pollen 450 cfm, Dust 452 cfm, Smoke 435 cfm, and a recommended coverage of 674 sq ft, the unit cleans a large basement in about 12.5 minutes. HEPASilent™ technology combines mechanical and electrostatic filtration to remove 99.97% of airborne particles down to 0.1 microns, including mold spores, dust, pet dander, and allergens.</p><p>What makes the 211i Max especially useful in a basement is its three built-in sensors (PM1, PM2.5, and PM10). Auto mode reads the air in real time and adjusts fan speed on the fly, so when someone starts a load of laundry or kicks up dust moving storage boxes, the purifier ramps up automatically. Voice control through Alexa and Google Assistant is included, along with full<a href=\"https://www.blueair.com/pages/blueair-app\"> <span style=\"text-decoration:underline\">app connectivity</span></a> for scheduling and monitoring from upstairs.</p><h3><strong>Pick #2: Blueair Blue Pure 311i+ Max, Best for Mid-Size Basements with Moisture Concerns</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_673m3j": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image5_1e4de067-bf9a-483e-9cf0-17df0a9a0c87.jpg",
+            "image_desktop": "shopify://shop_images/image5_1e4de067-bf9a-483e-9cf0-17df0a9a0c87.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_wy4mdL": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Damp basements breed bacteria, and that is exactly the problem the<a href=\"https://www.blueair.com/products/blue-pure-311i-plus-max\"> <span style=\"text-decoration:underline\">Blue Pure 311i+ Max</span></a> was built to address. The 311i+ Max is the only model in the current lineup with GermShield technology, which actively prevents bacterial growth on the filter surface even when the unit is powered off. For a basement that sits empty between uses, that protection matters.</p><p>Coverage is 525 ft²  in 12.5 minutes with a CADR of Pollen 446 cfm, Dust 370 cfm, Smoke 339 cfm. The unit also includes voice control (Alexa and Google Assistant), auto mode, night mode, and app control. Filter life runs about 9 months, and a<a href=\"https://www.blueair.com/pages/subscribe\"> <span style=\"text-decoration:underline\">filter subscription</span></a> saves 15% on every replacement.</p><h3><strong>Pick #3: Blueair Blue Pure 311i Max, Best Value Mid-Range</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_dTfPej": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image6_707eee85-c942-4580-8219-d6363d1ca07c.jpg",
+            "image_desktop": "shopify://shop_images/image6_707eee85-c942-4580-8219-d6363d1ca07c.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_jbBGbW": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Not every basement needs voice control or GermShield. The<a href=\"https://www.blueair.com/products/blue-pure-311i-max\"> <span style=\"text-decoration:underline\">Blue Pure 311i Max</span></a> covers </p><p>439 ft² in 12.5 minutes at a CADR of Pollen 365 cfm, Dust 314 cfm, Smoke 283 cfm, and includes auto mode with a PM2.5 sensor, night mode, and app control. For a standard basement used for laundry, storage, or occasional hangouts, the 311i Max handles the job reliably at a lower price.</p><p>The SmokeBlock filter upgrade is worth considering here if odors are a persistent issue. The enhanced activated carbon layer targets smoke, cooking smells, and musty basement air more aggressively than the standard particle and carbon<a href=\"https://www.blueair.com/collections/air-purifier-filters\"> <span style=\"text-decoration:underline\">filter</span></a>.</p><h3><strong>Pick #4: Blueair Blue Signature™, Best for Finished Basements</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_FXXwrz": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image4_364958fb-1d76-416f-a164-4183c45068fb.jpg",
+            "image_desktop": "shopify://shop_images/image4_364958fb-1d76-416f-a164-4183c45068fb.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_RTfjHc": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>A basement that doubles as a home theater, gym, playroom, or guest suite is a living space, not a storage area. The<a href=\"https://www.blueair.com/products/blue-signature\"><span style=\"text-decoration:underline\"> Blue Signature</span></a> treats the air accordingly. Coverage goes up to 705 sq ft in 12.5 minutes, and the CADR reaches 455 CFM for smoke. Seven stages of filtration combined with OdorFence technology deliver 10x more odor removal than a standard particle filter, which is exactly what a finished basement used for cooking, exercise, or entertaining needs.</p><p>The design also fits a finished room. A motion-activated touchscreen, compact footprint, and tabletop-doubling form factor mean the Blue Signature looks like a piece of furniture, not a piece of equipment tucked behind a shelf.</p><h3><strong>Pick #5: Blueair Blue Pure 511i Max, Best for Small Basements and Utility Rooms</strong></h3>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_aEef9V": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3_68529c5a-755a-4471-a968-9f2abd58d445.jpg",
+            "image_desktop": "shopify://shop_images/image3_68529c5a-755a-4471-a968-9f2abd58d445.jpg",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_Q8kwt7": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "135ch",
+            "richtext": "<p>Smaller utility basements, laundry nooks, and storage rooms under 250 sq ft do not need a large-room powerhouse. The<a href=\"https://www.blueair.com/products/blue-pure-511i-max\"> <span style=\"text-decoration:underline\">Blue Pure 511i Max</span></a> covers 237 sq ft in 12.5 minutes at a CADR of Pollen 174 cfm, Dust 159 cfm, Smoke 153 cfm. At just 4.2 lbs and only 19 dB on its lowest setting, the unit fits quietly in a corner without taking up floor space. Smart features include auto mode, a PM2.5 sensor, app control, and night mode.</p><h3><strong>What to Look for in a Basement Air Purifier</strong></h3><p><strong>HEPA filtration plus activated carbon.</strong> HEPA catches mold spores, dust, and fine particulates. Activated carbon handles VOCs, gases, and odors. A purifier with only one of the two will fall short in a basement environment where both particle and gas-phase pollution are present.</p><p><strong>CADR matched to the space.</strong> An undersized purifier running at full speed all day will never fully clean the air. Match the rated coverage area to the actual square footage, and aim for a unit that can cycle the full room in 12 to 15 minutes.</p><p><strong>A built-in air quality sensor.</strong> Basements fluctuate. A PM2.5 sensor that triggers automatic fan speed adjustment means the purifier responds to actual conditions, not just a manual setting. All of the<a href=\"https://www.blueair.com/collections/air-purifiers\"> <span style=\"text-decoration:underline\">Blueair purifiers</span></a> on this list include auto mode for exactly that reason.</p><p><strong>Continuous operation.</strong> Running the purifier on a consistent schedule rather than only when the basement is occupied keeps mold spores, dust, and VOCs from building up between visits.</p><p><strong>A note on humidity:</strong> An air purifier removes particles and odors but will not reduce moisture levels. For chronically damp basements, pairing a HEPA air purifier with a dedicated dehumidifier gives the best results. The EPA recommends keeping indoor humidity<a href=\"https://www.epa.gov/mold/brief-guide-mold-moisture-and-your-home\"> <span style=\"text-decoration:underline\">below 60%, ideally between 30% and 50%</span></a>, to prevent mold growth.</p><h3><strong>Quick Size Guide</strong></h3><p><strong>Basement Size</strong></p><p><strong>Recommended Pick</strong></p><p><strong>Under 250 sq ft</strong></p><p>Blue Pure 511i Max</p><p><strong>250 to 400 sq ft</strong></p><p>Blue Pure 311i Max</p><p><strong>400 to 475 sq ft</strong></p><p>Blue Pure 311i+ Max</p><p><strong>475 to 700 sq ft</strong></p><p>Blue Pure 211i Max</p><p><strong>Large finished space</strong></p><p>Blue Signature</p><p>The right<a href=\"https://www.blueair.com/blogs/news/air-purifiers-basement\"> <span style=\"text-decoration:underline\">air purifier for a basement</span></a> depends most on square footage and whether humidity or odors are the primary concern. Start with the size of the space, then factor in the extras. For help matching a unit to a specific room, the<a href=\"https://www.blueair.com/pages/guided-selling\"> <span style=\"text-decoration:underline\">Blueair guided selling tool</span></a> walks through the key questions in about a minute.</p><h3><strong>FAQs</strong></h3><h4><strong>Do air purifiers help with basement mold? </strong></h4><p>Air purifiers capture mold spores in the air but do not address the source of mold growth. Always fix moisture problems first, then use a HEPA air purifier to manage airborne spores.</p><h4><strong>What CADR do I need for a basement? </strong></h4><p>For a 500-600 sq ft finished basement, look for a CADR of at least 250-300 CFM to achieve 4-5 air changes per hour for effective air cleaning.</p><h4><strong>Can an air purifier remove musty basement smells? </strong></h4><p>A HEPA air purifier with an activated carbon filter layer can significantly reduce musty odors. Carbon filters absorb the VOCs and gases that create the smell.</p><h4><strong>Should I run my basement air purifier all the time? </strong></h4><p>Yes, running it continuously on auto mode gives the best results. Basements often have stagnant air, so consistent cycling is more effective than periodic use.</p><h4><strong>Is a dehumidifier or an air purifier better for a basement? </strong></h4><p>Use both if possible. A dehumidifier controls moisture to prevent mold growth. An air purifier captures airborne particles like mold spores, dust, and allergens already in the air.</p><h4><strong>What size air purifier do I need for a 1,000 sq ft basement? </strong></h4><p>For a 1,000 sq ft space, consider two air purifiers placed strategically, or one high-capacity unit. The Blueair Blue Pure 211i Max covers up to 635 sq ft at 4.8 ACH.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "text_QNqwkC",
+        "image_caption_aree8w",
+        "text_WKTiBR",
+        "image_caption_673m3j",
+        "text_wy4mdL",
+        "image_caption_dTfPej",
+        "text_jbBGbW",
+        "image_caption_FXXwrz",
+        "text_RTfjHc",
+        "image_caption_aEef9V",
+        "text_Q8kwt7"
+      ],
+      "settings": {}
+    },
+    "article_content_CXmqDG": {
+      "type": "article__content",
+      "blocks": {
+        "text_CrfwFz": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>h2 Pet allergies</p><p>p Do you have dog, cat or other pet allergies? Did you know that most pet allergies are not caused by pet hair, but by the dander your cat, dog, or other pet produces? Pet dander is made up of small flecks of skin shed by cats, dogs, rodents, birds and other animals with fur or feathers. Pet-related allergy triggers or allergens also come from proteins found in the pets’ saliva, urine, and feces. The obvious way to protect your indoor air quality is to not have a pet in your home, of course. But if going petless isn’t an option:</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets off furniture, especially upholstery. </li><li>Keep pets away from carpeted areas. </li><li>Vacuum carpets and furniture to reduce the amount of dander.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "product_desc_image_hapr9i": {
+          "type": "product_desc_image",
+          "settings": {
+            "margin_top_mobile": "mt-md",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xxxl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "title": "",
+            "title_style": "p1",
+            "product": "1342-master-product",
+            "btn_text": "Shop Now",
+            "btn_style": "btn"
+          }
+        },
+        "text_KU8fxJ": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-lg",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-xl",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<h2>h2 Dust Mites</h2><p>Dust mites, another cause of indoor allergies, are microscopic arthropods that feed primarily on flakes of human skin that are shed around the home. And dust mites are a year-round allergy trigger. They may be more common during the humid summer months, but they also get stirred up into the air when you start up your indoor heating in autumn. The best natural remedies center on preventing exposure to the critters, so to reduce dust mite allergy symptoms:</p><h3>H3 Do you have dog, cat or other pet allergies?</h3><ul><li>Before you turn the central heating on for the first time after summer, clean the air vents throughout the house. Allergens can get trapped in the vents and will fill the air as soon as you start the furnace.</li><li>Dust mites love bedrooms! Cover your mattress and pillows in dust-proof covers, and regularly wash all bedding in hot water.</li><li>Dust and vacuum your home regularly. Be sure to wear a filtering mask while cleaning.</li><li>Consider replacing wall-to-wall carpet with hardwood floors.</li></ul>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_caption_TFmW9X": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-lg",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "1096px",
+            "image": "shopify://shop_images/image3.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": "1342-master-product",
+            "product_image_override": "shopify://shop_images/689122003122_blueair_refurbished_pro_xl.jpg"
+          }
+        },
+        "image_caption_BeR79M": {
+          "type": "image_caption",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "image": "shopify://shop_images/image5.png",
+            "caption": "",
+            "caption_style": "p6",
+            "product": ""
+          }
+        },
+        "text_UAjDQH": {
+          "type": "text",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "richtext": "<p>Fortunately, air purifiers do help with allergies, so think about putting air purifiers in key areas of your house – especially your bedrooms. Many allergy sufferers experience attacks in the middle of the night, as the human respiratory system relaxes during sleep, so things you can handle during the day are more challenging at night. And if you keep an air purifier running in your bedroom 24 hours a day with the door closed, the bedroom will have the purest air in your house. This can help relieve allergy symptoms in the daytime too.</p><p>Blueair air purifiers meet U.S. and European HEPA standards for air purification. Our unique HEPASilent™ technology delivers especially high performance and efficiency by combining electrostatic and mechanical filtration technologies. This combination, pioneered by Blueair, delivers high Clean Air Delivery Rate (CADR) with whisper-silent operation and high energy efficiency. In fact, a Blueair air purifier works so quietly that you can not only sleep next to it, you might even have to check to make sure it is switched on. And on its lowest setting, a Blueair air purifier uses less electricity than a small lightbulb, while still achieving a 99.7% filtration efficiency of airborne particles down to 0.1 micron in size.</p><p>No other air purifier delivers such high performance on so many parameters, all at the same time.</p>",
+            "richtext_alignment": "text-left",
+            "richtext_style": "p2"
+          }
+        },
+        "image_text_review_YpRjtU": {
+          "type": "image_text_review",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "padding_top_mobile": "pt-0",
+            "padding_bottom_mobile": "pb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0",
+            "padding_top_desktop": "desktop:pt-0",
+            "padding_bottom_desktop": "desktop:pb-0",
+            "max_width_desktop": "80ch",
+            "color": "bg-gray-athans text-blue",
+            "section_title": "",
+            "section_title_style": "h4",
+            "title": "Dr. Priya Bansal, MD",
+            "title_style": "h4",
+            "richtext": "<p>Triple-board-certified allergy, asthma, and immunology specialist at the Asthma and Allergy Wellness Center.</p>",
+            "richtext_style": "p2",
+            "image_mobile": "shopify://shop_images/image-review.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_CrfwFz",
+        "product_desc_image_hapr9i",
+        "text_KU8fxJ",
+        "image_caption_TFmW9X",
+        "image_caption_BeR79M",
+        "text_UAjDQH",
+        "image_text_review_YpRjtU"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "section_accordion_DgQAah": {
+      "type": "section__accordion",
+      "blocks": {
+        "accordion_item_3tiyCM": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can you help me choose an air purifier? Which Blueair air purifier is best for me?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_kGr9zW": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the recommended maintenance for the air purifier & filters?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_EPwcHF": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "Can Blueair air purifiers reduce gas & VOC concentrations in a room?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        },
+        "accordion_item_6xyc9h": {
+          "type": "accordion-item",
+          "settings": {
+            "title": "What is the difference between Blueair purifiers? How can I compare the benefits of multiple purifiers?",
+            "title_style": "s1",
+            "richtext": "<p>Blueair offers a wide array of air Purifiers that can cater to many needs. When looking for a new purifier, it is important to know and understand what features you may need. We have a convenient quiz on our website that helps choose what purifier is best for you. You can take the quiz here https://www.blueair.com/us/guidedselling/</p><ul><li>Keep pets out of the bedroom of the allergy sufferer.</li><li>Keep pets out of the bedroom of the allergy sufferer.</li></ul>",
+            "richtext_style": "p2"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_3tiyCM",
+        "accordion_item_kGr9zW",
+        "accordion_item_EPwcHF",
+        "accordion_item_6xyc9h"
+      ],
+      "disabled": true,
+      "settings": {
+        "margin_top_mobile": "mt-xs",
+        "margin_bottom_mobile": "mb-0",
+        "padding_top_mobile": "pt-lg",
+        "padding_bottom_mobile": "pb-0",
+        "margin_top_desktop": "desktop:mt-sm",
+        "margin_bottom_desktop": "desktop:mb-0",
+        "padding_top_desktop": "desktop:pt-xxxl",
+        "padding_bottom_desktop": "desktop:pb-0",
+        "title": "H2 Allergen Frequently Asked Questions",
+        "title_style": "h2",
+        "max_width_desktop": "80ch",
+        "bg_color": "text-blue",
+        "cta_url": "",
+        "cta_text": "",
+        "cta_style": "btn"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "article_content_zMAJck",
+    "article_content_CXmqDG",
+    "section_accordion_DgQAah"
+  ]
+}
