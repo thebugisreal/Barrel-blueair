@@ -51,6 +51,7 @@
     "color": {{ color_title | json }},
     "colorTitle": {{ color_title | json }},
     "colorHex": "{{ color_hex }}",
+    "optionTag": "{{ product.metafields.seed.product_option_tag }}",
     "swatchImage": {{ swatch_image_url | json }},
     "available": {{ product.available | json }},
     "price": "{{ product.variants[0].compare_at_price }}|{{ product.variants[0].price }}",
