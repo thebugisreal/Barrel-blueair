@@ -359,5 +359,44 @@
         "label": "Turn on Purple Dot integration"
       }
     ]
+  },
+  {
+    "name": "User Authentication",
+    "settings": [
+      {
+        "type": "header",
+        "content": "User Auth settings"
+      },
+      {
+        "type": "text",
+        "id": "gigya_api_key",
+        "label": "Gigya API Key",
+        "info": "API key for Gigya authentication service"
+      },
+      {
+        "type": "text",
+        "id": "xecurify_id",
+        "label": "Gigya Signup Xecurify ID"
+      },
+      {
+        "type": "url",
+        "id": "mobile_drawer_login_link_url",
+        "label": "Mobile Drawer Login Link URL",
+        "info": "Default is the Shopify login page",
+        "default": "/account/login"
+      },
+      {
+        "type": "url",
+        "id": "account_logout_link_url",
+        "label": "Account Logout Link URL",
+        "info": "URL for the logout link in the account section"
+      },
+      {
+        "type": "url",
+        "id": "user_account_link_url",
+        "label": "User Account Icon Link URL",
+        "info": "URL for the account icon when user is not logged in"
+      }
+    ]
   }
 ]

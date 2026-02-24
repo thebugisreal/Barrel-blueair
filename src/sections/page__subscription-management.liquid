@@ -4,6 +4,10 @@
 {% assign customer_id = customer.id  %}
 {% assign timestamp = "now" | date: "%s" %}
 {% assign signature = customer_id | append: "|" | append: timestamp | hmac_sha256: secret_key %}
+{% assign filter_subscriptions_url = '/pages/subscription-management' %}
+
+{% comment %} Subscription management page always shows Filter Subscriptions {% endcomment %}
+{% assign active_tab = 'Filter Subscriptions' %}
 
 {% comment %} 
   Filter Subscriptions Content 
@@ -11,7 +15,7 @@
 {% capture filter_subscriptions %}
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Filter Subscriptions</h4>
+      <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Filter Subscriptions</h4>
       <a href="{{ settings.add_subscription_url }}" target="_blank" rel="noopener noreferrer" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
         Add a Subscription
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
@@ -27,24 +31,20 @@
 
 
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" 
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md font-gilroy" 
   data-customer-email="{{ customer.email }}" 
   data-customer-id="{{ customer.id }}"
   data-customer-signature="{{ signature }}"
   data-customer-timestamp="{{ timestamp }}">
   <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
-      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
-        <div class="bg-blue text-white text-center p-sm">
-          <p class="account__title s1">Hello {{customer.first_name}}</p>
-        </div>
-
-        <!-- Mobile Navigation -->
+    <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-0 desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
+      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full font-gilroy font-300 text-25">
+        <!-- Mobile Navigation (no Hello banner - matches account layout) -->
         <div class="flex justify-start relative h-[56px] desktop:hidden">
-          <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0" js-accordion>
+          <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0 z-[1]" js-accordion>
             <div class="accordion-item" js-accordion-item>
               <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header js-account-trigger-accoridon-header>
-                <span js-account-label>{{ sections[0] }}</span>
+                <span js-account-label>{{ active_tab }}</span>
                 <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
               </button>
               <div id="AccountSectionsAccordion" class="accordion-content bg-white shadow-md" role="tablist" aria-hidden="true" aria-orientation="horizontal" js-accordion-content js-tablist>
@@ -52,7 +52,7 @@
                   <button id="{{ section | handleize }}-tab" class="tab__trigger block w-full p2 px-xs pb-xs link text-left" 
                     role="tab" 
                     aria-controls="{{ section | handleize }}-content-panel" 
-                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
+                    aria-selected="{% if section == active_tab %}true{% else %}false{% endif %}" 
                     data-label="{{ section }}"
                     js-tab
                     js-account-tab
@@ -64,7 +64,7 @@
                   </button>
                 {% endfor %}
                 <!-- <a href="https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a> -->
-                <a href="https://www.blueair.com/account/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
+                <a href="{{ routes.account_logout_url }}" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
               </div>
             </div>
           </s-accordion>
@@ -81,21 +81,22 @@
                 id="{{ value_id }}"
                 class="account-section__input visually-hidden"
                 {% if section == 'Filter Subscriptions' %}
-                  checked
+                  {% comment %} Stay on page - we're on subscription-management {% endcomment %}
                 {% else %}
                   onclick="window.location='{{ routes.account_url }}?section={{ section | handleize }}'"
-                {% endif %}>
+                {% endif %}
+                {% if section == active_tab %}checked{% endif %}>
               <label 
                 for="{{ value_id }}" 
                 class="account-section__label flex justify-start items-center gap-xs p-sm"
                 role="tab" 
                 aria-controls="{{ section | handleize }}-content-panel" 
-                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
+                aria-selected="{% if section == active_tab %}true{% else %}false{% endif %}" 
                 data-label="{{ section }}"
                 js-tab
                 js-account-tab>
                 <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
-                <span class="account-section-label__text p1 leading-none">
+                <span class="account-section-label__text s4 text-25">
                   {{ section | escape }}
                 </span>
               </label>
@@ -105,16 +106,15 @@
             <input type="radio"
               name="AccountSections"
               id="AccountLogOut"
-              onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';"
+              {% comment %} Commented out due to issue with Miniorange/Gigya Logout functionality {% endcomment %}
+              {% comment %} onclick="window.location='https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout';" {% endcomment %}
+              onclick="window.location='{{ routes.account_logout_url }}';"
               class="account-section__input visually-hidden">
             <label 
               for="AccountLogOut" 
               class="account-section__label flex justify-start items-center gap-xs p-sm">
               <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
-              <!-- <span class="account-section-label__text p1 leading-none">
-                Sign Out
-              </span> -->
-              <a class="account-section-label__text p1 leading-none" href="https://www.blueair.com/account/logout">Sign Out</a>
+              <span class="account-section-label__text p1 text-16 font-400 leading-none desktop:text-18">Sign Out</span>
             </label>
           </li>
         </ul>
@@ -126,7 +126,7 @@
           <div id="{{ section | handleize }}-content-panel" class="tab__panel pt-md grid gap-y-md desktop:pt-0 desktop:gap-y-lg" 
             role="tabpanel" 
             aria-labelledby="{{ section | handleize }}-tab" 
-            aria-hidden="{% if section == 'Filter Subscriptions' %}false{% else %}true{% endif %}">
+            aria-hidden="{% if section == active_tab %}false{% else %}true{% endif %}">
             {% case section %}
             {% when 'Filter Subscriptions' %}
               {{ filter_subscriptions }}

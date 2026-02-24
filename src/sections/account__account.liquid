@@ -5,7 +5,17 @@
 {% assign timestamp = "now" | date: "%s" %}
 {% assign signature = customer_id | append: "|" | append: timestamp | hmac_sha256: secret_key %}
 {% assign filter_subscriptions_url = '/pages/subscription-management' %}
-{% assign active_tab = 'My Profile' %}
+
+{% comment %} Set active tab from URL for seamless load (no flash) {% endcomment %}
+{% if request.query_string contains 'section=filter-subscriptions' %}
+  {% assign active_tab = 'Filter Subscriptions' %}
+{% elsif request.query_string contains 'section=order-history' %}
+  {% assign active_tab = 'Order History' %}
+{% elsif request.query_string contains 'section=devices-warranty' %}
+  {% assign active_tab = 'Devices & Warranty' %}
+{% else %}
+  {% assign active_tab = 'My Profile' %}
+{% endif %}
 
 
 {% comment %} 
@@ -13,7 +23,7 @@
 {% endcomment %}
 {% capture my_profile_content %}
   <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">My Profile</h4>
+    <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">My Profile</h4>
     <div class="mt-md grid gap-md desktop:grid-cols-2">
       <div class="account-content bg-white min-h-[225px] flex flex-col">
         <div class="px-md py-sm flex justify-between items-center border-b border-[#F0F3F6]">
@@ -134,7 +144,7 @@
 {% capture filter_subscriptions %}
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Filter Subscriptions</h4>
+      <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Filter Subscriptions</h4>
       <a href="{{ settings.add_subscription_url }}" target="_blank" rel="noopener noreferrer" class="account-content__add account-conent--bordered !no-underline flex justify-center items-center gap-xxs whitespace-nowrap w-full p-md desktop:w-auto desktop:p-0 desktop:bg-none">
         Add a Subscription
         <span class="account-content__icon p-xxs w-[33px] leading-[0] rounded-full bg-blue text-white">{% render 'icon-plus' %}</span>
@@ -154,7 +164,7 @@
 {% capture order_history_content %}
   <div class="account__section">
     <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-      <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
+      <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
       <a href="{{ settings.start_return_url }}" target="_blank" rel="noopener noreferrer" class="btn btn--blue-rounded flex justify-center items-center gap-xxs whitespace-nowrap">
         Start a Return<span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
       </a>
@@ -260,35 +270,142 @@
   Device & Warranty Content
 {% endcomment %}
 {% capture devices_and_warranty %}
-  <div class="account__section">
-    <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
-    <div class="mt-md grid gap-md">
+  <warranty-devices class="account__section">
+    <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
+      <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Devices & Warranty</h4>
+      <button class="btn flex justify-center items-center w-full desktop:w-auto gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
+        <span class="btn__text">Register a new Device</span>
+      </button>
+    </div>
+
+    <div id="device-card-container" class="device-card-content grid p-sm desktop:p-md mt-md bg-white"></div>
+
+    <div class="w-full flex mt-md">
+      <button class="btn flex justify-center items-center w-full desktop:w-auto gap-2 p-xxs pl-sm pr-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative" js-toggle-warranty-form>
+        <span class="btn__text">Register a new Device</span>
+      </button>
+    </div>
+
+    <div class="mt-md grid gap-md hidden" js-device-warranty-wrapper>
       <div class="account-content">
-        <iframe class="iframe-container w-full h-[1020px] border-0" src="https://acct66616.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=2087&deploy=1&compid=ACCT66616&ns-at=AAEJ7tMQd5YN4YljuCQ07j1ZLwmp8-Wa5uPu4ol4DeKznw8De9w&uid={{ customer.metafields.blueair.gigya_uid }}&country={{ localization.country.iso_code }}&locale={{ localization.language.iso_code  }}_{{ localization.country.iso_code }}"></iframe>
-			</div>
+        <form id="warranty-device-form" class="warranty-registration-form p-md bg-white w-full max-w-full" js-device-warranty-form>
+          <!-- Device registration fields start -->
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Device Name</label>
+            <input type="text" name="name" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="e.g. Living Room" required>
+          </div>
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Serial number</label>
+            <input type="text" name="sn" id="serial-number" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="Serial number" required>
+            <p id="serial-number-error" class="text-[#AA4A44] text-sm hidden"></p>
+          </div>
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Unit family</label>
+            <input type="text" name="family" id="unit-family" class="w-full p-sm border border-[#D6E4F3] rounded bg-gray-100 text-[#002D72]" readonly required>
+          </div>
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Unit model</label>
+            <input type="text" name="series" id="unit-model" class="w-full p-sm border border-[#D6E4F3] rounded bg-gray-100 text-[#002D72]" readonly required>
+          </div>
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Date of purchase</label>
+            <div class="relative w-full">
+              <input type="text" name="dateOfPurchase" class="w-full p-sm border border-[#D6E4F3] rounded text-[#002D72]" placeholder="MM/DD/YYYY" required>
+              <button type="button" js-calendar-picker class="absolute right-sm top-1/2 -translate-y-1/2 text-[#002D72]">
+                {% render 'icon-calendar' %}
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group mb-md">
+            <label class="block mb-xs text-[#002D72]">Place of purchase</label>
+            <select class="w-full p-sm border border-[#D6E4F3] rounded appearance-none bg-white text-[#002D72]" name="wherePurchased" id="place-of-purchase" required>
+              <option value="" disabled selected>Select place of purchase</option>
+              <option value="Amazon">Amazon</option>
+              <option value="Blueair.com">Blueair.com</option>
+              <option value="Other Online Retailer">Other Online Retailer</option>
+              <option value="Costco">Costco</option>
+              <option value="Target">Target</option>
+              <option value="Best-Buy">Best Buy</option>
+            </select>
+          </div>
+
+          <div class="flex justify-between items-center gap-md">
+            <button disabled type="submit" id="warranty-save-btn" class="w-[174px] btn flex justify-center items-center gap-2 p-xxs pl-sm rounded-[30px] border border-blue text-white bg-blue warranty-btn-relative relative transition-all duration-200 opacity-50 cursor-not-allowed">
+              <span class="btn-text">Save</span>
+              <loading-spinner id="warranty-save-spinner" style="--color: #fff; --width: 16px; --height: 16px;"></loading-spinner>
+            </button>
+            <button type="button" class="btn text-[#002D72] hover:underline" js-cancel-warranty-form>
+              Cancel
+            </button>
+          </div>
+          <input type="hidden" name="country" value="US">
+          <input type="hidden" name="region" value="US">
+        </form>
       </div>
-    </div>            
-  </div>
+    </div>
+
+    <div class="newly-registered-devices hidden mt-md grid gap-md p-sm desktop:p-md bg-white" js-newly-registered-devices>
+      <div class="newly-registered-devices__cards grid gap-md w-full"></div>
+    </div>
+  </warranty-devices>
+
+  <script type="application/json" id="warranty-unit-families">
+    [
+      {% for family in shop.metaobjects.unit_family.values %}
+        {
+          "id": {{ forloop.index0 }},
+          "name": "{{ family.name }}",
+          "collection": "{{ family.collection }}",
+          "products": [
+            {% for product in family.collection.value.products %}
+              { "id": "{{ product.id }}", "featuredImage": "{{ product.featured_image | image_url: width: 265 }}", "handle": "{{ product.handle }}", "title": "{{ product.title | escape }}" }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  </script>
+
 {% endcapture %}
 
-<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md" 
+<script>
+  window.collectionGidToHandle = {
+    {% for collection in collections %}
+      "gid://shopify/Collection/{{ collection.id }}": "{{ collection.handle }}",
+    {% endfor %}
+  };
+  window.collectionProducts = {
+    {% for collection in collections %}
+      "{{ collection.handle }}": [
+        {% for product in collection.products %}
+          { id: "{{ product.id }}", title: "{{ product.title | escape }}" }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>
+
+<s-account class="account block w-full min-h-[90vh] bg-gray-athans pb-md font-gilroy" 
   data-customer-email="{{ customer.email }}" 
   data-customer-id="{{ customer.id }}"
   data-customer-signature="{{ signature }}"
   data-customer-timestamp="{{ timestamp }}">
   <div class="tabletl:max-w-[var(--max-width-desktop)] tabletl:mx-auto" style="--max-width-desktop: {{ section.settings.max_width_desktop }};">
-    <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-xxl desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
-      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full">
-        <div class="bg-blue text-white text-center p-sm">
-          <p class="account__title s1">Hello {{customer.first_name}}</p>
-        </div>
+    <s-tabs class="account__container block w-full min-h-[90vh] p-md pb-0 desktop:grid desktop:grid-cols-12 desktop:gap-x-md desktop:px-xl desktop:py-xxl" js-account-tabs-container>
+      <div class="account__header flex flex-col desktop:col-span-3 desktop:bg-white desktop:h-full font-gilroy font-300 text-25">
 
         <!-- Mobile Navigation -->
         <div class="flex justify-start relative h-[56px] desktop:hidden">
-          <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0" js-accordion>
+          <s-accordion data-manual-collapse="false" class="w-full block absolute left-0 top-0 z-[1]" js-accordion>
             <div class="accordion-item" js-accordion-item>
               <button class="accordion-header p1 p-xs flex items-center justify-between gap-xs w-full bg-white h-[56px]" aria-expanded="false" aria-controls="AccountSectionsAccordion" js-accordion-header js-account-trigger-accoridon-header>
-                <span js-account-label>{{ sections[0] }}</span>
+                <span js-account-label>{{ active_tab }}</span>
                 <span class="accordion-icon--caret-down w-[24px] leading-[0px]">{% render 'icon-active-down' %}</span>
               </button>
               <div id="AccountSectionsAccordion" class="accordion-content bg-white shadow-md" role="tablist" aria-hidden="true" aria-orientation="horizontal" js-accordion-content js-tablist>
@@ -296,7 +413,7 @@
                   <button id="{{ section | handleize }}-tab" class="tab__trigger block w-full p2 px-xs pb-xs link text-left" 
                     role="tab" 
                     aria-controls="{{ section | handleize }}-content-panel" 
-                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
+                    aria-selected="{% if section == active_tab %}true{% else %}false{% endif %}" 
                     data-label="{{ section }}"
                     js-tab
                     js-account-tab>
@@ -304,7 +421,7 @@
                   </button>
                 {% endfor %}
                 <!-- <a href="https://5ef43d-4a.myshopify.com/apps/sso/moas/broker/login/shopify/slo/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a> -->
-                <a href="https://www.blueair.com/account/logout" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
+                <a href="{{ routes.account_logout_url }}" class="block w-full p2 px-xs pb-xs link text-left">Sign Out</a>
               </div>
             </div>
           </s-accordion>
@@ -323,18 +440,18 @@
                 {% if section == 'Filter Subscriptions' %}
                   onclick="window.location='{{ filter_subscriptions_url }}'"
                 {% endif %}
-                {% if forloop.first %}checked{% endif %}>
+                {% if section == active_tab %}checked{% endif %}>
               <label 
                 for="{{ value_id }}" 
                 class="account-section__label flex justify-start items-center gap-xs p-sm"
                 role="tab" 
                 aria-controls="{{ section | handleize }}-content-panel" 
-                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" 
+                aria-selected="{% if section == active_tab %}true{% else %}false{% endif %}" 
                 data-label="{{ section }}"
                 js-tab
                 js-account-tab>
                 <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
-                <span class="account-section-label__text p1 leading-none">
+                <span class="account-section-label__text s4 text-25">
                   {{ section | escape }}
                 </span>
               </label>
@@ -352,10 +469,7 @@
               for="AccountLogOut" 
               class="account-section__label flex justify-start items-center gap-xs p-sm">
               <span class="account-section-label__checkbox w-[24px] min-w-[24px] h-[24px] border border-gray rounded-full relative"></span>
-              <!-- <span class="account-section-label__text p1 leading-none">
-                Sign Out
-              </span> -->
-              <a class="account-section-label__text p1 leading-none" href="{{ routes.account_logout_url }}">Sign Out</a>
+              <span class="account-section-label__text p1 text-16 font-400 leading-none desktop:text-18">Sign Out</span>
             </label>
           </li>
         </ul>
@@ -367,7 +481,7 @@
           <div id="{{ section | handleize }}-content-panel" class="tab__panel pt-md grid gap-y-md desktop:pt-0 desktop:gap-y-lg" 
             role="tabpanel" 
             aria-labelledby="{{ section | handleize }}-tab" 
-            aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+            aria-hidden="{% if section == active_tab %}false{% else %}true{% endif %}">
             {% case section %}
             {% when 'My Profile' %}
               {{ my_profile_content }}
@@ -390,7 +504,7 @@
                 aria-labelledby="{{ order.id }}-tab" 
                 aria-hidden="true">
                 <div class="flex flex-col gap-md pb-xs justify-between items-center desktop:flex-row desktop:pb-0">
-                  <h4 class="mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
+                  <h4 class="text-26 font-400 leading-[32px] mt-md text-center min-h-[50px] flex justify-center items-center desktop:mt-0 desktop:text-left desktop:justify-start">Order History</h4>
                   <div class="flex flex-col-reverse gap-md items-center desktop:flex-row">
                     <button class="btn flex justify-center items-center gap-xxs" js-return-button>
                       <span class="btn__arrow">{% render 'icon-arrow-left' %}</span>Go Back
@@ -755,3 +869,4 @@
   ]
 }
 {% endschema %}
+

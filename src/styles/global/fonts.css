@@ -82,9 +82,9 @@
 
   h4,
   .h4{
-    @apply font-roboto
-    font-700
-    text-28
+    @apply font-gilroy
+    font-300
+    text-40
     leading-[40px]
   }
 

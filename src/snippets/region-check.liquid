@@ -4,8 +4,9 @@
   Usage: {% include 'region-check' %}
 {% endcomment %}
 
+
 {% liquid
-if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+if shop.permanent_domain == '5ef43d-4a.myshopify.com'
     assign transactional_countries = 'US,CA' | split: ',' 
     assign is_transactional = false 
     assign current_country = localization.country.iso_code | upcase 
@@ -15,7 +16,7 @@ if shop.permanent_domain == '5ef43d-4a.myshopify.com'
           break 
         endif 
       endfor 
-elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+elsif shop.permanent_domain == 'blueeudev.myshopify.com'
     assign transactional_countries = 'DE' | split: ',' 
     assign is_transactional = false 
     assign current_country = localization.country.iso_code | upcase 
@@ -25,7 +26,7 @@ elsif shop.permanent_domain == 'blueeudev.myshopify.com'
           break 
         endif 
       endfor 
-elsif shop.permanent_domain == 'uk-blueair.myshopify.com' 
+elsif shop.permanent_domain == 'uk-blueair.myshopify.com'
     assign transactional_countries = 'GB' | split: ',' 
     assign is_transactional = false 
     assign current_country = localization.country.iso_code | upcase 
@@ -35,5 +36,7 @@ elsif shop.permanent_domain == 'uk-blueair.myshopify.com'
           break 
         endif 
       endfor 
+elsif shop.permanent_domain == 'blueair-staging.myshopify.com'
+  assign is_transactional = true 
 endif  
 %}
