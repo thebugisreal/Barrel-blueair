@@ -1635,19 +1635,67 @@ class ProductMain extends HTMLElement {
         }
       }
   
+      const isUpsellContext = option.closest('product-upsell') !== null;
+
       let html = '';
-      products.forEach((p) => {
-        const label = p.colorTitle || p.color || p.title; // you have "colorTitle" in the JSON
+      products.forEach((p, index) => {
+        const label = p.colorTitle || p.color || p.title;
         const swatchStyle = (p.swatchImage && p.swatchImage !== '')
           ? `background-image:url('${p.swatchImage}');background-size:cover;background-position:center;`
           : (p.colorHex ? `background-color:${p.colorHex};` : '');
-
         const isCurrent = p.handle === currentProductHandle;
-
         const href = !window.location.pathname.includes('/en-us/')
           ? (window.location.pathname.split('/products/')[0] + p.url)
           : p.url;
 
+        if (isUpsellContext && p.variantId) {
+          const variantPrice = p.variantPrice || (p.price ? p.price.split('|')[1] : '') || '';
+          const variantImage = p.variantImage || p.swatchProductImage || '';
+          const productUrl = (p.url && !p.url.startsWith('http')) ? (window.location.origin + p.url) : (p.url || '');
+          const available = (p.variantAvailable !== undefined ? p.variantAvailable : p.available) !== false;
+          const selected = index === 0 ? 'true' : 'false';
+
+          if (optionKind === 'size') {
+            const sizeLabel = p.size || label;
+            html += `
+              <div>
+                <button type="button" 
+                  class="product-upsell__variant product-upsell__variant--filter-type product-related-size px-xs py-xxs rounded border border-gray text-12"
+                  data-variant-id="${p.variantId}"
+                  data-available="${available}"
+                  data-price="${variantPrice}"
+                  data-selected="${selected}"
+                  title="${sizeLabel}"
+                  data-variant-image="${variantImage}"
+                  data-product-url="${productUrl}"
+                  js-product-upsell-variant>
+                  ${sizeLabel}
+                </button>
+              </div>`;
+          } else {
+            const baseClasses = optionKind === 'material' 
+              ? 'w-40 h-40 rounded-full flex relative'
+              : 'w-[22px] h-[22px] rounded-full flex relative';
+            html += `
+              <div>
+                <button type="button" 
+                  class="product-upsell__variant product-upsell__variant--filter-type product-related-color ${baseClasses}"
+                  data-variant-id="${p.variantId}"
+                  data-available="${available}"
+                  data-price="${variantPrice}"
+                  data-selected="${selected}"
+                  title="${label}"
+                  data-variant-image="${variantImage}"
+                  data-product-url="${productUrl}"
+                  js-product-upsell-variant>
+                  <span class="product__related-color w-full h-full flex relative rounded-full" style="${swatchStyle}"></span>
+                </button>
+              </div>`;
+          }
+          return;
+        }
+
+        // Main product: original link/redirect behavior
         // Handle size options differently from color/material options
         if (optionKind === 'size') {
           const aria = `${p.title} – Size ${p.size || label}`;
@@ -1693,8 +1741,15 @@ class ProductMain extends HTMLElement {
       option.insertAdjacentHTML('beforeend', html);
       const swatches = option.querySelectorAll('[js-related-option-swatch]');
       Array.from(swatches)
-        .sort((a, b) => a.dataset.swatch.toLowerCase().localeCompare(b.dataset.swatch.toLowerCase()))
+        .sort((a, b) => a.dataset.swatch?.toLowerCase().localeCompare(b.dataset.swatch?.toLowerCase() || '') || 0)
         .forEach(el => el.parentNode.appendChild(el));
+
+      if (isUpsellContext) {
+        const upsell = option.closest('product-upsell');
+        if (upsell?.querySelectorAll('[js-product-upsell-variant]').length > 0) {
+          upsell.dispatchEvent(new CustomEvent('upsell-swatches-loaded'));
+        }
+      }
   
       this._optionSwatchLinksOnClick();
     } catch (err) {

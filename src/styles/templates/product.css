@@ -423,6 +423,19 @@ s-carousel.pointer-event {
   }
 }
 
+.product-upsell__variant--filter-type.product-related-color[data-selected="true"]::after {
+  content: '';
+  @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[31px] h-[31px] rounded-full border border-blue;
+}
+
+.product-upsell__variant--filter-type.product-related-color.w-40[data-selected="true"]::after {
+  @apply w-[50px] h-[50px];
+}
+
+.product-upsell__variant--filter-type.product-related-size[data-selected="true"] {
+  @apply bg-blue text-white border-blue;
+}
+
 .product__image-text .metafield-rich_text_field p {
   @apply text-18;
 }
