@@ -349,17 +349,18 @@
         "default": true
       }
     ]
-<<<<<<< HEAD
   },
   {
-<<<<<<< HEAD
     "name": "Purple Dot",
     "settings": [
       {
         "type": "checkbox",
         "id": "use_purpledot",
         "label": "Turn on Purple Dot integration"
-=======
+      }
+    ]
+  },
+  {
     "name": "User Authentication",
     "settings": [
       {
@@ -380,12 +381,9 @@
       {
         "type": "url",
         "id": "mobile_drawer_login_link_url",
-<<<<<<< HEAD
         "label": "Mobile Drawer Login Link URL",
         "info": "Default is the Shopify login page",
-        "default": "/account/login"
->>>>>>> d8ff8d6 (User auth section)
-=======
+        "default": "/account/login",
         "label": "Mobile Drawer Login Link URL"
       },
       {
@@ -399,10 +397,7 @@
         "id": "user_account_link_url",
         "label": "User Account Icon Link URL",
         "info": "URL for the account icon when user is not logged in"
->>>>>>> 5c2e23e (github code review points addressed:)
       }
     ]
-=======
->>>>>>> f46a1fe (cleaned up warranty implementation)
   }
 ]
