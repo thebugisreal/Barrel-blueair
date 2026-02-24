@@ -382,8 +382,7 @@
         "type": "url",
         "id": "mobile_drawer_login_link_url",
         "label": "Mobile Drawer Login Link URL",
-        "info": "Default is the Shopify login page",
-        "default": "/account/login"
+        "info": "Leave blank to use the Shopify login page"
       },
       {
         "type": "url",
