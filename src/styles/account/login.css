@@ -23,11 +23,11 @@
   @apply mt-xxs;
 }
 
-.template-login .gigya-screen .gigya-terms-error, 
-.template-login .gigya-screen input.gigya-error, 
-.template-login .gigya-screen input[type="text"].gigya-error, 
-.template-login .gigya-screen input[type="password"].gigya-error, 
-.template-login .gigya-screen input[type="email"].gigya-error, 
+.template-login .gigya-screen .gigya-terms-error,
+.template-login .gigya-screen input.gigya-error,
+.template-login .gigya-screen input[type="text"].gigya-error,
+.template-login .gigya-screen input[type="password"].gigya-error,
+.template-login .gigya-screen input[type="email"].gigya-error,
 .template-login .gigya-screen select.gigya-error {
   @apply rounded-none
   px-xs
@@ -42,13 +42,13 @@
   @apply hidden;
 }
 
-.template-login .gigya-input-checkbox, 
+.template-login .gigya-input-checkbox,
 .template-login .gigya-input-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+  print-color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
   background-origin: border-box;
@@ -69,7 +69,7 @@
   margin-top: 2px;
 }
 
-.template-login .gigya-input-checkbox:checked, 
+.template-login .gigya-input-checkbox:checked,
 .template-login .gigya-input-checkbox:checked {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 22 22'%3e%3cpath fill='none' stroke='white' d='M5 12l4.2 3.5 7.1-9'/%3e%3c/svg%3e");
   border-color: transparent;

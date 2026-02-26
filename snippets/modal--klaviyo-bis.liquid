@@ -1,0 +1,38 @@
+<s-modal
+  id="KlaviyoBisModal"
+  class="klaviyo-bis__modal w-full max-w-[520px] p-md bg-transparent"
+  close="[js-close-klaviyo-bis-modal]"
+  open="[js-open-klaviyo-bis-modal]"
+  aria-label="Klaviyo Back In Stock modal"
+  js-klaviyo-bis-modal
+>
+  <div class="modal__container relative flex flex-col gap-sm w-full h-full pt-12 px-sm pb-[40px] rounded bg-white tabletl:py-lg tabletl:px-[40px]">
+    <button class="modal__close absolute top-sm right-sm flex items-center justify-center w-[18px] h-[18px] ml-auto" js-close-klaviyo-bis-modal>{{ 'icon-close.svg' | inline_asset_content }}</button>
+    <div class="modal__header flex flex-col gap-xxs">
+      <h3 class="bis__title text-[24px]" js-bis-product-title>{{ product.title }}</h3>
+      <p class="bis__description">
+        Register to receive a notification when this item comes back in stock.
+      </p>
+    </div>
+    <form class="bis__form flex flex-col gap-md" js-bis-form>
+      <div class="form__field" js-bis-email-field>
+        <label for="bis-email" class="form__label sr-only">Email address</label>
+        <input
+          type="email"
+          id="bis-email"
+          name="email"
+          class="form__element px-sm py-xs border border-gray"
+          placeholder="Email"
+          required
+        >
+      </div>
+      <div class="bis__submit-container flex flex-col gap-sm">
+        <button type="submit" class="bis__submit btn btn--blue-rounded justify-center w-full p-xs" js-bis-submit>Notify Me When Available</button>
+        <p class="bis__error text-center text-pink-fuschia hidden" js-bis-error>There was an error submitting your request. Please try again.</p>
+      </div>
+    </form>
+    <div class="bis__success py-xxxs px-xs text-[#1B9500] bg-[#d3efcd] hidden" js-bis-success>
+      <p class="text-small">You're in! We'll let you know when it's back.</p>
+    </div>
+  </div>
+</s-modal>

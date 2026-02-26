@@ -1,0 +1,55 @@
+{% liquid
+    case collection_tout.color_set
+      when 'None'
+        assign color_set = 'bg-white text-blue'
+      when 'Blue'
+        assign color_set = 'bg-blue-sky text-blue'
+      when 'Green'
+        assign color_set = 'bg-green-light text-green-dark'
+      when 'Pink'
+        assign color_set = 'bg-pink-light text-pink-dark'
+      when 'Yellow'
+        assign color_set = 'bg-yellow-light text-yellow-dark'
+      when 'Brown'
+        assign color_set = 'bg-brown-light text-brown-dark'
+      when 'Gray'
+        assign color_set = 'bg-blue-light text-blue'
+      else
+        assign color_set = 'bg-white text-blue'
+    endcase
+    case collection_tout.cta_style
+      when 'Default'
+        assign cta_style = 'btn'
+      when 'Blue Rounded'
+        assign cta_style = 'btn btn--blue-rounded'
+      when 'White Rounded'
+        assign cta_style = 'btn btn--white-rounded'
+      when 'Transparent Rounded'
+        assign cta_style = 'btn btn--transparent-rounded'
+      else 
+        assign cta_style = 'btn'
+    endcase
+  %}
+<div class="collection-tout h-full flex flex-col {{ color_set }}">
+  {% if collection_tout.image_mobile != blank %}
+    <div class="collection-tout__image">
+      {% render 'lazy-image' image: collection_tout.image_mobile image_desktop: collection_tout.image_desktop %}
+    </div>
+  {% endif %}
+  <div class="collection-tout__content-wrapper flex-1 p-md flex items-center">
+    <div class="collection-tout__content">
+      {% if collection_tout.pre_title != blank %}
+        <div class="collection-tout__pre-title p3 mb-xxxs">{{ collection_tout.pre_title }}</div>
+      {% endif %}
+      {% if collection_tout.title != blank %}
+        <div class="collection-tout__title h4">{{ collection_tout.title }}</div>
+      {% endif %}
+      {% if collection_tout.cta_url != blank and collection_tout.cta_text != blank %}
+        <a href="{{ collection_tout.cta_url }}" class="collection-tout__cta {{ cta_style }} mt-sm">
+          <span class="btn__text">{{ collection_tout.cta_text }}</span>
+          <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

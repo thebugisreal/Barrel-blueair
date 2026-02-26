@@ -1,0 +1,55 @@
+{% liquid
+    if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+        assign transactional_countries = 'US,CA' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+        assign transactional_countries = 'DE' | split: ',' 
+        assign is_transactional = false 
+        assign current_country = localization.country.iso_code | upcase 
+        for country in transactional_countries 
+            if country == current_country 
+              assign is_transactional = true 
+              break 
+            endif 
+          endfor 
+    endif  
+%}
+<div class="product-card__carousel h-full text-center bg-gray-athans px-md pt-md tabletl:pt-[50px]">
+    {% if product.metafields.seed.product_tags != blank %}
+    <ul class="product-card__carousel-tags mb-[22px] flex justify-center">
+        {% if is_transactional %}
+            {% if localization.country.iso_code == 'CA' %}
+                {% for tag in product.metafields.seed.product_tags_canada.value %}
+                    <li class="product-card__tag {% if product.metafields.seed.product_card_tag_style_canada == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</li>
+                {% endfor %}
+            {% else %}
+                {% for tag in product.metafields.seed.product_tags.value %}
+                    <li class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </ul>
+    {% endif %}
+    <h4>
+      {% render 'product-title-intl', product: product %}
+    </h4>
+    <p class="s3 mb-24">{{ product.price |  money }}</p>
+    <a href="{{ product.url }}" class="flex btn btn--transparent-rounded mx-auto tabletl:mb-48"> 
+        <p class="p2 btn__text"> Shop Now</p>
+        <div class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</div>
+    </a>
+    <div class="product-card__carousel-image">
+        {% if product.metafields.seed.product_card_image != blank %}
+            {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+          {% else %}
+            {% render 'lazy-image' image: product.featured_image %}
+          {% endif %}
+    </div>
+</div>

@@ -63,3 +63,8 @@ secrets.json
 .jekyll-metadata
 .ruby-version
 .shopify
+# Lock files #
+######################
+pnpm-lock.yaml
+yarn.lock
+package-lock.json

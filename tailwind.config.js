@@ -1,18 +1,17 @@
 module.exports = {
   mode: "jit",
-  purge: {
-    content: [
-      './src/**/*.html',
-      './src/**/*.json',
-      './src/**/*.svg',
-      './src/**/*.liquid',
-      './src/**/*.js',
-      './src/**/*.svg',
-    ],
-    safelist: [
-    ]
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './assets/*.{html,liquid}',
+    './config/*.json',
+    './layout/*.liquid',
+    './sections/*.liquid',
+    './snippets/*.liquid',
+    './templates/*.liquid',
+    './src/entrypoints/*.{js,css}',
+    './src/scripts/**/*.js',
+    './src/styles/**/*.css'
+  ],
+  darkMode: 'media', // or 'class'
   theme: {
     screens: {
       landscape: { raw: "(orientation: landscape), (min-width: 768px)" },

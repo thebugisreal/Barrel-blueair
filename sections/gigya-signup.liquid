@@ -1,0 +1,87 @@
+<script type="text/javascript" lang="javascript" src="https://cdns.gigya.com/js/gigya.js?apikey={{ settings.gigya_api_key }}"></script>
+
+<script>
+  window.SHOPIFY_SETTINGS = {
+    xecurify_id: {{ settings.xecurify_id | json }},
+    gigya_api_key: {{ settings.gigya_api_key | json }}
+  };
+</script>
+
+<gigya-signup class="min-h-screen flex items-center justify-center bg-gray-light py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full">
+    <h1 class="h3 text-center mb-md">Gigya Registration Form</h1>
+
+    <div id="formErrors" class="mb-4 text-red text-14" js-signup-errors></div>
+
+    <form id="registrationForm" class="mt-8" js-signup-submit>
+      <div>
+        <div class="mb-4">
+          <label for="email" class="sr-only">Email</label>
+          <input type="email" id="email" name="email" required placeholder="Email" 
+            class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue" js-signup-email>
+        </div>
+        <div class="mb-4">
+          <label for="firstName" class="sr-only">First Name</label>
+          <input type="text" id="firstName" name="firstName" required placeholder="First Name"
+            class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue" js-signup-firstname>
+        </div>
+        <div class="mb-4">
+          <label for="lastName" class="sr-only">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required placeholder="Last Name"
+            class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue" js-signup-lastname>
+        </div>
+        <div class="mb-4">
+          <label for="reg_password" class="sr-only">Password</label>
+          <input type="password" id="reg_password" name="password" required placeholder="Password" 
+            class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue" js-signup-password>
+        </div>
+        <div class="mb-4">
+          <label for="reg_confirm_password" class="sr-only">Confirm Password</label>
+          <input type="password" id="reg_confirm_password" name="confirm_password" required placeholder="Confirm Password" 
+            class="w-full mb-md border-b px-sm py-xxxs text-16 text-blue bg-transparent placeholder:text-blue" js-signup-confirm-password>
+        </div>
+        <!-- Consent checkboxes start -->
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" id="over16" name="over16" required class="mr-xs w-6 h-6" js-signup-age-consent>
+          <label for="over16" class="text-14">I confirm that I am over 16 years old <span class="text-red">*</span></label>
+        </div>
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" id="blueairUpdates" name="blueairUpdates" class="mr-xs w-6 h-6" js-signup-blueair-updates>
+          <label for="blueairUpdates" class="text-14 ml-2">Sign up for updates on Blueair's newest products, services & exclusive offers</label>
+        </div>
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" id="unileverConsent" name="unileverConsent" class="mr-xs w-6 h-6" js-signup-unilever-consent>
+          <label for="unileverConsent" class="text-14 ml-2">I consent to my data being shared with other Unilever brands to receive the latest news on other Unilever products & services</label>
+        </div>
+        <div class="my-xs">
+          <p class="text-14">Please read our <a href="{{ section.settings.notices_url }}" class="underline">notices</a> to understand how we use your personal data. By clicking the button below, you agree to our</p>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn--blue-rounded mb-lg mx-auto">
+          <span class="btn__text">Register</span>
+          <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</gigya-signup>
+
+{% schema %}
+{
+  "name": "Gigya Signup",
+  "settings": [
+    {
+      "type": "url",
+      "id": "notices_url",
+      "label": "Notices Link URL",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gigya Signup",
+      "category": "Authentication"
+    }
+  ]
+}
+{% endschema %}

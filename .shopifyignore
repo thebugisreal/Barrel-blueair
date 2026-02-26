@@ -1,16 +1,13 @@
-# Ignore all context files in templates
-templates/*context*
-templates/**/*context*
+# Root files to ignore
+vite.config.js
+README.md
+package.json
+postcss.config.cjs
+tailwind.config.js
+pnpm-lock.yaml
+pnpm-workspace.yaml
+yarn.lock
+package-lock.json
 
-# Ignore specific context file patterns
-templates/product.context.*.json
-templates/page.*.context.*.json
-templates/index.context.*.json
-
-# Ignore context files in sections folder
-sections/*context*
-sections/**/*context*
-
-# Ignore specific header/footer group context files
-sections/header-group.context.*.json
-sections/footer-group.context.*.json 
+# Ignore source directory
+src/*

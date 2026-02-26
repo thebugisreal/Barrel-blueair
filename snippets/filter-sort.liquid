@@ -1,0 +1,138 @@
+{%- comment -%}
+ * snippet: filter-sort.liquid 
+ * ---------------------------
+ * Collection filter and sort
+ *
+ * @param {Object} results: Collection of Search object
+ * @param {Boolean} enable_filtering
+ * @param {Boolean} enable_sorting
+ * @param {String} scope - descriptive string to scope different filter-sort instances
+ * @usage 
+    {% render 'facets', 
+      results: collection, 
+      enable_filtering: true, 
+      enable_sorting: true 
+      scope: "mobile" 
+    %}
+{%- endcomment -%}
+
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign total_active_values = 0
+-%}
+
+<filter-sort class="filter-sort" data-scope="{{ scope }}">
+  <form class="filter-sort__form" js-filter-form>
+    <div class="filter-sort__filters-container">
+      {%- unless results.filters == empty -%}
+        <div class="filter-sort__results-count-container py-md flex justify-between items-center">
+          <span class="p2" js-results-count>{% if template.name == 'collection' %}{{ results.products_count }}{% elsif template.name == 'search' %}{{ results.results_count }}{% endif %} Results</span>
+          <button class="active-filters__remove p1 link" js-clear-all>Clear Filters</button>
+        </div>
+      {%- endunless -%}
+
+      <s-accordion data-manual-collapse="true" js-accordion>
+        {%- for filter in results.filters -%}
+          {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+          <div class="filter-sort accordion-item border-t border-gray" data-index="{{ forloop.index }}" js-accordion-item js-filter>
+            <button type="button" class="filter-sort__label accordion-header w-full flex justify-between items-center py-sm" aria-expanded="true" aria-controls="{{ filter.label | handle }}-master-filter" js-accordion-header>
+              <span class="s2">{{ filter.label | escape }}</span>
+              <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
+              <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+            </button>
+            <div id="{{ filter.label | handle }}-master-filter" class="filter-sort__values-container accordion-content" aria-hidden="false" js-accordion-content>
+              {% case filter.type %}
+                {% when 'list' %}
+                  <ul class="filter-sort__values pb-xxs" role="list">
+                    {%- for value in filter.values -%}
+                      {% capture value_id %}FilterSort-{{ filter.label | escape }}-{{ forloop.index }}-{{ scope }}{% endcapture %}
+                      <li class="filter-sort__value mb-sm">
+                        <div class="filter-value">
+                          <input type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            id="{{ value_id }}"
+                            class="filter-value__input visually-hidden"
+                            {% if value.active %}checked{% endif %}
+                            {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          >
+                          <label for="{{ value_id }}" 
+                            class="filter-value__label flex justify-start items-center gap-xs {% if value.count == 0 and value.active == false %} disabled opacity-30 {% endif %}"
+                          >
+                            <span class="filter-value-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
+                            <span class="filter-value-label__text p2 flex-1">
+                              {%  assign final_label = ''%}
+                              {% assign value_label_temp = value.label |  replace: '_',' ' | replace: '-', ' ' %}
+                              {% assign value_label = value_label_temp |  escape |  split: ' ' %}
+                              {% for word in value_label %}
+                                {% assign word_capitalize = word |  capitalize %}
+                                {% assign final_label = final_label |  append: word_capitalize |  append: ' ' %}
+                              {% endfor %}
+                                {{ final_label }}
+                            </span>
+                          </label>
+                        </div>
+                      </li> 
+                    {%- endfor -%}
+                  </ul>   
+                {% when 'price_range' %}
+                  {% render 'filter--range' filter: filter, value: value, scope: scope %}
+                {% when 'boolean' %}
+                  <ul class="filter-sort__values pb-xxs" role="list">
+                    {%- for value in filter.values -%}
+                      {% capture value_id %}FilterSort-{{ filter.label | escape }}-{{ forloop.index }}-{{ scope }}{% endcapture %}
+                      <li class="filter-sort__value mb-sm">
+                        <div class="filter-value">
+                          <input type="checkbox"
+                            name="{{ value.param_name }}"
+                            value="{{ value.value }}"
+                            id="{{ value_id }}"
+                            class="filter-value__input visually-hidden"
+                            {% if value.active %}checked{% endif %}
+                            {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                          >
+                          <label for="{{ value_id }}" 
+                            class="filter-value__label flex justify-start items-center gap-xs {% if value.count == 0 and value.active == false %} disabled opacity-30 {% endif %}"
+                          >
+                            <span class="filter-value-label__checkbox w-[22px] min-w-[22px] h-[22px] rounded[2px] border border-[#121A2230] relative"></span>
+                            <span class="filter-value-label__text p2 flex-1">
+                              {%  assign final_label = ''%}
+                              {% assign value_label = value.label |  escape |  split: '-' %}
+                              {% for word in value_label %}
+                                {% assign word_capitalize = word |  capitalize %}
+                                {% assign final_label = final_label |  append: word_capitalize |  append: ' ' %}
+                              {% endfor %}
+                                {{ final_label }}
+                            </span>
+                          </label>
+                        </div>
+                      </li>                          
+                    {%- endfor -%}
+                  </ul>   
+              {% endcase %}
+            </div><!-- .filter-sort__values-container -->
+          </div>
+        {%- endfor -%}
+      </s-accordion>
+    </div><!-- .filter-sort__filters-container -->
+
+    <div class="filter-sort__container hidden">
+      <label for="SortBy" class="filter-sort__label">Sort By:</label>
+      {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+      <select name="sort_by" class="filter-sort__select" id="SortBy" aria-describedby="a11y-refresh-page-message" js-sort>
+        {%- for option in results.sort_options -%}
+          <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+        {%- endfor -%}
+      </select>
+    </div>
+
+    {% if results.current_vendor or results.current_type %}
+      <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+    {% endif %}
+
+    {%- if results.terms -%}
+      <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      <input name="options[prefix]" type="hidden" value="last">
+    {%- endif -%}     
+  </form>
+</filter-sort>

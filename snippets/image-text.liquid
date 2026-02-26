@@ -1,0 +1,26 @@
+{% capture margins_paddings %}
+    {{ margin_top_mobile }} {{ margin_bottom_mobile }} {{ padding_top_mobile }} {{ padding_bottom_mobile }} {{ margin_top_desktop }} {{ margin_bottom_desktop }} {{ padding_top_desktop }} {{ padding_bottom_desktop }}
+{% endcapture %}
+<div class="section__image-text mx-auto {{ margins_paddings }} {{ color }} tabletl:max-w-[var(--max-width-desktop)]" style="--max-width-desktop: {{ max_width_desktop }};">
+    <div class="section__image-text-content px-md flex {{ image_placement_mobile }} {{ image_placement_desktop }} tabletl:px-0 tabletl:items-center tabletl:gap-lg">
+        <div class="section__text-content {{ text_padding_right_desktop }} {{ text_padding_left_desktop }} tabletl:w-1/2">
+            {% if title != blank %}
+                <h1 class="{{ title_style }} mb-sm font-900 tabletl:mb-md">{{ title }}</h1>
+            {% endif %}
+            {% if richtext != blank %}
+                <div class="rte"> {{ richtext }} </div>
+            {% endif %}
+            {% if cta_url != blank %}
+                <a href="{{cta_url }}" class="{{ cta_style }} mt-md">
+                    <span class="btn__text">{{ cta_text }}</span>
+                    <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+                </a>
+            {% endif %}
+        </div>
+        {% if image_mobile != blank %}
+            <div class="section__image-content mt-sm w-full tabletl:mt-0 tabletl:w-1/2">
+                {%  render 'lazy-image' image:image_mobile, image_desktop:image_desktop %}
+            </div>
+        {% endif %}
+    </div>
+</div>

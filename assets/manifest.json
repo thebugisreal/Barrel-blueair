@@ -1,0 +1,27 @@
+{
+  "src/entrypoints/theme.css": {
+    "file": "theme-BNnm26OX.css",
+    "src": "src/entrypoints/theme.css",
+    "isEntry": true
+  },
+  "src/entrypoints/theme.js": {
+    "file": "theme-Byj1jX0m.js",
+    "name": "theme",
+    "src": "src/entrypoints/theme.js",
+    "isEntry": true
+  },
+  "src/entrypoints/vendor.css": {
+    "file": "vendor-wRb14EZH.css",
+    "src": "src/entrypoints/vendor.css",
+    "isEntry": true
+  },
+  "src/entrypoints/vendor.js": {
+    "file": "vendor-DlMvdg_0.js",
+    "name": "vendor",
+    "src": "src/entrypoints/vendor.js",
+    "isEntry": true,
+    "css": [
+      "vendor-qUF34WCP.css"
+    ]
+  }
+}

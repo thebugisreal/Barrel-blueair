@@ -1,0 +1,136 @@
+<div class="mega-menu px-xl flex gap-xl overflow-x-auto">
+  <div class="mega-menu__left min-w-[300px] w-[300px]">
+    {% for child_link in link.links %}
+      {% assign child_link_handle = child_link.title | handle %}
+      {% unless child_link_handle == 'image-links' %}
+        {% if child_link_handle == 'quiz' %}
+          {% if settings.quiz_link_url != blank and settings.quiz_link_text != blank %}
+            <div class="mega-menu__quiz py-md border-t border-blue-light">
+              {% if settings.quiz_text != blank %}
+                <div class="mega-menu__quiz-text text-16 font-700 mb-xxs">{{ settings.quiz_text }}</div>
+              {% endif %}
+              <a href="{{ settings.quiz_link_url }}" class="mega-menu__quiz-link btn">
+                <span class="btn__text">{{ settings.quiz_link_text }}</span>
+                <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+              </a>
+            </div>
+          {% endif %}
+        {% elsif child_link_handle == 'app' %}
+          {% if settings.app_store_url_desktop != blank or settings.google_play_url_desktop != blank %}
+            <div class="mega-menu__app py-md border-t border-blue-light">
+              <div>Download the Blueair App</div>
+              <div class="mega-menu__app-links flex flex-col gap-xxs mt-xs">
+                {% if settings.app_store_url_desktop != blank %}
+                  <a href="{{ settings.app_store_url_desktop }}" target="_blank" rel="noopener noreferrer" class="mega-menu__app-link mega-menu__app-link--desktop">
+                    <img src="{{ 'app-store--black.png' | asset_url }}" class="block w-[135px]" />
+                  </a>
+                {% endif %}
+                {% if settings.google_play_url_desktop != blank %}
+                  <a href="{{ settings.google_play_url_desktop }}" target="_blank" rel="noopener noreferrer" class="mega-menu__app-link mega-menu__app-link--desktop">
+                    <img src="{{ 'google-play--black.png' | asset_url }}" class="block w-[135px]" />
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% elsif child_link_handle == 'b-corp' %}
+          {% if settings.bcorp_link_url != blank %}
+            <div class="mega-menu__bcorp py-md border-t border-blue-light">
+              <a href="{{ settings.bcorp_link_url }}" target="_blank" rel="noopener noreferrer" class="mega-menu__bcorp-link w-[160px]">
+                {{ 'icon-b-default.svg' | inline_asset_content }}
+              </a>
+            </div>
+          {% endif %}
+        {% else %}
+          {% if child_link.links != blank %}
+            <div class="mega-menu__links-wrapper py-md border-t border-blue-light">
+              <div class="font-700 mb-sm">{{ child_link.title }}</div>
+              <ul class="mega-menu__links">
+                {% for grandchild_link in child_link.links %}
+                  <li class="mega-menu__item {% unless forloop.last %}mb-sm{% endunless %}">
+                    <a href="{{ grandchild_link.url }}" class="mega-menu__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}">
+                      {% if child_link_handle contains 'room-size' %}
+                        {% if grandchild_link.url contains 'extralarge' %}
+                          {% render 'room-icon', size: 'extralarge', width: '18px' %}
+                        {% elsif grandchild_link.url contains 'large' %}
+                          {% render 'room-icon', size: 'large', width: '18px' %}
+                        {% elsif grandchild_link.url contains 'medium' %}
+                          {% render 'room-icon', size: 'medium', width: '18px' %}
+                        {% elsif grandchild_link.url contains 'small' %}
+                          {% render 'room-icon', size: 'small', width: '18px' %}
+                        {% endif %}
+                      {% endif %}
+                      <div class="megamenu__title-container flex justify-start items-start">
+                        <span>{{ grandchild_link.title }}</span>
+                        {% if grandchild_link.object.metafields.seed.megamenu_bubble_text != blank %}
+                        <span class="megamenu__bubble leading-[12px] font-500 rounded-[60px] py-xxs px-xs text-12 ml-xxs {% if grandchild_link.object.metafields.seed.megamenu_bubble_color == 'dark blue' %}bg-blue text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'regular blue' %}bg-blue-medium text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'white' %}bg-white border border-black border-solid text-black{% else %}{% endif %}"> {{ grandchild_link.object.metafields.seed.megamenu_bubble_text }} </span>
+                        {% endif %}                        
+                      </div>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% else %}
+            <div class="mega-menu__item border-t border-blue-light">
+              <a href="{{ child_link.url }}" class="mega-menu__link link text-18 block my-md w-fit" aria-label="{{ child_link.title }}">
+                {{ child_link.title }}
+              </a>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  </div>
+  <div class="mega-menu__right flex-1">
+    <ul class="mega-menu__image-links py-md max-w-max mx-auto flex flex-nowrap gap-md">
+      {% for child_link in link.links %}
+        {% assign child_link_handle = child_link.title | handle %}
+        {% if child_link_handle == 'image-links' %}
+          {% for grandchild_link in child_link.links %}
+            <li class="mega-menu__item">
+              <a href="{{ grandchild_link.url }}" class="mega-menu__link mega-menu__link--image block !no-underline w-[200px] min-w-[200px]" aria-label="{{ link.title }} Nav Tile {{ forloop.index }}">
+                {% assign image_link_title = grandchild_link.title %}
+                <div class="mega-menu__image-wrapper overflow-hidden relative">
+                  {% if grandchild_link.title contains '|' %}
+                    {% assign image_link_title_split = grandchild_link.title | split: '|' %}
+                    {% assign image_link_title = image_link_title_split[0] | strip %}
+                    {% assign image_file_desktop = image_link_title_split[2] | strip %}
+                    {% assign image_object_desktop = images[image_file_desktop] %}
+                    {% if image_file_desktop == blank %}
+                      {% assign image_file_desktop = image_link_title_split[1] | strip %}
+                      {% assign image_object_desktop = images[image_file_desktop] %}
+                    {% endif %}
+                    {% render 'lazy-image', image: image_object_desktop, img_classes: 'mega-menu__image transition-transform' %}
+                  {% elsif grandchild_link.object.metafields.seed.nav_link_image_desktop != blank %}
+                    {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_desktop, img_classes: 'mega-menu__image transition-transform' %}
+                  {% endif %}
+
+                  {% if grandchild_link.object.metafields.seed.nav_link_tag!= blank %}
+                    <div class="mega-menu__image-tag absolute top-xs left-xs text-12 leading-[12px] font-500 bg-[#D6E4F3] rounded-[60px] py-xxs px-xs">
+                      {{ grandchild_link.object.metafields.seed.nav_link_tag }}
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="mega-menu__image-title text-16 font-700 mt-sm">
+                  {{ image_link_title }}
+                </div>
+                {% if grandchild_link.object.metafields.seed.nav_link_text != blank %}
+                  <div class="mt-xxxs">
+                    {{ grandchild_link.object.metafields.seed.nav_link_text }}
+                  </div>
+                {% endif %}
+                {% if grandchild_link.type == 'article_link' %}
+                  <div class="text-12 font-500 mt-xxxs">
+                    Updated {% if grandchild_link.object.updated_at != blank %}{{ grandchild_link.object.updated_at | date: '%b %d, %Y' }}{% else %}{{ grandchild_link.object.published_at | date: '%b %d, %Y' }}{% endif %}
+                  </div>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{%- comment -%}
+  Parameters
+  * asset
+  * preload_stylesheet
+  * fetch_priority
+{%- endcomment -%}
+
+{%- liquid
+  assign href = blank
+  assign extension = asset | split: '.' | last
+
+  if preload_stylesheet == 'defer' and extension == 'css'
+    capture output
+      render 'vite-tag' with asset, preload_stylesheet: false
+    endcapture
+
+    assign href = output | split: 'href="' | last | split: '"' | first
+  endif
+-%}
+
+{%- if href != blank -%}
+  <link
+    rel="preload"
+    fetchpriority="{{- fetch_priority | default: 'low' -}}"
+    href="{{- href -}}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <noscript><link rel="stylesheet" href="{{- href -}}"></noscript>
+{%- else -%}
+  {%- render 'vite-tag' with asset, preload_stylesheet: preload_stylesheet -%}
+{%- endif -%}

@@ -1,7 +1,7 @@
 /* btn markup
   <button class="btn">
     <span class="btn__text">text</span>
-    <span class="btn__arrow">{% render 'icon-arrow-right' %}</span>
+    <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
   </button>
 */
 @layer base{

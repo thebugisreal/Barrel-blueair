@@ -1,13 +1,29 @@
 {
-  "name": "seed",
+  "name": "blueair-theme",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "setup": "yarn install && cp ./node_modules/@madebyseed/seed-cli-tools/seed.config.example.js ./seed.config.js"
+    "dev": "vite dev -- --store 5ef43d-4a",
+    "dev:us": "vite dev -- --store 5ef43d-4a",
+    "dev:eu": "vite dev -- --store blueeudev",
+    "dev:uk": "vite dev -- --store uk-blueair",
+    "build": "vite build"
   },
   "devDependencies": {
-    "@madebyseed/seed-cli-tools": "^3.0.2"
+    "@by-association-only/vite-plugin-shopify-clean": "^2.2.0",
+    "postcss": "^8.4.33",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.0.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.3.0",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.0.11",
+    "vite-plugin-page-reload": "^0.2.0",
+    "vite-plugin-shopify": "^4.1.1"
   },
   "dependencies": {
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "swiper": "^12.1.1"
   }
 }

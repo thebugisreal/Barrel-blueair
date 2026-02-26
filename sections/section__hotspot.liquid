@@ -1,0 +1,893 @@
+{% capture margins_paddings %}
+  {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+<s-hotspot {% if section.settings.open_first_hospot_mobile %}open-first-hotspot-mobile {% endif %}class="section__hotspot block {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl desktop:flex desktop:items-center desktop:gap-[136px]" {% if section.settings.enable_hover_display != blank %} data-display-control="{{ section.settings.enable_hover_display }}" {% endif %}>
+  <div class="hotspot__text-content flex flex-col gap-sm desktop:flex-1 mb-xxl desktop:mb-0">
+    {% if section.settings.title != blank %}
+      <h2 class="hotspot__title {{ section.settings.title_style }}">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtext != blank %}
+      <p class="hotspot__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
+    {% endif %}
+    {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
+      <a href="{{ section.settings.cta_url }}" class="hotspot__cta {{ section.settings.cta_style }}">
+        <span class="btn__text">{{ section.settings.cta_text }}</span>
+        <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+      </a>
+    {% endif %}
+  </div>
+  <div class="hotspot__main-image relative {{ section.settings.image_position }} desktop:w-[var(--desktop-width)]" style="--desktop-width: {{ section.settings.image_width }}%;">
+    {% render 'lazy-image' image: section.settings.image %}
+
+    {% for block in section.blocks %}
+      <div class="hotspot__trigger absolute -translate-x-1/2 -translate-y-1/2" data-active="false" style="left: {{ block.settings.hotspot_x }}%; top: {{ block.settings.hotspot_y }}%;">
+        <button class="hotspot-trigger__btn flex justify-center items-center w-[37px] h-[37px] rounded-full desktop:w-[49px] desktop:h-[49px]" data-active="false" data-index="{{ forloop.index0 }}" js-hotspot-trigger-btn>
+          <span class="plus w-[19px] desktop:w-[25px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
+          <span class="minus w-[19px] desktop:w-[25px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+        </button>
+
+        <div class="hotspot-trigger__content hotspot-trigger__content--desktop w-[330px] shadow-md absolute top-0 -translate-y-1/2 hidden" js-hotspot-trigger-content>
+          {% if block.settings.image_desktop != blank %}
+            <div class="hotspot-trigger-content__image relative">
+              {% render 'lazy-image' image: block.settings.image_desktop %}
+  
+              {% if block.settings.tags != blank %}
+                {% assign tags = block.settings.tags |  split: ',' %}
+                <ul class="hotspot-trigger-content__tags flex flex-wrap gap-xxs absolute bottom-0 left-0 py-xs px-sm">
+                  {% for tag in tags %}
+                    <li class="hotspot-trigger-content__tag text-12 font-500 bg-white rounded-[60px] border border-gray px-xs py-xxs leading-[1]">
+                      {{ tag | strip }}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+          <div class="hotspot-trigger-content__text-container p-sm bg-blue-light flex flex-col gap-xxs">
+            {% if block.settings.image_desktop == blank and block.settings.tags != blank %}
+              {% assign tags = block.settings.tags |  split: ',' %}
+              <ul class="hotspot-trigger-content__tags flex flex-wrap gap-xxs">
+                {% for tag in tags %}
+                  <li class="hotspot-trigger-content__tag text-12 font-500 bg-white rounded-[60px] border border-gray px-xs py-xxs leading-[1]">
+                    {{ tag | strip }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {% if block.settings.title != blank %}
+              <div class="hotspot-trigger-content__title {{ block.settings.title_style }}">
+                {{ block.settings.title }}
+              </div>
+            {% endif %}
+            {% if block.settings.subtext != blank %}
+              <div class="hotspot-trigger-content__subtext {{ block.settings.subtext_style }}">
+                {{ block.settings.subtext }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="hotspot__trigger-contents hotspot__trigger-contents--mobile mt-lg desktop:hidden">
+    {% for block in section.blocks %}
+      <div class="hotspot-trigger__content hotspot-trigger__content--mobile hidden" data-active="false" data-index="{{ forloop.index0 }}" js-hotspot-trigger-content>
+        {% if block.settings.image_mobile != blank %}
+          <div class="hotspot-trigger-content__image relative">
+            {% render 'lazy-image' image: block.settings.image_mobile %}
+
+            {% if block.settings.tags != blank %}
+              {% assign tags = block.settings.tags |  split: ',' %}
+              <ul class="hotspot-trigger-content__tags flex flex-wrap gap-xxs absolute bottom-0 left-0 py-xs px-sm">
+                {% for tag in tags %}
+                  <li class="hotspot-trigger-content__tag text-12 font-500 bg-white rounded-[60px] border border-gray px-xs py-xxs leading-[1]">
+                    {{ tag | strip }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="hotspot-trigger-content__text-container p-sm bg-blue-light flex flex-col gap-xxs">
+          {% if block.settings.image_mobile == blank and block.settings.tags != blank %}
+            {% assign tags = block.settings.tags |  split: ',' %}
+            <ul class="hotspot-trigger-content__tags flex flex-wrap gap-xxs">
+              {% for tag in tags %}
+                <li class="hotspot-trigger-content__tag text-12 font-500 bg-white rounded-[60px] border border-gray px-xs py-xxs leading-[1]">
+                  {{ tag | strip }}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <div class="hotspot-trigger-content__title {{ block.settings.title_style }}">
+              {{ block.settings.title }}
+            </div>
+          {% endif %}
+          {% if block.settings.subtext != blank %}
+            <div class="hotspot-trigger-content__subtext {{ block.settings.subtext_style }}">
+              {{ block.settings.subtext }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</s-hotspot>
+
+{% schema %}
+{
+  "name": "Hotspot",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top - Mobile",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom - Mobile",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pt-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pb-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:mt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:mb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:mb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:mb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:mb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pt-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pt-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pt-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pt-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pt-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pb-md",
+          "label": "MD"
+        },
+        {
+          "value": "desktop:pb-lg",
+          "label": "LG"
+        },
+        {
+          "value": "desktop:pb-xl",
+          "label": "XL"
+        },
+        {
+          "value": "desktop:pb-xxl",
+          "label": "2XL"
+        },
+        {
+          "value": "desktop:pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pb-0"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first_hospot_mobile",
+      "label": "Open First Hotspot by Default on Mobile"
+    },
+    {
+      "type": "header",
+      "content": "Color Set"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "bg-white text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        },
+        {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        },
+        {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        },
+        {
+          "value": "bg-blue-light text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-white text-blue"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position - Desktop",
+      "options": [
+        {
+          "value": "desktop:order-first",
+          "label": "Left"
+        },
+        {
+          "value": "desktop:order-last",
+          "label": "Right"
+        }
+      ],
+      "default": "desktop:order-last"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Width - Desktop",
+      "default": 65
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title Style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "select",
+      "id": "subtext_style",
+      "label": "Subtext Style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        },
+        {
+          "value": "p1",
+          "label": "p1"
+        },
+        {
+          "value": "p2",
+          "label": "p2"
+        },
+        {
+          "value": "p3",
+          "label": "p3"
+        },
+        {
+          "value": "p4",
+          "label": "p4"
+        },
+        {
+          "value": "p5",
+          "label": "p5"
+        },
+        {
+          "value": "p6",
+          "label": "p6"
+        }
+      ],
+      "default": "s3"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "value": "btn",
+          "label": "Default"
+        },
+        {
+          "value": "btn btn--blue-rounded",
+          "label": "Blue Rounded"
+        },
+        {
+          "value": "btn btn--white-rounded",
+          "label": "White Rounded"
+        },
+        {
+          "value": "btn btn--transparent-rounded",
+          "label": "Transparent Rounded"
+        }
+      ],
+      "default": "btn"
+    },
+    {
+      "type": "select",
+      "id": "enable_hover_display",
+      "label": "Enable Hover Display",
+      "options": [
+        {
+          "value": "hover-display",
+          "label": "Hover"
+        },
+        {
+          "value": "click-display",
+          "label": "Click"
+        }
+      ],
+      "default": "click-display"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Hotspot",
+      "type": "hotspot",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Coordinates"
+        },
+        {
+          "type": "number",
+          "id": "hotspot_x",
+          "label": "X Coordinate",
+          "info": "% of the main image"
+        },
+        {
+          "type": "number",
+          "id": "hotspot_y",
+          "label": "Y Coordinate",
+          "info": "% of the main image"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image - Mobile"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image - Desktop"
+        },
+        {
+          "type": "text",
+          "id": "tags",
+          "label": " Tags",
+          "info": "separated by comma"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "title_style",
+          "label": "Title Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "s1",
+              "label": "s1"
+            },
+            {
+              "value": "s2",
+              "label": "s2"
+            },
+            {
+              "value": "s3",
+              "label": "s3"
+            },
+            {
+              "value": "s4",
+              "label": "s4"
+            }
+          ],
+          "default": "s1"
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Subtext"
+        },
+        {
+          "type": "select",
+          "id": "subtext_style",
+          "label": "Subtext Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "s1",
+              "label": "s1"
+            },
+            {
+              "value": "s2",
+              "label": "s2"
+            },
+            {
+              "value": "s3",
+              "label": "s3"
+            },
+            {
+              "value": "s4",
+              "label": "s4"
+            },
+            {
+              "value": "p1",
+              "label": "p1"
+            },
+            {
+              "value": "p2",
+              "label": "p2"
+            },
+            {
+              "value": "p3",
+              "label": "p3"
+            },
+            {
+              "value": "p4",
+              "label": "p4"
+            },
+            {
+              "value": "p5",
+              "label": "p5"
+            },
+            {
+              "value": "p6",
+              "label": "p6"
+            }
+          ],
+          "default": "p2"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hotspot"
+    }
+  ]
+}
+{% endschema %}

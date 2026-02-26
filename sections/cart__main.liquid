@@ -1,0 +1,651 @@
+{% assign gwp_present = false %}
+{% assign cart_variants = '' %}
+{% for item in cart.items %}
+  {% assign cart_variants = cart_variants | append: item.variant_id | append: ',' %}
+  {% if item.properties['_isGWP'] %}
+    {% assign gwp_present = true %}
+  {% endif %}
+{% endfor %}
+{% assign subscription_index = 0 %}
+
+<div class="cart__main tabletl:mx-auto tabletl:max-w-[var(--section-max-width-desktop)]" style="--section-max-width-desktop: {{ section.settings.content_max_width_desktop}};">
+  <cart-items data-type="cartPage">
+    <loading-spinner js-cart-container-loading style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
+    <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
+      <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}" js-cart-page-contents> 
+        <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl">
+          <h2 class="font-900 text-center mb-sm tabletl:mb-lg">{{ 'sections.cart.title' | t }}</h2>
+              {% comment %} Shipping Threshold {% endcomment %}
+              {% if cart != empty and settings.shipping_threshold_enabled %}
+                {% render 'cart--shipping-threshold' %}
+              {% endif %}
+              {% comment %} END Shipping Threshold {% endcomment %}
+          {% if cart == empty %}
+            <p class="text-center">
+              {{ 'sections.cart.empty' | t }} <a href="/collections/all">{{ 'sections.cart.start_shopping' | t }}</a>.
+            </p>
+            {% if settings.cart_cta_url_1 != blank or settings.cart_cta_url_2 != blank %}
+              <div class="cart-empty__cta-container flex flex-col mt-lg gap-sm items-center">
+                <a href="{{ settings.cart_cta_url_1 }}" class="cart-empty__cta btn btn--blue-rounded text-center">
+                  <span class="btn__text">{{ settings.cart_cta_text_1 }}</span>
+                  <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+                </a>
+                {% if settings.cart_cta_url_2 != blank %}
+                  <a href="{{ settings.cart_cta_url_2 }}" class="cart-empty__cta btn btn--blue-rounded text-center">
+                    <span class="btn__text">{{ settings.cart_cta_text_2 }}</span>
+                    <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          {%- else -%}
+            <div class="tabletl:flex tabletl:gap-xl">
+              {% comment %} Cart Items  {% endcomment %}
+                <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-[60%]">
+                  {%- for item in cart.items -%}
+                    {% liquid 
+                      assign auto_item_remove_selling_plan = false
+                      if item.properties['_unitSubscriptionTempId']
+                        if item.quantity != 2 and item.properties['_two_pack'] == 'true' and item.selling_plan_allocation != blank
+                          assign auto_item_remove_selling_plan = true
+                        endif
+                      else
+                        if item.quantity != 2 and item.product.metafields.seed.quantity_option.value contains '2 Pack | 2' and item.selling_plan_allocation != blank
+                          assign auto_item_remove_selling_plan = true
+                        endif
+                      endif
+                      assign is_unit_subscription_service_product = false
+                      assign auto_item_remove = false
+                      assign item_variant_title_lowercased = item.variant.title | downcase
+                      if item_variant_title_lowercased contains 'subscription' and item.final_price == 0
+                        assign is_unit_subscription_service_product = true
+                        if item.selling_plan_allocation != blank
+                          assign matching_unit_subscription_air_purifier_found = false
+                          for cart_item in cart.items
+                            if cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.product.metafields.seed.subscription.value.pdp_type != 'Filter' and cart_item.product.metafields.seed.subscription != blank and cart_item != item
+                              assign matching_unit_subscription_air_purifier_found = true
+                              break
+                            endif
+                          endfor
+                          if matching_unit_subscription_air_purifier_found == false
+                            assign auto_item_remove = true
+                          endif
+                        else 
+                          assign auto_item_remove = true
+                        endif
+                      endif
+                    %}
+                      <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="relative {% if is_unit_subscription_service_product %}!hidden{% endif %}" {% if auto_item_remove_selling_plan %}auto-item-remove-selling-plan {% endif %} {% if auto_item_remove %}auto-item-remove {% endif %} data-key="{{ item.key }}" data-quantity="{{ item.quantity }}"  {% if item.properties['_isGWP'] %} data-is-gwp="true" data-var-id="{{ item.variant_id }}" {% endif %} {% if item.properties['_isGift'] %}data-is-gift-product="true"{% endif %}  js-cart-item>
+                      <loading-spinner style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
+                      <div class="flex justify-between gap-sm tabletl:gap-md">
+                        <div class="flex gap-md w-full">
+                          <a href="{{item.url}}" class="block w-1/2 max-w-[160px]" js-cart-item-image>
+                            <img class="cart-item__image w-full" src="{{ item.image | image_url: width: 300 }}" alt="{{ item.image.alt | escape }}" loading="lazy">
+                          </a>
+                          <div class="item-text-container flex-1">
+                            <div class="flex gap-sm">
+                              <a href="{{item.url}}" class="p1 mb-xxxs flex-1">{{item.product.title}}</a>
+                              <div class="cart-price cart-price--desktop hidden tabletp:block">
+                                <div class="p1 hidden">
+                                  {% if item.original_price != item.final_price %}
+                                    <s>{{ item.original_price | money }}</s>
+                                    <span>{{ item.final_price | money }}</span>
+                                  {% else %}
+                                    <span>{{ item.original_price | money }}</span>
+                                  {% endif %}
+                                </div>
+                                {%- if item.original_line_price != item.final_line_price -%}
+                                  <div class="cart-item__discounted-prices p1">
+                                    <span class="visually-hidden">
+                                      {{ 'products.product.price.regular_price' | t }}
+                                    </span>
+                                    <s class="cart-item__old-price price price--end">
+                                      {{ item.original_line_price | money }}
+                                    </s>
+                                    <span class="visually-hidden">
+                                      {{ 'products.product.price.sale_price' | t }}
+                                    </span>
+                                    <span class="price price--end">
+                                      {{ item.final_line_price | money }}
+                                    </span>
+                                  </div>
+                                {%- else -%}
+                                  <span class="price price--end p1">
+                                    {{ item.original_line_price | money }}
+                                  </span>
+                                {%- endif -%}
+                              </div>
+                            </div>
+                            {%- if item.product.has_only_default_variant == false -%}
+                              {%- for option in item.options_with_values -%}
+                                {% unless option.name == "Default Title" %}
+                                  <p class="my-4">{{ option.name }}: {{ option.value -}}</p>
+                                {% endunless %}
+                              {%- endfor -%}
+                            {%- endif -%}
+                            {%- for property in item.properties -%}
+                              {%- assign property_first_char = property.first | slice: 0 -%}
+                              {%- if property.last != blank and property_first_char != '_' -%}
+                                <p class="my-xxxs {% if property.first == 'First Order Date' %}hidden{% endif %}">{{ property.first }}: {{ property.last }}</p>
+                              {%- endif -%}
+                            {%- endfor -%}
+                            {% if item.discounts != empty %}
+                              <ul class="my-xxxs">
+                                {%- for discount in item.discounts -%}
+                                  <li>{{ discount.title }}</li>
+                                {%- endfor -%}
+                              </ul>
+                            {% endif %}
+
+                            <div class="cart-price cart-price--mobile tabletp:hidden">
+                              {%- if item.original_line_price != item.final_line_price -%}
+                                <div class="cart-item__discounted-prices p1">
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  </span>
+                                  <s class="cart-item__old-price price price--end">
+                                    {{ item.original_line_price | money }}
+                                  </s>
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.sale_price' | t }}
+                                  </span>
+                                  <span class="price price--end">
+                                    {{ item.final_line_price | money }}
+                                  </span>
+                                </div>
+                              {%- else -%}
+                                <span class="price price--end p1">
+                                  {{ item.original_line_price | money }}
+                                </span>
+                              {%- endif -%}
+                            </div>
+                            {% if item.properties['_isGWP'] or item.properties['_isGift'] %}
+                              <p>Gift</p>
+                            {% endif %}
+    
+                            {% assign disable_quantity_selector = false %}
+                            {% if item.product.metafields.seed.two_pack_filter_subscription_disable_quantity_selector_in_cart == true and item.selling_plan_allocation != blank and item.quantity > 1 %}
+                              {% assign disable_quantity_selector = true %}
+                            {% endif %}
+                            <div class="cart-item__quantity-wrapper mt-xxs">
+                              <quantity-input class="quantity cart-quantity p3 flex justify-center border border-blue p-xxs gap-md rounded-[2px] max-w-[150px]">
+                                <button class="quantity__button no-js-hidden disabled:opacity-20 disabled:cursor-not-allowed" name="minus" type="button" {% if disable_quantity_selector %}disabled{% endif %}>
+                                  <span class="visually-hidden">
+                                    {{- 'products.product.quantity.decrease' | t: product: item.product.title | escape -}}
+                                  </span>
+                                  <div class="w-[16px]">{{ 'icon-minus.svg' | inline_asset_content }}</div>
+                                </button>
+                                <input
+                                  class="quantity__input flex-1 max-w-[16px] text-center"
+                                  type="number"
+                                  data-quantity-variant-id="{{ item.variant.id }}"
+                                  name="updates[]"
+                                  value="{{ item.quantity }}"
+                                  {% # theme-check-disable %}
+                                  data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                                  min="0"
+                                  {% if item.variant.quantity_rule.max != null %}
+                                    max="{{ item.variant.quantity_rule.max }}"
+                                  {% endif %}
+                                  step="{{ item.variant.quantity_rule.increment }}"
+                                  {% # theme-check-enable %}
+                                  aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                  id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                                  data-index="{{ item.index | plus: 1 }}"
+                                  {% if disable_quantity_selector %}readonly disabled{% endif %}
+                                >
+                                <button class="quantity__button no-js-hidden disabled:opacity-20 disabled:cursor-not-allowed" name="plus" type="button" {% if disable_quantity_selector %}disabled{% endif %}>
+                                  <span class="visually-hidden">
+                                    {{- 'products.product.quantity.increase' | t: product: item.product.title | escape -}}
+                                  </span>
+                                  <div class="w-[16px]">{{ 'icon-plus.svg' | inline_asset_content }}</div>
+                                </button>
+                              </quantity-input>
+            
+                              <cart-remove-button
+                                class="block mt-xxs"
+                                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                                data-index="{{ item.index | plus: 1 }}"
+                              >
+                                <button
+                                  type="button"
+                                  class="button button--tertiary cart-remove-button underline"
+                                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                                >
+                                  {{ 'sections.cart.remove_item' | t }}
+                                </button>
+                              </cart-remove-button>
+
+                              <div id="CartMain-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert"></div>
+
+                              {% if item.product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
+                                {% assign subscription_object = item.product.metafields.seed.additional_subscription.value %}
+                                {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+
+                                {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                                  {% for scent_product in scent_subscriptions %}
+                                    {% assign product_variant = scent_product.variants[1] %}
+                                    {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                      {% for cart_item in cart.items %}
+                                        {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                          {% assign subscribed_scent_product = cart_item.id %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+                                  {% endfor %}
+                                {% endif %}
+
+                                <div class="hidden tabletp:block tabletl:hidden widescreen:block">
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
+                                </div>
+                              {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
+                                {% assign subscription_object = item.product.metafields.seed.subscription.value %}
+                                {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+
+                                {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                                  {% for scent_product in scent_subscriptions %}
+                                    {% assign product_variant = scent_product.variants[1] %}
+                                    {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                      {% for cart_item in cart.items %}
+                                        {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                          {% assign subscribed_scent_product = cart_item.id %}
+                                          {% break %}
+                                        {% endif %}
+                                      {% endfor %}
+                                    {% endif %}
+                                  {% endfor %}
+                                {% endif %}
+
+                                <div class="hidden tabletp:block tabletl:hidden widescreen:block">
+                                  {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
+                                </div>
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% if item.product.metafields.seed.additional_subscription != blank and is_unit_subscription_service_product == false %}
+                        <div class="tabletp:hidden tabletl:block widescreen:hidden">
+                          {% assign subscription_object = item.product.metafields.seed.additional_subscription.value %}
+                          {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+
+                          {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                            {% for scent_product in scent_subscriptions %}
+                              {% assign product_variant = scent_product.variants[1] %}
+                              {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                {% for cart_item in cart.items %}
+                                  {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                    {% assign subscribed_scent_product = cart_item.id %}
+                                    {% break %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
+
+                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
+                          {% assign subscription_index = subscription_index | plus: 1 %}
+                        </div>
+                      {% elsif item.product.metafields.seed.subscription != blank and is_unit_subscription_service_product == false %}
+                        <div class="tabletp:hidden tabletl:block widescreen:hidden">
+                          {% assign subscription_object = item.product.metafields.seed.subscription.value %}
+                          {% assign scent_subscriptions = subscription_object.scent_subscriptions.value %}
+
+                          {% if scent_subscriptions and subscription_object.pdp_type == '2in1 Purify + Humidify' %}
+                            {% for scent_product in scent_subscriptions %}
+                              {% assign product_variant = scent_product.variants[1] %}
+                              {% if item.properties['_unitSubscriptionTempId'] != blank %}
+                                {% for cart_item in cart.items %}
+                                  {% if cart_item.selling_plan_allocation != blank and cart_item.properties['_unitSubscriptionTempId'] == item.properties['_unitSubscriptionTempId'] and cart_item.variant_id == product_variant.id %}
+                                    {% assign subscribed_scent_product = cart_item.id %}
+                                    {% break %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
+
+                          {% render 'cart-subscription' item: item scope: 'cart-page' index: subscription_index subscription_object: subscription_object subscribed_scent_product: subscribed_scent_product %}
+                          {% assign subscription_index = subscription_index | plus: 1 %}
+                        </div>
+                      {% endif %}
+                      </div>
+                  {%- endfor -%}
+
+                  {% comment %} Gift with Purchases (non-threshold) {% endcomment %}
+
+
+                  {% if settings.gwp1 != blank or settings.gwp2 != blank or gwp_present == true %}
+                    {% if settings.gwp1 != blank or settings.gwp2 != blank%}
+                      {% assign gwp_1_variant = settings.gwp1.variants[0] %}
+                      {% assign gwp_2_variant = settings.gwp2.variants[0] %}
+                    {% endif %}
+
+
+                    {%- capture gwp_carousel_options -%}
+                      {
+                        "slidesPerView": 1,
+                        "pagination": {
+                          "el": ".swiper-gwp-pagination",
+                          "type": "fraction"
+                        },
+                        "navigation": {
+                          "nextEl": ".swiper-gwp-next",
+                          "prevEl": ".swiper-gwp-prev"
+                        }
+                      }
+                    {%- endcapture -%}
+                    <div class="cart-drawer__gwp-container my-[32px] grid grid-cols-1">
+                      <s-carousel class="block relative" data-options='{{ gwp_carousel_options }}'>
+                          <div id="CartGwp-{{section.id}}" class="swiper" js-carousel>
+                            <div class="flex justify-between items-center mb-sm">
+                              <h1 class="cart-drawer-gwp__title s1 font-900">Your Free Gift</h1>
+                              <div class="swiper-nav-container flex gap-xxs items-center">
+                                <div class="swiper-gwp-prev w-[24px] p-xxs">{{ 'icon-caret-left.svg' | inline_asset_content }}</div>
+                                <div class="swiper-gwp-pagination w-fit p6"></div>
+                                <div class="swiper-gwp-next w-[24px] p-xxs">{{ 'icon-caret-right.svg' | inline_asset_content }}</div>
+                              </div>
+                            </div>
+
+                            <div class="swiper-wrapper">
+                                {% for item in cart.items %}
+                                  {% if item.properties['_isGWP'] %}
+                                    <div class="swiper-slide" js-carousel-slide>
+                                      {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true, claimed: true %}
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+
+                                {% if settings.gwp1 != blank %}
+                                  <div class="swiper-slide" js-carousel-slide>
+                                    {% if cart_variants contains gwp_1_variant.id  %}
+                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true, claimed: true %}
+                                    {% else %}
+                                      {% render 'product-card__upsell' product:settings.gwp1, section_id: section.id, gwp:true %}
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
+
+                                {% if settings.gwp2 != blank %}
+                                  <div class="swiper-slide" js-carousel-slide>
+                                    {% if cart_variants contains gwp_2_variant.id  %}
+                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true, claimed: true %}
+                                    {% else  %}
+                                      {% render 'product-card__upsell' product:settings.gwp2, section_id: section.id, gwp:true %}
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
+                            </div>
+                          </div>
+                      </s-carousel>
+                    </div>
+                  {% endif %}
+                  {% comment %} END Gift with Purchases (non-threshold) {% endcomment %}
+
+                  {% comment %} Upsell Products {% endcomment %}
+                  {% assign display_carousel = false %}
+                  {% assign use_complementary = false %}
+                  {% assign use_static_upsells = false %}
+                  {% assign shown_products = '' %}
+
+                  {% comment %} Check if we have complementary products first {% endcomment %}
+                  {% for item in cart.items %}
+                    {% if item.product.metafields["shopify--discovery--product_recommendation"].complementary_products.value != blank %}
+                      {% assign use_complementary = true %}
+                      {% assign display_carousel = true %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% comment %} Only check for static upsells if we don't have complementary products {% endcomment %}
+                  {% unless use_complementary %}
+                    {% if settings.upsell_1 != blank or settings.upsell_2 != blank %}
+                      {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
+                      {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
+                      
+                      {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}
+                        {% assign use_static_upsells = true %}
+                        {% assign display_carousel = true %}
+                      {% endunless %}
+                    {% endif %}
+                  {% endunless %}
+
+                  {% if display_carousel %}   
+                    {%- capture upsell_carousel_options -%}
+                      {
+                        "slidesPerView": 1,
+                        "pagination": {
+                          "el": ".swiper-upsell-pagination",
+                          "type": "fraction"
+                        },
+                        "navigation": {
+                          "nextEl": ".swiper-upsell-next",
+                          "prevEl": ".swiper-upsell-prev"
+                        }
+                      }
+                    {%- endcapture -%}
+                    <div class="cart-drawer__upsell-container grid grid-cols-1">
+                      <s-carousel class="block relative" data-options='{{ upsell_carousel_options }}'>
+                          <div id="CartUpsell-{{section.id}}" class="swiper" js-carousel>
+                            <div class="flex justify-between items-center mb-sm">
+                              <h1 class="cart-drawer-upsell__title s1 font-900">{{ 'sections.cart.recommended' | t }}</h1>
+                              <div class="swiper-nav-container flex gap-xxs items-center">
+                                <div class="swiper-upsell-prev w-[24px] p-xxs">{{ 'icon-caret-left.svg' | inline_asset_content }}</div>
+                                <div class="swiper-upsell-pagination w-fit p6"></div>
+                                <div class="swiper-upsell-next w-[24px] p-xxs">{{ 'icon-caret-right.svg' | inline_asset_content }}</div>
+                              </div>
+                            </div>
+
+                            <div class="swiper-wrapper">
+                              {% if use_complementary %}
+                                {% for item in cart.items %}
+                                  {% for test_product in item.product.metafields["shopify--discovery--product_recommendation"].complementary_products.value %}
+                                    {% for variant in test_product.variants %}
+                                      {% if variant.price != 0 %}
+                                        {% assign selected_variant = variant %}
+                                      {% endif %}
+                                    {% endfor %}
+                                    {% unless cart_variants contains selected_variant.id or shown_products contains test_product.id %}
+                                      <div class="swiper-slide" js-carousel-slide>
+                                        {% render 'variant-card__upsell' variant:selected_variant, section_id: section.id %}
+                                      </div>
+                                      {% assign shown_products = shown_products | append: test_product.id | append: ',' %}
+                                    {% endunless %}
+                                  {% endfor %}
+                                {% endfor %}
+                              {% endif %}
+
+                              {% if use_static_upsells %}
+                                {% unless cart_variants contains upsell_1_variant.id or shown_products contains settings.upsell_1.id %}
+                                  {% if settings.upsell_1 != blank %}
+                                    <div class="swiper-slide" js-carousel-slide>
+                                      {% render 'product-card__upsell' product:settings.upsell_1, section_id: section.id %}
+                                    </div>
+                                    {% assign shown_products = shown_products | append: settings.upsell_1.id | append: ',' %}
+                                  {% endif %}
+                                {% endunless %}
+
+                                {% unless cart_variants contains upsell_2_variant.id or shown_products contains settings.upsell_2.id %}
+                                  {% if settings.upsell_2 != blank %}
+                                    <div class="swiper-slide" js-carousel-slide>
+                                      {% render 'product-card__upsell' product:settings.upsell_2, section_id: section.id%}
+                                    </div>
+                                    {% assign shown_products = shown_products | append: settings.upsell_2.id | append: ',' %}
+                                  {% endif %}
+                                {% endunless %}
+                              {% endif %}
+                            </div>
+                          </div>
+                      </s-carousel>
+                    </div>
+                  {% endif %}
+                  {% comment %} END Upsell Products {% endcomment %}
+
+
+
+                  <div id="CartPage-CartErrors" role="alert"></div>
+                </div>
+              {% comment %} END Cart Items  {% endcomment %}
+              {% comment %} Cart Footer {% endcomment %}
+                <div class="cart__footer bg-blue-light p-md h-fit mt-lg tabletl:mt-0 tabletl:w-[40%]">
+                  {%- if settings.show_cart_note -%}
+                    <details id="Details-CartDrawer">
+                      <summary>
+                        <span class="summary__title">
+                          {{ 'sections.cart.note' | t }}
+                          {{ 'icon-caret.svg' | inline_asset_content }}
+                        </span>
+                      </summary>
+                      <cart-note class="cart__note field">
+                        <label class="visually-hidden" for="CartDrawer-Note">{{ 'sections.cart.note' | t }}</label>
+                        <textarea
+                          id="CartDrawer-Note"
+                          class="text-area text-area--resize-vertical field__input"
+                          name="note"
+                          placeholder="{{ 'sections.cart.note' | t }}"
+                        >{{ cart.note }}</textarea>
+                      </cart-note>
+                    </details>
+                  {%- endif -%}
+
+                  {% liquid
+                    assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+                    for item in cart.items
+                      for allocation in item.line_level_discount_allocations
+                        if allocation.discount_application.type == 'discount_code'
+                          assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
+                        endif
+                      endfor
+                    endfor
+
+                    assign discount_codes = discount_codes | uniq
+                  %}
+
+                  <div class="cart__discounts mb-sm">
+                    <div class="cart-discount">
+                      <div class="details-content">
+                        <div class="cart-discount__content p2 btn btn--white-rounded !bg-white !text-black w-full justify-between">
+                            <label
+                              for="cart-discount"
+                              class="visually-hidden"
+                            >
+                              {{ 'sections.cart.discount_code' | t }}
+                            </label>
+                            <input
+                              id="cart-discount"
+                              class="cart-discount__input flex-1"
+                              name="discount"
+                              placeholder="{{ 'sections.cart.discount_code' | t }}"
+                              js-cart-discount-form-input
+                            >
+                            <button
+                              type="button"
+                              class="btn btn--atc h-auto"
+                              js-cart-discount-form-submit
+                            >
+                               <span class="btn__arrow !bg-blue !text-white">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+                            </button>
+                        </div>
+                        <div
+                          class="cart-discount__error hidden"
+                          role="alert"
+                          js-cart-discount-error
+                        >
+                          <small
+                            class="cart-discount__error-text cart-primary-typography hidden"
+                            js-cart-discount-error-discount-code
+                          >
+                          {{ 'sections.cart.discount_code_error' | t }}
+                          </small>
+                          <small
+                            class="cart-discount__error-text cart-primary-typography hidden"
+                            js-cart-discount-error-shipping
+                          >
+                            {{ 'sections.cart.discount_error_shipping' | t }}
+                          </small>
+                        </div>
+                        <ul class="cart-discount__codes flex flex-col gap-y-8 pt-8">
+                          {% for discount_code in discount_codes %}
+                            <li
+                              class="cart-discount__pill flex items-center gap-x-8 bg-papyrus-light py-4 px-8 rounded-[6px] w-fit f0-mono"
+                              data-discount-code="{{ discount_code }}"
+                              aria-label="{{ 'accessibility.discount_applied' | t: code: discount_code }}"
+                            >
+                              <button
+                                type="button"
+                                class="cart-discount__pill-remove w-12 h-12 flex items-center justify-center"
+                                aria-label="Remove discount code"
+                                data-discount-code="{{ discount_code }}"
+                                js-cart-discount-pill-remove
+                              >
+                                {{ 'icon-close-no-border.svg' | inline_asset_content }}
+                              </button>
+                              <p class="cart-discount__pill-code" js-cart-discount-pill-code>
+                                {{ discount_code }}
+                              </p>
+   
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cart__totals">
+                    <div class="totals flex justify-between mb-xxs" role="status">
+                      <h2 class="totals__subtotal s2">{{ 'sections.cart.estimated_total' | t }}</h2>
+                      <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
+                    </div>
+                    {% if localization.country == 'Deutschland' or localization.country == 'Germany' %}
+                      <p class="p4 mb-xs">{{ settings.vat_included_msg | default: 'Including VAT'}}</p>
+                    {% else %}
+                      <p class="p4 mb-xs">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
+                    {% endif %}
+                    <div>
+                      {%- if cart.cart_level_discount_applications.size > 0 -%}
+                        <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                          {%- for discount in cart.cart_level_discount_applications -%}
+                            <li class="discounts__discount discounts__discount--end">
+                              {{ discount.title }}
+                              (-{{ discount.total_allocated_amount | money }})
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </div>
+                  </div>
+          
+                  <!-- CTAs -->
+          
+                  <div class="cart__ctas" {{ block.shopify_attributes }}>
+                    <button class="cart__checkout-button p2 btn btn--blue-rounded w-full justify-between" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
+                      <span class="btn__text">{{ 'sections.cart.cta' | t }}</span>
+                      <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+                    </button>
+                  </div>
+                </div>
+              {% comment %} END Cart Footer {% endcomment %}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </form>
+  </cart-items>
+</div>
+
+{% schema %}
+  {
+    "name": "Cart",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "content_max_width_desktop",
+        "label": "Content Max Width - Desktop",
+        "info": "Make sure to include units",
+        "default": "120ch"
+      }
+    ]
+  }
+{% endschema %}

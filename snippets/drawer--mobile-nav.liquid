@@ -1,0 +1,228 @@
+<s-drawer id="MobileNavDrawer" body-open-class="mobile-nav-drawer-open" position='left' open="[js-open-mobile-nav]" close="[js-close-mobile-nav]">
+  <div class="mobile-nav h-full flex flex-col relative">
+    <div class="mobile-nav__header px-md py-xs flex justify-between items-center">
+      <a href="{{ routes.root_url }}" class="mobile-nav__logo w-[140px]">{{ 'icon-blueair-logo.svg' | inline_asset_content }}</a>
+      <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{{ 'icon-nav-close.svg' | inline_asset_content }}</button>
+    </div>
+    <predictive-search class="mobile-nav__search px-md pt-xxs" data-scope="mobile" data-open="false" data-market="{{ localization.language.iso_code | downcase }}-{{ localization.country.iso_code |  downcase}}">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="block relative">
+        <label for="MobileNavSearch" class="visually-hidden">Search</label>
+        <input
+          id="MobileNavSearch"
+          class="mobile-nav-search__input p2 leading-[22px] block w-full py-xs pl-[52px] pr-lg rounded-[24px] border border-gray bg-white placeholder:p2 placeholder:text-gray"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          {%- if settings.predictive_search_enabled -%}
+            role="combobox"
+            aria-expanded="false"
+            aria-owns="predictive-search-results-list"
+            aria-controls="predictive-search-results-list"
+            aria-haspopup="listbox"
+            aria-autocomplete="list"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          {%- endif -%}
+          placeholder="Search"
+        >
+        <input name="options[prefix]" type="hidden" value="last">
+        <div class="block absolute left-8 w-[36px] top-1/2 -translate-y-1/2">{{ 'icon-search.svg' | inline_asset_content }}</div>
+        <button type="button" class="block absolute right-12 w-[20px] top-1/2 -translate-y-1/2 leading-[0] hidden" js-clear>{{ 'icon-close.svg' | inline_asset_content }}</button>
+        <button type="submit" class="desktop-search__submit btn hidden" js-search-submit></button>
+      </form>
+      <div class="mobile-nav-search__results-container hidden absolute w-full px-md pt-md left-0 top-[122px] bottom-[61px] bg-white" tabindex="-1">
+        {% if settings.popular_searches != blank %}
+          <div class="mobile-nav-search__popular-searches h-full max-h-full overflow-y-auto pt-xs pb-md" js-popular-searches>
+            {% render 'predictive-search--popular-searches' popular_searches_linklist: linklists[settings.popular_searches] %}
+          </div>
+        {% endif %}
+        <div class="mobile-nav-search__results hidden h-full" js-predictive-search-results></div>
+      </div>
+    </predictive-search>
+    <ul class="mobile-nav__main-nav p-md flex-1 max-h-full overflow-y-auto flex flex-col gap-xs text-18">
+      {% assign nav_linklist = linklists[section.settings.header_nav_desktop] %}
+      {% for link in nav_linklist.links %}
+        {% if link.links != blank %}
+          <li class="mobile-main-nav__item">
+            <button class="mobile-main-nav__child-nav-trigger w-full flex justify-between items-center gap-md" data-target="MobileChildNav-{{ link.handle }}" js-mobile-subnav-trigger>
+              <span>{{ link.title }}</span>
+              <span class="w-[42px]">{{ 'icon-active-right.svg' | inline_asset_content }}</span>
+            </button>
+          </li>
+        {% else %}
+          <li class="mobile-main-nav__item">
+            <a href="{{ link.url }}" class="mobile-main-nav__link link block w-full py-xxs leading-[24px]" aria-label="{{ link.title }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="mobile-nav__footer border-t border-blue-light px-md py-xs grid grid-cols-2">
+      {% if customer %}
+        <a href="{{ routes.account_url }}" class="mobile-nav__account flex justify-start items-center gap-xxxs">
+          <span class="w-36">{{ 'icon-account.svg' | inline_asset_content }}</span>
+          <span class="text-12">{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
+        </a>
+      {% elsif shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+        <a href="https://store.xecurify.com/moas/broker/login/shopify/www.blueair.com/account?idpname=custom_idp_ZIO" class="mobile-nav__account flex justify-start items-center gap-xxxs">
+      {% else %}
+        <a href="{{ settings.mobile_drawer_login_link_url | default: routes.account_login_url }}" class="mobile-nav__account flex justify-start items-center gap-xxxs">
+          <span class="w-36">{{ 'icon-account.svg' | inline_asset_content }}</span>
+          <span class="text-12">{% if customer %}Account{% else %}Sign In / Join{% endif %}</span>
+        </a>
+      {% endif %}
+
+      <div class="mobile-nav__county-select">
+        <div class="country-select__label flex gap-xxxs justify-start items-center" js-open-country-market-selector-modal>
+          <div class="icon-globe w-32">{{ 'icon-globe.svg' | inline_asset_content }}</div>
+          <div class="country-name text-12 flex-1">
+            {% if localization.country.market.handle == "europe" %}
+              Europe
+            {% elsif localization.country.name == 'Hong Kong SAR' %}
+              Hong Kong/Macau
+            {% else %}
+              {{ localization.country.name }}
+            {% endif %}
+          </div>
+        </div>  
+        {% comment %} {% render 'country-select' scope: 'MobileNav' %}  {% endcomment %}
+      </div>
+    </div>
+
+    {% for link in nav_linklist.links %}
+      {% if link.links != blank %}
+        <div id="MobileChildNav-{{ link.handle }}" class="mobile-nav__child-nav absolute top-0 bottom-[61px] left-0 right-0 z-[1] bg-white -translate-x-full transition-transform duration-300 ease-in-out pointer-events-none flex flex-col" data-active="false" js-mobile-subnav>
+          <div class="mobile-child-nav__header border-b border-blue-light flex justify-between items-center px-md py-xs">
+            <button class="w-[42px]" js-mobile-subnav-close>{{ 'icon-active-left.svg' | inline_asset_content }}</button>
+            <span class="font-700">{{ link.title }}</span>
+            <button class="mobile-nav__close w-[42px]" js-close-mobile-nav>{{ 'icon-nav-close.svg' | inline_asset_content }}</button>
+          </div>
+          <div class="mobile-child-nav__links-container flex-1 max-h-full overflow-y-auto">
+            {% for child_link in link.links %}
+              {% assign child_link_handle = child_link.title | handle %}
+              {% if child_link_handle == 'image-links' %}
+                <ul class="mobile-child-nav__image-links p-md flex flex-nowrap gap-xs overflow-x-auto">
+                  {% for grandchild_link in child_link.links %}
+                    <li class="mobile-child-nav__item">
+                      <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link mobile-child-nav__link--image block" aria-label="{{ link.title }} Nav Tile {{ forloop.index }}">
+                        {% assign image_link_title = grandchild_link.title %}
+                        <div class="w-[124px] min-w-[124px] relative">
+                          {% if grandchild_link.title contains '|' %}
+                            {% assign image_link_title_split = grandchild_link.title | split: '|' %}
+                            {% assign image_link_title = image_link_title_split[0] | strip %}
+                            {% assign image_file_mobile = image_link_title_split[1] | strip %}
+                            {% assign image_object_mobile = images[image_file_mobile] %}
+                            {% render 'lazy-image', image: image_object_mobile %}
+                          {% elsif grandchild_link.object.metafields.seed.nav_link_image_mobile != blank %}
+                            {% render 'lazy-image', image: grandchild_link.object.metafields.seed.nav_link_image_mobile %}
+                          {% endif %}
+
+                          {% if grandchild_link.object.metafields.seed.nav_link_tag!= blank %}
+                            <div class="absolute top-xxs left-xxs text-12 leading-[12px] font-500 bg-[#D6E4F3] rounded-[60px] py-xxxs px-xxs">
+                              {{ grandchild_link.object.metafields.seed.nav_link_tag }}
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class="font-700 mt-xxs">
+                          {{ image_link_title }}
+                        </div>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+
+            {% for child_link in link.links %}
+              {% assign child_link_handle = child_link.title | handle %}
+              {% if child_link_handle == 'quiz' %}
+                {% if settings.quiz_link_url != blank and settings.quiz_link_text != blank %}
+                  <div class="mobile-child-nav__quiz p-md">
+                    {% if settings.quiz_image != blank %}
+                      <div class="mobile-child-nav__quiz-image mb-xs">
+                        {% render 'lazy-image' image: settings.quiz_image %}
+                      </div>
+                    {% endif %}
+                    {% if settings.quiz_text != blank %}
+                      <div class="mobile-child-nav__quiz-text text-16 font-700 mb-xs">{{ settings.quiz_text }}</div>
+                    {% endif %}
+                    <a href="{{ settings.quiz_link_url }}" class="mobile-child-nav__quiz-link btn">
+                      <span class="btn__text">{{ settings.quiz_link_text }}</span>
+                      <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
+                    </a>
+                  </div>
+                {% endif %}
+              {% elsif child_link_handle == 'app' %}
+                {% if settings.app_store_url_mobile != blank or settings.google_play_url_mobile != blank %}
+                  <div class="mobile-child-nav__app py-md mx-md border-t border-blue-light">
+                    <div>Download the Blueair App</div>
+                    <div class="mobile-child-nav__app-links flex justify-start gap-xs mt-xs">
+                      {% if settings.app_store_url_mobile != blank %}
+                        <a href="{{ settings.app_store_url_mobile }}" target="_blank" rel="noopener noreferrer" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
+                          <img src="{{ 'app-store--black.png' | asset_url }}" class="block w-auto h-[38px]" />
+                        </a>
+                      {% endif %}
+                      {% if settings.google_play_url_mobile != blank %}
+                        <a href="{{ settings.google_play_url_mobile }}" target="_blank" rel="noopener noreferrer" class="mobile-child-nav__app-link mobile-child-nav__app-link--mobile">
+                          <img src="{{ 'google-play--black.png' | asset_url }}" class="block w-auto h-[38px]" />
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% else %}
+
+                {% assign child_link_title_downcase = child_link.title | downcase %}
+                {% unless child_link_title_downcase == "image links" %}
+                  {% if child_link.links != blank %}
+                    <div class="mobile-child-nav__links-wrapper mx-md py-md border-t border-blue-light">
+                      <div class="font-700 mb-xs">{{ child_link.title }}</div>
+                      <ul class="mobile-child-nav__links">
+                        {% for grandchild_link in child_link.links %}
+                          <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
+                            <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}">
+                              {% if child_link_handle contains 'room-size' %}
+                                {% if grandchild_link.url contains 'extralarge' %}
+                                  {% render 'room-icon', size: 'extralarge', width: '18px' %}
+                                {% elsif grandchild_link.url contains 'large' %}
+                                  {% render 'room-icon', size: 'large', width: '18px' %}
+                                {% elsif grandchild_link.url contains 'medium' %}
+                                  {% render 'room-icon', size: 'medium', width: '18px' %}
+                                {% elsif grandchild_link.url contains 'small' %}
+                                  {% render 'room-icon', size: 'small', width: '18px' %}
+                                {% endif %}
+                              {% endif %}
+                              <div class="mobile-nav__title-container flex justify-start items-center">
+                                <span>{{ grandchild_link.title }}</span>
+                                {% if grandchild_link.object.metafields.seed.megamenu_bubble_text != blank %}
+                                  <span class="megamenu__bubble p-xxs rounded-[30px] text-body ml-xxs {% if grandchild_link.object.metafields.seed.megamenu_bubble_color == 'dark blue' %}bg-blue text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'regular blue' %}bg-blue-medium text-white{% elsif grandchild_link.object.metafields.seed.megamenu_bubble_color ==  'white' %}bg-white text-black{% else %}{% endif %}"> {{ grandchild_link.object.metafields.seed.megamenu_bubble_text }} </span>
+                                {% endif %}
+                              </div>
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% else %}
+                    <div class="mobile-child-nav__item mx-md border-t border-blue-light">
+                      <a href="{{ child_link.url }}" class="mobile-child-nav__link link text-18 block my-md w-fit" aria-label="{{ link.title }}">
+                        {% if settings.bcorp_link_url == child_link.url %}
+                          <div class="mobile-child-nav__bcorp-link">{{ 'icon-b-default.svg' | inline_asset_content }}</div>
+                        {% else %}
+                          {{ child_link.title }}
+                        {% endif %}
+                      </a>
+                    </div>
+                  {% endif %}
+                {% endunless %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</s-drawer>

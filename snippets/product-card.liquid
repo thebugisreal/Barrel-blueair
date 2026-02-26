@@ -1,0 +1,362 @@
+{% liquid
+  assign current_variant = product.variants[0]
+  assign color_option = false
+  assign filter_type_option = false
+  assign refurbished_air_purifiers = false
+  assign related_tag_color = blank
+  
+  if product.options_by_name['color'] != blank
+    assign color_option = product.options_by_name['color'].position | minus: 1
+  elsif product.metafields.seed.product_card_filter_products != blank
+    assign filter_type_option = true
+  endif
+  
+  for tag in product.tags
+    if tag contains 'product-family-color:'
+      assign related_tag_color = tag
+    endif
+  endfor
+
+  if shop.permanent_domain == '5ef43d-4a.myshopify.com'  
+  assign transactional_countries = 'US,CA' | split: ',' 
+  assign is_transactional = false 
+  assign current_country = localization.country.iso_code | upcase 
+  for country in transactional_countries 
+      if country == current_country 
+        assign is_transactional = true 
+        break 
+      endif 
+    endfor 
+  elsif shop.permanent_domain == 'blueeudev.myshopify.com' 
+    assign transactional_countries = 'DE' | split: ',' 
+    assign is_transactional = false 
+    assign current_country = localization.country.iso_code | upcase 
+    for country in transactional_countries 
+        if country == current_country 
+          assign is_transactional = true 
+          break 
+        endif 
+      endfor 
+  elsif shop.permanent_domain == 'uk-blueair.myshopify.com' 
+    assign transactional_countries = 'GB' | split: ',' 
+    assign is_transactional = false 
+    assign current_country = localization.country.iso_code | upcase 
+    for country in transactional_countries 
+        if country == current_country 
+          assign is_transactional = true 
+          break 
+        endif 
+      endfor 
+  endif 
+  
+  if is_transactional 
+    assign hide_price_and_tag = false
+  else
+    assign hide_price_and_tag = true
+  endif
+
+  if is_transactional
+    if product.metafields.seed.blair_dimensions != blank
+      assign blair_dimensions = product.metafields.seed.blair_dimensions
+    endif
+  else
+    if product.metafields.seed.dimensions_hxwxd_international != blank
+      assign blair_dimensions = product.metafields.seed.dimensions_hxwxd_international
+    else
+      if product.metafields.seed.blair_dimensions != blank
+        assign blair_dimensions = product.metafields.seed.blair_dimensions
+      endif
+    endif
+  endif
+
+  if is_transactional
+    if product.metafields.seed.blair_productSpecification_weight != blank
+      assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight
+    endif
+  else
+    if product.metafields.seed.blair_productSpecification_weight_international != blank
+      assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight_international
+    else
+      if product.metafields.seed.blair_productSpecification_weight != blank
+        assign blair_productSpecification_weight = product.metafields.seed.blair_productSpecification_weight
+      endif
+    endif
+  endif
+
+  if is_transactional
+    if product.metafields.seed.blair_energyConsumption != blank
+      assign blair_energyConsumption = product.metafields.seed.blair_energyConsumption
+    endif
+  else
+    if product.metafields.seed.blair_energyConsumption_international != blank
+      assign blair_energyConsumption = product.metafields.seed.blair_energyConsumption_international
+    else
+      if product.metafields.seed.blair_energyConsumption != blank
+        assign blair_energyConsumption = product.metafields.seed.blair_energyConsumption
+      endif
+    endif
+  endif
+
+  if product.type == 'refurbished-air-purifiers'
+    assign refurbished_air_purifiers = true
+  endif
+
+  assign is_preorder = false
+  if product.tags contains "purple-dot-has-variant-on-preorder" 
+    assign is_preorder = true
+  endif
+
+  assign related_tag_scent = ''
+  for tag in product.tags
+    if tag contains 'product-family-scent:'
+      assign related_tag_scent = tag
+      break
+    endif
+  endfor
+%}
+
+<product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
+  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link aria-label="Shop {{ product.title }}" js-populate-image>
+    {% comment %} Product Card Top Tag {% endcomment %}
+     {% if product.metafields.seed.product_card_top_tags != blank %}
+      <div class="product-card__top-tag absolute top-sm left-sm">
+        <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xxxs gap-y-xxs flex-wrap">
+          {% for tag in product.metafields.seed.product_card_top_tags.value %}
+            <span class="product-card__tag product-card__tag--dark-blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% comment %} Product Card Top Tag {% endcomment %}
+    {% if color_option != false %}
+      {% for variant in product.variants %}
+        <div class="product-card__image aspect-square {% unless variant.options[color_option] == current_variant.options[color_option] %}hidden{% endunless %}" data-swatch="{{ variant.options[color_option] }}" js-product-card-image>
+          {% assign image = variant.featured_image | default: product.featured_image %}
+          {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+        </div>
+      {% endfor %}
+    {% elsif filter_type_option != false %}
+      {% comment %} Filter Swatch Images {% endcomment %}
+      {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
+        <div class="product-card__image aspect-square {% unless swatch_product.variants[0].title == current_variant.title %}hidden{% endunless %}" data-swatch="{{ swatch_product.variants[0].title }}" js-product-card-image>
+          {% assign image = swatch_product.metafields.seed.product_card_image | default: swatch_product.featured_image %}
+          {% render 'lazy-image' image: image img_classes:'object-contain w-full h-full' picture_classes: 'h-full'%}
+        </div>
+      {% endfor %}
+    {% elsif related_tag_color != blank %}
+      {% if related_tag_scent != blank %}
+        <div class="product-card__scent-images block w-full" js-product-card-scent-image-container>
+          <div class="product-card__image aspect-square" data-handle="{{ product.handle }}" js-product-card-image>
+            {% if product.metafields.seed.product_card_image != blank %}
+              {% render 'lazy-image' image: product.metafields.seed.product_card_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+            {% else %}
+              {% render 'lazy-image' image: product.featured_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        {% for color in product.metafields.shopify['color-pattern'].value limit: 1 %}
+          {% assign main_color_name = color.label %}
+        {% endfor %}
+        <div class="product-card__image aspect-square" data-swatch='{{ main_color_name }}' js-product-card-image js-product-card-main-image>
+          {% if product.metafields.seed.product_card_image != blank %}
+            {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+          {% else %}
+            {% render 'lazy-image' image: product.featured_image %}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% elsif related_tag_scent != blank %}
+      <div class="product-card__scent-images block w-full" js-product-card-scent-image-container>
+        <div class="product-card__image aspect-square" data-handle="{{ product.handle }}" js-product-card-image>
+          {% if product.metafields.seed.product_card_image != blank %}
+            {% render 'lazy-image' image: product.metafields.seed.product_card_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+          {% else %}
+            {% render 'lazy-image' image: product.featured_image img_classes:'object-contain w-full h-full' picture_classes:'h-full' %}
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <div class="product-card__image aspect-square">
+        {% if product.metafields.seed.product_card_image != blank %}
+          {% render 'lazy-image' image: product.metafields.seed.product_card_image %}
+        {% else %}
+          {% render 'lazy-image' image: product.featured_image %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </a>
+  <div class="product-card__info px-sm py-md desktop:p-md">
+    <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xs gap-y-xxs flex-wrap {% if hide_price_and_tag %}!hidden{% endif %}">
+    {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+      <span class="product-card__tag product-card__tag--gray bg-gray {% if current_variant.available or true %}hidden{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]" js-product-card-sold-out-tag>{% if is_preorder == true %} Pre-order {% else %} Out of Stock {% endif %}</span>
+    {% endif %}
+      {% if is_transactional %}
+        {% if localization.country.iso_code == 'CA' %}
+          {% if product.metafields.seed.product_tags_canada != blank %}
+            {% for tag in product.metafields.seed.product_tags_canada.value %}
+              <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style_canada == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+        {% else %}
+          {% for tag in product.metafields.seed.product_tags.value %}
+            <span class="product-card__tag {% if product.metafields.seed.product_card_tag_style == 'White fill' %}product-card__tag--white{% else %}product-card__tag--blue{% endif %} text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="product-card__title-layout flex gap-sm justify-between">
+      <div class="product-card__title-container flex-1">
+        <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__title s1 block !no-underline" js-product-link>
+          {% render 'product-title-intl', product: product %}
+        </a>
+        {% if filter_type_option != false %}
+          <div class="text-20"><span js-product-card-current-swatch-label>{{ product.variants[0].title }}</span><span> Filter</span></div>
+        {% endif %}
+      </div>
+      {% if product.metafields.seed.product_card_filter_image != blank %}
+        <div class="product-card__filter-swatch-image w-[72px] h-[72px]">
+          {% render 'lazy-image' image: product.metafields.seed.product_card_filter_image, picture_classes: 'rounded-full overflow-hidden' %}
+        </div>
+      {% endif %}
+    </div>
+
+    
+    {% if product.metafields.seed.blair_plpShortDescription != blank %}
+      <div class="product-card__short-description p2 mt-xxxs">{{ product.metafields.seed.blair_plpShortDescription }}</div>
+    {% endif %}
+
+    {% if color_option != false %}
+      <div class="product-card__swatches-container mt-sm">
+        <div class="product-card__current-swatch font-700">
+          <span>Color: </span>
+          <span js-product-card-current-swatch-label>{{ current_variant.options[color_option] }}</span>
+        </div>
+        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs">
+          {% assign swatch_objects = product.metafields.seed.swatches.value %}
+          {% for variant in product.variants %}
+            {% assign swatch_object = swatch_objects | where: "name", variant.options[color_option] | first %}
+            <button class="product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full"
+              data-swatch="{{ variant.options[color_option] }}"
+              data-available="{{ variant.available }}"
+              data-price="{{ variant.compare_at_price }}|{{ variant.price }}" 
+              data-selected="{% if variant.options[color_option] == current_variant.options[color_option] %}true{% else %}false{% endif %}"
+              data-url="{{ variant.url }}"
+              title="{{ variant.options[color_option] }}"
+              js-product-card-swatch>
+              <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: {{ swatch_object.color }};">
+                {% if swatch_object.image != blank %}
+                  <img src="{{ swatch_object.image.value | img_url: '36x'}}" alt="{{ variant.options[color_option] }}" class="block h-full w-full">
+                {% endif %}
+              </div>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% elsif filter_type_option != false %}
+      <div class="product-card__swatches-container mt-sm">
+        <p class="font-700">Choose from various filter types</p>
+        <div class="product-card__swatches flex flex-wrap gap-sm mt-xxs">
+          {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
+            <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
+              data-swatch="{{ swatch_product.variants[0].title }}"  
+              data-available="{{ swatch_product.available }}"
+              data-price="{{ swatch_product.variants[0].compare_at_price }}|{{ swatch_product.variants[0].price }}" 
+              data-url="{{ swatch_product.url }}"
+              data-selected="{% if swatch_product.variants[0].title == product.variants[0].title %}true{% else %}false{% endif %}"
+              js-product-card-filter-swatch>
+              <span class="product-card-swatch__checkbox flex justify-center items-center w-[16px] h-[16px] bg-white border border-gray">
+                <span class="product-card-swatch__checkbox-fill w-[10px] h-[10px]"></span>
+              </span>
+              <span class="font-700">{{ swatch_product.variants[0].title}}</span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% elsif product.metafields.shopify.color-pattern != blank and related_tag_scent != blank %}
+      <div class="product-card__related-scent-container mt-sm mb-sm">
+        {% for color in product.metafields.shopify.color-pattern.value %}
+          <div class="product-card__related-scent">
+            <span class="product-card__related-scent-label block font-700 p3 text-blue mb-xxs">Aroma: <span js-product-card-current-swatch-label>{{ color.label }}</span></span>
+            <div class="product-card__related-scents flex flex-wrap gap-xxs mt-xxs"
+              data-handle="{{product.handle}}"
+              data-collection="{{related_tag_scent}}"
+              data-option="scent"
+              js-product-option-swatches-container>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% elsif product.metafields.seed.swatches != blank %}
+      <div class="product-card__swatches-container mt-sm">
+        <div class="product-card__current-swatch font-700">
+          <span>Color: </span>
+          <span js-product-card-current-swatch-label>{{ product.title | split: '™ ' | last | split: ' ' | last }}</span>
+        </div>
+        <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs" {% if related_tag_color != blank %} data-swatch-family="{{ related_tag_color }}" data-default-color="{{ product.colorTitle }}" js-populate-swatch {% endif %}>
+
+        </div>
+      </div>
+    {% endif %}
+      
+    <div class="product-card__price-wrapper text-16 mt-md flex justify-start items-center gap-sm {% if hide_price_and_tag %}!hidden{% endif %}" js-product-card-price>
+      {% if current_variant.compare_at_price > current_variant.price %}
+        <s class="product-card__price product-card__price--compare">{{ current_variant.compare_at_price | money }}</s>
+        <span class="product-card__price product-card__price--current font-700">{{ current_variant.price | money }}</span>
+      {% else %}
+        <span class="product-card__price product-card__price--current font-700">{{ current_variant.price | money }}</span>
+      {% endif %}
+    </div>
+
+    {% if refurbished_air_purifiers %}
+      <div class="product-card__atc-wrapper mt-md">
+        <button class="product-card__atc btn btn--blue-rounded relative" {% unless current_variant.available %}disabled{% endunless %} data-variant-id="{{ product.selected_or_first_available_variant.id }}" data-variant-compare-at-price="{{ product.selected_or_first_available_variant.compare_at_price }}" js-quick-add>
+          <div class="btn__text whitespace-nowrap">
+            <span js-atc-text data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}" data-out-of-stock-text="{{'products.product.sold_out' | t }}">
+              {% if current_variant.available %}
+                {{ 'products.product.add_to_cart' | t }}
+              {% else %}
+                {{'products.product.sold_out' | t }}
+              {% endif %}
+            </span>
+          </div>
+          <div class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</div>
+        </button>
+      </div>
+    {% endif %}
+
+    {% if collection.template_suffix == 'compare' %}
+      <div class="text-12 mt-sm flex items-center gap-sm">
+        <input type="checkbox" id="enableProductCompare-{{ product.id }}" data-product-id="{{ product.id }}" js-product-compare-checkbox>
+        <label for="enableProductCompare-{{ product.id }}"> Compare </label>
+      </div>
+      <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-product>{{ all_products[product.handle] | json }}</script>
+
+      <script type="application/json" id="ProductCompareIndoJSON-{{ product.id }}" js-product-compare-info>
+          { 
+            {% if product.metafields.seed.product_card_image != blank %}
+              "product_card_image": "{{ product.metafields.seed.product_card_image.value.src |  image_url: width: '1920px'}}",
+            {% endif %}
+            "blair_recommendedRoomSize": "{{ product.metafields.seed.blair_recommendedRoomSize | escape | default: '-'}}",
+            "blair_dimensions":"{{ blair_dimensions | escape | default: '-' }}",
+            "blair_productSpecification_weight":"{{ blair_productSpecification_weight | escape | default: '-' }}",
+            "blair_wifi":"{{ product.metafields.seed.blair_wifi | escape | default: '-'}}",
+            "blair_energyConsumption":"{{ product.metafields.seed.blair_energyConsumption | escape | default: '-'}}",
+            "blair_productSpecification_soundlevel":"{{ product.metafields.seed.blair_productSpecification_soundlevel | escape | default: '-'}}",
+            "blair_productSpecification_airchanges":"{{ product.metafields.seed.blair_productSpecification_airchanges | escape | default: '-'}}",
+            "blair_CADR_pollen":"{{ product.metafields.seed.blair_CADR_pollen | escape | default: '-'}}",
+            "blair_CADR_dust":"{{ product.metafields.seed.blair_CADR_dust | escape | default: '-' }}",
+            "blair_CADR_smoke":"{{ product.metafields.seed.blair_CADR_smoke | escape | default: '-'}}",
+            "blair_airSensor":"{{ product.metafields.seed.blair_airSensor | escape | default: '-' }}",
+            "filter_replacement_indicator":"{{ product.metafields.seed.filter_replacement_indicator | escape | default: '-'}}",
+            "on_off_timer":"{{ product.metafields.seed.on_off_timer | escape | default: '-'}}",
+            "blair_productSpecification_fanspeed":"{{ product.metafields.seed.blair_productSpecification_fanspeed |  metafield_text | default: '-'}}",
+            "wheels":"{{ product.metafields.seed.wheels | escape | default: '-'}}",
+            "max_room_size":"{{ product.metafields.seed.max_room_size | escape | default: '-'}}"
+          }
+      </script>
+    {% endif %}
+  </div>
+</product-card>
+
