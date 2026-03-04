@@ -10,7 +10,7 @@ class CompareGrid extends HTMLElement {
 
     this._labelsObserver = null;
   }
-  
+
     connectedCallback() {
       this.atcBtn = this.querySelector(this.selectors.atcBtn)
       this.moneyFormat = `${window.currency.symbol || "$"}{{amount}}`;
@@ -64,7 +64,7 @@ class CompareGrid extends HTMLElement {
   }
 
   _handeleHeightChange() {
-    // Adjusting Height 
+    // Adjusting Height
     let maxHeight = 0;
     const compareProductTitles = document.querySelectorAll('[js-compare-product-title]');
     compareProductTitles.forEach(title => {
@@ -291,3 +291,5 @@ class CompareGrid extends HTMLElement {
     return compareItemTitleContainer;
   }
 }
+
+export default CompareGrid;

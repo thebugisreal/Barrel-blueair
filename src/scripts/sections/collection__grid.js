@@ -1,10 +1,10 @@
 /**
  * Main Collection Section Logic (filter and sorting)
  * ------------------------------------------------------------------------
- * @summary ajax-based js logic on top of filter-sort form. Filtering and 
+ * @summary ajax-based js logic on top of filter-sort form. Filtering and
  * sorting works natively without any js which means it's all handled server
- * side, js just makes it dynamic. 
- * 
+ * side, js just makes it dynamic.
+ *
  * How works: everytime an input is changed inside the filter-sort forms,
  * an event is fired ('filter:changed'), <main-collection> listens for that
  * event and then fetches the new section from the server. CollectionGrid then
@@ -87,7 +87,7 @@ class CollectionGrid extends HTMLElement {
       }
       this.breadcrumbData.breadcrumbs.push(data);
     }
-    
+
     if (this.desktopFilters.dataset.opened == 'false') {
       this.breadcrumbData.desktopFiltersOpened = false;
     } else {
@@ -95,7 +95,7 @@ class CollectionGrid extends HTMLElement {
     }
 
     sessionStorage.setItem('collectionBreadcrumb', JSON.stringify(this.breadcrumbData));
-    
+
     location.href = evt.currentTarget.href;
   }
 
@@ -108,7 +108,7 @@ class CollectionGrid extends HTMLElement {
       };
       return;
     }
-    
+
     let breadcrumbMarkup = '';
     this.breadcrumbData = JSON.parse(savedBreadcrumb);
     this.breadcrumbData.breadcrumbs.forEach((data) => {
@@ -183,16 +183,16 @@ class CollectionGrid extends HTMLElement {
       const parsedHTML = await this._getProducts(pageUrl);
       const newProducts = parsedHTML.querySelector(this._selectors.productGrid).innerHTML;
       const newShowMoreBtn = parsedHTML.querySelector(this._selectors.showMoreBtn);
-      
+
       this.productGrid.insertAdjacentHTML('beforeend', newProducts);
-      
+
       if (newShowMoreBtn) {
         this.showMoreBtn.setAttribute('data-url', newShowMoreBtn.dataset.url);
         this.showMoreBtn.blur();
       } else {
         this.showMoreBtn.remove();
       }
-      
+
       this.loader.removeAttribute('loading');
     };
 
@@ -218,3 +218,5 @@ class CollectionGrid extends HTMLElement {
     this._handleSortTrigger();
   }
 }
+
+export default CollectionGrid;

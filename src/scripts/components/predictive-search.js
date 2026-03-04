@@ -48,7 +48,7 @@ class PredictiveSearch extends HTMLElement {
       this.popularSearches?.classList.remove('hidden');
       this.clearBtn.classList.add('hidden');
       this.predictiveSearchResults.classList.add('hidden');
-      
+
       return;
     }
 
@@ -80,7 +80,7 @@ class PredictiveSearch extends HTMLElement {
         this.predictiveSearchResults.innerHTML = resultsMarkup;
 
         const searchText = document.querySelector('[js-search-term]')
-    
+
         if (searchText) {
           searchText.textContent = searchTerm
         }
@@ -121,3 +121,5 @@ class PredictiveSearch extends HTMLElement {
     this.dataset.open = 'false';
   }
 }
+
+export default PredictiveSearch;

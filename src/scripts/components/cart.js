@@ -74,7 +74,7 @@ class CartItems extends HTMLElement {
       }
       if(item.properties['_isGWP']) {
         let giftObject = {};
-        
+
         giftObject.isGWP = item.properties['_isGWP'];
         giftObject.parentProductId = item.properties['_parentProductId'];
         giftObject.giftId = item.properties['_giftId'];
@@ -86,7 +86,7 @@ class CartItems extends HTMLElement {
 
 
     const missingGifts = hasGwpList.filter((expected) => {
-      return !isGwpList.some(actual => 
+      return !isGwpList.some(actual =>
         parseInt(actual.giftId) === expected.gwpProductId
       );
     });
@@ -96,13 +96,13 @@ class CartItems extends HTMLElement {
       missingGifts.forEach((product) => {
         const gwpData = {
           items: [
-            { 
-              id: product.gwpProductId, 
+            {
+              id: product.gwpProductId,
               quantity: 1,
-              properties: { 
+              properties: {
                 '_isGWP': true,
                 '_parentProductId': product.parentProductId,
-                '_giftId': product.gwpProductId 
+                '_giftId': product.gwpProductId
               }
             }
           ],
@@ -117,7 +117,7 @@ class CartItems extends HTMLElement {
         expected.gwpProductId === parseInt(actual.giftId)
       );
     });
-    
+
     if (orphanedGifts.length > 0) {
       orphanedGifts.forEach((gift) => {
 
@@ -158,7 +158,7 @@ class CartItems extends HTMLElement {
         }
 
         if (cart) cart.renderContents(response);
-        
+
         return response;
       })
       .catch((e) => {
@@ -201,9 +201,9 @@ class CartItems extends HTMLElement {
         itemsToRemove.forEach((item) => {
           updates[item.dataset.key] = 0;
         });
-        const data = { 
-          updates,     
-          sections: document.querySelector('cart-drawer').getSectionsToRender().map((section) => section.id) 
+        const data = {
+          updates,
+          sections: document.querySelector('cart-drawer').getSectionsToRender().map((section) => section.id)
         };
         this._adjustCartItems('update', data);
       }
@@ -375,7 +375,7 @@ class CartItems extends HTMLElement {
 
     const cartItemElements = this.querySelectorAll(`#CartItem-${line} loading-spinner`);
     const cartDrawerItemElements = this.querySelectorAll(`#CartDrawer-Item-${line} loading-spinner`);
-    
+
     [...cartItemElements, ...cartDrawerItemElements].forEach((spinner) => spinner.removeAttribute("loading"));
   }
 
@@ -448,7 +448,7 @@ class CartItems extends HTMLElement {
       }
 
       this.disconnectedCallback();
-      
+
       // Update cart sections directly instead of using onCartUpdate
       this.getSectionsToRender().forEach((section) => {
         const elementToReplace =
@@ -460,10 +460,10 @@ class CartItems extends HTMLElement {
           );
         }
       });
-      
+
       // Reattach event listeners to new DOM elements
       this.connectedCallback();
-      
+
       // Publish cart update event
       theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
     } catch (error) {
@@ -478,7 +478,7 @@ class CartItems extends HTMLElement {
 
     const target = errorType === 'discount_code' ? cartDiscountErrorDiscountCode : cartDiscountErrorShipping;
     cartDiscountError.classList.remove('hidden');
-    target.classList.remove('hidden');   
+    target.classList.remove('hidden');
   }
 
   existingDiscounts = () => {
@@ -493,14 +493,14 @@ class CartItems extends HTMLElement {
   updateCheckoutUrls = () => {
     const discountCodes = this.existingDiscounts();
     const discountParam = discountCodes.length > 0 ? `?discount=${discountCodes.join(',')}` : '';
-    
+
     // Update cart page checkout form
     const cartPageForm = document.getElementById('CartPage-Form');
     if (cartPageForm) {
       const newAction = `${window.routes.cart_url}${discountParam}`;
       cartPageForm.action = newAction;
     }
-    
+
     // Update cart drawer checkout form
     const cartDrawerForm = document.getElementById('CartDrawer-Form');
     if (cartDrawerForm) {
@@ -521,7 +521,7 @@ class CartItems extends HTMLElement {
     // if (index === -1) return;
 
     existingDiscounts.splice(index, 1);
-    
+
     try {
       const response = await fetch(window.Shopify.routes.root + 'cart/update.js', {
         method: 'POST',
@@ -538,7 +538,7 @@ class CartItems extends HTMLElement {
       const data = await response.json();
 
       this.disconnectedCallback();
-      
+
       // Update cart sections directly instead of using onCartUpdate
       this.getSectionsToRender().forEach((section) => {
         const elementToReplace =
@@ -550,13 +550,13 @@ class CartItems extends HTMLElement {
           );
         }
       });
-      
+
       // Reattach event listeners to new DOM elements
       this.connectedCallback();
-      
+
       // Update checkout URLs with discount codes (after DOM update)
       this.updateCheckoutUrls();
-      
+
       // Publish cart update event
       theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'cart-items' });
     } catch (error) {
@@ -602,7 +602,7 @@ class CartDrawer extends HTMLElement {
       sessionStorage.removeItem('noCartWatcherHandle');
       return;
     }
-    
+
     fetch(window.location.href)
       .then((response) => response.text())
       .then((response) => {
@@ -615,7 +615,7 @@ class CartDrawer extends HTMLElement {
           const newContent = section.selector
             ? newDom.querySelector(section.selector)
             : newDom.getElementById(section.id);
-          
+
           if (sectionElement.innerHTML != newContent.innerHTML) {
             sectionElement.innerHTML = newContent.innerHTML
           }
@@ -649,7 +649,7 @@ class CartDrawer extends HTMLElement {
       {
         id: 'cart-count'
       },
-      
+
     ];
   }
 
@@ -662,7 +662,7 @@ class CartDrawer extends HTMLElement {
   }
 
 _updateCartItems = (type, data, render = true) => {
-  this.setActiveElement(document.activeElement); 
+  this.setActiveElement(document.activeElement);
 
   return fetch(window.Shopify.routes.root + `cart/${type}.js`, {
     method: 'POST',
@@ -674,7 +674,7 @@ _updateCartItems = (type, data, render = true) => {
       sessionStorage.setItem('noCartWatcherHandle', 'true');
 
       if (response.status) {
-        this._handleErrorMessage?.(response.description); 
+        this._handleErrorMessage?.(response.description);
         this.subscriptionError = true;
         return response;
       }
@@ -757,7 +757,7 @@ class CartSubscription extends HTMLElement {
     this.loading = this.closest(this._selectors.cartItem).querySelector(this._selectors.loading);
     this.error = this.querySelector(this._selectors.error);
     this.subscriptionData = JSON.parse(this.querySelector(this._selectors.subscriptionData).innerHTML);
-    
+
     this.showErrorFromPdp();
     this.editBtn?.addEventListener('click', this.editBtnOnClick);
     this.checkbox.addEventListener('click', this.checkboxOnClick);
@@ -857,11 +857,11 @@ class CartSubscription extends HTMLElement {
 
           const addData = {
             items: [
-              { 
-                id: this.subscriptionData.preSelectedFilter.id, 
+              {
+                id: this.subscriptionData.preSelectedFilter.id,
                 selling_plan: this.subscriptionData.preSelectedFilter.sellingPlanId,
                 quantity: parseInt(this.subscriptionData.preSelectedFilter.quantity),
-                properties: { 
+                properties: {
                   '_unitSubscriptionTempId': subscriptionTempId,
                   '_Frequency': this.subscriptionData.preSelectedFilter.frequency + ' months',
                   '_frequency_integer': this.subscriptionData.preSelectedFilter.frequency,
@@ -881,7 +881,7 @@ class CartSubscription extends HTMLElement {
         }
       }
     }
-    
+
     init();
   }
 
@@ -935,7 +935,7 @@ class CartSubscription extends HTMLElement {
             if (this.cart) this.cart.renderContents(response);
           }
         }
-        
+
         return response;
       })
       .catch((e) => {
@@ -953,13 +953,13 @@ class CartSubscription extends HTMLElement {
 class CartWatcher {
 
   init(cartInstance) {
-    this.cart = cartInstance; 
+    this.cart = cartInstance;
 
     this.emitCartChanges().then(() => {
       this.observeCartChanges();
     });
   }
-  
+
 
   async fetchCart() {
     const response = await fetch('/cart.js');
@@ -986,3 +986,5 @@ class CartWatcher {
     cartObserver.observe({ entryTypes: ["resource"] });
   }
 }
+
+export { CartRemoveButton, CartItems, CartNote, CartDrawer, CartDrawerItems, CartSubscription };

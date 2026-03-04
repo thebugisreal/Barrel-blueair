@@ -1,8 +1,10 @@
+import FocusableWidget from '../global/focusable-widget.js';
+
 /**
  * Buystack Modal Component
  * --------------------------------------------------------------------
  * @summary Modal component for displaying buystack carousel videos in a phone-like interface
- * 
+ *
  * Features:
  * - Desktop: Fixed bottom-right position with 9:16 aspect ratio (phone-like)
  * - Mobile: Full-screen overlay
@@ -91,7 +93,7 @@ class BuystackModal extends FocusableWidget {
   _setupSlideHandlers(carouselContainer) {
     const slides = carouselContainer.querySelectorAll('[js-buystack-slide]');
 
-    
+
     slides.forEach((slide) => {
       // Click handler
       slide.addEventListener('click', (e) => {
@@ -205,7 +207,7 @@ class BuystackModal extends FocusableWidget {
    */
   _playCurrentVideo() {
     if (!this.swiper) return;
-    
+
     const activeSlide = this.swiper.slides[this.swiper.activeIndex];
     if (!activeSlide) return;
 
@@ -224,7 +226,7 @@ class BuystackModal extends FocusableWidget {
    */
   openAtSlide(slideIndex = 0) {
     this.open();
-    
+
     // Navigate to the specified slide after modal opens
     requestAnimationFrame(() => {
       if (this.swiper) {
@@ -239,7 +241,7 @@ class BuystackModal extends FocusableWidget {
    */
   open() {
     super.open();
-    
+
     // Wait for modal to be visible, then play current video
     requestAnimationFrame(() => {
       this._playCurrentVideo();
@@ -279,7 +281,7 @@ class BuystackModal extends FocusableWidget {
   _setupMainCarouselChain(carouselContainer) {
     // Get reference to main carousel swiper
     const carouselElement = carouselContainer.closest('.pdp-buystack-carousel').querySelector('s-carousel');
-    
+
     if (carouselElement) {
       const waitForSwiper = () => {
         if (carouselElement.carousel) {
@@ -299,7 +301,7 @@ class BuystackModal extends FocusableWidget {
   _initializeVideoChain(carouselContainer) {
     const videos = carouselContainer.querySelectorAll('video[data-video-index]');
     this.videos = Array.from(videos); // Cache video elements
-    
+
     this.videos.forEach((video, videoArrayIndex) => {
       // Listen for video ended event
       video.addEventListener('ended', () => {
@@ -349,7 +351,7 @@ class BuystackModal extends FocusableWidget {
     if (!this.isChainPlaying) return;
 
     const nextVideoIndex = videoArrayIndex + 1;
-    
+
     if (nextVideoIndex < this.videos.length) {
       // Play next video in array
       this.currentVideoIndex = nextVideoIndex;
@@ -381,10 +383,10 @@ class BuystackModal extends FocusableWidget {
   _handleVideoHover(videoArrayIndex) {
     // Pause chain
     this.isChainPlaying = false;
-    
+
     // Pause all videos
     this._pauseAllMainCarouselVideos();
-    
+
     // Play hovered video and update current index
     this.currentVideoIndex = videoArrayIndex;
     this._playVideoByArrayIndex(videoArrayIndex);
@@ -403,20 +405,20 @@ class BuystackModal extends FocusableWidget {
    */
   _handleManualSlideChange() {
     if (!this.mainCarouselSwiper) return;
-    
+
     const newIndex = this.mainCarouselSwiper.activeIndex;
-    
+
     // Pause all videos first
     this._pauseAllMainCarouselVideos();
-    
+
     // Update current index
     this.currentVideoIndex = newIndex;
-    
+
     // Find if current slide has a video and resume chain
-    const currentSlideVideo = this.videos.find(video => 
+    const currentSlideVideo = this.videos.find(video =>
       parseInt(video.dataset.videoIndex, 10) === newIndex
     );
-    
+
     if (currentSlideVideo) {
       const videoArrayIndex = this.videos.indexOf(currentSlideVideo);
       this.currentVideoIndex = videoArrayIndex;
@@ -444,3 +446,5 @@ class BuystackModal extends FocusableWidget {
     this._playVideoByArrayIndex(0);
   }
 }
+
+export default BuystackModal;

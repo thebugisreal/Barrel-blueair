@@ -31,7 +31,7 @@ class FaqPosts extends HTMLElement {
 
     if (this.type == 'tagged') {
       const hiddenPosts = this.querySelectorAll(`${this._selectors.post}.hidden`);
-      const firstFiveHiddenPosts = Array.from(hiddenPosts).slice(0, 5); 
+      const firstFiveHiddenPosts = Array.from(hiddenPosts).slice(0, 5);
       firstFiveHiddenPosts.forEach((post) => {
         post.classList.remove('hidden');
       });
@@ -120,7 +120,7 @@ class FaqSearchResults extends HTMLElement {
       return;
     }
 
-    const firstFiveHiddenArticles = Array.from(hiddenArticles).slice(0, 5); 
+    const firstFiveHiddenArticles = Array.from(hiddenArticles).slice(0, 5);
     firstFiveHiddenArticles.forEach((article) => {
       article.classList.remove('hidden');
     });
@@ -147,3 +147,5 @@ class FaqSearchResults extends HTMLElement {
     }
   }
 }
+
+export { FaqPosts, FaqSearchResults };

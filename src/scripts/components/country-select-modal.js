@@ -1,7 +1,7 @@
 class CountrySelectModal extends HTMLElement {
     constructor() {
       super();
-  
+
       this._selectors = {
         form: '[js-country-form]',
         select: '[js-country-select]',
@@ -12,7 +12,7 @@ class CountrySelectModal extends HTMLElement {
         submitBtn: '[js-localization-submit]'
       }
     }
-  
+
     connectedCallback() {
       this.init()
       this._languagePicker = [
@@ -175,11 +175,11 @@ class CountrySelectModal extends HTMLElement {
         { country: "ZW", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] }
       ]
     }
-  
+
     init() {
       // Handle URL redirects immediately for Safari compatibility
       this._handleUrlRedirects();
-      
+
       this.form = this.querySelector(this._selectors.form);
       this.select = this.querySelector(this._selectors.select);
       this.languageSelect = this.querySelector(this._selectors.languageSelect)
@@ -196,7 +196,7 @@ class CountrySelectModal extends HTMLElement {
         this.selectedLanguage = this.languageSelect.value;
         this.languageSelect.addEventListener('change', this._handleLanguageChange.bind(this));
       }
-  
+
       if (this.submitBtn) {
         this.submitBtn.addEventListener('click', this._submitForm )
       }
@@ -209,24 +209,24 @@ class CountrySelectModal extends HTMLElement {
       // Handle URL path corrections for blueeudev.myshopify.com
       if (window.permanent_domain == `blueeudev.myshopify.com`) {
         const currentPath = window.location.pathname;
-        
+
         // Redirect /de-us/ to /
         if (currentPath.startsWith('/de-us')) {
           const newPath = currentPath.replace('/de-us', '');
           console.log('Redirecting /de-us/ to /:', newPath);
           const newUrl = window.location.origin + newPath;
-          
+
           // Immediate redirect for Safari compatibility
           window.location.replace(newUrl);
           return true; // Indicate redirect happened
         }
-        
+
         // Redirect /en-us/ to /en/
         if (currentPath.startsWith('/en-us')) {
           const newPath = currentPath.replace('/en-us', '/en');
           console.log('Redirecting /en-us/ to /en/:', newPath);
           const newUrl = window.location.origin + newPath;
-          
+
           // Immediate redirect for Safari compatibility
           window.location.replace(newUrl);
           return true; // Indicate redirect happened
@@ -252,7 +252,7 @@ class CountrySelectModal extends HTMLElement {
       // Get current country from the select element
       const currentCountry = this.select ? this.select.value : null;
       console.log('Current country detected:', currentCountry);
-      
+
       if (window.permanent_domain == `blueeudev.myshopify.com`) {
         if (currentCountry == 'US') {
           window.location.href = `https://www.blueair.com`
@@ -317,12 +317,12 @@ class CountrySelectModal extends HTMLElement {
 
     _cleanPathname = () => {
       const pathURL = window.pathURL;
-      
+
       if (!pathURL) return '';
-      
+
       // Using a regex pattern to match the start of the string with two-letter language and country codes
       const pattern = /^\/[a-z]{2}-[a-z]{2}/;
-      
+
       // Check if the pattern is matched
       if (pattern.test(pathURL)) {
         // If matched, use replace() to remove the matched part from the beginning of the pathURL string
@@ -354,7 +354,7 @@ class CountrySelectModal extends HTMLElement {
         } else if (country == 'ca'){
           window.location.href = `${target}/${language}-${country}?manual-redirect=true`
         } else if (country == 'gb'){
-          window.location.href = `${target}?manual-redirect=true` 
+          window.location.href = `${target}?manual-redirect=true`
         } else if (country == 'de' && language == 'de'){
           window.location.href = `${target}?manual-redirect=true`
         } else if (country == 'de' && language == 'en'){
@@ -366,7 +366,7 @@ class CountrySelectModal extends HTMLElement {
         }
       }
     }
-  
+
     _handleCountryChange(e) {
       this.countryLabel.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
       const selectedValue = e.target.options[e.target.selectedIndex].value
@@ -391,7 +391,7 @@ class CountrySelectModal extends HTMLElement {
 
       this.selectedLanguage = this.languageSelect.options[0].value.toLowerCase();
     }
-  
+
     _handleLanguageChange(e) {
       this.languageInput.value = e.target.value
       this.selectedLanguage = e.target.value;
@@ -400,19 +400,21 @@ class CountrySelectModal extends HTMLElement {
         this.languageInputLabel.innerHTML =  e.target.options[e.target.selectedIndex].dataset.endonymName
       }
     }
-  
+
     _removeOptions() {
       this.languageSelect.innerHTML = ''
     }
-  
+
     _createOption(value, label, parent) {
       const option = document.createElement('option');
       option.value = value;
       option.innerText = label;
       option.dataset.endonymName = label
       parent.appendChild(option);
-      
+
       return option
     }
 
   }
+
+export default CountrySelectModal;

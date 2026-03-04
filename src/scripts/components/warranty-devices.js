@@ -87,7 +87,7 @@ class WarrantyDevices extends HTMLElement {
 
   async _serialNumberInputHandler(evt) {
     const serialNumber = evt.target.value.trim();
-    
+
     if (!serialNumber || serialNumber.length < 6) {
       if (this.unitFamilySelect) this.unitFamilySelect.value = '';
       if (this.unitModelSelect) this.unitModelSelect.value = '';
@@ -720,4 +720,6 @@ class WarrantyAPI {
     }
   }
 }
+
+export default WarrantyDevices;
 

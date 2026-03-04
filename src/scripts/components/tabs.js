@@ -76,3 +76,5 @@ class Tabs extends HTMLElement {
   }
 
 }
+
+export default Tabs;

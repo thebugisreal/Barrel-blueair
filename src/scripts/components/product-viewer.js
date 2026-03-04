@@ -1,7 +1,7 @@
 class ProductViewer extends HTMLElement {
     constructor() {
       super();
-  
+
       this.selectors = {
         imageContainer: '[js-360-image-container]',
         imageJSON: '[js-product-viewer-image-json]'
@@ -16,7 +16,7 @@ class ProductViewer extends HTMLElement {
         difference: 0
       }
     }
-  
+
     connectedCallback() {
       this.imageContainer = this.querySelector(this.selectors.imageContainer)
       if (this.querySelector(this.selectors.imageJSON)) {
@@ -103,3 +103,5 @@ class ProductViewer extends HTMLElement {
     };
 
   }
+
+export default ProductViewer;

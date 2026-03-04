@@ -65,7 +65,10 @@ jobs:
           git commit -m "Auto-build: Build assets for production" || echo "No changes to commit"
 
       - name: Push to main
-        run: git push origin main
+        if: steps.check_src.outputs.needs_build == 'true'
+        run: |
+          echo "📤 Pushing build assets to main..."
+          git push origin main
 
   merge-main-to-live:
     runs-on: ubuntu-latest
@@ -83,6 +86,13 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
+
+      - name: Fetch latest main branch
+        run: |
+          echo "🔄 Fetching latest main branch (including build commit)..."
+          git fetch origin main
+          git log origin/main -3 --oneline
+          echo "✅ Latest main branch fetched"
 
       - name: Merge main to live branch
         run: |

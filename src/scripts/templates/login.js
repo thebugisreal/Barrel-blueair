@@ -11,3 +11,5 @@ class Login extends HTMLElement {
     this.login = this.querySelector(this._selectors.login);
   }
 }
+
+export default Login;

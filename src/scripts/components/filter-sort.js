@@ -83,7 +83,7 @@ class FilterSort extends HTMLElement {
     if (searchParams === FilterSort.searchParamsPrev) return;
     this._propagateChange(searchParams, false)
     // change didn't come from submit, so reset field
-    this._onSubmitHandlerEvent = null; 
+    this._onSubmitHandlerEvent = null;
   }
 
   async _propagateChange(searchParams, updateURLHash = true) {
@@ -96,7 +96,7 @@ class FilterSort extends HTMLElement {
     }))
     this._renderComponent(parsedHTML) // re-render myself
     if (updateURLHash){
-      history.pushState({ searchParams }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);      
+      history.pushState({ searchParams }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
     };
     this._loader.removeAttribute('loading', '');
   }
@@ -122,3 +122,5 @@ class FilterSort extends HTMLElement {
 // Class variables
 FilterSort.searchParamsInitial = window.location.search.slice(1);
 FilterSort.searchParamsPrev = window.location.search.slice(1);
+
+export default FilterSort;

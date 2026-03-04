@@ -3,7 +3,7 @@ class ImageCaptionModal extends HTMLElement {
     constructor() {
       super();
     }
-  
+
     connectedCallback() {
       this.selectors = {
         modalOpen:'[js-modal-open]',
@@ -18,8 +18,8 @@ class ImageCaptionModal extends HTMLElement {
 
       this._initEventListener()
     }
-  
-  
+
+
     _initEventListener = () => {
       this.modalClose.addEventListener('click', this._handleCloseClick.bind(this))
       this.modalOpen.addEventListener('click', this._handleOpenClick.bind(this))
@@ -28,7 +28,7 @@ class ImageCaptionModal extends HTMLElement {
     }
 
     _handleOpenClick(e) {
-  
+
       this.modalBody.classList.add('fadeIn')
       this.modalBody.classList.remove('fadeOut')
 
@@ -65,3 +65,5 @@ class ImageCaptionModal extends HTMLElement {
       this.style.height='48px';
     }
   }
+
+export default ImageCaptionModal;

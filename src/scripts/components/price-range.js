@@ -31,3 +31,5 @@ class PriceRange extends HTMLElement {
     if (value > max) input.value = max;
   }
 }
+
+export default PriceRange;

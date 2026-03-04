@@ -65,7 +65,7 @@ class ProductCard extends HTMLElement {
             html.innerHTML = text;
 
             const productJson = html.querySelector('[js-collection-json]')
-            const parsedJson = JSON.parse(productJson.textContent) 
+            const parsedJson = JSON.parse(productJson.textContent)
 
             self._populateSwatches(parsedJson)
         })
@@ -90,7 +90,7 @@ class ProductCard extends HTMLElement {
       if(swatch.color == mainImageData) {
         selected = 'true'
         swatchOrder = 'order-1'
-      } 
+      }
 
       const swatchButton = `<button class="egg order-1 product-card__swatch product-card__swatch--color w-[36px] h-[36px] rounded-full ${swatchOrder}" data-swatch="${ swatch.color }" data-available="${swatch.available}" data-price="${swatch.price}" data-selected="${selected}" data-url="${swatch.url}" title="${swatch.colorTitle}" js-product-card-swatch>
               <div class="block w-full h-full rounded-full overflow-hidden" style="background-color: ;">
@@ -368,7 +368,7 @@ class ProductCard extends HTMLElement {
     evt.preventDefault();
 
     const swatchTarget = evt.currentTarget;
-    
+
     if (swatchTarget.dataset.selected == 'true') {
       return;
     }
@@ -389,7 +389,7 @@ class ProductCard extends HTMLElement {
     evt.preventDefault();
 
     const swatchTarget = evt.currentTarget;
-    
+
     if (swatchTarget.dataset.selected == 'true') {
       return;
     }
@@ -454,3 +454,5 @@ class ProductCard extends HTMLElement {
     ];
   }
 }
+
+export default ProductCard;

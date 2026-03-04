@@ -10,7 +10,7 @@ class Hotspot extends HTMLElement {
 
   connectedCallback() {
     this.triggerBtns = this.querySelectorAll(this._selectors.triggerBtn);
-    
+
     this._audjustDesktopTriggerContentsPosition();
     window.addEventListener('resize', this._audjustDesktopTriggerContentsPosition);
 
@@ -42,7 +42,7 @@ class Hotspot extends HTMLElement {
       const rect = btn.getBoundingClientRect();
       const leftSpace = rect.left;
       const rightSpace = window.innerWidth - rect.right;
-      
+
       if (leftSpace > rightSpace) {
         btn.nextElementSibling.style.right = '58px';
         btn.nextElementSibling.style.left = 'unset';
@@ -68,7 +68,7 @@ class Hotspot extends HTMLElement {
           prevActiveMobileTriggerContent.dataset.active = 'false';
         }
       }
-      
+
       currentTriggerBtn.dataset.active = 'true';
       currentTriggerBtn.parentElement.dataset.active = 'true';
       mobileTriggerContentTarget.dataset.active = 'true';
@@ -79,3 +79,5 @@ class Hotspot extends HTMLElement {
     }
   }
 }
+
+export default Hotspot;

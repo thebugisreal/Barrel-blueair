@@ -372,3 +372,5 @@ class Account extends HTMLElement {
     }
   }
 }
+
+export default Account;

@@ -282,7 +282,7 @@ class FocusableWidget extends HTMLElement {
    */
   _dispatchEvents(globalEvents, elementEvents) {
     globalEvents.forEach(e => document.dispatchEvent(new CustomEvent(e)))
-    if (elementEvents && elementEvents.length) 
+    if (elementEvents && elementEvents.length)
     elementEvents.forEach(e => this.dispatchEvent(new CustomEvent(e)))
   }
 
@@ -404,3 +404,5 @@ class FocusableWidget extends HTMLElement {
     return false;
   }
 }
+
+export default FocusableWidget;

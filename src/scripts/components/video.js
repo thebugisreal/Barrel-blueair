@@ -47,3 +47,5 @@ class Video extends HTMLElement {
     this.dataset.playing = 'false';
   }
 }
+
+export default Video;

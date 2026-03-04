@@ -1,16 +1,16 @@
 /**
  * Product Options Component
  * --------------------------------------------------------------------------------
- * @summary Component for handling variant selection through product's options. 
- * Fires events when a variant changes, and keeps a master variant select in sync 
- * (if one is provided as a param). Other parts of the code must listen for the events 
+ * @summary Component for handling variant selection through product's options.
+ * Fires events when a variant changes, and keeps a master variant select in sync
+ * (if one is provided as a param). Other parts of the code must listen for the events
  * and react accordingly
- * 
- * @usage 
-   <script type="application/json" id="ProductJSON">{{ product | json }}</script> 
+ *
+ * @usage
+   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
    <product-options data-product='ProductJSON' master-select-id="MasterSelect">
     {% for option in product.options_with_values %}
-      {% render 'product-option-selector' 
+      {% render 'product-option-selector'
         option: 'swatch'
         type: option_type
         section_id: section.id
@@ -18,43 +18,43 @@
       %}
     {% endfor %}
    </product-options
- * 
+ *
  * The following parameters are attributes that <product-options> take:
  * @param data-product - id of script that contains product JSON - required (if no product-handle)
  * @param data-product-handle - optional, alternatively to passing the product as
  *                              JSON, you can pass a product handle and the product
- *                              will be fetched upon first option select, this is 
- *                              less taxing on page load if there are multiple products. 
+ *                              will be fetched upon first option select, this is
+ *                              less taxing on page load if there are multiple products.
  * @param data-enable-history-state - default to false, updates url on variant change
  *                                    for product deep linking
- * 
- * @param master-select-id - optional id to a master variant selector, if 
+ *
+ * @param master-select-id - optional id to a master variant selector, if
  *                             provided, it will keep it in sync.
  * @param data-disable-option-binding - optional, by default, component checks which options
  *                                 are available according to user input and disable invalid
  *                                 options, with this param that feature is disabled.
  *                                 Only works for 2 options
- * 
+ *
  * These events bubble up from the input that was changed, so any ancestor
- * element can listen to it. 
+ * element can listen to it.
  * @emits variant:change - event.detail.variant {Object} new variant
  *                       - event.detail.changedPrice {Boolean} if price has changed
- * 
- * Fetch events, fire upon first option selection. Only if you're using 
+ *
+ * Fetch events, fire upon first option selection. Only if you're using
  * data-product-handle. These events don't include any data.
- * @emits variant:fetch:before 
- * @emits variant:fetch:after 
- * @emits variant:fetch:error 
+ * @emits variant:fetch:before
+ * @emits variant:fetch:after
+ * @emits variant:fetch:error
  *
  * The following are selectors that the <product-options> searches for:
  * - [js-product-option-selector] - required, every option selector input must have
  * - every input must have data-index="option{{ option.position }}"
- * 
+ *
  * @scenario if you need more info than the variant event gives you (like
  * inventory qty), use a master select and grab data from that master select
  * on variant change.
- * 
- * @scenario if you need to dynamically render options using js, just adapt snippet 
+ *
+ * @scenario if you need to dynamically render options using js, just adapt snippet
  * markup, and on the component itself, don't pass data-product or data-product-handle,
  * do: 'this.querySelector('product-options').product = product' after you've render it
  * into the page, this avoids costly parsing/serializing.
@@ -189,7 +189,7 @@ class ProductOptions extends HTMLElement {
   _handleOptionChange = (e) => {
     if (!this._product) {
       this._fetchProduct(this._handle)
-        .then((product) => { 
+        .then((product) => {
           this._product = product;
           if (this._checkAvailableOptions) this._setupOptionsAvailability(this._product);
           this._updateVariant(e)
@@ -379,3 +379,5 @@ class ProductOptions extends HTMLElement {
     );
   }
 }
+
+export default ProductOptions;

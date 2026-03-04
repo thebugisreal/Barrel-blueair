@@ -43,3 +43,5 @@ class QuantityInput extends HTMLElement {
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
   }
 }
+
+export default QuantityInput;

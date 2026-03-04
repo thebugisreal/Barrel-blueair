@@ -1,5 +1,3 @@
-window.theme = window.theme || {};
-
 // Apply safari-glass-ui class to body if iOS 26 or higher in order to account for safari glass UI.
 document.addEventListener("DOMContentLoaded", () => {
     if(theme.utils.isIOS26()){
@@ -9,39 +7,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*================ Global ================*/
+import '../scripts/global/theme.js';
 import '../scripts/global/shopify_common.js';
 import '../scripts/global/config.js';
 import '../scripts/global/utils.js';
-import '../scripts/global/focusable-widget.js';
 
 /*================ Components ================*/
-import '../scripts/components/drawers.js';
-import '../scripts/components/modals.js';
-import '../scripts/components/accordion.js';
-import '../scripts/components/tabs.js';
-import '../scripts/components/carousel.js';
-import '../scripts/components/video.js';
-import '../scripts/components/header.js';
+import Drawer from '../scripts/components/drawers.js';
+import Modal from '../scripts/components/modals.js';
+import Accordion from '../scripts/components/accordion.js';
+import Tabs from '../scripts/components/tabs.js';
+import Carousel from '../scripts/components/carousel.js';
+import Video from '../scripts/components/video.js';
+import SiteHeader from '../scripts/components/header.js';
 
-import '../scripts/components/cart.js';
-import '../scripts/components/product-options.js';
-import '../scripts/components/quantity-input.js';
-import '../scripts/components/loading-spinner.js';
-import '../scripts/components/predictive-search.js';
-import '../scripts/components/filter-sort.js';
-import '../scripts/components/active-filters.js';
-import '../scripts/components/price-range.js';
-import '../scripts/components/product-card.js';
-import '../scripts/components/country-select.js';
-import '../scripts/components/country-select-modal.js';
-import '../scripts/components/section__image-caption-modal.js';
-import '../scripts/components/product-card__upsell.js';
-import '../scripts/components/product-upsell.js';
-import '../scripts/components/compare-banner.js';
-import '../scripts/components/compare-grid.js';
-import '../scripts/components/faq.js';
-import '../scripts/components/product-viewer.js';
-import '../scripts/components/buystack-modal.js';
+import { CartRemoveButton, CartItems, CartNote, CartDrawer, CartDrawerItems, CartSubscription } from '../scripts/components/cart.js';
+import ProductOptions from '../scripts/components/product-options.js';
+import QuantityInput from '../scripts/components/quantity-input.js';
+import LoadingSpinner from '../scripts/components/loading-spinner.js';
+import PredictiveSearch from '../scripts/components/predictive-search.js';
+import FilterSort from '../scripts/components/filter-sort.js';
+import ActiveFilters from '../scripts/components/active-filters.js';
+import PriceRange from '../scripts/components/price-range.js';
+import ProductCard from '../scripts/components/product-card.js';
+import CountrySelect from '../scripts/components/country-select.js';
+import CountrySelectModal from '../scripts/components/country-select-modal.js';
+import ImageCaptionModal from '../scripts/components/section__image-caption-modal.js';
+import { ProductCardUpsell, VariantCardUpsell } from '../scripts/components/product-card__upsell.js';
+import ProductUpsell from '../scripts/components/product-upsell.js';
+import CompareBanner from '../scripts/components/compare-banner.js';
+import CompareGrid from '../scripts/components/compare-grid.js';
+import { FaqPosts, FaqSearchResults } from '../scripts/components/faq.js';
+import ProductViewer from '../scripts/components/product-viewer.js';
+import BuystackModal from '../scripts/components/buystack-modal.js';
 
 customElements.define("s-drawer", Drawer);
 customElements.define("s-modal", Modal);
@@ -84,11 +82,11 @@ customElements.define('image-caption-modal', ImageCaptionModal);
 customElements.define('buystack-modal', BuystackModal);
 
 /*================ Sections ================*/
-import '../scripts/sections/collection__grid.js';
-import '../scripts/sections/product__main.js';
-import '../scripts/sections/product__recommendations.js';
-import '../scripts/sections/section__hotspot.js';
-import '../scripts/sections/section__subscription-quiz.js';
+import CollectionGrid from '../scripts/sections/collection__grid.js';
+import ProductMain from '../scripts/sections/product__main.js';
+import ProductRecommendations from '../scripts/sections/product__recommendations.js';
+import Hotspot from '../scripts/sections/section__hotspot.js';
+import SubscriptionQuiz from '../scripts/sections/section__subscription-quiz.js';
 
 customElements.define("s-collection-grid", CollectionGrid);
 
@@ -102,9 +100,9 @@ customElements.define('subscription-quiz', SubscriptionQuiz);
 
 
 /*================ Templates ================*/
-import '../scripts/components/warranty-devices.js';
-import '../scripts/templates/account.js';
-import '../scripts/templates/login.js';
+import WarrantyDevices from '../scripts/components/warranty-devices.js';
+import Account from '../scripts/templates/account.js';
+import Login from '../scripts/templates/login.js';
 
 customElements.define('warranty-devices', WarrantyDevices);
 customElements.define("s-account", Account);

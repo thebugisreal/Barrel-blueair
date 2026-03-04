@@ -6,7 +6,7 @@
  * See https://swiperjs.com/swiper-api#parameters for more carousel options
  *
  * @usage
- * 
+ *
  *     {%- capture carousel_options -%}
  *       {
  *         "slidesPerView": "auto",
@@ -38,14 +38,14 @@
  *                          grabCursor: true,
  *                          centeredSlides: false,
  *                          on: {init: this._onReady},
- * 
+ *
  * @param data-init - use to initialize or destroy carousel at certain widths.
  *                    pass in variable from theme.config.mediaQueries (/global/config.js)
- *                    
+ *
  *                    enquire match/unmatch is pretty specific, so follow the rules below:
  *                    if mobile = destroyed, higher width = initialized, use a max-width variable
  *                    if mobile = intialized, higher width = destroyed, use a min-width variable
- * 
+ *
  *                    if breakpoint does not exist, feel free to add to config.js
  *
  * The following are selectors that the <s-carousel> searches for
@@ -84,7 +84,10 @@
     this._initCarousel();
 
     if (this.hasAttribute('data-controller')) {
-      this._linkCarousels(this.dataset.controller);
+      // Ensure carousel is initialized before linking
+      setTimeout(() => {
+        this._linkCarousels(this.dataset.controller);
+      }, 100);
     }
   }
 
@@ -109,8 +112,26 @@
   }
 
   _linkCarousels(controllerId) {
-    let controllerCarousel = document.querySelector(`#${controllerId}`).parentElement.carousel;
+    const controllerElement = document.querySelector(`#${controllerId}`);
+    if (!controllerElement || !controllerElement.parentElement) {
+      console.warn(`Controller carousel #${controllerId} not found`);
+      return;
+    }
+
+    const controllerCarousel = controllerElement.parentElement.carousel;
+    if (!controllerCarousel) {
+      console.warn(`Controller carousel not initialized for #${controllerId}`);
+      return;
+    }
+
+    if (!this.carousel || !this.carousel.thumbs) {
+      console.warn('Thumbs module not available or carousel not initialized');
+      return;
+    }
+
     this.carousel.thumbs.swiper = controllerCarousel;
     this.carousel.thumbs.init();
   }
 }
+
+export default Carousel;

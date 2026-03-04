@@ -20,3 +20,5 @@ class CountrySelect extends HTMLElement {
     this.form.submit();
   }
 }
+
+export default CountrySelect;

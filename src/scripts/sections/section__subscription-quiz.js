@@ -52,7 +52,7 @@ class SubscriptionQuiz extends HTMLElement {
     this.mode = 'family';
     this.currentStep = 1;
     this.currentStepSection = this.querySelector(`${this._selectors.stepSection}[data-step="${this.currentStep}"]`);
-    
+
     this._setListeners();
   }
 
@@ -212,7 +212,7 @@ class SubscriptionQuiz extends HTMLElement {
       .then((response) => response.json())
       .then((response) => {
         sessionStorage.setItem('noCartWatcherHandle', 'true');
-        
+
         if (response.status) {
           this._handleErrorMessage(response.description);
           return;
@@ -275,7 +275,7 @@ class SubscriptionQuiz extends HTMLElement {
     } else {
       this._changeFamilyModeQuizStep('next');
     }
-    
+
     const prevActiveSelectionGroups = this.currentStepSection.querySelectorAll(`${this._selectors.selectionGroup}[data-active="true"]`);
     prevActiveSelectionGroups.forEach((selectionGroup) => {
       selectionGroup.dataset.active = 'false';
@@ -392,3 +392,5 @@ class SubscriptionQuiz extends HTMLElement {
     }
   }
 }
+
+export default SubscriptionQuiz;

@@ -73,10 +73,10 @@ class ProductMain extends HTMLElement {
     this.currentQuantity = 1;
     this.currentPrice = parseInt(this.dataset.currentPrice);
     this.currentPriceCompareAt = parseInt(this.dataset.currentPriceCompareAt);
-    
+
     this._checkCartSubscriptionEdit();
     this._handleFilterPack();
-    
+
     if (window.innerWidth <= 768) {
       this._handleStickyBar();
       this._watchWindowResize();
@@ -97,7 +97,7 @@ class ProductMain extends HTMLElement {
     selectWrappers.forEach((wrapper) => {
       const select = wrapper.querySelector('.product-option__select');
       const displayValue = wrapper.querySelector('.product-option__select-value');
-      
+
       if (!select || !displayValue) return;
 
       const updateDisplay = () => {
@@ -108,7 +108,7 @@ class ProductMain extends HTMLElement {
       };
 
       select.addEventListener('change', updateDisplay);
-      
+
       updateDisplay();
     });
   }
@@ -152,7 +152,7 @@ class ProductMain extends HTMLElement {
     this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
 
     // Update the filter quantity label
-    
+
     const filterQuantityLabel = this.querySelector('[js-filter-subscription-quantity-label]');
     if (filterQuantityLabel) {
       filterQuantityLabel.textContent = `${evt.currentTarget.value} Replacement Filter${ parseInt(evt.currentTarget.value) > 1 ? 's' : '' }`;
@@ -206,7 +206,7 @@ class ProductMain extends HTMLElement {
         this._updatePrice(this.currentPrice, this.currentPriceCompareAt, this.currentQuantity);
         this._updateQuanityImage(selectedQuantity)
       }
-      
+
       if (this.subscription) {
         if (this.selectedFilterSubscriptionVariant && this.subscriptionPrice) {
           this._updateSubscriptionPrice(this.selectedFilterSubscriptionVariant, true);
@@ -215,7 +215,7 @@ class ProductMain extends HTMLElement {
             this._updateAtcStateOnFilterChange(this.selectedFilterSubscriptionVariant);
           }
         }
-        
+
         if (evt.target.dataset.pack == 'true') {
           if (selectedQuantity == 1) {
             if (this.subscription.dataset.selected == 'true') {
@@ -264,19 +264,19 @@ class ProductMain extends HTMLElement {
     if (!this.addToCart) return;
 
     const observeTarget = this.addToCart;
-    
+
     this.stickyBarVisible = false;
     this.isUpdating = false;
 
     this.debouncedStickyBarUpdate = theme.utils.debounce((shouldShowStickyBar) => {
       if (this.isUpdating) return;
-      
+
       this.isUpdating = true;
-      
+
       // Double-check the state hasn't changed during debounce delay
       if (shouldShowStickyBar !== this.stickyBarVisible) {
         this.stickyBarVisible = shouldShowStickyBar;
-        
+
         this.stickyBars.forEach((stickyBar) => {
           if (shouldShowStickyBar) {
             stickyBar.classList.remove('hidden');
@@ -285,7 +285,7 @@ class ProductMain extends HTMLElement {
             stickyBar.classList.add('hidden');
           }
         });
-        
+
         // Add/remove body class for layout adjustments
         if (shouldShowStickyBar) {
           document.body.classList.add('sticky-bar-visible');
@@ -293,17 +293,17 @@ class ProductMain extends HTMLElement {
           document.body.classList.remove('sticky-bar-visible');
         }
       }
-      
+
       // Reset the updating flag after DOM settles
       requestAnimationFrame(() => {
         this.isUpdating = false;
       });
-    }, 500); 
+    }, 500);
 
     this.stickyBarObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const shouldShowStickyBar = !entry.isIntersecting;
-        
+
         // Only update if state actually changed and we're not currently updating
         if (shouldShowStickyBar !== this.stickyBarVisible && !this.isUpdating) {
           this.debouncedStickyBarUpdate(shouldShowStickyBar);
@@ -311,25 +311,25 @@ class ProductMain extends HTMLElement {
       });
       }, {
         rootMargin: '0px 0px -50px 0px',
-        threshold: 0 
+        threshold: 0
       });
 
     this.stickyBarObserver.observe(observeTarget);
   }
-  
+
   _stickyAtcOnClick = (evt) => {
     evt.preventDefault();
     this.stickyAtcClicked = true;
     this.addToCart.click();
   }
 
-  
+
   _disconnectStickyBarObserver = () => {
     if (this.stickyBarObserver) {
       this.stickyBarObserver.disconnect();
       this.stickyBarObserver = null;
     }
-    
+
     // Clean up debounced function reference
     this.debouncedStickyBarUpdate = null;
   }
@@ -342,7 +342,7 @@ class ProductMain extends HTMLElement {
       const formInputs = subscription.querySelectorAll('[js-filter-subscription-form-input]');
       formInputs.forEach(input => input.setAttribute('disabled', ''));
     });
-    
+
     // Deselect non-subscription
     this.nonSubscriptionToggle.dataset.selected = 'false';
   }
@@ -400,15 +400,15 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionVariants.forEach((trigger) => {
       trigger.addEventListener('click', this._filterSubscriptionVariantOnClick);
     });
-    
+
     this.filterSubscriptionSellingPlans.forEach((sellingPlan) => {
       sellingPlan.addEventListener('click' , this._filterSubscriptionSellingPlanOnClick);
     });
-    
+
     this.filterSubscriptionMasterFrequencies.forEach((masterFrequency) => {
       masterFrequency.addEventListener('click', this._filterSubscriptionMasterFrequencyOnClick);
     });
-    
+
     // Set toggle handlers for all subscriptions
     allSubscriptions.forEach((subscription) => {
       const subscriptionToggle = subscription.querySelector(this._selectors.subscriptionToggle);
@@ -526,7 +526,7 @@ class ProductMain extends HTMLElement {
     } else {
       btnPrice = theme.utils.formatMoney(parseInt(this.nonSubscriptionToggle.querySelector(this._selectors.priceCopy).dataset.price), this.moneyFormat);
     }
-    
+
     if ((selectedTrigger && selectedTrigger.hasAttribute('js-non-subscription-toggle')) || this.subscriptionType == 'filter') {
       if (selectedTrigger.dataset.available == 'true') {
         btnDisabled = false;
@@ -620,12 +620,12 @@ class ProductMain extends HTMLElement {
 
     // Check if this is a scent subscription variant
     const isScentVariant = triggerTarget.hasAttribute('js-scent-subscription-variant');
-    
+
     if (isScentVariant) {
       // Handle scent variant: update js-scent-subscription-form-input
       const scentVariantId = triggerTarget.dataset.variant;
       const scentItemIndex = triggerTarget.dataset.index;
-      
+
       // Update variant ID in scent subscription form inputs
       const scentVariantInput = subscriptionContainer.querySelector(`[js-scent-subscription-form-input][name="items[${scentItemIndex}][id]"]`);
       if (scentVariantInput) {
@@ -666,7 +666,7 @@ class ProductMain extends HTMLElement {
       if (priceData) {
         const subscriptionPrice = priceData.dataset.price;
         const subscriptionPriceCompareAt = priceData.dataset.priceCompareAt;
-        
+
         let subscriptionPriceMarkup;
         if (subscriptionPriceCompareAt && subscriptionPriceCompareAt > subscriptionPrice) {
           subscriptionPriceMarkup = `<s>${theme.utils.formatMoney(subscriptionPriceCompareAt * this.currentQuantity, this.moneyFormat)}</s><span class="font-700">${theme.utils.formatMoney(subscriptionPrice * this.currentQuantity, this.moneyFormat)}</span>`;
@@ -716,7 +716,7 @@ class ProductMain extends HTMLElement {
         filterSubscriptionSelectedVariantSellingPlanInputTarget.setAttribute('value', triggerTarget.dataset.sellingPlanId);
         console.log(`Set selling plan input [items[${triggerTarget.dataset.index}][selling_plan]] to:`, triggerTarget.dataset.sellingPlanId);
       }
-      
+
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
       const filterSubscriptionFrequencyInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyInput}[name="items[${triggerTarget.dataset.index}][properties[_Frequency]]"]`);
       const filterSubscriptionFrequencyIntegerInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionFrequencyIntegerInput}[name="items[${triggerTarget.dataset.index}][properties[_frequency_integer]]"]`);
@@ -756,7 +756,7 @@ class ProductMain extends HTMLElement {
         filterSubscriptionSelectedVariantSellingPlanInput.setAttribute('value', triggerTarget.dataset.sellingPlanId);
         console.log('Set selling plan input [selling_plan] to:', triggerTarget.dataset.sellingPlanId);
       }
-      
+
       const frequency = parseInt(triggerTarget.textContent.toLowerCase().replace('months', '').trim());
       if (filterSubscriptionFrequencyInput) {
         filterSubscriptionFrequencyInput.setAttribute('value', frequency + ' months');
@@ -801,21 +801,21 @@ class ProductMain extends HTMLElement {
 
   _updateSubscriptionFormInputs = (subscriptionContainer, itemIndex, variantId, sellingPlanId, frequency, isScentSubscription = false) => {
     const baseSelector = isScentSubscription ? '[js-scent-subscription-form-input]' : '[js-filter-subscription-form-input]';
-    
+
     // Update variant ID
     const variantInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][id]"]`);
     if (variantInput) {
       variantInput.removeAttribute('disabled');
       variantInput.setAttribute('value', variantId);
     }
-    
+
     // Update selling plan ID
     const sellingPlanInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][selling_plan]"]`);
     if (sellingPlanInput && sellingPlanId) {
       sellingPlanInput.removeAttribute('disabled');
       sellingPlanInput.setAttribute('value', sellingPlanId);
     }
-    
+
     // Update frequency
     const frequencyInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[_Frequency]]"]`);
     const frequencyIntegerInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[_frequency_integer]]"]`);
@@ -827,7 +827,7 @@ class ProductMain extends HTMLElement {
       frequencyIntegerInput.removeAttribute('disabled');
       frequencyIntegerInput.setAttribute('value', frequency);
     }
-    
+
     // Update dates
     const firstOrderDateInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[First Order Date]]"]`);
     const ogDateInput = subscriptionContainer.querySelector(`${baseSelector}[name="items[${itemIndex}][properties[_og_first_order_place_date]]"]`);
@@ -864,15 +864,15 @@ class ProductMain extends HTMLElement {
     const selectedFrequency = triggerTarget.dataset.frequency;
     const frequency = parseInt(selectedFrequency.toLowerCase().replace('months', '').trim());
     const sellingPlansGroups = subscriptionContainer.querySelectorAll('[js-filter-subscription-selling-plans-group]');
-    
+
     // Update all filter subscription inputs with the selected frequency
     sellingPlansGroups.forEach((group, index) => {
       const variantId = group.dataset.variant;
-      
+
       // Find the selling plan that matches the selected frequency for this variant
       const sellingPlanButtons = group.querySelectorAll(this._selectors.filterSubscriptionSellingPlan);
       let targetSellingPlan = null;
-      
+
       for (const button of sellingPlanButtons) {
         const buttonFrequency = parseInt(button.textContent.toLowerCase().replace('months', '').trim());
         if (buttonFrequency === frequency) {
@@ -891,12 +891,12 @@ class ProductMain extends HTMLElement {
       const filterSubscriptionCount = sellingPlansGroups.length;
       const selectedScentVariants = Array.from(subscriptionContainer.querySelectorAll(this._selectors.filterSubscriptionVariant))
         .filter(variant => variant.dataset.selected === 'true' && variant.hasAttribute('js-scent-subscription-variant'));
-      
+
       selectedScentVariants.forEach((scentVariant, scentIndex) => {
         const scentVariantId = scentVariant.dataset.variant;
         const scentItemIndex = scentVariant.dataset.index || (filterSubscriptionCount + scentIndex + 1);
         const targetSellingPlanId = scentVariant.getAttribute(`data-selling-plan-${frequency}`);
-        
+
         if (targetSellingPlanId) {
           this._updateSubscriptionFormInputs(subscriptionContainer, scentItemIndex, scentVariantId, targetSellingPlanId, frequency, true);
         }
@@ -966,7 +966,7 @@ class ProductMain extends HTMLElement {
             description: `HTTP ${response.status}: ${errorText.substring(0, 200)}`
           };
         }
-        
+
         const responseData = await response.json();
         console.log(`_updateCartItems [${type}] response:`, responseData);
 
@@ -976,7 +976,7 @@ class ProductMain extends HTMLElement {
           console.error(`_updateCartItems [${type}] failed:`, responseData);
           this.handleErrorMessage(responseData.description);
           sessionStorage.setItem('cartSubscriptionError', responseData.description);
-          
+
           if (render) {
             window.location.href = window.Shopify.routes.root + 'cart';
           }
@@ -987,7 +987,7 @@ class ProductMain extends HTMLElement {
           const updatedItem = responseData.items.find(item => {
             return item.key === data.id || String(item.variant_id) === String(data.id);
           });
-          
+
           if (!updatedItem && data.quantity !== 0) {
             console.warn(`_updateCartItems [${type}]: Item not found in response`, {
               requestedId: data.id,
@@ -1010,7 +1010,7 @@ class ProductMain extends HTMLElement {
         if (render) {
           window.location.href = window.Shopify.routes.root + 'cart';
         }
-        
+
         return responseData;
       })
       .catch((e) => {
@@ -1030,7 +1030,7 @@ class ProductMain extends HTMLElement {
       let index = 1;
       let removeScent = null;
       let variantId = this.pdpToEditCartSubscription.filter.itemKey.split(':')[0];
-      
+
       if (this.pdpToEditCartSubscription.subscribedScent && this.pdpToEditCartSubscription.isTwoInOneSubscription == true) {
         const selectedScentVariant = document.querySelector('[js-scent-subscription-variant][data-selected="true"]');
         if (selectedScentVariant) {
@@ -1132,17 +1132,17 @@ class ProductMain extends HTMLElement {
         }
         const addItem = {
           id: newSelectedSubscription.id.split(':')[0],
-          quantity: 1, 
+          quantity: 1,
           properties: newProperties
         };
-        
+
         if (newSelectedSubscription.selling_plan) {
           const sellingPlanValue = parseInt(newSelectedSubscription.selling_plan);
           if (!isNaN(sellingPlanValue)) {
             addItem.selling_plan = sellingPlanValue;
           }
         }
-        
+
         itemsToAdd.push(addItem);
       } else {
         if (!existingItemKey) {
@@ -1150,20 +1150,20 @@ class ProductMain extends HTMLElement {
           this.handleErrorMessage('Unable to update cart: missing item information');
           return;
         }
-        
+
         const updateItem = {
           id: existingItemKey,
           quantity: 1,
           properties: newProperties
         };
-        
+
         if (newSelectedSubscription.selling_plan) {
           const sellingPlanValue = parseInt(newSelectedSubscription.selling_plan);
           if (!isNaN(sellingPlanValue)) {
             updateItem.selling_plan = sellingPlanValue;
           }
         }
-        
+
         itemsToUpdate.push(updateItem);
 
         if (removeScent != null) {
@@ -1174,29 +1174,29 @@ class ProductMain extends HTMLElement {
       console.log('itemsToAdd:', itemsToAdd);
       console.log('itemsToUpdate:', itemsToUpdate);
       console.log('itemsToRemove:', itemsToRemove);
-      
+
       try {
         if (itemsToRemove.length > 0) {
           for (let i = 0; i < itemsToRemove.length; i++) {
             const removeItem = itemsToRemove[i];
             console.log(`Removing item ${i + 1}/${itemsToRemove.length}:`, removeItem);
-            
+
             try {
               const removeResult = await this._updateCartItems('change', removeItem, false);
-              
+
               // Wait for the promise to fully resolve
               if (removeResult && typeof removeResult.then === 'function') {
                 await removeResult;
               }
-              
+
               if (removeResult && removeResult.status) {
                 console.error('Failed to remove item:', removeResult);
                 this.handleErrorMessage(removeResult.description || 'Failed to remove item');
                 return;
               }
-              
+
               console.log(`Remove operation ${i + 1} completed successfully`);
-              
+
               // Small delay to ensure cart state is fully updated
               await new Promise(resolve => setTimeout(resolve, 200));
             } catch (error) {
@@ -1212,23 +1212,23 @@ class ProductMain extends HTMLElement {
           for (let i = 0; i < itemsToUpdate.length; i++) {
             const updateItem = itemsToUpdate[i];
             console.log(`Updating item ${i + 1}/${itemsToUpdate.length}:`, updateItem);
-            
+
             try {
               const updateResult = await this._updateCartItems('change', updateItem, false);
-              
+
               // Wait for the promise to fully resolve
               if (updateResult && typeof updateResult.then === 'function') {
                 await updateResult;
               }
-              
+
               if (updateResult && updateResult.status) {
                 console.error('Failed to update item:', updateResult);
                 this.handleErrorMessage(updateResult.description || 'Failed to update item');
                 return;
               }
-              
+
               console.log(`Update operation ${i + 1} completed successfully`);
-              
+
               // Small delay to ensure cart state is fully updated
               await new Promise(resolve => setTimeout(resolve, 200));
             } catch (error) {
@@ -1242,23 +1242,23 @@ class ProductMain extends HTMLElement {
         // Finally, add items - wait for it to finish
         if (itemsToAdd.length > 0) {
           console.log(`Adding ${itemsToAdd.length} item(s):`, itemsToAdd);
-          
+
           try {
             const addResult = await this._updateCartItems('add', { items: itemsToAdd }, false);
-            
+
             // Wait for the promise to fully resolve
             if (addResult && typeof addResult.then === 'function') {
               await addResult;
             }
-            
+
             if (addResult && addResult.status) {
               console.error('Failed to add items:', addResult);
               this.handleErrorMessage(addResult.description || 'Failed to add items');
               return;
             }
-            
+
             console.log('Add operation completed successfully');
-            
+
             // Small delay to ensure cart state is fully updated
             await new Promise(resolve => setTimeout(resolve, 200));
           } catch (error) {
@@ -1274,38 +1274,38 @@ class ProductMain extends HTMLElement {
             const cartData = await cartResponse.json();
             console.log('Cart items before redirect:', cartData.items);
             console.log('Cart total items:', cartData.items.length);
-            
-            const subscriptionItemsToFix = cartData.items.filter(item => 
+
+            const subscriptionItemsToFix = cartData.items.filter(item =>
               item.selling_plan_allocation != null && item.quantity !== 1
             );
-            
+
             if (subscriptionItemsToFix.length > 0) {
               console.log('Found subscription items with quantity != 1:', subscriptionItemsToFix);
-              
+
               for (const item of subscriptionItemsToFix) {
                 try {
                   const fixResult = await this._updateCartItems('change', {
                     id: item.key,
                     quantity: 1
                   }, false);
-                  
+
                   if (fixResult && typeof fixResult.then === 'function') {
                     await fixResult;
                   }
-                  
+
                   if (fixResult && fixResult.status) {
                     console.error(`Failed to fix quantity for item ${item.key}:`, fixResult);
                   } else {
                     console.log(`Fixed quantity for item ${item.key} to 1`);
                   }
-                  
+
                   await new Promise(resolve => setTimeout(resolve, 200));
                 } catch (error) {
                   console.error(`Error fixing quantity for item ${item.key}:`, error);
                 }
               }
             }
-            
+
             window.location.href = window.Shopify.routes.root + 'cart';
           }
         } catch (error) {
@@ -1319,7 +1319,7 @@ class ProductMain extends HTMLElement {
 
       this.pdpToEditCartSubscription = false;
     }
-    
+
     init();
   }
 
@@ -1347,7 +1347,7 @@ class ProductMain extends HTMLElement {
       this._editCartSubscription(formData);
       return;
     }
-    
+
     if (this.cart) {
       formData.append(
         'sections',
@@ -1362,7 +1362,7 @@ class ProductMain extends HTMLElement {
       .then(async (response) => {
         // Get response text first, then parse as JSON
         const responseText = await response.clone().text();
-        
+
         // Try to parse as JSON, but handle errors
         try {
           return JSON.parse(responseText);
@@ -1377,7 +1377,7 @@ class ProductMain extends HTMLElement {
       })
       .then((response) => {
         sessionStorage.setItem('noCartWatcherHandle', 'true');
-        
+
         if (response.status) {
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartError, {
             source: 'product-form',
@@ -1398,7 +1398,7 @@ class ProductMain extends HTMLElement {
           this.error = false;
           this.cart.renderContents(response);
           this.cartDrawer.open();
-          
+
           if (window.Shopify.shop === '5ef43d-4a.myshopify.com') {
             amzn('trackEvent', 'AddToCart');
           }
@@ -1437,7 +1437,7 @@ class ProductMain extends HTMLElement {
       } else {
         this._updateImageCarousel(this.currentSwatch);
       }
-  
+
     }
     this._updateStickyBar(variant)
     if (variant) {
@@ -1609,21 +1609,21 @@ class ProductMain extends HTMLElement {
   async _initOptionSwatches(option) {
     console.log('initOptionSwatches', option);
     try {
-      const currentProductHandle = option.dataset.handle;                      
-      const collectionTagRaw = option.dataset.collection || '';                
-      const optionKind = (option.dataset.option || '').toLowerCase();          
-  
+      const currentProductHandle = option.dataset.handle;
+      const collectionTagRaw = option.dataset.collection || '';
+      const optionKind = (option.dataset.option || '').toLowerCase();
+
       const looksEncoded = /%[0-9A-F]{2}/i.test(collectionTagRaw) || !collectionTagRaw.includes(':');
       const tagForUrl = looksEncoded ? collectionTagRaw : encodeURIComponent(collectionTagRaw);
       const targetURL = `/collections/all/${tagForUrl}?view=json`;
-  
+
       const products = await this._getRelatedSwatchesJSON(targetURL);
       console.log('products', products, targetURL);
       if (!Array.isArray(products) || products.length === 0) {
         console.warn('[pdp swatches] No products for', collectionTagRaw);
         return;
       }
-  
+
       if (optionKind === 'material') {
         const labelEl = option.closest('.product__related-color')?.querySelector('.product__related-color-label');
         if (labelEl) {
@@ -1634,7 +1634,7 @@ class ProductMain extends HTMLElement {
           }
         }
       }
-  
+
       const isUpsellContext = option.closest('product-upsell') !== null;
 
       let html = '';
@@ -1659,7 +1659,7 @@ class ProductMain extends HTMLElement {
             const sizeLabel = p.size || label;
             html += `
               <div>
-                <button type="button" 
+                <button type="button"
                   class="product-upsell__variant product-upsell__variant--filter-type product-related-size px-xs py-xxs rounded border border-gray text-12"
                   data-variant-id="${p.variantId}"
                   data-available="${available}"
@@ -1673,12 +1673,12 @@ class ProductMain extends HTMLElement {
                 </button>
               </div>`;
           } else {
-            const baseClasses = optionKind === 'material' 
+            const baseClasses = optionKind === 'material'
               ? 'w-40 h-40 rounded-full flex relative'
               : 'w-[22px] h-[22px] rounded-full flex relative';
             html += `
               <div>
-                <button type="button" 
+                <button type="button"
                   class="product-upsell__variant product-upsell__variant--filter-type product-related-color ${baseClasses}"
                   data-variant-id="${p.variantId}"
                   data-available="${available}"
@@ -1717,7 +1717,7 @@ class ProductMain extends HTMLElement {
           }
         } else {
           // Original color/material swatch logic
-          const baseClasses = optionKind === 'material' 
+          const baseClasses = optionKind === 'material'
             ? 'w-40 h-40 rounded-full flex relative'
             : 'w-[22px] h-[22px] rounded-full flex relative';
           const aria = optionKind === 'material'
@@ -1737,7 +1737,7 @@ class ProductMain extends HTMLElement {
           }
         }
       });
-  
+
       option.insertAdjacentHTML('beforeend', html);
       const swatches = option.querySelectorAll('[js-related-option-swatch]');
       Array.from(swatches)
@@ -1750,14 +1750,14 @@ class ProductMain extends HTMLElement {
           upsell.dispatchEvent(new CustomEvent('upsell-swatches-loaded'));
         }
       }
-  
+
       this._optionSwatchLinksOnClick();
     } catch (err) {
       console.error('[pdp swatches] init failed', err);
     }
   }
-  
-  
+
+
 
   _getRelatedSwatchesJSON(url) {
     return fetch(url)
@@ -1770,15 +1770,15 @@ class ProductMain extends HTMLElement {
         return JSON.parse(raw);
       });
   }
-  
-  
+
+
 
   _optionSwatchLinksOnClick = () => {
     const swatchLinks = this.querySelectorAll('[js-option-swatch-link]');
     swatchLinks.forEach((link) => {
       link.addEventListener('click', (evt) => {
         evt.preventDefault();
-        
+
         let url = evt.currentTarget.href;
         this._renderSwatchLink(url);
       })
@@ -1802,7 +1802,7 @@ class ProductMain extends HTMLElement {
 
         window.removeEventListener('popstate', this._popStateRender);
 
-        this.connectedCallback();   
+        this.connectedCallback();
       })
       .catch((e) => {
         console.error(e);
@@ -1824,3 +1824,5 @@ class ProductMain extends HTMLElement {
   }
 
 }
+
+export default ProductMain;

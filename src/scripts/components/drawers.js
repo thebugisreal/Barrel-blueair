@@ -1,3 +1,5 @@
+import FocusableWidget from '../global/focusable-widget.js';
+
 /**
  * Drawer Component
  * --------------------------------------------------------------------
@@ -16,7 +18,7 @@
  * @emits <#id>:close on document
  * @emits open on element
  * @emits close on element
- * 
+ *
  * The following parameters are attributes that the <s-drawer> element takes
  * @param id - required
  * @param position - 'left', 'right', 'top', 'bottom'
@@ -59,3 +61,5 @@ class Drawer extends FocusableWidget {
     return this._position;
   }
 }
+
+export default Drawer;

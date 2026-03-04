@@ -1,13 +1,13 @@
 class ProductCardUpsell extends HTMLElement {
     constructor() {
       super();
-  
+
       this.changeEvent = new Event('change', { bubbles: true })
       this.selectors = {
         quickAdd: '[js-quick-add]'
       }
     }
-  
+
     connectedCallback(){
       this.quickAdd = this.querySelectorAll(this.selectors.quickAdd);
       this.cart = document.querySelector('cart-drawer');
@@ -15,7 +15,7 @@ class ProductCardUpsell extends HTMLElement {
 
       this._initQuickAdd();
     }
-  
+
     _initQuickAdd() {
       if ((this.quickAdd) != null) {
         this.quickAdd.forEach(button => {
@@ -23,10 +23,10 @@ class ProductCardUpsell extends HTMLElement {
         });
       }
     }
-    
+
     _submitSingle(e) {
       e.preventDefault();
-      
+
       let variantId = e.target.dataset.variantId
       let isGift = e.target.dataset.isGift
 
@@ -52,7 +52,7 @@ class ProductCardUpsell extends HTMLElement {
         sessionStorage.setItem('noCartWatcherHandle', 'true');
         this.cart.renderContents(response);
         if (!window.location.pathname.includes('/cart')) this.cartDrawer.open();
-        
+
       })
       .then((response) => {
         const cartMain = document.querySelector('cart-items')
@@ -119,7 +119,7 @@ class VariantCardUpsell extends ProductCardUpsell {
       const newImage = this.querySelector(`${this.selectors.image}[data-swatch="${swatchName}"]`);
       if (newImage) newImage.classList.remove('hidden');
     }
-  
+
 
     _toggleSoldOutTag = (variantAvailable) => {
       if (variantAvailable) {
@@ -138,7 +138,7 @@ class VariantCardUpsell extends ProductCardUpsell {
     _updatePrice = (price) => {
       const compareAtPrice = parseFloat(price.split('|')[0]);
       const currentPrice = parseFloat(price.split('|')[1]);
-  
+
       let priceMarkup;
       if (compareAtPrice && compareAtPrice > currentPrice) {
         priceMarkup = `<s class="product-card__price product-card__price--compare">${theme.utils.formatMoney(compareAtPrice, this.moneyFormat)}</s>
@@ -146,7 +146,7 @@ class VariantCardUpsell extends ProductCardUpsell {
       } else {
         priceMarkup = `<span class="product-card__price product-card__price--current">${theme.utils.formatMoney(currentPrice, this.moneyFormat)}</span>`;
       }
-  
+
       this.price.innerHTML = priceMarkup;
     }
 
@@ -155,22 +155,22 @@ class VariantCardUpsell extends ProductCardUpsell {
         button.dataset.variantId = variantId;
       });
     }
-  
+
     _swatchOnClick = (e) => {
         e.preventDefault();
 
         const swatchTarget = e.currentTarget;
-        
+
         if (swatchTarget.dataset.selected == 'true') {
           return;
         }
-    
+
         const prevSelectedSwatch = this.querySelector(`${this.selectors.swatch}[data-selected="true"]`);
         if (prevSelectedSwatch) prevSelectedSwatch.dataset.selected = 'false';
         swatchTarget.dataset.selected = 'true';
-    
+
         this.currentSwatchLabel.textContent = swatchTarget.dataset.swatch;
-    
+
         this._updateImage(swatchTarget.dataset.swatch);
         this._toggleSoldOutTag(swatchTarget.dataset.available == 'true');
         this._updateProductLink(swatchTarget.dataset.url);
@@ -178,3 +178,5 @@ class VariantCardUpsell extends ProductCardUpsell {
         this._updateQuickAdd(swatchTarget.dataset.id);
     }
 }
+
+export { ProductCardUpsell, VariantCardUpsell };

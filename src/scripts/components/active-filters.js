@@ -22,9 +22,9 @@ class ActiveFilters extends HTMLElement {
     if (clearAll) {
       clearAll.addEventListener('click', this._triggerClearAll);
     }
-    
+
     this.querySelectorAll(this._selectors.remove).forEach(remove => remove.addEventListener('click', this._handleRemove))
-  } 
+  }
 
   _handleRemove = (evt) => {
     evt.preventDefault();
@@ -46,3 +46,5 @@ class ActiveFilters extends HTMLElement {
     document.dispatchEvent(new CustomEvent('filter:clearAll'))
   }
 }
+
+export default ActiveFilters;

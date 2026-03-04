@@ -1,3 +1,5 @@
+import FocusableWidget from '../global/focusable-widget.js';
+
 /**
  * Modal Component
  * --------------------------------------------------------------------
@@ -19,7 +21,7 @@
  * @emits <#id>:close on document
  * @emits open on element
  * @emits close on element
- * 
+ *
  * The following parameters are attributes that the <modal> element takes
  * @param id - required
  * @param open - Query Selector to all the drawer's open triggers
@@ -36,3 +38,5 @@ class Modal extends FocusableWidget {
     });
   }
 }
+
+export default Modal;

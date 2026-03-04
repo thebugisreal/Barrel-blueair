@@ -112,7 +112,7 @@ class ProductUpsell extends HTMLElement {
       .then((response) => response.json())
       .then((response) => {
         sessionStorage.setItem('noCartWatcherHandle', 'true');
-        
+
         if (response.status) {
           this._handleErrorMessage(response.description);
           return;
@@ -135,7 +135,7 @@ class ProductUpsell extends HTMLElement {
 
   _variantBtnOnClick = (evt, target, forceSync = false) => {
     this._handleErrorMessage();
-    
+
     target = target || (evt && evt.currentTarget);
     if (!target) return;
 
@@ -244,11 +244,11 @@ class ProductUpsell extends HTMLElement {
 
   _handleBisFormSubmit = (evt) => {
     evt.preventDefault();
-    
+
     const formData = new FormData(this.bisForm);
     const email = formData.get('email');
     const variant = formData.get('variant');
-    
+
     const region = Shopify.shop.replace('.myshopify.com', '');
     const submitId = `$shopify:::$default:::${variant}`;
 
@@ -260,7 +260,7 @@ class ProductUpsell extends HTMLElement {
     } else if (region == 'blueeudev') {
       apiKey = window.klaviyo.apiKeyEU;
     }
-    
+
     const url = `https://a.klaviyo.com/client/back-in-stock-subscriptions/?company_id=${apiKey}`;
 
     const payload = {
@@ -287,7 +287,7 @@ class ProductUpsell extends HTMLElement {
         }
       }
     }
-    
+
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -310,7 +310,7 @@ class ProductUpsell extends HTMLElement {
         this.bisError.classList.remove('hidden');
       });
   }
-  
+
   _updateBisModal(evt) {
     this._resetBisModal();
     this._updateBisTitle();
@@ -373,3 +373,5 @@ class ProductUpsell extends HTMLElement {
     this.bisError.classList.add('hidden');
   }
 }
+
+export default ProductUpsell;

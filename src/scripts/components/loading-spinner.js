@@ -1,14 +1,14 @@
 /**
  * Loading Spinner Component
  * --------------------------------------------------------------------------------
- * @summary Self-contained scoped loader with style hooks. Container must have 
+ * @summary Self-contained scoped loader with style hooks. Container must have
  * position relative/absolute
- * 
+ *
  * @usage <loading-spinner class="bg-black" style="--background: 'inherit';"></loading-spinner
- * 
- * The loader accepts the following style hooks (and their defaults): 
+ *
+ * The loader accepts the following style hooks (and their defaults):
  *  --loading-color (#fff), --background ('inherit'), --bg-opacity (50%), --size (5rem)
- * 
+ *
  * For the loader to show, add [loading] attribute to the component.
  */
 
@@ -20,7 +20,7 @@ class LoadingSpinner extends HTMLElement {
     <style>
       :host {
         display: none;
-        position: absolute;        
+        position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
         width: 100%;
         height: 100%;
@@ -33,7 +33,7 @@ class LoadingSpinner extends HTMLElement {
       }
 
       .background {
-        position: absolute;        
+        position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
         width: 100%;
         height: 100%;
@@ -76,9 +76,11 @@ class LoadingSpinner extends HTMLElement {
     </div>
     `
 
-    const template = document.createElement('template'); 
+    const template = document.createElement('template');
     template.innerHTML = html;
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true))
   }
 }
+
+export default LoadingSpinner;

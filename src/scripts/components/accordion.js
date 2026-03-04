@@ -23,13 +23,13 @@
   * [js-accordion-header] - required
   * [js-accordion-content] - required
   * [data-manual-collapse] - optional
-  * 
+  *
   * .accordion-content[aria-hidden="false"] - this styling can be adjusted based on content + desired animation
 */
 
 class Accordion extends HTMLElement {
   constructor() {
-    super();   
+    super();
 
     this._selectors = {
       accordion: '[js-accordion]',
@@ -85,7 +85,7 @@ class Accordion extends HTMLElement {
         btn.setAttribute('disabled', '');
       });
     }
-    
+
   }
 
   _expandSection(element) {
@@ -101,3 +101,5 @@ class Accordion extends HTMLElement {
     }
   }
 }
+
+export default Accordion;

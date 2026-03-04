@@ -1,16 +1,16 @@
 class CompareBanner extends HTMLElement {
     constructor() {
       super();
-  
+
       this.selectors = {
         removeAll: '[js-remove-all]'
       }
     }
-  
+
     connectedCallback() {
       this.initializeApp()
     }
-  
+
     initializeApp() {
       const { createApp } = Vue;
       let compareProductArray = sessionStorage.getItem('compareProductArray');
@@ -37,7 +37,7 @@ class CompareBanner extends HTMLElement {
                 _initCompareProducts()
                 window.addEventListener("seed:compare:itemchange", _handleItemChange.bind(this));
             })
-            
+
             onMounted(() => {
             })
 
@@ -62,7 +62,7 @@ class CompareBanner extends HTMLElement {
                     }
                   }
 
-                // Uncheck Product Card 
+                // Uncheck Product Card
                 const compareProductInput = document.querySelectorAll('[js-product-compare-checkbox]')
                 for ( let i = 0; i < compareProductInput.length; i++ ) {
                     if (compareProductInput[i].dataset.productId == e.currentTarget.dataset.productId) {
@@ -103,7 +103,7 @@ class CompareBanner extends HTMLElement {
                   detail: { compareProductArray }
               }))
             }
-    
+
             // export values to be used in template/html
             return {
                 productsSelected,
@@ -115,3 +115,5 @@ class CompareBanner extends HTMLElement {
         }
     }
   }
+
+export default CompareBanner;
