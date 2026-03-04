@@ -1,0 +1,117 @@
+name: Preview Deployment
+
+on:
+  push:
+    branches: [ develop ]
+  workflow_dispatch:
+
+jobs:
+  deploy-to-preview:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        store: [us, eu, uk]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Setup Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+
+      - name: Backup content files from preview (force push only)
+        if: github.event.forced == true
+        run: |
+          echo "⚠️  Force push detected - backing up content files from preview/${{ matrix.store }}"
+          git fetch origin preview/${{ matrix.store }}
+          git checkout origin/preview/${{ matrix.store }}
+          mkdir -p /tmp/content-backup/${{ matrix.store }}
+          cp config/settings_data.json /tmp/content-backup/${{ matrix.store }}/ 2>/dev/null || echo "No settings_data.json found"
+          cp -r templates /tmp/content-backup/${{ matrix.store }}/ 2>/dev/null || echo "No templates found"
+          cp -r sections /tmp/content-backup/${{ matrix.store }}/ 2>/dev/null || echo "No sections found"
+          echo "✅ Content files backed up from preview branch"
+
+      - name: Reset preview to develop (force push only)
+        if: github.event.forced == true
+        run: |
+          echo "🔄 Resetting preview/${{ matrix.store }} to develop (develop has no content files)"
+          git checkout -B preview/${{ matrix.store }} origin/develop
+          echo "✅ Preview branch reset to develop"
+
+      - name: Merge develop to preview branch (normal push only)
+        if: github.event.forced != true
+        run: |
+          git checkout preview/${{ matrix.store }}
+          git merge develop --no-edit
+
+      - name: Check if src files changed
+        id: check_src
+        run: |
+          echo "🔍 Checking for changes in src/ folder across all pushed commits..."
+
+          # Use the commit range from the push event
+          # github.event.before = commit before push
+          # github.event.after = commit after push
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.event.after }}"
+
+          echo "Comparing commits: $BEFORE...$AFTER"
+
+          # Check if src/ files changed in the entire push range
+          CHANGED_FILES=$(git diff --name-only $BEFORE $AFTER 2>/dev/null || echo "")
+          SRC_CHANGED=$(echo "$CHANGED_FILES" | grep -E '^src/' || echo "")
+
+          if [ -n "$SRC_CHANGED" ]; then
+            echo "✅ Source files changed in push:"
+            echo "$SRC_CHANGED"
+            echo "needs_build=true" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️  No source files changed - skipping build"
+            echo "needs_build=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build assets
+        if: steps.check_src.outputs.needs_build == 'true'
+        run: |
+          echo "🔨 Building assets..."
+          npm run build
+
+      - name: Restore content files (force push only)
+        if: github.event.forced == true
+        run: |
+          echo "📦 Restoring content files"
+          cp /tmp/content-backup/${{ matrix.store }}/settings_data.json config/ 2>/dev/null || echo "No settings_data.json to restore"
+          cp -r /tmp/content-backup/${{ matrix.store }}/templates/* templates/ 2>/dev/null || echo "No templates to restore"
+          cp -r /tmp/content-backup/${{ matrix.store }}/sections/* sections/ 2>/dev/null || echo "No sections to restore"
+          echo "✅ Content files restored"
+
+      - name: Commit changes
+        run: |
+          git add -A
+          if [ "${{ github.event.forced }}" == "true" ]; then
+            if [ "${{ steps.check_src.outputs.needs_build }}" == "true" ]; then
+              git commit -m "Auto-deploy from develop: Rebuild assets and restore content after force push" || echo "No changes to commit"
+            else
+              git commit -m "Auto-deploy from develop: Restore content after force push (no asset rebuild needed)" || echo "No changes to commit"
+            fi
+          else
+            if [ "${{ steps.check_src.outputs.needs_build }}" == "true" ]; then
+              git commit -m "Auto-deploy from develop: Build assets for preview" || echo "No changes to commit"
+            else
+              git commit -m "Auto-deploy from develop: Sync changes (no asset rebuild needed)" || echo "No changes to commit"
+            fi
+          fi
+
+      - name: Push to preview branch
+        run: git push origin preview/${{ matrix.store }}

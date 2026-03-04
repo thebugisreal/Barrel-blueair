@@ -1,0 +1,142 @@
+name: Shopify Updates Notification
+
+on:
+  push:
+    branches:
+      - '**'  # Trigger on all branches
+
+jobs:
+  notify-shopify-updates:
+    runs-on: ubuntu-latest
+    # Only run if commit is from Shopify bot
+    if: github.actor == 'shopify[bot]' || contains(github.event.head_commit.author.name, 'shopify')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Need at least 2 commits to compare
+
+      - name: Check for liquid file changes
+        id: check_liquid
+        run: |
+          echo "🔍 Checking for liquid file changes by Shopify bot..."
+
+          # Get changed files in this commit
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
+          LIQUID_FILES=$(echo "$CHANGED_FILES" | grep -E '\.(liquid|json)$' || echo "")
+
+          if [ -n "$LIQUID_FILES" ]; then
+            echo "✅ Liquid/JSON files changed:"
+            echo "$LIQUID_FILES"
+
+            # Count files
+            FILE_COUNT=$(echo "$LIQUID_FILES" | wc -l)
+
+            # Format file list (limit to first 20 files)
+            FILE_LIST=$(echo "$LIQUID_FILES" | head -20)
+            if [ "$FILE_COUNT" -gt 20 ]; then
+              FILE_LIST="${FILE_LIST}"$'\n'"... and $((FILE_COUNT - 20)) more files"
+            fi
+
+            echo "liquid_changed=true" >> $GITHUB_OUTPUT
+            echo "file_count=$FILE_COUNT" >> $GITHUB_OUTPUT
+
+            # Save file list to temp file
+            echo "$FILE_LIST" > /tmp/changed-files.txt
+          else
+            echo "ℹ️  No liquid/JSON files changed"
+            echo "liquid_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Slack notification
+        if: steps.check_liquid.outputs.liquid_changed == 'true'
+        run: |
+          # Read file list
+          FILE_LIST=$(cat /tmp/changed-files.txt | sed 's/^/• /' | head -c 2000)
+
+          # Build JSON payload using jq for proper escaping
+          PAYLOAD=$(jq -n \
+            --arg text "🔔 Shopify Theme Update Detected" \
+            --arg repo "${{ github.repository }}" \
+            --arg branch "${{ github.ref_name }}" \
+            --arg actor "${{ github.actor }}" \
+            --arg count "${{ steps.check_liquid.outputs.file_count }}" \
+            --arg commit_msg "${{ github.event.head_commit.message }}" \
+            --arg files "$FILE_LIST" \
+            --arg commit_url "${{ github.event.head_commit.url }}" \
+            --arg branch_url "https://github.com/${{ github.repository }}/tree/${{ github.ref_name }}" \
+            '{
+              text: $text,
+              blocks: [
+                {
+                  type: "header",
+                  text: {
+                    type: "plain_text",
+                    text: "🛍️ Shopify Theme Update",
+                    emoji: true
+                  }
+                },
+                {
+                  type: "section",
+                  fields: [
+                    {
+                      type: "mrkdwn",
+                      text: ("*Repository:*\n" + $repo)
+                    },
+                    {
+                      type: "mrkdwn",
+                      text: ("*Branch:*\n`" + $branch + "`")
+                    },
+                    {
+                      type: "mrkdwn",
+                      text: ("*Updated by:*\n" + $actor)
+                    },
+                    {
+                      type: "mrkdwn",
+                      text: ("*Files changed:*\n" + $count + " files")
+                    }
+                  ]
+                },
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: ("*Commit Message:*\n" + $commit_msg)
+                  }
+                },
+                {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: ("*Changed Files:*\n" + $files)
+                  }
+                },
+                {
+                  type: "actions",
+                  elements: [
+                    {
+                      type: "button",
+                      text: {
+                        type: "plain_text",
+                        text: "View Commit"
+                      },
+                      url: $commit_url
+                    },
+                    {
+                      type: "button",
+                      text: {
+                        type: "plain_text",
+                        text: "View Branch"
+                      },
+                      url: $branch_url
+                    }
+                  ]
+                }
+              ]
+            }')
+
+          # Send to Slack
+          curl -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD"
