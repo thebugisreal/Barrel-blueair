@@ -65,7 +65,7 @@
     </ul>
     {% include 'region-check' %}
     <div class="site-header__icon-links desktop:flex justify-end items-center gap-xs py-sm">
-      <button class="site-header__icon-link site-header__icon-link--search w-36 hidden desktop:block" js-open-desktop-search>{{ 'icon-search.svg' | inline_asset_content }}</button>
+      <button class="site-header__icon-link site-header__icon-link--search w-36" js-open-desktop-search>{{ 'icon-search.svg' | inline_asset_content }}</button>
       {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
       {% elsif shop.permanent_domain == 'uk-blueair.myshopify.com' %}
         <a href="{{ routes.account_url }}" class="site-header__icon-link site-header__icon-link--account w-36 hidden desktop:block">{{ 'icon-account.svg' | inline_asset_content }}</a>
