@@ -33,6 +33,8 @@
     assign alt = image.alt
   endif
 
+  assign fetchpriority = fetchpriority | default: 'auto'
+
   assign break_widths = '300, 600, 750, 1024, 1280, 1440, 1920'
 
   case breakpoint
@@ -76,5 +78,5 @@
   {% if image_desktop != blank %}
     {{src_tag}}
   {% endif %}
-  {{ image_url | image_tag: width: nil, widths: break_widths, loading: loading, alt: alt, class: img_classes }}
+  {{ image_url | image_tag: width: nil, widths: break_widths, loading: loading, alt: alt, class: img_classes, fetchpriority: fetchpriority }}
 </picture>
