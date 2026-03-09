@@ -24,9 +24,9 @@
   <div class="subscription-quiz__steps-container max-w-[900px] mx-auto">
     <div class="subscription-quiz__step" data-step="1" data-active="true" js-quiz-step>
       {% if section.settings.step_1_heading != blank %}
-        <div class="subscription-quiz__heading h2 text-center">
+        <h1 class="subscription-quiz__heading h2 text-center">
           {{ section.settings.step_1_heading }}
-        </div>
+        </h1>
       {% endif %}
       <s-tabs class="subscription-quiz__tabs block mt-md desktop:mt-lg">
         <div class="tab__triggers flex justify-center items-center rounded-[100px] bg-blue-light p-xxs max-w-max mx-auto" role="tablist" aria-orientation="horizontal" js-tablist>

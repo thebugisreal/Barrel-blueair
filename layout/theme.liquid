@@ -177,6 +177,9 @@
       id="MainContent"
       class="main drawer-background modal-background buystack-modal-background grid {% if template.name == 'index' %}min-h-screen mt-[var(--header-height)]{% elsif template.name == 'login' %}min-h-auto{% else %}min-h-header mt-[var(--header-height)]{% endif %}"
     >
+      {% if request.path contains 'apps/returns' %}
+        <h1 class="sr-only">{{ page.title | default: shop.name }}</h1>
+      {% endif %}
       {{ content_for_layout }}
     </main>
 
