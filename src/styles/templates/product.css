@@ -376,7 +376,7 @@ s-carousel.pointer-event {
 }
 
 .product__related-size-option-tag {
-  @apply 
+  @apply
     absolute
     top-0
     left-1/2
@@ -451,4 +451,9 @@ s-carousel.pointer-event {
 .product-filter-pack__input:checked + .product-filter-pack__label {
   @apply bg-blue
   text-white;
+}
+
+.product__thumb-carousel .swiper-button-next,
+.product__thumb-carousel .swiper-button-prev {
+  @apply mt-0;
 }
