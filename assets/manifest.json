@@ -1,6 +1,6 @@
 {
   "src/entrypoints/theme.css": {
-    "file": "theme-93GT6-lz.css",
+    "file": "theme-g01LaROq.css",
     "src": "src/entrypoints/theme.css",
     "isEntry": true
   },
@@ -16,12 +16,9 @@
     "isEntry": true
   },
   "src/entrypoints/vendor.js": {
-    "file": "vendor-C_olgXn4.js",
+    "file": "vendor-tfkOKb4_.js",
     "name": "vendor",
     "src": "src/entrypoints/vendor.js",
-    "isEntry": true,
-    "css": [
-      "vendor-qUF34WCP.css"
-    ]
+    "isEntry": true
   }
 }

@@ -123,7 +123,7 @@
             <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
             <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
           {% endfor %}
-          {% if scent_subscriptions.count != 0 %}
+          {% if scent_subscriptions != blank and scent_subscriptions.count != 0 %}
             {% assign counter = counter | plus: 1 %}
             {% assign scent_index = counter %}
             <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input js-scent-subscription-form-input>
@@ -140,7 +140,7 @@
         </div>
         <div class="filter-subscriptions">
           {% if pdp_type == '2in1_purify_humidify' %}
-            {% if scent_subscriptions.count != 0 %}
+            {% if scent_subscriptions != blank and scent_subscriptions.count != 0 %}
               <div class="p6 font-700 mb-xxxs mt-sm">Select Scent</div>
               <div class="filter-subscriptions__filters flex flex-col gap-xxxs desktop:flex-row desktop:flex-wrap desktop:gap-xxs">
                 {% assign scent_count = 0 %}
