@@ -24,10 +24,10 @@ jobs:
 
           # Get changed files in this commit
           CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
-          LIQUID_FILES=$(echo "$CHANGED_FILES" | grep -E '\.(liquid|json)$' || echo "")
+          LIQUID_FILES=$(echo "$CHANGED_FILES" | grep -E '\.liquid$' || echo "")
 
           if [ -n "$LIQUID_FILES" ]; then
-            echo "✅ Liquid/JSON files changed:"
+            echo "✅ Liquid files changed:"
             echo "$LIQUID_FILES"
 
             # Count files
@@ -45,7 +45,7 @@ jobs:
             # Save file list to temp file
             echo "$FILE_LIST" > /tmp/changed-files.txt
           else
-            echo "ℹ️  No liquid/JSON files changed"
+            echo "ℹ️  No liquid files changed"
             echo "liquid_changed=false" >> $GITHUB_OUTPUT
           fi
 

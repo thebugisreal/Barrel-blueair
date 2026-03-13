@@ -55,36 +55,9 @@ jobs:
           git checkout preview/${{ matrix.store }}
           git merge develop --no-edit
 
-      - name: Check if src files changed
-        id: check_src
-        run: |
-          echo "🔍 Checking for changes in src/ folder across all pushed commits..."
-
-          # Use the commit range from the push event
-          # github.event.before = commit before push
-          # github.event.after = commit after push
-          BEFORE="${{ github.event.before }}"
-          AFTER="${{ github.event.after }}"
-
-          echo "Comparing commits: $BEFORE...$AFTER"
-
-          # Check if src/ files changed in the entire push range
-          CHANGED_FILES=$(git diff --name-only $BEFORE $AFTER 2>/dev/null || echo "")
-          SRC_CHANGED=$(echo "$CHANGED_FILES" | grep -E '^src/' || echo "")
-
-          if [ -n "$SRC_CHANGED" ]; then
-            echo "✅ Source files changed in push:"
-            echo "$SRC_CHANGED"
-            echo "needs_build=true" >> $GITHUB_OUTPUT
-          else
-            echo "ℹ️  No source files changed - skipping build"
-            echo "needs_build=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Build assets
-        if: steps.check_src.outputs.needs_build == 'true'
         run: |
-          echo "🔨 Building assets..."
+          echo "🔨 Building assets (Tailwind JIT scans liquid files for class usage)..."
           npm run build
 
       - name: Restore content files (force push only)
@@ -100,17 +73,9 @@ jobs:
         run: |
           git add -A
           if [ "${{ github.event.forced }}" == "true" ]; then
-            if [ "${{ steps.check_src.outputs.needs_build }}" == "true" ]; then
-              git commit -m "Auto-deploy from develop: Rebuild assets and restore content after force push" || echo "No changes to commit"
-            else
-              git commit -m "Auto-deploy from develop: Restore content after force push (no asset rebuild needed)" || echo "No changes to commit"
-            fi
+            git commit -m "Auto-deploy from develop: Rebuild assets and restore content after force push" || echo "No changes to commit"
           else
-            if [ "${{ steps.check_src.outputs.needs_build }}" == "true" ]; then
-              git commit -m "Auto-deploy from develop: Build assets for preview" || echo "No changes to commit"
-            else
-              git commit -m "Auto-deploy from develop: Sync changes (no asset rebuild needed)" || echo "No changes to commit"
-            fi
+            git commit -m "Auto-deploy from develop: Build assets for preview" || echo "No changes to commit"
           fi
 
       - name: Push to preview branch

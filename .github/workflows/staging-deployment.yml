@@ -53,45 +53,15 @@ jobs:
         run: |
           git merge ${{ steps.release.outputs.branch }} --no-edit
 
-      - name: Check if src files changed
-        id: check_src
-        run: |
-          echo "🔍 Checking for changes in src/ folder across all pushed commits..."
-
-          # Use the commit range from the push event to release branch
-          # This captures ALL commits in the push, not just the last one
-          BEFORE="${{ github.event.before }}"
-          AFTER="${{ github.event.after }}"
-
-          echo "Comparing commits: $BEFORE...$AFTER"
-
-          # Check if src/ files changed in the entire push range
-          CHANGED_FILES=$(git diff --name-only $BEFORE $AFTER 2>/dev/null || echo "")
-          SRC_CHANGED=$(echo "$CHANGED_FILES" | grep -E '^src/' || echo "")
-
-          if [ -n "$SRC_CHANGED" ]; then
-            echo "✅ Source files changed in push:"
-            echo "$SRC_CHANGED"
-            echo "needs_build=true" >> $GITHUB_OUTPUT
-          else
-            echo "ℹ️  No source files changed - skipping build"
-            echo "needs_build=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Build assets
-        if: steps.check_src.outputs.needs_build == 'true'
         run: |
-          echo "🔨 Building assets..."
+          echo "🔨 Building assets (Tailwind JIT scans liquid files for class usage)..."
           npm run build
 
       - name: Commit changes
         run: |
           git add -A
-          if [ "${{ steps.check_src.outputs.needs_build }}" == "true" ]; then
-            git commit -m "Auto-deploy from ${{ steps.release.outputs.branch }}: Build assets for staging" || echo "No changes to commit"
-          else
-            git commit -m "Auto-deploy from ${{ steps.release.outputs.branch }}: Sync changes (no asset rebuild needed)" || echo "No changes to commit"
-          fi
+          git commit -m "Auto-deploy from ${{ steps.release.outputs.branch }}: Build assets for staging" || echo "No changes to commit"
 
       - name: Push to staging branch
         run: git push origin staging/${{ matrix.store }} --force-with-lease
