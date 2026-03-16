@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.2] - 2026-03-16
+
+### Fixed
+- BEA-73: UK - Discount code bug
+
 ## [1.0.1] - 2026-03-12
 
 ### Fix
