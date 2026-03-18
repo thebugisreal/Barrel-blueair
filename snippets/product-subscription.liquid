@@ -75,7 +75,7 @@
                 {% endif %}
                 <ul class="product-subscription-description__bullets mt-xxxs">
                   {% if product.metafields.seed.pdp_filter_quantity != blank %}
-                    <li class="product-subscription-description__bullet flex"> 
+                    <li class="product-subscription-description__bullet flex">
                       <div>
                         <span js-filter-subscription-quantity-label>1 Replacement Filter</span> every <span js-filter-subscription-quantity-duration> 6 months</span>
                       </div>
@@ -115,13 +115,13 @@
           {% assign counter = 0 %}
           {% for filter_product in filter_subscriptions %}
             {% assign counter = counter | plus: 1 %}
-            <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
-            <input type="hidden" disabled name="items[{{ counter }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
-            <input type="hidden" disabled name="items[{{ counter }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
-            <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input> 
+            <input type="hidden" disabled name="items[{{ counter }}][id]" value="" data-index="{{ counter }}" js-filter-subscription-selected-variant-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][selling_plan]" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_Frequency]]" value="" js-filter-subscription-frequency-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_frequency_integer]]" value="" js-filter-subscription-frequency-integer-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[First Order Date]]" value="" js-filter-subscription-first-order-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_unitSubscriptionTempId]]" value="" js-filter-subscription-temp-id-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
+            <input type="hidden" disabled name="items[{{ counter }}][properties[_og_first_order_place_date]]" value="" js-filter-subscription-og-date-input js-filter-subscription-form-input js-2-in-1-subscription-form-input>
           {% endfor %}
           {% if scent_subscriptions != blank and scent_subscriptions.count != 0 %}
             {% assign counter = counter | plus: 1 %}
@@ -157,7 +157,7 @@
                     {% else %}
                       {% assign scent_current_on_load = false %}
                     {% endif %}
-    
+
                     {% comment %} Build selling plan ID data attributes for this scent variant {% endcomment %}
                     {% assign selling_plan_data_attrs = '' %}
                     {% for selling_plan_allocation in scent_variant.selling_plan_allocations %}
@@ -165,7 +165,7 @@
                       {% assign plan_frequency = plan_frequency_text | replace: 'months', '' | strip | plus: 0 %}
                       {% assign selling_plan_data_attrs = selling_plan_data_attrs | append: ' data-selling-plan-' | append: plan_frequency | append: '="' | append: selling_plan_allocation.selling_plan.id | append: '"' %}
                     {% endfor %}
-    
+
                     <button type="button" class="filter-subscription__variant p-xxs border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:block desktop:flex-1" {% if scent_current_on_load %}current-on-load {% endif %} data-index="{{ scent_index }}" data-selected="false" data-variant="{{ scent_variant.id }}" data-available="{{ scent_variant.available }}"{{ selling_plan_data_attrs }} js-filter-subscription-variant js-scent-subscription-variant>
                       <div class="p4 font-500">
                         {% if scent_product.metafields.seed.filter_subscription_label != blank %}
@@ -252,15 +252,28 @@
                         {{ filter_product.variants[0].title }}
                       {% endif %}
                     </div>
-                    <div class="flex justify-center gap-xxs p6" js-price-copy data-label-price="{{ filter_product.variants[0].selling_plan_allocations[0].price }}" data-label-price-compare-at="{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price }}" data-price="{{ filter_variant.selling_plan_allocations[0].price }}" data-price-compare-at="{{ filter_variant.selling_plan_allocations[0].compare_at_price }}">
+
+                    {%- liquid
+                      assign filter_price = filter_product.variants[0].selling_plan_allocations[0].price | plus: 0
+                      assign filter_compare_at_price = filter_product.variants[0].selling_plan_allocations[0].compare_at_price | plus: 0
+
+                      if filter_compare_at_price < filter_price
+                        assign subscription_discount_percentage = settings.subscription_discount_percentage | plus: 0
+                        assign filter_compare_at_price = filter_price
+                        assign filter_discount_amount = filter_price | times: subscription_discount_percentage | divided_by: 100
+                        assign filter_price = filter_price | minus: filter_discount_amount
+                      endif
+                    -%}
+
+                    <div class="flex justify-center gap-xxs p6" js-price-copy data-label-price="{{ filter_price }}" data-label-price-compare-at="{{ filter_compare_at_price }}" data-price="{{ filter_price }}" data-price-compare-at="{{ filter_compare_at_price }}">
                       {% assign label_quantity = 1 %}
                       {% if airpurifier_type_two_pack %}
                         {% assign label_quantity = 2 %}
                       {% endif %}
-                      {% if filter_product.variants[0].selling_plan_allocations[0].compare_at_price > filter_product.variants[0].selling_plan_allocations[0].price %}
-                        <s>{{ filter_product.variants[0].selling_plan_allocations[0].compare_at_price | times: label_quantity | money }}</s>
+                      {% if filter_compare_at_price > filter_price %}
+                        <s>{{ filter_compare_at_price | times: label_quantity | money }}</s>
                       {% endif %}
-                      <span class="font-700">{{ filter_product.variants[0].selling_plan_allocations[0].price | times: label_quantity | money }}</span>
+                      <span class="font-700">{{ filter_price | times: label_quantity | money }}</span>
                     </div>
                   </button>
                 {% endif %}
@@ -295,7 +308,7 @@
                 {% else %}
                   Choose Frequency
                 {% endif %}
-              </div>  
+              </div>
               <div class="filter-subscription__selling-plans flex flex-wrap gap-xxs">
                 {% if filter_subscription.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank %}
                   {% if filter_subscription.frequency_options_override != blank %}
@@ -346,7 +359,7 @@
                   {% else %}
                     Choose Frequency
                   {% endif %}
-                </div>  
+                </div>
                 <div class="filter-subscription__selling-plans flex flex-wrap gap-xxs">
                   {% if filter_subscription.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank %}
                     {% if filter_subscription.frequency_options_override != blank %}

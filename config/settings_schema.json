@@ -397,5 +397,16 @@
         "info": "URL for the account icon when user is not logged in"
       }
     ]
+  },
+  {
+    "name": "Subscription Discount",
+    "settings": [
+      {
+        "type": "number",
+        "id": "subscription_discount_percentage",
+        "label": "Subscription Discount Percentage",
+        "info": "Enter a number between 0 and 100. This will apply a discount to products that have a selling plan. For example, if you enter 10, products with a selling plan will be discounted by 10%."
+      }
+    ]
   }
 ]
