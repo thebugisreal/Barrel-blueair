@@ -50,10 +50,19 @@ s-drawer[position="left"] {
   -translate-x-full;
 }
 
+s-drawer[position="center"] {
+  @apply bottom-0 translate-y-full max-w-none
+  tabletl:bottom-auto tabletl:w-full tabletl:max-w-[864px] tabletl:left-[50%] tabletl:top-[50%] tabletl:-translate-x-[50%] tabletl:-translate-y-[calc(50%-100px)];
+}
+
 s-drawer.open {
   @apply block
   translate-x-0
   translate-y-0;
+
+  &[position="center"] {
+    @apply tabletl:-translate-x-[50%] tabletl:-translate-y-[50%]
+  }
 }
 
 .drawer-background:after {
