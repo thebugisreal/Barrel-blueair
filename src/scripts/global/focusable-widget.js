@@ -63,10 +63,10 @@ class FocusableWidget extends HTMLElement {
    * @returns {HTMLElement} widget
    * @public
    */
-  open = () => {
+  open = (evt) => {
     if (this._isOpen) return;
     this._closeFocusableWidgets();
-    return this.toggle();
+    return this.toggle(evt);
   }
 
   /**
@@ -86,7 +86,7 @@ class FocusableWidget extends HTMLElement {
    * @returns {HTMLElement} widget
    * @public
    */
-  toggle = () => {
+  toggle = (evt) => {
     theme.utils.prepareTransition(this);
     this._toggleClasses();
     this._toggleAccessibilityAttributes();
@@ -96,7 +96,7 @@ class FocusableWidget extends HTMLElement {
         this
       );
       this._bindEvents();
-      this._dispatchEvents(this._events.open, ['open']);
+      this._dispatchEvents(this._events.open, ['open'], { detail: evt.target });
     } else {
       theme.utils.a11y.removeTrapFocus(this);
       this._unbindEvents();
@@ -249,7 +249,7 @@ class FocusableWidget extends HTMLElement {
       event.preventDefault();
       event.stopPropagation();
     }
-    this.open();
+    this.open(event);
   }
 
   /**
@@ -280,10 +280,10 @@ class FocusableWidget extends HTMLElement {
    * Dispatches an array of custom events on document
    * @param {Array} events - this._events.<event>
    */
-  _dispatchEvents(globalEvents, elementEvents) {
-    globalEvents.forEach(e => document.dispatchEvent(new CustomEvent(e)))
+  _dispatchEvents(globalEvents, elementEvents, detail = {}) {
+    globalEvents.forEach(e => document.dispatchEvent(new CustomEvent(e, detail)))
     if (elementEvents && elementEvents.length)
-    elementEvents.forEach(e => this.dispatchEvent(new CustomEvent(e)))
+    elementEvents.forEach(e => this.dispatchEvent(new CustomEvent(e, detail)))
   }
 
   /**
