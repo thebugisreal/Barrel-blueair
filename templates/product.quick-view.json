@@ -1,0 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product__main--quick",
+      "blocks": {
+        "title_bjfNAe": {
+          "type": "title",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
+        },
+        "room_tag_UqfcUw": {
+          "type": "room_tag",
+          "settings": {
+            "margin_top_mobile": "mt-xs",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-xs",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
+        },
+        "short_description_FGhrqT": {
+          "type": "short_description",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-md"
+          }
+        },
+        "okendo_star_rating_7KQNmG": {
+          "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "product_badge_TcD3K4": {
+          "type": "product_badge",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-sm",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-sm"
+          }
+        },
+        "filter_options_XPQVUh": {
+          "type": "filter_options",
+          "settings": {}
+        },
+        "product_options_GLfTKf": {
+          "type": "product_options",
+          "settings": {
+            "margin_top_mobile": "mt-0",
+            "margin_bottom_mobile": "mb-0",
+            "margin_top_desktop": "desktop:mt-0",
+            "margin_bottom_desktop": "desktop:mb-0"
+          }
+        },
+        "atc_BURfeB": {
+          "type": "atc",
+          "settings": {
+            "margin_top_mobile": "mt-sm",
+            "margin_bottom_mobile": "mb-md",
+            "margin_top_desktop": "desktop:mt-sm",
+            "margin_bottom_desktop": "desktop:mb-lg"
+          }
+        }
+      },
+      "block_order": [
+        "title_bjfNAe",
+        "room_tag_UqfcUw",
+        "short_description_FGhrqT",
+        "okendo_star_rating_7KQNmG",
+        "product_badge_TcD3K4",
+        "filter_options_XPQVUh",
+        "product_options_GLfTKf",
+        "atc_BURfeB"
+      ],
+      "settings": {
+        "buybox_max_width": "80ch",
+        "show_truemed": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
