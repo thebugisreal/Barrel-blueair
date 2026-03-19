@@ -162,7 +162,7 @@
               {% for product in collection.products %}
                 {% unless product.metafields.seed.product_card_hide_on_collection_page %}
                   <li class="collection-grid__product">
-                    {% render 'product-card' product: product %}
+                    {% render 'product-card' product: product, quick_view: section.settings.enable_quick_view %}
                   </li>
                 {% endunless %}
               {% endfor %}
@@ -215,6 +215,12 @@
       "id": "hide_links",
       "label": "Hide Filter Links",
       "info": "If enabled, the filter links will not be shown on the collection page.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_view",
+      "label": "Enable Quick Add",
       "default": false
     }
   ]
