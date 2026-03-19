@@ -60,113 +60,6 @@
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
   <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
     <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)] extrawide:max-w-[675px] extrawide:ml-auto">
-      {%- capture thumb_carousel_options -%}
-        {
-          "loop": false,
-          "autoHeight": false,
-          "spaceBetween": 8,
-          "watchSlidesProgress": true,
-          "navigation": {
-            "enabled": true,
-            "prevEl": "[js-pdp-thumb-prev]",
-            "nextEl": "[js-pdp-thumb-next]"
-          }
-        }
-      {%- endcapture -%}
-      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md w-fit mx-auto">
-        <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-[350px] px-[40px]" js-carousel js-pdp-carousel is-thumb-carousel data-slide-count="{{ product.media.size }}">
-          <div class="swiper-wrapper">
-            {% assign first_render_quantity_options_images = true %}
-            {% assign current_slides_count = 0 %}
-            {% assign active_thumb_taken = false %}
-            {% for media in product.media %}
-              {% assign media_swatch = '' %}
-              {% assign country_tag = '' %}
-              {% assign hide_media = false %}
-              {% assign show_country = blank %}
-              {% assign hide_country = blank %}
-              {% assign alt_text = media.alt | downcase | strip %}
-
-              {% if alt_text contains 'country-hide:' %}
-                {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
-                {% if hide_country == user_country %}
-                  {% assign hide_media = true %}
-                {% endif %}
-              {% elsif alt_text contains 'country:' %}
-                {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
-                {% if show_country != user_country %}
-                  {% assign hide_media = true %}
-                {% endif %}
-              {% endif %}
-
-              {% assign active_thumb = false %}
-              {% if current_swatch != blank %}
-                {% assign media_swatch = media.alt | strip %}
-                {% if media_swatch != current_swatch and media_swatch != 'All' %}
-                  {% assign hide_media = true %}
-                {% endif %}
-              {% endif %}
-              {% if hide_media == false and active_thumb_taken == false %}
-                {% assign active_thumb_taken = true %}
-                {% assign active_thumb = true %}
-              {% endif %}
-              {% unless hide_media %}
-                {% assign current_slides_count = current_slides_count | plus: 1 %}
-              {% endunless %}
-
-              {% if shop.permanent_domain == 'blueeudev.myshopify.com' %}
-                {% if current_swatch != blank %}
-                  {% if media_swatch == current_swatch and media_swatch == 'All' %}
-                    {% assign hide_media = false %}
-                  {% endif %}
-                {% endif %}
-                {% if hide_country != blank %}
-                  {% if hide_country != user_country %}
-                    {% assign hide_media = false %}
-                  {% endif %}
-                {% elsif show_country != blank %}
-                  {% if show_country == user_country %}
-                    {% assign hide_media = false %}
-                  {% endif %}
-                {% else %}
-                  {% assign hide_media = false %}
-                {% endif %}
-              {% endif %}
-              
-              {% case media.media_type %}
-                {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
-                    {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center' %}
-                    
-                    {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
-                    {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
-                      {% for media in product.metafields.seed.quantity_options_images.value %}
-                        <span class="absolute top-0 bottom-0 right-0 left-0" data-quanity="{{ product.metafields.seed.quantity_option.value[forloop.index] | split: '|' | last | strip }}" js-quanity-option-image>
-                          {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center' %}
-                        </span>
-                      {% endfor %}
-                      {% assign first_render_quantity_options_images = false %}
-                    {% endif %}
-                    {% comment %} END Used for replacing first image with Quanity Image Metafield {% endcomment %}
-
-                  </div>
-                {% when 'video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
-                    {{ media | video_tag:  autoplay: true, loop: true, mute: true, class: "w-full" }}
-                  </div>
-                {% when 'external_video' %}              
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
-                    {{ media | external_video_tag }}
-                  </div>
-              {% endcase %}
-            {% endfor %}
-          </div>
-          <div class="swiper-button-prev left-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-prev>{{ 'icon-active-left.svg' | inline_asset_content }}</div>
-          <div class="swiper-button-next right-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none {% if current_slides_count < 2 %}hide-thumb-carousel{% endif %}" js-pdp-thumb-next>{{ 'icon-active-right.svg' | inline_asset_content }}</div>
-          <div class="absolute h-full w-[40px] left-0 top-0 z-[5]" style="background: linear-gradient(to right, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
-          <div class="absolute h-full w-[40px] right-0 top-0 z-[5]" style="background: linear-gradient(to left, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
-        </div>
-      </s-carousel>
       {%- capture main_carousel_options -%}
         {
           "slidesPerView": 1,
@@ -179,7 +72,7 @@
           }
         }
       {%- endcapture -%}
-      <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid" >
+      <s-carousel data-options='{{ main_carousel_options }}' class="product__main-carousel grid" >
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
             {% assign first_render_quantity_options_images = true %}
