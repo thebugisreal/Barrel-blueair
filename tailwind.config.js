@@ -135,6 +135,9 @@ module.exports = {
           "to": { transform: "translateX(150%)" },
         },
       },
+      boxShadow: {
+        'box': '0 0 14.3px rgba(0, 0, 0, 0.2)',
+      },
     },
   },
   borderRadius: {
