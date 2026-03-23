@@ -123,7 +123,7 @@
 
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_img]:aspect-[393/267] [&_img]:tabletp:aspect-[421/525] [&_img]:object-contain [&_picture]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_video]:aspect-[393/267] [&_video]:tabletp:aspect-[421/525] [&_img]:aspect-[393/267] [&_img]:tabletp:aspect-[421/525] [&_img]:object-contain [&_picture]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {% render 'lazy-image' image: media %}
 
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
