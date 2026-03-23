@@ -34,9 +34,9 @@
           "type": "short_description",
           "settings": {
             "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-0",
+            "margin_bottom_mobile": "mb-xxs",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-md"
+            "margin_bottom_desktop": "desktop:mb-xs"
           }
         },
         "okendo_star_rating_7KQNmG": {
@@ -49,9 +49,9 @@
           "type": "product_badge",
           "settings": {
             "margin_top_mobile": "mt-0",
-            "margin_bottom_mobile": "mb-sm",
+            "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-0",
-            "margin_bottom_desktop": "desktop:mb-sm"
+            "margin_bottom_desktop": "desktop:mb-0"
           }
         },
         "filter_options_XPQVUh": {
@@ -71,9 +71,9 @@
           "type": "atc",
           "settings": {
             "margin_top_mobile": "mt-sm",
-            "margin_bottom_mobile": "mb-md",
+            "margin_bottom_mobile": "mb-0",
             "margin_top_desktop": "desktop:mt-sm",
-            "margin_bottom_desktop": "desktop:mb-lg"
+            "margin_bottom_desktop": "desktop:mb-0"
           }
         }
       },
