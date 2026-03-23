@@ -276,7 +276,7 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="{{ spacing }} [.product\_\_badges_+&]:-mt-[8px]">
+                <div class="{{ spacing }} pb-[24px] tabletp:pb-[22px] [.product\_\_badges_+&]:-mt-[8px] ">
                   {%- comment -%} Product Variant Master Select {%- endcomment -%}
                   {% render 'master-variant-select',
                   variants: product.variants,
