@@ -413,7 +413,7 @@
                 {%- endcapture -%}
                 <div class="flex flex-col gap-xs {{ spacing }} items-center bg-white !mb-0 !mt-auto shadow-box z-10 sticky bottom-0 py-[20px] px-[27px] -mx-[26px] tabletp:-mx-[36px] tabletp:pb-[10px] tabletp:px-[36px]">
                   <button 
-                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center"
+                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center !p-[8px]"
                     type="submit" 
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>

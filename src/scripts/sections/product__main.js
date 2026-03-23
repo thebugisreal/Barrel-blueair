@@ -917,7 +917,7 @@ class ProductMain extends HTMLElement {
     this.form = this.querySelector(this._selectors.form);
     this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
     this.cart = document.querySelector('cart-drawer');
-    this.cartDrawer = document.querySelector('#CartDrawer')
+    this.cartDrawerTrigger = document.querySelector('[js-open-cart]')
   }
 
   _updateCartItems = (type, data, render = true) => {
@@ -1399,7 +1399,7 @@ class ProductMain extends HTMLElement {
           theme.utils.subscriptions.publish(window.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', productVariantId: formData.get('id') });
           this.error = false;
           this.cart.renderContents(response);
-          this.cartDrawer.open();
+          this.cartDrawerTrigger.click();
 
           if (window.Shopify.shop === '5ef43d-4a.myshopify.com') {
             amzn('trackEvent', 'AddToCart');
