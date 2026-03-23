@@ -56,10 +56,10 @@
   assign user_country = localization.country.iso_code | downcase
 -%}
 
-<s-product role="section" class="product" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}" data-is-quick-view="true">
+<s-product role="section" class="product h-full block" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}" data-is-quick-view="true">
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
-  <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
-    <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)] extrawide:max-w-[675px] extrawide:ml-auto">
+  <div class="product__layout flex flex-col h-full tabletp:grid tabletp:grid-cols-[421px_1fr]">
+    <div class="product__images flex flex-col-reverse tabletp:sticky tabletp:top-0">
       {%- capture main_carousel_options -%}
         {
           "slidesPerView": 1,
@@ -123,7 +123,7 @@
 
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_img]:aspect-[393/267] [&_img]:tabletp:aspect-[421/525] [&_img]:object-contain [&_picture]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {% render 'lazy-image' image: media %}
 
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
@@ -148,18 +148,18 @@
               {% endcase %}
             {% endfor %}
           </div>
-          <div class="swiper-button-prev swiper-nav-btn left-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-prev>{{ 'icon-arrow-left.svg' | inline_asset_content }}</div>
-          <div class="swiper-button-next swiper-nav-btn right-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-next>{{ 'icon-arrow-right.svg' | inline_asset_content }}</div>
+          <div class="swiper-button-prev swiper-nav-btn left-[25px] text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none tabletp:left-[20px]" js-pdp-main-prev>{{ 'icon-arrow-left.svg' | inline_asset_content }}</div>
+          <div class="swiper-button-next swiper-nav-btn right-[25px] text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none tabletp:right-[20px]" js-pdp-main-next>{{ 'icon-arrow-right.svg' | inline_asset_content }}</div>
         </div>
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information p-md desktop:px-xl" id="ProductInfo-{{ section.id }}" js-product-info>
-      <div class="desktop:max-w-[var(--max-w-desktop)] desktop:mx-auto" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
+    <div class="product__information pt-[24px] px-[26px] max-h-full overflow-x-hidden overflow-y-auto tabletp:pt-[22px] tabletp:px-[36px]" id="ProductInfo-{{ section.id }}" js-product-info>
+      <div class="h-full" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
         {%- comment -%}
           * Product Form
         {%- endcomment -%}
-        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', js-product-form: true -%}
+        {%- form 'product', product, id: product_form_id, class: 'form h-full flex flex-col', novalidate: 'novalidate', js-product-form: true -%}
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'room_tag' %}
@@ -168,20 +168,20 @@
                 {%- endcapture -%}
                 {% if is_transactional %}
                   {% if product.metafields.seed.applicableFor != blank %}
-                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xxs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
                   {% endif %}
                 {% else %}
                   {% if product.metafields.seed.applicableFor_international != blank %}
-                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor_international }}</div>
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xxs {{ spacing }}">{{ product.metafields.seed.applicableFor_international }}</div>
                   {% elsif product.metafields.seed.applicableFor != blank %}
-                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
+                    <div class="product__room-tag tag-small w-fit px-xs py-xxs border border-gray rounded-[60px] mb-xxs {{ spacing }}">{{ product.metafields.seed.applicableFor }}</div>
                   {% endif %}
                 {% endif %}
               {% when 'title' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <h1 class="product__title h3 {{ spacing }}">
+                <h1 class="product__title s1 {{ spacing }}">
                   {% render 'product-title-intl', product: product %}
                 </h1>
                 {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
@@ -200,10 +200,10 @@
                 {%- endcapture -%}
                 <div class="{{ spacing }}">
                   {% if product.metafields.seed.blair_plpShortDescription != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.blair_plpShortDescription }}</p>
+                    <p class="product__short-description p4 mt-xxs">{{ product.metafields.seed.blair_plpShortDescription }}</p>
                   {% endif %}
                   {% if product.metafields.seed.blair_filterSupportModels != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
+                    <p class="product__short-description p4 mt-xxs">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
                   {% endif %}
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
@@ -238,7 +238,7 @@
                       {%- capture spacing -%}
                         {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                       {%- endcapture -%}
-                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.shopify-app-block_+&]:-mt-[8px]">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
                           <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
                         {% endfor %}
@@ -249,7 +249,7 @@
                         {%- capture spacing -%}
                           {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                         {%- endcapture -%}
-                        <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                        <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.shopify-app-block_+&]:-mt-[8px]">
                           {% for tag in product.metafields.seed.product_tags.value %}
                             <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
                           {% endfor %}
@@ -263,7 +263,7 @@
                     <p class="s1 mb-sm">Customize your filter</p>
                     <div class="product__filters flex gap-xs mb-xs">
                       {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
-                        <a href="{{swatch_product.url}}" class="product__filter-link block h-xl w-xl border {% if swatch_product.variants[0].title == product.variants[0].title %} border-black {% else %} border-gray {% endif %} tabletl:h-xxl tabletl:w-xxl">
+                        <a href="{{swatch_product.url}}" class="product__filter-link block h-xl w-xl border {% if swatch_product.variants[0].title == product.variants[0].title %} border-black {% else %} border-gray {% endif %} tabletp:h-xxl tabletp:w-xxl">
                           {% assign image = swatch_product.metafields.seed.product_card_image | default: swatch_product.featured_image %}
                           {% render 'lazy-image' image: image %}
                         </a>
@@ -276,7 +276,7 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="{{ spacing }}">
+                <div class="{{ spacing }} [.product\_\_badges_+&]:-mt-[8px]">
                   {%- comment -%} Product Variant Master Select {%- endcomment -%}
                   {% render 'master-variant-select',
                   variants: product.variants,
@@ -306,7 +306,7 @@
 
                   {% if size_tag != blank and related_tag_size != blank %}
                     <div class="product__realated-sizes-container mt-sm mb-sm">
-                      <span class="product__related-size-label block font-700 text-12 text-blue mb-xs">Size: {{size_tag}}</span>
+                      <span class="product__related-size-label block p3 text-blue mb-xxxs">Size: {{size_tag}}</span>
                       <div class="product__related-sizes flex flex-row-reverse justify-end flex-wrap gap-xs"
                         data-handle="{{product.handle}}"
                         data-collection="{{related_tag_size}}"
@@ -320,7 +320,7 @@
                     <div class="product__realted-colors-container mt-sm mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 text-12 text-blue mb-xxs">Color: {{color.label}}</span>
+                          <span class="product__related-color-label block p3 text-blue mb-xxxs">Color: {{color.label}}</span>
                           <div class="product__related-colors flex flex-wrap gap-xs"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_color}}"
@@ -371,11 +371,11 @@
                   {% endif %}
 
                   {% if enable_subscription %}
-                    {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: subscription filter_subscription_discounted_price: filter_subscription_discounted_price %}
+                    {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: subscription filter_subscription_discounted_price: filter_subscription_discounted_price, is_quick_view: true %}
                     
                     {% if product.metafields.seed.additional_subscription != blank %}
                       {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
-                      {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: additional_subscription filter_subscription_discounted_price: filter_subscription_discounted_price is_additional: true %}
+                      {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: additional_subscription filter_subscription_discounted_price: filter_subscription_discounted_price is_additional: true, is_quick_view: true %}
                     {% endif %}
                   {% endif %}
 
@@ -411,13 +411,13 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">          
+                <div class="flex flex-col gap-xs {{ spacing }} items-center bg-white !mb-0 !mt-auto shadow-box z-10 sticky bottom-0 py-[20px] px-[27px] -mx-[26px] tabletp:-mx-[36px] tabletp:pb-[10px] tabletp:px-[36px]">
                   <button 
                     class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center"
                     type="submit" 
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>
-                    <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
+                    <div class="btn__text whitespace-nowrap h-[29px] flex items-center">
                       <span js-price>
                         {{ current_variant.price | money }}
                       </span>
@@ -1645,6 +1645,10 @@ tm_qual_gjiapmwgps"></div>
             {
               "value": "mb-0",
               "label": "None"
+            },
+            {
+              "value": "mb-xxs",
+              "label": "XXS"
             },
             {
               "value": "mb-xs",

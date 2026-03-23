@@ -52,7 +52,7 @@ s-drawer[position="left"] {
 
 s-drawer[position="center"] {
   @apply bottom-0 translate-y-full max-w-none
-  tabletl:bottom-auto tabletl:w-full tabletl:max-w-[864px] tabletl:left-[50%] tabletl:top-[50%] tabletl:-translate-x-[50%] tabletl:-translate-y-[calc(50%-100px)];
+  tabletp:bottom-auto tabletp:w-full tabletp:max-w-[864px] tabletp:left-[50%] tabletp:top-[50%] tabletp:-translate-x-[50%] tabletp:-translate-y-[calc(50%-100px)];
 }
 
 s-drawer.open {
@@ -61,7 +61,7 @@ s-drawer.open {
   translate-y-0;
 
   &[position="center"] {
-    @apply tabletl:-translate-x-[50%] tabletl:-translate-y-[50%]
+    @apply tabletp:-translate-x-[50%] tabletp:-translate-y-[50%]
   }
 }
 

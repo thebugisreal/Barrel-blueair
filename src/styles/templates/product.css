@@ -36,6 +36,10 @@
   @apply bg-transparent;
 }
 
+[data-is-quick-view] .product__main-carousel .swiper-initialized .swiper-nav-btn {
+  @apply flex;
+}
+
 @media screen(desktop) {
   .product__main-carousel .swiper-initialized .swiper-nav-btn {
     @apply flex;
@@ -49,6 +53,10 @@
 /* product option selector */
 .product-swatch__label--color {
   @apply block w-[50px] min-w-[50px] h-[50px] p-xxxs border border-transparent rounded-full;
+
+  [data-is-quick-view] & {
+    @apply w-[40px] min-w-[40px] h-[40px]
+  }
 }
 
 .product-option__select-wrapper {
@@ -359,11 +367,21 @@ s-carousel.pointer-event {
 .product__related-color-current::after {
   content: '';
   @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[31px] h-[31px] rounded-full border border-blue;
+
+  [data-is-quick-view] & {
+    @apply w-[40px] h-[40px];
+  }
 }
 
 /* Material swatches - larger size */
 .product__related-color-current.w-40::after {
   @apply w-[50px] h-[50px];
+}
+
+.product-swatch__container {
+  [data-is-quick-view] & {
+    @apply gap-[10px];
+  }
 }
 
 /* Size options styling */
@@ -393,10 +411,26 @@ s-carousel.pointer-event {
     w-fit;
 }
 
+.product__related-colors {
+  [data-is-quick-view] & {
+    @apply gap-[18px] py-[5px];
+  }
+}
+
+.product__related-color-current,
+.product-related-color {
+  [data-is-quick-view] & {
+    @apply w-[30px] h-[30px];
+  }
+}
 
 .product-related-color:focus::after {
   content: '';
   @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[31px] h-[31px] rounded-full border border-blue;
+
+  [data-is-quick-view] & {
+    @apply w-[40px] h-[40px];
+  }
 }
 
 .product-related-color.w-40:focus::after {
@@ -406,6 +440,10 @@ s-carousel.pointer-event {
 .product-related-color:focus-visible::after {
   content: '';
   @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[31px] h-[31px] rounded-full border border-blue;
+
+  [data-is-quick-view] & {
+    @apply w-[40px] h-[40px];
+  }
 }
 
 .product-related-color.w-\[32px\]:focus-visible::after {
@@ -416,6 +454,10 @@ s-carousel.pointer-event {
   .product-related-color:hover::after {
     content: '';
     @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[31px] h-[31px] rounded-full border border-blue;
+
+    [data-is-quick-view] & {
+      @apply w-[40px] h-[40px];
+    }
   }
 
   .product-related-color.w-40:hover::after {
