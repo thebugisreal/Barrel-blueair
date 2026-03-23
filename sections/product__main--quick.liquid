@@ -123,7 +123,7 @@
 
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_video]:aspect-[393/267] [&_video]:tabletp:aspect-[421/525] [&_img]:aspect-[393/267] [&_img]:tabletp:aspect-[421/525] [&_img]:object-contain [&_picture]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_img]:aspect-[393/267] [&_img]:tabletp:aspect-[421/525] [&_img]:object-contain [&_picture]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {% render 'lazy-image' image: media %}
 
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
@@ -138,11 +138,11 @@
                     {% comment %} END Used for replacing first image with Quanity Image Metafield {% endcomment %}
                   </div>
                 {% when 'video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_video]:aspect-[393/267] [&_video]:tabletp:aspect-[421/525] [&_video]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {{ media | video_tag: controls: false, autoplay: true, loop: true, mute: true, class: "w-full" }}
                   </div>
                 {% when 'external_video' %}              
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %} [&_video]:aspect-[393/267] [&_video]:tabletp:aspect-[421/525] [&_video]:bg-blue-light" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {{ media | external_video_tag }}
                   </div>
               {% endcase %}
