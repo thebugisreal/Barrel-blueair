@@ -30,6 +30,7 @@ import FilterSort from '../scripts/components/filter-sort.js';
 import ActiveFilters from '../scripts/components/active-filters.js';
 import PriceRange from '../scripts/components/price-range.js';
 import ProductCard from '../scripts/components/product-card.js';
+import QuickView from '../scripts/components/quick-view.js';
 import CountrySelect from '../scripts/components/country-select.js';
 import CountrySelectModal from '../scripts/components/country-select-modal.js';
 import ImageCaptionModal from '../scripts/components/section__image-caption-modal.js';
@@ -71,6 +72,7 @@ customElements.define('product-upsell', ProductUpsell);
 customElements.define('compare-banner', CompareBanner);
 customElements.define('compare-grid', CompareGrid);
 customElements.define('product-viewer', ProductViewer);
+customElements.define('quick-view', QuickView);
 
 customElements.define('faq-posts', FaqPosts);
 customElements.define('faq-search-results', FaqSearchResults);

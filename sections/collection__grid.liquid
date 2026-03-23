@@ -61,9 +61,9 @@
               <div class="collection-grid__collection-links mt-xs grid grid-cols-2 gap-xs desktop:flex desktop:flex-wrap desktop:gap-md">
                 {% for link in linklist.links %}
                   {% unless link.active %}
-                    <a href="{{ link.url }}" 
+                    <a href="{{ link.url }}"
                       class="collection-grid__collection-link !no-underline border border-gray desktop:flex desktop:justify-start desktop:items-center desktop:w-[300px] desktop:min-w-[300px]"
-                      data-breadcrumb="{{ collection.handle }}|{{ collection.url }}|{{ collection.title }}" 
+                      data-breadcrumb="{{ collection.handle }}|{{ collection.url }}|{{ collection.title }}"
                       js-collection-link>
                       {% if collection.metafields.seed.collection_links_heading contains 'Room Size' %}
                         <div class="p-sm hidden desktop:block">
@@ -90,7 +90,7 @@
             </div>
           {% endif %}
         {% endif %}
-  
+
         {% liquid
           assign sort_by = collection.sort_by | default: collection.default_sort_by
           assign active_filters_count = 0
@@ -178,9 +178,9 @@
                 {% unless product.metafields.seed.product_card_hide_on_collection_page %}
                   <li class="collection-grid__product">
                     {% unless preload_applied %}
-                      {% render 'product-card' product: product, loading: loading, fetchpriority: fetchpriority %}
+                      {% render 'product-card' product: product, loading: loading, fetchpriority: fetchpriority, quick_view: section.settings.enable_quick_view %}
                     {% else %}
-                      {% render 'product-card' product: product %}
+                      {% render 'product-card' product: product, quick_view: section.settings.enable_quick_view %}
                     {% endunless %}
                     {% if forloop.index > 2 %}
                       {% assign preload_applied = true %}
@@ -191,14 +191,14 @@
 
               {% if collection.metafields.seed.collection_touts != blank and paginate.current_page == 1 and active_filters_count == 0 %}
                 {% for collection_tout in collection.metafields.seed.collection_touts.value %}
-                  <li class="collection-grid__collection-tout" 
+                  <li class="collection-grid__collection-tout"
                     style="--row-mobile: {% if collection_tout.y_position_mobile != blank %}{{ collection_tout.y_position_mobile }}{% else %}{{ forloop.index | times: 4 }}{% endif %}; --col-desktop: {% if collection_tout.x_position_desktop != blank %}{{ collection_tout.x_position_desktop }}{% else %}3{% endif %}; --row-desktop: {% if collection_tout.y_position_desktop != blank %}{{ collection_tout.y_position_desktop }}{% else %}{{ forloop.index | times: 2 }}{% endif %};">
                     {% render 'collection-tout' collection_tout: collection_tout %}
                   </li>
                 {% endfor %}
               {% endif %}
             </ul>
-            
+
             <div class="collection-grid__pagination" js-pagination>
               {% if paginate.next.url %}
                 <button class="collection-grid__show-more-btn block w-max mx-auto my-xxl text-18 border border-blue py-sm px-xl" data-url="{{ paginate.next.url }}" js-show-more-btn>Show More</button>
@@ -207,7 +207,7 @@
           </div>
         </div>
       </div>
-      
+
       <loading-spinner js-show-more-loader js-filter-sort-loader class="collection-grid__loading-spinner fixed z-[5]" style="--background: #00000060; --color: #002955; --width: 32px; --height: 32px;"></loading-spinner>
     {% else %}
       <p class="collection-grid__no-results h6 px-md py-lg desktop:px-xl">No Products Found</p>
@@ -237,6 +237,12 @@
       "id": "hide_links",
       "label": "Hide Filter Links",
       "info": "If enabled, the filter links will not be shown on the collection page.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_view",
+      "label": "Enable Quick Add",
       "default": false
     }
   ]

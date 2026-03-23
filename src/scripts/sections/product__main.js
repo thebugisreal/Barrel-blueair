@@ -64,6 +64,8 @@ class ProductMain extends HTMLElement {
     this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
     this.filterPackQuantity = this.querySelectorAll(this._selectors.filterPackQuantity);
 
+    this.isQuickView = this.hasAttribute('data-is-quick-view')
+
     if (this.dataset.currentSwatch) {
       this.swatchOption = parseInt(this.dataset.swatchOption);
       this.currentSwatch = this.dataset.currentSwatch;
@@ -1786,19 +1788,27 @@ class ProductMain extends HTMLElement {
   }
 
   _renderSwatchLink = (url) => {
-    fetch(url)
+    fetch(!this.isQuickView ? url : `${url}${url.includes('?') ? '&' : '?'}view=quick-view`)
       .then((response) => response.text())
       .then((responseText) => {
         const html = new DOMParser().parseFromString(responseText, 'text/html');
 
-        const oldSections = document.querySelectorAll('#MainContent .shopify-section');
-        const newSections = html.querySelectorAll('#MainContent .shopify-section');
+        
+        if (!this.isQuickView) {
+          const oldSections = document.querySelectorAll('#MainContent .shopify-section');
+          const newSections = html.querySelectorAll('#MainContent .shopify-section');
 
-        oldSections.forEach((section, index) => {
-          section.innerHTML = newSections[index].innerHTML;
-        })
+          oldSections.forEach((section, index) => {
+            section.innerHTML = newSections[index].innerHTML;
+          })
 
-        window.history.pushState({}, "", url);
+          window.history.pushState({}, "", url);
+        } else {
+          document.dispatchEvent(new CustomEvent('quick-view:render', {
+            detail: html
+          }))
+          return;
+        }
 
         window.removeEventListener('popstate', this._popStateRender);
 

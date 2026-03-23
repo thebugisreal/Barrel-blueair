@@ -124,6 +124,20 @@ module.exports = {
       minHeight: {
         header: "calc(100vh - var(--header-height))"
       },
+      animation: {
+        "loader": "loaderLine 1.4s ease-in-out infinite",
+      },
+      keyframes: {
+        loaderLine: {
+          "0%": { transform: "translateX(-150%)" },
+          "45%": { transform: "translateX(0)" },
+          "55%": { transform: "translateX(0)" },
+          "to": { transform: "translateX(150%)" },
+        },
+      },
+      boxShadow: {
+        'box': '0 0 14.3px rgba(0, 0, 0, 0.2)',
+      },
     },
   },
   borderRadius: {

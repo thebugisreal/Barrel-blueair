@@ -1,6 +1,6 @@
 {
   "name": "blueair-theme",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "scripts": {
     "dev": "vite dev -- --store 5ef43d-4a",

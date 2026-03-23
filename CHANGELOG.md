@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.4] - 2026-03-20
+
+### Fixed
+- BEA-75 Account > New warranty bug
+
 ## [1.0.3] - 2026-03-18
 
 ### Fixed
