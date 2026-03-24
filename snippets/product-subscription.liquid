@@ -258,7 +258,7 @@
                       assign filter_compare_at_price = filter_product.variants[0].selling_plan_allocations[0].compare_at_price | plus: 0
 
                       if filter_compare_at_price < filter_price
-                        assign subscription_discount_percentage = settings.subscription_discount_percentage | plus: 0
+                        assign subscription_discount_percentage = settings.initial_subscription_discount_percentage | plus: 0
                         assign filter_compare_at_price = filter_price
                         assign filter_discount_amount = filter_price | times: subscription_discount_percentage | divided_by: 100
                         assign filter_price = filter_price | minus: filter_discount_amount
