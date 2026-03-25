@@ -4,6 +4,7 @@
   assign filter_type_option = false
   assign refurbished_air_purifiers = false
   assign related_tag_color = blank
+  assign quick_view = settings.enable_quick_view
   
   if product.options_by_name['color'] != blank
     assign color_option = product.options_by_name['color'].position | minus: 1
