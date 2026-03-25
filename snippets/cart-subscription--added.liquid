@@ -1,3 +1,15 @@
+{%- liquid
+  assign filter_price = subscription_item.product.variants[0].selling_plan_allocations[0].price | plus: 0
+  assign filter_compare_at_price = subscription_item.product.variants[0].selling_plan_allocations[0].compare_at_price | plus: 0
+
+  if filter_compare_at_price < filter_price
+    assign subscription_discount_percentage = settings.recurring_subscription_discount_percentage | plus: 0
+    assign filter_compare_at_price = filter_price
+    assign filter_discount_amount = filter_price | times: subscription_discount_percentage | divided_by: 100
+    assign filter_price = filter_price | minus: filter_discount_amount
+  endif
+-%}
+
 <cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm">
   <div class="flex justify-start items-start gap-xs">
     <button type="button" class="cart-item-subscription__checkbox mt-xxxs" data-checked="true" js-cart-subscription-checkbox></button>
@@ -6,7 +18,12 @@
   <div class="mt-xxxs relative">
     <p>First order will process on <span class="font-700">{{ subscription_item.properties['First Order Date'] }}</span></p>
     <p>Delivered every <span class="font-700">{{ subscription_item.properties['_Frequency'] }}</span></p>
-    <p class="mr-lg">Recurring payment: <span class="font-700">{{ subscription_item.product.variants[0].selling_plan_allocations[0].price | times: subscription_item.quantity | money }}</span></p>
+    <p class="mr-lg">
+      Recurring payment: 
+      {% if filter_compare_at_price > filter_price %}
+        <s>{{ filter_compare_at_price | times: subscription_item.quantity | money }}</s>
+      {% endif %}
+      <span class="font-700">{{ filter_price | times: subscription_item.quantity | money }}</span></p>
     <a href="{{ item.url }}" class="link link--underline underline-offset-2 absolute right-0 bottom-0" js-cart-subscription-edit>Edit</a>
   </div>
   <p class="text-12 mt-xxxs hidden" js-cart-subscription-error></p>
