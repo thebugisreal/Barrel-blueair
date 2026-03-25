@@ -163,7 +163,9 @@
     {% render 'drawer--cart' %}
     {% render 'drawer--mobile-filter' %}
     {% render 'drawer--desktop-search' %}
-    {% render 'drawer--quick-view' %}
+    {% if settings.enable_quick_view %}
+      {% render 'drawer--quick-view' %}
+    {% endif %}
     {% if request.design_mode == false %}
       {% render 'modal--country-selector' %}
     {% endif %}

@@ -4,6 +4,7 @@
   assign filter_type_option = false
   assign refurbished_air_purifiers = false
   assign related_tag_color = blank
+  assign quick_view = settings.enable_quick_view
   
   if product.options_by_name['color'] != blank
     assign color_option = product.options_by_name['color'].position | minus: 1
@@ -300,7 +301,7 @@
       </div>
     {% endif %}
       
-    <div class="flex justify-between items-end gap-4 tabletl:mt-[10px]{% if hide_price_and_tag %}{% unless quick_view %} !hidden{% endunless %}{% endif %}">
+    <div class="flex justify-between items-end gap-4 tabletl:mt-[10px]{% if quick_view %} flex-wrap{% endif %}{% if hide_price_and_tag %}{% unless quick_view %} !hidden{% endunless %}{% endif %}">
       <div class="product-card__price-wrapper text-16 {% unless quick_view %}mt-md tabletl:mt-[14px]{% endunless %} flex justify-start items-center gap-sm {% if hide_price_and_tag %}!hidden{% endif %}" js-product-card-price>
         {% if current_variant.compare_at_price > current_variant.price %}
           <s class="product-card__price product-card__price--compare">{{ current_variant.compare_at_price | money }}</s>

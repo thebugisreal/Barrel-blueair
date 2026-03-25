@@ -238,7 +238,7 @@
                       {%- capture spacing -%}
                         {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                       {%- endcapture -%}
-                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.shopify-app-block_+&]:-mt-[8px]">
+                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
                           <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
                         {% endfor %}
@@ -249,7 +249,7 @@
                         {%- capture spacing -%}
                           {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                         {%- endcapture -%}
-                        <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.shopify-app-block_+&]:-mt-[8px]">
+                        <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                           {% for tag in product.metafields.seed.product_tags.value %}
                             <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
                           {% endfor %}
@@ -276,7 +276,7 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="{{ spacing }} pb-[24px] tabletp:pb-[22px] [.product\_\_badges_+&]:-mt-[8px] ">
+                <div class="{{ spacing }} pb-[24px] tabletp:pb-[22px]">
                   {%- comment -%} Product Variant Master Select {%- endcomment -%}
                   {% render 'master-variant-select',
                   variants: product.variants,
@@ -305,7 +305,7 @@
                   {% endunless %}
 
                   {% if size_tag != blank and related_tag_size != blank %}
-                    <div class="product__realated-sizes-container mt-sm mb-sm">
+                    <div class="product__realated-sizes-container mt-xxs mb-sm">
                       <span class="product__related-size-label block p3 text-blue mb-xxxs">Size: {{size_tag}}</span>
                       <div class="product__related-sizes flex flex-row-reverse justify-end flex-wrap gap-xs"
                         data-handle="{{product.handle}}"
@@ -317,7 +317,7 @@
                   {% endif %}
 
                   {% if product.metafields.shopify.color-pattern != blank and related_tag_color != blank %}
-                    <div class="product__realted-colors-container mt-sm mb-sm">
+                    <div class="product__realted-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
                           <span class="product__related-color-label block p3 text-blue mb-xxxs">Color: {{color.label}}</span>
@@ -333,7 +333,7 @@
                   {% endif %}
 
                   {% if product.metafields.shopify.color-pattern != blank and related_tag_material != blank %}
-                    <div class="product__realted-colors-container mt-sm mb-sm">
+                    <div class="product__realted-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
                           <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Type: {{color.label}}</span>
@@ -349,7 +349,7 @@
                   {% endif %}
 
                   {% if product.metafields.shopify.color-pattern != blank and related_tag_scent != blank %}
-                    <div class="product__related-colors-container mt-sm mb-sm">
+                    <div class="product__related-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
                           <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Aroma: {{color.label}}</span>
@@ -580,6 +580,9 @@ tm_qual_gjiapmwgps"></div>
                 {% endif %}
               {% when '@app' %}
                   {% render block %}
+                  {% if block.id contains 'okendo_star_rating' %}
+                    <style>.okeReviews.oke-sr{padding-bottom: 8px;}</style>
+                  {% endif %}
               {% when 'upsells' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
