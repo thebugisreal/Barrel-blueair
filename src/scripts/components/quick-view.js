@@ -15,6 +15,9 @@ class QuickView extends HTMLElement {
     document.addEventListener('focusable-widget:open', this._onFocusableWidgetOpen)
     document.addEventListener('focusable-widget:close', this._onFocusableWidgetClose)
     document.addEventListener('quick-view:render', this._onQuickViewRender)
+    document.addEventListener('filter:change', () => requestAnimationFrame(() => {
+      this.parentElement.reinitWidget()
+    }))
   }
 
   async fetchProductContent(e) {
