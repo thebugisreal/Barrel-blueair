@@ -1646,7 +1646,7 @@ class ProductMain extends HTMLElement {
           ? `background-image:url('${p.swatchImage}');background-size:cover;background-position:center;`
           : (p.colorHex ? `background-color:${p.colorHex};` : '');
         const isCurrent = p.handle === currentProductHandle;
-        const href = !window.location.pathname.includes('/en-us/')
+        const href = this.isQuickView ? p.url : !window.location.pathname.includes('/en-us/')
           ? (window.location.pathname.split('/products/')[0] + p.url)
           : p.url;
 
