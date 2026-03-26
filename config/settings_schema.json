@@ -408,5 +408,15 @@
         "info": "Enter a number between 0 and 100. This will apply a discount to products that have a selling plan. For example, if you enter 10, products with a selling plan will be discounted by 10%."
       }
     ]
+  },
+  {
+    "name": "Sparklayer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "spark_id",
+        "label": "Spark ID"
+      }
+    ]
   }
 ]

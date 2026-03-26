@@ -130,33 +130,9 @@
       {% render 'purple-dot' %}
     {% endif %}
 
-    <!-- Go to app.sparklayer.io/configuration/frontend/core -->
-    <script>
-      window.sparkOptions = {
-        siteId: "blueaircs",
-        platform: "shopify",
-        rootUrl: {{ routes.root_url | json }},
-        language: {{ request.locale.iso_code | json }},
-        accountRedirect: {
-          urlRegex: /\/account/g,
-          goTo: "/index",
-        },
-        display: {
-          stock: {
-            show: false, // set to true to show stock level display
-            max: 50, // highest stock level to show
-            last: 5, // last remaining stock
-            low: 15, // low stock threshold
-            last: true, // set to false to hide last stock message
-          },
-        },
-        auth: {
-          user: {{ customer.email | json }},
-          token: {{ customer.metafields.sparklayer.authentication | json }},
-        },
-      };
-    </script>
-    <script async src="https://sparkcdn.io/sparkjs/blueaircs/live"></script>
+    {% if settings.spark_id != blank %}
+      {% render 'spark-layer' %}
+    {% endif %}
   </head>
 
   {%- capture body_classes -%}
