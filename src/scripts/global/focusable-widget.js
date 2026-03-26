@@ -96,7 +96,7 @@ class FocusableWidget extends HTMLElement {
         this
       );
       this._bindEvents();
-      this._dispatchEvents(this._events.open, ['open'], { detail: evt.target });
+      this._dispatchEvents(this._events.open, ['open'], { detail: evt?.target });
     } else {
       theme.utils.a11y.removeTrapFocus(this);
       this._unbindEvents();
