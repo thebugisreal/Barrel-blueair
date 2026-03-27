@@ -1,7 +1,7 @@
 {%- if customer.metafields.sparklayer.authentication -%}
   <script>
     window.sparkOptions = {
-      siteId: "{{ settings.spark_id }}",
+      siteId: "{{ settings.spark_id | split: '/' | first }}",
       platform: "shopify",
       rootUrl: {{ routes.root_url | json }},
       language: {{ request.locale.iso_code | json }},
@@ -15,5 +15,5 @@
       },
     };
   </script>
-  <script async src="https://sparkcdn.io/sparkjs/{{ settings.spark_id }}/live"></script>
+  <script async src="https://sparkcdn.io/sparkjs/{{ settings.spark_id }}"></script>
 {%- endif -%}
