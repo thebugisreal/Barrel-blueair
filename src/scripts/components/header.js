@@ -9,6 +9,7 @@ class SiteHeader extends HTMLElement {
       mobileSubnavClose: '[js-mobile-subnav-close]',
       closeAnnouncementBtn: '[js-close-announcement]',
       announcementBar: '[js-announcement-bar]',
+      announcementBarItem: '[js-announcement-bar-item]',
       navItem: '[js-nav-item]',
       navMenu: '[js-nav-menu]'
     }
@@ -17,6 +18,7 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.closeAnnouncementBtn = this.querySelector(this._selectors.closeAnnouncementBtn);
     this.announcementBar = this.querySelector(this._selectors.announcementBar);
+    this.announcementBarItems = this.querySelectorAll(this._selectors.announcementBarItem);
     this.navItems = this.querySelectorAll(this._selectors.navItem)
     this.navMenus = this.querySelectorAll(this._selectors.navMenu)
 
@@ -34,6 +36,17 @@ class SiteHeader extends HTMLElement {
     if (this.announcementBar) {
       this._initAnnouncement();
       this.closeAnnouncementBtn.addEventListener('click', this._closeAnnouncementOnClick);
+      this.announcementBarItems.forEach(el => {
+        el.addEventListener('click', () => {
+          const text =  el.dataset.analyticsAnnouncementText
+          dataLayer.push({  
+            event: 'announcement_click',
+            click_name: `Announcement > ${text}`,
+            announcement_text: text,
+            click_url: el.href
+          });
+        })
+      })
     }
     this.mobileSubnavTriggers.forEach((trigger) => {
       trigger.addEventListener('click', this._openMobileSubNav);
