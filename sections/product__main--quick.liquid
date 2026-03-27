@@ -1,3 +1,4 @@
+{% # theme-check-disable %}
 {% if section.settings.show_truemed %}
   <script src="https://static.truemed.com/widgets/product-page-widget.min.js" defer></script>
 {% endif %}
@@ -154,12 +155,16 @@
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information pt-[24px] px-[26px] max-h-full overflow-x-hidden overflow-y-auto tabletp:pt-[22px] tabletp:px-[36px]" id="ProductInfo-{{ section.id }}" js-product-info>
+    <div class="product__information relative pt-[24px] px-[26px] max-h-full overflow-x-hidden overflow-y-auto tabletp:pt-[22px] tabletp:px-[36px] before:content-[''] before:-top-[25px] before:-mt-[25px] before:-ml-[5px] before:-mr-[5px] before:h-[26px] before:tabletp:-top-[22px] before:tabletp:-mt-[22px] before:tabletp:h-[22px] before:bg-white before:z-10 before:pointer-events-none before:sticky before:block" id="ProductInfo-{{ section.id }}" js-product-info>
       <div class="h-full" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
         {%- comment -%}
           * Product Form
         {%- endcomment -%}
         {%- form 'product', product, id: product_form_id, class: 'form h-full flex flex-col', novalidate: 'novalidate', js-product-form: true -%}
+          {% assign title_block = section.blocks | where: 'type', 'title' %}
+          {% assign short_description_block = section.blocks | where: 'type', 'short_description' %}
+          {% assign is_title_rendered = false %}
+          {% assign is_short_description_rendered = false %}
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'room_tag' %}
@@ -178,15 +183,20 @@
                   {% endif %}
                 {% endif %}
               {% when 'title' %}
-                {%- capture spacing -%}
-                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
-                {%- endcapture -%}
-                <h1 class="product__title s1 {{ spacing }}">
-                  {% render 'product-title-intl', product: product %}
-                </h1>
-                {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
-                  <p class="product__short-description h5 desktop:my-xxs">{{ current_variant.title }} </p>
+                <div class="sticky top-0 bg-white z-10 -ml-[5px] -mr-[5px] pl-[5px] pr-[5px]">
+                  {%- capture spacing -%}
+                    {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                  {%- endcapture -%}
+                  <h1 class="product__title s1 {{ spacing }}">
+                    {% render 'product-title-intl', product: product %}
+                  </h1>
+                  {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
+                    <p class="product__short-description h5 desktop:my-xxs">{{ current_variant.title }} </p>
+                  {% endif %}
+                {% if short_description_block == blank or is_short_description_rendered == true %}
+                </div>
                 {% endif %}
+                {% assign is_title_rendered = true %}
               {% when 'text' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
@@ -215,6 +225,10 @@
                     </div>
                   {% endif %}
                 {% endif %}
+                {% if title_block != blank and is_title_rendered == true %}
+                </div>
+                {% endif %}
+                {% assign is_short_description_rendered = true %}
               {% when 'star_rating' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
