@@ -46,14 +46,32 @@
       {% for link in nav_linklist.links %}
         {% if link.links != blank %}
           <li class="mobile-main-nav__item">
-            <button class="mobile-main-nav__child-nav-trigger w-full flex justify-between items-center gap-md" data-target="MobileChildNav-{{ link.handle }}" js-mobile-subnav-trigger>
+            <button
+              class="mobile-main-nav__child-nav-trigger w-full flex justify-between items-center gap-md"
+              data-target="MobileChildNav-{{ link.handle }}"
+              js-mobile-subnav-trigger
+              js-tracking-item
+              data-click-element="top_nav"
+              data-nav-level="primary"
+              data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+              data-click-name="{{ link.title }}"
+            >
               <span>{{ link.title }}</span>
               <span class="w-[42px]">{{ 'icon-active-right.svg' | inline_asset_content }}</span>
             </button>
           </li>
         {% else %}
           <li class="mobile-main-nav__item">
-            <a href="{{ link.url }}" class="mobile-main-nav__link link block w-full py-xxs leading-[24px]" aria-label="{{ link.title }}">
+            <a
+              href="{{ link.url }}"
+              class="mobile-main-nav__link link block w-full py-xxs leading-[24px]"
+              aria-label="{{ link.title }}"
+              js-tracking-item
+              data-click-element="top_nav"
+              data-nav-level="primary"
+              data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+              data-click-name="{{ link.title }}"
+            >
               {{ link.title }}
             </a>
           </li>
@@ -107,7 +125,16 @@
                 <ul class="mobile-child-nav__image-links p-md flex flex-nowrap gap-xs overflow-x-auto">
                   {% for grandchild_link in child_link.links %}
                     <li class="mobile-child-nav__item">
-                      <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link mobile-child-nav__link--image block" aria-label="{{ link.title }} Nav Tile {{ forloop.index }}">
+                      <a
+                        href="{{ grandchild_link.url }}"
+                        class="mobile-child-nav__link mobile-child-nav__link--image block"
+                        aria-label="{{ link.title }} Nav Tile {{ forloop.index }}"
+                        js-tracking-item
+                        data-click-element="nav_title"
+                        data-nav-level="title"
+                        data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+                        data-click-name="{{ link.title }} Nav Tile {{ forloop.index }}"
+                      >
                         {% assign image_link_title = grandchild_link.title %}
                         <div class="w-[124px] min-w-[124px] relative">
                           {% if grandchild_link.title contains '|' %}
@@ -183,7 +210,16 @@
                       <ul class="mobile-child-nav__links">
                         {% for grandchild_link in child_link.links %}
                           <li class="mobile-child-nav__item {% unless forloop.last %}mb-md{% endunless %}">
-                            <a href="{{ grandchild_link.url }}" class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}">
+                            <a
+                              href="{{ grandchild_link.url }}"
+                              class="mobile-child-nav__link link text-18 flex gap-xxs items-center w-fit"
+                              aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}"
+                              js-tracking-item
+                              data-click-element="nav_link"
+                              data-nav-level="secondary"
+                              data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+                              data-click-name="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}"
+                            >
                               {% if child_link_handle contains 'room-size' %}
                                 {% if grandchild_link.url contains 'extralarge' %}
                                   {% render 'room-icon', size: 'extralarge', width: '18px' %}
