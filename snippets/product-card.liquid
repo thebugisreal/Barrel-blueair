@@ -113,10 +113,27 @@
       break
     endif
   endfor
+
+  capture product_title
+    render 'product-title-intl', product: product
+  endcapture
 %}
 
 <product-card class="product-card block bg-blue-light desktop:bg-white desktop:transition-[background-color]">
-  <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__image-link-wrapper block relative !no-underline" js-product-link aria-label="Shop {{ product.title }}" js-populate-image>
+  <a
+    {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %}
+    class="product-card__image-link-wrapper block relative !no-underline"
+    js-product-link
+    aria-label="Shop {{ product.title }}"
+    js-populate-image
+    {% if enable_tracking %}
+      js-tracking-item
+      data-event="homepage_click"
+      data-click-module="best_sellers"
+      data-click-element="best_sellers"
+      data-click-name="Best sellers > {{ product_title | strip }}"
+    {% endif %}
+  >
     {% comment %} Product Card Top Tag {% endcomment %}
      {% if product.metafields.seed.product_card_top_tags != blank %}
       <div class="product-card__top-tag absolute top-sm left-sm">
@@ -208,7 +225,18 @@
 
     <div class="product-card__title-layout flex gap-sm justify-between">
       <div class="product-card__title-container flex-1">
-        <a {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %} class="product-card__title s1 block !no-underline" js-product-link>
+        <a
+          {% unless refurbished_air_purifiers %}href="{{ product.url }}"{% endunless %}
+          class="product-card__title s1 block !no-underline"
+          js-product-link
+          {% if enable_tracking %}
+            js-tracking-item
+            data-event="homepage_click"
+            data-click-module="best_sellers"
+            data-click-element="best_sellers"
+            data-click-name="Best sellers > {{ product_title | strip }}"
+          {% endif %}
+        >
           {% render 'product-title-intl', product: product %}
         </a>
         {% if filter_type_option != false %}

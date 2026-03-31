@@ -10,7 +10,19 @@
       <div class="custom-instagram-feed__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</div>
     {% endif %}
     {% if settings.social_instagram != blank and section.settings.instagram_tag != blank %}
-      <a href="{{ settings.social_instagram }}" class="custom-instagram-feed__instagram-tag flex items-center gap-xs w-fit mx-auto bg-blue-light p-xxs desktop:p-xs" target="_blank" rel="noopener noreferrer">
+      <a
+        href="{{ settings.social_instagram }}"
+        class="custom-instagram-feed__instagram-tag flex items-center gap-xs w-fit mx-auto bg-blue-light p-xxs desktop:p-xs"
+        target="_blank"
+        rel="noopener noreferrer"
+        {% if template.name == 'index' %}
+          js-tracking-item
+          data-event="homepage_click"
+          data-click-module="instagram"
+          data-click-element="ig_cta"
+          data-click-name="Instagram > IG Button"
+        {% endif %}
+      >
         <span class="w-[20px] leading-[0px]">{{ 'icon-social-ig.svg' | inline_asset_content }}</span>
         <span class="s2">{{ section.settings.instagram_tag }}</span>
       </a>

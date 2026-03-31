@@ -12,7 +12,25 @@
         <p class="image-text__subtext {{ section.settings.subtext_style }}">{{ section.settings.subtext }}</p>
       {% endif %}
       {% if section.settings.cta_url != blank and section.settings.cta_text != blank%}
-        <a href="{{ section.settings.cta_url }}" class="image-text__cta {{ section.settings.cta_style }}">
+        {% assign title_downcase = section.settings.title | downcase %}
+        {% assign cta_text_downcase = section.settings.cta_text | downcase %}
+        <a
+          href="{{ section.settings.cta_url }}"
+          class="image-text__cta {{ section.settings.cta_style }}"
+          {% if template.name == 'index' %}
+            js-tracking-item
+            data-event="homepage_click"
+            {% if cta_text_downcase contains 'quiz' %}
+              data-click-module="quiz"
+              data-click-element="quiz_block"
+              data-click-name="Quiz > HP Quiz CTA"
+            {% elsif title_downcase contains 'subscribe' %}
+              data-click-module="subscribe_save"
+              data-click-element="subscribe_block"
+              data-click-name="Subscribe & Save > {{ section.settings.cta_text }}"
+            {% endif %}
+          {% endif %}
+        >
           <span class="btn__text">{{ section.settings.cta_text }}</span>
           <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
         </a>

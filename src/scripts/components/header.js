@@ -67,13 +67,20 @@ class SiteHeader extends HTMLElement {
 
     this.trackingItems.forEach(el => {
       el.addEventListener('click', () => {
-        const { navGroup, clickName, clickElement, navLevel } =  el.dataset
+        const { navGroup, clickName, clickElement, navLevel, event, clickModule } =  el.dataset
         dataLayer.push({
-          event: 'nav_click',
+          event: event ? event : 'nav_click',
           click_name: clickName,
           click_element: clickElement,
-          nav_group: navGroup,
-          nav_level: navLevel,
+          ...navGroup && {
+            nav_group: navGroup,
+          } ,
+          ...navLevel && {
+            nav_level: navLevel,
+          },
+          ...clickModule && {
+            click_module: clickModule,
+          },
           ...el.href && {
             click_url: el.href
           }

@@ -7,7 +7,18 @@
 {% endcomment %}
 
 <article class="article-card h-full">
-  <a href="{{ article.url }}" class="article-card__content motion-reduce" aria-label="{{ article.title }}">
+  <a
+    href="{{ article.url }}"
+    class="article-card__content motion-reduce"
+    aria-label="{{ article.title }}"
+    {% if enable_tracking %}
+      js-tracking-item
+      data-event="homepage_click"
+      data-click-module="blog"
+      data-click-element="blog_cta"
+      data-click-name="Blog > {{ article.title }}"
+    {% endif %}
+  >
     {% if article.image != blank %}
       <div class="article-card__image overflow-hidden aspect-square mb-sm tabletl:mb-md">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'object-cover h-full' %}</div>
     {% endif %}
