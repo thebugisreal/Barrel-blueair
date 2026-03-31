@@ -62,7 +62,17 @@
               <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
             </div>
           {% else %}
-            <a href="{{ section.settings.cta_url }}" class="hero__cta {{ section.settings.cta_style }} {{ btn_alignment_mobile }} {{ btn_alignment_desktop }} mt-md">
+            <a
+              href="{{ section.settings.cta_url }}"
+              class="hero__cta {{ section.settings.cta_style }} {{ btn_alignment_mobile }} {{ btn_alignment_desktop }} mt-md"
+              {% if template.name == 'index' %}
+                js-tracking-item
+                data-event="homepage_click"
+                data-click-module="hero"
+                data-click-element="hero_cta"
+                data-click-name="Hero > {{ section.settings.cta_text }}"
+              {% endif %}
+            >
               <span class="btn__text">{{ section.settings.cta_text }}</span>
               <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
             </a>
