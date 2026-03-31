@@ -129,6 +129,10 @@
     {% if settings.use_purpledot and shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
       {% render 'purple-dot' %}
     {% endif %}
+
+    {% if settings.spark_id != blank %}
+      {% render 'spark-layer' %}
+    {% endif %}
   </head>
 
   {%- capture body_classes -%}

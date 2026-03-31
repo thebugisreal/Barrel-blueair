@@ -1,0 +1,19 @@
+{%- if customer.metafields.sparklayer.authentication -%}
+  <script>
+    window.sparkOptions = {
+      siteId: "{{ settings.spark_id | split: '/' | first }}",
+      platform: "shopify",
+      rootUrl: {{ routes.root_url | json }},
+      language: {{ request.locale.iso_code | json }},
+      accountRedirect: {
+        urlRegex: /\/account/g,
+        goTo: "/index", // page to redirect logged in users to
+      },
+      auth: {
+        user: {{ customer.email | json }},
+        token: {{ customer.metafields.sparklayer.authentication | json }},
+      },
+    };
+  </script>
+  <script async src="https://sparkcdn.io/sparkjs/{{ settings.spark_id }}"></script>
+{%- endif -%}
