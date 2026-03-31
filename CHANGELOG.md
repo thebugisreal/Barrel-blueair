@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0] - 2026-03-31
+
+### Added
+- BEA-71 BEA-20 Quick add on PLP
+- BEA-76 Install sparklayer
+- BEA-77 Install contentsquare
+
+### Fixed
+- BEA-84 Missing account on mobile nav
+
 ## [1.0.4] - 2026-03-20
 
 ### Fixed
