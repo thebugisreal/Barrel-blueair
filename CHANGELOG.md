@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] - 2026-04-01
+
+### Fixed
+- BEA-85 PLP quick add on UK
+
 ## [1.1.0] - 2026-03-31
 
 ### Added
