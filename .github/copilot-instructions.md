@@ -222,6 +222,32 @@ If HMR stops working, check that `/tmp/theme.update` file is writable. The Shopi
 - Shopify CLI dev mode takes ~10-20 seconds to initialize
 - Large repository: 150+ sections, 300+ template variants, extensive component library
 
+## Available Skills
+
+This project includes specialized skills for common workflows. Skills are documented in `.github/skills/` and are automatically available to Copilot.
+
+### Backup Themes Skill
+**Location**: `.github/skills/create-backup-themes/SKILL.md`
+
+Creates date-stamped backup branches from the remote `live/*` branches for all 3 stores (US, EU, UK).
+
+**Usage**: Say "create backup", "backup themes", "backup live", or run `pnpm backup-themes`
+
+### Release Skill
+**Location**: `.github/skills/release/SKILL.md`
+
+Manages the Shopify theme release process end-to-end. Handles creating release branches, merging Jira ticket branches, version bumping, changelog updates, and merging to main.
+
+**Usage**: Say "release", "prepare release", "create release", or reference ticket IDs (e.g., "release RET-123, RET-124")
+
+**Key Features**:
+- Main is the source of truth (deployed via CI/CD)
+- Automatic backup of live themes before release
+- Smart merge strategy (direct merge vs cherry-pick)
+- Integrates with Jira MCP and GitHub MCP
+- No asset building required (handled by CI/CD)
+- Local merge to main (user pushes manually)
+
 ## Trust These Instructions
 These instructions were validated by running actual commands and exploring the codebase thoroughly. Only search for additional information if:
 - The instructions are incomplete for your specific task
