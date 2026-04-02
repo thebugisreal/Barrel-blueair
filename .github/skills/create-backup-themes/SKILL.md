@@ -25,97 +25,34 @@ If a backup for today already exists, an incremental suffix is appended:
 
 ## Instructions
 
-Run the following commands sequentially in a terminal. **Do not run them in parallel.**
-
-### Step 1: Fetch latest remote branches
+Run the backup script using the pnpm task:
 
 ```bash
-git fetch origin
+pnpm backup-themes
 ```
 
-### Step 2: Determine today's date stamp
-
-Use the current date in `MMDDYYYY` format. In the terminal:
+Or run the script directly:
 
 ```bash
-DATE_STAMP=$(date +%m%d%Y)
-echo "Date stamp: $DATE_STAMP"
+bash .github/skills/create-backup-themes/scripts/create-backup-themes.sh
 ```
 
-### Step 3: Resolve backup branch names (handle duplicates)
+The script performs the following operations automatically:
 
-Before creating branches, check if backup branches with today's date already exist on the remote. If they do, append an incremental suffix (`-2`, `-3`, etc.) to find a unique name.
+1. **Fetches latest remote branches** (`git fetch origin`)
+2. **Determines today's date stamp** in `MMDDYYYY` format
+3. **Resolves backup branch names** for all 3 stores (US, EU, UK), handling duplicate names by appending incremental suffixes (`-2`, `-3`, etc.)
+4. **Creates local backup branches** from remote `live/*` branches
+5. **Pushes backup branches** to the remote repository
+6. **Cleans up local backup branches** after successful push
+7. **Reports success** with the actual branch names created
 
-For each store (`us`, `eu`, `uk`), determine the branch name using this logic:
-
-```
-base = backup/<store>-<MMDDYYYY>
-
-If remote branch `base` does NOT exist → use `base`
-If remote branch `base` exists → try `base-2`, then `base-3`, etc. until a name is available
-```
-
-Run the following to check existing remote backup branches and determine the suffix:
-
-```bash
-# Check existing remote backups for today's date
-git branch -r | grep "origin/backup/.*-$DATE_STAMP" | sed 's|origin/||' | sort
-```
-
-For each store, resolve the final branch name. Example logic per store:
-
-```bash
-# For a given STORE (us, eu, uk):
-BRANCH="backup/${STORE}-${DATE_STAMP}"
-if git branch -r | grep -q "origin/${BRANCH}$"; then
-  SUFFIX=2
-  while git branch -r | grep -q "origin/${BRANCH}-${SUFFIX}$"; do
-    SUFFIX=$((SUFFIX + 1))
-  done
-  BRANCH="${BRANCH}-${SUFFIX}"
-fi
-echo "Backup branch for ${STORE}: ${BRANCH}"
-```
-
-Repeat this for all 3 stores to determine `BRANCH_US`, `BRANCH_EU`, and `BRANCH_UK`.
-
-### Step 4: Create backup branches from remote live branches
-
-Using the resolved branch names from Step 3:
-
-```bash
-git branch $BRANCH_US origin/live/us
-git branch $BRANCH_EU origin/live/eu
-git branch $BRANCH_UK origin/live/uk
-```
-
-### Step 5: Push backup branches to remote
-
-```bash
-git push origin $BRANCH_US $BRANCH_EU $BRANCH_UK
-```
-
-### Step 6: Clean up local backup branches
-
-After pushing, delete the local backup branches to keep the local repo clean:
-
-```bash
-git branch -D $BRANCH_US $BRANCH_EU $BRANCH_UK
-```
-
-### Step 7: Confirm success
-
-Report to the user which backup branches were created and pushed, showing the actual resolved names:
-
-```
-Backup branches created and pushed to remote:
-  - <BRANCH_US>  (from live/us)
-  - <BRANCH_EU>  (from live/eu)
-  - <BRANCH_UK>  (from live/uk)
-```
+The script output will show which backup branches were created and pushed.
 
 ## Error Handling
 
+The script uses `set -euo pipefail` for strict error handling and will exit immediately if any step fails.
+
 - If `git fetch` fails, check network connectivity and authentication.
 - If push fails, verify the user has write access to the remote repository.
-- Always return to the original branch/state after the operation.
+- The script automatically cleans up local backup branches after successful push.

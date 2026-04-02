@@ -7,7 +7,14 @@
     "dev:us": "vite dev -- --store 5ef43d-4a",
     "dev:eu": "vite dev -- --store blueeudev",
     "dev:uk": "vite dev -- --store uk-blueair",
-    "build": "vite build"
+    "dev:staging": "vite dev -- --store blueair-staging",
+    "build": "vite build",
+    "backup-themes": "bash .github/skills/create-backup-themes/scripts/create-backup-themes.sh",
+    "pull-content": "shopify theme pull --only config/settings_data.json --only templates/\\*.json --only sections/\\*.json --only templates/customers/\\*.json --store 5ef43d-4a",
+    "pull-content:us": "shopify theme pull --only config/settings_data.json --only templates/\\*.json --only sections/\\*.json --only templates/customers/\\*.json --store 5ef43d-4a",
+    "pull-content:eu": "shopify theme pull --only config/settings_data.json --only templates/\\*.json --only sections/\\*.json --only templates/customers/\\*.json --store blueeudev",
+    "pull-content:uk": "shopify theme pull --only config/settings_data.json --only templates/\\*.json --only sections/\\*.json --only templates/customers/\\*.json --store uk-blueair",
+    "pull-content:staging": "shopify theme pull --only config/settings_data.json --only templates/\\*.json --only sections/\\*.json --only templates/customers/\\*.json --store blueair-staging"
   },
   "devDependencies": {
     "@by-association-only/vite-plugin-shopify-clean": "^2.2.0",
