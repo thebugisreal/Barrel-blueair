@@ -20,6 +20,9 @@
     <p>Delivered every <span class="font-700">{{ subscription_item.properties['_Frequency'] }}</span></p>
     <p class="mr-lg">
       Recurring payment:
+     {% if filter_compare_at_price > filter_price %}
+        <s>{{ filter_compare_at_price | times: subscription_item.quantity | money }}</s>
+      {% endif %}
       <span class="font-700">{{ filter_price | times: subscription_item.quantity | money }}</span>
     </p>
     <a href="{{ item.url }}" class="link link--underline underline-offset-2 absolute right-0 bottom-0" js-cart-subscription-edit>Edit</a>
