@@ -14,6 +14,22 @@
     {% assign preselected_subscription_quantity = 2 %}
   {% endif %}
 {% endif %}
+{% liquid
+  assign filter_price = preselected_subscription.product.variants[0].selling_plan_allocations[0].price | plus: 0
+  assign filter_compare_at_price = preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price | plus: 0
+
+  if pdp_type == 'Filter'
+    assign filter_price = preselected_subscription_selling_plan_allocation.price | plus: 0
+    assign filter_compare_at_price = preselected_subscription_selling_plan_allocation.compare_at_price | plus: 0
+  endif
+
+  if filter_compare_at_price < filter_price
+    assign subscription_discount_percentage = settings.recurring_subscription_discount_percentage | plus: 0
+    assign filter_compare_at_price = filter_price
+    assign filter_discount_amount = filter_price | times: subscription_discount_percentage | divided_by: 100
+    assign filter_price = filter_price | minus: filter_discount_amount
+  endif
+%}
 <cart-subscription data-scope="{{ scope }}" data-index="{{ index }}" class="cart-item__subscription block border border-gray p-sm mt-sm relative">
   <div class="flex justify-start items-center gap-xs">
     <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
@@ -34,17 +50,10 @@
     <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--pay w-[19px] h-[19px] rounded-full"></button>
     <div class="flex-1">Pay when it's sent</div>
     <div>
-      {% if pdp_type == 'Filter' %}
-        {% if preselected_subscription_selling_plan_allocation.compare_at_price > preselected_subscription_selling_plan_allocation.price %}
-          <s>{{ preselected_subscription_selling_plan_allocation.compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
-        {% endif %}
-        <span class="font-700">{{ preselected_subscription_selling_plan_allocation.price | times: preselected_subscription_quantity | money }}</span>
-      {% else %}
-        {% if preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price > preselected_subscription.product.variants[0].selling_plan_allocations[0].price %}
-          <s>{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].compare_at_price | times: preselected_subscription_quantity | money }}</s><br>
-        {% endif %}
-        <span class="font-700">{{ preselected_subscription.product.variants[0].selling_plan_allocations[0].price | times: preselected_subscription_quantity | money }}</span>
-      {% endif %}
+      {% comment %} {% if filter_compare_at_price > filter_price %}
+        <s>{{ filter_compare_at_price | times: preselected_subscription_quantity | money }}</s>
+      {% endif %} {% endcomment %}
+      <span class="font-700">{{ filter_price | times: preselected_subscription_quantity | money }}</span>
     </div>
     <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
       Save 15%
