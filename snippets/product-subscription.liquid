@@ -73,7 +73,7 @@
                     {{ filter_subscription[description_title_handle] }}
                   </div>
                 {% endif %}
-                <ul class="product-subscription-description__bullets {% if is_quick_view %}p4{% else %}mt-xxxs{% endif %}">
+                <ul class="product-subscription-description__bullets {% if is_quick_view %}p4{% else %}mt-xxxs{% endif %}"{% if is_quick_view %} style="display: block!important;"{% endif %}>
                   {% if product.metafields.seed.pdp_filter_quantity != blank %}
                     <li class="product-subscription-description__bullet flex">
                       <div>
