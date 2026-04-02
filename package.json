@@ -7,7 +7,8 @@
     "dev:us": "vite dev -- --store 5ef43d-4a",
     "dev:eu": "vite dev -- --store blueeudev",
     "dev:uk": "vite dev -- --store uk-blueair",
-    "build": "vite build"
+    "build": "vite build",
+    "backup-themes": "bash .github/skills/create-backup-themes/scripts/create-backup-themes.sh"
   },
   "devDependencies": {
     "@by-association-only/vite-plugin-shopify-clean": "^2.2.0",
