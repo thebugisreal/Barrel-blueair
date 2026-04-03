@@ -56,7 +56,7 @@
       <span class="font-700">{{ filter_price | times: preselected_subscription_quantity | money }}</span>
     </div>
     <div class="py-xxs px-xs rounded-[24px] bg-blue text-white text-12 font-700">
-      Save 15%
+      Save {{ settings.initial_subscription_discount_percentage }}%
     </div>
   </div>
   <p class="text-12 mt-xxxs hidden" js-cart-subscription-error></p>
