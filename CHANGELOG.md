@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.2] - 2026-04-02
+
+### Added
+- Setup: Add backup themes script and release skill
+- Setup: Add pull-content tasks for syncing theme content
+
+### Fixed
+- BEA-81: Update Subscription Discount Handling
+- BEA-86: PLP Quick add - the issue with description
+
 ## [1.1.0] - 2026-04-01
 
 ### Fixed
