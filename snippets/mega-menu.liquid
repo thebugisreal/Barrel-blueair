@@ -48,7 +48,16 @@
               <ul class="mega-menu__links">
                 {% for grandchild_link in child_link.links %}
                   <li class="mega-menu__item {% unless forloop.last %}mb-sm{% endunless %}">
-                    <a href="{{ grandchild_link.url }}" class="mega-menu__link link text-18 flex gap-xxs items-center w-fit" aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}">
+                    <a
+                      href="{{ grandchild_link.url }}"
+                      class="mega-menu__link link text-18 flex gap-xxs items-center w-fit"
+                      aria-label="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}"
+                      js-tracking-item
+                      data-click-element="nav_link"
+                      data-nav-level="secondary"
+                      data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+                      data-click-name="{{ link.title }} > {% if child_link_handle contains 'room-size' %}{{ child_link.title }} > {% endif %}{{ grandchild_link.title }}"
+                    >
                       {% if child_link_handle contains 'room-size' %}
                         {% if grandchild_link.url contains 'extralarge' %}
                           {% render 'room-icon', size: 'extralarge', width: '18px' %}
@@ -73,7 +82,16 @@
             </div>
           {% else %}
             <div class="mega-menu__item border-t border-blue-light">
-              <a href="{{ child_link.url }}" class="mega-menu__link link text-18 block my-md w-fit" aria-label="{{ child_link.title }}">
+              <a
+                href="{{ child_link.url }}"
+                class="mega-menu__link link text-18 block my-md w-fit"
+                aria-label="{{ child_link.title }}"
+                js-tracking-item
+                data-click-element="nav_link"
+                data-nav-level="secondary"
+                data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+                data-click-name="{{ link.title }} > {{ child_link.title }}"
+              >
                 {{ child_link.title }}
               </a>
             </div>
@@ -89,7 +107,16 @@
         {% if child_link_handle == 'image-links' %}
           {% for grandchild_link in child_link.links %}
             <li class="mega-menu__item">
-              <a href="{{ grandchild_link.url }}" class="mega-menu__link mega-menu__link--image block !no-underline w-[200px] min-w-[200px]" aria-label="{{ link.title }} Nav Tile {{ forloop.index }}">
+              <a
+                href="{{ grandchild_link.url }}"
+                class="mega-menu__link mega-menu__link--image block !no-underline w-[200px] min-w-[200px]"
+                aria-label="{{ link.title }} Nav Tile {{ forloop.index }}"
+                js-tracking-item
+                data-click-element="nav_tile"
+                data-nav-level="tile"
+                data-nav-group="{{ link.title | handleize | replace: '-', '_' }}"
+                data-click-name="{{ link.title }} Nav Tile {{ forloop.index }}"
+              >
                 {% assign image_link_title = grandchild_link.title %}
                 <div class="mega-menu__image-wrapper overflow-hidden relative">
                   {% if grandchild_link.title contains '|' %}

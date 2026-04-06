@@ -9,6 +9,8 @@ class SiteHeader extends HTMLElement {
       mobileSubnavClose: '[js-mobile-subnav-close]',
       closeAnnouncementBtn: '[js-close-announcement]',
       announcementBar: '[js-announcement-bar]',
+      announcementBarItem: '[js-announcement-bar-item]',
+      trackingItem: '[js-tracking-item]',
       navItem: '[js-nav-item]',
       navMenu: '[js-nav-menu]'
     }
@@ -17,6 +19,8 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.closeAnnouncementBtn = this.querySelector(this._selectors.closeAnnouncementBtn);
     this.announcementBar = this.querySelector(this._selectors.announcementBar);
+    this.announcementBarItems = this.querySelectorAll(this._selectors.announcementBarItem);
+    this.trackingItems = document.querySelectorAll(this._selectors.trackingItem);
     this.navItems = this.querySelectorAll(this._selectors.navItem)
     this.navMenus = this.querySelectorAll(this._selectors.navMenu)
 
@@ -34,6 +38,17 @@ class SiteHeader extends HTMLElement {
     if (this.announcementBar) {
       this._initAnnouncement();
       this.closeAnnouncementBtn.addEventListener('click', this._closeAnnouncementOnClick);
+      this.announcementBarItems.forEach(el => {
+        el.addEventListener('click', () => {
+          const text =  el.dataset.analyticsAnnouncementText
+          dataLayer.push({  
+            event: 'announcement_click',
+            click_name: `Announcement > ${text}`,
+            announcement_text: text,
+            click_url: el.href
+          });
+        })
+      })
     }
     this.mobileSubnavTriggers.forEach((trigger) => {
       trigger.addEventListener('click', this._openMobileSubNav);
@@ -48,6 +63,29 @@ class SiteHeader extends HTMLElement {
 
     this.navMenus.forEach((menu) => {
       menu.addEventListener('mouseleave', this._handleMouseLeaveNavMenu.bind(this));
+    })
+
+    this.trackingItems.forEach(el => {
+      el.addEventListener('click', () => {
+        const { navGroup, clickName, clickElement, navLevel, event, clickModule } =  el.dataset
+        dataLayer.push({
+          event: event ? event : 'nav_click',
+          click_name: clickName,
+          click_element: clickElement,
+          ...navGroup && {
+            nav_group: navGroup,
+          } ,
+          ...navLevel && {
+            nav_level: navLevel,
+          },
+          ...clickModule && {
+            click_module: clickModule,
+          },
+          ...el.href && {
+            click_url: el.href
+          }
+        });
+      })
     })
   }
 

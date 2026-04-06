@@ -17,7 +17,22 @@
     {% endfor %}
     <div class="tab__triggers mt-xl desktop:mt-xxl flex flex-nowrap items-center gap-md w-fit mx-auto overflow-x-auto max-w-[100vw] px-md desktop:px-xl" role="tablist" aria-orientation="horizontal" js-tablist>
       {% for block in section.blocks %}
-        <button id="TestimonialTab{{ forloop.index }}-tab" class="tab__trigger testimonial-tab__trigger min-w-[124px] w-[124px] desktop:min-w-[200px] desktop:w-[200px]" aria-controls="TestimonialTab{{ forloop.index }}-content-panel" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="{{ block.settings.title }}" js-tab>
+        <button
+          id="TestimonialTab{{ forloop.index }}-tab"
+          class="tab__trigger testimonial-tab__trigger min-w-[124px] w-[124px] desktop:min-w-[200px] desktop:w-[200px]"
+          aria-controls="TestimonialTab{{ forloop.index }}-content-panel"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="{{ block.settings.title }}"
+          js-tab
+          {% if template.name == 'index' %}
+            js-tracking-item
+            data-event="homepage_click"
+            data-click-module="reviews"
+            data-click-element="reviews_block"
+            data-click-name="Reviews > Clicked {{ block.settings.title }}"
+          {% endif %}
+        >
           {% render 'lazy-image' image: block.settings.logo %}
         </button>
       {% endfor %}
