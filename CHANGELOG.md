@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.3] - 2026-04-06
+
+### Added
+- BEA-82: GA4 site clicks reports
+
+### Fixed
+- BEA-81: Update Subscription Discount Handling
+- BEA-85: PLP quick add on UK
+
 ## [1.1.2] - 2026-04-02
 
 ### Added
