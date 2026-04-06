@@ -9,41 +9,32 @@
                 {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
                 <p class="s2">Select Market</p>
                 <div class="modal__country-select relative bg-white border p-sm border-gray rounded-[4px]">
-                    <div class="country-name text-[22px] flex-1"
-                    js-country-input-label>
-                    {% if localization.country.market.handle == "europe" %}
-                        Europe
-                    {% elsif localization.country.name == 'Hong Kong SAR' %}
-                        Hong Kong/Macau
-                    {% else %}
-                        {{ localization.country.name }}
-                    {% endif %}
-                    </div>
+                    <div class="country-name text-[22px] flex-1" js-country-input-label>{{ localization.country.name }}</div>
                     <select name="country_code" id="{{ input_id }}" class="country-select__selector block absolute inset-0 z-[1] opacity-0 cursor-pointer" js-country-select>
-                        <option value="AU" {% if localization.country.iso_code == "AU"%}selected{% endif %} data-country-name="Australia">Australia</option>
-                        <option value="BD" {% if localization.country.iso_code == "BD"%}selected{% endif %} data-country-name="Bangladesh">Bangladesh</option>
-                        <option value="EU" {% if localization.country.market.handle == "europe" %}selected{% endif %} data-country-name="Europe">Europe</option>
-                        <option value="CA" {% if localization.country.iso_code == "CA"%}selected{% endif %} data-country-name="Canada">Canada</option>
-                        <option value="HK" {% if localization.country.iso_code == "HK"%}selected{% endif %} data-country-name="Hong Kong/Macau">Hong Kong/Macau</option>
-                        <option value="TW" {% if localization.country.iso_code == "TW"%}selected{% endif %} data-country-name="Taiwan">Taiwan</option>
-                        <option value="FR" {% if localization.country.iso_code == "FR"%}selected{% endif %} data-country-name="France">France</option>
-                        <option value="DE" {% if localization.country.iso_code == "DE"%}selected{% endif %} data-country-name="Germany">Germany</option>
-                        <option value="ID" {% if localization.country.iso_code == "ID"%}selected{% endif %} data-country-name="Indonesia">Indonesia</option>
-                        <option value="JP" {% if localization.country.iso_code == "JP"%}selected{% endif %} data-country-name="Japan">Japan</option>
-                        <option value="KR" {% if localization.country.iso_code == "KR"%}selected{% endif %} data-country-name="Korea">Korea</option>
-                        <option value="CN" {% if localization.country.iso_code == "CN"%}selected{% endif %} data-country-name="Mainland China">Mainland China</option>
-                        <option value="MY" {% if localization.country.iso_code == "MY"%}selected{% endif %} data-country-name="Malaysia">Malaysia</option>
-                        <option value="AE" {% if localization.country.iso_code == "AE"%}selected{% endif %} data-country-name="Middle East">Middle East</option>
-                        <option value="NP" {% if localization.country.iso_code == "NP"%}selected{% endif %} data-country-name="Nepal">Nepal</option>
-                        <option value="NZ" {% if localization.country.iso_code == "NZ"%}selected{% endif %} data-country-name="New Zealand">New Zealand</option>
-                        <option value="PK" {% if localization.country.iso_code == "PK"%}selected{% endif %} data-country-name="Pakistan">Pakistan</option>
-                        <option value="PH" {% if localization.country.iso_code == "PH"%}selected{% endif %} data-country-name="Philippines">Philippines</option>
-                        <option value="SG" {% if localization.country.iso_code == "SG"%}selected{% endif %} data-country-name="Singapore">Singapore</option>
-                        <option value="ES" {% if localization.country.iso_code == "ES"%}selected{% endif %} data-country-name="Spain">Spain</option>
-                        <option value="TH" {% if localization.country.iso_code == "TH"%}selected{% endif %} data-country-name="Thailand">Thailand</option>
-                        <option value="US" {% if localization.country.iso_code == "US"%}selected{% endif %} data-country-name="United States">United States</option>
-                        <option value="GB" {% if localization.country.iso_code == "GB"%}selected{% endif %} data-country-name="UK">UK</option>
-                        <option value="VN" {% if localization.country.iso_code == "VN"%}selected{% endif %} data-country-name="Vietnam">Vietnam</option>
+                        <option value="AU" data-country-name="Australia">Australia</option>
+                        <option value="BD" data-country-name="Bangladesh">Bangladesh</option>
+                        <option value="EU" data-country-name="Europe">Europe</option>
+                        <option value="CA" data-country-name="Canada">Canada</option>
+                        <option value="HK" data-country-name="Hong Kong/Macau">Hong Kong/Macau</option>
+                        <option value="TW" data-country-name="Taiwan">Taiwan</option>
+                        <option value="FR" data-country-name="France">France</option>
+                        <option value="DE" data-country-name="Germany">Germany</option>
+                        <option value="ID" data-country-name="Indonesia">Indonesia</option>
+                        <option value="JP" data-country-name="Japan">Japan</option>
+                        <option value="KR" data-country-name="Korea">Korea</option>
+                        <option value="CN" data-country-name="Mainland China">Mainland China</option>
+                        <option value="MY" data-country-name="Malaysia">Malaysia</option>
+                        <option value="AE" data-country-name="Middle East">Middle East</option>
+                        <option value="NP" data-country-name="Nepal">Nepal</option>
+                        <option value="NZ" data-country-name="New Zealand">New Zealand</option>
+                        <option value="PK" data-country-name="Pakistan">Pakistan</option>
+                        <option value="PH" data-country-name="Philippines">Philippines</option>
+                        <option value="SG" data-country-name="Singapore">Singapore</option>
+                        <option value="ES" data-country-name="Spain">Spain</option>
+                        <option value="TH" data-country-name="Thailand">Thailand</option>
+                        <option value="US" data-country-name="United States" selected>United States</option>
+                        <option value="GB" data-country-name="UK">UK</option>
+                        <option value="VN" data-country-name="Vietnam">Vietnam</option>
                     </select>
                     <div class="absolute w-[32px] top-1/4 right-xxs">
                         {{ 'icon-active-down.svg' | inline_asset_content }}

@@ -176,7 +176,7 @@ class CountrySelectModal extends HTMLElement {
       ]
     }
 
-    init() {
+    async init() {
       // Handle URL redirects immediately for Safari compatibility
       this._handleUrlRedirects();
 
@@ -185,12 +185,13 @@ class CountrySelectModal extends HTMLElement {
       this.languageSelect = this.querySelector(this._selectors.languageSelect)
       this.languageInput = this.querySelector(this._selectors.languageInput)
       this.languageInputLabel = this.querySelector(this._selectors.languageInputLabel)
-      this.countryLabel = this.querySelector(this._selectors.countryLabel)
+      this.countryLabel = this.querySelectorAll(this._selectors.countryLabel)
       this.submitBtn = this.querySelector(this._selectors.submitBtn)
 
       this.select.addEventListener('change', this._handleCountryChange.bind(this));
       this.selectedCountry = this.select.value;
 
+      await this._checkCurrentCountry();
       this._checkAutoRedirect();
       if (this.languageSelect) {
         this.selectedLanguage = this.languageSelect.value;
@@ -203,6 +204,25 @@ class CountrySelectModal extends HTMLElement {
 
       // No need for close listeners since we track when modal is shown, not dismissed
 
+    }
+
+    _checkCurrentCountry = async () => {
+      const response = await fetch(
+        window.Shopify.routes.root
+          + 'browsing_context_suggestions.json'
+          + '?country[enabled]=true'
+          + `&country[exclude]=${window.Shopify.country}`
+          + '&language[enabled]=true'
+          + `&language[exclude]=${window.Shopify.language}`
+      )
+      const data = await response.json()
+      const detectedCountry = data.detected_values.country.handle
+      const optionExists = Array.from(this.select.options).some(
+        opt => opt.value === detectedCountry
+      )
+      if (optionExists && this.select.value !== detectedCountry) {
+        this.select.value = detectedCountry
+      }
     }
 
     _handleUrlRedirects = () => {
@@ -368,7 +388,9 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _handleCountryChange(e) {
-      this.countryLabel.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
+      this.countryLabel.forEach(el => {
+        el.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
+      })
       const selectedValue = e.target.options[e.target.selectedIndex].value
       this.selectedCountry = selectedValue;
 
