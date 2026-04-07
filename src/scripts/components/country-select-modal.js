@@ -180,6 +180,11 @@ class CountrySelectModal extends HTMLElement {
       // Handle URL redirects immediately for Safari compatibility
       this._handleUrlRedirects();
 
+      const euCountriesRaw = this.dataset.euCountries || ''
+      this._euCountries = new Set(
+        euCountriesRaw.split(',').map(c => c.trim().toUpperCase()).filter(Boolean)
+      )
+
       this.form = this.querySelector(this._selectors.form);
       this.select = this.querySelector(this._selectors.select);
       this.languageSelect = this.querySelector(this._selectors.languageSelect)
@@ -207,21 +212,30 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _checkCurrentCountry = async () => {
-      const response = await fetch(
-        window.Shopify.routes.root
-          + 'browsing_context_suggestions.json'
-          + '?country[enabled]=true'
-          + `&country[exclude]=${window.Shopify.country}`
-          + '&language[enabled]=true'
-          + `&language[exclude]=${window.Shopify.language}`
-      )
-      const data = await response.json()
-      const detectedCountry = data.detected_values.country.handle
-      const optionExists = Array.from(this.select.options).some(
-        opt => opt.value === detectedCountry
-      )
-      if (optionExists && this.select.value !== detectedCountry) {
-        this.select.value = detectedCountry
+      try {
+        const response = await fetch(
+          window.Shopify.routes.root
+            + 'browsing_context_suggestions.json'
+            + '?country[enabled]=true'
+            + `&country[exclude]=${window.Shopify.country}`
+            + '&language[enabled]=true'
+            + `&language[exclude]=${window.Shopify.language}`
+        )
+        const data = await response.json()
+        const detectedCountry = data.detected_values?.country?.handle
+        if (!detectedCountry) return
+
+        this._detectedCountry = detectedCountry.toUpperCase()
+
+        const optionExists = Array.from(this.select.options).some(
+          opt => opt.value === detectedCountry
+        )
+        if (optionExists && this.select.value !== detectedCountry) {
+          this.select.value = detectedCountry
+          this.select.dispatchEvent(new Event('change'))
+        }
+      } catch (err) {
+        console.warn('Could not fetch browsing context suggestions:', err)
       }
     }
 
@@ -270,68 +284,34 @@ class CountrySelectModal extends HTMLElement {
       }
 
       // Get current country from the select element
-      const currentCountry = this.select ? this.select.value : null;
-      console.log('Current country detected:', currentCountry);
+      const detectedCountry = this._detectedCountry
+      console.log('Current country detected:', detectedCountry)
+      if (!detectedCountry) return
 
-      if (window.permanent_domain == `blueeudev.myshopify.com`) {
-        if (currentCountry == 'US') {
-          window.location.href = `https://www.blueair.com`
-        } else if (currentCountry == 'GB' || currentCountry == 'CA') {
-          // Auto-open the country modal for GB and CA visitors
-          console.log(`${currentCountry} visitor detected on blueeudev, attempting to open modal...`);
-          setTimeout(() => {
-            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
-            if (modalTrigger) {
-              console.log('Modal trigger found, clicking...');
-              modalTrigger.click();
-              // Set cookie to remember modal was shown
-              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
-              console.log('Modal shown, cookie set');
-            } else {
-              console.log('Modal trigger not found');
-            }
-          }, 100);
-        } else {
-          return;
-        }
-      } else if (window.permanent_domain == `5ef43d-4a.myshopify.com`) {
-        if (currentCountry !== 'US' && currentCountry !== 'CA') {
-          // Auto-open the country modal for all non-US/CA visitors on US site
-          console.log(`Non-US/CA visitor (${currentCountry}) detected on US site, attempting to open modal...`);
-          setTimeout(() => {
-            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
-            if (modalTrigger) {
-              console.log('Modal trigger found, clicking...');
-              modalTrigger.click();
-              // Set cookie to remember modal was shown
-              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
-              console.log('Modal shown, cookie set');
-            } else {
-              console.log('Modal trigger not found');
-            }
-          }, 100);
-        } else {
-          return;
-        }
-      } else if (window.permanent_domain == `uk-blueair.myshopify.com`) {
-        if (currentCountry !== 'GB') {
-          // Auto-open the country modal for all non-GB visitors on UK site
-          console.log(`Non-GB visitor (${currentCountry}) detected on UK site, attempting to open modal...`);
-          setTimeout(() => {
-            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
-            if (modalTrigger) {
-              console.log('Modal trigger found, clicking...');
-              modalTrigger.click();
-              // Set cookie to remember modal was shown
-              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
-              console.log('Modal shown, cookie set');
-            } else {
-              console.log('Modal trigger not found');
-            }
-          }, 100);
-        } else {
-          return;
-        }
+      let isOutsideRegion = false
+
+      if (window.permanent_domain === '5ef43d-4a.myshopify.com') {
+        isOutsideRegion = detectedCountry !== 'US' && detectedCountry !== 'CA';
+      } else if (window.permanent_domain === 'blueeudev.myshopify.com') {
+        isOutsideRegion = !this._euCountries.has(detectedCountry);
+      } else if (window.permanent_domain === 'uk-blueair.myshopify.com') {
+        isOutsideRegion = detectedCountry !== 'GB';
+      }
+
+      if (isOutsideRegion) {
+        console.log(`Visitor from ${detectedCountry} is outside the current store's region. attempting to open modal...`);
+        setTimeout(() => {
+          const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
+          if (modalTrigger) {
+            console.log('Modal trigger found, clicking...');
+            modalTrigger.click();
+            // Set cookie to remember modal was shown
+            theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
+            console.log('Modal shown, cookie set');
+          } else {
+            console.log('Modal trigger not found');
+          }
+        }, 100);
       }
     }
 

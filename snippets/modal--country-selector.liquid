@@ -3,7 +3,7 @@
     
     <div class="modal__content px-lg tabletl:px-xl">
         <div class="s1 mb-md">
-            <country-select-modal class="block w-full h-full" data-domain="{{shop.permanent_domain}}">
+            <country-select-modal class="block w-full h-full" data-domain="{{shop.permanent_domain}}" data-eu-countries="{{ settings.eu_countries | replace: ' ', '' }}">
                 {% capture form_id %}ModalLocalizationForm{% endcapture %}
                 {% capture input_id %}ModalCountryCode{% endcapture %}
                 {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
