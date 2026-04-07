@@ -358,6 +358,13 @@
         "id": "enable_modal_popup",
         "label": "Enable Modal Popup",
         "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "eu_countries",
+        "label": "EU Country Codes",
+        "info": "Comma-separated ISO country codes",
+        "default": "DE,FR,ES"
       }
     ]
   },
