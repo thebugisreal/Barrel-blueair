@@ -230,7 +230,7 @@ class CountrySelectModal extends HTMLElement {
         const optionExists = Array.from(this.select.options).some(
           opt => opt.value === detectedCountry
         )
-        if (optionExists && this.select.value !== detectedCountry) {
+        if (optionExists) {
           this.select.value = detectedCountry
           this.select.dispatchEvent(new Event('change'))
         }
@@ -368,6 +368,7 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _handleCountryChange(e) {
+      console.log('handle country change', e.target.options[e.target.selectedIndex].dataset.countryName)
       this.countryLabel.forEach(el => {
         el.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
       })
