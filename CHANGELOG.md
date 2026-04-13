@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4] - 2026-04-13
+
+### Fixed
+- BEA-40: Implement priority loading on LCP hero images
+- BEA-47: Fix pages missing H1 tags
+- BEA-72: QA fixes (carousel progress bar, arrow alignment, footer B label)
+
 ## [1.1.3] - 2026-04-06
 
 ### Added
