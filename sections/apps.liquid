@@ -1,0 +1,22 @@
+{%- for block in section.blocks -%}
+  {% if block.id contains 'rise_ai_gift_cards_loyalty_rise_check_balance_extension' %}
+    <h1 class="sr-only">{{ page.title }}</h1>
+  {% endif %}
+  {% render block %}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "Apps",
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Apps"
+    }
+  ]
+}
+{% endschema %}

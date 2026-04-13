@@ -8,6 +8,47 @@
     {% endif %}
 </div>
 
+{% if section.settings.embed contains 'data-quiz-id' %}
+<script>
+  const findElementAsync = async (selector, interval = 500, maxAttempts = 5) => {
+    let i
+    let attempts = 0
+    return new Promise((resolve, reject) => {
+      i = setInterval(() => {
+        attempts++
+        const el = document.querySelector(selector)
+        if (el) {
+          clearInterval(i)
+          resolve(el)
+        }
+        if (attempts >= maxAttempts) {
+          clearInterval(i)
+          reject()
+        }
+      }, interval)
+    })
+  }
+
+  const changeTag = (el, newTagName) => {
+    let newEl = document.createElement(newTagName);
+    for (let i = 0, l = el.attributes.length; i < l; ++i) {
+      newEl.setAttribute(el.attributes.item(i).nodeName, el.attributes.item(i).nodeValue);
+    }
+    while (el.firstChild) {
+      newEl.appendChild(el.firstChild);
+    }
+    el.parentNode.replaceChild(newEl, el);
+    return newEl;
+  }
+
+  document.addEventListener("octane.quiz.questionLoaded", async (event) => {
+    const headingEl = await findElementAsync('[role="heading"][aria-level="1"]');
+    if (!headingEl) return;
+    changeTag(headingEl, 'h1')
+  }, false)
+</script>
+{% endif %}
+
 <script>
   const iframe = document.querySelector('iframe');
   const MIN_HEIGHT = 650;
