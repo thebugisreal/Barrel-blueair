@@ -3,6 +3,17 @@
 {% render 'filter-sort', results: collection, scope: 'global' %}
 {% render 'active-filters', results: collection %}
 {% endcomment %}
+
+{% liquid
+  assign loading = 'lazy'
+  assign fetchpriority = 'auto'
+
+  if section.index < 2
+    assign loading = 'eager'
+    assign fetchpriority = 'high'
+  endif
+%}
+
 {% paginate collection.products by 48 %}
 <s-collection-grid role="section" class="collection-grid block" data-id="{{ section.id }}" data-handle="{{ collection.handle }}">
   <div class="collection-grid__layout">
@@ -33,7 +44,7 @@
       </div>
       {% if section.settings.enable_collection_image and collection.image != blank %}
         <div class="collection-grid__header-image-container tabletl:w-1/2">
-          {%  render 'lazy-image' image:collection.image, picture_classes:'w-full', img_classes:'w-full object-cover' %}
+          {%  render 'lazy-image' image:collection.image, picture_classes:'w-full', img_classes:'w-full object-cover', loading: loading, fetchpriority: fetchpriority %}
         </div>
       {% endif %}
     </div>
@@ -68,7 +79,7 @@
                         </div>
                       {% elsif link.object.metafields.seed.collection_link_image != blank %}
                         <div class="w-[100px] hidden desktop:block">
-                          {% render 'lazy-image' image: link.object.metafields.seed.collection_link_image %}
+                          {% render 'lazy-image' image: link.object.metafields.seed.collection_link_image, loading: loading %}
                         </div>
                       {% endif %}
                       <div class="p-sm desktop:p-md desktop:flex-1 desktop:text-16">{{ link.title }}</div>
@@ -159,10 +170,21 @@
           </div>
           <div class="collection-grid__grid-wrapper desktop:flex-1">
             <ul class="collection-grid__products grid {{ settings.plp_num_cols_mobile }} gap-md desktop:grid-cols-3 desktop:gap-y-lg" js-products-grid>
+              {% assign preload_applied = false %}
+              {% if collection.metafields.seed.collection_links != blank %}
+                {% assign preload_applied = true %}
+              {% endif %}
               {% for product in collection.products %}
                 {% unless product.metafields.seed.product_card_hide_on_collection_page %}
                   <li class="collection-grid__product">
-                    {% render 'product-card' product: product %}
+                    {% unless preload_applied %}
+                      {% render 'product-card' product: product, loading: loading, fetchpriority: fetchpriority %}
+                    {% else %}
+                      {% render 'product-card' product: product %}
+                    {% endunless %}
+                    {% if forloop.index > 2 %}
+                      {% assign preload_applied = true %}
+                    {% endif %}
                   </li>
                 {% endunless %}
               {% endfor %}

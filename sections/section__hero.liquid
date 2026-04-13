@@ -1,3 +1,13 @@
+{% liquid
+  assign loading = 'lazy'
+  assign fetchpriority = 'auto'
+
+  if section.index < 2
+    assign loading = 'eager'
+    assign fetchpriority = 'high'
+  endif
+%}
+
 {% capture margins_paddings %}
   {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
 {% endcapture %}
@@ -13,7 +23,7 @@
       </div>
     {% elsif section.settings.image_mobile != blank %}
       <div class="hero__image">
-        {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover'%}
+        {% render 'lazy-image', image: section.settings.image_mobile, image_desktop: section.settings.image_desktop, img_classes:'object-cover', loading: loading, fetchpriority: fetchpriority %}
       </div>
     {% endif %}
 

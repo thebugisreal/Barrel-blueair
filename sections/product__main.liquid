@@ -136,7 +136,14 @@
               {% case media.media_type %}
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
-                    {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center' %}
+                    {% if forloop.first %}
+                      {% assign loading = 'eager' %}
+                      {% assign fetchpriority = 'high' %}
+                    {% else %}
+                      {% assign loading = 'lazy' %}
+                      {% assign fetchpriority = 'auto' %}
+                    {% endif %}
+                    {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center', loading: loading, fetchpriority: fetchpriority %}
                     
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
                     {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
@@ -231,7 +238,14 @@
               {% case media.media_type %}
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
-                    {% render 'lazy-image' image: media %}
+                    {% if forloop.first %}
+                      {% assign loading = 'eager' %}
+                      {% assign fetchpriority = 'high' %}
+                    {% else %}
+                      {% assign loading = 'lazy' %}
+                      {% assign fetchpriority = 'auto' %}
+                    {% endif %}
+                    {% render 'lazy-image' image: media, loading: loading, fetchpriority: fetchpriority %}
 
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
                     {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
