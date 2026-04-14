@@ -19,6 +19,9 @@ class ProductMain extends HTMLElement {
       subscriptionPrice: '[js-subscription-price]',
       discountSubscriptionPrice: '[js-discount-subscription-price]',
       priceCopy: '[js-price-copy]',
+      filterSubscriptionSelectWrapper: '[js-filter-subscription-select-wrapper]',
+      filterSubscriptionSelectCurrent: '[js-filter-subscription-select-current]',
+      filterSubscriptionSelectOption: '[js-filter-subscription-select-option]',
       filterSubscriptionVariant: '[js-filter-subscription-variant]',
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
@@ -370,6 +373,9 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
     this.filterSubscriptionOgDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionOgDateInput);
     this.subscriptionSelectedOnLoad = this.subscription.dataset.selected == 'true' ? true : false;
+    this.filterSubscriptionSelectWrapper = this.subscription.querySelector(this._selectors.filterSubscriptionSelectWrapper);
+    this.filterSubscriptionSelectCurrent = this.subscription.querySelector(this._selectors.filterSubscriptionSelectCurrent);
+    this.filterSubscriptionSelectOptions = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSelectOption);
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
@@ -410,6 +416,22 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionMasterFrequencies.forEach((masterFrequency) => {
       masterFrequency.addEventListener('click', this._filterSubscriptionMasterFrequencyOnClick);
     });
+
+    this.filterSubscriptionSelectOptions.forEach((trigger) => {
+      trigger.addEventListener('click', this._filterSubscriptionSelectOptionOnClick);
+    });
+
+    if (this.filterSubscriptionSelectCurrent) {
+      this.filterSubscriptionSelectCurrent.addEventListener('click', this._filterSubscriptionSelectCurrentOnClick);
+    }
+
+    if (this.filterSubscriptionSelectWrapper) {
+      if (this.subscription.closest('[js-quick-view-content]')) {
+        document.querySelector('[js-quick-view-content]').addEventListener('click', this._filterSubscriptionSelectOutsideClick);
+      } else {
+        document.addEventListener('click', this._filterSubscriptionSelectOutsideClick);
+      }
+    }
 
     // Set toggle handlers for all subscriptions
     allSubscriptions.forEach((subscription) => {
@@ -592,6 +614,31 @@ class ProductMain extends HTMLElement {
         }
         label.innerHTML = labelMarkup;
       });
+    }
+  }
+
+  _filterSubscriptionSelectCurrentOnClick = (evt) => {
+    evt.preventDefault();
+    this.filterSubscriptionSelectWrapper.classList.toggle('is-active')
+  }
+
+  _filterSubscriptionSelectOptionOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt?.currentTarget;
+    if (!this.filterSubscriptionSelectCurrent || !triggerTarget) return;
+
+    this.filterSubscriptionSelectCurrent.innerHTML = triggerTarget.innerHTML
+    this.filterSubscriptionSelectWrapper.classList.remove('is-active')
+  }
+
+  _filterSubscriptionSelectOutsideClick = (evt) => {
+    if (!this.filterSubscriptionSelectWrapper) return;
+    if (
+      !this.filterSubscriptionSelectWrapper.contains(evt.target) &&
+      !this.filterSubscriptionSelectCurrent.contains(evt.target)
+    ) {
+      this.filterSubscriptionSelectWrapper.classList.remove('is-active');
     }
   }
 
