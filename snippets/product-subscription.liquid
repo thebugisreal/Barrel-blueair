@@ -298,18 +298,7 @@
                   {{ filter_product.metafields.seed.filter_subscription_description }}
                 </div>
               {% endif %}
-              <div class="{% if is_quick_view %}p3 mt-[22px] mb-xxxs{% else %}p6 font-700 mt-sm mb-xxxs{% endif %} {% if filter_variant.available == false %}text-gray{% endif %}">
-                {% if pdp_type == '2in1_purify_humidify' %}
-                  {% if filter_variant.title contains 'Wick' or filter_variant.title contains 'wick' %}
-                    Choose Wick Shipping Frequency
-                  {% else %}
-                    Choose Filter Shipping Frequency
-                  {% endif %}
-                {% else %}
-                  Choose Frequency
-                {% endif %}
-              </div>
-              <div class="filter-subscription__selling-plans flex flex-wrap gap-xxs">
+              <div class="hidden">
                 {% if filter_subscription.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank %}
                   {% if filter_subscription.frequency_options_override != blank %}
                     {% assign frequency_options = filter_subscription.frequency_options_override.value %}
@@ -349,18 +338,7 @@
                     {{ filter_product.metafields.seed.filter_subscription_description }}
                   </div>
                 {% endif %}
-                <div class="{% if is_quick_view %}p3 mt-[22px] mb-xxxs{% else %}p6 font-700 mt-sm mb-xxxs{% endif %} {% if filter_variant.available == false %}text-gray{% endif %}">
-                  {% if pdp_type == '2in1_purify_humidify' %}
-                    {% if filter_variant.title contains 'Wick' or filter_variant.title contains 'wick' %}
-                      Choose Wick Shipping Frequency
-                    {% else %}
-                      Choose Filter Shipping Frequency
-                    {% endif %}
-                  {% else %}
-                    Choose Frequency
-                  {% endif %}
-                </div>
-                <div class="filter-subscription__selling-plans flex flex-wrap gap-xxs">
+                <div class="hidden">
                   {% if filter_subscription.frequency_options_override != blank or filter_product.metafields.seed.subscription_frequency_options != blank %}
                     {% if filter_subscription.frequency_options_override != blank %}
                       {% assign frequency_options = filter_subscription.frequency_options_override.value %}
