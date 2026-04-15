@@ -25,12 +25,12 @@
 {% assign subscription_discount_amount = shop.metafields.custom.subscription_discount_amount | times: 100 %}
 
 <div class="product__subscription-container flex flex-col {% if is_quick_view %}gap-[6px] mt-sm mb-sm{% else %}gap-sm{% endif %} {% if product.variants.size > 1 or is_additional %}mt-md{% elsif is_additional %}mt-sm{% endif %}">
-  <div class="product__subscription {% if is_additional %}product__subscription--additional {% endif %}border border-blue rounded-[3px] relative {% if is_quick_view %}mt-[11px]{% else %}mt-sm{% endif %}" data-type="{{ pdp_type }}" data-selected="{% if subscription_selected %}true{% else %}false{% endif %}" js-subscription {% if is_additional %}js-additional-subscription {% endif %}{% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
-    <button type="button" class="product-subscription__toggle {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}px-xs py-md desktop:px-md gap-sm{% endif %} flex items-center w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle {% if is_additional %}js-additional-subscription-toggle{% endif %}>
-      <div class="checkbox w-[22px] min-w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
+  <div class="product__subscription group {% if is_additional %}product__subscription--additional {% endif %}border border-blue rounded-[3px] relative {% if is_quick_view %}mt-[11px]{% else %}mt-sm{% endif %}" data-type="{{ pdp_type }}" data-selected="{% if subscription_selected %}true{% else %}false{% endif %}" js-subscription {% if is_additional %}js-additional-subscription {% endif %}{% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
+    <button type="button" class="product-subscription__toggle {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}px-xs py-md desktop:px-md desktop:py-[31px] gap-[12px] group-data-[selected=true]:pb-[16px] group-data-[selected=true]:desktop:pb-[18px]{% endif %} flex items-center w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle {% if is_additional %}js-additional-subscription-toggle{% endif %}>
+      <div class="checkbox bg-white w-[22px] min-w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
         {{ 'icon-check.svg' | inline_asset_content }}
       </div>
-      <div class="{% if is_quick_view %}p3{% else %}s3{% endif %} font-700 text-left">
+      <div class="{% if is_quick_view %}p3{% else %}s2{% endif %} font-700 text-left">
         {% if filter_subscription.subscription_button_label_override != blank %}
           {{ filter_subscription.subscription_button_label_override }}
         {% else %}
@@ -50,19 +50,19 @@
       <div class="product-subscription__price-wrapper {% if is_quick_view %}p3{% else %}s3{% endif %} flex-1 flex flex-wrap justify-end items-center gap-x-xs gap-y-0" {% if pdp_type == 'filter' %}js-subscription-price {% endif %}>
         {% if pdp_type != 'filter' %}
           {% if product.metafields.seed.filter_subscription_discount != blank and filter_subscription_discounted_price != blank %}
-            <s class="product__price product__price--compare">{{ current_variant.price | money }}</s>
-            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ filter_subscription_discounted_price | minus: subscription_discount_amount | money }}</span>
+            <s class="product__price product__price--compare font-400 {% if is_quick_view %}p4{% else %}p1{% endif %}">{{ current_variant.price | money }}</s>
+            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ filter_subscription_discounted_price | minus: subscription_discount_amount | money }}</span>
           {% elsif current_variant.compare_at_price > current_variant.price %}
-            <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
+            <s class="product__price product__price--compare font-400 {% if is_quick_view %}p4{% else %}p1{% endif %}">{{ current_variant.compare_at_price | money }}</s>
+            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
           {% else %}
-            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
+            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
           {% endif %}
         {% endif %}
       </div>
     </button>
     <div class="product-subscription__content {% if is_quick_view %}px-[10px]{% else %}px-xs desktop:px-md{% endif %} transition-[max-height] duration-500">
-      <div class="product-subscription__description-container border-t border-gray py-[16px] flex-col flex gap-[8px] desktop:gap-[20px] desktop:py-[18px] empty:hidden">
+      <div class="product-subscription__description-container border-t border-gray py-[16px] flex-col flex gap-[8px] {% if is_quick_view %}desktop:py-[14px]{% else %}desktop:gap-[20px] desktop:py-[18px]{% endif %} empty:hidden">
         {% for filter_product in filter_subscriptions %}
           {% assign filter_variant = filter_product.variants[0] %}
           {% if pdp_type == 'airpurifier_and_filter' %}
@@ -72,14 +72,14 @@
           {% endif %}
           {% if filter_variant.selling_plan_allocations.size > 0 %}
             <div>
-              <p class="p3 mb-[4px] desktop:mb-[1px]" js-selling-plan-copy></p>
+              <p class="p3 mb-[4px] {% unless is_quick_view %}desktop:mb-[1px]{% endunless %}" js-selling-plan-copy></p>
               <p class="p3" js-filter-price-copy></p>
             </div>
             {% break %}
           {% endif %}
         {% endfor %}
         {% if filter_subscription.subscription_options.value.size %}
-          <ul class="flex flex-col flex-wrap gap-y-[12px] gap-x-[24px] w-full desktop:flex-row">
+          <ul class="flex flex-col flex-wrap gap-y-[12px] gap-x-[24px] w-full {% unless is_quick_view %}desktop:flex-row{% endunless %}">
             {% for option in filter_subscription.subscription_options.value %}
               {% if option.icon != blank or option.text != blank %}
                 <li class="flex items-center gap-[8px] dekstop:gap-[10px]">
@@ -89,7 +89,7 @@
                     </div>
                   {% endif %}
                   {% if option.text != blank %}
-                    <span class="p4 desktop:font-[600]">{{ option.text }}</span>
+                    <span class="p4 {% unless is_quick_view %}desktop:font-[600]{% endunless %}">{{ option.text }}</span>
                   {% endif %}
                 </li>
               {% endif %}
@@ -97,7 +97,7 @@
           </ul>
         {% endif %}
       </div>
-      <div class="product-subscription__filter-subscriptions {% if is_quick_view %}py-[16px]{% else %}py-md{% endif %} border-t border-gray">
+      <div class="product-subscription__filter-subscriptions {% if is_quick_view %}py-[16px]{% else %}pt-[16px] pb-md desktop:pt-[18px]{% endif %} border-t border-gray">
         {% if pdp_type == 'filter' %}
           <input type="hidden" disabled name="id" value="" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
           <input type="hidden" disabled name="selling_plan" value="" js-filter-subscription-selected-variant-selling-plan-input js-filter-subscription-form-input>
@@ -397,11 +397,11 @@
   </div>
 
   {% unless is_additional %}
-    <button type="button" class="product__non-subscription border border-blue rounded-[3px] {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}px-xs py-md desktop:px-md gap-sm{% endif %} flex items-center w-full {% if subscription_selected == false %}order-first{% endif %}" data-selected="{% if subscription_selected %}false{% else %}true{% endif %}" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
-      <div class="checkbox w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
+    <button type="button" class="product__non-subscription border border-blue {% if is_quick_view %}px-[10px] py-[16px] gap-[7px] rounded-[1.8px]{% else %}rounded-[3px] px-xs py-md desktop:px-md desktop:py-[31px] gap-[12px]{% endif %} flex items-center w-full {% if subscription_selected == false %}order-first{% endif %}" data-selected="{% if subscription_selected %}false{% else %}true{% endif %}" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
+      <div class="checkbox bg-white w-[22px] h-[22px] border border-gray rounded-full p-xxxs pt-[5px] flex justify-center items-center">
         {{ 'icon-check.svg' | inline_asset_content }}
       </div>
-      <div class="{% if is_quick_view %}p3{% else %}s3{% endif %} font-700 flex-1 text-left">
+      <div class="{% if is_quick_view %}p3{% else %}s2{% endif %} font-700 flex-1 text-left">
         {% if filter_subscription.non_subscription_button_label_override != blank %}
           {{ filter_subscription.non_subscription_button_label_override }}
         {% else %}
@@ -420,10 +420,10 @@
       </div>
       <div class="product__price-wrapper {% if is_quick_view %}p3{% else %}s3{% endif %} flex justify-end items-center gap-xs" {% if pdp_type == 'filter' %}js-price js-full-price {% endif %} js-price-copy data-price="{{ current_variant.price }}">
         {% if current_variant.compare_at_price > current_variant.price %}
-          <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-          <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+          <s class="product__price product__price--compare font-400 {% if is_quick_view %}p4{% else %}p1{% endif %}">{{ current_variant.compare_at_price | money }}</s>
+          <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}">{{ current_variant.price | money }}</span>
         {% else %}
-          <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+          <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}">{{ current_variant.price | money }}</span>
         {% endif %}
       </div>
     </button>
