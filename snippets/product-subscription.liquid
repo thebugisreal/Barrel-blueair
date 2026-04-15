@@ -61,35 +61,26 @@
       </div>
     </button>
     <div class="product-subscription__content {% if is_quick_view %}px-[10px]{% else %}px-xs desktop:px-md{% endif %} transition-[max-height] duration-500">
-      {% if filter_subscription.description_1_bullets != blank %}
-        <div class="product-subscription__description-container border-t border-gray {% if is_quick_view %}py-[16px] flex-col gap-[5px]{% else %}py-md gap-sm{% endif %} flex">
-          {% for i in (1..2) %}
-            {% assign description_title_handle = 'description_' | append: i | append: '_title' %}
-            {% assign description_bullets_handle = 'description_' | append: i | append: '_bullets' %}
-            {% if filter_subscription[description_bullets_handle] != blank %}
-              <div class="product-subscription__description flex-1">
-                {% if filter_subscription[description_title_handle] != blank %}
-                  <div class="product-subscription-description__title font-700{% if is_quick_view %} p3{% endif %}">
-                    {{ filter_subscription[description_title_handle] }}
-                  </div>
-                {% endif %}
-                <ul class="product-subscription-description__bullets {% if is_quick_view %}p4{% else %}mt-xxxs{% endif %}"{% if is_quick_view %} style="display: block!important;"{% endif %}>
-                  {% if product.metafields.seed.pdp_filter_quantity != blank %}
-                    <li class="product-subscription-description__bullet flex">
-                      <div>
-                        <span js-filter-subscription-quantity-label>1 Replacement Filter</span> every <span js-filter-subscription-quantity-duration> 6 months</span>
-                      </div>
-                    </li>
+      <div class="product-subscription__description-container border-t border-gray {% if is_quick_view %}py-[16px] flex-col gap-[5px]{% else %}py-md gap-sm{% endif %} flex">
+        {% if filter_subscription.subscription_options.value.size %}
+          <ul class="flex flex-col flex-wrap gap-y-[12px] gap-x-[24px] w-full desktop:flex-row">
+            {% for option in filter_subscription.subscription_options.value %}
+              {% if option.icon != blank or option.text != blank %}
+                <li class="flex items-center gap-[8px] dekstop:gap-[10px]">
+                  {% if option.icon != blank %}
+                    <div class="w-[36px] h-[36px] p-[6px] rounded-full bg-blue-darkSky flex items-center justify-center shrink-0">
+                      {{ option.icon | image_url: width: 48 | image_tag: width: option.icon.width, height: option.icon.height, loading: 'lazy' }}
+                    </div>
                   {% endif %}
-                  {% for bullet in filter_subscription[description_bullets_handle].value %}
-                    <li class="product-subscription-description__bullet flex">{{ bullet }}</li>
-                  {% endfor %}
-                </ul>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endif %}
+                  {% if option.text != blank %}
+                    <span class="p4 desktop:font-[600]">{{ option.text }}</span>
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
       <div class="product-subscription__filter-subscriptions {% if is_quick_view %}py-[16px]{% else %}py-md{% endif %} border-t border-gray">
         {% if pdp_type == 'filter' %}
           <input type="hidden" disabled name="id" value="" js-filter-subscription-selected-variant-input js-filter-subscription-form-input>
