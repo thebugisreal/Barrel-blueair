@@ -61,7 +61,22 @@
       </div>
     </button>
     <div class="product-subscription__content {% if is_quick_view %}px-[10px]{% else %}px-xs desktop:px-md{% endif %} transition-[max-height] duration-500">
-      <div class="product-subscription__description-container border-t border-gray {% if is_quick_view %}py-[16px] flex-col gap-[5px]{% else %}py-md gap-sm{% endif %} flex">
+      <div class="product-subscription__description-container border-t border-gray py-[16px] flex-col flex gap-[8px] desktop:gap-[20px] desktop:py-[18px] empty:hidden">
+        {% for filter_product in filter_subscriptions %}
+          {% assign filter_variant = filter_product.variants[0] %}
+          {% if pdp_type == 'airpurifier_and_filter' %}
+            {% if filter_product.variants[1].title contains 'subscription' or filter_product.variants[1].title contains 'Subscription' %}
+              {% assign filter_variant = filter_product.variants[1] %}
+            {% endif %}
+          {% endif %}
+          {% if filter_variant.selling_plan_allocations.size > 0 %}
+            <div>
+              <p class="p3 mb-[4px] desktop:mb-[1px]" js-selling-plan-copy></p>
+              <p class="p3" js-filter-price-copy></p>
+            </div>
+            {% break %}
+          {% endif %}
+        {% endfor %}
         {% if filter_subscription.subscription_options.value.size %}
           <ul class="flex flex-col flex-wrap gap-y-[12px] gap-x-[24px] w-full desktop:flex-row">
             {% for option in filter_subscription.subscription_options.value %}
@@ -196,13 +211,13 @@
                     {% assign frequency_options = first_filter_product.metafields.seed.subscription_frequency_options.value %}
                   {% endif %}
                   {% for frequency_option in frequency_options %}
-                    <button type="button" data-selected="false" data-frequency="{{ frequency_option }}" class="filter-subscription__master-frequency flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-master-frequency>
+                    <button type="button" data-selected="false" data-frequency="{{ frequency_option }}" class="filter-subscription__master-frequency flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-master-frequency data-selling-plan-name="Delivered every {{ frequency_option }}">
                       {{ frequency_option }}
                     </button>
                   {% endfor %}
                 {% else %}
                   {% for selling_plan_allocation in first_filter_variant.selling_plan_allocations %}
-                    <button type="button" data-selected="false" data-frequency="{{ selling_plan_allocation.selling_plan.options[0].value }}" class="filter-subscription__master-frequency flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-master-frequency>
+                    <button type="button" data-selected="false" data-frequency="{{ selling_plan_allocation.selling_plan.options[0].value }}" class="filter-subscription__master-frequency flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-master-frequency data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}">
                       {{ selling_plan_allocation.selling_plan.options[0].value }}
                     </button>
                   {% endfor %}
@@ -267,7 +282,7 @@
                           <s>{{ filter_compare_at_price | times: label_quantity | money }}</s>
                         {% endif %} {% endcomment %}
                         {{ filter_price | times: label_quantity | money }}
-                        <span class="font-400"> / filter</span>
+                        <span class="font-400"> / filter{% if filter_compare_at_price > filter_price %} <span class="hidden">({{ filter_compare_at_price | times: label_quantity | money }} value)</span>{% endif %}</span>
                       </div>
                     </button>
                   {% endif %}
@@ -303,7 +318,7 @@
                   {% for frequency_option in frequency_options %}
                     {% for selling_plan_allocation in filter_variant.selling_plan_allocations %}
                       {% if frequency_option == selling_plan_allocation.selling_plan.options[0].value %}
-                        <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan>
+                        <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}">
                           {{ selling_plan_allocation.selling_plan.options[0].value }}
                         </button>
                       {% endif %}
@@ -311,7 +326,7 @@
                   {% endfor %}
                 {% else %}
                   {% for selling_plan_allocation in filter_variant.selling_plan_allocations %}
-                    <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan>
+                    <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}">
                       {{ selling_plan_allocation.selling_plan.options[0].value }}
                     </button>
                   {% endfor %}
@@ -343,7 +358,7 @@
                     {% for frequency_option in frequency_options %}
                       {% for selling_plan_allocation in filter_variant.selling_plan_allocations %}
                         {% if frequency_option == selling_plan_allocation.selling_plan.options[0].value %}
-                          <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan>
+                          <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}">
                             {{ selling_plan_allocation.selling_plan.options[0].value }}
                           </button>
                         {% endif %}
@@ -351,7 +366,7 @@
                     {% endfor %}
                   {% else %}
                     {% for selling_plan_allocation in filter_variant.selling_plan_allocations %}
-                      <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan>
+                      <button type="button" data-selected="false" data-selling-plan-id="{{ selling_plan_allocation.selling_plan.id }}" data-variant="{{ filter_variant.id }}" {% if filter_variant.available == false %}disabled{% endif %} {% if pdp_type == '2in1_purify_humidify' %}data-index="{{ forloop.parentloop.index }}"{% endif %} class="filter-subscription__selling-plan flex-1 rounded-[2px] border border-gray {% if is_quick_view %}p3 p-[10px]{% else %}p-xxs p-3 font-500{% endif %} text-blue" js-filter-subscription-selling-plan data-selling-plan-name="{{ selling_plan_allocation.selling_plan.name }}">
                         {{ selling_plan_allocation.selling_plan.options[0].value }}
                       </button>
                     {% endfor %}
