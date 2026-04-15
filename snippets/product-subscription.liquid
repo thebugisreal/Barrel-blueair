@@ -22,6 +22,7 @@
   {% assign pdp_type = '2in1_purify_humidify' %}
   {% assign scent_subscriptions = filter_subscription.scent_subscriptions.value %}
 {% endif %}
+{% assign subscription_discount_amount = shop.metafields.custom.subscription_discount_amount | times: 100 %}
 
 <div class="product__subscription-container flex flex-col {% if is_quick_view %}gap-[6px] mt-sm mb-sm{% else %}gap-sm{% endif %} {% if product.variants.size > 1 or is_additional %}mt-md{% elsif is_additional %}mt-sm{% endif %}">
   <div class="product__subscription {% if is_additional %}product__subscription--additional {% endif %}border border-blue rounded-[3px] relative {% if is_quick_view %}mt-[11px]{% else %}mt-sm{% endif %}" data-type="{{ pdp_type }}" data-selected="{% if subscription_selected %}true{% else %}false{% endif %}" js-subscription {% if is_additional %}js-additional-subscription {% endif %}{% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
@@ -50,12 +51,12 @@
         {% if pdp_type != 'filter' %}
           {% if product.metafields.seed.filter_subscription_discount != blank and filter_subscription_discounted_price != blank %}
             <s class="product__price product__price--compare">{{ current_variant.price | money }}</s>
-            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ filter_subscription_discounted_price | money }}</span>
+            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ filter_subscription_discounted_price | minus: subscription_discount_amount | money }}</span>
           {% elsif current_variant.compare_at_price > current_variant.price %}
             <s class="product__price product__price--compare">{{ current_variant.compare_at_price | money }}</s>
-            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
           {% else %}
-            <span class="product__price product__price--current font-700">{{ current_variant.price | money }}</span>
+            <span class="product__price product__price--current font-700" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
           {% endif %}
         {% endif %}
       </div>
