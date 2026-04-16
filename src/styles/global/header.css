@@ -113,3 +113,29 @@
     @apply blur-sm;
   }
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .header-desktop-nav__mega-menu-title,
+  .header-desktop-nav__link {
+    @apply text-14;
+  }
+
+  .site-header__warpper,
+  .header-desktop-nav__mega-menu-wrapper .mega-menu {
+    @apply !px-md;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1560px) {
+  .site-header__warpper {
+    @apply grid grid-cols-[auto_auto] gap-0;
+  }
+
+  .site-header__desktop-nav {
+    @apply order-[3] col-span-2 justify-center;
+  }
+
+  .header-desktop-nav__item {
+    @apply py-[12px] px-[12px];
+  }
+}
