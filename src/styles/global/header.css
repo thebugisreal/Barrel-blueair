@@ -78,7 +78,8 @@
   .header-desktop-nav__item--mega-menu:hover .header-desktop-nav__mega-menu-wrapper {
     @apply pointer-events-auto
     z-[10]
-    max-h-[999px];
+    max-h-[calc(90vh-var(--header-height))]
+    overflow-y-auto;
   }
 
   .header-desktop-nav__item--mega-menu.hovered::before {
@@ -120,14 +121,14 @@
     @apply text-14;
   }
 
-  .site-header__warpper,
+  .site-header__wrapper,
   .header-desktop-nav__mega-menu-wrapper .mega-menu {
     @apply !px-md;
   }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1560px) {
-  .site-header__warpper {
+  .site-header__wrapper {
     @apply grid grid-cols-[auto_auto] gap-0;
   }
 
