@@ -54,6 +54,33 @@
   endif
 
   assign user_country = localization.country.iso_code | downcase
+  assign user_language = localization.language.iso_code | downcase
+
+  assign country_hide_txt = 'country-hide:'
+  assign country_txt = 'country:'
+
+  if user_language == 'fr'
+    assign country_hide_txt = 'masquer-le-pays-'
+    assign country_txt = 'pays-'
+  elsif user_language == 'es'
+    assign country_hide_txt = 'ocultar-pais-'
+    assign country_txt = 'pais-'
+  elsif user_language == 'de'
+    assign country_hide_txt = 'country-hide-'
+    assign country_txt = 'land-'
+  elsif user_language == 'ja'
+    assign country_hide_txt = '国非表示-'
+    assign country_txt = '国-'
+  elsif user_language == 'ko'
+    assign country_hide_txt = 'country-hide-'
+    assign country_txt = '국가-'
+  elsif user_language == 'ar'
+    assign country_hide_txt = 'إخفاء-البلد-'
+    assign country_txt = 'الدولة-'
+  elsif user_language == 'th'
+    assign country_hide_txt = 'ประเทศซ่อน-'
+    assign country_txt = 'ประเทศ-'
+  endif
 -%}
 
 <s-product role="section" class="product" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
@@ -86,6 +113,7 @@
               {% assign show_country = blank %}
               {% assign hide_country = blank %}
               {% assign alt_text = media.alt | downcase | strip %}
+              {% assign alt_text_handleize = alt_text | handleize %}
 
               {% if alt_text contains 'country-hide:' %}
                 {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
@@ -96,6 +124,20 @@
                 {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
                 {% if show_country != user_country %}
                   {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
+
+              {% if shop.permanent_domain == 'blueeudev.myshopify.com' and hide_media == false %}
+                {% if alt_text_handleize contains country_hide_txt %}
+                  {% assign hide_country = alt_text_handleize | split: country_hide_txt | last | split: ' ' | first | strip %}
+                  {% if hide_country == user_country %}
+                    {% assign hide_media = true %}
+                  {% endif %}
+                {% elsif alt_text_handleize contains country_txt %}
+                  {% assign show_country = alt_text_handleize | split: country_txt | last | split: ' ' | first | strip %}
+                  {% if show_country != user_country %}
+                    {% assign hide_media = true %}
+                  {% endif %}
                 {% endif %}
               {% endif %}
 
@@ -196,6 +238,7 @@
               {% assign show_country = blank %}
               {% assign hide_country = blank %}
               {% assign alt_text = media.alt | downcase | strip %}
+              {% assign alt_text_handleize = alt_text | handleize %}
 
               {% if alt_text contains 'country-hide:' %}
                 {% assign hide_country = alt_text | split: 'country-hide:' | last | split: ' ' | first | strip %}
@@ -206,6 +249,20 @@
                 {% assign show_country = alt_text | split: 'country:' | last | split: ' ' | first | strip %}
                 {% if show_country != user_country %}
                   {% assign hide_media = true %}
+                {% endif %}
+              {% endif %}
+
+              {% if shop.permanent_domain == 'blueeudev.myshopify.com' and hide_media == false %}
+                {% if alt_text_handleize contains country_hide_txt %}
+                  {% assign hide_country = alt_text_handleize | split: country_hide_txt | last | split: ' ' | first | strip %}
+                  {% if hide_country == user_country %}
+                    {% assign hide_media = true %}
+                  {% endif %}
+                {% elsif alt_text_handleize contains country_txt %}
+                  {% assign show_country = alt_text_handleize | split: country_txt | last | split: ' ' | first | strip %}
+                  {% if show_country != user_country %}
+                    {% assign hide_media = true %}
+                  {% endif %}
                 {% endif %}
               {% endif %}
 
