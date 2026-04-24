@@ -41,7 +41,7 @@ class CountrySelectModal extends HTMLElement {
         { country: "BF", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "BI", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "CM", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
-        { country: "CA", languages: [ { code:"EN", label: "English"} , { code:"FR", label: "Français", currency: "CAD" } ] },
+        { country: "CA", languages: [ { code:"EN", label: "English", currency: "CAD" } , { code:"FR", label: "Français", currency: "CAD" } ] },
         { country: "CV", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "CF", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "ES", languages: [ { code:"EN", label: "English"}, {code: "ES", label: "Español"} ] },
