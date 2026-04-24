@@ -11,6 +11,10 @@
     border-white
 }
 
+.product__spec-container li .p4:nth-child(2) {
+    @apply !block
+}
+
 @media screen(desktop) {
     .product__spec-container li {
         @apply py-xs
