@@ -41,7 +41,7 @@ class CountrySelectModal extends HTMLElement {
         { country: "BF", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "BI", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "CM", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
-        { country: "CA", languages: [ { code:"EN", label: "English"} , { code:"FR", label: "Français"} ] },
+        { country: "CA", languages: [ { code:"EN", label: "English"} , { code:"FR", label: "Français", currency: "CAD" } ] },
         { country: "CV", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "CF", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "ES", languages: [ { code:"EN", label: "English"}, {code: "ES", label: "Español"} ] },
@@ -240,6 +240,14 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _handleUrlRedirects = () => {
+      const _params = new URLSearchParams(window.location.search);
+      if (_params.has('currency')) {
+        _params.delete('currency');
+        const _newSearch = _params.toString();
+        const _newUrl = window.location.pathname + (_newSearch ? '?' + _newSearch : '') + window.location.hash;
+        history.replaceState(null, '', _newUrl);
+      }
+
       // Handle URL path corrections for blueeudev.myshopify.com
       if (window.permanent_domain == `blueeudev.myshopify.com`) {
         const currentPath = window.location.pathname;
@@ -349,20 +357,21 @@ class CountrySelectModal extends HTMLElement {
       if (window.domain == target) {
         this.form.submit();
       }else{
+        const currencyParam = this.selectedCurrency ? `&currency=${this.selectedCurrency}` : '';
         if (country == 'us') {
-          window.location.href = `${target}?manual-redirect=true`
+          window.location.href = `${target}?manual-redirect=true${currencyParam}`
         } else if (country == 'ca'){
-          window.location.href = `${target}/${language}-${country}?manual-redirect=true`
+          window.location.href = `${target}/${language}-${country}?manual-redirect=true${currencyParam}`
         } else if (country == 'gb'){
-          window.location.href = `${target}?manual-redirect=true`
+          window.location.href = `${target}?manual-redirect=true${currencyParam}`
         } else if (country == 'de' && language == 'de'){
-          window.location.href = `${target}?manual-redirect=true`
+          window.location.href = `${target}?manual-redirect=true${currencyParam}`
         } else if (country == 'de' && language == 'en'){
-          window.location.href = `${target}/en?manual-redirect=true`
+          window.location.href = `${target}/en?manual-redirect=true${currencyParam}`
         } else if (country == 'eu'){
-          window.location.href = `${target}/en-eu?manual-redirect=true`
+          window.location.href = `${target}/en-eu?manual-redirect=true${currencyParam}`
         } else{
-          window.location.href = `${target}/${language}-${country}?manual-redirect=true`
+          window.location.href = `${target}/${language}-${country}?manual-redirect=true${currencyParam}`
         }
       }
     }
@@ -384,20 +393,21 @@ class CountrySelectModal extends HTMLElement {
                 this.languageInputLabel.innerHTML = this._languagePicker[i].languages[j].label
               }
             }
-            const label = this._languagePicker[i].languages[j].label
-            const value = this._languagePicker[i].languages[j].code
-            this._createOption(value, label, this.languageSelect)
+            const lang = this._languagePicker[i].languages[j]
+            this._createOption(lang.code, lang.label, lang.currency, this.languageSelect)
           }
           break
         }
       }
 
       this.selectedLanguage = this.languageSelect.options[0].value.toLowerCase();
+      this.selectedCurrency = this.languageSelect.options[0].dataset.currency || '';
     }
 
     _handleLanguageChange(e) {
       this.languageInput.value = e.target.value
       this.selectedLanguage = e.target.value;
+      this.selectedCurrency = e.target.options[e.target.selectedIndex].dataset.currency || '';
 
       if (this.languageInputLabel) {
         this.languageInputLabel.innerHTML =  e.target.options[e.target.selectedIndex].dataset.endonymName
@@ -408,11 +418,12 @@ class CountrySelectModal extends HTMLElement {
       this.languageSelect.innerHTML = ''
     }
 
-    _createOption(value, label, parent) {
+    _createOption(value, label, currency, parent) {
       const option = document.createElement('option');
       option.value = value;
       option.innerText = label;
-      option.dataset.endonymName = label
+      option.dataset.endonymName = label;
+      option.dataset.currency = currency || '';
       parent.appendChild(option);
 
       return option
