@@ -11,10 +11,7 @@ class CountrySelectModal extends HTMLElement {
         countryLabel: '[js-country-input-label]',
         submitBtn: '[js-localization-submit]'
       }
-    }
 
-    connectedCallback() {
-      this.init()
       this._languagePicker = [
         { country: "EU", languages: [ { code: "EN", label: "English" } ]},
         { country: "AF", languages: [ { code: "AR", label: "العربية" },{ code: "EN", label: "English" } ]},
@@ -176,6 +173,10 @@ class CountrySelectModal extends HTMLElement {
       ]
     }
 
+    connectedCallback() {
+      this.init()
+    }
+
     async init() {
       // Handle URL redirects immediately for Safari compatibility
       this._handleUrlRedirects();
@@ -190,7 +191,7 @@ class CountrySelectModal extends HTMLElement {
       this.languageSelect = this.querySelector(this._selectors.languageSelect)
       this.languageInput = this.querySelector(this._selectors.languageInput)
       this.languageInputLabel = this.querySelector(this._selectors.languageInputLabel)
-      this.countryLabel = this.querySelectorAll(this._selectors.countryLabel)
+      this.countryLabel = document.querySelectorAll(this._selectors.countryLabel)
       this.submitBtn = this.querySelector(this._selectors.submitBtn)
 
       this.select.addEventListener('change', this._handleCountryChange.bind(this));
@@ -227,11 +228,12 @@ class CountrySelectModal extends HTMLElement {
 
         this._detectedCountry = detectedCountry.toUpperCase()
 
+        const selectedOption = this._euCountries.has(detectedCountry) ? 'EU' : detectedCountry
         const optionExists = Array.from(this.select.options).some(
-          opt => opt.value === detectedCountry
+          opt => opt.value === selectedOption
         )
         if (optionExists) {
-          this.select.value = detectedCountry
+          this.select.value = selectedOption
           this.select.dispatchEvent(new Event('change'))
         }
       } catch (err) {
@@ -278,6 +280,30 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _checkAutoRedirect = () => {
+      const country = this.selectedCountry.toLowerCase();
+      const language = this.selectedLanguage.toLowerCase();
+      const target = 'https://blueair.co';
+      const autoRedirect = theme.utils.getCookie('seedAutoRedirect');
+      if (
+        country !== 'us'
+        && country !== 'ca'
+        && country !== 'gb'
+        && window.permanent_domain == 'blueeudev.myshopify.com'
+        && !autoRedirect
+      ) {
+        theme.utils.setCookie('seedAutoRedirect', true, 30);
+        const currentPath = window.location.pathname;
+        let newPath = `/${language}-${country}/` + currentPath.slice(1)
+        if (country == 'de' && language == 'de'){
+          newPath = '/'
+        } else if (country == 'de' && language == 'en'){
+          newPath = '/en/' + currentPath.slice(1)
+        } else if (country == 'eu'){
+          newPath = '/en-eu/' + currentPath.slice(1)
+        }
+        window.location.href = target + newPath
+      }
+
       const searchParams = new URLSearchParams(window.location.search);
 
       if(searchParams.get('manual-redirect') == 'true') {
