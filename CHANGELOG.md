@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.5] - 2026-04-28
+
+### Fixed
+- BEA-90: Navigation spacing optimization on small desktop
+
 ## [1.1.4] - 2026-04-13
 
 ### Fixed
