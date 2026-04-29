@@ -364,7 +364,14 @@
         "id": "eu_countries",
         "label": "EU Country Codes",
         "info": "Comma-separated ISO country codes",
-        "default": "DE,FR,ES"
+        "default": "AX,AL,AD,AT,BY,BE,BA,BG,HR,CZ,DK,EE,FO,FI,GI,GR,GG,HU,IS,IE,IM,IT,JE,XK,LV,LI,LT,LU,MK,MT,MD,MC,ME,NL,NO,PL,PT,RO,RU,SM,RS,SK,SI,SJ,SE,CH,UA,VA"
+      },
+      {
+        "type": "textarea",
+        "id": "country_options",
+        "label": "Country Selector Options",
+        "info": "One country per line in the format [countryCode]:[countryName]. Example: AU:Australia",
+        "default": "AU:Australia\nBD:Bangladesh\nEU:Europe\nCA:Canada\nHK:Hong Kong/Macau\nTW:Taiwan\nFR:France\nDE:Germany\nID:Indonesia\nJP:Japan\nKR:Korea\nCN:Mainland China\nMY:Malaysia\nAE:Middle East\nNP:Nepal\nNZ:New Zealand\nPK:Pakistan\nPH:Philippines\nSG:Singapore\nES:Spain\nTH:Thailand\nUS:United States\nGB:UK\nVN:Vietnam"
       }
     ]
   },
