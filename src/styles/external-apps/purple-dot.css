@@ -1,0 +1,9 @@
+form[action$='/cart/add'] button[type='submit'].product__atc,
+form[action$='/cart/add'] [js-add-to-cart][type='submit'],
+form[action*='/cart'] *[type='submit'],
+*[type='submit'][name='checkout'],
+a[href='/checkout'],
+form iframe,
+.shopify-cleanslate {
+  pointer-events: auto !important;
+}
