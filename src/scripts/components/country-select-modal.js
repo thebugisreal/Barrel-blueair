@@ -280,12 +280,14 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _checkAutoRedirect = () => {
-      const country = this.selectedCountry.toLowerCase();
-      const language = this.selectedLanguage.toLowerCase();
+      const country = this.selectedCountry?.toLowerCase();
+      const language = this.selectedLanguage?.toLowerCase();
       const target = 'https://blueair.co';
       const autoRedirect = theme.utils.getCookie('seedAutoRedirect');
       if (
-        country !== 'us'
+        country
+        && language
+        && country !== 'us'
         && country !== 'ca'
         && country !== 'gb'
         && window.permanent_domain == 'blueeudev.myshopify.com'
