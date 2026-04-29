@@ -9,27 +9,3 @@ window.PurpleDotConfig = {
 </script>
 
 <script src="https://www.purpledotprice.com/api/v1/init.js?apiKey=63b5ae3d-f8d7-4f88-9496-3ec4c032875b"></script>
-
-<script>
-  (() => {
-    const isShopifyPreview =
-      {{ request.design_mode | json }} ||
-      {{ request.visual_preview_mode | json }} ||
-      window.location.hostname.endsWith('.shopifypreview.com') ||
-      ['localhost', '127.0.0.1'].includes(window.location.hostname) ||
-      new URLSearchParams(window.location.search).has('preview_theme_id');
-
-    if (!isShopifyPreview || document.getElementById('pd-preview-atc-preload-override')) return;
-
-    // Purple Dot blocks product forms during preload; keep preview ATC usable while preserving checkout blocking.
-    const previewStyle = document.createElement('style');
-    previewStyle.id = 'pd-preview-atc-preload-override';
-    previewStyle.textContent = `
-      form[action$='/cart/add'] button[type='submit'].product__atc,
-      form[action$='/cart/add'] [js-add-to-cart][type='submit'] {
-        pointer-events: auto !important;
-      }
-    `;
-    document.head.appendChild(previewStyle);
-  })();
-</script>
