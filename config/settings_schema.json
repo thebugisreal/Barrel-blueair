@@ -364,7 +364,7 @@
         "id": "eu_countries",
         "label": "EU Country Codes",
         "info": "Comma-separated ISO country codes",
-        "default": "DE,FR,ES"
+        "default": "AX,AL,AD,AT,BY,BE,BA,BG,HR,CZ,DK,EE,FO,FI,GI,GR,GG,HU,IS,IE,IM,IT,JE,XK,LV,LI,LT,LU,MK,MT,MD,MC,ME,NL,NO,PL,PT,RO,RU,SM,RS,SK,SI,SJ,SE,CH,UA,VA"
       }
     ]
   },
