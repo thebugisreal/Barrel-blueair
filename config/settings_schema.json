@@ -189,6 +189,18 @@
     ]
   },
   {
+    "name": "PDP",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_dynamic_checkout",
+        "label": "Show dynamic checkout button",
+        "info": "Shows an additional checkout button (Apple Pay, Shop Pay, etc.) below the Add to Cart button on the PDP using the payment method saved in the customer's browser.",
+        "default": false
+      }
+    ]
+  },
+  {
     "name": "Product listing",
     "settings": [
       {
