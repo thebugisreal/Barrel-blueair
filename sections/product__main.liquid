@@ -2,7 +2,7 @@
   <script src="https://static.truemed.com/widgets/product-page-widget.min.js" defer></script>
 {% endif %}
 {% include 'region-check' %}
-{%- liquid 
+{%- liquid
   assign current_variant = product.selected_or_first_available_variant
   if product.variants[1].title contains 'subscription' or product.variants[1].title contains 'Subscription'
     assign current_variant = product.variants[0]
@@ -174,7 +174,7 @@
                   {% assign hide_media = false %}
                 {% endif %}
               {% endif %}
-              
+
               {% case media.media_type %}
                 {% when 'image' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
@@ -186,7 +186,7 @@
                       {% assign fetchpriority = 'auto' %}
                     {% endif %}
                     {% render 'lazy-image' image: media alt: media.alt img_classes: 'w-full h-full object-cover object-center', loading: loading, fetchpriority: fetchpriority %}
-                    
+
                     {% comment %} Used for replacing first image with Quanity Image Metafield {% endcomment %}
                     {% if first_render_quantity_options_images and product.metafields.seed.quantity_options_images != blank %}
                       {% for media in product.metafields.seed.quantity_options_images.value %}
@@ -203,7 +203,7 @@
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | video_tag:  autoplay: true, loop: true, mute: true, class: "w-full" }}
                   </div>
-                {% when 'external_video' %}              
+                {% when 'external_video' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | external_video_tag }}
                   </div>
@@ -319,7 +319,7 @@
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {{ media | video_tag: controls: false, autoplay: true, loop: true, mute: true, class: "w-full" }}
                   </div>
-                {% when 'external_video' %}              
+                {% when 'external_video' %}
                   <div class="{% if hide_media %}hidden{% else %}swiper-slide{% endif %}" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-main-carousel-slide>
                     {{ media | external_video_tag }}
                   </div>
@@ -471,7 +471,7 @@
                   -%}
                   <product-options class="no-js-hidden" data-product='ProductJSON' data-master-select-id="{{ master_select_id }}" data-enable-history-state {% if product.options_with_values.size != 2 %}data-disable-option-binding{% endif %}>
                     {% for option in product.options_with_values %}
-                      {% render 'product-option-selector' 
+                      {% render 'product-option-selector'
                         option: option
                         type: option_type
                         section_id: section.id
@@ -550,7 +550,7 @@
 
                   {% if enable_subscription %}
                     {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: subscription filter_subscription_discounted_price: filter_subscription_discounted_price %}
-                    
+
                     {% if product.metafields.seed.additional_subscription != blank %}
                       {% assign additional_subscription = product.metafields.seed.additional_subscription.value %}
                       {% render 'product-subscription' product: product current_variant: current_variant filter_subscription: additional_subscription filter_subscription_discounted_price: filter_subscription_discounted_price is_additional: true %}
@@ -563,11 +563,11 @@
                         {% assign quantity_variant_value = quantity_variant | split: '|' | last | strip %}
                         {% assign quantity_variant_label = quantity_variant | split: '|' | first | strip %}
                         <div class="product__quantity-variant">
-                          <input 
-                            id="Product{{ product.id }}-QuantityVariant-{{ quantity_variant | handle }}" 
+                          <input
+                            id="Product{{ product.id }}-QuantityVariant-{{ quantity_variant | handle }}"
                             class="product-quantity-variant__input visually-hidden"
-                            type="radio" 
-                            name="quantity" 
+                            type="radio"
+                            name="quantity"
                             value="{{ quantity_variant_value }}"
                             data-pack="{% if quantity_variant_label contains 'Pack' %}true{% else %}false{% endif %}"
                             autocomplete="off"
@@ -589,10 +589,10 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">          
-                  <button 
+                <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">
+                  <button
                     class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center"
-                    type="submit" 
+                    type="submit"
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>
                     <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
@@ -610,6 +610,11 @@
                     </div>
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
+                  {% if settings.show_dynamic_checkout and additional_checkout_buttons %}
+                    <div class="product__dynamic-checkout w-full">
+                      {{ content_for_additional_checkout_buttons }}
+                    </div>
+                  {% endif %}
                   {% if section.settings.show_truemed %}
                     <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
 tm_qual_gjiapmwgps"></div>
@@ -791,7 +796,7 @@ tm_qual_gjiapmwgps"></div>
                             %}
                           {% endif %}
                         {% endfor %}
-                      {% endfor %} 
+                      {% endfor %}
                     </div>
                   </div>
                 {% endif %}
@@ -801,8 +806,8 @@ tm_qual_gjiapmwgps"></div>
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
                 <div class="{{ spacing }} max-w-full">
-                  {% render 'pdp-buystack-carousel', 
-                     product: product, 
+                  {% render 'pdp-buystack-carousel',
+                     product: product,
                      section_id: section.id,
                      carousel_classes: 'w-full',
                      slide_classes: 'h-auto',
@@ -815,10 +820,10 @@ tm_qual_gjiapmwgps"></div>
                 {% if product.metafields.seed.pdp_filter_quantity != blank %}
                   <ul class="product__filter-pack flex gap-xs flex-wrap {{ spacing }}">
                     <li class="product__filter-pack-item">
-                      <input 
-                        id="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}" 
+                      <input
+                        id="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}"
                         class="product-filter-pack__input visually-hidden"
-                        type="checkbox" 
+                        type="checkbox"
                         name="quantity"
                         checked
                         value="1"
@@ -833,11 +838,11 @@ tm_qual_gjiapmwgps"></div>
                     </li>
                     {% for filter in product.metafields.seed.pdp_filter_quantity.value %}
                       <li class="product__filter-pack-item">
-                          <input 
-                            id="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}" 
+                          <input
+                            id="Product{{ product.id }}-FilterPack-{{ filter.name | handleize }}"
                             class="product-filter-pack__input visually-hidden"
-                            type="checkbox" 
-                            name="quantity" 
+                            type="checkbox"
+                            name="quantity"
                             value="{{ filter.quantity }}"
                             autocomplete="off"
                             data-image-index="{{ filter.image_index }}"
@@ -853,7 +858,7 @@ tm_qual_gjiapmwgps"></div>
                 {% endif %}
             {% endcase %}
           {% endfor %}
-{% comment %} 
+{% comment %}
           <p class="line-item-property__field">
             <label for="parent-product">parent-product</label>
             <input id="parent-product" type="text" name="properties[_parent-product]" value="{{ product.id }}">
@@ -881,18 +886,18 @@ tm_qual_gjiapmwgps"></div>
       document.addEventListener('click', function(e) {
         const bisButton = e.target.closest('[js-klaviyo-bis-modal-trigger]');
         if (!bisButton) return;
-        
+
         e.preventDefault();
         e.stopPropagation();
-        
+
         const variantId = bisButton.getAttribute('data-variant-id');
         if (!variantId) {
           console.error('No variant ID found for BIS modal');
           return;
         }
-        
+
         console.log('Opening Klaviyo BIS modal for variant:', variantId);
-        
+
         // Function to try opening the modal with retry logic
         function openBISModal() {
           if (window.Klaviyo && window.Klaviyo.BIS && window.Klaviyo.BIS.showModal) {
@@ -914,7 +919,7 @@ tm_qual_gjiapmwgps"></div>
               if (productTitle) {
                 productTitle.textContent = bisButton.closest('.product-upsell__item').querySelector('.product-upsell__title')?.textContent || 'Product';
               }
-              
+
               const form = bisModal.querySelector('[js-bis-form]');
               if (form) {
                 let variantInput = form.querySelector('input[name="variant"]');
@@ -926,11 +931,11 @@ tm_qual_gjiapmwgps"></div>
                 }
                 variantInput.value = variantId;
               }
-              
+
               bisModal.open();
               return true;
             }
-            
+
             if (!window._klaviyoBISLogged) {
               console.log('Klaviyo BIS not ready, retrying...');
               console.log('Available Klaviyo objects:', {
@@ -945,7 +950,7 @@ tm_qual_gjiapmwgps"></div>
             return false;
           }
         }
-        
+
         if (!openBISModal()) {
           const retryInterval = setInterval(() => {
             if (openBISModal()) {
@@ -953,7 +958,7 @@ tm_qual_gjiapmwgps"></div>
               window._klaviyoBISLogged = false;
             }
           }, 2000);
-          
+
           setTimeout(() => {
             clearInterval(retryInterval);
             console.error('Klaviyo BIS failed to load within 10 seconds');
@@ -1026,7 +1031,7 @@ tm_qual_gjiapmwgps"></div>
         account: "{{ public_api_key }}",
         platform: "shopify"
       });
-      klaviyo.enable("backinstock",{ 
+      klaviyo.enable("backinstock",{
       trigger: {
         product_page_text: "Notify Me When Available",
         product_page_class: "product__atc btn btn--blue-rounded relative mx-auto w-full justify-center !w-full h-[50px]",
@@ -2618,7 +2623,7 @@ tm_qual_gjiapmwgps"></div>
             }
           ],
           "default": "desktop:mb-0"
-        }
+        },
       ]
     },
     {
