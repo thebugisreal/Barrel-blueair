@@ -343,6 +343,8 @@ class CountrySelectModal extends HTMLElement {
           if (modalTrigger) {
             console.log('Modal trigger found, clicking...');
             modalTrigger.click();
+            // Set cookie to remember modal was shown
+            theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
             console.log('Modal shown, cookie set');
           } else {
             console.log('Modal trigger not found');
@@ -371,8 +373,6 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _submitForm = () => {
-      // Set cookie to remember modal was shown
-      theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
       const country = this.selectedCountry.toLowerCase();
       const language = this.selectedLanguage.toLowerCase();
       const pathname = this._cleanPathname();
