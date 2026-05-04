@@ -281,26 +281,28 @@ class CountrySelectModal extends HTMLElement {
 
     _checkAutoRedirect = () => {
       const country = this.selectedCountry?.toLowerCase();
-      const language = this.selectedLanguage?.toLowerCase();
+      let language = this.selectedLanguage?.toLowerCase();
       const target = 'https://blueair.co';
       const autoRedirect = theme.utils.getCookie('seedAutoRedirect');
+      const countryEntry = this._languagePicker.find(item => item.country === country.toUpperCase())
+      if (countryEntry?.languages?.length) {
+        const preferred = countryEntry.languages.find(lang => lang.code !== 'EN');
+        language = preferred ? preferred.code.toLowerCase() : countryEntry.languages[0].code.toLowerCase();
+      }
       if (
         country
         && language
         && country !== 'us'
         && country !== 'ca'
         && country !== 'gb'
+        && country !== 'de'
         && window.permanent_domain == 'blueeudev.myshopify.com'
         && !autoRedirect
       ) {
         theme.utils.setCookie('seedAutoRedirect', true, 30);
         const currentPath = window.location.pathname;
         let newPath = `/${language}-${country}/` + currentPath.slice(1)
-        if (country == 'de' && language == 'de'){
-          newPath = '/'
-        } else if (country == 'de' && language == 'en'){
-          newPath = '/en/' + currentPath.slice(1)
-        } else if (country == 'eu'){
+        if (country == 'eu'){
           newPath = '/en-eu/' + currentPath.slice(1)
         }
         window.location.href = target + newPath
@@ -329,7 +331,7 @@ class CountrySelectModal extends HTMLElement {
       if (window.permanent_domain === '5ef43d-4a.myshopify.com') {
         isOutsideRegion = detectedCountry !== 'US' && detectedCountry !== 'CA';
       } else if (window.permanent_domain === 'blueeudev.myshopify.com') {
-        isOutsideRegion = !this._euCountries.has(detectedCountry);
+        isOutsideRegion = detectedCountry === 'US' || detectedCountry === 'CA' || detectedCountry === 'GB';
       } else if (window.permanent_domain === 'uk-blueair.myshopify.com') {
         isOutsideRegion = detectedCountry !== 'GB';
       }
@@ -341,6 +343,8 @@ class CountrySelectModal extends HTMLElement {
           if (modalTrigger) {
             console.log('Modal trigger found, clicking...');
             modalTrigger.click();
+            // Set cookie to remember modal was shown
+            theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
             console.log('Modal shown, cookie set');
           } else {
             console.log('Modal trigger not found');
@@ -369,8 +373,6 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _submitForm = () => {
-      // Set cookie to remember modal was shown
-      theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
       const country = this.selectedCountry.toLowerCase();
       const language = this.selectedLanguage.toLowerCase();
       const pathname = this._cleanPathname();
@@ -405,7 +407,6 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _handleCountryChange(e) {
-      console.log('handle country change', e.target.options[e.target.selectedIndex].dataset.countryName)
       this.countryLabel.forEach(el => {
         el.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
       })
