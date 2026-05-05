@@ -126,7 +126,7 @@
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
 
-    {% if settings.use_purpledot and shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
+    {% if settings.use_purpledot and shop.permanent_domain == '5ef43d-4a.myshopify.com' and product.tags contains 'pre-order' %}
       {% render 'purple-dot' %}
     {% endif %}
 
