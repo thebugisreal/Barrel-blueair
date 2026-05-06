@@ -14,10 +14,14 @@ s-modal {
 
 s-drawer#CartDrawer,
 s-drawer#MobileNavDrawer {
-  @apply z-[100];
+  @apply z-[1000000];
 }
 
 .js-drawer-open.cart-drawer-open .drawer-background:after,
 .js-drawer-open.mobile-nav-drawer-open .drawer-background:after {
   @apply z-[80];
+}
+
+#ot-sdk-btn-floating.ot-floating-button {
+  @apply !z-[999999];
 }
