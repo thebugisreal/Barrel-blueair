@@ -446,9 +446,9 @@
                     </div>
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
-                  {% if settings.show_dynamic_checkout and additional_checkout_buttons %}
+                  {% if settings.show_dynamic_checkout %}
                     <div class="product__dynamic-checkout w-full -mt-[12px]">
-                      {{ content_for_additional_checkout_buttons }}
+                      {{ form | payment_button }}
                     </div>
                   {% endif %}
                   <a href="{{ product.url }}" class="text-16 underline">{{ 'products.product.full_details' | t }}</a>
