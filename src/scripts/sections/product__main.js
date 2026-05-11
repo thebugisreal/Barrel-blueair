@@ -429,7 +429,9 @@ class ProductMain extends HTMLElement {
     }
 
     if (this.filterSubscriptionSelectWrapper) {
-      if (this.subscription.closest('[js-quick-view-content]')) {
+      if (this.filterSubscriptionSelectWrapper.childElementCount === 1) {
+        this.filterSubscriptionSelectWrapper.closest('.product-subscription__filter-subscriptions')?.classList.add('hidden');
+      } else if (this.subscription.closest('[js-quick-view-content]')) {
         document.querySelector('[js-quick-view-content]').addEventListener('click', this._filterSubscriptionSelectOutsideClick);
       } else {
         document.addEventListener('click', this._filterSubscriptionSelectOutsideClick);
