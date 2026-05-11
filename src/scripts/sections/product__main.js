@@ -623,6 +623,7 @@ class ProductMain extends HTMLElement {
   _filterSubscriptionSelectCurrentOnClick = (evt) => {
     evt.preventDefault();
     this.filterSubscriptionSelectWrapper.classList.toggle('is-active')
+    this.filterSubscriptionSelectCurrent.classList.toggle('is-active')
   }
 
   _filterSubscriptionSelectOptionOnClick = (evt) => {
@@ -633,6 +634,7 @@ class ProductMain extends HTMLElement {
 
     this.filterSubscriptionSelectCurrent.innerHTML = triggerTarget.innerHTML
     this.filterSubscriptionSelectWrapper.classList.remove('is-active')
+    this.filterSubscriptionSelectCurrent.classList.remove('is-active')
     this.filterPriceCopy.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML
     this.filterPriceCopy.querySelector('.hidden').classList.remove('hidden')
   }
@@ -644,6 +646,7 @@ class ProductMain extends HTMLElement {
       !this.filterSubscriptionSelectCurrent.contains(evt.target)
     ) {
       this.filterSubscriptionSelectWrapper.classList.remove('is-active');
+      this.filterSubscriptionSelectCurrent.classList.remove('is-active');
     }
   }
 
