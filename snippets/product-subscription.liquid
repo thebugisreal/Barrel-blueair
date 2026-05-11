@@ -228,8 +228,8 @@
           {% else %}
             <div class="p3 my-xxxs {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}">Select Filter</div>
             <div class="relative">
-              <div class="filter-subscription__variant py-[9px] pl-[11px] pr-[33px] text-left border border-gray rounded-[2px] flex justify-between items-center gap-sm desktop:pr-[37px] relative cursor-pointer after:content-[''] after:absolute after:w-[8px] after:right-[12px] after:top-[calc(50%-6px)] after:h-[8px] after:rotate-45 after:border-r after:border-b {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}" data-selected="true" js-filter-subscription-select-current></div>
-              <div class="filter-subscriptions__filters absolute shadow-md border {% if is_quick_view %}bottom-[calc(100%+4px)]{% else %}top-[calc(100%+4px)]{% endif %} left-0 right-0 z-[1] bg-white p-[12px] invisible opacity-0 transition-all translate-y-[8px] flex flex-col gap-xxxs desktop:gap-xxs [&.is-active]:visible [&.is-active]:opacity-100 [&.is-active]:translate-y-0 {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}" js-filter-subscription-select-wrapper>
+              <div class="filter-subscription__variant py-[11px] pl-[15px] pr-[33px] text-left border border-blue bg-white rounded-[2px] flex justify-between items-center gap-sm desktop:pr-[37px] relative cursor-pointer after:content-[''] after:absolute after:w-[8px] after:right-[12px] after:top-[calc(50%-6px)] after:h-[8px] after:rotate-45 after:border-r after:border-b [&.is-active]:hidden {% if filter_subscriptions.count == 1 and pdp_type == 'filter' %}hidden{% endif %}" data-selected="true" js-filter-subscription-select-current></div>
+              <div class="filter-subscriptions__filters py-[7px] pl-[15px] pr-[33px] desktop:pr-[37px] flex-col gap-[4px] border border-blue bg-white rounded-[2px] hidden [&.is-active]:flex" js-filter-subscription-select-wrapper>
                 {% assign filter_count = 0 %}
                 {% for filter_product in filter_subscriptions %}
                   {% assign filter_variant = filter_product.variants[0] %}
@@ -253,8 +253,8 @@
                         {% assign current_on_load = false %}
                       {% endif %}
                     {% endif %}
-                    <button type="button" class="filter-subscription__variant py-[9px] px-[11px] text-left border border-gray rounded-[2px] flex justify-between items-center gap-sm" {% if current_on_load %}current-on-load {% endif %} data-selected="false" data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}" js-filter-subscription-variant js-filter-subscription-select-option {% if current_on_load == false and pdp_type == 'filter' %}is-variant-link="{{ filter_product.url }}" {% endif %}>
-                      <div class="p3">
+                    <button type="button" class="filter-subscription__variant relative w-full py-[4px] text-left flex justify-between items-center gap-sm group/variant first:after:content-[''] first:after:absolute first:after:w-[8px] first:after:-right-[24px] first:after:top-[calc(50%-1px)] first:after:h-[8px] first:after:-rotate-[135deg] first:after:border-r first:after:border-b" {% if current_on_load %}current-on-load {% endif %} data-selected="false" data-variant="{{ filter_variant.id }}" data-available="{{ filter_variant.available }}" js-filter-subscription-variant js-filter-subscription-select-option {% if current_on_load == false and pdp_type == 'filter' %}is-variant-link="{{ filter_product.url }}" {% endif %}>
+                      <div class="p3 group-hover/variant:underline underline-offset-[4px]">
                         {% if filter_product.metafields.seed.filter_subscription_label != blank %}
                           {{ filter_product.metafields.seed.filter_subscription_label }}
                         {% else %}
