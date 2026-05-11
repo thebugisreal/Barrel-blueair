@@ -429,7 +429,9 @@ class ProductMain extends HTMLElement {
     }
 
     if (this.filterSubscriptionSelectWrapper) {
-      if (this.subscription.closest('[js-quick-view-content]')) {
+      if (this.filterSubscriptionSelectWrapper.childElementCount === 1) {
+        this.filterSubscriptionSelectWrapper.closest('.product-subscription__filter-subscriptions')?.classList.add('hidden');
+      } else if (this.subscription.closest('[js-quick-view-content]')) {
         document.querySelector('[js-quick-view-content]').addEventListener('click', this._filterSubscriptionSelectOutsideClick);
       } else {
         document.addEventListener('click', this._filterSubscriptionSelectOutsideClick);
@@ -623,6 +625,7 @@ class ProductMain extends HTMLElement {
   _filterSubscriptionSelectCurrentOnClick = (evt) => {
     evt.preventDefault();
     this.filterSubscriptionSelectWrapper.classList.toggle('is-active')
+    this.filterSubscriptionSelectCurrent.classList.toggle('is-active')
   }
 
   _filterSubscriptionSelectOptionOnClick = (evt) => {
@@ -633,6 +636,7 @@ class ProductMain extends HTMLElement {
 
     this.filterSubscriptionSelectCurrent.innerHTML = triggerTarget.innerHTML
     this.filterSubscriptionSelectWrapper.classList.remove('is-active')
+    this.filterSubscriptionSelectCurrent.classList.remove('is-active')
     this.filterPriceCopy.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML
     this.filterPriceCopy.querySelector('.hidden').classList.remove('hidden')
   }
@@ -644,6 +648,7 @@ class ProductMain extends HTMLElement {
       !this.filterSubscriptionSelectCurrent.contains(evt.target)
     ) {
       this.filterSubscriptionSelectWrapper.classList.remove('is-active');
+      this.filterSubscriptionSelectCurrent.classList.remove('is-active');
     }
   }
 
