@@ -31,7 +31,7 @@
   
 {% endcomment %}
 
-{%- if customer.tags contains 'b2b' -%}
+{%- if customer.metafields.sparklayer.authentication -%}
   <script>
       window.location.href = '/index#spark-account';
   </script>
