@@ -24,8 +24,8 @@
 {% endif %}
 {% assign subscription_discount_amount = shop.metafields.custom.subscription_discount_amount | times: 100 %}
 
-<div class="product__subscription-container flex flex-col {% if is_quick_view %}gap-[6px] mt-sm mb-sm{% else %}gap-[sm] desktop:gap-[22px]{% endif %} {% if product.variants.size > 1 or is_additional %}mt-md{% elsif is_additional %}mt-sm{% endif %}">
-  <div class="product__subscription group {% if is_additional %}product__subscription--additional {% endif %}border border-blue rounded-[3px] relative {% if is_quick_view %}mt-[11px]{% else %}mt-sm{% endif %}" data-type="{{ pdp_type }}" data-selected="{% if subscription_selected %}true{% else %}false{% endif %}" js-subscription {% if is_additional %}js-additional-subscription {% endif %}{% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
+<div class="product__subscription-container flex flex-col {% if is_quick_view %}gap-[6px] mt-sm mb-sm{% else %}gap-sm desktop:gap-[22px]{% endif %} {% if product.variants.size > 1 or is_additional %}mt-md{% elsif is_additional %}mt-sm{% endif %}">
+  <div class="product__subscription group {% if is_additional %}product__subscription--additional {% endif %}border border-gray rounded-[3px] relative data-[selected=true]:border-blue {% if is_quick_view %}mt-[11px]{% else %}mt-sm{% endif %}" data-type="{{ pdp_type }}" data-selected="{% if subscription_selected %}true{% else %}false{% endif %}" js-subscription {% if is_additional %}js-additional-subscription {% endif %}{% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
     <button type="button" class="product-subscription__toggle {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}px-xs py-md desktop:p-md gap-[12px]{% endif %} group-data-[selected=true]:pb-[12px] flex items-start w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle {% if is_additional %}js-additional-subscription-toggle{% endif %}>
       <div class="checkbox bg-white w-[22px] min-w-[22px] h-[22px] border border-gray rounded-full mt-[3px] p-[3px] pt-[5px] flex justify-center items-center [&_svg]:!fill-transparent">
         {{ 'icon-check.svg' | inline_asset_content }}
@@ -422,7 +422,7 @@
   </div>
 
   {% unless is_additional %}
-    <button type="button" class="product__non-subscription border border-blue {% if is_quick_view %}px-[10px] py-[16px] gap-[7px] rounded-[1.8px]{% else %}rounded-[3px] px-xs py-[23px] desktop:px-[23px] gap-[12px]{% endif %} flex items-center w-full {% if subscription_selected == false %}order-first{% endif %}" data-selected="{% if subscription_selected %}false{% else %}true{% endif %}" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
+    <button type="button" class="product__non-subscription border border-gray {% if is_quick_view %}px-[10px] py-[16px] gap-[7px] rounded-[1.8px]{% else %}rounded-[3px] px-xs py-[23px] desktop:px-[23px] gap-[12px]{% endif %} flex items-center w-full {% if subscription_selected == false %}order-first{% endif %} data-[selected=true]:border-blue" data-selected="{% if subscription_selected %}false{% else %}true{% endif %}" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
       <div class="checkbox bg-white w-[22px] h-[22px] border border-gray rounded-full p-[3px] pt-[5px] flex justify-center items-center [&_svg]:!fill-transparent">
         {{ 'icon-check.svg' | inline_asset_content }}
       </div>
