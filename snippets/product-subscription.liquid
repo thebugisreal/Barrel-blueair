@@ -82,10 +82,10 @@
     <div class="product-subscription__content {% if is_quick_view %}px-[10px]{% else %}px-xs desktop:px-md{% endif %} transition-[max-height] duration-500">
       {% if filter_subscription.description_1_bullets != blank %}
         <div class="product-subscription__description-container border-t border-gray py-[12px] flex gap-[8px] empty:hidden">
-          {% for i in (1..2) %}
-            {% assign description_title_handle = 'description_' | append: i | append: '_title' %}
-            {% assign description_bullets_handle = 'description_' | append: i | append: '_bullets' %}
-            {% if filter_subscription[description_bullets_handle] != blank %}
+          {%- for i in (1..2) -%}
+            {%- assign description_title_handle = 'description_' | append: i | append: '_title' -%}
+            {%- assign description_bullets_handle = 'description_' | append: i | append: '_bullets' -%}
+            {%- if filter_subscription[description_bullets_handle] != blank -%}
               <div class="product-subscription__description flex-1">
                 {% assign show_selling_plan = false %}
                 {% for filter_product in filter_subscriptions %}
@@ -120,8 +120,8 @@
                   {% endfor %}
                 </ul>
               </div>
-            {% endif %}
-          {% endfor %}
+            {%- endif -%}
+          {%- endfor -%}
         </div>
       {% endif %}
       <div class="product-subscription__filter-subscriptions py-[12px] border-t border-gray {% if pdp_type == '2in1_purify_humidify' %}hidden{% endif %}">
