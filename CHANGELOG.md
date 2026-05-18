@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.6] - 2026-04-28
+
+### Fixed
+- BEA-93: ATC works with delay
+- BEA-96: Hide Chat Bubble > Mobile
+
 ## [1.1.5] - 2026-04-28
 
 ### Fixed
