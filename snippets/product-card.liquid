@@ -393,7 +393,9 @@
           }
       </script>
     {% endif %}
-    <spark-product-card parent-id="{{ product.id }}"></spark-product-card>
+    {%- if customer.tags contains 'b2b' -%}
+      <spark-product-card parent-id="{{ product.id }}"></spark-product-card>
+    {%- endif -%}
   </div>
 </product-card>
 
