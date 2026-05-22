@@ -135,7 +135,6 @@
     {% endif %}
 
     <script src="https://t.contentsquare.net/uxa/85f1f678b1cc2.js"></script>
-  </head>
 
 {%- if customer.metafields.sparklayer.authentication -%}
 
@@ -296,6 +295,7 @@ window.sparkShopify = {
 
 <!-- SparkLayer redirect — always outside conditional -->
 <script async src="https://cdn.sparklayer.io/spark-redirect.js"></script>
+</head>
 
   {%- capture body_classes -%}
     template-{{template.name}} {% if template.suffix %}template--{{template.suffix}}{% endif %}
