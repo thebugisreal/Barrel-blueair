@@ -130,13 +130,13 @@
       {% render 'purple-dot' %}
     {% endif %}
 
-    {% if settings.spark_id != blank %}
+    {% if settings.spark_id != blank and shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
       {% render 'spark-layer' %}
     {% endif %}
 
     <script src="https://t.contentsquare.net/uxa/85f1f678b1cc2.js"></script>
 
-{%- if customer.metafields.sparklayer.authentication -%}
+{%- if customer.metafields.sparklayer.authentication and shop.permanent_domain == '5ef43d-4a.myshopify.com' -%}
 
   <script>
     window.sparkOptions = {
@@ -293,7 +293,7 @@ window.sparkShopify = {
 </style>
 {%- endif -%}
 
-{%- if customer.tags contains 'b2b' -%}
+{%- if customer.tags contains 'b2b' and shop.permanent_domain == '5ef43d-4a.myshopify.com' -%}
 <!-- SparkLayer redirect — always outside conditional -->
 <script async src="https://cdn.sparklayer.io/spark-redirect.js"></script>
 {%- endif -%}
