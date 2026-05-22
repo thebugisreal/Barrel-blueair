@@ -339,7 +339,7 @@
         {% endif %}
       </div>
       {% if quick_view %}
-        <button type="button" data-product-url="{{ product.url }}" class="flex justify-center items-center text-blue bg-white w-40 h-40 rounded-full border border-solid border-blue cursor-pointer hover:bg-blue hover:text-white" js-quick-view>
+        <button data-spark="b2c-only" type="button" data-product-url="{{ product.url }}" class="flex justify-center items-center text-blue bg-white w-40 h-40 rounded-full border border-solid border-blue cursor-pointer hover:bg-blue hover:text-white" js-quick-view>
           <svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path stroke="currentColor" d="m22.995 10.436-3.457 11.129H4.693L.955 10.435z" clip-rule="evenodd"/><path stroke="currentColor" d="M16.955 7.436a5 5 0 0 0-10 0"/></svg>
         </button>
       {% endif %}
@@ -393,6 +393,9 @@
           }
       </script>
     {% endif %}
+    {%- if customer.tags contains 'b2b' and shop.permanent_domain == '5ef43d-4a.myshopify.com' -%}
+      <spark-product-card parent-id="{{ product.id }}"></spark-product-card>
+    {%- endif -%}
   </div>
 </product-card>
 
