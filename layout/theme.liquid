@@ -293,8 +293,10 @@ window.sparkShopify = {
 </style>
 {%- endif -%}
 
+{%- if customer.tags contains 'b2b' -%}
 <!-- SparkLayer redirect — always outside conditional -->
 <script async src="https://cdn.sparklayer.io/spark-redirect.js"></script>
+{%- endif -%}
 </head>
 
   {%- capture body_classes -%}
