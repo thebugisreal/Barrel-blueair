@@ -130,13 +130,9 @@
       {% render 'purple-dot' %}
     {% endif %}
 
-    {% if settings.spark_id != blank and shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
-      {% render 'spark-layer' %}
-    {% endif %}
-
     <script src="https://t.contentsquare.net/uxa/85f1f678b1cc2.js"></script>
 
-{%- if customer.metafields.sparklayer.authentication and shop.permanent_domain == '5ef43d-4a.myshopify.com' and settings.spark_id != blank -%}
+{%- if customer.metafields.sparklayer.authentication and settings.spark_id != blank -%}
 
   <script>
     window.sparkOptions = {
@@ -156,6 +152,17 @@
   </script>
   <script async src="https://sparkcdn.io/sparkjs/{{ settings.spark_id }}"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const h1 = document.querySelector("h1");
+
+      if (h1) {
+        const sparkPdp = document.createElement("spark-pdp");
+        sparkPdp.setAttribute("parent-id", "{{ product.id }}");
+        h1.insertAdjacentElement("afterend", sparkPdp);
+      }
+    });
+  </script>
 
 <!-- SparkLayer brand variables — Block 1: inside auth conditional -->
 <style type="text/css">
