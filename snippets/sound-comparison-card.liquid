@@ -28,7 +28,9 @@
     <div
       class="sound-comparison__player"
       js-sound-comparison-player
+      data-variant="{{ variant }}"
       data-playing="false"
+      data-audio-url="{{ audio | escape }}"
     >
       <button
         type="button"
@@ -47,7 +49,6 @@
         role="img"
         aria-label="{{ 'sections.sound_comparison.waveform' | t }}"
       ></div>
-      <audio class="sound-comparison__audio" src="{{ audio }}" preload="metadata" js-sound-comparison-audio></audio>
     </div>
   {% else %}
     <div class="sound-comparison__player sound-comparison__player--empty" aria-hidden="true"></div>

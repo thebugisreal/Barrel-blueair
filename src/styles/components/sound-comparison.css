@@ -2,18 +2,16 @@
   --sound-comparison-card-radius: 16px;
   --sound-comparison-play-size: 32px;
   --sound-comparison-player-gap: 8px;
-  --sound-comparison-waveform-width: 68px;
 }
 
 @screen tabletp {
   .section__sound-comparison {
     --sound-comparison-play-size: 36px;
     --sound-comparison-player-gap: 16px;
-    --sound-comparison-waveform-width: 107px;
   }
 
   .sound-comparison__cards {
-    @apply gap-20 overflow-x-visible;
+    @apply gap-16 overflow-x-visible;
   }
 }
 
@@ -26,7 +24,7 @@
 }
 
 .sound-comparison__cards {
-  @apply relative grid w-full max-w-full min-w-0 flex-1 grid-cols-2 gap-y-20 gap-x-28 overflow-x-hidden;
+  @apply relative grid w-full max-w-full min-w-0 flex-1 grid-cols-2 gap-16 overflow-x-hidden;
 }
 
 .sound-comparison__title {
@@ -66,6 +64,11 @@
   @apply flex w-full items-center justify-center;
 }
 
+.sound-comparison__card-image img {
+  @apply w-full h-auto;
+  aspect-ratio: 1 / 1;
+}
+
 .sound-comparison__card-image--empty {
   @apply invisible shrink-0 aspect-square w-full pointer-events-none;
 }
@@ -75,16 +78,12 @@
 }
 
 .sound-comparison__player {
-  @apply box-border flex min-w-0 shrink-0 flex-row flex-nowrap items-center justify-center pt-20;
-
-  width: fit-content;
-  max-width: min(100%, calc(var(--sound-comparison-play-size) + var(--sound-comparison-player-gap) + var(--sound-comparison-waveform-width)));
-
+  @apply box-border flex w-full min-w-0 flex-row flex-nowrap items-center pt-20;
   gap: var(--sound-comparison-player-gap);
 }
 
 .sound-comparison__player--empty {
-  @apply invisible w-fit shrink-0 pointer-events-none;
+  @apply invisible w-full shrink-0 pointer-events-none;
 
   min-height: calc(20px + var(--sound-comparison-play-size));
 }
@@ -158,50 +157,22 @@
 }
 
 .sound-comparison__waveform {
-  @apply relative min-w-0 shrink overflow-hidden;
-  flex: 0 1 auto;
-  width: var(--sound-comparison-waveform-width);
-  max-width: 100%;
-
-  height: 24px;
-  --progress: 0;
+  @apply relative overflow-hidden;
+  flex: 1 1 0;
+  min-width: 1px;
+  height: 32px;
 }
 
 .sound-comparison__waveform[data-loading='true'] {
   @apply opacity-40;
 }
 
-.sound-comparison__waveform-bars {
-  @apply absolute inset-0 flex items-center;
-  gap: 1px;
-}
-
-.sound-comparison__waveform-bar {
-  @apply block w-[2px] flex-none rounded-[1px] bg-blue;
-  height: var(--bar-height);
-}
-
-.sound-comparison__waveform-bars--muted {
-  @apply opacity-30;
-}
-
-.sound-comparison__waveform-bars--filled {
-  clip-path: inset(0 calc((1 - var(--progress)) * 100%) 0 0);
-}
-
-.sound-comparison__card--others .sound-comparison__waveform-bar {
-  background-color: var(--sound-comparison-others-color);
+.sound-comparison__waveform > div {
+  @apply w-full min-h-[32px];
 }
 
 .sound-comparison__card-caption {
   @apply w-full text-center text-blue pt-20;
-}
-
-.sound-comparison__audio {
-  @apply absolute overflow-hidden whitespace-nowrap;
-  clip-path: inset(50%);
-  height: 1px;
-  width: 1px;
 }
 
 .sound-comparison__vs {
