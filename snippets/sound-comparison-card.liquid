@@ -4,6 +4,7 @@
   @param {object} image
   @param {string} audio
   @param {string} caption
+  @param {string} [caption_style] - Typography class from global fonts (e.g. p2, s3)
 {% endcomment %}
 
 <div class="sound-comparison__card sound-comparison__card--{{ variant }}">
@@ -45,6 +46,6 @@
   {% endif %}
 
   {% if caption != blank %}
-    <p class="sound-comparison__card-caption sound-comparison__card-caption--{{ variant }}">{{ caption }}</p>
+    <p class="sound-comparison__card-caption sound-comparison__card-caption--{{ variant }} {{ caption_style | default: 's2' }}">{{ caption }}</p>
   {% endif %}
 </div>
