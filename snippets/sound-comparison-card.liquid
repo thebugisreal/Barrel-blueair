@@ -12,11 +12,17 @@
     <p class="sound-comparison__card-label">{{ label }}</p>
   {% endif %}
 
-  {% if image != blank %}
-    <div class="sound-comparison__card-image">
+  {% liquid
+    assign image_placeholder_class = ''
+    if image == blank
+      assign image_placeholder_class = ' sound-comparison__card-image--empty'
+    endif
+  %}
+  <div class="sound-comparison__card-image{{- image_placeholder_class -}}">
+    {% if image != blank %}
       {% render 'lazy-image', image: image, alt: label, img_classes: 'sound-comparison__card-img' %}
-    </div>
-  {% endif %}
+    {% endif %}
+  </div>
 
   {% if audio != blank %}
     <div
@@ -32,7 +38,7 @@
         data-play-label="{{ 'sections.sound_comparison.play' | t }}"
         data-pause-label="{{ 'sections.sound_comparison.pause' | t }}"
       >
-        <span class="sound-comparison__play-icon">{{ 'icon-play.svg' | inline_asset_content }}</span>
+        <span class="sound-comparison__play-icon">{{ 'icon-play-solid.svg' | inline_asset_content }}</span>
         <span class="sound-comparison__pause-icon" aria-hidden="true"></span>
       </button>
       <div
@@ -43,6 +49,8 @@
       ></div>
       <audio class="sound-comparison__audio" src="{{ audio }}" preload="metadata" js-sound-comparison-audio></audio>
     </div>
+  {% else %}
+    <div class="sound-comparison__player sound-comparison__player--empty" aria-hidden="true"></div>
   {% endif %}
 
   {% if caption != blank %}

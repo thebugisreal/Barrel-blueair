@@ -1,12 +1,19 @@
 .section__sound-comparison {
   --sound-comparison-card-radius: 16px;
   --sound-comparison-play-size: 32px;
-  --sound-comparison-player-gap: 16px;
+  --sound-comparison-player-gap: 8px;
+  --sound-comparison-waveform-width: 68px;
 }
 
 @screen tabletp {
   .section__sound-comparison {
     --sound-comparison-play-size: 36px;
+    --sound-comparison-player-gap: 16px;
+    --sound-comparison-waveform-width: 107px;
+  }
+
+  .sound-comparison__cards {
+    @apply gap-20 overflow-x-visible;
   }
 }
 
@@ -19,7 +26,7 @@
 }
 
 .sound-comparison__cards {
-  @apply relative grid w-full min-w-0 flex-1 grid-cols-2 gap-20;
+  @apply relative grid w-full max-w-full min-w-0 flex-1 grid-cols-2 gap-y-20 gap-x-28 overflow-x-hidden;
 }
 
 .sound-comparison__title {
@@ -31,7 +38,7 @@
 }
 
 .sound-comparison__card {
-  @apply flex w-full min-w-0 flex-col items-center justify-start rounded-[var(--sound-comparison-card-radius)] px-sm py-md desktop:px-[38px] desktop:py-20;
+  @apply box-border flex w-full min-w-0 max-w-full flex-col items-center justify-start rounded-[var(--sound-comparison-card-radius)] px-sm py-md desktop:px-[38px] desktop:py-20;
 }
 
 .sound-comparison__card--blueair {
@@ -50,7 +57,8 @@
 }
 
 .sound-comparison__card-label {
-  @apply text-18 uppercase text-blue;
+  @apply w-full text-center text-18 uppercase text-blue;
+
   font-weight: 600;
 }
 
@@ -58,13 +66,27 @@
   @apply flex w-full items-center justify-center;
 }
 
+.sound-comparison__card-image--empty {
+  @apply invisible shrink-0 aspect-square w-full pointer-events-none;
+}
+
 .sound-comparison__card-img {
   @apply h-auto w-auto max-w-full object-contain aspect-square;
 }
 
 .sound-comparison__player {
-  @apply mx-auto flex w-fit max-w-full min-w-0 items-center pt-20;
+  @apply box-border flex min-w-0 shrink-0 flex-row flex-nowrap items-center justify-center pt-20;
+
+  width: fit-content;
+  max-width: min(100%, calc(var(--sound-comparison-play-size) + var(--sound-comparison-player-gap) + var(--sound-comparison-waveform-width)));
+
   gap: var(--sound-comparison-player-gap);
+}
+
+.sound-comparison__player--empty {
+  @apply invisible w-fit shrink-0 pointer-events-none;
+
+  min-height: calc(20px + var(--sound-comparison-play-size));
 }
 
 .sound-comparison__player[data-playing='true'] .sound-comparison__play-icon {
@@ -76,7 +98,16 @@
 }
 
 .sound-comparison__play-btn {
-  @apply flex h-[var(--sound-comparison-play-size)] w-[var(--sound-comparison-play-size)] flex-shrink-0 items-center justify-center rounded-full transition-colors;
+  @apply grid h-[var(--sound-comparison-play-size)] w-[var(--sound-comparison-play-size)] shrink-0 place-items-center rounded-full border-0 p-0 appearance-none cursor-pointer transition-colors;
+}
+
+.sound-comparison__play-btn > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sound-comparison__play-btn:focus {
+  outline: none;
 }
 
 .sound-comparison__play-btn--blueair {
@@ -108,11 +139,11 @@
 }
 
 .sound-comparison__play-icon {
-  @apply block w-[14px] translate-x-[2px] leading-[0] desktop:w-[16px] desktop:translate-x-xxxs;
+  @apply flex h-[16px] w-[16px] shrink-0 items-center justify-center leading-[0];
 }
 
 .sound-comparison__play-icon svg {
-  @apply block;
+  @apply block h-auto w-auto shrink-0 max-h-[16px] translate-x-[2px];
 }
 
 .sound-comparison__pause-icon {
@@ -127,8 +158,11 @@
 }
 
 .sound-comparison__waveform {
-  @apply relative flex-shrink-0;
-  width: 107px;
+  @apply relative min-w-0 shrink overflow-hidden;
+  flex: 0 1 auto;
+  width: var(--sound-comparison-waveform-width);
+  max-width: 100%;
+
   height: 24px;
   --progress: 0;
 }
@@ -160,7 +194,7 @@
 }
 
 .sound-comparison__card-caption {
-  @apply text-center text-blue pt-20;
+  @apply w-full text-center text-blue pt-20;
 }
 
 .sound-comparison__audio {
@@ -171,17 +205,19 @@
 }
 
 .sound-comparison__vs {
-  @apply absolute left-1/2 top-1/2 z-[1] flex h-[40px] w-[40px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white uppercase text-blue desktop:h-[60px] desktop:w-[60px];
+  @apply absolute left-1/2 top-1/2 z-[1] flex h-[40px] w-[40px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white uppercase text-blue tabletp:h-[60px] tabletp:w-[60px];
   box-shadow: 0 3.32px 13.3px 0 rgba(0, 0, 0, 0.25);
   font-size: 18px;
   font-weight: 600;
 }
 
-@screen desktop {
+@screen tabletp {
   .sound-comparison__vs {
     font-size: 23px;
   }
+}
 
+@screen desktop {
   .sound-comparison__play-btn--blueair:hover {
     @apply bg-blue-medium;
   }
