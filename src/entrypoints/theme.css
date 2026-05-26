@@ -28,6 +28,7 @@
 @import '../styles/components/rating-star.css';
 @import '../styles/components/compare__banner.css';
 @import '../styles/components/compare__grid.css';
+@import '../styles/components/sound-comparison.css';
 @import '../styles/components/buystack-modal.css';
 
 @import '../styles/account/login.css';

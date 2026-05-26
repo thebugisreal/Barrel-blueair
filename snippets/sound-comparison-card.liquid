@@ -1,0 +1,50 @@
+{% comment %}
+  @param {string} variant - 'blueair' | 'others'
+  @param {string} label
+  @param {object} image
+  @param {string} audio
+  @param {string} caption
+{% endcomment %}
+
+<div class="sound-comparison__card sound-comparison__card--{{ variant }}">
+  {% if label != blank %}
+    <p class="sound-comparison__card-label">{{ label }}</p>
+  {% endif %}
+
+  {% if image != blank %}
+    <div class="sound-comparison__card-image">
+      {% render 'lazy-image', image: image, alt: label, img_classes: 'sound-comparison__card-img' %}
+    </div>
+  {% endif %}
+
+  {% if audio != blank %}
+    <div
+      class="sound-comparison__player"
+      js-sound-comparison-player
+      data-playing="false"
+    >
+      <button
+        type="button"
+        class="sound-comparison__play-btn sound-comparison__play-btn--{{ variant }}"
+        js-sound-comparison-trigger
+        aria-label="{{ 'sections.sound_comparison.play' | t }}"
+        data-play-label="{{ 'sections.sound_comparison.play' | t }}"
+        data-pause-label="{{ 'sections.sound_comparison.pause' | t }}"
+      >
+        <span class="sound-comparison__play-icon">{{ 'icon-play.svg' | inline_asset_content }}</span>
+        <span class="sound-comparison__pause-icon" aria-hidden="true"></span>
+      </button>
+      <div
+        class="sound-comparison__waveform"
+        js-sound-comparison-waveform
+        role="img"
+        aria-label="{{ 'sections.sound_comparison.waveform' | t }}"
+      ></div>
+      <audio class="sound-comparison__audio" src="{{ audio }}" preload="metadata" js-sound-comparison-audio></audio>
+    </div>
+  {% endif %}
+
+  {% if caption != blank %}
+    <p class="sound-comparison__card-caption sound-comparison__card-caption--{{ variant }}">{{ caption }}</p>
+  {% endif %}
+</div>
