@@ -4,7 +4,7 @@
   --sound-comparison-player-gap: 16px;
 }
 
-@media screen and (min-width: 768px) {
+@screen tabletp {
   .section__sound-comparison {
     --sound-comparison-play-size: 36px;
   }
@@ -160,13 +160,12 @@
 }
 
 .sound-comparison__card-caption {
-  @apply text-center text-18 text-blue pt-20;
-  font-weight: 600;
+  @apply text-center text-blue pt-20;
 }
 
 .sound-comparison__audio {
   @apply absolute overflow-hidden whitespace-nowrap;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   height: 1px;
   width: 1px;
 }
@@ -178,7 +177,7 @@
   font-weight: 600;
 }
 
-@media screen and (min-width: 1025px) {
+@screen desktop {
   .sound-comparison__vs {
     font-size: 23px;
   }

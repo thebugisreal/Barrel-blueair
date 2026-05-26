@@ -3,8 +3,8 @@
 {% endcapture %}
 <s-sound-comparison class="section__sound-comparison block w-full {{ margins_paddings }} {{ section.settings.color }} px-md desktop:px-xl">
   <div
-    class="sound-comparison__inner mx-auto w-full desktop:max-w-[var(--max-width-desktop)]"
-    style="--max-width-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};"
+    class="sound-comparison__inner mx-auto w-full max-w-[var(--max-width-mobile)] desktop:max-w-[var(--max-width-desktop)]"
+    style="--max-width-mobile: {% if section.settings.max_width_mobile != blank %}{{ section.settings.max_width_mobile }}{% else %}unset{% endif %}; --max-width-desktop: {% if section.settings.max_width_desktop != blank %}{{ section.settings.max_width_desktop }}{% else %}unset{% endif %};"
   >
     <div class="sound-comparison__content">
       {% if section.settings.title != blank %}
@@ -21,7 +21,8 @@
         label: section.settings.blueair_label,
         image: section.settings.blueair_image,
         audio: section.settings.blueair_audio,
-        caption: section.settings.blueair_caption
+        caption: section.settings.blueair_caption,
+        caption_style: section.settings.caption_typography
       %}
 
       <span class="sound-comparison__vs" aria-hidden="true">{{ 'sections.sound_comparison.vs' | t }}</span>
@@ -31,7 +32,8 @@
         label: section.settings.others_label,
         image: section.settings.others_image,
         audio: section.settings.others_audio,
-        caption: section.settings.others_caption
+        caption: section.settings.others_caption,
+        caption_style: section.settings.caption_typography
       %}
     </div>
   </div>
@@ -481,6 +483,86 @@
       "id": "description",
       "label": "Description",
       "default": "When your home feels stuffy and you can't get comfortable, a gentle, steady airflow keeps things cool so you can unwind and rest easier."
+    },
+    {
+      "type": "select",
+      "id": "caption_typography",
+      "label": "Caption style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "s1",
+          "label": "s1"
+        },
+        {
+          "value": "s2",
+          "label": "s2"
+        },
+        {
+          "value": "s3",
+          "label": "s3"
+        },
+        {
+          "value": "s4",
+          "label": "s4"
+        },
+        {
+          "value": "p1",
+          "label": "p1"
+        },
+        {
+          "value": "p2",
+          "label": "p2"
+        },
+        {
+          "value": "p3",
+          "label": "p3"
+        },
+        {
+          "value": "p4",
+          "label": "p4"
+        },
+        {
+          "value": "p5",
+          "label": "p5"
+        },
+        {
+          "value": "p6",
+          "label": "p6"
+        },
+        {
+          "value": "tag-small",
+          "label": "Tag small"
+        },
+        {
+          "value": "text-body",
+          "label": "Body"
+        }
+      ],
+      "default": "s2"
     },
     {
       "type": "header",
