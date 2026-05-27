@@ -6,12 +6,12 @@ const WAVEFORM_BAR_GAP = 1
 
 const VARIANT_COLORS = {
   blueair: {
-    waveColor: 'rgba(1, 1, 1, 0.8)',
-    progressColor: '#010101',
+    waveColor: '#010101',
+    progressColor: 'rgba(1, 1, 1, 0.2)',
   },
   others: {
-    waveColor: 'rgba(103, 103, 103, 0.8)',
-    progressColor: '#676767',
+    waveColor: '#676767',
+    progressColor: 'rgba(103, 103, 103, 0.2)',
   },
 }
 
@@ -67,7 +67,7 @@ class SoundComparison extends HTMLElement {
       height: WAVEFORM_HEIGHT,
       barWidth: WAVEFORM_BAR_WIDTH,
       barGap: WAVEFORM_BAR_GAP,
-      barRadius: 1,
+      barRadius: 4,
       normalize: true,
       fillParent: true,
       interact: false,
