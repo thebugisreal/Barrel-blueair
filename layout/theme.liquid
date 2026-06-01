@@ -130,18 +130,13 @@
       {% render 'purple-dot' %}
     {% endif %}
 
-    {% if settings.spark_id != blank %}
-      {% render 'spark-layer' %}
-    {% endif %}
-
     <script src="https://t.contentsquare.net/uxa/85f1f678b1cc2.js"></script>
-  </head>
 
-{%- if customer.metafields.sparklayer.authentication -%}
+{%- if customer.metafields.sparklayer.authentication and settings.spark_id != blank -%}
 
   <script>
     window.sparkOptions = {
-      siteId: "blueaircs",
+      siteId: "{{ settings.spark_id | split: '/' | first }}",
       platform: "shopify",
       rootUrl: {{ routes.root_url | json }},
       language: {{ request.locale.iso_code | json }},
@@ -155,8 +150,19 @@
       },
     };
   </script>
-  <script async src="https://sparkcdn.io/sparkjs/blueaircs/live"></script>
+  <script async src="https://sparkcdn.io/sparkjs/{{ settings.spark_id }}"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const h1 = document.querySelector("h1");
+
+      if (h1) {
+        const sparkPdp = document.createElement("spark-pdp");
+        sparkPdp.setAttribute("parent-id", "{{ product.id }}");
+        h1.insertAdjacentElement("afterend", sparkPdp);
+      }
+    });
+  </script>
 
 <!-- SparkLayer brand variables — Block 1: inside auth conditional -->
 <style type="text/css">
@@ -294,8 +300,11 @@ window.sparkShopify = {
 </style>
 {%- endif -%}
 
+{%- if customer.tags contains 'b2b' and shop.permanent_domain == '5ef43d-4a.myshopify.com' -%}
 <!-- SparkLayer redirect — always outside conditional -->
 <script async src="https://cdn.sparklayer.io/spark-redirect.js"></script>
+{%- endif -%}
+</head>
 
   {%- capture body_classes -%}
     template-{{template.name}} {% if template.suffix %}template--{{template.suffix}}{% endif %}
