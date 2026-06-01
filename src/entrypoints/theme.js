@@ -38,6 +38,7 @@ import { ProductCardUpsell, VariantCardUpsell } from '../scripts/components/prod
 import ProductUpsell from '../scripts/components/product-upsell.js';
 import CompareBanner from '../scripts/components/compare-banner.js';
 import CompareGrid from '../scripts/components/compare-grid.js';
+import SoundComparison from '../scripts/components/sound-comparison.js';
 import { FaqPosts, FaqSearchResults } from '../scripts/components/faq.js';
 import ProductViewer from '../scripts/components/product-viewer.js';
 import BuystackModal from '../scripts/components/buystack-modal.js';
@@ -71,6 +72,7 @@ customElements.define('variant-card-upsell', VariantCardUpsell);
 customElements.define('product-upsell', ProductUpsell);
 customElements.define('compare-banner', CompareBanner);
 customElements.define('compare-grid', CompareGrid);
+customElements.define('s-sound-comparison', SoundComparison);
 customElements.define('product-viewer', ProductViewer);
 customElements.define('quick-view', QuickView);
 

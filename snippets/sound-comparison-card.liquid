@@ -1,0 +1,60 @@
+{% comment %}
+  @param {string} variant - 'blueair' | 'others'
+  @param {string} label
+  @param {object} image
+  @param {string} audio
+  @param {string} caption
+  @param {string} [caption_style] - Typography class from global fonts (e.g. p2, s3)
+{% endcomment %}
+
+<div class="sound-comparison__card sound-comparison__card--{{ variant }}">
+  {% if label != blank %}
+    <p class="sound-comparison__card-label">{{ label }}</p>
+  {% endif %}
+
+  {% liquid
+    assign image_placeholder_class = ''
+    if image == blank
+      assign image_placeholder_class = ' sound-comparison__card-image--empty'
+    endif
+  %}
+  <div class="sound-comparison__card-image{{- image_placeholder_class -}}">
+    {% if image != blank %}
+      {% render 'lazy-image', image: image, alt: label, img_classes: 'sound-comparison__card-img' %}
+    {% endif %}
+  </div>
+
+  {% if audio != blank %}
+    <div
+      class="sound-comparison__player"
+      js-sound-comparison-player
+      data-variant="{{ variant }}"
+      data-playing="false"
+      data-audio-url="{{ audio | escape }}"
+    >
+      <button
+        type="button"
+        class="sound-comparison__play-btn sound-comparison__play-btn--{{ variant }}"
+        js-sound-comparison-trigger
+        aria-label="{{ 'sections.sound_comparison.play' | t }}"
+        data-play-label="{{ 'sections.sound_comparison.play' | t }}"
+        data-pause-label="{{ 'sections.sound_comparison.pause' | t }}"
+      >
+        <span class="sound-comparison__play-icon">{{ 'icon-play-solid.svg' | inline_asset_content }}</span>
+        <span class="sound-comparison__pause-icon" aria-hidden="true"></span>
+      </button>
+      <div
+        class="sound-comparison__waveform"
+        js-sound-comparison-waveform
+        role="img"
+        aria-label="{{ 'sections.sound_comparison.waveform' | t }}"
+      ></div>
+    </div>
+  {% else %}
+    <div class="sound-comparison__player sound-comparison__player--empty" aria-hidden="true"></div>
+  {% endif %}
+
+  {% if caption != blank %}
+    <p class="sound-comparison__card-caption sound-comparison__card-caption--{{ variant }} {{ caption_style | default: 's2' }}">{{ caption }}</p>
+  {% endif %}
+</div>

@@ -235,6 +235,12 @@
     }
   },
   "sections": {
+    "sound_comparison": {
+      "play": "Play audio",
+      "pause": "Pause audio",
+      "waveform": "Audio waveform",
+      "vs": "vs"
+    },
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
