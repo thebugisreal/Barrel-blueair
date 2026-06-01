@@ -508,3 +508,7 @@ s-carousel.pointer-event {
   --shopify-accelerated-checkout-button-border-radius: 30px;
   --shopify-accelerated-checkout-button-block-size: 50px;
 }
+
+[data-is-quick-view="true"] .product__dynamic-checkout {
+  margin: 0;
+}
