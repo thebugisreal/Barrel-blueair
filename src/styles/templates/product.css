@@ -499,3 +499,8 @@ s-carousel.pointer-event {
 .product__thumb-carousel .swiper-button-prev {
   @apply mt-0;
 }
+
+.product__dynamic-checkout {
+  --shopify-accelerated-checkout-button-border-radius: 30px;
+  --shopify-accelerated-checkout-button-block-size: 50px;
+}
