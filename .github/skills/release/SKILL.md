@@ -114,14 +114,45 @@ git pull origin main
 
 ### 3. Backup Live Themes
 
-Use the backup script to create date-stamped backups of all live theme branches:
+Use the backup script to create date-stamped backups and reset the persistent backup branches:
 ```bash
-pnpm backup-themes
+pnpm backup-themes --update-persistent
 ```
 
-This creates backup branches for US, EU, and UK stores from their respective `live/*` branches.
+This creates date-stamped backup branches for US, EU, and UK stores and resets `backup/us`, `backup/eu`, `backup/uk` to their respective `live/*` branches. The persistent branches are already connected to Shopify themes, so no manual re-linking is needed.
 
-### 4. Determine Version Number
+### 4. Rename and Publish Persistent Backup Themes
+
+Detect each store's Shopify CLI name from `package.json` dev scripts:
+```bash
+jq -r '.scripts["dev:us"]' package.json | grep -oP '(?<=--store )\S+'
+jq -r '.scripts["dev:eu"]' package.json | grep -oP '(?<=--store )\S+'
+jq -r '.scripts["dev:uk"]' package.json | grep -oP '(?<=--store )\S+'
+```
+
+Get today's date in `ddmmyyyy` format (e.g., `01062026`):
+```bash
+date +%d%m%Y
+```
+
+For each store (US, EU, UK), list themes and locate the persistent backup theme:
+```bash
+shopify theme list --store {store-name}
+```
+
+Look for the theme named `[BACKUP] US`, `[BACKUP] EU`, or `[BACKUP] UK` respectively.
+
+**If found**, rename with today's date and publish:
+```bash
+shopify theme rename -t {theme-id} -n "[BACKUP] {STORE} - {ddmmyyyy}" --store {store-name}
+shopify theme publish -t {theme-id} --store {store-name} --force
+```
+
+**If not found**, skip — no error.
+
+Repeat for all three stores.
+
+### 5. Determine Version Number
 
 Get the current version from main:
 ```bash
@@ -133,25 +164,25 @@ Version bump rules (semantic versioning):
 - Bump MINOR for new features (1.2.3 → 1.3.0) — only if user requests
 - Bump MAJOR for breaking changes (1.2.3 → 2.0.0) — only if user requests
 
-### 5. Create Release Branch
+### 6. Create Release Branch
 
 ```bash
 git checkout main
 git checkout -b release/v{version_number}
 ```
 
-### 6. Merge Ticket Branches
+### 7. Merge Ticket Branches
 
 For each ticket, follow the [Merge Strategy Reference](#merge-strategy-reference).
 
-### 7. Bump Version Numbers
+### 8. Bump Version Numbers
 
 Update version in:
 - `package.json` — `version` field
 - `config/settings_schema.json` — version if present
 - Any other theme version files
 
-### 8. Update CHANGELOG.md
+### 9. Update CHANGELOG.md
 
 Add an entry for the new version:
 ```markdown
@@ -164,20 +195,20 @@ Add an entry for the new version:
 - RET-125: Bug fix description
 ```
 
-### 9. Commit Version Bump
+### 10. Commit Version Bump
 
 ```bash
 git add package.json config/settings_schema.json CHANGELOG.md
 git commit -m "Bump version to {version_number}"
 ```
 
-### 10. Push Release Branch
+### 11. Push Release Branch
 
 ```bash
 git push origin release/v{version_number}
 ```
 
-### 11. Merge Release to Main (Local Only)
+### 12. Merge Release to Main (Local Only)
 
 **Do NOT push main** — the user will handle pushing and triggering deployment.
 
@@ -186,7 +217,7 @@ git checkout main
 git merge release/v{version_number} --no-edit
 ```
 
-### 12. Final Release Report
+### 13. Final Release Report
 
 **Always** end with a comprehensive report. See [Release Report Format](#release-report-format).
 

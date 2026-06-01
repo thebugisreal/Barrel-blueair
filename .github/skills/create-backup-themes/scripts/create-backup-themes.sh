@@ -3,8 +3,18 @@ set -euo pipefail
 
 # ============================================================
 # Create date-stamped backup branches from live/* for all stores
-# Usage: bash create-backup-themes.sh
+# Usage: bash create-backup-themes.sh [--update-persistent]
+#   --update-persistent  Also reset backup/us, backup/eu, backup/uk
+#                        to their respective live/* branches
 # ============================================================
+
+UPDATE_PERSISTENT=false
+for arg in "$@"; do
+  case "$arg" in
+    --update-persistent) UPDATE_PERSISTENT=true ;;
+    *) echo "Unknown argument: $arg"; exit 1 ;;
+  esac
+done
 
 STORES=("us" "eu" "uk")
 
@@ -58,3 +68,28 @@ echo "Backup branches created and pushed to remote:"
 for STORE in "${STORES[@]}"; do
   echo "  - ${BACKUP_BRANCHES[$STORE]}  (from live/${STORE})"
 done
+
+if [ "$UPDATE_PERSISTENT" = true ]; then
+  echo ""
+  echo "Resetting persistent backup branches to live branches..."
+  PERSISTENT_PUSH_ARGS=()
+  for STORE in "${STORES[@]}"; do
+    PERSISTENT_BRANCH="backup/${STORE}"
+    git branch -f "$PERSISTENT_BRANCH" "origin/live/${STORE}"
+    PERSISTENT_PUSH_ARGS+=("+${PERSISTENT_BRANCH}:${PERSISTENT_BRANCH}")
+    echo "  Reset: ${PERSISTENT_BRANCH} -> origin/live/${STORE}"
+  done
+  git push origin "${PERSISTENT_PUSH_ARGS[@]}"
+
+  echo ""
+  echo "Cleaning up local persistent backup branches..."
+  for STORE in "${STORES[@]}"; do
+    git branch -D "backup/${STORE}"
+  done
+
+  echo ""
+  echo "Persistent backup branches updated:"
+  for STORE in "${STORES[@]}"; do
+    echo "  - backup/${STORE}  (from live/${STORE})"
+  done
+fi
