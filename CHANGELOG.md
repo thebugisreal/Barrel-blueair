@@ -4,7 +4,6 @@
 
 ### Added
 - BEA-69: Apple Pay on PDP - Mobile
-- BEA-87: Subscription module update
 - BEA-98: Sparklayer changes
 - BEA-99: Sound comparison module
 
