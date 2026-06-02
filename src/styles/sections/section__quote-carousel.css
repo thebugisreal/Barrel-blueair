@@ -80,29 +80,28 @@
 }
 
 .quote-card__body {
-  @apply flex flex-1 flex-col p-sm desktop:p-md;
+  @apply flex flex-1 flex-col p-sm desktop:p-md widescreen:pt-[45px] widescreen:pb-[50px];
   color: #142333;
 }
 
 .quote-card__quote-icon {
-  @apply w-[42px] shrink-0 leading-[0] text-[#8ACAF8];
+  @apply w-[36px] shrink-0 leading-[0] text-[#8ACAF8] desktop:ml-[14px];
 }
 
 .quote-card__quote-icon svg {
   @apply block h-auto w-full;
 }
 
-.quote-card__quote {
-  @apply m-0 flex-1 pt-sm;
+.quote-card__role {
+  @apply font-700 leading-[1.2];
 }
 
 .quote-card__quote {
-  @apply font-700;
+  @apply m-0 flex-1 pt-[17px] font-700 leading-[1.2] desktop:ml-[9px];
 }
 
 .quote-card__author {
-  @apply mt-auto flex items-start gap-xs;
-  padding-top: 34px;
+  @apply mt-auto flex items-center gap-xs pt-[31px];
 }
 
 .quote-card__author-icon {
@@ -114,7 +113,7 @@
 }
 
 .quote-card__author-text {
-  @apply flex flex-col gap-xxxs;
+  @apply flex flex-col gap-[2px];
 }
 
 .quote-card__name {
