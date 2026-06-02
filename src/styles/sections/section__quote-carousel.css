@@ -41,19 +41,10 @@
 }
 
 .quote-carousel__content .swiper-slide {
-  width: calc(
-    (100vw - var(--quote-carousel-gutter-mobile) - var(--quote-carousel-gap-mobile))
-    / var(--quote-carousel-peek-mobile)
-  );
-  height: auto;
-}
-
-@screen desktop {
-  .quote-carousel__content .swiper-slide {
-    width: calc(
-      (var(--quote-carousel-content-width-desktop) - (2 * var(--quote-carousel-gap-desktop))) / 3
-    );
-  }
+  @apply w-[calc((100vw_-_var(--quote-carousel-gutter-mobile)_-_var(--quote-carousel-gap-mobile))_/_var(--quote-carousel-peek-mobile))] h-auto
+  tabletp:w-[calc(var(--quote-carousel-content-width-desktop)_/_2)]
+  tabletl:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_2)]
+  desktop:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_3)];
 }
 
 .quote-carousel__nav {
