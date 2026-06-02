@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.8] - 2026-06-02
+
+### Fixed
+- BEA-87: Subscription module update
+
 ## [1.1.7] - 2026-06-01
 
 ### Added
