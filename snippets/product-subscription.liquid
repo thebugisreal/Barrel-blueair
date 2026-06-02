@@ -69,12 +69,12 @@
         {% if pdp_type != 'filter' %}
           {% if product.metafields.seed.filter_subscription_discount != blank and filter_subscription_discounted_price != blank %}
             <s class="product__price product__price--compare font-400 order-1 tabletp:order-none {% if is_quick_view %}p4{% else %}p1{% endif %}">{{ current_variant.price | money }}</s>
-            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ filter_subscription_discounted_price | minus: subscription_discount_amount | money }}</span>
+            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ filter_subscription_discounted_price | money }}</span>
           {% elsif current_variant.compare_at_price > current_variant.price %}
             <s class="product__price product__price--compare font-400 order-1 tabletp:order-none {% if is_quick_view %}p4{% else %}p1{% endif %}">{{ current_variant.compare_at_price | money }}</s>
-            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
+            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ current_variant.price | money }}</span>
           {% else %}
-            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ current_variant.price | minus: subscription_discount_amount | money }}</span>
+            <span class="product__price product__price--current font-700 {% if is_quick_view %}p3{% else %}p1{% endif %}" js-discount-subscription-price>{{ current_variant.price | money }}</span>
           {% endif %}
         {% endif %}
       </div>
