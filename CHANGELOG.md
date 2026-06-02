@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.7] - 2026-06-01
+
+### Added
+- BEA-69: Apple Pay on PDP - Mobile
+- BEA-98: Sparklayer changes
+- BEA-99: Sound comparison module
+
 ## [1.1.6] - 2026-04-28
 
 ### Fixed

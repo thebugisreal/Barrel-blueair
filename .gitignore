@@ -67,6 +67,7 @@ secrets.json
 # Content files (excluded in main/develop branches) #
 ######################
 config/settings_data.json
+templates/*.json
 templates/customers/*.json
 sections/*.json
 

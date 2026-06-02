@@ -212,13 +212,9 @@
   @apply max-h-[999px];
 }
 
-.product-subscription-description__bullet + .product-subscription-description__bullet {
-  @apply pt-[6px] desktop:pt-[4px];
-}
-
 .product-subscription-description__bullet::before {
   content: '●';
-  @apply text-[10px] pl-[1px] pr-[4px] leading-none desktop:pr-[6px] desktop:leading-[14px];
+  @apply text-[8px] px-xs leading-[21px];
 }
 
 .filter-subscription__variant[data-selected="true"] {
@@ -507,4 +503,8 @@ s-carousel.pointer-event {
 .product__dynamic-checkout {
   --shopify-accelerated-checkout-button-border-radius: 30px;
   --shopify-accelerated-checkout-button-block-size: 50px;
+}
+
+[data-is-quick-view="true"] .product__dynamic-checkout {
+  margin: 0;
 }

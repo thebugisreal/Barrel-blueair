@@ -1,0 +1,121 @@
+.section__quote-carousel {
+  --quote-card-radius: 33px;
+  --quote-carousel-gutter-mobile: 24px;
+  --quote-carousel-gutter-desktop: 64px;
+  --quote-carousel-gap-mobile: 16px;
+  --quote-carousel-gap-desktop: 57px;
+  --quote-carousel-peek-mobile: 1.12;
+  --quote-carousel-content-width-desktop: calc(100vw - (2 * var(--quote-carousel-gutter-desktop)));
+}
+
+.quote-carousel__inner {
+  @apply mx-auto w-full;
+}
+
+.quote-carousel__header {
+  @apply px-md text-center desktop:px-xl;
+  margin-bottom: 54px;
+}
+
+.quote-carousel__eyebrow {
+  @apply mb-xs uppercase text-blue s3;
+}
+
+.quote-carousel__title {
+  @apply text-blue;
+}
+
+.quote-carousel__content {
+  @apply grid w-full grid-cols-1 overflow-hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.quote-carousel__content .swiper:not(.swiper-initialized) .swiper-wrapper,
+.quote-carousel__content .swiper.swiper-initialized .swiper-wrapper {
+  @apply flex flex-row flex-nowrap;
+}
+
+.quote-carousel__content .swiper:not(.swiper-initialized) .swiper-slide {
+  flex-shrink: 0;
+}
+
+.quote-carousel__content .swiper-slide {
+  @apply w-[calc((100vw_-_var(--quote-carousel-gutter-mobile)_-_var(--quote-carousel-gap-mobile))_/_var(--quote-carousel-peek-mobile))] h-auto
+  tabletp:w-[calc(var(--quote-carousel-content-width-desktop)_/_2)]
+  tabletl:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_2)]
+  desktop:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_3)];
+}
+
+.quote-carousel__nav {
+  @apply mt-lg px-md desktop:mt-xl desktop:px-xl;
+}
+
+.quote-carousel__scrollbar {
+  @apply relative !static bottom-0 left-0 !h-[2px] w-full !rounded-none !bg-gray;
+}
+
+.quote-carousel__scrollbar .swiper-scrollbar-drag {
+  @apply !rounded-none !bg-blue;
+}
+
+.quote-card {
+  @apply box-border flex h-full flex-col overflow-hidden bg-gray-athans;
+  border-radius: var(--quote-card-radius);
+}
+
+.quote-card__media {
+  @apply w-full shrink-0 overflow-hidden;
+  border-radius: var(--quote-card-radius) var(--quote-card-radius) 0 0;
+}
+
+.quote-card__image {
+  @apply block aspect-[386/346] w-full overflow-hidden;
+}
+
+.quote-card__image img,
+.quote-card__img {
+  aspect-ratio: unset;
+  @apply block h-full w-full object-cover;
+}
+
+.quote-card__body {
+  @apply flex flex-1 flex-col p-sm desktop:p-md widescreen:pt-[45px] widescreen:pb-[50px];
+  color: #142333;
+}
+
+.quote-card__quote-icon {
+  @apply w-[36px] shrink-0 leading-[0] text-[#8ACAF8] desktop:ml-[14px];
+}
+
+.quote-card__quote-icon svg {
+  @apply block h-auto w-full;
+}
+
+.quote-card__role {
+  @apply font-700 leading-[1.2];
+}
+
+.quote-card__quote {
+  @apply m-0 flex-1 pt-[17px] font-700 leading-[1.2] desktop:ml-[9px];
+}
+
+.quote-card__author {
+  @apply mt-auto flex items-center gap-xs pt-[31px];
+}
+
+.quote-card__author-icon {
+  @apply h-[64px] w-[64px] shrink-0;
+}
+
+.quote-card__author-icon-img {
+  @apply h-full w-full object-contain;
+}
+
+.quote-card__author-text {
+  @apply flex flex-col gap-[2px];
+}
+
+.quote-card__name {
+  @apply uppercase;
+}

@@ -1,6 +1,6 @@
 ---
 name: create-backup-themes
-description: Creates backup branches from the remote live theme branches for all 3 stores (US, EU, UK). Use when the user says "create backup", "backup themes", "backup live", "snapshot themes", or asks to back up live branches before a release or deployment.
+description: Creates backup branches from the remote live theme branches for all 3 stores (US, EU, UK). Use when the user says "create backup", "backup themes", "backup live", "snapshot themes", or asks to back up live branches before a release or deployment. Supports --update-persistent to also reset the persistent backup/us, backup/eu, backup/uk branches.
 ---
 
 # Create Backup Themes
@@ -23,6 +23,18 @@ If a backup for today already exists, an incremental suffix is appended:
 - Third backup: `backup/us-03122026-3`
 - ...and so on
 
+## General Backup Branches (optional)
+
+When the `--update-persistent` flag is passed, the script also resets the persistent (undated) backup branches to match the current live branches:
+
+| Source Branch   | General Backup Branch |
+|-----------------|-----------------------|
+| `live/us`       | `backup/us`           |
+| `live/eu`       | `backup/eu`           |
+| `live/uk`       | `backup/uk`           |
+
+These branches are force-pushed, replacing whatever was there before.
+
 ## Instructions
 
 Run the backup script using the pnpm task:
@@ -34,7 +46,11 @@ pnpm backup-themes
 Or run the script directly:
 
 ```bash
+# Date-stamped backups only
 bash .github/skills/create-backup-themes/scripts/create-backup-themes.sh
+
+# Date-stamped backups + reset persistent backup branches
+bash .github/skills/create-backup-themes/scripts/create-backup-themes.sh --update-persistent
 ```
 
 The script performs the following operations automatically:
@@ -46,6 +62,7 @@ The script performs the following operations automatically:
 5. **Pushes backup branches** to the remote repository
 6. **Cleans up local backup branches** after successful push
 7. **Reports success** with the actual branch names created
+8. *(If `--update-persistent`)* **Resets `backup/us`, `backup/eu`, `backup/uk`** to their respective `live/*` branches via force-push, then cleans up local copies
 
 The script output will show which backup branches were created and pushed.
 
