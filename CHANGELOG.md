@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.9] - 2026-06-04
+
+### Fixed
+- BEA-108: Shop Pay button on OOS variants
+
 ## [1.1.8] - 2026-06-02
 
 ### Fixed
