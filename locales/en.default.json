@@ -173,7 +173,8 @@
       "xr_button": "View in your space",
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "claim_gift": "Claim Gift",
-      "increase_cart_total": "Increase Cart Total"
+      "increase_cart_total": "Increase Cart Total",
+      "notify_me_when_available": "Notify Me When Available"
     },
     "modal": {
       "label": "Media gallery"
