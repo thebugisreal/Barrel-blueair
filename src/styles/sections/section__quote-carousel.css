@@ -5,6 +5,7 @@
   --quote-carousel-gap-mobile: 16px;
   --quote-carousel-gap-desktop: 57px;
   --quote-carousel-peek-mobile: 1.12;
+  --quote-carousel-peek-desktop: clamp(64px, 8vw, 140px);
   --quote-carousel-content-width-desktop: calc(100vw - (2 * var(--quote-carousel-gutter-desktop)));
 }
 
@@ -44,7 +45,7 @@
   @apply w-[calc((100vw_-_var(--quote-carousel-gutter-mobile)_-_var(--quote-carousel-gap-mobile))_/_var(--quote-carousel-peek-mobile))] h-auto
   tabletp:w-[calc(var(--quote-carousel-content-width-desktop)_/_2)]
   tabletl:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_2)]
-  desktop:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_3)];
+  desktop:w-[calc((100vw_-_var(--quote-carousel-gutter-desktop)_-_(3_*_var(--quote-carousel-gap-desktop))_-_var(--quote-carousel-peek-desktop))_/_3)];
 }
 
 .quote-carousel__nav {
