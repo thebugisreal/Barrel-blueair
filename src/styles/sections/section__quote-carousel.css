@@ -47,12 +47,6 @@
   desktop:w-[calc((var(--quote-carousel-content-width-desktop)_-_(2_*_var(--quote-carousel-gap-desktop)))_/_3)];
 }
 
-@media (min-width: 1025px) {
-  .quote-carousel__content .swiper {
-    clip-path: inset(0 var(--quote-carousel-gutter-desktop));
-  }
-}
-
 .quote-carousel__nav {
   @apply mt-lg px-md desktop:mt-xl desktop:px-xl;
 }
