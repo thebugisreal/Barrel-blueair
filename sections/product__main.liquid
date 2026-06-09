@@ -592,34 +592,35 @@
                 <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">
                   {%- unless current_variant.available -%}
                     <a class="btn btn--blue-rounded relative mx-auto w-full justify-center h-[50px] klaviyo-bis-trigger" href="#">{{ 'products.product.notify_me_when_available' | t }}</a>
-                  {%- else -%}
-                    <button
-                      class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center {% unless current_variant.available %} hidden {% endunless %}"
-
-                      type="submit"
-                      {% unless current_variant.available %} disabled {% endunless %}
-                      js-add-to-cart>
-                      <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
-                        <span js-price>
-                          {{ current_variant.price | money }}
-                        </span>
-                        <span>&nbsp;-&nbsp;</span>
-                        <span js-atc-text data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}" data-out-of-stock-text="{{'products.product.sold_out' | t }}">
-                          {% if current_variant.available %}
-                            {{ 'products.product.add_to_cart' | t }}
-                          {% else %}
-                            {{'products.product.sold_out' | t }}
-                          {% endif %}
-                        </span>
-                      </div>
-                      <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
-                    </button>
-                    {% if settings.show_dynamic_checkout %}
-                      <div class="product__dynamic-checkout w-full -mt-[12px]">
-                        {{ form | payment_button }}
-                      </div>
-                    {% endif %}
                   {%- endunless -%}
+
+                  <button
+                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center {% unless current_variant.available %} hidden {% endunless %}"
+
+                    type="submit"
+                    {% unless current_variant.available %} disabled {% endunless %}
+                    js-add-to-cart>
+                    <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
+                      <span js-price>
+                        {{ current_variant.price | money }}
+                      </span>
+                      <span>&nbsp;-&nbsp;</span>
+                      <span js-atc-text data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}" data-out-of-stock-text="{{'products.product.sold_out' | t }}">
+                        {% if current_variant.available %}
+                          {{ 'products.product.add_to_cart' | t }}
+                        {% else %}
+                          {{'products.product.sold_out' | t }}
+                        {% endif %}
+                      </span>
+                    </div>
+                    <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
+                  </button>
+                  {% if settings.show_dynamic_checkout %}
+                    <div class="product__dynamic-checkout w-full -mt-[12px] {% unless current_variant.available %} hidden {% endunless %}">
+                      {{ form | payment_button }}
+                    </div>
+                  {% endif %}
+
                   {% if section.settings.show_truemed %}
                     <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
 tm_qual_gjiapmwgps"></div>
