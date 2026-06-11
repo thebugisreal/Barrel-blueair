@@ -794,6 +794,18 @@ tm_qual_gjiapmwgps"></div>
                     {% endfor %}
                   </ul>
                 {% endif %}
+              {% when 'bundle_upsells' %}
+                {% capture spacing %}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {%- endcapture -%}
+                <div class="{{ spacing }} max-w-full">
+                  {% render 'pdp-bundle-upsells',
+                    product: product,
+                    section_id: section.id,
+                    title: block.settings.title,
+                    spacing: spacing
+                  %}
+                </div>
             {% endcase %}
           {% endfor %}
 {% comment %} 
@@ -3459,6 +3471,182 @@ tm_qual_gjiapmwgps"></div>
             }
           ],
           "default": "desktop:mb-md"
+        }
+      ]
+    },
+    {
+      "name": "Bundle Upsells",
+      "type": "bundle_upsells",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Have more than one room?"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
         }
       ]
     }
