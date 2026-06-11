@@ -499,3 +499,22 @@ s-carousel.pointer-event {
 .product__thumb-carousel .swiper-button-prev {
   @apply mt-0;
 }
+/* PDP Bundle Upsells */
+.pdp-bundle-upsells__product-add-to-cart {
+  &:disabled {
+    @apply pr-sm py-xs !bg-gray !text-white !border-gray;
+  }
+
+  @media screen(desktop) {
+    &:hover {
+      svg {
+        circle {
+          fill: #002955;
+        }
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+}
