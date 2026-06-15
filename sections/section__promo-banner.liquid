@@ -11,6 +11,9 @@
       {% if section.settings.background_color != blank %}
         background-color: {{ section.settings.background_color }};
       {% endif %}
+      {% if section.settings.background_test_color != blank %}
+        background-color: {{ section.settings.background_test_color }};
+      {% endif %}
       max-width: {{ section.settings.section_max_width }};"
   >
 {% endif %}
@@ -373,6 +376,12 @@
     {
       "type": "header",
       "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_test_color",
+      "label": "Background Test Color",
+      "default": "#002955"
     },
     {
       "type": "color",
