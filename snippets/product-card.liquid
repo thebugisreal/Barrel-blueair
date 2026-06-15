@@ -318,10 +318,14 @@
         {% endfor %}
       </div>
     {% elsif product.metafields.seed.swatches != blank %}
+      {% liquid
+        assign first_swatch_object = product.metafields.seed.swatches.value | first
+        assign first_swatch_name = first_swatch_object.name
+      %}
       <div class="product-card__swatches-container mt-sm">
         <div class="product-card__current-swatch font-700">
           <span>Color: </span>
-          <span js-product-card-current-swatch-label>{{ product.title | split: '™ ' | last | split: ' ' | last }}</span>
+          <span js-product-card-current-swatch-label>{{ first_swatch_name }}</span>
         </div>
         <div class="product-card__swatches flex flex-wrap gap-xxs mt-xxs" {% if related_tag_color != blank %} data-swatch-family="{{ related_tag_color }}" data-default-color="{{ product.colorTitle }}" js-populate-swatch {% endif %}>
 
