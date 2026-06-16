@@ -20,32 +20,25 @@ jobs:
           fetch-depth: 1
 
       - name: Run Claude Code Review
-        id: claude-review
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
+          show_full_output: true
           prompt: |
             REPO: ${{ github.repository }}
             PR NUMBER: ${{ github.event.pull_request.number }}
 
-            Before reviewing, read the project guidelines:
-            1. Run `cat AGENTS.md` if it exists in the repo root — these are mandatory project-specific rules that take priority over generic best practices.
-            2. Run `gh pr diff ${{ github.event.pull_request.number }}` to get the full diff.
+            Step 1: Run `cat AGENTS.md` to load project-specific review rules. These take priority over generic best practices.
+            Step 2: Run `gh pr diff ${{ github.event.pull_request.number }}` to get the full diff.
+            Step 3: Review the PR. For each issue found:
+              - Prefix with [high], [medium], or [low]
+              - Use `mcp__github_inline_comment__create_inline_comment` (with `confirmed: true`) for inline comments on specific lines
+            Step 4: Post a top-level summary with `gh pr comment --body "..."` listing all issues found, or confirming no issues if clean.
 
-            Review the PR with focus on:
-            - Violations of any rules in AGENTS.md (highest priority)
-            - Bugs and logic errors
-            - Cross-file consistency (e.g. JS querying DOM selectors that aren't rendered by templates)
-            - Security issues
-            - Performance
-
-            Severity labeling: prefix comments with [high], [medium], or [low].
-
-            Use `gh pr comment` for a top-level summary.
-            Use `mcp__github_inline_comment__create_inline_comment` (with `confirmed: true`) for inline issues on specific lines.
             Only post GitHub comments — do not output review text as messages.
 
-          claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(cat AGENTS.md),Bash(cat:*)"
+          claude_args: >-
+            --allowedTools
+            "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(cat AGENTS.md)"
