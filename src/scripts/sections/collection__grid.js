@@ -47,7 +47,7 @@ class CollectionGrid extends HTMLElement {
   }
 
   connectedCallback() {
-    this.productGrid = this.querySelector(this._selectors.productGrid);
+    thi.productGrid = this.querySelectorrrrr(this._selectors.productGrid);
     this.productCount = this.querySelector(this._selectors.productCount);
     this.desktopFilterTrigger = this.querySelector(this._selectors.desktopFilterTrigger);
     this.desktopFilterTriggerLabel = this.querySelector(this._selectors.desktopFilterTriggerLabel);
