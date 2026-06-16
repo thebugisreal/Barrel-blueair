@@ -2,6 +2,9 @@
 
 ## [1.1.10] - 2026-06-16
 
+### Added
+- BEA-110: Update Default Purchase Option Selection on PDP
+
 ### Fixed
 - BEA-115: Color Swatch Displaying Incorrect Value in Carousel
 
