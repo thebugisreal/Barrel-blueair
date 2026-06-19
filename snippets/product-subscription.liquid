@@ -3,11 +3,9 @@
 {% assign airpurifier_type_two_pack = false %}
 {% if filter_subscription.pdp_type == 'Filter' %}
   {% assign pdp_type = 'filter' %}
+  {% assign subscription_selected = true %}
 {% elsif filter_subscription.pdp_type == 'Air Purifier + Filter' %}
   {% assign pdp_type = 'airpurifier_and_filter' %}
-  {% unless is_additional %}
-    {% assign subscription_selected = true %}
-  {% endunless %}
   {% if filter_subscription.two_pack_quantity_override.value == false or filter_subscription.two_pack_quantity_override.value == true %}
     {% if filter_subscription.two_pack_quantity_override.value == true %}
       {% assign airpurifier_type_two_pack = true %}
@@ -22,9 +20,6 @@
   {% endif %}
 {% else %}
   {% assign pdp_type = '2in1_purify_humidify' %}
-  {% unless is_additional %}
-    {% assign subscription_selected = true %}
-  {% endunless %}
   {% assign scent_subscriptions = filter_subscription.scent_subscriptions.value %}
 {% endif %}
 {% assign subscription_discount_amount = shop.metafields.custom.subscription_discount_amount | times: 100 %}

@@ -498,20 +498,14 @@ class ProductMain extends HTMLElement {
     });
 
     if (this.subscriptionSelectedOnLoad) {
-      if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
-        const scentVariantToBeSelectedOnLoad = this.subscription.querySelector('[js-scent-subscription-variant][current-on-load]');
-        if (scentVariantToBeSelectedOnLoad) {
-          scentVariantToBeSelectedOnLoad.click();
-        }
-
-        const firstMasterFrequency = this.subscription.querySelector(this._selectors.filterSubscriptionMasterFrequency);
+      const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
+      if (filterSubscriptionVariantToBeSelectedOnLoad) {
+        filterSubscriptionVariantToBeSelectedOnLoad.click();
+      } else if (this.subscriptionType == '2in1_purify_humidify' && this.purifyHumidifySubscriptionAvailable) {
+        // Select the first master frequency option
+        const firstMasterFrequency = this.filterSubscriptionMasterFrequencies[0];
         if (firstMasterFrequency) {
           firstMasterFrequency.click();
-        }
-      } else {
-        const filterSubscriptionVariantToBeSelectedOnLoad = this.subscription.querySelector(`${this._selectors.filterSubscriptionVariant}[current-on-load]`);
-        if (filterSubscriptionVariantToBeSelectedOnLoad) {
-          filterSubscriptionVariantToBeSelectedOnLoad.click();
         }
       }
     }
