@@ -13,7 +13,8 @@ s-modal {
 }
 
 s-drawer#CartDrawer,
-s-drawer#MobileNavDrawer {
+s-drawer#MobileNavDrawer,
+s-drawer#QuickViewDrawer {
   @apply z-[1000000];
 }
 

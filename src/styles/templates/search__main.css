@@ -12,3 +12,12 @@
   .search-results__tabs .tab__trigger[aria-selected="true"]::after {
     @apply block;
   }
+
+#search-support-content-panel {
+  .article-card__title,
+  .article-card__excerpt {
+    @apply overflow-hidden text-wrap;
+
+    word-break: break-word;
+  }
+}

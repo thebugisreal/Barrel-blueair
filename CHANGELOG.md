@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.10] - 2026-06-16
+
+### Fixed
+- BEA-115: Color Swatch Displaying Incorrect Value in Carousel
+
 ## [1.1.9] - 2026-06-04
 
 ### Fixed

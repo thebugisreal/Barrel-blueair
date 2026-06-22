@@ -225,7 +225,7 @@
                   {% endif %}
                 {% endif %}
               {% when 'title' %}
-                <div class="sticky top-0 bg-white z-10 -ml-[5px] -mr-[5px] pl-[5px] pr-[5px]">
+                <div class="bg-white -ml-[5px] -mr-[5px] pl-[5px] pr-[5px]">
                   {%- capture spacing -%}
                     {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                   {%- endcapture -%}
@@ -493,7 +493,7 @@
                       {{ form | payment_button }}
                     </div>
                   {% endif %}
-                  <a href="{{ product.url }}" class="text-16 underline">{{ 'products.product.full_details' | t }}</a>
+                  <a href="{{ product.url }}" class="text-14 tabletp:text-16 underline">{{ 'products.product.full_details' | t }}</a>
                   {% if section.settings.show_truemed %}
                     <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
 tm_qual_gjiapmwgps"></div>
