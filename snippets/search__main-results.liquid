@@ -5,7 +5,7 @@
  * @param type - required
  * @param search_result - required
 {%- endcomment -%}
-<ul class="search__main-results grid grid-cols-2 gap-md tabletl:grid-cols-3 tabletl:gap-y-lg">
+<ul class="search__main-results grid gap-md tabletl:grid-cols-3 tabletl:gap-y-lg">
     {% case type %}
         {% when 'product' %}
             {% for product in search_result %}

@@ -23,7 +23,7 @@
       <div class="article-card__image overflow-hidden aspect-square mb-sm tabletl:mb-md">{% render 'lazy-image' image: article.image, picture_classes:'h-full', img_classes:'object-cover h-full' %}</div>
     {% endif %}
     <header class="article-card__header">
-      <ul class="blog__first-article-tags flex gap-xxs">
+      <ul class="blog__first-article-tags flex gap-xxs flex-wrap">
         {% for tag in article.tags %}
           <li class="article-card__tag tag-small py-xxs px-xs border border-gray bg-white rounded-[60px]"> {{ tag }} </li>
         {% endfor %}
