@@ -82,3 +82,10 @@ s-drawer.open {
   @apply visible
   opacity-100;
 }
+
+s-drawer#QuickViewDrawer {
+  #shopify-buyer-consent,
+  more-payment-options-link {
+    @apply hidden;
+  }
+}
