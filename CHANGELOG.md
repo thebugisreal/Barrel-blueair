@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.11] - 2026-06-23
+
+### Added
+- BEA-102: Homepage Module > Experts/Quotes Carousel
+
 ## [1.1.10] - 2026-06-16
 
 ### Fixed
