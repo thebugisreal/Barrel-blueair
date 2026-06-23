@@ -1,0 +1,630 @@
+{% capture margins_paddings %}
+  {{ section.settings.margin_top_mobile }} {{ section.settings.margin_bottom_mobile }} {{ section.settings.padding_top_mobile }} {{ section.settings.padding_bottom_mobile }} {{ section.settings.margin_top_desktop }} {{ section.settings.margin_bottom_desktop }} {{ section.settings.padding_top_desktop }} {{ section.settings.padding_bottom_desktop }}
+{% endcapture %}
+{% liquid
+  assign quote_card_count = 0
+
+  for block in section.blocks
+    if block.settings.quote != blank or block.settings.name != blank or block.settings.title != blank or block.settings.image != blank or block.settings.icon != blank
+      assign quote_card_count = quote_card_count | plus: 1
+    endif
+  endfor
+%}
+
+{% if quote_card_count > 0 %}
+  {%- capture carousel_options -%}
+    {
+      "slidesPerView": "auto",
+      "spaceBetween": 16,
+      "loop": false,
+      "grabCursor": true,
+      "slidesOffsetBefore": 24,
+      "slidesOffsetAfter": 24,
+      {% if section.settings.show_scrollbar %}
+      "scrollbar": {
+        "el": "[js-scrollbar-{{ section.id }}]",
+        "hide": false,
+        "draggable": true
+      },
+      {% endif %}
+      "keyboard": {
+        "enabled": true,
+        "onlyInViewport": true
+      },
+      "breakpoints": {
+        "1025": {
+          "spaceBetween": 57,
+          "slidesOffsetBefore": 64,
+          "slidesOffsetAfter": 64
+        }
+      }
+    }
+  {%- endcapture -%}
+
+  <div class="section__quote-carousel block w-full {{ margins_paddings }} {{ section.settings.color }}">
+    <div class="quote-carousel__inner">
+      {% if section.settings.eyebrow != blank or section.settings.title != blank %}
+        <header class="quote-carousel__header">
+          {% if section.settings.eyebrow != blank %}
+            <p class="quote-carousel__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            {% liquid
+              assign quote_carousel_heading_id = 'QuoteCarouselHeading-' | append: section.id
+              assign title_tag = 'h2'
+              assign title_options = 'h1,h2,h3,h4,h5,h6'
+
+              if title_options contains section.settings.title_style
+                assign title_tag = section.settings.title_style
+              endif
+            %}
+            <{{ title_tag }}
+              id="{{ quote_carousel_heading_id }}"
+              class="quote-carousel__title {{ section.settings.title_style }}"
+            >
+              {{ section.settings.title | escape }}
+            </{{ title_tag }}>
+          {% endif %}
+        </header>
+      {% endif %}
+    </div>
+
+    <div class="quote-carousel__content">
+      <s-carousel
+        class="block"
+        role="region"
+        aria-roledescription="{{ 'sections.quote_carousel.roledescription' | t }}"
+        {% if section.settings.title != blank %}
+        aria-labelledby="{{ quote_carousel_heading_id }}"
+        {% else %}
+        aria-label="{{ 'sections.quote_carousel.region' | t }}"
+        {% endif %}
+        data-options='{{ carousel_options }}'
+      >
+        <div
+          id="QuoteCarousel-{{ section.id }}"
+          class="swiper w-full max-w-full"
+          js-carousel
+        >
+          <div class="swiper-wrapper">
+            {% assign quote_slide_index = 0 %}
+            {% for block in section.blocks %}
+              {% liquid
+                assign block_has_content = false
+
+                if block.settings.quote != blank or block.settings.name != blank or block.settings.title != blank or block.settings.image != blank or block.settings.icon != blank
+                  assign block_has_content = true
+                endif
+              %}
+
+              {% if block_has_content %}
+                {% assign quote_slide_index = quote_slide_index | plus: 1 %}
+                <div
+                  class="swiper-slide h-auto"
+                  js-carousel-slide
+                  role="group"
+                  aria-roledescription="{{ 'sections.quote_carousel.slide_roledescription' | t }}"
+                  aria-label="{{ 'sections.quote_carousel.slide' | t: index: quote_slide_index, count: quote_card_count }}"
+                >
+                  {% render 'quote-card',
+                    block: block,
+                    quote_typography: section.settings.quote_typography,
+                    name_typography: section.settings.name_typography,
+                    role_typography: section.settings.role_typography
+                  %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </s-carousel>
+    </div>
+
+    {% if section.settings.show_scrollbar %}
+      <div class="quote-carousel__inner">
+        <div class="quote-carousel__nav">
+          <div
+            class="quote-carousel__scrollbar swiper-scrollbar"
+            js-scrollbar-{{ section.id }}
+            aria-hidden="true">
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Quote carousel",
+  "tag": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top - Mobile",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mt-md",
+          "label": "MD"
+        }, {
+          "value": "mt-lg",
+          "label": "LG"
+        }, {
+          "value": "mt-xl",
+          "label": "XL"
+        }, {
+          "value": "mt-xxl",
+          "label": "2XL"
+        }, {
+          "value": "mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mt-0"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom - Mobile",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "mb-md",
+          "label": "MD"
+        }, {
+          "value": "mb-lg",
+          "label": "LG"
+        }, {
+          "value": "mb-xl",
+          "label": "XL"
+        }, {
+          "value": "mb-xxl",
+          "label": "2XL"
+        }, {
+          "value": "mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "mb-0"
+    },
+    {
+      "type": "select",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pt-md",
+          "label": "MD"
+        }, {
+          "value": "pt-lg",
+          "label": "LG"
+        }, {
+          "value": "pt-xl",
+          "label": "XL"
+        }, {
+          "value": "pt-xxl",
+          "label": "2XL"
+        }, {
+          "value": "pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pt-xl"
+    }, {
+      "type": "select",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "pb-md",
+          "label": "MD"
+        }, {
+          "value": "pb-lg",
+          "label": "LG"
+        }, {
+          "value": "pb-xl",
+          "label": "XL"
+        }, {
+          "value": "pb-xxl",
+          "label": "2XL"
+        }, {
+          "value": "pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "pb-xl"
+    }, {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:mt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mt-md",
+          "label": "MD"
+        }, {
+          "value": "desktop:mt-lg",
+          "label": "LG"
+        }, {
+          "value": "desktop:mt-xl",
+          "label": "XL"
+        }, {
+          "value": "desktop:mt-xxl",
+          "label": "2XL"
+        }, {
+          "value": "desktop:mt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mt-0"
+    }, {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:mb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:mb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:mb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:mb-md",
+          "label": "MD"
+        }, {
+          "value": "desktop:mb-lg",
+          "label": "LG"
+        }, {
+          "value": "desktop:mb-xl",
+          "label": "XL"
+        }, {
+          "value": "desktop:mb-xxl",
+          "label": "2XL"
+        }, {
+          "value": "desktop:mb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:mb-0"
+    }, {
+      "type": "select",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "options": [
+        {
+          "value": "desktop:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pt-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pt-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pt-md",
+          "label": "MD"
+        }, {
+          "value": "desktop:pt-lg",
+          "label": "LG"
+        }, {
+          "value": "desktop:pt-xl",
+          "label": "XL"
+        }, {
+          "value": "desktop:pt-xxl",
+          "label": "2XL"
+        }, {
+          "value": "desktop:pt-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pt-xxl"
+    }, {
+      "type": "select",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "options": [
+        {
+          "value": "desktop:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "desktop:pb-xs",
+          "label": "XS"
+        },
+        {
+          "value": "desktop:pb-sm",
+          "label": "SM"
+        },
+        {
+          "value": "desktop:pb-md",
+          "label": "MD"
+        }, {
+          "value": "desktop:pb-lg",
+          "label": "LG"
+        }, {
+          "value": "desktop:pb-xl",
+          "label": "XL"
+        }, {
+          "value": "desktop:pb-xxl",
+          "label": "2XL"
+        }, {
+          "value": "desktop:pb-xxxl",
+          "label": "3XL"
+        }
+      ],
+      "default": "desktop:pb-xxl"
+    }, {
+      "type": "header",
+      "content": "Color"
+    }, {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "bg-white text-blue",
+          "label": "None (white bg & blue text)"
+        },
+        {
+          "value": "bg-blue-sky text-blue",
+          "label": "Blue"
+        },
+        {
+          "value": "bg-green-light text-green-dark",
+          "label": "Green"
+        },
+        {
+          "value": "bg-pink-light text-pink-dark",
+          "label": "Pink"
+        }, {
+          "value": "bg-yellow-light text-yellow-dark",
+          "label": "Yellow"
+        }, {
+          "value": "bg-brown-light text-brown-dark",
+          "label": "Brown"
+        }, {
+          "value": "bg-gray-athans text-blue",
+          "label": "Gray"
+        }
+      ],
+      "default": "bg-white text-blue"
+    }, {
+      "type": "header",
+      "content": "Content"
+    }, {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    }, {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Trusted by athletes and health experts"
+    }, {
+      "type": "select",
+      "id": "title_style",
+      "label": "Heading style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        }, {
+          "value": "h5",
+          "label": "h5"
+        }, {
+          "value": "h6",
+          "label": "h6"
+        }
+      ],
+      "default": "h2"
+    }, {
+      "type": "select",
+      "id": "quote_typography",
+      "label": "Quote typography",
+      "options": [
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p1",
+          "label": "p1"
+        }, {
+          "value": "p2",
+          "label": "p2"
+        }, {
+          "value": "s1",
+          "label": "s1"
+        }, {
+          "value": "s2",
+          "label": "s2"
+        }, {
+          "value": "s3",
+          "label": "s3"
+        }
+      ],
+      "default": "h6"
+    }, {
+      "type": "select",
+      "id": "name_typography",
+      "label": "Name typography",
+      "options": [
+        {
+          "value": "s1",
+          "label": "s1"
+        }, {
+          "value": "s2",
+          "label": "s2"
+        }, {
+          "value": "s3",
+          "label": "s3"
+        }
+      ],
+      "default": "s2"
+    }, {
+      "type": "select",
+      "id": "role_typography",
+      "label": "Title typography",
+      "options": [
+        {
+          "value": "p1",
+          "label": "p1"
+        }, {
+          "value": "p2",
+          "label": "p2"
+        }, {
+          "value": "s3",
+          "label": "s3"
+        }, {
+          "value": "s4",
+          "label": "s4"
+        }
+      ],
+      "default": "p2"
+    }, {
+      "type": "header",
+      "content": "Carousel"
+    }, {
+      "type": "checkbox",
+      "id": "show_scrollbar",
+      "label": "Scrollbar",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote_card",
+      "name": "Quote card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        }, {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote carousel",
+      "blocks": [
+        {
+          "type": "quote_card"
+        }, {
+          "type": "quote_card"
+        }, {
+          "type": "quote_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

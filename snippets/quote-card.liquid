@@ -1,0 +1,62 @@
+<article class="quote-card" {{ block.shopify_attributes }}>
+  {% liquid
+    if block.settings.name != blank
+      assign quote_image_alt = block.settings.name
+    else
+      assign quote_image_alt = 'sections.quote_carousel.image_alt_fallback' | t
+    endif
+  %}
+
+  {% if block.settings.image != blank %}
+    <div class="quote-card__media">
+      {% render 'lazy-image',
+        image: block.settings.image,
+        alt: quote_image_alt,
+        picture_classes: 'quote-card__image',
+        img_classes: 'quote-card__img'
+      %}
+    </div>
+  {% endif %}
+
+  <div class="quote-card__body">
+    <div class="quote-card__quote-icon" aria-hidden="true">
+      {{ 'icon-quote-card.svg' | inline_asset_content }}
+    </div>
+
+    {% if block.settings.quote != blank %}
+      <div class="quote-card__quote {{ quote_typography | default: 'h6' }}">
+        {{ block.settings.quote | escape | newline_to_br }}
+      </div>
+    {% endif %}
+
+    {% if block.settings.name != blank or block.settings.title != blank or block.settings.icon != blank %}
+      <div class="quote-card__author">
+        {% if block.settings.icon != blank %}
+          <div class="quote-card__author-icon" aria-hidden="true">
+            {{
+              block.settings.icon
+              | image_url: width: 128
+              | image_tag:
+                widths: '64, 128',
+                sizes: '64px',
+                loading: 'lazy',
+                alt: '',
+                class: 'quote-card__author-icon-img'
+            }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.name != blank or block.settings.title != blank %}
+          <div class="quote-card__author-text">
+            {% if block.settings.name != blank %}
+              <p class="quote-card__name {{ name_typography | default: 's2' }}">{{ block.settings.name | escape }}</p>
+            {% endif %}
+            {% if block.settings.title != blank %}
+              <p class="quote-card__role {{ role_typography | default: 'p2' }}">{{ block.settings.title | escape }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</article>

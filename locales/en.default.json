@@ -323,6 +323,13 @@
       "title": "Collection",
       "to": "To",
       "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all<\/a>"
+    },
+    "quote_carousel": {
+      "region": "Customer quotes",
+      "roledescription": "carousel",
+      "slide_roledescription": "slide",
+      "slide": "Quote {{ index }} of {{ count }}",
+      "image_alt_fallback": "Customer photo"
     }
   },
   "localization": {
