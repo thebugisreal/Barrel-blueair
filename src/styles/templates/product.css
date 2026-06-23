@@ -532,3 +532,9 @@ s-carousel.pointer-event {
     }
   }
 }
+
+.product__information {
+  #shopify-buyer-consent {
+    @apply hidden;
+  }
+}
