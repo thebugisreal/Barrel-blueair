@@ -352,6 +352,18 @@
                     }
                   </style>
                 </div>
+              {% when 'product_price' %}
+                {%- capture spacing -%}
+                  {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                {%- endcapture -%}
+                <div class="product__price-wrapper s3 inline-flex items-center gap-xxxs mr-xs align-middle {{ spacing }}" js-price-copy data-price="{{ current_variant.price }}">
+                  {% if current_variant.compare_at_price > current_variant.price %}
+                    <span class="product__price product__price--current font-700 p1">{{ current_variant.price | money }}</span>
+                    <s class="product__price product__price--compare font-400 p1">{{ current_variant.compare_at_price | money }}</s>
+                  {% else %}
+                    <span class="product__price product__price--current font-700 p1">{{ current_variant.price | money }}</span>
+                  {% endif %}
+                </div>
               {% when 'product_badge' %}
                 {% if is_transactional %}
                   {% if localization.country.iso_code == 'CA' %}
@@ -359,7 +371,7 @@
                       {%- capture spacing -%}
                         {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                       {%- endcapture -%}
-                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                      <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.product\_\_price-wrapper_+_&]:inline-flex [.mb-0.product\_\_price-wrapper_+_&]:mb-0 [.desktop\:mb-0.product\_\_price-wrapper_+_&]:desktop:mb-0">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
                           <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
                         {% endfor %}
@@ -370,7 +382,7 @@
                         {%- capture spacing -%}
                           {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                         {%- endcapture -%}
-                        <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
+                        <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.product\_\_price-wrapper_+_&]:inline-flex [.mb-0.product\_\_price-wrapper_+_&]:mb-0 [.desktop\:mb-0.product\_\_price-wrapper_+_&]:desktop:mb-0">
                           {% for tag in product.metafields.seed.product_tags.value %}
                             <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
                           {% endfor %}
@@ -1894,6 +1906,176 @@ tm_qual_gjiapmwgps"></div>
     {
       "name": "Star Rating",
       "type": "star_rating",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-0"
+        }
+      ]
+    },
+    {
+      "name": "Product Price",
+      "type": "product_price",
       "settings": [
         {
           "type": "header",
