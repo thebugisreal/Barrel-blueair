@@ -12,7 +12,7 @@
   <cart-items data-type="cartPage">
     <loading-spinner js-cart-container-loading style="--size: 3rem; --bg-opacity: 100%;"></loading-spinner>
     <form action="{{ routes.cart_url }}" class="cart__form" method="post" id="cart">
-      <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}" js-cart-page-contents> 
+      <div class="cart__items" id="CartPage-CartItems" data-id="{{ section.id }}" js-cart-page-contents>
         <div class="mt-lg mb-xl mx-md tabletl:mt-xxl tabletl:mb-xxxl tabletl:mx-xxxxl">
           <h2 class="font-900 text-center mb-sm tabletl:mb-lg">{{ 'sections.cart.title' | t }}</h2>
               {% comment %} Shipping Threshold {% endcomment %}
@@ -43,7 +43,7 @@
               {% comment %} Cart Items  {% endcomment %}
                 <div class="cart__items-wrapper flex flex-col gap-md tabletl:w-[60%]">
                   {%- for item in cart.items -%}
-                    {% liquid 
+                    {% liquid
                       assign auto_item_remove_selling_plan = false
                       if item.properties['_unitSubscriptionTempId']
                         if item.quantity != 2 and item.properties['_two_pack'] == 'true' and item.selling_plan_allocation != blank
@@ -70,7 +70,7 @@
                           if matching_unit_subscription_air_purifier_found == false
                             assign auto_item_remove = true
                           endif
-                        else 
+                        else
                           assign auto_item_remove = true
                         endif
                       endif
@@ -162,7 +162,7 @@
                             {% if item.properties['_isGWP'] or item.properties['_isGift'] %}
                               <p>Gift</p>
                             {% endif %}
-    
+
                             {% assign disable_quantity_selector = false %}
                             {% if item.product.metafields.seed.two_pack_filter_subscription_disable_quantity_selector_in_cart == true and item.selling_plan_allocation != blank and item.quantity > 1 %}
                               {% assign disable_quantity_selector = true %}
@@ -201,7 +201,7 @@
                                   <div class="w-[16px]">{{ 'icon-plus.svg' | inline_asset_content }}</div>
                                 </button>
                               </quantity-input>
-            
+
                               <cart-remove-button
                                 class="block mt-xxs"
                                 id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
@@ -403,7 +403,7 @@
                     {% if settings.upsell_1 != blank or settings.upsell_2 != blank %}
                       {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
                       {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
-                      
+
                       {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}
                         {% assign use_static_upsells = true %}
                         {% assign display_carousel = true %}
@@ -411,7 +411,7 @@
                     {% endif %}
                   {% endunless %}
 
-                  {% if display_carousel %}   
+                  {% if display_carousel %}
                     {%- capture upsell_carousel_options -%}
                       {
                         "slidesPerView": 1,
@@ -584,7 +584,7 @@
                               <p class="cart-discount__pill-code" js-cart-discount-pill-code>
                                 {{ discount_code }}
                               </p>
-   
+
                             </li>
                           {% endfor %}
                         </ul>
@@ -603,7 +603,7 @@
                       <p class="p4 {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}mb-4{% else %}mb-xs{% endif %}">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
                     {% endif %}
                     {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
-                      <p class="p4 mb-xs">PayPal - credit/debit card checkout available (no account required)</p>
+                      <p class="p4 mb-xs">{{ 'general.cart.paypal_note' | t }}</p>
                     {% endif %}
                     <div>
                       {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -618,9 +618,9 @@
                       {%- endif -%}
                     </div>
                   </div>
-          
+
                   <!-- CTAs -->
-          
+
                   <div class="cart__ctas" {{ block.shopify_attributes }}>
                     <button class="cart__checkout-button p2 btn btn--blue-rounded w-full justify-between" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
                       <span class="btn__text">{{ 'sections.cart.cta' | t }}</span>

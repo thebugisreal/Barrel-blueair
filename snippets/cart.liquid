@@ -33,7 +33,7 @@
             {% comment %} Cart Items  {% endcomment %}
             <div class="drawer__cart-items-wrapper flex flex-col gap-md mb-md">
               {%- for item in cart.items -%}
-              {% liquid 
+              {% liquid
                 assign auto_item_remove_selling_plan = false
                 if item.properties['_unitSubscriptionTempId']
                   if item.quantity != 2 and item.properties['_two_pack'] == 'true' and item.selling_plan_allocation != blank
@@ -60,7 +60,7 @@
                     if matching_unit_subscription_air_purifier_found == false
                       assign auto_item_remove = true
                     endif
-                  else 
+                  else
                     assign auto_item_remove = true
                   endif
                 endif
@@ -165,7 +165,7 @@
                             <div class="w-[16px]">{{ 'icon-plus.svg' | inline_asset_content }}</div>
                           </button>
                         </quantity-input>
-      
+
                         <cart-remove-button
                           class="block mt-xxs"
                           id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
@@ -180,7 +180,7 @@
                         </button>
                       </cart-remove-button>
                     </div>
-                      
+
                       <div id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}" class="cart-item__error" role="alert">
                       </div>
                     </div>
@@ -267,7 +267,7 @@
                         <div class="swiper-wrapper">
                             {% for item in cart.items %}
                               {% if item.properties['_isGWP'] %}
-                              
+
                               <div class="swiper-slide" js-carousel-slide>
                                 {% render 'product-card__upsell' product: item, section_id: section.id, new_gwp: true, claimed: true %}
                               </div>
@@ -320,7 +320,7 @@
               {% if settings.upsell_1 != blank or settings.upsell_2 != blank %}
                 {% assign upsell_1_variant = settings.upsell_1.variants[0] %}
                 {% assign upsell_2_variant = settings.upsell_2.variants[0] %}
-                
+
                 {% unless cart_variants contains upsell_1_variant.id and cart_variants contains upsell_2_variant.id %}
                   {% assign use_static_upsells = true %}
                   {% assign display_carousel = true %}
@@ -328,7 +328,7 @@
               {% endif %}
             {% endunless %}
 
-            {% if display_carousel %}   
+            {% if display_carousel %}
               {%- capture upsell_carousel_options -%}
                 {
                   "slidesPerView": 1,
@@ -372,7 +372,7 @@
                                 </div>
 
                                 {% assign shown_products = shown_products | append: test_product.id | append: ',' %}
-                                
+
                               {% endunless %}
                             {% endfor %}
                           {% endfor %}
@@ -410,7 +410,7 @@
         <div id="CartDrawer-CartErrors" role="alert"></div>
       </form>
     </cart-drawer-items>
-    
+
     {% comment %} Cart Footer {% endcomment %}
     {% if cart != empty %}
       <div class="cart-drawer__footer bg-blue-light p-md pb-lg">
@@ -527,7 +527,7 @@
             <p class="p4 text-12 {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}mb-4{% else %}mb-xs{% endif %}">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
           {% endif %}
           {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
-            <p class="p4 mb-xs text-12">PayPal - credit/debit card checkout available (no account required)</p>
+            <p class="p4 mb-xs text-12">{{ 'general.cart.paypal_note' | t }}</p>
           {% endif %}
           <div>
             {%- if cart.cart_level_discount_applications.size > 0 -%}
