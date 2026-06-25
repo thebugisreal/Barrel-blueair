@@ -50,6 +50,7 @@
     },
     "cart": {
       "view": "View my cart ({{ count }})",
+      "paypal_note": "PayPal - credit/debit card checkout available (no account required)",
       "item_added": "Item added to your cart"
     },
     "share": {

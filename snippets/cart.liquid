@@ -527,7 +527,7 @@
             <p class="p4 text-12 {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}mb-4{% else %}mb-xs{% endif %}">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
           {% endif %}
           {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
-            <p class="p4 mb-xs text-12">PayPal - credit/debit card checkout available (no account required)</p>
+            <p class="p4 mb-xs text-12">{{ 'general.cart.paypal_note' | t }}</p>
           {% endif %}
           <div>
             {%- if cart.cart_level_discount_applications.size > 0 -%}
