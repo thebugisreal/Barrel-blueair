@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.12] - 2026-06-25
+
+### Added
+- BEA-120: Fan PDPs - Add block to show product price
+
 ## [1.1.11] - 2026-06-23
 
 ### Added

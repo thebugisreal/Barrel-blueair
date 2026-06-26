@@ -159,7 +159,8 @@
           "on_off_timer": "On\/ off timer",
           "via_blueair_app": "via Blueair App",
           "speed_control_options": "Speed control options",
-          "integrated_air_sensors": "Integrated air sensors"
+          "integrated_air_sensors": "Integrated air sensors",
+          "controls": "Controls"
         },
         "shipping_warranty": {
           "label": "Shipping & Warranty"
@@ -204,7 +205,12 @@
       "recommended_filter_change": "Recommended filter change",
       "number_of_filters": "Number of filters",
       "filter_replacement_indicator": "Filter replacement indicator",
-      "speed_control_options": "Speed control options"
+      "speed_control_options": "Speed control options",
+      "airflow_cfm": "Airflow CFM",
+      "airflow_speed": "Airflow speed",
+      "airflow_reach": "Airflow reach",
+      "horizontal_oscillation": "Horizontal oscillation",
+      "vertical_oscillation": "Vertical oscillation"
     }
   },
   "templates": {

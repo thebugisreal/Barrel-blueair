@@ -746,6 +746,12 @@ tm_qual_gjiapmwgps"></div>
                               <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
                             </li>
                           {% endif %}
+                          {% if product.metafields.barrel.controls != blank %}
+                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="p3">{{ 'products.product.accordions.additional_features.controls' | t }}</span>
+                              <span class="p4">{{ product.metafields.barrel.controls }}</span>
+                            </li>
+                          {% endif %}
                         </ul>
                       </div>
                     </div>
