@@ -194,4 +194,34 @@
             <p class="p4 w-1/2">{{ product.metafields.seed.blair_productSpecification_fanspeed}}</p>
         </li>
     {% endif %}
+    {% if product.metafields.barrel.airflow_cfm != blank %}
+        <li class="flex gap-md">
+            <p class="p3 w-1/2">{{ 'products.technical_specifications.airflow_cfm' | t }}</p>
+            <p class="p4 w-1/2">{{ product.metafields.barrel.airflow_cfm }}</p>
+        </li>
+    {% endif %}
+    {% if product.metafields.barrel.airflow_speed != blank %}
+        <li class="flex gap-md">
+            <p class="p3 w-1/2">{{ 'products.technical_specifications.airflow_speed' | t }}</p>
+            <p class="p4 w-1/2">{{ product.metafields.barrel.airflow_speed }}</p>
+        </li>
+    {% endif %}
+    {% if product.metafields.barrel.airflow_reach != blank %}
+        <li class="flex gap-md">
+            <p class="p3 w-1/2">{{ 'products.technical_specifications.airflow_reach' | t }}</p>
+            <p class="p4 w-1/2">{{ product.metafields.barrel.airflow_reach }}</p>
+        </li>
+    {% endif %}
+    {% if product.metafields.barrel.horizontal_oscillation != blank %}
+        <li class="flex gap-md">
+            <p class="p3 w-1/2">{{ 'products.technical_specifications.horizontal_oscillation' | t }}</p>
+            <p class="p4 w-1/2">{{ product.metafields.barrel.horizontal_oscillation }}</p>
+        </li>
+    {% endif %}
+    {% if product.metafields.barrel.vertical_oscillation != blank %}
+        <li class="flex gap-md">
+            <p class="p3 w-1/2">{{ 'products.technical_specifications.vertical_oscillation' | t }}</p>
+            <p class="p4 w-1/2">{{ product.metafields.barrel.vertical_oscillation }}</p>
+        </li>
+    {% endif %}
 </ul>
