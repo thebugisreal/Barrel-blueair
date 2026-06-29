@@ -884,13 +884,15 @@ tm_qual_gjiapmwgps"></div>
                 {% capture spacing %}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="{{ spacing }} max-w-full">
-                  {% render 'pdp-bundle-upsells',
-                    product: product,
-                    title: block.settings.title,
-                    block: block
-                  %}
-                </div>
+                {% if is_transactional %}
+                  <div class="{{ spacing }} max-w-full">
+                    {% render 'pdp-bundle-upsells',
+                      product: product,
+                      title: block.settings.title,
+                      block: block
+                    %}
+                  </div>
+                {% endif %}
             {% endcase %}
           {% endfor %}
 {% comment %}
