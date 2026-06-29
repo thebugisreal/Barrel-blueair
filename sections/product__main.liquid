@@ -887,7 +887,8 @@ tm_qual_gjiapmwgps"></div>
                 <div class="{{ spacing }} max-w-full">
                   {% render 'pdp-bundle-upsells',
                     product: product,
-                    title: block.settings.title
+                    title: block.settings.title,
+                    block: block
                   %}
                 </div>
             {% endcase %}
@@ -3737,6 +3738,12 @@ tm_qual_gjiapmwgps"></div>
           "id": "title",
           "label": "Title",
           "default": "Have more than one room?"
+        },
+        {
+          "type": "color_background",
+          "id": "background",
+          "label": "Background Color",
+          "default": "linear-gradient(125deg, rgba(138, 202, 248, 1) 12%, rgba(253, 246, 195, 1) 82%)"
         },
         {
           "type": "header",
