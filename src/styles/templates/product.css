@@ -516,7 +516,7 @@ s-carousel.pointer-event {
 /* PDP Bundle Upsells */
 .pdp-bundle-upsells__product-add-to-cart {
   &:disabled {
-    @apply pr-sm py-xs !bg-gray !text-white !border-gray;
+    @apply pr-sm py-xxs !bg-gray !text-white !border-gray;
   }
 
   @media screen(desktop) {
