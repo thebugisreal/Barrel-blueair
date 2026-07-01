@@ -15,6 +15,13 @@
           assign prod = item.product.value
           assign upsell_current_variant = prod.variants.first
           assign short_description = item.short_description
+          assign upsell_image = prod.featured_image
+          assign upsell_img_classes = 'bg-gray-light rounded-md'
+
+          if prod.metafields.seed.product_card_image != blank
+            assign upsell_image = prod.metafields.seed.product_card_image
+            assign upsell_img_classes = 'object-contain w-full h-full rounded-md'
+          endif
         %}
         {% if prod != blank %}
           <product-upsell
@@ -28,15 +35,26 @@
             {% endif %}
             <div class="pdp-bundle-upsells__product-image">
               <a href="{{ prod.url }}" class="pdp-bundle-upsells__product-image-link">
-                {% render 'lazy-image' image: prod.featured_image, img_classes: 'bg-gray-light rounded-md' %}
+                {% if prod.metafields.seed.product_card_image != blank %}
+                  {% render 'lazy-image',
+                    image: upsell_image,
+                    img_classes: upsell_img_classes,
+                    picture_classes: 'h-full'
+                  %}
+                {% else %}
+                  {% render 'lazy-image',
+                    image: upsell_image,
+                    img_classes: upsell_img_classes
+                  %}
+                {% endif %}
               </a>
             </div>
             <div class="pdp-bundle-upsells__product-content grid grid-cols-1 h-full gap-2 mt-4">
-              <div class="pdp-bundle-upsells__product-title text-center text-10 laptop:text-16 font-700">
+              <div class="pdp-bundle-upsells__product-title text-center text-10 laptop:text-16 leading-[13.96px] tracking-[0.32px] font-700 laptop:leading-normal laptop:tracking-normal">
                 {{ prod.title }}
               </div>
               {% if short_description != blank %}
-                <div class="pdp-bundle-upsells__product-short-description p6 text-gray-dark text-center text-10 laptop:text-16">
+                <div class="pdp-bundle-upsells__product-short-description p6 text-gray-dark text-center text-10 leading-[13.96px] tracking-[0.32px] laptop:text-16 laptop:leading-normal laptop:tracking-normal">
                   {{ short_description }}
                 </div>
               {% endif %}
