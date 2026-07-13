@@ -138,7 +138,7 @@
     {% comment %} Product Card Top Tag {% endcomment %}
      {% if product.metafields.seed.product_card_top_tags != blank %}
       <div class="product-card__top-tag absolute top-sm left-sm">
-        <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xxxs gap-y-xxs flex-wrap">
+        <div class="product-card__tags min-h-[28px] mb-sm flex justify-start gap-x-xxxs gap-y-xxs">
           {% for tag in product.metafields.seed.product_card_top_tags.value %}
             <span class="product-card__tag product-card__tag--dark-blue text-12 leading-[12px] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
           {% endfor %}
@@ -285,7 +285,7 @@
       </div>
     {% elsif filter_type_option != false %}
       <div class="product-card__swatches-container mt-sm">
-        <p class="font-700">Choose from various filter types</p>
+        <p class="font-700">Choose from various filter types:</p>
         <div class="product-card__swatches flex flex-wrap gap-sm mt-xxs">
           {% for swatch_product in product.metafields.seed.product_card_filter_products.value %}
             <button class="product-card__swatch product-card__swatch--filter-type border border-gray p-xxs flex items-center gap-xxs rounded-[2px]" 
@@ -307,7 +307,7 @@
       <div class="product-card__related-scent-container mt-sm mb-sm">
         {% for color in product.metafields.shopify.color-pattern.value %}
           <div class="product-card__related-scent">
-            <span class="product-card__related-scent-label block font-700 p3 text-blue mb-xxs">Aroma: <span js-product-card-current-swatch-label>{{ color.label }}</span></span>
+            <span class="product-card__related-scent-label block font-700 p3 text-blue mb-xxs">Aromaaaaaa: <span js-product-card-current-swatch-label>{{ color.label }}</span></span>
             <div class="product-card__related-scents flex flex-wrap gap-xxs mt-xxs"
               data-handle="{{product.handle}}"
               data-collection="{{related_tag_scent}}"
@@ -365,7 +365,7 @@
     {% if collection.template_suffix == 'compare' %}
       <div class="text-12 mt-sm flex items-center gap-sm">
         <input type="checkbox" id="enableProductCompare-{{ product.id }}" data-product-id="{{ product.id }}" js-product-compare-checkbox>
-        <label for="enableProductCompare-{{ product.id }}"> Compare </label>
+        <label for="enableProductCompare-{{ product.id }}"> Collection Compare </label>
       </div>
       <script type="application/json" id="ProductJSON-{{ product.id }}" js-product-compare-product>{{ all_products[product.handle] | json }}</script>
 
