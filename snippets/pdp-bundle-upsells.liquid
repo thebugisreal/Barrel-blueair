@@ -59,8 +59,8 @@
                 </div>
               {% endif %}
               <div class="pdp-bundle-upsells__product-actions text-center mt-auto pt-4">
-                <button type="button" class="pdp-bundle-upsells__product-add-to-cart btn btn--blue-rounded !px-8 laptop:!px-12 relative mx-auto justify-center items-center" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
-                  <span class="flex items-center justify-center gap-[2px] flex-wrap">
+                <button type="button" class="pdp-bundle-upsells__product-add-to-cart btn btn--blue-rounded !px-8 laptop:!px-12 relative mx-auto gap-[4px] w-full justify-center items-center" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                  <span class="flex items-center justify-center gap-[1px] flex-wrap">
                     <span class="text-8 laptop:text-12" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
                     <span class="text-8 laptop:text-12">-</span>
                     <span class="text-8 laptop:text-12 whitespace-nowrap text-ellipsis overflow-hidden">{{ 'products.product.add_to_cart' | t }}</span>
