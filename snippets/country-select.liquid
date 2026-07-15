@@ -4,7 +4,7 @@
   {%- form 'localization', id: form_id, js-country-form: '', class: 'block w-full h-full relative' -%}  
     <div class="country-select__label flex gap-xxxs justify-start items-center {% if scope == 'Footer' %}py-xxs px-xs pr-md{% endif %}">
       <div class="icon-globe w-32">{{ 'icon-globe.svg' | inline_asset_content }}</div>
-      <div class="country-name text-12 flex-1">{{ localization.country.name }}</div>
+      <div class="country-name text-12 flex-1" js-country-input-label>{{ localization.country.name }}</div>
     </div>  
     <select name="country_code" id="{{ input_id }}" class="country-select__selector block absolute inset-0 z-[1] opacity-0 cursor-pointer" js-country-select>
       {% for country in localization.available_countries %}

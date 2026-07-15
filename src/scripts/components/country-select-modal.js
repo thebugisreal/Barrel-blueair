@@ -11,10 +11,7 @@ class CountrySelectModal extends HTMLElement {
         countryLabel: '[js-country-input-label]',
         submitBtn: '[js-localization-submit]'
       }
-    }
 
-    connectedCallback() {
-      this.init()
       this._languagePicker = [
         { country: "EU", languages: [ { code: "EN", label: "English" } ]},
         { country: "AF", languages: [ { code: "AR", label: "العربية" },{ code: "EN", label: "English" } ]},
@@ -41,7 +38,7 @@ class CountrySelectModal extends HTMLElement {
         { country: "BF", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "BI", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "CM", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
-        { country: "CA", languages: [ { code:"EN", label: "English"} , { code:"FR", label: "Français"} ] },
+        { country: "CA", languages: [ { code:"EN", label: "English", currency: "CAD" } , { code:"FR", label: "Français", currency: "CAD" } ] },
         { country: "CV", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "CF", languages: [ { code:"EN", label: "English"} , { code:"AR", label: "العربية"} ] },
         { country: "ES", languages: [ { code:"EN", label: "English"}, {code: "ES", label: "Español"} ] },
@@ -176,21 +173,31 @@ class CountrySelectModal extends HTMLElement {
       ]
     }
 
-    init() {
+    connectedCallback() {
+      this.init()
+    }
+
+    async init() {
       // Handle URL redirects immediately for Safari compatibility
       this._handleUrlRedirects();
+
+      const euCountriesRaw = this.dataset.euCountries || ''
+      this._euCountries = new Set(
+        euCountriesRaw.split(',').map(c => c.trim().toUpperCase()).filter(Boolean)
+      )
 
       this.form = this.querySelector(this._selectors.form);
       this.select = this.querySelector(this._selectors.select);
       this.languageSelect = this.querySelector(this._selectors.languageSelect)
       this.languageInput = this.querySelector(this._selectors.languageInput)
       this.languageInputLabel = this.querySelector(this._selectors.languageInputLabel)
-      this.countryLabel = this.querySelector(this._selectors.countryLabel)
+      this.countryLabel = document.querySelectorAll(this._selectors.countryLabel)
       this.submitBtn = this.querySelector(this._selectors.submitBtn)
 
       this.select.addEventListener('change', this._handleCountryChange.bind(this));
       this.selectedCountry = this.select.value;
 
+      await this._checkCurrentCountry();
       this._checkAutoRedirect();
       if (this.languageSelect) {
         this.selectedLanguage = this.languageSelect.value;
@@ -205,7 +212,44 @@ class CountrySelectModal extends HTMLElement {
 
     }
 
+    _checkCurrentCountry = async () => {
+      try {
+        const response = await fetch(
+          window.Shopify.routes.root
+            + 'browsing_context_suggestions.json'
+            + '?country[enabled]=true'
+            + `&country[exclude]=${window.Shopify.country}`
+            + '&language[enabled]=true'
+            + `&language[exclude]=${window.Shopify.language}`
+        )
+        const data = await response.json()
+        const detectedCountry = data.detected_values?.country?.handle
+        if (!detectedCountry) return
+
+        this._detectedCountry = detectedCountry.toUpperCase()
+
+        const selectedOption = this._euCountries.has(detectedCountry) ? 'EU' : detectedCountry
+        const optionExists = Array.from(this.select.options).some(
+          opt => opt.value === selectedOption
+        )
+        if (optionExists) {
+          this.select.value = selectedOption
+          this.select.dispatchEvent(new Event('change'))
+        }
+      } catch (err) {
+        console.warn('Could not fetch browsing context suggestions:', err)
+      }
+    }
+
     _handleUrlRedirects = () => {
+      const _params = new URLSearchParams(window.location.search);
+      if (_params.has('currency')) {
+        _params.delete('currency');
+        const _newSearch = _params.toString();
+        const _newUrl = window.location.pathname + (_newSearch ? '?' + _newSearch : '') + window.location.hash;
+        history.replaceState(null, '', _newUrl);
+      }
+
       // Handle URL path corrections for blueeudev.myshopify.com
       if (window.permanent_domain == `blueeudev.myshopify.com`) {
         const currentPath = window.location.pathname;
@@ -236,6 +280,34 @@ class CountrySelectModal extends HTMLElement {
     }
 
     _checkAutoRedirect = () => {
+      const country = this.selectedCountry?.toLowerCase();
+      let language = this.selectedLanguage?.toLowerCase();
+      const target = 'https://blueair.co';
+      const autoRedirect = theme.utils.getCookie('seedAutoRedirect');
+      const countryEntry = this._languagePicker.find(item => item.country === country.toUpperCase())
+      if (countryEntry?.languages?.length) {
+        const preferred = countryEntry.languages.find(lang => lang.code !== 'EN');
+        language = preferred ? preferred.code.toLowerCase() : countryEntry.languages[0].code.toLowerCase();
+      }
+      if (
+        country
+        && language
+        && country !== 'us'
+        && country !== 'ca'
+        && country !== 'gb'
+        && country !== 'de'
+        && window.permanent_domain == 'blueeudev.myshopify.com'
+        && !autoRedirect
+      ) {
+        theme.utils.setCookie('seedAutoRedirect', true, 30);
+        const currentPath = window.location.pathname;
+        let newPath = `/${language}-${country}/` + currentPath.slice(1)
+        if (country == 'eu'){
+          newPath = '/en-eu/' + currentPath.slice(1)
+        }
+        window.location.href = target + newPath
+      }
+
       const searchParams = new URLSearchParams(window.location.search);
 
       if(searchParams.get('manual-redirect') == 'true') {
@@ -250,68 +322,34 @@ class CountrySelectModal extends HTMLElement {
       }
 
       // Get current country from the select element
-      const currentCountry = this.select ? this.select.value : null;
-      console.log('Current country detected:', currentCountry);
+      const detectedCountry = this._detectedCountry
+      console.log('Current country detected:', detectedCountry)
+      if (!detectedCountry) return
 
-      if (window.permanent_domain == `blueeudev.myshopify.com`) {
-        if (currentCountry == 'US') {
-          window.location.href = `https://www.blueair.com`
-        } else if (currentCountry == 'GB' || currentCountry == 'CA') {
-          // Auto-open the country modal for GB and CA visitors
-          console.log(`${currentCountry} visitor detected on blueeudev, attempting to open modal...`);
-          setTimeout(() => {
-            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
-            if (modalTrigger) {
-              console.log('Modal trigger found, clicking...');
-              modalTrigger.click();
-              // Set cookie to remember modal was shown
-              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
-              console.log('Modal shown, cookie set');
-            } else {
-              console.log('Modal trigger not found');
-            }
-          }, 100);
-        } else {
-          return;
-        }
-      } else if (window.permanent_domain == `5ef43d-4a.myshopify.com`) {
-        if (currentCountry !== 'US' && currentCountry !== 'CA') {
-          // Auto-open the country modal for all non-US/CA visitors on US site
-          console.log(`Non-US/CA visitor (${currentCountry}) detected on US site, attempting to open modal...`);
-          setTimeout(() => {
-            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
-            if (modalTrigger) {
-              console.log('Modal trigger found, clicking...');
-              modalTrigger.click();
-              // Set cookie to remember modal was shown
-              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
-              console.log('Modal shown, cookie set');
-            } else {
-              console.log('Modal trigger not found');
-            }
-          }, 100);
-        } else {
-          return;
-        }
-      } else if (window.permanent_domain == `uk-blueair.myshopify.com`) {
-        if (currentCountry !== 'GB') {
-          // Auto-open the country modal for all non-GB visitors on UK site
-          console.log(`Non-GB visitor (${currentCountry}) detected on UK site, attempting to open modal...`);
-          setTimeout(() => {
-            const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
-            if (modalTrigger) {
-              console.log('Modal trigger found, clicking...');
-              modalTrigger.click();
-              // Set cookie to remember modal was shown
-              theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
-              console.log('Modal shown, cookie set');
-            } else {
-              console.log('Modal trigger not found');
-            }
-          }, 100);
-        } else {
-          return;
-        }
+      let isOutsideRegion = false
+
+      if (window.permanent_domain === '5ef43d-4a.myshopify.com') {
+        isOutsideRegion = detectedCountry !== 'US' && detectedCountry !== 'CA';
+      } else if (window.permanent_domain === 'blueeudev.myshopify.com') {
+        isOutsideRegion = detectedCountry === 'US' || detectedCountry === 'CA' || detectedCountry === 'GB';
+      } else if (window.permanent_domain === 'uk-blueair.myshopify.com') {
+        isOutsideRegion = detectedCountry !== 'GB';
+      }
+
+      if (isOutsideRegion) {
+        console.log(`Visitor from ${detectedCountry} is outside the current store's region. attempting to open modal...`);
+        setTimeout(() => {
+          const modalTrigger = document.querySelector('[js-open-country-market-selector-modal]');
+          if (modalTrigger) {
+            console.log('Modal trigger found, clicking...');
+            modalTrigger.click();
+            // Set cookie to remember modal was shown
+            theme.utils.setCookie('countryModalShown', true, 1); // 1 day expiry
+            console.log('Modal shown, cookie set');
+          } else {
+            console.log('Modal trigger not found');
+          }
+        }, 100);
       }
     }
 
@@ -349,26 +387,29 @@ class CountrySelectModal extends HTMLElement {
       if (window.domain == target) {
         this.form.submit();
       }else{
+        const currencyParam = this.selectedCurrency ? `&currency=${this.selectedCurrency}` : '';
         if (country == 'us') {
-          window.location.href = `${target}?manual-redirect=true`
+          window.location.href = `${target}?manual-redirect=true${currencyParam}`
         } else if (country == 'ca'){
-          window.location.href = `${target}/${language}-${country}?manual-redirect=true`
+          window.location.href = `${target}/${language}-${country}?manual-redirect=true${currencyParam}`
         } else if (country == 'gb'){
-          window.location.href = `${target}?manual-redirect=true`
+          window.location.href = `${target}?manual-redirect=true${currencyParam}`
         } else if (country == 'de' && language == 'de'){
-          window.location.href = `${target}?manual-redirect=true`
+          window.location.href = `${target}?manual-redirect=true${currencyParam}`
         } else if (country == 'de' && language == 'en'){
-          window.location.href = `${target}/en?manual-redirect=true`
+          window.location.href = `${target}/en?manual-redirect=true${currencyParam}`
         } else if (country == 'eu'){
-          window.location.href = `${target}/en-eu?manual-redirect=true`
+          window.location.href = `${target}/en-eu?manual-redirect=true${currencyParam}`
         } else{
-          window.location.href = `${target}/${language}-${country}?manual-redirect=true`
+          window.location.href = `${target}/${language}-${country}?manual-redirect=true${currencyParam}`
         }
       }
     }
 
     _handleCountryChange(e) {
-      this.countryLabel.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
+      this.countryLabel.forEach(el => {
+        el.innerHTML = e.target.options[e.target.selectedIndex].dataset.countryName
+      })
       const selectedValue = e.target.options[e.target.selectedIndex].value
       this.selectedCountry = selectedValue;
 
@@ -381,20 +422,21 @@ class CountrySelectModal extends HTMLElement {
                 this.languageInputLabel.innerHTML = this._languagePicker[i].languages[j].label
               }
             }
-            const label = this._languagePicker[i].languages[j].label
-            const value = this._languagePicker[i].languages[j].code
-            this._createOption(value, label, this.languageSelect)
+            const lang = this._languagePicker[i].languages[j]
+            this._createOption(lang.code, lang.label, lang.currency, this.languageSelect)
           }
           break
         }
       }
 
       this.selectedLanguage = this.languageSelect.options[0].value.toLowerCase();
+      this.selectedCurrency = this.languageSelect.options[0].dataset.currency || '';
     }
 
     _handleLanguageChange(e) {
       this.languageInput.value = e.target.value
       this.selectedLanguage = e.target.value;
+      this.selectedCurrency = e.target.options[e.target.selectedIndex].dataset.currency || '';
 
       if (this.languageInputLabel) {
         this.languageInputLabel.innerHTML =  e.target.options[e.target.selectedIndex].dataset.endonymName
@@ -405,11 +447,12 @@ class CountrySelectModal extends HTMLElement {
       this.languageSelect.innerHTML = ''
     }
 
-    _createOption(value, label, parent) {
+    _createOption(value, label, currency, parent) {
       const option = document.createElement('option');
       option.value = value;
       option.innerText = label;
-      option.dataset.endonymName = label
+      option.dataset.endonymName = label;
+      option.dataset.currency = currency || '';
       parent.appendChild(option);
 
       return option
