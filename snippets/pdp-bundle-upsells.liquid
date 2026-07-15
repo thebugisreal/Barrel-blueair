@@ -1,0 +1,83 @@
+{% liquid
+  assign list_products = product.metafields.custom.bundle_upsells.value
+  assign background_color = block.settings.background
+%}
+
+{% if list_products != blank %}
+  <div class="pdp-bundle-upsells pt-0 pb-0 border-0 laptop:border-blue-light overflow-hidden laptop:pb-32 laptop:pt-20 laptop:px-[25px] laptop:border-[3px] laptop:rounded-2xl">
+    <h2 class="pdp-bundle-upsells__title text-18 font-700 m-0 leading-tight tabletp:text-22">
+      {{ title }}
+    </h2>
+    <div class="pdp-bundle-upsells__products grid grid-cols-2 mt-8 tabletp:mt-20 laptop:mt-24 border border-gray p-[10px] pt-[30px] gap-8 tabletp:p-[0] tabletp:border-none tabletp:pt-0 tabletp:gap-12 laptop:gap-20">
+      {% for item in list_products %}
+        {% liquid
+          assign discount_text = item.discount_text
+          assign prod = item.product.value
+          assign upsell_current_variant = prod.variants.first
+          assign short_description = item.short_description
+          assign upsell_image = prod.featured_image
+          assign upsell_img_classes = 'bg-gray-light rounded-md'
+
+          if prod.metafields.seed.product_card_image != blank
+            assign upsell_image = prod.metafields.seed.product_card_image
+            assign upsell_img_classes = 'object-contain w-full h-full rounded-md'
+          endif
+        %}
+        {% if prod != blank %}
+          <product-upsell
+            class="pdp-bundle-upsells__product grid grid-rows-[auto_1fr] border border-blue rounded-md p-16 laptop:pb-20 relative"
+            style="background: {{ background_color }};"
+          >
+            {% if discount_text != blank %}
+              <div class="pdp-bundle-upsells__discount-text absolute top-0 left-16 -translate-y-1/2 text-white bg-blue rounded-full px-xs py-xxs text-12 leading-[12px] font-500">
+                {{ discount_text }}
+              </div>
+            {% endif %}
+            <div class="pdp-bundle-upsells__product-image">
+              <a href="{{ prod.url }}" class="pdp-bundle-upsells__product-image-link">
+                {% if prod.metafields.seed.product_card_image != blank %}
+                  {% render 'lazy-image',
+                    image: upsell_image,
+                    img_classes: upsell_img_classes,
+                    picture_classes: 'h-full'
+                  %}
+                {% else %}
+                  {% render 'lazy-image',
+                    image: upsell_image,
+                    img_classes: upsell_img_classes
+                  %}
+                {% endif %}
+              </a>
+            </div>
+            <div class="pdp-bundle-upsells__product-content grid grid-cols-1 h-full gap-2 mt-4">
+              <div class="pdp-bundle-upsells__product-title text-center text-10 laptop:text-16 leading-[13.96px] tracking-[0.32px] font-700 laptop:leading-normal laptop:tracking-normal">
+                {{ prod.title }}
+              </div>
+              {% if short_description != blank %}
+                <div class="pdp-bundle-upsells__product-short-description p6 text-gray-dark text-center text-10 leading-[13.96px] tracking-[0.32px] laptop:text-16 laptop:leading-normal laptop:tracking-normal">
+                  {{ short_description }}
+                </div>
+              {% endif %}
+              <div class="pdp-bundle-upsells__product-actions text-center mt-auto pt-4">
+                <button type="button" class="pdp-bundle-upsells__product-add-to-cart btn btn--blue-rounded !px-8 laptop:!px-12 relative mx-auto gap-[4px] w-full justify-center items-center" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+                  <span class="flex items-center justify-center gap-[1px] flex-wrap">
+                    <span class="text-8 laptop:text-12" js-product-upsell-price>{{ upsell_current_variant.price | money }}</span>
+                    <span class="text-8 laptop:text-12">-</span>
+                    <span class="text-8 laptop:text-12 whitespace-nowrap text-ellipsis overflow-hidden">{{ 'products.product.add_to_cart' | t }}</span>
+                  </span>
+                  <span class="w-[14px] h-[14px] tabletp:hidden laptop:block laptop:w-20 laptop:h-20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" fill="none" viewBox="0 0 37 37" class="w-full h-full">
+                      <circle cx="18.164" cy="18.164" r="18.164" fill="#fff"/>
+                      <path fill="#002955" fill-rule="evenodd" d="m18.46 11.352-1.244 1.244 4.976 4.976h-10.84v1.777h10.84l-4.976 4.975 1.244 1.244 7.108-7.108z" clip-rule="evenodd"/>
+                    </svg>
+                  </span>
+                </button>
+                <p class="p6 hidden text-center w-full leading-[1.1] mt-[4px]" js-product-upsell-error></p>
+              </div>
+            </div>
+          </product-upsell>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
