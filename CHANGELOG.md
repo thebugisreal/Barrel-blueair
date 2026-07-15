@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.14] - 2026-07-15
+
+### Added
+- BEA-74: International Sites Redirects (geolocation-based country/region redirect popup, removes Markets dependency)
+- BEA-111: Fan > Bundle module (2-fan / 3-fan bundle upsells on the Fan PDP, US/CA)
+
 ## [1.1.13] - 2026-07-09
 
 ### Added
