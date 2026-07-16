@@ -11,8 +11,7 @@ class SiteHeader extends HTMLElement {
       announcementBar: '[js-announcement-bar]',
       announcementBarItem: '[js-announcement-bar-item]',
       trackingItem: '[js-tracking-item]',
-      navItem: '[js-nav-item]',
-      navMenu: '[js-nav-menu]'
+      navItem: '[js-nav-item]'
     }
   }
 
@@ -22,7 +21,6 @@ class SiteHeader extends HTMLElement {
     this.announcementBarItems = this.querySelectorAll(this._selectors.announcementBarItem);
     this.trackingItems = document.querySelectorAll(this._selectors.trackingItem);
     this.navItems = this.querySelectorAll(this._selectors.navItem)
-    this.navMenus = this.querySelectorAll(this._selectors.navMenu)
 
     sessionStorage.removeItem("hideAnnouncement");
 
@@ -59,11 +57,8 @@ class SiteHeader extends HTMLElement {
 
     this.navItems.forEach((item) => {
       item.addEventListener('mouseenter', this._handleMouseEnterNavItem.bind(this));
+      item.addEventListener('mouseleave', this._handleMouseLeaveNavItem.bind(this));
     });
-
-    this.navMenus.forEach((menu) => {
-      menu.addEventListener('mouseleave', this._handleMouseLeaveNavMenu.bind(this));
-    })
 
     this.trackingItems.forEach(el => {
       el.addEventListener('click', () => {
@@ -91,15 +86,37 @@ class SiteHeader extends HTMLElement {
 
   _handleMouseEnterNavItem(e) {
     this.navItems.forEach((item) => {
-      item.classList.remove('hovered')
+      item.classList.remove('hovered');
     });
-    e.currentTarget.classList.add('hovered')
+
+    e.currentTarget.classList.add('hovered');
+    this._blurFocusedNavItem(e.currentTarget);
   }
 
-  _handleMouseLeaveNavMenu(e) {
-    this.navItems.forEach((item) => {
-      item.classList.remove('hovered')
-    });
+  _handleMouseLeaveNavItem(e) {
+    const nextTarget = e.relatedTarget;
+
+    if (nextTarget instanceof Node && e.currentTarget.contains(nextTarget)) return;
+
+    e.currentTarget.classList.remove('hovered');
+
+    if (e.currentTarget.contains(document.activeElement)) {
+      this._blurFocusedNavItem();
+    }
+  }
+
+  _blurFocusedNavItem(exceptItem = null) {
+    const activeElement = document.activeElement;
+
+    if (!activeElement || activeElement === document.body) return;
+    if (!this.contains(activeElement)) return;
+
+    const focusedNavItem = activeElement.closest(this._selectors.navItem);
+
+    if (!focusedNavItem) return;
+    if (exceptItem && focusedNavItem === exceptItem) return;
+
+    activeElement.blur();
   }
 
 

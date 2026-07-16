@@ -513,6 +513,12 @@ s-carousel.pointer-event {
   margin: 0;
 }
 
+.product__information {
+  #shopify-buyer-consent {
+    @apply hidden;
+  }
+}
+
 /* PDP Bundle Upsells */
 .pdp-bundle-upsells__product-add-to-cart {
   &:disabled {

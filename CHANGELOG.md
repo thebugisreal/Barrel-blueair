@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.14] - 2026-07-15
+
+### Added
+- BEA-74: International Sites Redirects (geolocation-based country/region redirect popup, removes Markets dependency)
+- BEA-111: Fan > Bundle module (2-fan / 3-fan bundle upsells on the Fan PDP, US/CA)
+
+## [1.1.13] - 2026-07-09
+
+### Added
+- BEA-114: UK Site - PayPal cart note text (credit/debit guest checkout, UK store only)
+- BEA-122: Add metafields to Fan PDPs (Additional features + Technical spec rows)
+
+### Fixed
+- BEA-116: QA drawer scrollable area poor UX
+- BEA-117: Chat bots overlap valuable info (Quick View drawer z-index)
+- BEA-118: MOB - Search page grid poor UX
+- BEA-119: Shop Pay consent messaging bug
+
 ## [1.1.12] - 2026-06-25
 
 ### Added
