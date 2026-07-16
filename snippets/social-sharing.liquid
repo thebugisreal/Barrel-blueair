@@ -17,16 +17,19 @@ UP INDEPENDENT CSS INSTEAD OF EDITING THIS FILE.
 <ul class="social-sharing flex">
   <li class="social-sharing__item">
     <a class="social-sharing__link block" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{share_title}} on Facebook" title="Share {{share_title}} on Facebook">
+      Facebook
       {{ 'icon-facebook.svg' | inline_asset_content }}
     </a>
   </li>
   <li class="social-sharing__item">
     <a class="social-sharing__link block" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{share_title}} on Twitter" title="Share {{share_title}} on Twitter">
+      Twitter
       {{ 'icon-twitter.svg' | inline_asset_content }}
     </a>
   </li>
   <li class="social-sharing__item">
     <a class="social-sharing__link block" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}}&amp;media={{ share_image | image_url: width: 1024, height: 1024, crop: 'center' }}&amp;description={{ share_title | url_param_escape }}" target="_blank" rel="noopener noreferrer" aria-label="Share {{share_title}} on Instagram" title="Share {{share_title}} on Instagram">
+      Pinterest
       {{ 'icon-pinterest.svg' | inline_asset_content }}
     </a>
   </li>
