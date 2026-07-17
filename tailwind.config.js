@@ -73,6 +73,7 @@ module.exports = {
     fontFamily: {
       // add font families here:
       // ex: sans: ['Helvetica', 'sans-serif']
+      season: ['Season Sans', 'sans-serif'],
       gilroy: ['Gilroy', 'sans-serif'],
       roboto: ['Roboto', 'sans-serif']
     },

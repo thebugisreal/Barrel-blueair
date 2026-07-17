@@ -8,7 +8,7 @@
 
   h1,
   .h1{
-    @apply font-roboto
+    @apply font-season
     font-700
     text-50
     leading-[58px]
@@ -16,7 +16,7 @@
 
   h2,
   .h2{
-    @apply font-roboto
+    @apply font-season
     font-700
     text-40
     leading-[46px]
@@ -24,7 +24,7 @@
 
   h3,
   .h3{
-    @apply font-roboto
+    @apply font-season
     font-700
     text-30
     leading-[38px]
@@ -32,7 +32,7 @@
 
   h4,
   .h4{
-    @apply font-gilroy
+    @apply font-season
     font-300
     text-40
     leading-[40px]
@@ -40,7 +40,7 @@
 
   h5,
   .h5{
-    @apply font-gilroy
+    @apply font-season
     font-400
     text-26
     leading-[32px]
@@ -48,21 +48,21 @@
 
   h6,
   .h6{
-    @apply font-gilroy
+    @apply font-season
     font-400
     text-22
     leading-[28px]
   }
 
   .s1 {
-    @apply font-roboto
+    @apply font-gilroy
     font-700
     text-20
     leading-[28px]
   }
 
   .s2 {
-    @apply font-roboto
+    @apply font-gilroy
     font-700
     text-18
     leading-[28px]
