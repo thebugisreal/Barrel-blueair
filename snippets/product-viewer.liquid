@@ -10,6 +10,22 @@
           </div>
         </div>
         <p class="p3 font-700">{{ 'products.technical_specifications.product_viewer' | t }}</p>
+        <predictive-search data-module="predictive-pro" data-search-type="predictive" data-search-max="10" data-search-enable="true">
+            <div class="heading">Predictive search</div>
+            <input type="text" name="q">
+            <span class="js-button">Submit</span>
+        </predictive-search>
+
+        <faq-posts>
+            <dl>
+                <dt>First question</dt>
+                <dd>Lorem ipsum</dd>
+            </dl>
+            <dl>
+                <dt>Second question</dt>
+                <dd>Lorem ipsum</dd>
+            </dl>
+        </faq-posts>
     </div>
     <script type="application/json" id="ProductViewerImageJSON-{{ product.id }}" js-product-viewer-image-json>
         {
