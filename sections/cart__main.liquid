@@ -598,16 +598,19 @@
                       <p class="totals__subtotal-value s2">{{ cart.total_price | money }}</p>
                     </div>
                     {% if localization.country == 'Deutschland' or localization.country == 'Germany' %}
-                      <p class="p4 mb-xs">{{ settings.vat_included_msg | default: 'Including VAT'}}</p>
+                      <p class="p4 {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}mb-4{% else %}mb-xs{% endif %}">{{ settings.vat_included_msg | default: 'Including VAT'}}</p>
                     {% else %}
-                      <p class="p4 mb-xs">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
+                      <p class="p4 {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}mb-4{% else %}mb-xs{% endif %}">{{ settings.taxes_included_msg | default: 'Taxes calculated at checkout' }}</p>
+                    {% endif %}
+                    {% if shop.permanent_domain == 'uk-blueair.myshopify.com' %}
+                      <p class="p4 mb-xs">PayPal - credit/debit card checkout available (no account required)</p>
                     {% endif %}
                     <div>
                       {%- if cart.cart_level_discount_applications.size > 0 -%}
                         <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                           {%- for discount in cart.cart_level_discount_applications -%}
                             <li class="discounts__discount discounts__discount--end">
-                              {{ discount.title }}
+                              Discountsss
                               (-{{ discount.total_allocated_amount | money }})
                             </li>
                           {%- endfor -%}
@@ -620,7 +623,7 @@
           
                   <div class="cart__ctas" {{ block.shopify_attributes }}>
                     <button class="cart__checkout-button p2 btn btn--blue-rounded w-full justify-between" type="submit" id="CartDrawer-Checkout" name="checkout" form="CartDrawer-Form">
-                      <span class="btn__text">{{ 'sections.cart.cta' | t }}</span>
+                      <span class="btn__text">Submit</span>
                       <span class="btn__arrow">{{ 'icon-arrow-right.svg' | inline_asset_content }}</span>
                     </button>
                   </div>
