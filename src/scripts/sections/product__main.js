@@ -1861,12 +1861,50 @@ class ProductMain extends HTMLElement {
         if (!this.isQuickView) {
           const oldSections = document.querySelectorAll('#MainContent .shopify-section');
           const newSections = html.querySelectorAll('#MainContent .shopify-section');
+          const productId = html.querySelector('[data-product-id]')?.dataset.productId;
+
+          const okeSelector = '[data-oke-widget], [data-oke-media-grid], [data-oke-carousel]';
+          const shopifyProductId = productId && `shopify-${productId}`;
+          const getOkeType = (el) => {
+            if (el.hasAttribute('data-oke-widget')) return 'widget';
+            if (el.hasAttribute('data-oke-media-grid')) return 'media-grid';
+            if (el.hasAttribute('data-oke-carousel')) return 'carousel';
+            return null;
+          };
 
           oldSections.forEach((section, index) => {
+            if (!newSections[index]) return;
+
+            const preserved = [...section.querySelectorAll(okeSelector)];
+
             section.innerHTML = newSections[index].innerHTML;
+
+            const targetsByType = new Map();
+            section.querySelectorAll(okeSelector).forEach((target) => {
+              const type = getOkeType(target);
+              if (!type) return;
+              if (!targetsByType.has(type)) targetsByType.set(type, []);
+              targetsByType.get(type).push(target);
+            });
+
+            preserved.forEach((el) => {
+              const type = getOkeType(el);
+              const target = type && targetsByType.get(type)?.shift();
+              if (!target) return;
+
+              target.replaceWith(el);
+
+              if (shopifyProductId && window.okeWidgetApi?.setProduct) {
+                window.okeWidgetApi.setProduct(el, shopifyProductId);
+              }
+            });
           })
 
           window.history.pushState({}, "", url);
+
+          document.querySelectorAll('[data-oke-star-rating]').forEach((el) => {
+            window.okeWidgetApi?.initWidget?.(el);
+          });
         } else {
           document.dispatchEvent(new CustomEvent('quick-view:render', {
             detail: html
