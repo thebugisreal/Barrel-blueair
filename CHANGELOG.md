@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.15] - 2026-07-30
+
+### Fixed
+- BEA-126: Desktop nav menu stays open after middle-click opens a link in a new tab
+- BEA-131: PDP apps (Okendo) fail to render when switching back to an out-of-stock variant
+
 ## [1.1.14] - 2026-07-15
 
 ### Added
