@@ -20,6 +20,11 @@
       "admin_link_html": "Are you the store owner? <a href=\"\/admin\" class=\"link underlined-link\">Log in here<\/a>",
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
+    "navigation": {
+      "home": "Home",
+      "next": "Next",
+      "previous": "Previous"
+    },
     "social": {
       "alt_text": {
         "share_on_facebook": "Share on Facebook",

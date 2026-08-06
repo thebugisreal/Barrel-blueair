@@ -58,6 +58,10 @@
 
 <s-product role="section" class="product" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
+  {%- render 'breadcrumbs',
+    show_breadcrumbs: true,
+    class: 'fs-body-50'
+  -%}
   <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
     <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)] extrawide:max-w-[675px] extrawide:ml-auto">
       {%- capture thumb_carousel_options -%}

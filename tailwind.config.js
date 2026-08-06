@@ -28,6 +28,8 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       white: "#ffffff",
+      primary: "#142333",
+      secondary: "#6D6E71",
       black: {
         true: "#000000",
         DEFAULT: "#000000",
