@@ -1,0 +1,40 @@
+{% comment %}
+  Renders all Icon content blocks at the designated product gallery position.
+
+  @param {array} blocks - Product section icon_content blocks
+  @param {string} class - Responsive placement class
+{% endcomment %}
+
+{% if blocks.size > 0 %}
+  {% assign has_content = false %}
+  {% for block in blocks %}
+    {% if block.settings.icon != blank or block.settings.heading != blank or block.settings.content != blank %}
+      {% assign has_content = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if has_content %}
+    <div class="product__icon-content-grid {{ class }}">
+      {% for block in blocks %}
+        {% if block.settings.icon != blank or block.settings.heading != blank or block.settings.content != blank %}
+          <div class="product__icon-content-item" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <div class="product__icon-content-icon">
+                {% render 'lazy-image', image: block.settings.icon %}
+              </div>
+            {% endif %}
+            <div class="product__icon-content-copy">
+              {% if block.settings.heading != blank %}
+                <h3 class="p3 font-700">{{ block.settings.heading }}</h3>
+              {% endif %}
+              {% if block.settings.content != blank %}
+                <div class="p4 rte">{{ block.settings.content }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}

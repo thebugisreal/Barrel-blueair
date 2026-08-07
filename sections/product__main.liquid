@@ -54,6 +54,8 @@
   endif
 
   assign user_country = localization.country.iso_code | downcase
+
+  assign icon_content_blocks = section.blocks | where: 'type', 'icon_content'
 -%}
 
 <s-product role="section" class="product" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
@@ -63,7 +65,7 @@
     class: 'fs-body-50'
   -%}
   <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
-    <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)] extrawide:max-w-[675px] extrawide:ml-auto">
+    <div class="product__images flex flex-col-reverse desktop:block extrawide:max-w-[675px] extrawide:ml-auto">
       {%- capture thumb_carousel_options -%}
         {
           "loop": false,
@@ -190,9 +192,10 @@
           }
         }
       {%- endcapture -%}
-      <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid" >
+      <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid" js-product-gallery>
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
+            {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--desktop' %}
             {% assign first_render_quantity_options_images = true %}
             {% for media in product.media %}
               {% assign media_swatch = '' %}
@@ -276,6 +279,17 @@
           <div class="swiper-button-prev swiper-nav-btn left-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-prev>{{ 'icon-arrow-left.svg' | inline_asset_content }}</div>
           <div class="swiper-button-next swiper-nav-btn right-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-next>{{ 'icon-arrow-right.svg' | inline_asset_content }}</div>
         </div>
+        <button
+          type="button"
+          class="product__gallery-toggle hidden"
+          aria-controls="ProductMainCarousel-{{ product.id }}"
+          aria-expanded="false"
+          js-product-gallery-toggle
+        >
+          <span js-product-gallery-show-more>Show More</span>
+          <span class="hidden" js-product-gallery-show-less>Show Less</span>
+          <span class="product__gallery-toggle-icon">{{ 'icon-caret-down.svg' | inline_asset_content }}</span>
+        </button>
       </s-carousel>
     </div><!-- .product__images-container -->
 
@@ -861,6 +875,7 @@ tm_qual_gjiapmwgps"></div>
         {%- endform -%}
       </div>
     </div><!-- .product__info-container -->
+    {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--mobile' %}
   </div><!-- .product__layout -->
 
   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
@@ -1065,6 +1080,27 @@ tm_qual_gjiapmwgps"></div>
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "name": "Icon content",
+      "type": "icon_content",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
     },
     {
       "name": "Filter Pack",
@@ -2777,7 +2813,7 @@ tm_qual_gjiapmwgps"></div>
             }
           ],
           "default": "desktop:mb-0"
-        },
+        }
       ]
     },
     {

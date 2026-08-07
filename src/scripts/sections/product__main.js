@@ -51,7 +51,11 @@ class ProductMain extends HTMLElement {
       quanityOptionImages: '[js-quanity-option-image]',
       optionSwatchesContainers: '[js-product-option-swatches-container]',
       relatedOptionSwatch: '[js-related-option-swatch]',
-      filterPackQuantity: '[js-filter-pack-quantity]'
+      filterPackQuantity: '[js-filter-pack-quantity]',
+      productGallery: '[js-product-gallery]',
+      productGalleryToggle: '[js-product-gallery-toggle]',
+      productGalleryShowMore: '[js-product-gallery-show-more]',
+      productGalleryShowLess: '[js-product-gallery-show-less]'
     };
   }
 
@@ -82,6 +86,7 @@ class ProductMain extends HTMLElement {
 
     this._checkCartSubscriptionEdit();
     this._handleFilterPack();
+    this._handleProductGallery();
 
     if (window.innerWidth <= 768) {
       this._handleStickyBar();
@@ -117,6 +122,43 @@ class ProductMain extends HTMLElement {
 
       updateDisplay();
     });
+  }
+
+  _handleProductGallery = () => {
+    this.productGallery = this.querySelector(this._selectors.productGallery);
+    this.productGalleryToggle = this.querySelector(this._selectors.productGalleryToggle);
+
+    if (!this.productGallery || !this.productGalleryToggle) return;
+
+    this.productGalleryExpanded = false;
+    this.productGalleryToggle.addEventListener('click', this._toggleProductGallery);
+    this._updateProductGallery();
+  }
+
+  _toggleProductGallery = () => {
+    this.productGalleryExpanded = !this.productGalleryExpanded;
+    this._updateProductGallery();
+  }
+
+  _updateProductGallery = (reset = false) => {
+    if (!this.productGallery || !this.productGalleryToggle) return;
+
+    if (reset) this.productGalleryExpanded = false;
+
+    const visibleSlides = [...this.mainSlides].filter((slide) => !slide.classList.contains('hidden'));
+    this.mainSlides.forEach((slide) => {
+      slide.classList.remove('product__gallery-featured', 'product__gallery-extra');
+    });
+
+    if (visibleSlides[0]) visibleSlides[0].classList.add('product__gallery-featured');
+    visibleSlides.slice(7).forEach((slide) => slide.classList.add('product__gallery-extra'));
+
+    const hasExtraSlides = visibleSlides.length > 7;
+    this.productGallery.classList.toggle('is-expanded', this.productGalleryExpanded);
+    this.productGalleryToggle.classList.toggle('hidden', !hasExtraSlides);
+    this.productGalleryToggle.setAttribute('aria-expanded', String(this.productGalleryExpanded));
+    this.productGalleryToggle.querySelector(this._selectors.productGalleryShowMore)?.classList.toggle('hidden', this.productGalleryExpanded);
+    this.productGalleryToggle.querySelector(this._selectors.productGalleryShowLess)?.classList.toggle('hidden', !this.productGalleryExpanded);
   }
 
   _handleFilterPack = () => {
@@ -172,6 +214,7 @@ class ProductMain extends HTMLElement {
 
   disconnectedCallback() {
     this._disconnectStickyBarObserver();
+    this.productGalleryToggle?.removeEventListener('click', this._toggleProductGallery);
     window.removeEventListener("popstate", this._popStateRender);
   }
 
@@ -1503,6 +1546,7 @@ class ProductMain extends HTMLElement {
       } else {
         this._updateImageCarousel(this.currentSwatch);
       }
+      this._updateProductGallery(true);
 
     }
     this._updateStickyBar(variant)
