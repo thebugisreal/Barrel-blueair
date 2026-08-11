@@ -286,14 +286,14 @@
           aria-expanded="false"
           js-product-gallery-toggle
         >
-          <span js-product-gallery-show-more>Show More</span>
-          <span class="hidden" js-product-gallery-show-less>Show Less</span>
+          <span js-product-gallery-show-more>{{ 'products.product.show_more' | t }}</span>
+          <span class="hidden" js-product-gallery-show-less>{{ 'products.product.show_less' | t }}</span>
           <span class="product__gallery-toggle-icon">{{ 'icon-caret-down.svg' | inline_asset_content }}</span>
         </button>
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information p-md desktop:px-xl" id="ProductInfo-{{ section.id }}" js-product-info>
+    <div class="product__information p-md desktop:px-xl desktop:py-0" id="ProductInfo-{{ section.id }}" js-product-info>
       <div class="desktop:max-w-[var(--max-w-desktop)] desktop:mx-auto" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
         {%- comment -%}
           * Product Form
@@ -320,7 +320,7 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <h1 class="product__title h3 {{ spacing }}">
+                <h1 class="product__title h5 text-primary font-500 {{ spacing }}">
                   {% render 'product-title-intl', product: product %}
                 </h1>
                 {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
@@ -339,10 +339,10 @@
                 {%- endcapture -%}
                 <div class="{{ spacing }}">
                   {% if product.metafields.seed.blair_plpShortDescription != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.blair_plpShortDescription }}</p>
+                    <p class="product__short-description p4 text-[13px] text-primary mt-[2px]">{{ product.metafields.seed.blair_plpShortDescription }}</p>
                   {% endif %}
                   {% if product.metafields.seed.blair_filterSupportModels != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
+                    <p class="product__short-description p4 text-[13px] text-primary mt-[2px]">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
                   {% endif %}
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
@@ -391,7 +391,7 @@
                       {%- endcapture -%}
                       <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.product\_\_price-wrapper_+_&]:inline-flex [.mb-0.product\_\_price-wrapper_+_&]:mb-0 [.desktop\:mb-0.product\_\_price-wrapper_+_&]:desktop:mb-0">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
-                          <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                          <span class="product__badge inline-flex items-center justify-center bg-blue-mist text-[11px] leading-[1] font-[600] text-primary py-[2px] px-xs min-h-[18px] rounded-[60px]">{{ tag }}</span>
                         {% endfor %}
                       </div>
                     {% endif %}
@@ -402,11 +402,25 @@
                         {%- endcapture -%}
                         <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.product\_\_price-wrapper_+_&]:inline-flex [.mb-0.product\_\_price-wrapper_+_&]:mb-0 [.desktop\:mb-0.product\_\_price-wrapper_+_&]:desktop:mb-0">
                           {% for tag in product.metafields.seed.product_tags.value %}
-                            <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                            <span class="product__badge inline-flex items-center justify-center bg-blue-mist text-[11px] leading-[1] font-[600] text-primary py-[2px] px-xs min-h-[18px] rounded-[60px]">{{ tag }}</span>
                           {% endfor %}
                         </div>
                       {% endif %}
                   {% endif %}
+                {% endif %}
+              {% when 'pdp_info' %}
+                {% if block.settings.heading != blank or block.settings.description != blank %}
+                  {%- capture spacing -%}
+                    {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                  {%- endcapture -%}
+                  <div class="product__pdp-info-item {{ spacing }}" {{ block.shopify_attributes }}>
+                    {% if block.settings.heading != blank %}
+                      <p class="product__pdp-info-heading text-[13px] font-[600] leading-[21px] text-primary">{{ block.settings.heading }}</p>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <div class="product__pdp-info-description text-[13px] font-400 leading-[21px] text-primary rte">{{ block.settings.description }}</div>
+                    {% endif %}
+                  </div>
                 {% endif %}
               {% when 'filter_options' %}
                 {% if enable_subscription == false and product.metafields.seed.product_card_filter_products != blank %}
@@ -747,6 +761,15 @@ tm_qual_gjiapmwgps"></div>
                 {% endif %}
               {% when '@app' %}
                   {% render block %}
+                  {% if block.id contains 'okendo_star_rating' %}
+                    <style>
+                      .okeReviews.oke-sr{padding-bottom: 12px;color: #142333;}
+                      .okeReviews.oke-sr .oke-sr-count{font-size: 11px;font-weight: 600;line-height: 16px;color: #142333;}
+                      .okeReviews.oke-sr .oke-stars,
+                      .okeReviews.oke-sr .oke-stars svg{height: 12px;width: auto;color: #142333;fill: #142333;}
+                      .okeReviews.oke-sr .oke-stars svg use{width: 12px;height: 12px;fill: #142333;}
+                    </style>
+                  {% endif %}
               {% when 'upsells' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
@@ -2469,6 +2492,186 @@ tm_qual_gjiapmwgps"></div>
             }
           ],
           "default": "desktop:mb-0"
+        }
+      ]
+    },
+    {
+      "name": "PDP Info",
+      "type": "pdp_info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-xs"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-xs"
         }
       ]
     },

@@ -1,3 +1,24 @@
+/* pdp info */
+.product__pdp-info-item {
+  @apply float-left w-[calc((100%-24px)/2)];
+}
+
+.product__pdp-info-item + .product__pdp-info-item {
+  @apply ml-md;
+}
+
+.product__pdp-info-item + :not(.product__pdp-info-item) {
+  clear: both;
+}
+
+.product__pdp-info-description.rte p {
+  @apply mb-xxs;
+}
+
+.product__pdp-info-description.rte p:last-child {
+  @apply mb-0;
+}
+
 /* atc btns */
 .btn.product__atc:disabled {
   @apply pr-sm py-xs !bg-gray !text-white !border-gray;

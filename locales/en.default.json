@@ -23,7 +23,8 @@
     "navigation": {
       "home": "Home",
       "next": "Next",
-      "previous": "Previous"
+      "previous": "Previous",
+      "breadcrumbs": "Breadcrumbs"
     },
     "social": {
       "alt_text": {
@@ -124,6 +125,8 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "show_more": "Show More",
+      "show_less": "Show Less",
       "description": "Description",
       "on_sale": "Sale",
       "product_variants": "Product variants",

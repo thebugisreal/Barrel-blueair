@@ -1,7 +1,7 @@
 {%- assign current_template = template | split: '.' | first -%}
 {%- assign class = class | default: 'fs-body-75' -%}
 
-<nav class="breadcrumbs flex ff-body {{ class }}" role="navigation" aria-label="breadcrumbs">
+<nav class="breadcrumbs flex ff-body {{ class }}" role="navigation" aria-label="{{ 'general.navigation.breadcrumbs' | t }}">
   {%- if show_breadcrumbs -%}
     <ol class="breadcrumbs__list list-none">
       {%- unless current_template == 'product' and collection.url -%}
@@ -21,19 +21,21 @@
           <li class="breadcrumbs__item">
             <span class="breadcrumbs__current" aria-current="page">{{ product.title }}</span>
           </li>
-        {%- when 'collection' and collection.handle -%}
-          {%- if current_tags -%}
-            <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ collection.url }}">{{ collection.title }}</a>
-              <div class="breadcrumbs__icon">/</div>
-            </li>
-            <li class="breadcrumbs__item">
-              <span class="breadcrumbs__current" aria-current="page">{{- current_tags | join: ' + ' -}}</span>
-            </li>
-          {%- else -%}
-            <li class="breadcrumbs__item">
-              <span class="breadcrumbs__current" aria-current="page">{{ collection.title }}</span>
-            </li>
+        {%- when 'collection' -%}
+          {%- if collection.handle -%}
+            {%- if current_tags -%}
+              <li class="breadcrumbs__item">
+                <a class="breadcrumbs__link" href="{{ collection.url }}">{{ collection.title }}</a>
+                <div class="breadcrumbs__icon">/</div>
+              </li>
+              <li class="breadcrumbs__item">
+                <span class="breadcrumbs__current" aria-current="page">{{- current_tags | join: ' + ' -}}</span>
+              </li>
+            {%- else -%}
+              <li class="breadcrumbs__item">
+                <span class="breadcrumbs__current" aria-current="page">{{ collection.title }}</span>
+              </li>
+            {%- endif -%}
           {%- endif -%}
         {%- when 'blog' -%}
           <li class="breadcrumbs__item">
@@ -88,8 +90,8 @@
         "position": 1,
         "item":
         {
-          "@id": "{{ routes.root_url | prepend: shop.url }}",
-          "name": "{{ 'general.navigation.home' | t }}"
+          "@id": {{ routes.root_url | prepend: shop.url | json }},
+          "name": {{ 'general.navigation.home' | t | json }}
         }
       },
       {%- case current_template -%}
@@ -100,8 +102,8 @@
               "position": 2,
               "item":
               {
-                "@id": "{{ collection.url | prepend: shop.url }}",
-                "name": "{{ collection.title }}"
+                "@id": {{ collection.url | prepend: shop.url | json }},
+                "name": {{ collection.title | json }}
               }
             },
           {%- endif -%}
@@ -110,40 +112,42 @@
             "position": {%- if collection.url -%}3{%- else -%}2{%- endif -%},
             "item":
             {
-              "@id": "{{ product.url | prepend: shop.url }}",
-              "name": "{{ product.title }}"
+              "@id": {{ product.url | prepend: shop.url | json }},
+              "name": {{ product.title | json }}
             }
           }
-        {%- when 'collection' and collection.handle -%}
-          {%- if current_tags -%}
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item":
+        {%- when 'collection' -%}
+          {%- if collection.handle -%}
+            {%- if current_tags -%}
               {
-                "@id": "{{ collection.url | prepend: shop.url  }}",
-                "name": "{{ collection.title }}"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item":
+                "@type": "ListItem",
+                "position": 2,
+                "item":
+                {
+                  "@id": {{ collection.url | prepend: shop.url | json }},
+                  "name": {{ collection.title | json }}
+                }
+              },
               {
-                "@id": "{{ collection.url | prepend: shop.url }}",
-                "name": "{{- current_tags | join: ' + ' -}}"
+                "@type": "ListItem",
+                "position": 3,
+                "item":
+                {
+                  "@id": {{ collection.url | prepend: shop.url | json }},
+                  "name": {{ current_tags | join: ' + ' | json }}
+                }
               }
-            }
-          {%- else -%}
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item":
+            {%- else -%}
               {
-                "@id": "{{ collection.url | prepend: shop.url }}",
-                "name": "{{ collection.title }}"
+                "@type": "ListItem",
+                "position": 2,
+                "item":
+                {
+                  "@id": {{ collection.url | prepend: shop.url | json }},
+                  "name": {{ collection.title | json }}
+                }
               }
-            }
+            {%- endif -%}
           {%- endif -%}
         {%- when 'article' -%}
           {
@@ -151,8 +155,8 @@
             "position": 2,
             "item":
               {
-                "@id": "{{ blog.url| prepend: shop.url }}",
-                "name": "{{ blog.title }}"
+                "@id": {{ blog.url | prepend: shop.url | json }},
+                "name": {{ blog.title | json }}
               }
           },
           {
@@ -160,8 +164,8 @@
             "position": 3,
             "item":
               {
-                "@id": "{{ article.url | prepend: shop.url }}",
-                "name": "{{ article.title }}"
+                "@id": {{ article.url | prepend: shop.url | json }},
+                "name": {{ article.title | json }}
               }
           }
       {%- endcase -%}
