@@ -1,5 +1,5 @@
 .breadcrumbs {
-  @apply flex px-md pt-xs pb-xxs widescreen:px-xl widescreen:pt-md widescreen:pb-sm p6 text-primary;
+  @apply flex px-md pt-xs pb-xxs desktop:px-xl desktop:pt-md desktop:pb-sm p6 text-primary;
 }
 
 .breadcrumbs__list,

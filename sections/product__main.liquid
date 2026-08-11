@@ -64,8 +64,8 @@
     show_breadcrumbs: true,
     class: 'fs-body-50'
   -%}
-  <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
-    <div class="product__images flex flex-col-reverse desktop:block extrawide:max-w-[675px] extrawide:ml-auto">
+  <div class="product__layout desktop:grid desktop:grid-cols-[minmax(0,56.875vw)_minmax(0,1fr)] desktop:items-start desktop:pl-xl">
+    <div class="product__images flex flex-col-reverse desktop:block">
       {%- capture thumb_carousel_options -%}
         {
           "loop": false,
@@ -293,8 +293,7 @@
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information p-md desktop:px-xl desktop:py-0" id="ProductInfo-{{ section.id }}" js-product-info>
-      <div class="desktop:max-w-[var(--max-w-desktop)] desktop:mx-auto" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
+    <div class="product__information p-md desktop:pt-16 desktop:pb-0 desktop:pl-48 desktop:pr-64" id="ProductInfo-{{ section.id }}" js-product-info>
         {%- comment -%}
           * Product Form
         {%- endcomment -%}
@@ -896,7 +895,6 @@ tm_qual_gjiapmwgps"></div>
           {% endif %}
 
         {%- endform -%}
-      </div>
     </div><!-- .product__info-container -->
     {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--mobile' %}
   </div><!-- .product__layout -->
@@ -1088,12 +1086,6 @@ tm_qual_gjiapmwgps"></div>
 {
   "name": "Product",
   "settings": [
-    {
-      "type": "text",
-      "id": "buybox_max_width",
-      "label": "Buybox Content Max Width - Desktop",
-      "info": "Make sure to include units"
-    },
     {
       "type": "checkbox",
       "id": "show_truemed",
