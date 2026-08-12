@@ -1,3 +1,5 @@
+const PRODUCT_GALLERY_INITIAL_VISIBLE = 7;
+
 class ProductMain extends HTMLElement {
   constructor() {
     super();
@@ -145,16 +147,27 @@ class ProductMain extends HTMLElement {
 
     if (reset) this.productGalleryExpanded = false;
 
+    this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
     const visibleSlides = [...this.mainSlides].filter((slide) => !slide.classList.contains('hidden'));
+    const initialVisibleCount = 7;
+    const hasExtraSlides = visibleSlides.length > initialVisibleCount;
+
     this.mainSlides.forEach((slide) => {
       slide.classList.remove('product__gallery-featured', 'product__gallery-extra');
     });
 
     if (visibleSlides[0]) visibleSlides[0].classList.add('product__gallery-featured');
-    visibleSlides.slice(7).forEach((slide) => slide.classList.add('product__gallery-extra'));
 
-    const hasExtraSlides = visibleSlides.length > 7;
+    if (hasExtraSlides) {
+      visibleSlides.slice(initialVisibleCount).forEach((slide) => {
+        slide.classList.add('product__gallery-extra');
+      });
+    } else {
+      this.productGalleryExpanded = false;
+    }
+
     this.productGallery.classList.toggle('is-expanded', this.productGalleryExpanded);
+    this.productGalleryToggle.classList.toggle('is-visible', hasExtraSlides);
     this.productGalleryToggle.classList.toggle('hidden', !hasExtraSlides);
     this.productGalleryToggle.setAttribute('aria-expanded', String(this.productGalleryExpanded));
     this.productGalleryToggle.querySelector(this._selectors.productGalleryShowMore)?.classList.toggle('hidden', this.productGalleryExpanded);

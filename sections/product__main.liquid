@@ -64,7 +64,7 @@
     show_breadcrumbs: true,
     class: 'fs-body-50'
   -%}
-  <div class="product__layout desktop:grid desktop:grid-cols-[minmax(0,56.875vw)_minmax(0,1fr)] desktop:items-start desktop:pl-xl">
+  <div class="product__layout desktop:grid desktop:grid-cols-[minmax(0,56.875vw)_minmax(0,1fr)] desktop:items-start desktop:pl-xl desktop:pb-44">
     <div class="product__images flex flex-col-reverse desktop:block">
       {%- capture thumb_carousel_options -%}
         {
@@ -196,6 +196,7 @@
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
             {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--desktop' %}
+            {% render 'product-feature-highlights', class: 'product__feature-highlights--desktop' %}
             {% assign first_render_quantity_options_images = true %}
             {% for media in product.media %}
               {% assign media_swatch = '' %}
