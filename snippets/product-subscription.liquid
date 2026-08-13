@@ -79,8 +79,8 @@
       </div>
     </button>
     <div class="product-subscription__content {% if is_quick_view %}px-[10px]{% else %}px-xs desktop:px-md{% endif %} transition-[max-height] duration-500">
-      {% if filter_subscription.description_1_bullets != blank %}
-        <div class="product-subscription__description-container border-t border-gray pt-[16px] flex gap-[12px] empty:hidden">
+      {% if filter_subscription.description_1_bullets != blank or filter_subscription.description_2_bullets != blank %}
+        <div class="product-subscription__description-container border-t border-gray pt-[16px] flex gap-[12px]">
           {%- for i in (1..2) -%}
             {%- assign description_title_handle = 'description_' | append: i | append: '_title' -%}
             {%- assign description_bullets_handle = 'description_' | append: i | append: '_bullets' -%}

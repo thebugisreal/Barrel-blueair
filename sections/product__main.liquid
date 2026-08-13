@@ -588,7 +588,7 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">
+                <div class="flex flex-col {{ spacing }} tabletl:items-center tabletl:justify-between" {{ block.shopify_attributes }}>
                   {%- unless current_variant.available -%}
                     <a class="btn btn--blue-rounded relative mx-auto w-full justify-center h-[50px] klaviyo-bis-trigger" href="#">{{ 'products.product.notify_me_when_available' | t }}</a>
                   {%- endunless -%}
@@ -614,6 +614,11 @@
                     </div>
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
+                  {% if block.settings.estimated_delivery != blank %}
+                    <p class="product__estimated-delivery w-full text-[11px] leading-[16px] font-[600] text-primary text-center mt-xs">
+                      {{ block.settings.estimated_delivery }}
+                    </p>
+                  {% endif %}
                   {% if settings.show_dynamic_checkout %}
                     <div class="product__dynamic-checkout w-full -mt-[12px] {% unless current_variant.available %} hidden {% endunless %}">
                       {{ form | payment_button }}
@@ -2868,6 +2873,15 @@ tm_qual_gjiapmwgps"></div>
       "name": "ATC Button",
       "type": "atc",
       "settings": [
+        {
+          "type": "header",
+          "content": "Estimated Delivery"
+        },
+        {
+          "type": "text",
+          "id": "estimated_delivery",
+          "label": "Text"
+        },
         {
           "type": "header",
           "content": "Layout"
