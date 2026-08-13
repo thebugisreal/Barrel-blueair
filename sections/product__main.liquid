@@ -615,7 +615,7 @@
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
                   {% if block.settings.estimated_delivery != blank %}
-                    <p class="product__estimated-delivery w-full text-[11px] leading-[16px] font-[600] text-primary text-center mt-xs">
+                    <p class="product__estimated-delivery w-full text-[11px] leading-[16px] font-[600] text-primary text-center mt-xs mb-md">
                       {{ block.settings.estimated_delivery }}
                     </p>
                   {% endif %}
@@ -626,11 +626,10 @@
                   {% endif %}
 
                   {% if section.settings.show_truemed %}
-                    <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
-tm_qual_gjiapmwgps"></div>
+                    <div id="truemed-instructions" style="font-size: 12px; margin: 0 auto;" icon-height="12" data-public-id="tm_qual_gjiapmwgps"></div>
                   {% endif %}
                   {% unless template.suffix == 'gift-card' %}
-                    <p class="affirm-as-low-as mx-auto text-12" data-page-type="product" data-amount="{{current_variant.price}}"></p>
+                    <p class="affirm-as-low-as mx-auto text-[11px] leading-[16px] text-secondary mt-xxs" data-page-type="product" data-amount="{{current_variant.price}}"></p>
                   {% endunless %}
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
