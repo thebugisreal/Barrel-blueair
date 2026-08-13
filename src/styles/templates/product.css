@@ -434,7 +434,7 @@
 /* subscription */
 .product__subscription[data-selected="true"],
 .product__non-subscription[data-selected="true"] {
-  @apply bg-gray-athans;
+  @apply bg-white;
 }
 
 .product__subscription[data-selected="true"] .checkbox,
