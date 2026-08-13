@@ -1774,6 +1774,17 @@ class ProductMain extends HTMLElement {
       }
 
       const isUpsellContext = option.closest('product-upsell') !== null;
+      const sizeLabels = optionKind === 'size'
+        ? JSON.parse(this.querySelector('[js-related-size-labels]')?.textContent || '{}')
+        : {};
+
+      if (optionKind === 'size') {
+        products.sort((a, b) => {
+          const aOrder = sizeLabels[(a.size || '').toLowerCase()]?.order ?? 99;
+          const bOrder = sizeLabels[(b.size || '').toLowerCase()]?.order ?? 99;
+          return aOrder - bOrder;
+        });
+      }
 
       let html = '';
       products.forEach((p, index) => {
@@ -1836,28 +1847,30 @@ class ProductMain extends HTMLElement {
         // Main product: original link/redirect behavior
         // Handle size options differently from color/material options
         if (optionKind === 'size') {
-          const aria = `${p.title} – Size ${p.size || label}`;
-          const sizeLabel = p.size || label;
-          const optionTag = p.optionTag ? `<span class="product__related-size-option-tag">${p.optionTag}</span>` : '';
+          const sizeKey = (p.size || label || '').toLowerCase();
+          const sizeMeta = sizeLabels[sizeKey] || {};
+          const sizeLabel = sizeMeta.name || p.size || label;
+          const roomLabel = sizeMeta.room || '';
+          const aria = `${p.title} – Size ${sizeLabel}${roomLabel ? ` ${roomLabel}` : ''}`;
 
           if (isCurrent) {
             html += `
-              <div class="product__related-size-current" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch>
-                ${sizeLabel}
-                ${optionTag}
+              <div class="product__related-size-current" aria-label="${aria}" data-swatch="${sizeKey}" js-related-option-swatch>
+                <span class="product-related-size__name">${sizeLabel}</span>
+                ${roomLabel ? `<span class="product-related-size__room">${roomLabel}</span>` : ''}
               </div>`;
           } else {
             html += `
-              <a href="${href}" class="product-related-size" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch js-option-swatch-link>
-                ${sizeLabel}
-                ${optionTag}
+              <a href="${href}" class="product-related-size" aria-label="${aria}" data-swatch="${sizeKey}" js-related-option-swatch js-option-swatch-link>
+                <span class="product-related-size__name">${sizeLabel}</span>
+                ${roomLabel ? `<span class="product-related-size__room">${roomLabel}</span>` : ''}
               </a>`;
           }
         } else {
           // Original color/material swatch logic
           const baseClasses = optionKind === 'material'
             ? 'w-40 h-40 rounded-full flex relative'
-            : 'w-[22px] h-[22px] rounded-full flex relative';
+            : 'w-[24px] h-[24px] rounded-full flex relative';
           const aria = optionKind === 'material'
             ? `${p.title} – Type ${label}`
             : `${p.title} in ${label} color`;
@@ -1877,10 +1890,13 @@ class ProductMain extends HTMLElement {
       });
 
       option.insertAdjacentHTML('beforeend', html);
-      const swatches = option.querySelectorAll('[js-related-option-swatch]');
-      Array.from(swatches)
-        .sort((a, b) => a.dataset.swatch?.toLowerCase().localeCompare(b.dataset.swatch?.toLowerCase() || '') || 0)
-        .forEach(el => el.parentNode.appendChild(el));
+
+      if (optionKind !== 'size') {
+        const swatches = option.querySelectorAll('[js-related-option-swatch]');
+        Array.from(swatches)
+          .sort((a, b) => a.dataset.swatch?.toLowerCase().localeCompare(b.dataset.swatch?.toLowerCase() || '') || 0)
+          .forEach(el => el.parentNode.appendChild(el));
+      }
 
       if (isUpsellContext) {
         const upsell = option.closest('product-upsell');

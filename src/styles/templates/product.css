@@ -163,7 +163,7 @@
   }
 
   .product__main-carousel [js-main-carousel-slide] {
-    @apply w-auto overflow-hidden rounded-[16px];
+    @apply w-auto overflow-hidden rounded-[24px];
     width: auto !important;
     height: auto;
     order: 3;
@@ -221,7 +221,7 @@
 }
 
 .product__feature-highlights {
-  @apply grid grid-cols-1 gap-12 desktop:gap-40 py-[12px] px-[16px] desktop:p-md desktop:mt-md rounded-[16px] text-primary;
+  @apply grid grid-cols-1 gap-12 desktop:gap-40 py-[12px] px-[16px] desktop:p-md desktop:mt-md rounded-[24px] text-primary;
   background-color: #EFF3F6;
 }
 
@@ -614,7 +614,7 @@ s-carousel.pointer-event {
 
 .product__related-color-current::after {
   content: '';
-  @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[31px] h-[31px] rounded-full border border-blue;
+  @apply block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32px] h-[32px] rounded-full border border-primary;
 
   [data-is-quick-view] & {
     @apply w-[40px] h-[40px];
@@ -633,12 +633,30 @@ s-carousel.pointer-event {
 }
 
 /* Size options styling */
-.product__related-size-current {
-  @apply p-xxs py-[10px] w-[99px] h-[25px] rounded-[3px] bg-blue text-white border border-blue flex justify-center items-center relative;
+.product__related-sizes {
+  @apply grid grid-cols-3 gap-xxs;
+}
+
+.product__related-size-current,
+.product-related-size {
+  @apply flex flex-col items-start justify-center gap-[4px] w-full min-h-[52px] py-xxs px-sm rounded-[12px] border border-gray text-primary no-underline relative;
+}
+
+.product__related-size-current,
+.product-related-size:hover {
+  @apply bg-primary text-white border-primary no-underline transition-colors;
 }
 
 .product-related-size {
-  @apply p-xxs py-[10px] w-[99px] h-[25px] rounded-[3px] border border-gray flex justify-center items-center cursor-pointer relative;
+  @apply bg-white cursor-pointer transition-colors;
+}
+
+.product-related-size__name {
+  @apply text-[13px] font-[600] leading-[21px];
+}
+
+.product-related-size__room {
+  @apply text-[11px] font-400 leading-[16px];
 }
 
 .product__related-size-option-tag {

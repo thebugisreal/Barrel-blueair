@@ -42,7 +42,19 @@
       assign related_tag_scent = tag
     endif
     if tag contains 'size:'
-      assign size_tag = tag | split: 'size:' | last | capitalize
+      assign size_tag_key = tag | split: 'size:' | last | strip | downcase
+      case size_tag_key
+        when 'small'
+          assign size_tag = 'products.product.related_sizes.small' | t
+        when 'medium'
+          assign size_tag = 'products.product.related_sizes.medium' | t
+        when 'large'
+          assign size_tag = 'products.product.related_sizes.large' | t
+        when 'extralarge'
+          assign size_tag = 'products.product.related_sizes.extra_large' | t
+        else
+          assign size_tag = size_tag_key | capitalize
+      endcase
     endif
   endfor
 
@@ -320,8 +332,8 @@
 
                   {% if size_tag != blank and related_tag_size != blank %}
                     <div class="product__realated-sizes-container mt-xxs mb-sm">
-                      <span class="product__related-size-label block p3 text-blue mb-xxxs">Size: {{size_tag}}</span>
-                      <div class="product__related-sizes flex flex-row-reverse justify-end flex-wrap gap-xs"
+                      <span class="product__related-size-label block p3 text-blue mb-xxxs">{{ 'products.product.related_sizes.label' | t: size: size_tag }}</span>
+                      <div class="product__related-sizes"
                         data-handle="{{product.handle}}"
                         data-collection="{{related_tag_size}}"
                         data-option="size"
@@ -334,8 +346,8 @@
                     <div class="product__realted-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block p3 text-blue mb-xxxs">Color: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block p3 text-primary mb-xxxs">Color: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_color}}"
                             data-option="color"
@@ -350,8 +362,8 @@
                     <div class="product__realted-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Type: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block font-700 p3 text-primary mb-xxs">Type: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_material}}"
                             data-option="material"
@@ -366,8 +378,8 @@
                     <div class="product__related-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Aroma: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block font-700 p3 text-primary mb-xxs">Aroma: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_scent}}"
                             data-option="scent"
@@ -720,6 +732,14 @@ tm_qual_gjiapmwgps"></div>
   </div><!-- .product__layout -->
 
   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
+  <script type="application/json" js-related-size-labels>
+    {
+      "small": {"name": {{ 'products.product.related_sizes.small' | t | json }}, "room": {{ 'products.product.related_sizes.small_room' | t | json }}, "order": 0},
+      "medium": {"name": {{ 'products.product.related_sizes.medium' | t | json }}, "room": {{ 'products.product.related_sizes.medium_room' | t | json }}, "order": 1},
+      "large": {"name": {{ 'products.product.related_sizes.large' | t | json }}, "room": {{ 'products.product.related_sizes.large_room' | t | json }}, "order": 2},
+      "extralarge": {"name": {{ 'products.product.related_sizes.extra_large' | t | json }}, "room": {{ 'products.product.related_sizes.extra_large_room' | t | json }}, "order": 3}
+    }
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

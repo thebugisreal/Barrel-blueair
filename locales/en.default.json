@@ -131,6 +131,17 @@
       "on_sale": "Sale",
       "product_variants": "Product variants",
       "full_details": "Full details",
+      "related_sizes": {
+        "label": "Size: {{ size }}",
+        "small": "Small",
+        "small_room": "< 200 ft²",
+        "medium": "Medium",
+        "medium_room": "200-400 ft²",
+        "large": "Large",
+        "large_room": "400-600 ft²",
+        "extra_large": "Extra Large",
+        "extra_large_room": "> 600 ft²"
+      },
       "media": {
         "open_featured_media": "Open featured media in gallery view",
         "open_media": "Open media {{ index }} in gallery view",
