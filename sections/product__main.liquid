@@ -594,12 +594,12 @@
                   {%- endunless -%}
 
                   <button
-                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center {% unless current_variant.available %} hidden {% endunless %}"
+                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center bg-primary text-white {% unless current_variant.available %} hidden {% endunless %}"
 
                     type="submit"
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>
-                    <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
+                    <div class="btn__text whitespace-nowrap flex items-center text-[15px] leading-[22px] font-[600]">
                       <span js-price>
                         {{ current_variant.price | money }}
                       </span>
