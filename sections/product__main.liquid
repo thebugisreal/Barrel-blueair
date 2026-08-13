@@ -70,8 +70,10 @@
         {
           "loop": false,
           "autoHeight": false,
-          "spaceBetween": 8,
+          "spaceBetween": 7,
+          "slidesPerView": "auto",
           "watchSlidesProgress": true,
+          "watchOverflow": true,
           "navigation": {
             "enabled": true,
             "prevEl": "[js-pdp-thumb-prev]",
@@ -79,8 +81,9 @@
           }
         }
       {%- endcapture -%}
-      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md w-fit mx-auto">
-        <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-[350px] px-[40px]" js-carousel js-pdp-carousel is-thumb-carousel data-slide-count="{{ product.media.size }}">
+      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel">
+        <div class="product__thumb-carousel-nav product__thumb-carousel-nav--prev swiper-button-prev after:content-none" js-pdp-thumb-prev>{{ 'icon-active-left.svg' | inline_asset_content }}</div>
+        <div id="ProductThumbCarousel-{{ product.id }}" class="product__thumb-carousel-swiper swiper" js-carousel js-pdp-carousel is-thumb-carousel data-slide-count="{{ product.media.size }}">
           <div class="swiper-wrapper">
             {% assign first_render_quantity_options_images = true %}
             {% assign current_slides_count = 0 %}
@@ -141,7 +144,7 @@
 
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[32px] min-w-[32px]" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {% if forloop.first %}
                       {% assign loading = 'eager' %}
                       {% assign fetchpriority = 'high' %}
@@ -164,21 +167,18 @@
 
                   </div>
                 {% when 'video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[32px] min-w-[32px]" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | video_tag:  autoplay: true, loop: true, mute: true, class: "w-full" }}
                   </div>
                 {% when 'external_video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[32px] min-w-[32px]" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | external_video_tag }}
                   </div>
               {% endcase %}
             {% endfor %}
           </div>
-          <div class="swiper-button-prev left-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-prev>{{ 'icon-active-left.svg' | inline_asset_content }}</div>
-          <div class="swiper-button-next right-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none {% if current_slides_count < 2 %}hide-thumb-carousel{% endif %}" js-pdp-thumb-next>{{ 'icon-active-right.svg' | inline_asset_content }}</div>
-          <div class="absolute h-full w-[40px] left-0 top-0 z-[5]" style="background: linear-gradient(to right, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
-          <div class="absolute h-full w-[40px] right-0 top-0 z-[5]" style="background: linear-gradient(to left, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
         </div>
+        <div class="product__thumb-carousel-nav product__thumb-carousel-nav--next swiper-button-next after:content-none {% if current_slides_count < 2 %}hide-thumb-carousel{% endif %}" js-pdp-thumb-next>{{ 'icon-active-right.svg' | inline_asset_content }}</div>
       </s-carousel>
       {%- capture main_carousel_options -%}
         {
@@ -896,6 +896,8 @@ tm_qual_gjiapmwgps"></div>
           {% endif %}
 
         {%- endform -%}
+      
+      {% render 'product-feature-highlights', class: 'product__feature-highlights--mobile' %}
     </div><!-- .product__info-container -->
     {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--mobile' %}
   </div><!-- .product__layout -->

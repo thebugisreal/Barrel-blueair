@@ -129,12 +129,15 @@ class ProductMain extends HTMLElement {
   _handleProductGallery = () => {
     this.productGallery = this.querySelector(this._selectors.productGallery);
     this.productGalleryToggle = this.querySelector(this._selectors.productGalleryToggle);
+    this.thumbCarousel = this.querySelector('.product__thumb-carousel');
 
-    if (!this.productGallery || !this.productGalleryToggle) return;
+    if (this.productGalleryToggle) {
+      this.productGalleryExpanded = false;
+      this.productGalleryToggle.addEventListener('click', this._toggleProductGallery);
+      this._updateProductGallery();
+    }
 
-    this.productGalleryExpanded = false;
-    this.productGalleryToggle.addEventListener('click', this._toggleProductGallery);
-    this._updateProductGallery();
+    this._updateThumbCarouselArrows();
   }
 
   _toggleProductGallery = () => {
@@ -143,35 +146,51 @@ class ProductMain extends HTMLElement {
   }
 
   _updateProductGallery = (reset = false) => {
-    if (!this.productGallery || !this.productGalleryToggle) return;
+    const gallery = this.productGallery;
+    const toggle = this.productGalleryToggle;
+    if (!gallery || !toggle) return;
 
     if (reset) this.productGalleryExpanded = false;
 
-    this.mainSlides = this.querySelectorAll(this._selectors.mainSlide);
-    const visibleSlides = [...this.mainSlides].filter((slide) => !slide.classList.contains('hidden'));
-    const initialVisibleCount = 7;
-    const hasExtraSlides = visibleSlides.length > initialVisibleCount;
-
-    this.mainSlides.forEach((slide) => {
+    const visible = [];
+    for (const slide of this.querySelectorAll(this._selectors.mainSlide)) {
       slide.classList.remove('product__gallery-featured', 'product__gallery-extra');
-    });
-
-    if (visibleSlides[0]) visibleSlides[0].classList.add('product__gallery-featured');
-
-    if (hasExtraSlides) {
-      visibleSlides.slice(initialVisibleCount).forEach((slide) => {
-        slide.classList.add('product__gallery-extra');
-      });
-    } else {
-      this.productGalleryExpanded = false;
+      if (!slide.classList.contains('hidden')) visible.push(slide);
     }
 
-    this.productGallery.classList.toggle('is-expanded', this.productGalleryExpanded);
-    this.productGalleryToggle.classList.toggle('is-visible', hasExtraSlides);
-    this.productGalleryToggle.classList.toggle('hidden', !hasExtraSlides);
-    this.productGalleryToggle.setAttribute('aria-expanded', String(this.productGalleryExpanded));
-    this.productGalleryToggle.querySelector(this._selectors.productGalleryShowMore)?.classList.toggle('hidden', this.productGalleryExpanded);
-    this.productGalleryToggle.querySelector(this._selectors.productGalleryShowLess)?.classList.toggle('hidden', !this.productGalleryExpanded);
+    const hasExtra = visible.length > PRODUCT_GALLERY_INITIAL_VISIBLE;
+    if (!hasExtra) this.productGalleryExpanded = false;
+
+    visible[0]?.classList.add('product__gallery-featured');
+    if (hasExtra) {
+      for (let i = PRODUCT_GALLERY_INITIAL_VISIBLE; i < visible.length; i++) {
+        visible[i].classList.add('product__gallery-extra');
+      }
+    }
+
+    const expanded = this.productGalleryExpanded;
+    gallery.classList.toggle('is-expanded', expanded);
+    toggle.classList.toggle('is-visible', hasExtra);
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.querySelector(this._selectors.productGalleryShowMore)?.classList.toggle('hidden', expanded);
+    toggle.querySelector(this._selectors.productGalleryShowLess)?.classList.toggle('hidden', !expanded);
+  }
+
+  _updateThumbCarouselArrows = (count) => {
+    const thumbCarousel = this.thumbCarousel || this.querySelector('.product__thumb-carousel');
+    if (!thumbCarousel) return;
+
+    this.thumbCarousel = thumbCarousel;
+
+    if (count == null) {
+      count = 0;
+      for (const slide of this.querySelectorAll(this._selectors.thumbSlide)) {
+        if (!slide.classList.contains('hidden')) count++;
+      }
+    }
+
+    thumbCarousel.classList.toggle('product__thumb-carousel--has-arrows', count > PRODUCT_GALLERY_INITIAL_VISIBLE);
+    thumbCarousel.querySelector('[is-thumb-carousel]')?.swiper?.update();
   }
 
   _handleFilterPack = () => {
@@ -1613,11 +1632,8 @@ class ProductMain extends HTMLElement {
       carousel.swiper.slideTo(current_thumb_slides_count);
 
       if (carousel.hasAttribute('is-thumb-carousel')) {
-        if (parseInt(carousel.dataset.slideCount) < 2) {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.add('hide-thumb-carousel');
-        } else {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.remove('hide-thumb-carousel');
-        }
+        const thumbNext = carousel.closest('.product__thumb-carousel')?.querySelector('[js-pdp-thumb-next]');
+        thumbNext?.classList.toggle('hide-thumb-carousel', parseInt(carousel.dataset.slideCount) < 2);
       }
     });
   }
@@ -1648,13 +1664,12 @@ class ProductMain extends HTMLElement {
       carousel.swiper.update();
 
       if (carousel.hasAttribute('is-thumb-carousel')) {
-        if (current_thumb_slides_count < 2) {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.add('hide-thumb-carousel');
-        } else {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.remove('hide-thumb-carousel');
-        }
+        const thumbNext = carousel.closest('.product__thumb-carousel')?.querySelector('[js-pdp-thumb-next]');
+        thumbNext?.classList.toggle('hide-thumb-carousel', current_thumb_slides_count < 2);
       }
     });
+
+    this._updateThumbCarouselArrows(current_thumb_slides_count);
   }
 
   _updateAddToCartState(variant) {
