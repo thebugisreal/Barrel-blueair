@@ -622,13 +622,13 @@ tm_qual_gjiapmwgps"></div>
                 {% assign upsell_data = product.metafields.custom.seed_upsells.value %}
 
                 {% if product.metafields.seed.upsells != blank or product.metafields.custom.seed_upsells != blank %}
-                  <div class="product__upsells py-md border-t border-gray {{ spacing }}">
+                  <div class="product__upsells {{ spacing }}">
                     {% if product.metafields.seed.upsells_heading != blank %}
-                      <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
+                      <div class="product-upsells__heading p1 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
                     {% endif %}
                     <div class="product-upsells__items grid grid-cols-1 gap-md">
                       {% for upsell in upsell_data %}
-                        {% for i in (1..4) %}
+                        {% for i in (1..3) %}
                           {% assign upsell_heading_key = 'upsell_' | append: i | append: '_heading' %}
                           {% assign upsell_short_desc_key = 'upsell_' | append: i | append: '_short_desc' %}
                           {% assign upsell_image_key = 'upsell_' | append: i | append: '_image_upload' %}

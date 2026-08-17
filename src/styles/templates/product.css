@@ -372,10 +372,59 @@
 }
 
 /* product upsell */
+.product__upsells {
+  @apply px-16 py-12 rounded-md bg-white overflow-hidden
+  desktop:px-24 desktop:py-16;
+}
+
+.product-upsells__heading {
+  @apply mb-xs;
+}
+
+.product-upsells__items {
+  @apply gap-xs;
+}
+
+.product-upsell__row {
+  @apply min-h-[80px];
+}
+
+.product-upsell__variant-image,
+.product-upsell__variant-image .upsell-image-link,
+.product-upsell__variant-image .lazypicture {
+  @apply block w-[80px] h-[80px];
+}
+
+.product-upsell__variant-image img {
+  @apply w-full h-full object-contain rounded-[8px];
+  aspect-ratio: 1;
+}
+
+.product-upsell__variants {
+  @apply gap-[6px];
+}
+
+.product-upsell__atc {
+  @apply flex justify-center items-center shrink-0 w-[32px] h-[32px] p-0 rounded-full border border-blue text-blue bg-white cursor-pointer
+  desktop:hover:text-white desktop:hover:bg-blue;
+}
+
+.product-upsell__atc svg {
+  @apply w-[20px] h-[20px];
+}
+
+.product-upsell__atc:focus-visible {
+  @apply text-white bg-blue;
+}
+
+.product-upsell__atc:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
 .product-upsell__variant--color[data-selected="true"],
 .product-upsell__variant--color[data-selected="false"]:focus,
 .product-upsell__variant--color[data-selected="false"]:focus-visible {
-  @apply border border-blue p-xxxs;
+  @apply border border-blue p-[2px];
 }
 
 .filter-subscription__master-frequency[data-selected="true"] {
@@ -389,21 +438,20 @@
 .product-upsell__variant--filter-type[data-selected="true"],
 .product-upsell__variant--filter-type[data-selected="false"]:focus,
 .product-upsell__variant--filter-type[data-selected="false"]:focus-visible {
-  @apply border-blue;
+  @apply border-blue p-[2px];
 }
 
 .product-upsell__variant--filter-type[data-selected="false"]:focus:not(:focus-visible) {
   @apply border-gray
 }
 
-@media screen(desktop) {
-  .product-upsell__variant--color[data-selected="false"]:hover {
-    @apply border border-blue p-xxxs;
-  }
+.product-upsell__variant--color[data-selected="false"] {
+  @apply desktop:hover:border
+  desktop:hover:border-blue;
+}
 
-  .product-upsell__variant--filter-type[data-selected="false"]:hover {
-    @apply border-blue
-  }
+.product-upsell__variant--filter-type[data-selected="false"] {
+  @apply desktop:hover:border-blue;
 }
 
 .btn.product-upsell__atc:disabled {

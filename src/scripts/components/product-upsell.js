@@ -164,7 +164,7 @@ class ProductUpsell extends HTMLElement {
         const templateColor = title.querySelector('.color-name');
         if (templateColor) {
           templateColor.textContent = colorName;
-          templateColor.classList.add('s3', 'italic');
+          templateColor.classList.add('italic');
           templateColor.style.fontWeight = '400';
         }
       });
