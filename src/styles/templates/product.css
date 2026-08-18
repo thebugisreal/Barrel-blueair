@@ -827,7 +827,14 @@ s-carousel.pointer-event {
 
 .product__dynamic-checkout {
   --shopify-accelerated-checkout-button-border-radius: 30px;
-  --shopify-accelerated-checkout-button-block-size: 50px;
+  --shopify-accelerated-checkout-button-block-size: 38px;
+
+  #more-payment-options-link {
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 600;
+    color: #142333;
+  }
 }
 
 [data-is-quick-view="true"] .product__dynamic-checkout {

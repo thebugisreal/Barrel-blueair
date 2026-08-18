@@ -621,7 +621,7 @@
                     </p>
                   {% endif %}
                   {% if settings.show_dynamic_checkout %}
-                    <div class="product__dynamic-checkout w-full -mt-[12px] {% unless current_variant.available %} hidden {% endunless %}">
+                    <div class="product__dynamic-checkout w-full mt-[8px] {% unless current_variant.available %} hidden {% endunless %}">
                       {{ form | payment_button }}
                     </div>
                   {% endif %}
