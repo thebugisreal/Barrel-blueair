@@ -120,6 +120,18 @@
   transform: none;
 }
 
+.product__main-carousel {
+  @apply relative;
+}
+
+.product__gallery-badges {
+  @apply absolute top-[18px] left-[9px] desktop:top-[20px] desktop:left-[20px] z-[2] flex flex-col gap-[12px] pointer-events-none;
+}
+
+.product__gallery-badge {
+  @apply block w-auto h-auto max-w-[90px] desktop:max-w-[173px];
+}
+
 .product__main-carousel .swiper-nav-btn {
   @apply hidden;
 }

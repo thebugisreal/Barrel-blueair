@@ -86,6 +86,7 @@
         }
       {%- endcapture -%}
       <s-carousel data-options='{{ main_carousel_options }}' class="product__main-carousel grid" >
+        {% render 'product-gallery-badges', product: product %}
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
             {% assign first_render_quantity_options_images = true %}

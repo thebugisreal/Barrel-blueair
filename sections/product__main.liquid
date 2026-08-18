@@ -205,6 +205,7 @@
         }
       {%- endcapture -%}
       <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid" js-product-gallery>
+        {% render 'product-gallery-badges', product: product %}
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
             {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--desktop' %}
