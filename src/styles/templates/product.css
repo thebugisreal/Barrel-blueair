@@ -409,6 +409,10 @@
   desktop:hover:text-white desktop:hover:bg-blue;
 }
 
+.product-upsell__atc--hidden {
+  display: none;
+}
+
 .product-upsell__atc svg {
   @apply w-[20px] h-[20px];
 }

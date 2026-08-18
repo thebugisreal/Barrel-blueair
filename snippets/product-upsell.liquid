@@ -136,7 +136,7 @@
         </div>
 
         <div class="product-upsell__atc-container flex shrink-0 justify-end items-center flex-nowrap gap-xxs">
-          <button type="button" class="product-upsell__atc {% unless upsell_current_variant.available %}hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
+          <button type="button" class="product-upsell__atc {% unless upsell_current_variant.available %}product-upsell__atc--hidden{% endunless %}" {% unless upsell_current_variant.available %}disabled{% endunless %} data-variant-id="{{ upsell_current_variant.id }}" js-product-upsell-atc>
             <span class="btn__text visually-hidden">
               {%- if upsell_current_variant.available -%}
                 Add to Cart
