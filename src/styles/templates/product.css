@@ -526,7 +526,7 @@
 
 .product-subscription-description__bullet::before {
   content: '●';
-  @apply text-[10px] pl-[1px] pr-[4px] leading-none desktop:pr-[6px] desktop:leading-[14px];
+  @apply text-[10px] pl-[1px] pr-[4px] pb-[2px] leading-none desktop:pr-[6px] desktop:leading-[14px];
 }
 
 .filter-subscription__variant[data-selected="true"] {

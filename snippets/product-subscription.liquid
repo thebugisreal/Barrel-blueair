@@ -25,7 +25,7 @@
 
 <div class="product__subscription-container flex flex-col {% if is_quick_view %}gap-[6px] mt-sm mb-sm{% else %}gap-[12px]{% endif %} {% if product.variants.size > 1 or is_additional %}mt-md{% elsif is_additional %}mt-sm{% endif %}">
   <div class="product__subscription group {% if is_additional %}product__subscription--additional {% endif %}border border-gray rounded-[16px] relative data-[selected=true]:border-primary {% if is_quick_view %}mt-[11px]{% else %}mt-[9px]{% endif %}" data-type="{{ pdp_type }}" data-selected="{% if subscription_selected %}true{% else %}false{% endif %}" js-subscription {% if is_additional %}js-additional-subscription {% endif %}{% if airpurifier_type_two_pack %}is-airpurifier-type-two-pack {% endif %}>
-    <button type="button" class="product-subscription__toggle {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}px-[24px] py-[16px] gap-[12px]{% endif %} group-data-[selected=true]:pb-[12px] flex items-start w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle {% if is_additional %}js-additional-subscription-toggle{% endif %}>
+    <button type="button" class="product-subscription__toggle {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}px-[24px] py-[16px] gap-[12px]{% endif %} group-data-[selected=true]:pb-[12px] flex items-center w-full disabled:opacity-30 disabled:cursor-not-allowed" js-subscription-toggle {% if is_additional %}js-additional-subscription-toggle{% endif %}>
       <div class="checkbox bg-white w-[16px] min-w-[16px] h-[16px] border border-primary rounded-full p-[3px] flex justify-center items-center [&_svg]:!fill-transparent">
         {{ 'icon-check.svg' | inline_asset_content }}
       </div>
@@ -108,14 +108,14 @@
                 {% endif %}
                 <ul class="product-subscription-description__bullets mt-[4px]"{% if is_quick_view %} style="display: block!important;"{% endif %}>
                   {% if product.metafields.seed.pdp_filter_quantity != blank %}
-                    <li class="product-subscription-description__bullet text-primary text-[11px] leading-[16px] flex">
+                    <li class="product-subscription-description__bullet flex items-center text-primary text-[11px] leading-[16px]">
                       <div>
                         <span js-filter-subscription-quantity-label>1 Replacement Filter</span> every <span js-filter-subscription-quantity-duration> 6 months</span>
                       </div>
                     </li>
                   {% endif %}
                   {% for bullet in filter_subscription[description_bullets_handle].value %}
-                    <li class="product-subscription-description__bullet text-primary text-[11px] leading-[16px] flex">{{ bullet }}</li>
+                    <li class="product-subscription-description__bullet flex items-center text-primary text-[11px] leading-[16px]">{{ bullet }}</li>
                   {% endfor %}
                 </ul>
               </div>
@@ -421,7 +421,7 @@
   </div>
 
   {% unless is_additional %}
-    <button type="button" class="product__non-subscription border border-gray rounded-[16px] {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}p-[16px] desktop:px-md gap-[12px]{% endif %} flex w-full {% if subscription_selected == false %}order-first{% endif %} data-[selected=true]:border-primary" data-selected="{% if subscription_selected %}false{% else %}true{% endif %}" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
+    <button type="button" class="product__non-subscription border border-gray rounded-[16px] {% if is_quick_view %}px-[10px] py-[16px] gap-[7px]{% else %}p-[16px] desktop:px-md gap-[12px]{% endif %} flex items-center w-full {% if subscription_selected == false %}order-first{% endif %} data-[selected=true]:border-primary" data-selected="{% if subscription_selected %}false{% else %}true{% endif %}" data-available="{{ current_variant.available }}" js-non-subscription-toggle>
       <div class="checkbox bg-white w-[16px] h-[16px] border border-gray rounded-full p-[3px] flex justify-center items-center [&_svg]:!fill-transparent">
         {{ 'icon-check.svg' | inline_asset_content }}
       </div>
