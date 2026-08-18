@@ -847,6 +847,29 @@ s-carousel.pointer-event {
   }
 }
 
+.product__shipping-warranty {
+  background-color: var(--shipping-warranty-bg, #D0FFBB);
+  color: var(--shipping-warranty-color, #142333);
+  @apply rounded-[16px] py-xs px-md;
+}
+
+.product-shipping-warranty__icons {
+  @apply grid grid-cols-3 gap-x-xxs items-center justify-items-center;
+}
+
+.product-shipping-warranty__icon {
+  @apply flex items-center gap-xxxs;
+}
+
+.product-shipping-warranty__icon-image {
+  @apply w-[24px] shrink-0;
+}
+
+.product-shipping-warranty__text {
+  @apply text-[11px] leading-[16px] font-400;
+  color: inherit;
+}
+
 /* PDP Bundle Upsells */
 .pdp-bundle-upsells__product-add-to-cart {
   &:disabled {

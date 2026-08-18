@@ -587,28 +587,31 @@ tm_qual_gjiapmwgps"></div>
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                {% if block.settings.icon_1_image != blank %}
-                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductShippingWarranty" js-accordion-header>
-                        <span class="s2">{{ 'products.product.accordions.shipping_warranty.label' | t }}</span>
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
-                      </button>
-                      <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="true" js-accordion-content>
-                        <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
-                          {% for i in (1..3) %}
-                            {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
-                            {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
-                            <li class="product-shipping-warranty__icon flex justify-start items-center gap-xxs desktop:flex-col desktop:gap-xs">
-                              <div class="w-[36px]">{% render 'lazy-image' image: block.settings[icon_image_handle] %}</div>
-                              <div class="p4 text-center">{{ block.settings[icon_text_handle] }}</div>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                    </div>
-                  </s-accordion>
+                {% if block.settings.icon_1_image != blank or block.settings.icon_2_image != blank or block.settings.icon_3_image != blank %}
+                  <div
+                    class="product__shipping-warranty {{ spacing }}"
+                    style="--shipping-warranty-bg: {{ block.settings.background_color | default: '#D0FFBB' }}; --shipping-warranty-color: {{ block.settings.text_color | default: '#142333' }};"
+                    {{ block.shopify_attributes }}
+                  >
+                    <ul class="product-shipping-warranty__icons">
+                      {% for i in (1..3) %}
+                        {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
+                        {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
+                        {% if block.settings[icon_image_handle] != blank or block.settings[icon_text_handle] != blank %}
+                          <li class="product-shipping-warranty__icon">
+                            {% if block.settings[icon_image_handle] != blank %}
+                              <div class="product-shipping-warranty__icon-image">
+                                {% render 'lazy-image', image: block.settings[icon_image_handle] %}
+                              </div>
+                            {% endif %}
+                            {% if block.settings[icon_text_handle] != blank %}
+                              <div class="product-shipping-warranty__text">{{ block.settings[icon_text_handle] }}</div>
+                            {% endif %}
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </div>
                 {% endif %}
               {% when '@app' %}
                   {% render block %}
@@ -2835,6 +2838,22 @@ tm_qual_gjiapmwgps"></div>
       "name": "Shipping & Warranty",
       "type": "shipping_warranty",
       "settings": [
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#D0FFBB"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#142333"
+        },
         {
           "type": "header",
           "content": "Layout"
