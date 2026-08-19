@@ -72,6 +72,9 @@
 
 <s-product role="section" class="product" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
+  {% if section.settings.enable_sticky_atc and is_transactional and template.suffix != 'coming-soon' %}
+    {% render 'product-sticky-bar', product: product %}
+  {% endif %}
   {%- render 'breadcrumbs',
     show_breadcrumbs: true,
     class: 'fs-body-50'
@@ -1121,6 +1124,12 @@
       "type": "checkbox",
       "id": "show_truemed",
       "label": "Show Truemed"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_atc",
+      "label": "Enable Sticky ATC",
+      "default": true
     }
   ],
   "blocks": [

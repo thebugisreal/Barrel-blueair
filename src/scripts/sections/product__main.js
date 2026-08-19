@@ -1,4 +1,5 @@
 const PRODUCT_GALLERY_INITIAL_VISIBLE = 7;
+const STICKY_BAR_TRANSITION_DURATION = 300;
 
 class ProductMain extends HTMLElement {
   constructor() {
@@ -48,6 +49,7 @@ class ProductMain extends HTMLElement {
       stickyPrice: '[js-sticky-price]',
       stickySelectOptionsBtn: '[js-sticky-select-options]',
       stickyLoader: '[js-sticky-loader]',
+      footer: '.site-footer',
       qunatityOption: '[js-quantity-option]',
       quantityVariant: '[js-quantity-variant]',
       quanityOptionImages: '[js-quanity-option-image]',
@@ -71,7 +73,7 @@ class ProductMain extends HTMLElement {
     this.subscription = this.querySelector(this._selectors.subscription);
     this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
     this.addToCart = this.querySelector(this._selectors.addToCart)
-    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this.stickyBars = this.querySelectorAll(this._selectors.stickyBar);
     this.filterPackQuantity = this.querySelectorAll(this._selectors.filterPackQuantity);
 
     this.isQuickView = this.hasAttribute('data-is-quick-view')
@@ -90,9 +92,8 @@ class ProductMain extends HTMLElement {
     this._handleFilterPack();
     this._handleProductGallery();
 
-    if (window.innerWidth <= 768) {
+    if (this.stickyBars.length > 0) {
       this._handleStickyBar();
-      this._watchWindowResize();
     }
     this._handleSubscription();
     this._handleQuantityVariant();
@@ -321,15 +322,15 @@ class ProductMain extends HTMLElement {
   }
 
   _handleStickyBar = () => {
-    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
-    this.stickyAtcBtns = document.querySelectorAll(this._selectors.stickyAtc);
+    this.stickyBars = this.querySelectorAll(this._selectors.stickyBar);
+    this.stickyAtcBtns = this.querySelectorAll(this._selectors.stickyAtc);
     this.buttons = [...this.buttons, ...this.stickyAtcBtns];
-    this.stickyPrices = document.querySelectorAll(this._selectors.stickyPrice);
+    this.stickyPrices = this.querySelectorAll(this._selectors.stickyPrice);
     this.prices = [...this.prices, ...this.stickyPrices]
-    this.stickySelectOptionsBtns = document.querySelectorAll(this._selectors.stickySelectOptionsBtn);
-    const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
+    this.stickySelectOptionsBtns = this.querySelectorAll(this._selectors.stickySelectOptionsBtn);
     this.stickyAtcClicked = false;
 
+    this._disconnectStickyBarObserver();
     this._initStickyBarObserver();
     this.stickyAtcBtns.forEach((stickyAtc) => {
       stickyAtc.addEventListener('click', this._stickyAtcOnClick);
@@ -344,58 +345,61 @@ class ProductMain extends HTMLElement {
   _initStickyBarObserver = () => {
     if (!this.addToCart) return;
 
-    const observeTarget = this.addToCart;
-
+    const footer = document.querySelector(this._selectors.footer);
+    this.stickyAtcPassed = false;
+    this.stickyFooterVisible = false;
     this.stickyBarVisible = false;
-    this.isUpdating = false;
+    this.stickyDesktopMedia = window.matchMedia('(min-width: 1025px)');
+    this.stickyDesktopMedia.addEventListener('change', this._updateStickyBarVisibility);
 
-    this.debouncedStickyBarUpdate = theme.utils.debounce((shouldShowStickyBar) => {
-      if (this.isUpdating) return;
+    this.stickyAtcObserver = new IntersectionObserver(([entry]) => {
+      this.stickyAtcPassed = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
+      this._updateStickyBarVisibility();
+    }, { threshold: 0 });
+    this.stickyAtcObserver.observe(this.addToCart);
 
-      this.isUpdating = true;
+    if (footer) {
+      this.stickyFooterObserver = new IntersectionObserver(([entry]) => {
+        this.stickyFooterVisible = entry.isIntersecting;
+        this._updateStickyBarVisibility();
+      }, { threshold: 0 });
+      this.stickyFooterObserver.observe(footer);
+    }
 
-      // Double-check the state hasn't changed during debounce delay
-      if (shouldShowStickyBar !== this.stickyBarVisible) {
-        this.stickyBarVisible = shouldShowStickyBar;
+    this._updateStickyBarVisibility();
+  }
 
-        this.stickyBars.forEach((stickyBar) => {
-          if (shouldShowStickyBar) {
-            stickyBar.classList.remove('hidden');
-            document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
-          } else {
-            stickyBar.classList.add('hidden');
-          }
-        });
+  _updateStickyBarVisibility = () => {
+    const shouldShowStickyBar = this.stickyDesktopMedia?.matches || (this.stickyAtcPassed && !this.stickyFooterVisible);
+    if (shouldShowStickyBar === this.stickyBarVisible) return;
 
-        // Add/remove body class for layout adjustments
-        if (shouldShowStickyBar) {
-          document.body.classList.add('sticky-bar-visible');
-        } else {
-          document.body.classList.remove('sticky-bar-visible');
-        }
+    this.stickyBarVisible = shouldShowStickyBar;
+    this.stickyBars.forEach((stickyBar) => {
+      if (stickyBar.stickyHideTimer) {
+        clearTimeout(stickyBar.stickyHideTimer);
+        stickyBar.stickyHideTimer = null;
       }
 
-      // Reset the updating flag after DOM settles
-      requestAnimationFrame(() => {
-        this.isUpdating = false;
-      });
-    }, 500);
+      if (shouldShowStickyBar) {
+        const wasHidden = stickyBar.classList.contains('hidden');
+        stickyBar.classList.remove('hidden');
+        stickyBar.setAttribute('aria-hidden', 'false');
 
-    this.stickyBarObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const shouldShowStickyBar = !entry.isIntersecting;
-
-        // Only update if state actually changed and we're not currently updating
-        if (shouldShowStickyBar !== this.stickyBarVisible && !this.isUpdating) {
-          this.debouncedStickyBarUpdate(shouldShowStickyBar);
+        if (wasHidden) {
+          stickyBar.classList.remove('product__sticky-bar--visible');
+          void stickyBar.offsetHeight;
         }
-      });
-      }, {
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0
-      });
 
-    this.stickyBarObserver.observe(observeTarget);
+        stickyBar.classList.add('product__sticky-bar--visible');
+      } else {
+        stickyBar.classList.remove('product__sticky-bar--visible');
+        stickyBar.setAttribute('aria-hidden', 'true');
+        stickyBar.stickyHideTimer = setTimeout(() => {
+          if (!this.stickyBarVisible) stickyBar.classList.add('hidden');
+          stickyBar.stickyHideTimer = null;
+        }, STICKY_BAR_TRANSITION_DURATION);
+      }
+    });
   }
 
   _stickyAtcOnClick = (evt) => {
@@ -406,13 +410,30 @@ class ProductMain extends HTMLElement {
 
 
   _disconnectStickyBarObserver = () => {
-    if (this.stickyBarObserver) {
-      this.stickyBarObserver.disconnect();
-      this.stickyBarObserver = null;
+    if (this.stickyAtcObserver) {
+      this.stickyAtcObserver.disconnect();
+      this.stickyAtcObserver = null;
     }
 
-    // Clean up debounced function reference
-    this.debouncedStickyBarUpdate = null;
+    if (this.stickyFooterObserver) {
+      this.stickyFooterObserver.disconnect();
+      this.stickyFooterObserver = null;
+    }
+
+    if (this.stickyDesktopMedia) {
+      this.stickyDesktopMedia.removeEventListener('change', this._updateStickyBarVisibility);
+      this.stickyDesktopMedia = null;
+    }
+
+    this.stickyBars?.forEach((stickyBar) => {
+      if (stickyBar.stickyHideTimer) clearTimeout(stickyBar.stickyHideTimer);
+      stickyBar.stickyHideTimer = null;
+      stickyBar.classList.remove('product__sticky-bar--visible');
+      stickyBar.classList.add('hidden');
+      stickyBar.setAttribute('aria-hidden', 'true');
+    });
+    this.stickyBarVisible = false;
+    document.body.classList.remove('sticky-bar-visible');
   }
 
   _deselectAllSubscriptions() {
@@ -1592,7 +1613,7 @@ class ProductMain extends HTMLElement {
   };
 
   _updateStickyBar(variant) {
-    // Only update sticky bar if it was initialized (mobile view)
+    // Only update the sticky bar when it is enabled for this section.
     if (!this.stickyAtcBtns || !this.stickySelectOptionsBtns) {
       return;
     }
@@ -2011,16 +2032,6 @@ class ProductMain extends HTMLElement {
 
   _popStateRender = () => {
     this._renderSwatchLink(document.location)
-  }
-
-  _watchWindowResize = () => {
-    window.addEventListener('resize', this._setVariables)
-  }
-
-  _setVariables = () => {
-    this.stickyBars.forEach((stickyBar) => {
-      document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
-    })
   }
 
 }

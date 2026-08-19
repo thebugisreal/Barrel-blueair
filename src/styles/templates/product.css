@@ -604,31 +604,49 @@
 */
 
 .product__sticky-bar {
-  -moz-box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 .5px 4px rgba(0, 0, 0, 0.4);
-  z-index: 50;
-  position: fixed;
-  top: var(--header-height);
-  left: 0;
-  right: 0;
-  width: 100%;
+  @apply fixed bottom-0 left-0 right-0 z-[50] w-full px-24 pt-16 pb-24 bg-white translate-y-full pointer-events-none transition-transform duration-300 ease-out
+  desktop:px-64 desktop:py-16;
+  box-shadow: 0 -8px 16px 0 rgba(0, 0, 0, 0.04);
+}
+
+.product__sticky-bar--visible {
+  @apply translate-y-0 pointer-events-auto;
+}
+
+.product-sticky-bar__content {
+  @apply flex flex-col gap-16 w-full
+  desktop:flex-row desktop:items-center desktop:justify-between;
+}
+
+.product-sticky-bar__product {
+  @apply flex items-center gap-16 min-w-0;
+}
+
+.product-sticky-bar__image,
+.product-sticky-bar__image .lazypicture {
+  @apply block shrink-0 w-[54px] h-[54px] rounded-[16px] overflow-hidden bg-blue-light;
+}
+
+.product-sticky-bar__image img {
+  @apply w-full h-full object-contain;
+  aspect-ratio: 1;
+}
+
+.product-sticky-bar__details {
+  @apply min-w-0;
+}
+
+.product-sticky-bar__atc-wrapper {
+  @apply w-full
+  desktop:w-[226px] desktop:shrink-0;
+}
+
+.product-sticky-bar__button {
+  @apply w-full h-40 p-xxs justify-center border-primary bg-primary text-white;
 }
 
 .product__layout {
   position: relative;
-}
-
-@media screen and (max-width: 1023px) {
-  body.sticky-bar-visible .product__layout {
-    padding-top: var(--sticky-bar-height);
-  }
-}
-
-@media screen(desktop) {
-  .product__sticky-bar .btn--blue-rounded:hover {
-    @apply border-blue
-  }
 }
 
 s-carousel.pointer-event {

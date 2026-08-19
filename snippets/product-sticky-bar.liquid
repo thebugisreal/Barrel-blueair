@@ -1,21 +1,23 @@
-{%- liquid 
+{%- liquid
   assign current_variant = product.selected_or_first_available_variant
   if product.variants[1].title contains 'subscription' or product.variants[1].title contains 'Subscription'
     assign current_variant = product.variants[0]
   endif
+
+  assign sticky_title = product.title
+  if product.metafields.seed.product_card_title != blank
+    assign sticky_title = product.metafields.seed.product_card_title
+  endif
+
+  assign sticky_image = current_variant.featured_image | default: product.metafields.seed.product_card_image | default: product.featured_image
   assign atc_disabled = false
   assign atc_text = ''
-  assign options_select_required = false
   if product.available
-    if current_variant
-      if current_variant.available 
-        assign atc_text = 'products.product.add_to_cart' | t
-      else 
-        assign atc_disabled = true
-        assign atc_text = 'products.product.sold_out' | t
-      endif
-    else 
-      assign options_select_required = true
+    if current_variant.available
+      assign atc_text = 'products.product.add_to_cart' | t
+    else
+      assign atc_disabled = true
+      assign atc_text = 'products.product.sold_out' | t
     endif
   else
     assign atc_disabled = true
@@ -23,23 +25,33 @@
   endif
 -%}
 
-<div class="product__sticky-bar hidden fixed top-[var(--header-height)] left-0 w-full z-[2] px-md py-xxs gap-md bg-white flex items-center justify-between tabletl:items-center desktop:px-xl" js-product-sticky-bar>
-    <div class="flex flex-col flex-1">
-        <div class="product-sticky-bar__title s1 text-16">
-          {% if product.metafields.seed.product_card_title != blank %}
-            {{ product.metafields.seed.product_card_title  }}
-          {% else %}
-            {{ product.title }}
-          {% endif %}
+<div class="product__sticky-bar hidden" aria-hidden="true" js-product-sticky-bar>
+  <div class="product-sticky-bar__content">
+    <div class="product-sticky-bar__product">
+      {% if sticky_image != blank %}
+        <div class="product-sticky-bar__image" js-sticky-image>
+          {% render 'lazy-image', image: sticky_image, img_classes: 'w-full h-full object-contain' %}
         </div>
-        <p class="p1 text-14 tabletl:hidden" js-sticky-price>{{ current_variant.price | money }}</p>
+      {% endif %}
+
+      <div class="product-sticky-bar__details">
+        <p class="product-sticky-bar__title p1">{{ sticky_title }}</p>
+        {% if product.metafields.seed.blair_plpShortDescription != blank %}
+          <p class="product-sticky-bar__subtitle p5 text-secondary">{{ product.metafields.seed.blair_plpShortDescription }}</p>
+        {% endif %}
+      </div>
     </div>
 
-    <div class="product-sticky-bar__atc-wrapper relative flex gap-md items-center">
-        <p class="s1 hidden tabletl:block" js-sticky-price>{{ current_variant.price | money }}</p>
-        <button class="product__atc btn btn--blue-rounded pr-sm" {% if atc_disabled %} disabled {% endif %} type="button" js-sticky-atc>
-            <span class="product-sticky-bar__atc btn__text text-14" js-atc-text>{{ atc_text }}</span>
-        </button>
-        <loading-spinner js-sticky-loader style="--width: 24px; --height: 24px; --background: #F5F5F580; --color: #002955;"></loading-spinner>
-    </div>  
+    <div class="product-sticky-bar__atc-wrapper">
+      <button class="product-sticky-bar__button product__atc btn btn--blue-rounded" {% if atc_disabled %}disabled{% endif %} type="button" js-sticky-atc>
+        <div class="btn__text p3 flex items-center">
+          <span js-price>{{ current_variant.price | money }}</span>
+          <span>&nbsp;-&nbsp;</span>
+          <span js-atc-text data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}" data-out-of-stock-text="{{ 'products.product.sold_out' | t }}">{{ atc_text }}</span>
+        </div>
+        <loading-spinner style="--width: 24px; --height: 24px; --color: #F0F3F6;"></loading-spinner>
+      </button>
+    </div>
+
+  </div>
 </div>

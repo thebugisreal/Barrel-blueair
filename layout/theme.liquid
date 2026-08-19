@@ -346,9 +346,6 @@ window.sparkShopify = {
     {% include 'region-check' %}
     {% if template.name == 'product' %}
       {% render 'modal--klaviyo-bis' %}
-      {% if is_transactional and template.suffix != 'coming-soon' %}
-        {% render 'product-sticky-bar' %}
-      {% endif %}
     {% endif %}
 
     <main
