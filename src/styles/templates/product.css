@@ -868,15 +868,15 @@ s-carousel.pointer-event {
 .product__shipping-warranty {
   background-color: var(--shipping-warranty-bg, #D0FFBB);
   color: var(--shipping-warranty-color, #142333);
-  @apply rounded-[16px] py-xs px-md;
+  @apply rounded-[16px] py-xs px-16 desktop:px-md;
 }
 
 .product-shipping-warranty__icons {
-  @apply grid grid-cols-3 gap-x-xxs items-center justify-items-center;
+  @apply grid grid-cols-3 gap-x-xxs items-start desktop:items-center justify-items-center;
 }
 
 .product-shipping-warranty__icon {
-  @apply flex items-center gap-xxxs;
+  @apply flex flex-col items-center justify-center gap-xxxs desktop:flex-row desktop:justify-start;
 }
 
 .product-shipping-warranty__icon-image {
@@ -884,7 +884,7 @@ s-carousel.pointer-event {
 }
 
 .product-shipping-warranty__text {
-  @apply text-[11px] leading-[16px] font-400;
+  @apply text-[11px] leading-[16px] font-400 text-center desktop:text-left;
   color: inherit;
 }
 

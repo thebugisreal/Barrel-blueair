@@ -618,17 +618,17 @@
                     </div>
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
-                  {% if block.settings.estimated_delivery != blank %}
-                    <p class="product__estimated-delivery w-full text-[11px] leading-[16px] font-[600] text-primary text-center mt-xs mb-md">
-                      {{ block.settings.estimated_delivery }}
-                    </p>
-                  {% endif %}
                   {% if settings.show_dynamic_checkout %}
                     <div class="product__dynamic-checkout w-full mt-[8px] {% unless current_variant.available %} hidden {% endunless %}">
                       {{ form | payment_button }}
                     </div>
                   {% endif %}
 
+                  {% if block.settings.estimated_delivery != blank %}
+                    <p class="product__estimated-delivery w-full text-[11px] leading-[16px] font-[600] text-primary text-center mt-xs mb-md">
+                      {{ block.settings.estimated_delivery }}
+                    </p>
+                  {% endif %}
                   {% if section.settings.show_truemed %}
                     <div id="truemed-instructions" style="font-size: 12px; margin: 0 auto;" icon-height="12" data-public-id="tm_qual_gjiapmwgps"></div>
                   {% endif %}
@@ -641,44 +641,70 @@
                 {% endif %}
                 <p class="hidden p2 font-700" js-error-message></p>
               {% endif %}
-              {% when 'experience' %}
+
+              {% when 'accordion' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                {% if product.metafields.seed.experience_icons != blank or product.metafields.seed.experience_description != blank %}
-                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item accordion-item product__experience border-t border-gray" js-accordion-item>
-                      <button class="accordion-header py-md w-full flex justify-between items-center" type="button" aria-expanded="true" aria-controls="accordionID" js-accordion-header>
-                        {% if product.metafields.seed.experience_heading != blank %}
-                          <span class="s2">{{ product.metafields.seed.experience_heading }}</span>
+
+                {% liquid
+                  assign accordion_heading = block.settings.heading
+                  assign accordion_description = block.settings.description
+                  assign accordion_open = block.settings.open_by_default
+                  assign accordion_icons = block.settings.icons
+
+                  assign accordion_has_content = false
+                  if accordion_heading != blank or accordion_description != blank or accordion_icons != blank
+                    assign accordion_has_content = true
+                  endif
+                %}
+
+                {% if accordion_has_content %}
+                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion {{ block.shopify_attributes }}>
+                    <div class="accordion-item product__accordion product__experience rounded-2xl border border-blue-darkSky bg-[#F0F5F7] pr-12 pl-16 desktop:pl-24 desktop:pr-16" js-accordion-item>
+                      <button
+                        class="accordion-header py-16 w-full flex justify-between items-center"
+                        type="button"
+                        aria-expanded="{% if accordion_open %}true{% else %}false{% endif %}"
+                        aria-controls="ProductAccordion-{{ block.id }}"
+                        js-accordion-header
+                      >
+                        {% if accordion_heading != blank %}
+                          <span class="text-left text-[15px] leading-[22px] font-[600] text-primary">{{ accordion_heading }}</span>
                         {% endif %}
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+                        <span class="accordion-icon--plus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M11.2 12.8H6.4v-1.6h4.8V6.4h1.6v4.8h4.8v1.6h-4.8v4.8h-1.6v-4.8Z"/>
+                          </svg>
+                        </span>
+                        <span class="accordion-icon--minus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--minus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M7.2 12.8v-1.6h9.6v1.6H7.2Z"/>
+                          </svg>
+                        </span>
                       </button>
-                      <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
-                        {% if is_transactional %}
-                          {% if product.metafields.seed.experience_description != blank %}
-                            <div class="product-experience__description rte p4">
-                              {{ product.metafields.seed.experience_description | metafield_tag }}
-                            </div>
-                          {% endif %}
-                        {% else %}
-                          {% if product.metafields.seed.experience_description_international != blank %}
-                            <div class="product-experience__description rte p4">
-                              {{ product.metafields.seed.experience_description_international | metafield_tag }}
-                            </div>
-                          {% elsif product.metafields.seed.experience_description != blank %}
-                              <div class="product-experience__description rte p4">
-                                {{ product.metafields.seed.experience_description | metafield_tag }}
-                              </div>
-                          {% endif %}
+                      <div
+                        id="ProductAccordion-{{ block.id }}"
+                        class="accordion-content"
+                        aria-hidden="{% if accordion_open %}false{% else %}true{% endif %}"
+                        js-accordion-content
+                      >
+                        {% if accordion_description != blank %}
+                          <div class="product-experience__description rte text-[13px] leading-[21px] text-primary {% if accordion_icons != blank %} mb-16{% else %} mb-24{% endif %}">
+                            {{ accordion_description }}
+                          </div>
                         {% endif %}
-                        {% if product.metafields.seed.experience_icons != blank %}
-                          <ul class="product-experience__icons grid grid-cols-3 mt-md gap-x-xxs gap-y-md pb-md desktop:gap-x-sm">
-                            {% for icon_object in product.metafields.seed.experience_icons.value %}
-                              <li class="product-experience__icon flex flex-col items-center gap-xs">
-                                <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                                <div class="p4 text-center" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
+
+                        {% if accordion_icons != blank %}
+                          <ul class="product-experience__icons grid grid-cols-2 gap-x-24 gap-y-16 mb-24">
+                            {% for icon_object in accordion_icons %}
+                              <li class="product-experience__icon flex flex-col items-start desktop:items-center desktop:gap-8 desktop:flex-row">
+                                {% if icon_object.icon != blank %}
+                                  <div class="w-[48px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                                {% endif %}
+                                {% if icon_object.text != blank %}
+                                  <div class="text-[13px] leading-[21px] text-left flex-1" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
+                                {% endif %}
                               </li>
                             {% endfor %}
                           </ul>
@@ -693,18 +719,26 @@
                 {%- endcapture -%}
                 {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifi != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
-                        <span class="s2">{{ 'products.product.accordions.additional_features.label' | t }}</span>
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+                    <div class="accordion-item product__additional-features rounded-2xl border border-blue-darkSky bg-[#F0F5F7] pr-12 pl-16 desktop:pl-24 desktop:pr-16" js-accordion-item>
+                      <button type="button" class="accordion-header py-16 w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
+                        <span class="text-left text-[15px] leading-[22px] font-[600] text-primary">{{ 'products.product.accordions.additional_features.label' | t }}</span>
+                        <span class="accordion-icon--plus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M11.2 12.8H6.4v-1.6h4.8V6.4h1.6v4.8h4.8v1.6h-4.8v4.8h-1.6v-4.8Z"/>
+                          </svg>
+                        </span>
+                        <span class="accordion-icon--minus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--minus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M7.2 12.8v-1.6h9.6v1.6H7.2Z"/>
+                          </svg>
+                        </span>
                       </button>
                       <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="true" js-accordion-content>
                         <ul class="product-additional-features__list pb-md">
                           {% if product.metafields.seed.blair_wifi != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.wifi_connectivity' | t }}</span>
-                              <span class="p4">
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.wifi_connectivity' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">
                                 {% if product.metafields.seed.blair_wifi == true %}
                                   {{ 'products.product.accordions.additional_features.yes' | t }}
                                 {% else %}
@@ -714,9 +748,9 @@
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_timer != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.on_off_timer' | t }}</span>
-                              <span class="p4">
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.on_off_timer' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">
                                 {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
                                   {{ 'products.product.accordions.additional_features.yes' | t }}, <a href="/pages/subscribe" class="link link--underline underline-offset-1">{{ 'products.product.accordions.additional_features.via_blueair_app' | t }}</a>
                                 {% elsif product.metafields.seed.blair_productSpecification_timer == '1' or product.metafields.seed.blair_productSpecification_timer == 'Yes' or product.metafields.seed.blair_productSpecification_timer == 'yes'  %}
@@ -730,21 +764,21 @@
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.speed_control_options' | t }}</span>
-                              <span class="p4">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.speed_control_options' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_airSensor != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.integrated_air_sensors' | t }}</span>
-                              <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.integrated_air_sensors' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
                             </li>
                           {% endif %}
                           {% if product.metafields.barrel.controls != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.controls' | t }}</span>
-                              <span class="p4">{{ product.metafields.barrel.controls }}</span>
+                            <li class="product-additional-features__list-item grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.controls' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">{{ product.metafields.barrel.controls }}</span>
                             </li>
                           {% endif %}
                         </ul>
@@ -3061,9 +3095,37 @@
       ]
     },
     {
-      "name": "Experience",
-      "type": "experience",
+      "name": "Accordion",
+      "type": "accordion",
       "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "metaobject_list",
+          "id": "icons",
+          "label": "Icons",
+          "metaobject_type": "icon",
+          "limit": 12,
+          "info": "Select icons or connect a product metafield via dynamic source"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": true
+        },
         {
           "type": "header",
           "content": "Layout"
