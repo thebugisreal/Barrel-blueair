@@ -1,0 +1,32 @@
+{%- liquid
+  assign feature_items = product.metafields.custom.pdp_feature_highlights.value
+-%}
+
+{%- if feature_items != blank and feature_items.size > 0 -%}
+  <div class="product__feature-highlights {{ class }}">
+    {%- for item in feature_items -%}
+      {%- liquid
+        assign icon = item.icon.value
+        assign heading = item.heading.value
+        assign description = item.description
+      -%}
+      {%- if icon != blank or heading != blank or description != blank -%}
+        <div class="product__feature-highlight">
+          {%- if icon != blank -%}
+            <div class="product__feature-highlight-icon">
+              {% render 'lazy-image', image: icon, img_classes: 'w-full h-full object-contain' %}
+            </div>
+          {%- endif -%}
+          <div class="product__feature-highlight-copy">
+            {%- if heading != blank -%}
+              <p class="product__feature-highlight-heading">{{ heading }}</p>
+            {%- endif -%}
+            {%- if description != blank -%}
+              <div class="product__feature-highlight-text rte">{{ description | metafield_tag }}</div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

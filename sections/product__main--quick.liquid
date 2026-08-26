@@ -42,7 +42,19 @@
       assign related_tag_scent = tag
     endif
     if tag contains 'size:'
-      assign size_tag = tag | split: 'size:' | last | capitalize
+      assign size_tag_key = tag | split: 'size:' | last | strip | downcase
+      case size_tag_key
+        when 'small'
+          assign size_tag = 'products.product.related_sizes.small' | t
+        when 'medium'
+          assign size_tag = 'products.product.related_sizes.medium' | t
+        when 'large'
+          assign size_tag = 'products.product.related_sizes.large' | t
+        when 'extralarge'
+          assign size_tag = 'products.product.related_sizes.extra_large' | t
+        else
+          assign size_tag = size_tag_key | capitalize
+      endcase
     endif
   endfor
 
@@ -74,6 +86,7 @@
         }
       {%- endcapture -%}
       <s-carousel data-options='{{ main_carousel_options }}' class="product__main-carousel grid" >
+        {% render 'product-gallery-badges', product: product %}
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
             {% assign first_render_quantity_options_images = true %}
@@ -254,7 +267,7 @@
                       {%- endcapture -%}
                       <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
-                          <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                          <span class="product__badge inline-flex items-center justify-center bg-blue-mist text-[11px] leading-[1] font-[600] text-primary py-[2px] px-xs min-h-[18px] rounded-[60px]">{{ tag }}</span>
                         {% endfor %}
                       </div>
                     {% endif %}
@@ -265,7 +278,7 @@
                         {%- endcapture -%}
                         <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap">
                           {% for tag in product.metafields.seed.product_tags.value %}
-                            <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                            <span class="product__badge inline-flex items-center justify-center bg-blue-mist text-[11px] leading-[1] font-[600] text-primary py-[2px] px-xs min-h-[18px] rounded-[60px]">{{ tag }}</span>
                           {% endfor %}
                         </div>
                       {% endif %}
@@ -320,8 +333,8 @@
 
                   {% if size_tag != blank and related_tag_size != blank %}
                     <div class="product__realated-sizes-container mt-xxs mb-sm">
-                      <span class="product__related-size-label block p3 text-blue mb-xxxs">Size: {{size_tag}}</span>
-                      <div class="product__related-sizes flex flex-row-reverse justify-end flex-wrap gap-xs"
+                      <span class="product__related-size-label block p3 text-blue mb-xxxs">{{ 'products.product.related_sizes.label' | t: size: size_tag }}</span>
+                      <div class="product__related-sizes"
                         data-handle="{{product.handle}}"
                         data-collection="{{related_tag_size}}"
                         data-option="size"
@@ -334,8 +347,8 @@
                     <div class="product__realted-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block p3 text-blue mb-xxxs">Color: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block p3 text-primary mb-xxxs">Color: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_color}}"
                             data-option="color"
@@ -350,8 +363,8 @@
                     <div class="product__realted-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Type: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block font-700 p3 text-primary mb-xxs">Type: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_material}}"
                             data-option="material"
@@ -366,8 +379,8 @@
                     <div class="product__related-colors-container mt-xxs mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Aroma: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block font-700 p3 text-primary mb-xxs">Aroma: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_scent}}"
                             data-option="scent"
@@ -465,44 +478,70 @@ tm_qual_gjiapmwgps"></div>
                 {% endif %}
                 <p class="hidden p2 font-700" js-error-message></p>
               {% endif %}
-              {% when 'experience' %}
+
+              {% when 'accordion' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                {% if product.metafields.seed.experience_icons != blank or product.metafields.seed.experience_description != blank %}
-                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item accordion-item product__experience border-t border-gray" js-accordion-item>
-                      <button class="accordion-header py-md w-full flex justify-between items-center" type="button" aria-expanded="true" aria-controls="accordionID" js-accordion-header>
-                        {% if product.metafields.seed.experience_heading != blank %}
-                          <span class="s2">{{ product.metafields.seed.experience_heading }}</span>
+
+                {% liquid
+                  assign accordion_heading = block.settings.heading
+                  assign accordion_description = block.settings.description
+                  assign accordion_open = block.settings.open_by_default
+                  assign accordion_icons = block.settings.icons
+
+                  assign accordion_has_content = false
+                  if accordion_heading != blank or accordion_description != blank or accordion_icons != blank
+                    assign accordion_has_content = true
+                  endif
+                %}
+
+                {% if accordion_has_content %}
+                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion {{ block.shopify_attributes }}>
+                    <div class="accordion-item product__accordion product__experience rounded-2xl border border-blue-darkSky bg-[#F0F5F7] pr-12 pl-16 desktop:pl-24 desktop:pr-16" js-accordion-item>
+                      <button
+                        class="accordion-header py-16 w-full flex justify-between items-center"
+                        type="button"
+                        aria-expanded="{% if accordion_open %}true{% else %}false{% endif %}"
+                        aria-controls="ProductAccordion-{{ block.id }}"
+                        js-accordion-header
+                      >
+                        {% if accordion_heading != blank %}
+                          <span class="text-left text-[15px] leading-[22px] font-[600] text-primary">{{ accordion_heading }}</span>
                         {% endif %}
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+                        <span class="accordion-icon--plus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M11.2 12.8H6.4v-1.6h4.8V6.4h1.6v4.8h4.8v1.6h-4.8v4.8h-1.6v-4.8Z"/>
+                          </svg>
+                        </span>
+                        <span class="accordion-icon--minus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--minus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M7.2 12.8v-1.6h9.6v1.6H7.2Z"/>
+                          </svg>
+                        </span>
                       </button>
-                      <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
-                        {% if is_transactional %}
-                          {% if product.metafields.seed.experience_description != blank %}
-                            <div class="product-experience__description rte p4">
-                              {{ product.metafields.seed.experience_description | metafield_tag }}
-                            </div>
-                          {% endif %}
-                        {% else %}
-                          {% if product.metafields.seed.experience_description_international != blank %}
-                            <div class="product-experience__description rte p4">
-                              {{ product.metafields.seed.experience_description_international | metafield_tag }}
-                            </div>
-                          {% elsif product.metafields.seed.experience_description != blank %}
-                              <div class="product-experience__description rte p4">
-                                {{ product.metafields.seed.experience_description | metafield_tag }}
-                              </div>
-                          {% endif %}
+                      <div
+                        id="ProductAccordion-{{ block.id }}"
+                        class="accordion-content"
+                        aria-hidden="{% if accordion_open %}false{% else %}true{% endif %}"
+                        js-accordion-content
+                      >
+                        {% if accordion_description != blank %}
+                          <div class="product-experience__description rte text-[13px] leading-[21px] text-primary {% if accordion_icons != blank %} mb-16{% else %} mb-24{% endif %}">
+                            {{ accordion_description }}
+                          </div>
                         {% endif %}
-                        {% if product.metafields.seed.experience_icons != blank %}
-                          <ul class="product-experience__icons grid grid-cols-3 mt-md gap-x-xxs gap-y-md pb-md desktop:gap-x-sm">
-                            {% for icon_object in product.metafields.seed.experience_icons.value %}
-                              <li class="product-experience__icon flex flex-col items-center gap-xs">
-                                <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                                <div class="p4 text-center" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
+
+                        {% if accordion_icons != blank %}
+                          <ul class="product-experience__icons grid grid-cols-2 gap-x-24 gap-y-16 mb-24">
+                            {% for icon_object in accordion_icons %}
+                              <li class="product-experience__icon flex flex-col items-start desktop:items-center desktop:gap-8 desktop:flex-row">
+                                {% if icon_object.icon != blank %}
+                                  <div class="w-[48px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                                {% endif %}
+                                {% if icon_object.text != blank %}
+                                  <div class="text-[13px] leading-[21px] text-left flex-1" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
+                                {% endif %}
                               </li>
                             {% endfor %}
                           </ul>
@@ -574,28 +613,31 @@ tm_qual_gjiapmwgps"></div>
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                {% if block.settings.icon_1_image != blank %}
-                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductShippingWarranty" js-accordion-header>
-                        <span class="s2">{{ 'products.product.accordions.shipping_warranty.label' | t }}</span>
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
-                      </button>
-                      <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="true" js-accordion-content>
-                        <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
-                          {% for i in (1..3) %}
-                            {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
-                            {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
-                            <li class="product-shipping-warranty__icon flex justify-start items-center gap-xxs desktop:flex-col desktop:gap-xs">
-                              <div class="w-[36px]">{% render 'lazy-image' image: block.settings[icon_image_handle] %}</div>
-                              <div class="p4 text-center">{{ block.settings[icon_text_handle] }}</div>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                    </div>
-                  </s-accordion>
+                {% if block.settings.icon_1_image != blank or block.settings.icon_2_image != blank or block.settings.icon_3_image != blank %}
+                  <div
+                    class="product__shipping-warranty {{ spacing }}"
+                    style="--shipping-warranty-bg: {{ block.settings.background_color | default: '#D0FFBB' }}; --shipping-warranty-color: {{ block.settings.text_color | default: '#142333' }};"
+                    {{ block.shopify_attributes }}
+                  >
+                    <ul class="product-shipping-warranty__icons">
+                      {% for i in (1..3) %}
+                        {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
+                        {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
+                        {% if block.settings[icon_image_handle] != blank or block.settings[icon_text_handle] != blank %}
+                          <li class="product-shipping-warranty__icon">
+                            {% if block.settings[icon_image_handle] != blank %}
+                              <div class="product-shipping-warranty__icon-image">
+                                {% render 'lazy-image', image: block.settings[icon_image_handle] %}
+                              </div>
+                            {% endif %}
+                            {% if block.settings[icon_text_handle] != blank %}
+                              <div class="product-shipping-warranty__text">{{ block.settings[icon_text_handle] }}</div>
+                            {% endif %}
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </div>
                 {% endif %}
               {% when '@app' %}
                   {% render block %}
@@ -610,13 +652,13 @@ tm_qual_gjiapmwgps"></div>
                 {% assign upsell_data = product.metafields.custom.seed_upsells.value %}
 
                 {% if product.metafields.seed.upsells != blank or product.metafields.custom.seed_upsells != blank %}
-                  <div class="product__upsells py-md border-t border-gray {{ spacing }}">
+                  <div class="product__upsells {{ spacing }}">
                     {% if product.metafields.seed.upsells_heading != blank %}
-                      <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
+                      <div class="product-upsells__heading p1 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
                     {% endif %}
                     <div class="product-upsells__items grid grid-cols-1 gap-md">
                       {% for upsell in upsell_data %}
-                        {% for i in (1..4) %}
+                        {% for i in (1..3) %}
                           {% assign upsell_heading_key = 'upsell_' | append: i | append: '_heading' %}
                           {% assign upsell_short_desc_key = 'upsell_' | append: i | append: '_short_desc' %}
                           {% assign upsell_image_key = 'upsell_' | append: i | append: '_image_upload' %}
@@ -720,6 +762,14 @@ tm_qual_gjiapmwgps"></div>
   </div><!-- .product__layout -->
 
   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
+  <script type="application/json" js-related-size-labels>
+    {
+      "small": {"name": {{ 'products.product.related_sizes.small' | t | json }}, "room": {{ 'products.product.related_sizes.small_room' | t | json }}, "order": 0},
+      "medium": {"name": {{ 'products.product.related_sizes.medium' | t | json }}, "room": {{ 'products.product.related_sizes.medium_room' | t | json }}, "order": 1},
+      "large": {"name": {{ 'products.product.related_sizes.large' | t | json }}, "room": {{ 'products.product.related_sizes.large_room' | t | json }}, "order": 2},
+      "extralarge": {"name": {{ 'products.product.related_sizes.extra_large' | t | json }}, "room": {{ 'products.product.related_sizes.extra_large_room' | t | json }}, "order": 3}
+    }
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2471,9 +2521,37 @@ tm_qual_gjiapmwgps"></div>
       ]
     },
     {
-      "name": "Experience",
-      "type": "experience",
+      "name": "Accordion",
+      "type": "accordion",
       "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "metaobject_list",
+          "id": "icons",
+          "label": "Icons",
+          "metaobject_type": "icon",
+          "limit": 12,
+          "info": "Select icons or connect a product metafield via dynamic source"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": true
+        },
         {
           "type": "header",
           "content": "Layout"
@@ -2814,6 +2892,22 @@ tm_qual_gjiapmwgps"></div>
       "name": "Shipping & Warranty",
       "type": "shipping_warranty",
       "settings": [
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#D0FFBB"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#142333"
+        },
         {
           "type": "header",
           "content": "Layout"

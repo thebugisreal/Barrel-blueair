@@ -1,3 +1,6 @@
+const PRODUCT_GALLERY_INITIAL_VISIBLE = 7;
+const STICKY_BAR_TRANSITION_DURATION = 300;
+
 class ProductMain extends HTMLElement {
   constructor() {
     super();
@@ -46,12 +49,17 @@ class ProductMain extends HTMLElement {
       stickyPrice: '[js-sticky-price]',
       stickySelectOptionsBtn: '[js-sticky-select-options]',
       stickyLoader: '[js-sticky-loader]',
+      footer: '.site-footer',
       qunatityOption: '[js-quantity-option]',
       quantityVariant: '[js-quantity-variant]',
       quanityOptionImages: '[js-quanity-option-image]',
       optionSwatchesContainers: '[js-product-option-swatches-container]',
       relatedOptionSwatch: '[js-related-option-swatch]',
-      filterPackQuantity: '[js-filter-pack-quantity]'
+      filterPackQuantity: '[js-filter-pack-quantity]',
+      productGallery: '[js-product-gallery]',
+      productGalleryToggle: '[js-product-gallery-toggle]',
+      productGalleryShowMore: '[js-product-gallery-show-more]',
+      productGalleryShowLess: '[js-product-gallery-show-less]'
     };
   }
 
@@ -65,7 +73,7 @@ class ProductMain extends HTMLElement {
     this.subscription = this.querySelector(this._selectors.subscription);
     this.subscriptionContainer = this.querySelector(this._selectors.subscriptionContainer);
     this.addToCart = this.querySelector(this._selectors.addToCart)
-    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
+    this.stickyBars = this.querySelectorAll(this._selectors.stickyBar);
     this.filterPackQuantity = this.querySelectorAll(this._selectors.filterPackQuantity);
 
     this.isQuickView = this.hasAttribute('data-is-quick-view')
@@ -82,10 +90,10 @@ class ProductMain extends HTMLElement {
 
     this._checkCartSubscriptionEdit();
     this._handleFilterPack();
+    this._handleProductGallery();
 
-    if (window.innerWidth <= 768) {
+    if (this.stickyBars.length > 0) {
       this._handleStickyBar();
-      this._watchWindowResize();
     }
     this._handleSubscription();
     this._handleQuantityVariant();
@@ -117,6 +125,73 @@ class ProductMain extends HTMLElement {
 
       updateDisplay();
     });
+  }
+
+  _handleProductGallery = () => {
+    this.productGallery = this.querySelector(this._selectors.productGallery);
+    this.productGalleryToggle = this.querySelector(this._selectors.productGalleryToggle);
+    this.thumbCarousel = this.querySelector('.product__thumb-carousel');
+
+    if (this.productGalleryToggle) {
+      this.productGalleryExpanded = false;
+      this.productGalleryToggle.addEventListener('click', this._toggleProductGallery);
+      this._updateProductGallery();
+    }
+
+    this._updateThumbCarouselArrows();
+  }
+
+  _toggleProductGallery = () => {
+    this.productGalleryExpanded = !this.productGalleryExpanded;
+    this._updateProductGallery();
+  }
+
+  _updateProductGallery = (reset = false) => {
+    const gallery = this.productGallery;
+    const toggle = this.productGalleryToggle;
+    if (!gallery || !toggle) return;
+
+    if (reset) this.productGalleryExpanded = false;
+
+    const visible = [];
+    for (const slide of this.querySelectorAll(this._selectors.mainSlide)) {
+      slide.classList.remove('product__gallery-featured', 'product__gallery-extra');
+      if (!slide.classList.contains('hidden')) visible.push(slide);
+    }
+
+    const hasExtra = visible.length > PRODUCT_GALLERY_INITIAL_VISIBLE;
+    if (!hasExtra) this.productGalleryExpanded = false;
+
+    visible[0]?.classList.add('product__gallery-featured');
+    if (hasExtra) {
+      for (let i = PRODUCT_GALLERY_INITIAL_VISIBLE; i < visible.length; i++) {
+        visible[i].classList.add('product__gallery-extra');
+      }
+    }
+
+    const expanded = this.productGalleryExpanded;
+    gallery.classList.toggle('is-expanded', expanded);
+    toggle.classList.toggle('is-visible', hasExtra);
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.querySelector(this._selectors.productGalleryShowMore)?.classList.toggle('hidden', expanded);
+    toggle.querySelector(this._selectors.productGalleryShowLess)?.classList.toggle('hidden', !expanded);
+  }
+
+  _updateThumbCarouselArrows = (count) => {
+    const thumbCarousel = this.thumbCarousel || this.querySelector('.product__thumb-carousel');
+    if (!thumbCarousel) return;
+
+    this.thumbCarousel = thumbCarousel;
+
+    if (count == null) {
+      count = 0;
+      for (const slide of this.querySelectorAll(this._selectors.thumbSlide)) {
+        if (!slide.classList.contains('hidden')) count++;
+      }
+    }
+
+    thumbCarousel.classList.toggle('product__thumb-carousel--has-arrows', count > PRODUCT_GALLERY_INITIAL_VISIBLE);
+    thumbCarousel.querySelector('[is-thumb-carousel]')?.swiper?.update();
   }
 
   _handleFilterPack = () => {
@@ -172,6 +247,7 @@ class ProductMain extends HTMLElement {
 
   disconnectedCallback() {
     this._disconnectStickyBarObserver();
+    this.productGalleryToggle?.removeEventListener('click', this._toggleProductGallery);
     window.removeEventListener("popstate", this._popStateRender);
   }
 
@@ -246,15 +322,15 @@ class ProductMain extends HTMLElement {
   }
 
   _handleStickyBar = () => {
-    this.stickyBars = document.querySelectorAll(this._selectors.stickyBar);
-    this.stickyAtcBtns = document.querySelectorAll(this._selectors.stickyAtc);
+    this.stickyBars = this.querySelectorAll(this._selectors.stickyBar);
+    this.stickyAtcBtns = this.querySelectorAll(this._selectors.stickyAtc);
     this.buttons = [...this.buttons, ...this.stickyAtcBtns];
-    this.stickyPrices = document.querySelectorAll(this._selectors.stickyPrice);
+    this.stickyPrices = this.querySelectorAll(this._selectors.stickyPrice);
     this.prices = [...this.prices, ...this.stickyPrices]
-    this.stickySelectOptionsBtns = document.querySelectorAll(this._selectors.stickySelectOptionsBtn);
-    const stickyLoaders = document.querySelectorAll(this._selectors.stickyLoader);
+    this.stickySelectOptionsBtns = this.querySelectorAll(this._selectors.stickySelectOptionsBtn);
     this.stickyAtcClicked = false;
 
+    this._disconnectStickyBarObserver();
     this._initStickyBarObserver();
     this.stickyAtcBtns.forEach((stickyAtc) => {
       stickyAtc.addEventListener('click', this._stickyAtcOnClick);
@@ -269,58 +345,61 @@ class ProductMain extends HTMLElement {
   _initStickyBarObserver = () => {
     if (!this.addToCart) return;
 
-    const observeTarget = this.addToCart;
-
+    const footer = document.querySelector(this._selectors.footer);
+    this.stickyAtcPassed = false;
+    this.stickyFooterVisible = false;
     this.stickyBarVisible = false;
-    this.isUpdating = false;
+    this.stickyDesktopMedia = window.matchMedia('(min-width: 1025px)');
+    this.stickyDesktopMedia.addEventListener('change', this._updateStickyBarVisibility);
 
-    this.debouncedStickyBarUpdate = theme.utils.debounce((shouldShowStickyBar) => {
-      if (this.isUpdating) return;
+    this.stickyAtcObserver = new IntersectionObserver(([entry]) => {
+      this.stickyAtcPassed = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
+      this._updateStickyBarVisibility();
+    }, { threshold: 0 });
+    this.stickyAtcObserver.observe(this.addToCart);
 
-      this.isUpdating = true;
+    if (footer) {
+      this.stickyFooterObserver = new IntersectionObserver(([entry]) => {
+        this.stickyFooterVisible = entry.isIntersecting;
+        this._updateStickyBarVisibility();
+      }, { threshold: 0 });
+      this.stickyFooterObserver.observe(footer);
+    }
 
-      // Double-check the state hasn't changed during debounce delay
-      if (shouldShowStickyBar !== this.stickyBarVisible) {
-        this.stickyBarVisible = shouldShowStickyBar;
+    this._updateStickyBarVisibility();
+  }
 
-        this.stickyBars.forEach((stickyBar) => {
-          if (shouldShowStickyBar) {
-            stickyBar.classList.remove('hidden');
-            document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
-          } else {
-            stickyBar.classList.add('hidden');
-          }
-        });
+  _updateStickyBarVisibility = () => {
+    const shouldShowStickyBar = this.stickyDesktopMedia?.matches || (this.stickyAtcPassed && !this.stickyFooterVisible);
+    if (shouldShowStickyBar === this.stickyBarVisible) return;
 
-        // Add/remove body class for layout adjustments
-        if (shouldShowStickyBar) {
-          document.body.classList.add('sticky-bar-visible');
-        } else {
-          document.body.classList.remove('sticky-bar-visible');
-        }
+    this.stickyBarVisible = shouldShowStickyBar;
+    this.stickyBars.forEach((stickyBar) => {
+      if (stickyBar.stickyHideTimer) {
+        clearTimeout(stickyBar.stickyHideTimer);
+        stickyBar.stickyHideTimer = null;
       }
 
-      // Reset the updating flag after DOM settles
-      requestAnimationFrame(() => {
-        this.isUpdating = false;
-      });
-    }, 500);
+      if (shouldShowStickyBar) {
+        const wasHidden = stickyBar.classList.contains('hidden');
+        stickyBar.classList.remove('hidden');
+        stickyBar.setAttribute('aria-hidden', 'false');
 
-    this.stickyBarObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const shouldShowStickyBar = !entry.isIntersecting;
-
-        // Only update if state actually changed and we're not currently updating
-        if (shouldShowStickyBar !== this.stickyBarVisible && !this.isUpdating) {
-          this.debouncedStickyBarUpdate(shouldShowStickyBar);
+        if (wasHidden) {
+          stickyBar.classList.remove('product__sticky-bar--visible');
+          void stickyBar.offsetHeight;
         }
-      });
-      }, {
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0
-      });
 
-    this.stickyBarObserver.observe(observeTarget);
+        stickyBar.classList.add('product__sticky-bar--visible');
+      } else {
+        stickyBar.classList.remove('product__sticky-bar--visible');
+        stickyBar.setAttribute('aria-hidden', 'true');
+        stickyBar.stickyHideTimer = setTimeout(() => {
+          if (!this.stickyBarVisible) stickyBar.classList.add('hidden');
+          stickyBar.stickyHideTimer = null;
+        }, STICKY_BAR_TRANSITION_DURATION);
+      }
+    });
   }
 
   _stickyAtcOnClick = (evt) => {
@@ -331,13 +410,30 @@ class ProductMain extends HTMLElement {
 
 
   _disconnectStickyBarObserver = () => {
-    if (this.stickyBarObserver) {
-      this.stickyBarObserver.disconnect();
-      this.stickyBarObserver = null;
+    if (this.stickyAtcObserver) {
+      this.stickyAtcObserver.disconnect();
+      this.stickyAtcObserver = null;
     }
 
-    // Clean up debounced function reference
-    this.debouncedStickyBarUpdate = null;
+    if (this.stickyFooterObserver) {
+      this.stickyFooterObserver.disconnect();
+      this.stickyFooterObserver = null;
+    }
+
+    if (this.stickyDesktopMedia) {
+      this.stickyDesktopMedia.removeEventListener('change', this._updateStickyBarVisibility);
+      this.stickyDesktopMedia = null;
+    }
+
+    this.stickyBars?.forEach((stickyBar) => {
+      if (stickyBar.stickyHideTimer) clearTimeout(stickyBar.stickyHideTimer);
+      stickyBar.stickyHideTimer = null;
+      stickyBar.classList.remove('product__sticky-bar--visible');
+      stickyBar.classList.add('hidden');
+      stickyBar.setAttribute('aria-hidden', 'true');
+    });
+    this.stickyBarVisible = false;
+    document.body.classList.remove('sticky-bar-visible');
   }
 
   _deselectAllSubscriptions() {
@@ -1503,6 +1599,7 @@ class ProductMain extends HTMLElement {
       } else {
         this._updateImageCarousel(this.currentSwatch);
       }
+      this._updateProductGallery(true);
 
     }
     this._updateStickyBar(variant)
@@ -1516,7 +1613,7 @@ class ProductMain extends HTMLElement {
   };
 
   _updateStickyBar(variant) {
-    // Only update sticky bar if it was initialized (mobile view)
+    // Only update the sticky bar when it is enabled for this section.
     if (!this.stickyAtcBtns || !this.stickySelectOptionsBtns) {
       return;
     }
@@ -1556,11 +1653,8 @@ class ProductMain extends HTMLElement {
       carousel.swiper.slideTo(current_thumb_slides_count);
 
       if (carousel.hasAttribute('is-thumb-carousel')) {
-        if (parseInt(carousel.dataset.slideCount) < 2) {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.add('hide-thumb-carousel');
-        } else {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.remove('hide-thumb-carousel');
-        }
+        const thumbNext = carousel.closest('.product__thumb-carousel')?.querySelector('[js-pdp-thumb-next]');
+        thumbNext?.classList.toggle('hide-thumb-carousel', parseInt(carousel.dataset.slideCount) < 2);
       }
     });
   }
@@ -1591,13 +1685,12 @@ class ProductMain extends HTMLElement {
       carousel.swiper.update();
 
       if (carousel.hasAttribute('is-thumb-carousel')) {
-        if (current_thumb_slides_count < 2) {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.add('hide-thumb-carousel');
-        } else {
-          carousel.querySelector('[js-pdp-thumb-next]').classList.remove('hide-thumb-carousel');
-        }
+        const thumbNext = carousel.closest('.product__thumb-carousel')?.querySelector('[js-pdp-thumb-next]');
+        thumbNext?.classList.toggle('hide-thumb-carousel', current_thumb_slides_count < 2);
       }
     });
+
+    this._updateThumbCarouselArrows(current_thumb_slides_count);
   }
 
   _updateAddToCartState(variant) {
@@ -1702,6 +1795,17 @@ class ProductMain extends HTMLElement {
       }
 
       const isUpsellContext = option.closest('product-upsell') !== null;
+      const sizeLabels = optionKind === 'size'
+        ? JSON.parse(this.querySelector('[js-related-size-labels]')?.textContent || '{}')
+        : {};
+
+      if (optionKind === 'size') {
+        products.sort((a, b) => {
+          const aOrder = sizeLabels[(a.size || '').toLowerCase()]?.order ?? 99;
+          const bOrder = sizeLabels[(b.size || '').toLowerCase()]?.order ?? 99;
+          return aOrder - bOrder;
+        });
+      }
 
       let html = '';
       products.forEach((p, index) => {
@@ -1764,28 +1868,30 @@ class ProductMain extends HTMLElement {
         // Main product: original link/redirect behavior
         // Handle size options differently from color/material options
         if (optionKind === 'size') {
-          const aria = `${p.title} – Size ${p.size || label}`;
-          const sizeLabel = p.size || label;
-          const optionTag = p.optionTag ? `<span class="product__related-size-option-tag">${p.optionTag}</span>` : '';
+          const sizeKey = (p.size || label || '').toLowerCase();
+          const sizeMeta = sizeLabels[sizeKey] || {};
+          const sizeLabel = sizeMeta.name || p.size || label;
+          const roomLabel = sizeMeta.room || '';
+          const aria = `${p.title} – Size ${sizeLabel}${roomLabel ? ` ${roomLabel}` : ''}`;
 
           if (isCurrent) {
             html += `
-              <div class="product__related-size-current" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch>
-                ${sizeLabel}
-                ${optionTag}
+              <div class="product__related-size-current" aria-label="${aria}" data-swatch="${sizeKey}" js-related-option-swatch>
+                <span class="product-related-size__name">${sizeLabel}</span>
+                ${roomLabel ? `<span class="product-related-size__room">${roomLabel}</span>` : ''}
               </div>`;
           } else {
             html += `
-              <a href="${href}" class="product-related-size" aria-label="${aria}" data-swatch="${sizeLabel}" js-related-option-swatch js-option-swatch-link>
-                ${sizeLabel}
-                ${optionTag}
+              <a href="${href}" class="product-related-size" aria-label="${aria}" data-swatch="${sizeKey}" js-related-option-swatch js-option-swatch-link>
+                <span class="product-related-size__name">${sizeLabel}</span>
+                ${roomLabel ? `<span class="product-related-size__room">${roomLabel}</span>` : ''}
               </a>`;
           }
         } else {
           // Original color/material swatch logic
           const baseClasses = optionKind === 'material'
             ? 'w-40 h-40 rounded-full flex relative'
-            : 'w-[22px] h-[22px] rounded-full flex relative';
+            : 'w-[24px] h-[24px] rounded-full flex relative';
           const aria = optionKind === 'material'
             ? `${p.title} – Type ${label}`
             : `${p.title} in ${label} color`;
@@ -1805,10 +1911,13 @@ class ProductMain extends HTMLElement {
       });
 
       option.insertAdjacentHTML('beforeend', html);
-      const swatches = option.querySelectorAll('[js-related-option-swatch]');
-      Array.from(swatches)
-        .sort((a, b) => a.dataset.swatch?.toLowerCase().localeCompare(b.dataset.swatch?.toLowerCase() || '') || 0)
-        .forEach(el => el.parentNode.appendChild(el));
+
+      if (optionKind !== 'size') {
+        const swatches = option.querySelectorAll('[js-related-option-swatch]');
+        Array.from(swatches)
+          .sort((a, b) => a.dataset.swatch?.toLowerCase().localeCompare(b.dataset.swatch?.toLowerCase() || '') || 0)
+          .forEach(el => el.parentNode.appendChild(el));
+      }
 
       if (isUpsellContext) {
         const upsell = option.closest('product-upsell');
@@ -1923,16 +2032,6 @@ class ProductMain extends HTMLElement {
 
   _popStateRender = () => {
     this._renderSwatchLink(document.location)
-  }
-
-  _watchWindowResize = () => {
-    window.addEventListener('resize', this._setVariables)
-  }
-
-  _setVariables = () => {
-    this.stickyBars.forEach((stickyBar) => {
-      document.documentElement.style.setProperty('--sticky-bar-height', `${stickyBar.clientHeight}px`)
-    })
   }
 
 }

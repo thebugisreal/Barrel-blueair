@@ -121,7 +121,7 @@ class ProductUpsell extends HTMLElement {
         this.cart.renderContents(response);
         this.cartDrawer.open();
         if (this.atcBtn && this.addedBtn) {
-          this.atcBtn.classList.add('hidden');
+          this.atcBtn.classList.add('product-upsell__atc--hidden');
           this.addedBtn.classList.remove('hidden');
         }
       })
@@ -164,7 +164,7 @@ class ProductUpsell extends HTMLElement {
         const templateColor = title.querySelector('.color-name');
         if (templateColor) {
           templateColor.textContent = colorName;
-          templateColor.classList.add('s3', 'italic');
+          templateColor.classList.add('italic');
           templateColor.style.fontWeight = '400';
         }
       });
@@ -176,14 +176,14 @@ class ProductUpsell extends HTMLElement {
       if (target.dataset.available == 'true') {
         if (btnText) btnText.textContent = 'Add to Cart';
         this.atcBtn.removeAttribute('disabled');
-        this.atcBtn.classList.remove('hidden');
+        this.atcBtn.classList.remove('product-upsell__atc--hidden');
         if (this.addedBtn) this.addedBtn.classList.add('hidden');
         if (this.bisBtn) this.bisBtn.classList.add('hidden');
       } else {
         if (btnText) btnText.textContent = 'Out of Stock';
         this.atcBtn.setAttribute('disabled', '');
         if (this.bisBtn) this.bisBtn.classList.remove('hidden');
-        this.atcBtn.classList.add('hidden');
+        this.atcBtn.classList.add('product-upsell__atc--hidden');
         if (this.addedBtn) this.addedBtn.classList.add('hidden');
       }
     }

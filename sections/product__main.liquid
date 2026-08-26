@@ -41,7 +41,19 @@
       assign related_tag_scent = tag
     endif
     if tag contains 'size:'
-      assign size_tag = tag | split: 'size:' | last | capitalize
+      assign size_tag_key = tag | split: 'size:' | last | strip | downcase
+      case size_tag_key
+        when 'small'
+          assign size_tag = 'products.product.related_sizes.small' | t
+        when 'medium'
+          assign size_tag = 'products.product.related_sizes.medium' | t
+        when 'large'
+          assign size_tag = 'products.product.related_sizes.large' | t
+        when 'extralarge'
+          assign size_tag = 'products.product.related_sizes.extra_large' | t
+        else
+          assign size_tag = size_tag_key | capitalize
+      endcase
     endif
   endfor
 
@@ -54,18 +66,29 @@
   endif
 
   assign user_country = localization.country.iso_code | downcase
+
+  assign icon_content_blocks = section.blocks | where: 'type', 'icon_content'
 -%}
 
 <s-product role="section" class="product" data-shop-domain="{{ shop.permanent_domain | replace: '.myshopify.com', '' }}" data-section-id="{{ section.id }}" data-product-id="{{ product.id }}" {% if current_swatch != blank %}data-swatch-option="{{ swatch_option }}" data-current-swatch="{{ current_swatch }}"{% endif %} data-current-price="{{ current_variant.price }}" data-current-price-compare-at="{{ current_variant.compare_at_price }}">
   <a class="skip-to-content-link sr-only" href="#ProductInfo-{{ section.id }}">Skip to product information</a>
-  <div class="product__layout desktop:grid desktop:grid-cols-2 desktop:items-start">
-    <div class="product__images flex flex-col-reverse desktop:sticky desktop:top-[var(--header-height)] extrawide:max-w-[675px] extrawide:ml-auto">
+  {% if section.settings.enable_sticky_atc and is_transactional and template.suffix != 'coming-soon' %}
+    {% render 'product-sticky-bar', product: product %}
+  {% endif %}
+  {%- render 'breadcrumbs',
+    show_breadcrumbs: true,
+    class: 'fs-body-50'
+  -%}
+  <div class="product__layout desktop:grid desktop:grid-cols-[minmax(0,56.875vw)_minmax(0,1fr)] desktop:items-start desktop:pl-xl desktop:pb-44">
+    <div class="product__images flex flex-col-reverse desktop:block">
       {%- capture thumb_carousel_options -%}
         {
           "loop": false,
           "autoHeight": false,
-          "spaceBetween": 8,
+          "spaceBetween": 7,
+          "slidesPerView": "auto",
           "watchSlidesProgress": true,
+          "watchOverflow": true,
           "navigation": {
             "enabled": true,
             "prevEl": "[js-pdp-thumb-prev]",
@@ -73,8 +96,9 @@
           }
         }
       {%- endcapture -%}
-      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel grid p-sm desktop:p-md w-fit mx-auto">
-        <div id="ProductThumbCarousel-{{ product.id }}" class="swiper w-full max-w-[350px] px-[40px]" js-carousel js-pdp-carousel is-thumb-carousel data-slide-count="{{ product.media.size }}">
+      <s-carousel data-options='{{ thumb_carousel_options }}' class="product__thumb-carousel">
+        <div class="product__thumb-carousel-nav product__thumb-carousel-nav--prev swiper-button-prev after:content-none" js-pdp-thumb-prev>{{ 'icon-active-left.svg' | inline_asset_content }}</div>
+        <div id="ProductThumbCarousel-{{ product.id }}" class="product__thumb-carousel-swiper swiper" js-carousel js-pdp-carousel is-thumb-carousel data-slide-count="{{ product.media.size }}">
           <div class="swiper-wrapper">
             {% assign first_render_quantity_options_images = true %}
             {% assign current_slides_count = 0 %}
@@ -135,7 +159,7 @@
 
               {% case media.media_type %}
                 {% when 'image' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[32px] min-w-[32px]" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {% if forloop.first %}
                       {% assign loading = 'eager' %}
                       {% assign fetchpriority = 'high' %}
@@ -158,21 +182,18 @@
 
                   </div>
                 {% when 'video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[32px] min-w-[32px]" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | video_tag:  autoplay: true, loop: true, mute: true, class: "w-full" }}
                   </div>
                 {% when 'external_video' %}
-                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[48px] min-w-[48px] p-xxxs border border-gray" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
+                  <div class="{% if hide_media %}hidden{% else %}swiper-slide swiper-slide-thumb{% endif %} {% if active_thumb %}swiper-slide-thumb-active{% endif %} w-[32px] min-w-[32px]" {% if media_swatch != blank %}data-swatch="{{ media_swatch }}"{% endif %} js-carousel-slide js-thumb-carousel-slide>
                     {{ media | external_video_tag }}
                   </div>
               {% endcase %}
             {% endfor %}
           </div>
-          <div class="swiper-button-prev left-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none" js-pdp-thumb-prev>{{ 'icon-active-left.svg' | inline_asset_content }}</div>
-          <div class="swiper-button-next right-0 top-1/2 -translate-y-1/2 w-[40px] text-blue after:content-none {% if current_slides_count < 2 %}hide-thumb-carousel{% endif %}" js-pdp-thumb-next>{{ 'icon-active-right.svg' | inline_asset_content }}</div>
-          <div class="absolute h-full w-[40px] left-0 top-0 z-[5]" style="background: linear-gradient(to right, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
-          <div class="absolute h-full w-[40px] right-0 top-0 z-[5]" style="background: linear-gradient(to left, rgba(255,255,255), rgba(255,255,255, 0.5));"></div>
         </div>
+        <div class="product__thumb-carousel-nav product__thumb-carousel-nav--next swiper-button-next after:content-none {% if current_slides_count < 2 %}hide-thumb-carousel{% endif %}" js-pdp-thumb-next>{{ 'icon-active-right.svg' | inline_asset_content }}</div>
       </s-carousel>
       {%- capture main_carousel_options -%}
         {
@@ -186,9 +207,12 @@
           }
         }
       {%- endcapture -%}
-      <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid" >
+      <s-carousel data-options='{{ main_carousel_options }}' data-controller="ProductThumbCarousel-{{ product.id }}" class="product__main-carousel grid" js-product-gallery>
+        {% render 'product-gallery-badges', product: product %}
         <div id="ProductMainCarousel-{{ product.id }}" class="swiper w-full max-w-full" js-carousel js-pdp-carousel>
           <div class="swiper-wrapper">
+            {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--desktop' %}
+            {% render 'product-feature-highlights', class: 'product__feature-highlights--desktop' %}
             {% assign first_render_quantity_options_images = true %}
             {% for media in product.media %}
               {% assign media_swatch = '' %}
@@ -272,11 +296,21 @@
           <div class="swiper-button-prev swiper-nav-btn left-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-prev>{{ 'icon-arrow-left.svg' | inline_asset_content }}</div>
           <div class="swiper-button-next swiper-nav-btn right-sm text-blue w-[40px] h-[40px] bg-white rounded-full after:content-none" js-pdp-main-next>{{ 'icon-arrow-right.svg' | inline_asset_content }}</div>
         </div>
+        <button
+          type="button"
+          class="product__gallery-toggle hidden"
+          aria-controls="ProductMainCarousel-{{ product.id }}"
+          aria-expanded="false"
+          js-product-gallery-toggle
+        >
+          <span js-product-gallery-show-more>{{ 'products.product.show_more' | t }}</span>
+          <span class="hidden" js-product-gallery-show-less>{{ 'products.product.show_less' | t }}</span>
+          <span class="product__gallery-toggle-icon">{{ 'icon-caret-down.svg' | inline_asset_content }}</span>
+        </button>
       </s-carousel>
     </div><!-- .product__images-container -->
 
-    <div class="product__information p-md desktop:px-xl" id="ProductInfo-{{ section.id }}" js-product-info>
-      <div class="desktop:max-w-[var(--max-w-desktop)] desktop:mx-auto" style="--max-w-desktop: {% if section.settings.buybox_max_width != blank %}{{ section.settings.buybox_max_width }}{% else %}unset{% endif %};">
+    <div class="product__information p-md desktop:pt-16 desktop:pb-0 desktop:pl-48 desktop:pr-64" id="ProductInfo-{{ section.id }}" js-product-info>
         {%- comment -%}
           * Product Form
         {%- endcomment -%}
@@ -302,7 +336,7 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <h1 class="product__title h3 {{ spacing }}">
+                <h1 class="product__title h5 text-primary font-500 {{ spacing }}">
                   {% render 'product-title-intl', product: product %}
                 </h1>
                 {% if current_variant.title != 'Default Title' and product.options contains 'Filter'%}
@@ -321,10 +355,10 @@
                 {%- endcapture -%}
                 <div class="{{ spacing }}">
                   {% if product.metafields.seed.blair_plpShortDescription != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">{{ product.metafields.seed.blair_plpShortDescription }}</p>
+                    <p class="product__short-description p4 text-[13px] text-primary mt-[2px]">{{ product.metafields.seed.blair_plpShortDescription }}</p>
                   {% endif %}
                   {% if product.metafields.seed.blair_filterSupportModels != blank %}
-                    <p class="product__short-description p2 desktop:mt-xxs">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
+                    <p class="product__short-description p4 text-[13px] text-primary mt-[2px]">{{ 'products.product.compatible_with' | t }} {{ product.metafields.seed.blair_filterSupportModels }}</p>
                   {% endif %}
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
@@ -373,7 +407,7 @@
                       {%- endcapture -%}
                       <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.product\_\_price-wrapper_+_&]:inline-flex [.mb-0.product\_\_price-wrapper_+_&]:mb-0 [.desktop\:mb-0.product\_\_price-wrapper_+_&]:desktop:mb-0">
                         {% for tag in product.metafields.seed.product_tags_canada.value %}
-                          <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                          <span class="product__badge inline-flex items-center justify-center bg-blue-mist text-[11px] leading-[1] font-[600] text-primary py-[2px] px-xs min-h-[18px] rounded-[60px]">{{ tag }}</span>
                         {% endfor %}
                       </div>
                     {% endif %}
@@ -384,11 +418,25 @@
                         {%- endcapture -%}
                         <div class="product__badges {{ spacing }} flex justify-start gap-x-xs gap-y-xxs flex-wrap [.product\_\_price-wrapper_+_&]:inline-flex [.mb-0.product\_\_price-wrapper_+_&]:mb-0 [.desktop\:mb-0.product\_\_price-wrapper_+_&]:desktop:mb-0">
                           {% for tag in product.metafields.seed.product_tags.value %}
-                            <span class="product__badge bg-blue-darkSky text-12 leading-[1] font-500 py-xxs px-xs rounded-[60px]">{{ tag }}</span>
+                            <span class="product__badge inline-flex items-center justify-center bg-blue-mist text-[11px] leading-[1] font-[600] text-primary py-[2px] px-xs min-h-[18px] rounded-[60px]">{{ tag }}</span>
                           {% endfor %}
                         </div>
                       {% endif %}
                   {% endif %}
+                {% endif %}
+              {% when 'pdp_info' %}
+                {% if block.settings.heading != blank or block.settings.description != blank %}
+                  {%- capture spacing -%}
+                    {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
+                  {%- endcapture -%}
+                  <div class="product__pdp-info-item {{ spacing }}" {{ block.shopify_attributes }}>
+                    {% if block.settings.heading != blank %}
+                      <p class="product__pdp-info-heading text-[13px] font-[600] leading-[21px] text-primary">{{ block.settings.heading }}</p>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <div class="product__pdp-info-description text-[13px] font-400 leading-[21px] text-primary rte">{{ block.settings.description }}</div>
+                    {% endif %}
+                  </div>
                 {% endif %}
               {% when 'filter_options' %}
                 {% if enable_subscription == false and product.metafields.seed.product_card_filter_products != blank %}
@@ -438,9 +486,9 @@
                   {% endunless %}
 
                   {% if size_tag != blank and related_tag_size != blank %}
-                    <div class="product__realated-sizes-container mt-sm mb-sm">
-                      <span class="product__related-size-label block font-700 text-12 text-blue mb-xs">Size: {{size_tag}}</span>
-                      <div class="product__related-sizes flex flex-row-reverse justify-end flex-wrap gap-xs"
+                    <div class="product__realated-sizes-container pt-xxs">
+                      <span class="product__related-size-label block font-[600] text-[13px] text-primary mb-xxxs">{{ 'products.product.related_sizes.label' | t: size: size_tag }}</span>
+                      <div class="product__related-sizes"
                         data-handle="{{product.handle}}"
                         data-collection="{{related_tag_size}}"
                         data-option="size"
@@ -453,8 +501,8 @@
                     <div class="product__realted-colors-container mt-sm mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 text-12 text-blue mb-xxs">Color: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block font-700 text-[13px] text-primary mb-xxs">Color: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_color}}"
                             data-option="color"
@@ -469,8 +517,8 @@
                     <div class="product__realted-colors-container mt-sm mb-sm">
                       {% for color in product.metafields.shopify.color-pattern.value %}
                         <div class="product__related-color">
-                          <span class="product__related-color-label block font-700 p3 text-blue mb-xxs">Type: {{color.label}}</span>
-                          <div class="product__related-colors flex flex-wrap gap-xs"
+                          <span class="product__related-color-label block font-700 p3 text-primary mb-xxs">Type: {{color.label}}</span>
+                          <div class="product__related-colors flex flex-wrap gap-[16px]"
                             data-handle="{{product.handle}}"
                             data-collection="{{related_tag_material}}"
                             data-option="material"
@@ -544,18 +592,18 @@
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                <div class="flex flex-col gap-md {{ spacing }} tabletl:items-center tabletl:justify-between">
+                <div class="flex flex-col {{ spacing }} tabletl:items-center tabletl:justify-between" {{ block.shopify_attributes }}>
                   {%- unless current_variant.available -%}
                     <a class="btn btn--blue-rounded relative mx-auto w-full justify-center h-[50px] klaviyo-bis-trigger" href="#">{{ 'products.product.notify_me_when_available' | t }}</a>
                   {%- endunless -%}
 
                   <button
-                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center {% unless current_variant.available %} hidden {% endunless %}"
+                    class="product__atc btn btn--blue-rounded relative mx-auto w-full justify-center bg-primary text-white {% unless current_variant.available %} hidden {% endunless %}"
 
                     type="submit"
                     {% unless current_variant.available %} disabled {% endunless %}
                     js-add-to-cart>
-                    <div class="btn__text whitespace-nowrap h-[32px] flex items-center">
+                    <div class="btn__text whitespace-nowrap flex items-center text-[15px] leading-[22px] font-[600]">
                       <span js-price>
                         {{ current_variant.price | money }}
                       </span>
@@ -571,17 +619,21 @@
                     <loading-spinner style="--color: #F0F3F6; --width: 24px; --height: 24px;"></loading-spinner>
                   </button>
                   {% if settings.show_dynamic_checkout %}
-                    <div class="product__dynamic-checkout w-full -mt-[12px] {% unless current_variant.available %} hidden {% endunless %}">
+                    <div class="product__dynamic-checkout w-full mt-[8px] {% unless current_variant.available %} hidden {% endunless %}">
                       {{ form | payment_button }}
                     </div>
                   {% endif %}
 
+                  {% if block.settings.estimated_delivery != blank %}
+                    <p class="product__estimated-delivery w-full text-[11px] leading-[16px] font-[600] text-primary text-center mt-xs mb-md">
+                      {{ block.settings.estimated_delivery }}
+                    </p>
+                  {% endif %}
                   {% if section.settings.show_truemed %}
-                    <div id="truemed-instructions" style="font-size: 14px; margin: 0 auto;" icon-height="12" data-public-id="
-tm_qual_gjiapmwgps"></div>
+                    <div id="truemed-instructions" style="font-size: 12px; margin: 0 auto;" icon-height="12" data-public-id="tm_qual_gjiapmwgps"></div>
                   {% endif %}
                   {% unless template.suffix == 'gift-card' %}
-                    <p class="affirm-as-low-as mx-auto text-12" data-page-type="product" data-amount="{{current_variant.price}}"></p>
+                    <p class="affirm-as-low-as mx-auto text-[11px] leading-[16px] text-secondary mt-xxs" data-page-type="product" data-amount="{{current_variant.price}}"></p>
                   {% endunless %}
                 </div>
                 {% if shop.permanent_domain == '5ef43d-4a.myshopify.com' %}
@@ -589,44 +641,70 @@ tm_qual_gjiapmwgps"></div>
                 {% endif %}
                 <p class="hidden p2 font-700" js-error-message></p>
               {% endif %}
-              {% when 'experience' %}
+
+              {% when 'accordion' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                {% if product.metafields.seed.experience_icons != blank or product.metafields.seed.experience_description != blank %}
-                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item accordion-item product__experience border-t border-gray" js-accordion-item>
-                      <button class="accordion-header py-md w-full flex justify-between items-center" type="button" aria-expanded="true" aria-controls="accordionID" js-accordion-header>
-                        {% if product.metafields.seed.experience_heading != blank %}
-                          <span class="s2">{{ product.metafields.seed.experience_heading }}</span>
+
+                {% liquid
+                  assign accordion_heading = block.settings.heading
+                  assign accordion_description = block.settings.description
+                  assign accordion_open = block.settings.open_by_default
+                  assign accordion_icons = block.settings.icons
+
+                  assign accordion_has_content = false
+                  if accordion_heading != blank or accordion_description != blank or accordion_icons != blank
+                    assign accordion_has_content = true
+                  endif
+                %}
+
+                {% if accordion_has_content %}
+                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion {{ block.shopify_attributes }}>
+                    <div class="accordion-item product__accordion product__experience rounded-2xl border border-blue-darkSky bg-[#F0F5F7] pr-12 pl-16 desktop:pl-24 desktop:pr-16" js-accordion-item>
+                      <button
+                        class="accordion-header py-16 w-full flex justify-between items-center"
+                        type="button"
+                        aria-expanded="{% if accordion_open %}true{% else %}false{% endif %}"
+                        aria-controls="ProductAccordion-{{ block.id }}"
+                        js-accordion-header
+                      >
+                        {% if accordion_heading != blank %}
+                          <span class="text-left text-[15px] leading-[22px] font-[600] text-primary">{{ accordion_heading }}</span>
                         {% endif %}
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+                        <span class="accordion-icon--plus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M11.2 12.8H6.4v-1.6h4.8V6.4h1.6v4.8h4.8v1.6h-4.8v4.8h-1.6v-4.8Z"/>
+                          </svg>
+                        </span>
+                        <span class="accordion-icon--minus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--minus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M7.2 12.8v-1.6h9.6v1.6H7.2Z"/>
+                          </svg>
+                        </span>
                       </button>
-                      <div id="accordionID" class="accordion-content" aria-hidden="false" js-accordion-content>
-                        {% if is_transactional %}
-                          {% if product.metafields.seed.experience_description != blank %}
-                            <div class="product-experience__description rte p4">
-                              {{ product.metafields.seed.experience_description | metafield_tag }}
-                            </div>
-                          {% endif %}
-                        {% else %}
-                          {% if product.metafields.seed.experience_description_international != blank %}
-                            <div class="product-experience__description rte p4">
-                              {{ product.metafields.seed.experience_description_international | metafield_tag }}
-                            </div>
-                          {% elsif product.metafields.seed.experience_description != blank %}
-                              <div class="product-experience__description rte p4">
-                                {{ product.metafields.seed.experience_description | metafield_tag }}
-                              </div>
-                          {% endif %}
+                      <div
+                        id="ProductAccordion-{{ block.id }}"
+                        class="accordion-content"
+                        aria-hidden="{% if accordion_open %}false{% else %}true{% endif %}"
+                        js-accordion-content
+                      >
+                        {% if accordion_description != blank %}
+                          <div class="product-experience__description rte text-[13px] leading-[21px] text-primary {% if accordion_icons != blank %} mb-16{% else %} mb-24{% endif %}">
+                            {{ accordion_description }}
+                          </div>
                         {% endif %}
-                        {% if product.metafields.seed.experience_icons != blank %}
-                          <ul class="product-experience__icons grid grid-cols-3 mt-md gap-x-xxs gap-y-md pb-md desktop:gap-x-sm">
-                            {% for icon_object in product.metafields.seed.experience_icons.value %}
-                              <li class="product-experience__icon flex flex-col items-center gap-xs">
-                                <div class="w-[36px]">{% render 'lazy-image' image: icon_object.icon %}</div>
-                                <div class="p4 text-center" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
+
+                        {% if accordion_icons != blank %}
+                          <ul class="product-experience__icons grid grid-cols-2 gap-x-24 gap-y-16 mb-24">
+                            {% for icon_object in accordion_icons %}
+                              <li class="product-experience__icon flex flex-col items-start desktop:items-center desktop:gap-8 desktop:flex-row">
+                                {% if icon_object.icon != blank %}
+                                  <div class="w-[48px]">{% render 'lazy-image' image: icon_object.icon %}</div>
+                                {% endif %}
+                                {% if icon_object.text != blank %}
+                                  <div class="text-[13px] leading-[21px] text-left flex-1" style="overflow-wrap: anywhere;">{{ icon_object.text }}</div>
+                                {% endif %}
                               </li>
                             {% endfor %}
                           </ul>
@@ -641,18 +719,26 @@ tm_qual_gjiapmwgps"></div>
                 {%- endcapture -%}
                 {% if product.metafields.seed.blair_airSensor != blank  or product.metafields.seed.blair_productSpecification_fanspeed != blank or product.metafields.seed.blair_productSpecification_timer != blank or product.metafields.seed.blair_wifi != blank %}
                   <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item product__additional-features border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
-                        <span class="s2">{{ 'products.product.accordions.additional_features.label' | t }}</span>
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
+                    <div class="accordion-item product__additional-features rounded-2xl border border-blue-darkSky bg-[#F0F5F7] pr-12 pl-16 desktop:pl-24 desktop:pr-16" js-accordion-item>
+                      <button type="button" class="accordion-header py-16 w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductAdditionalFeatures" js-accordion-header>
+                        <span class="text-left text-[15px] leading-[22px] font-[600] text-primary">{{ 'products.product.accordions.additional_features.label' | t }}</span>
+                        <span class="accordion-icon--plus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--plus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M11.2 12.8H6.4v-1.6h4.8V6.4h1.6v4.8h4.8v1.6h-4.8v4.8h-1.6v-4.8Z"/>
+                          </svg>
+                        </span>
+                        <span class="accordion-icon--minus text-primary w-[24px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon--minus" fill="none" viewBox="0 0 24 24">
+                            <path fill="#142333" d="M7.2 12.8v-1.6h9.6v1.6H7.2Z"/>
+                          </svg>
+                        </span>
                       </button>
                       <div id="ProductAdditionalFeatures" class="accordion-content" aria-hidden="true" js-accordion-content>
                         <ul class="product-additional-features__list pb-md">
                           {% if product.metafields.seed.blair_wifi != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.wifi_connectivity' | t }}</span>
-                              <span class="p4">
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.wifi_connectivity' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">
                                 {% if product.metafields.seed.blair_wifi == true %}
                                   {{ 'products.product.accordions.additional_features.yes' | t }}
                                 {% else %}
@@ -662,9 +748,9 @@ tm_qual_gjiapmwgps"></div>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_timer != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.on_off_timer' | t }}</span>
-                              <span class="p4">
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.on_off_timer' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">
                                 {% if product.metafields.seed.blair_productSpecification_timer == 'true_app' %}
                                   {{ 'products.product.accordions.additional_features.yes' | t }}, <a href="/pages/subscribe" class="link link--underline underline-offset-1">{{ 'products.product.accordions.additional_features.via_blueair_app' | t }}</a>
                                 {% elsif product.metafields.seed.blair_productSpecification_timer == '1' or product.metafields.seed.blair_productSpecification_timer == 'Yes' or product.metafields.seed.blair_productSpecification_timer == 'yes'  %}
@@ -678,21 +764,21 @@ tm_qual_gjiapmwgps"></div>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_productSpecification_fanspeed != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.speed_control_options' | t }}</span>
-                              <span class="p4">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.speed_control_options' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">{{ product.metafields.seed.blair_productSpecification_fanspeed }}</span>
                             </li>
                           {% endif %}
                           {% if product.metafields.seed.blair_airSensor != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.integrated_air_sensors' | t }}</span>
-                              <span class="p4">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
+                            <li class="product-additional-features__list-item pb-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.integrated_air_sensors' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">{% if product.metafields.seed.blair_airSensor == '1' or product.metafields.seed.blair_airSensor == 'Yes' or product.metafields.seed.blair_airSensor == 'yes' %}{{ 'products.product.accordions.additional_features.yes' | t }}{% else %}{{ 'products.product.accordions.additional_features.no' | t }}{% endif %}</span>
                             </li>
                           {% endif %}
                           {% if product.metafields.barrel.controls != blank %}
-                            <li class="product-additional-features__list-item py-xs grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
-                              <span class="p3">{{ 'products.product.accordions.additional_features.controls' | t }}</span>
-                              <span class="p4">{{ product.metafields.barrel.controls }}</span>
+                            <li class="product-additional-features__list-item grid grid-cols-1 gap-xxxs desktop:grid-cols-2 desktop:gap-md">
+                              <span class="text-[13px] leading-[21px] text-primary font-[600]">{{ 'products.product.accordions.additional_features.controls' | t }}</span>
+                              <span class="text-[13px] leading-[21px] text-primary">{{ product.metafields.barrel.controls }}</span>
                             </li>
                           {% endif %}
                         </ul>
@@ -704,31 +790,43 @@ tm_qual_gjiapmwgps"></div>
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
                 {%- endcapture -%}
-                {% if block.settings.icon_1_image != blank %}
-                  <s-accordion class="block {{ spacing }}" data-manual-collapse="true" js-accordion>
-                    <div class="accordion-item product__shipping-warranty border-t border-gray" js-accordion-item>
-                      <button type="button" class="accordion-header py-md w-full flex justify-between items-center" aria-expanded="false" aria-controls="ProductShippingWarranty" js-accordion-header>
-                        <span class="s2">{{ 'products.product.accordions.shipping_warranty.label' | t }}</span>
-                        <span class="accordion-icon--plus p-xxs w-[33px] leading-[0]">{{ 'icon-plus.svg' | inline_asset_content }}</span>
-                        <span class="accordion-icon--minus p-xxs w-[33px] leading-[0]">{{ 'icon-minus.svg' | inline_asset_content }}</span>
-                      </button>
-                      <div id="ProductShippingWarranty" class="accordion-content" aria-hidden="true" js-accordion-content>
-                        <ul class="product-shipping-warranty__icons grid grid-cols-1 gap-sm desktop:grid-cols-3 desktop:gap-md pb-md">
-                          {% for i in (1..3) %}
-                            {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
-                            {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
-                            <li class="product-shipping-warranty__icon flex justify-start items-center gap-xxs desktop:flex-col desktop:gap-xs">
-                              <div class="w-[36px]">{% render 'lazy-image' image: block.settings[icon_image_handle] %}</div>
-                              <div class="p4 text-center">{{ block.settings[icon_text_handle] }}</div>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                    </div>
-                  </s-accordion>
+                {% if block.settings.icon_1_image != blank or block.settings.icon_2_image != blank or block.settings.icon_3_image != blank %}
+                  <div
+                    class="product__shipping-warranty {{ spacing }}"
+                    style="--shipping-warranty-bg: {{ block.settings.background_color | default: '#D0FFBB' }}; --shipping-warranty-color: {{ block.settings.text_color | default: '#142333' }};"
+                    {{ block.shopify_attributes }}
+                  >
+                    <ul class="product-shipping-warranty__icons">
+                      {% for i in (1..3) %}
+                        {% assign icon_image_handle = 'icon_' | append: i | append: '_image' %}
+                        {% assign icon_text_handle = 'icon_' | append: i | append: '_text' %}
+                        {% if block.settings[icon_image_handle] != blank or block.settings[icon_text_handle] != blank %}
+                          <li class="product-shipping-warranty__icon">
+                            {% if block.settings[icon_image_handle] != blank %}
+                              <div class="product-shipping-warranty__icon-image">
+                                {% render 'lazy-image', image: block.settings[icon_image_handle] %}
+                              </div>
+                            {% endif %}
+                            {% if block.settings[icon_text_handle] != blank %}
+                              <div class="product-shipping-warranty__text">{{ block.settings[icon_text_handle] }}</div>
+                            {% endif %}
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </div>
                 {% endif %}
               {% when '@app' %}
                   {% render block %}
+                  {% if block.id contains 'okendo_star_rating' %}
+                    <style>
+                      .okeReviews.oke-sr{padding-bottom: 12px;color: #142333;}
+                      .okeReviews.oke-sr .oke-sr-count{font-size: 11px;font-weight: 600;line-height: 16px;color: #142333;}
+                      .okeReviews.oke-sr .oke-stars,
+                      .okeReviews.oke-sr .oke-stars svg{height: 12px;width: auto;color: #142333;fill: #142333;}
+                      .okeReviews.oke-sr .oke-stars svg use{width: 12px;height: 12px;fill: #142333;}
+                    </style>
+                  {% endif %}
               {% when 'upsells' %}
                 {%- capture spacing -%}
                   {{ block.settings.margin_top_mobile }} {{ block.settings.margin_bottom_mobile }} {{ block.settings.margin_top_desktop }} {{ block.settings.margin_bottom_desktop }}
@@ -737,13 +835,13 @@ tm_qual_gjiapmwgps"></div>
                 {% assign upsell_data = product.metafields.custom.seed_upsells.value %}
 
                 {% if product.metafields.seed.upsells != blank or product.metafields.custom.seed_upsells != blank %}
-                  <div class="product__upsells py-md border-t border-gray {{ spacing }}">
+                  <div class="product__upsells {{ spacing }}">
                     {% if product.metafields.seed.upsells_heading != blank %}
-                      <div class="product-upsells__heading s2 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
+                      <div class="product-upsells__heading p1 mb-md">{{ product.metafields.seed.upsells_heading }}</div>
                     {% endif %}
                     <div class="product-upsells__items grid grid-cols-1 gap-md">
                       {% for upsell in upsell_data %}
-                        {% for i in (1..4) %}
+                        {% for i in (1..3) %}
                           {% assign upsell_heading_key = 'upsell_' | append: i | append: '_heading' %}
                           {% assign upsell_short_desc_key = 'upsell_' | append: i | append: '_short_desc' %}
                           {% assign upsell_image_key = 'upsell_' | append: i | append: '_image_upload' %}
@@ -855,11 +953,21 @@ tm_qual_gjiapmwgps"></div>
           {% endif %}
 
         {%- endform -%}
-      </div>
+      
+      {% render 'product-feature-highlights', class: 'product__feature-highlights--mobile' %}
     </div><!-- .product__info-container -->
+    {% render 'product-icon-content-grid', blocks: icon_content_blocks, class: 'product__icon-content-grid--mobile' %}
   </div><!-- .product__layout -->
 
   <script type="application/json" id="ProductJSON">{{ product | json }}</script>
+  <script type="application/json" js-related-size-labels>
+    {
+      "small": {"name": {{ 'products.product.related_sizes.small' | t | json }}, "room": {{ 'products.product.related_sizes.small_room' | t | json }}, "order": 0},
+      "medium": {"name": {{ 'products.product.related_sizes.medium' | t | json }}, "room": {{ 'products.product.related_sizes.medium_room' | t | json }}, "order": 1},
+      "large": {"name": {{ 'products.product.related_sizes.large' | t | json }}, "room": {{ 'products.product.related_sizes.large_room' | t | json }}, "order": 2},
+      "extralarge": {"name": {{ 'products.product.related_sizes.extra_large' | t | json }}, "room": {{ 'products.product.related_sizes.extra_large_room' | t | json }}, "order": 3}
+    }
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1047,20 +1155,41 @@ tm_qual_gjiapmwgps"></div>
   "name": "Product",
   "settings": [
     {
-      "type": "text",
-      "id": "buybox_max_width",
-      "label": "Buybox Content Max Width - Desktop",
-      "info": "Make sure to include units"
-    },
-    {
       "type": "checkbox",
       "id": "show_truemed",
       "label": "Show Truemed"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_atc",
+      "label": "Enable Sticky ATC",
+      "default": true
     }
   ],
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "name": "Icon content",
+      "type": "icon_content",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
     },
     {
       "name": "Filter Pack",
@@ -2433,6 +2562,186 @@ tm_qual_gjiapmwgps"></div>
       ]
     },
     {
+      "name": "PDP Info",
+      "type": "pdp_info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_mobile",
+          "label": "Margin Top - Mobile",
+          "options": [
+            {
+              "value": "mt-0",
+              "label": "None"
+            },
+            {
+              "value": "mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_mobile",
+          "label": "Margin Bottom - Mobile",
+          "options": [
+            {
+              "value": "mb-0",
+              "label": "None"
+            },
+            {
+              "value": "mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "mb-xs"
+        },
+        {
+          "type": "select",
+          "id": "margin_top_desktop",
+          "label": "Margin Top - Desktop",
+          "options": [
+            {
+              "value": "desktop:mt-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mt-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mt-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mt-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mt-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mt-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mt-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mt-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mt-0"
+        },
+        {
+          "type": "select",
+          "id": "margin_bottom_desktop",
+          "label": "Margin Bottom - Desktop",
+          "options": [
+            {
+              "value": "desktop:mb-0",
+              "label": "None"
+            },
+            {
+              "value": "desktop:mb-xs",
+              "label": "XS"
+            },
+            {
+              "value": "desktop:mb-sm",
+              "label": "SM"
+            },
+            {
+              "value": "desktop:mb-md",
+              "label": "MD"
+            },
+            {
+              "value": "desktop:mb-lg",
+              "label": "LG"
+            },
+            {
+              "value": "desktop:mb-xl",
+              "label": "XL"
+            },
+            {
+              "value": "desktop:mb-xxl",
+              "label": "2XL"
+            },
+            {
+              "value": "desktop:mb-xxxl",
+              "label": "3XL"
+            }
+          ],
+          "default": "desktop:mb-xs"
+        }
+      ]
+    },
+    {
       "name": "Product Options",
       "type": "product_options",
       "settings": [
@@ -2612,6 +2921,15 @@ tm_qual_gjiapmwgps"></div>
       "settings": [
         {
           "type": "header",
+          "content": "Estimated Delivery"
+        },
+        {
+          "type": "text",
+          "id": "estimated_delivery",
+          "label": "Text"
+        },
+        {
+          "type": "header",
           "content": "Layout"
         },
         {
@@ -2773,13 +3091,41 @@ tm_qual_gjiapmwgps"></div>
             }
           ],
           "default": "desktop:mb-0"
-        },
+        }
       ]
     },
     {
-      "name": "Experience",
-      "type": "experience",
+      "name": "Accordion",
+      "type": "accordion",
       "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "metaobject_list",
+          "id": "icons",
+          "label": "Icons",
+          "metaobject_type": "icon",
+          "limit": 12,
+          "info": "Select icons or connect a product metafield via dynamic source"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": true
+        },
         {
           "type": "header",
           "content": "Layout"
@@ -3283,6 +3629,22 @@ tm_qual_gjiapmwgps"></div>
             }
           ],
           "default": "desktop:mb-0"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#D0FFBB"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#142333"
         },
         {
           "type": "header",

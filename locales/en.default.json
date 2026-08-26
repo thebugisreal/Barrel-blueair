@@ -20,6 +20,12 @@
       "admin_link_html": "Are you the store owner? <a href=\"\/admin\" class=\"link underlined-link\">Log in here<\/a>",
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
+    "navigation": {
+      "home": "Home",
+      "next": "Next",
+      "previous": "Previous",
+      "breadcrumbs": "Breadcrumbs"
+    },
     "social": {
       "alt_text": {
         "share_on_facebook": "Share on Facebook",
@@ -119,10 +125,23 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "show_more": "Show More",
+      "show_less": "Show Less",
       "description": "Description",
       "on_sale": "Sale",
       "product_variants": "Product variants",
       "full_details": "Full details",
+      "related_sizes": {
+        "label": "Size: {{ size }}",
+        "small": "Small",
+        "small_room": "< 200 ft²",
+        "medium": "Medium",
+        "medium_room": "200-400 ft²",
+        "large": "Large",
+        "large_room": "400-600 ft²",
+        "extra_large": "Extra Large",
+        "extra_large_room": "> 600 ft²"
+      },
       "media": {
         "open_featured_media": "Open featured media in gallery view",
         "open_media": "Open media {{ index }} in gallery view",

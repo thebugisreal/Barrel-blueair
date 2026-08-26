@@ -1,0 +1,17 @@
+.breadcrumbs {
+  @apply flex px-md pt-xs pb-xxs desktop:px-xl desktop:pt-md desktop:pb-sm p6 text-primary;
+}
+
+.breadcrumbs__list,
+.navigation-buttons__list {
+  @apply flex flex-wrap gap-4 list-none p-0 m-0;
+}
+
+.breadcrumbs__item,
+.navigation-buttons__item {
+  @apply flex flex-wrap gap-4 list-none p-0 m-0;
+}
+
+.breadcrumbs__current {
+  @apply text-secondary;
+}

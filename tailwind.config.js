@@ -28,6 +28,8 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       white: "#ffffff",
+      primary: "#142333",
+      secondary: "#6D6E71",
       black: {
         true: "#000000",
         DEFAULT: "#000000",
@@ -35,6 +37,7 @@ module.exports = {
       blue: {
         light: "#F0F3F6",
         darkSky: "#D6E4F3",
+        mist: "#C7E5F9",
         sky: "#BAE6FF",
         medium: "#405D7F",
         DEFAULT: "#002955"

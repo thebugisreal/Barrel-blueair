@@ -1,6 +1,18 @@
 .product__accordion .rte p,
 .section__accordion .rte p {
-    @apply my-24
+    @apply my-16;
+}
+
+.product__accordion .rte > *:first-child,
+.product__accordion .rte .metafield-rich_text_field > *:first-child,
+.section__accordion .rte > *:first-child,
+.section__accordion .rte .metafield-rich_text_field > *:first-child {
+    @apply mt-0 mb-0;
+}
+
+.product__accordion .icon--plus,
+.product__accordion .icon--minus {
+    @apply w-[24px];
 }
 
 .accordion-header[aria-expanded="true"] .icon--plus {

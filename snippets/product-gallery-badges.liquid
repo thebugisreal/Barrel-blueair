@@ -1,0 +1,14 @@
+{% if product.metafields.custom.product_badge_image != blank %}
+  <div class="product__gallery-badges">
+    {% assign badge_images = product.metafields.custom.product_badge_image.value %}
+    {% if badge_images.size > 0 %}
+      {% for badge in badge_images %}
+        {% if badge != blank %}
+          {{ badge | image_url: width: badge.width | image_tag: loading: 'lazy', class: 'product__gallery-badge', width: nil, height: nil }}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {{ badge_images | image_url: width: badge_images.width | image_tag: loading: 'lazy', class: 'product__gallery-badge', width: nil, height: nil }}
+    {% endif %}
+  </div>
+{% endif %}
