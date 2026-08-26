@@ -35,13 +35,13 @@
     <button type="button" class="cart-item-subscription__checkbox" data-checked="false" js-cart-subscription-checkbox></button>
     <p class="p3">
       {% if preselected_subscription.title contains 'Wick' and is_two_in_one_subscription %}
-        Add a Wick Subscription
+        Add a Wick Subscription 2026
       {% elsif preselected_subscription.title contains 'Aroma' and is_two_in_one_subscription %}
         Add an Aroma Subscription
       {% elsif preselected_subscription.title contains 'Collection' and is_two_in_one_subscription %}
         Add an Aroma Subscription
       {% else %}
-        Add a Subscription
+        Add a Subscription 999999999
       {% endif %}
     </p>
     <button type="button" class="cart-item-subscription__tooltip cart-item-subscription__tooltip--add w-[19px] h-[19px] rounded-full"></button>
