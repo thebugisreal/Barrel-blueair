@@ -19,6 +19,11 @@ class ProductMain extends HTMLElement {
       subscriptionPrice: '[js-subscription-price]',
       discountSubscriptionPrice: '[js-discount-subscription-price]',
       priceCopy: '[js-price-copy]',
+      sellingPlanCopy: '[js-selling-plan-copy]',
+      filterPriceCopy: '[js-filter-price-copy]',
+      filterSubscriptionSelectWrapper: '[js-filter-subscription-select-wrapper]',
+      filterSubscriptionSelectCurrent: '[js-filter-subscription-select-current]',
+      filterSubscriptionSelectOption: '[js-filter-subscription-select-option]',
       filterSubscriptionVariant: '[js-filter-subscription-variant]',
       filterSubscriptionDescription: '[js-filter-subscription-description]',
       filterSubscriptionSellingPlansGroup: '[js-filter-subscription-selling-plans-group]',
@@ -370,6 +375,10 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionTempIdInputs = this.subscription.querySelectorAll(this._selectors.filterSubscriptionTempIdInput);
     this.filterSubscriptionOgDateInput = this.subscription.querySelector(this._selectors.filterSubscriptionOgDateInput);
     this.subscriptionSelectedOnLoad = this.subscription.dataset.selected == 'true' ? true : false;
+    this.filterSubscriptionSelectWrapper = this.subscription.querySelector(this._selectors.filterSubscriptionSelectWrapper);
+    this.filterSubscriptionSelectCurrent = this.subscription.querySelector(this._selectors.filterSubscriptionSelectCurrent);
+    this.filterSubscriptionSelectOptions = this.subscription.querySelectorAll(this._selectors.filterSubscriptionSelectOption);
+    this.filterPriceCopy = this.subscription.querySelector(this._selectors.filterPriceCopy);
 
     if (this.subscription.hasAttribute('is-airpurifier-type-two-pack')) {
       this.currentQuantity = 2;
@@ -410,6 +419,24 @@ class ProductMain extends HTMLElement {
     this.filterSubscriptionMasterFrequencies.forEach((masterFrequency) => {
       masterFrequency.addEventListener('click', this._filterSubscriptionMasterFrequencyOnClick);
     });
+
+    this.filterSubscriptionSelectOptions.forEach((trigger) => {
+      trigger.addEventListener('click', this._filterSubscriptionSelectOptionOnClick);
+    });
+
+    if (this.filterSubscriptionSelectCurrent) {
+      this.filterSubscriptionSelectCurrent.addEventListener('click', this._filterSubscriptionSelectCurrentOnClick);
+    }
+
+    if (this.filterSubscriptionSelectWrapper) {
+      if (this.filterSubscriptionSelectWrapper.childElementCount === 1) {
+        this.filterSubscriptionSelectWrapper.closest('.product-subscription__filter-subscriptions')?.classList.add('hidden');
+      } else if (this.subscription.closest('[js-quick-view-content]')) {
+        document.querySelector('[js-quick-view-content]').addEventListener('click', this._filterSubscriptionSelectOutsideClick);
+      } else {
+        document.addEventListener('click', this._filterSubscriptionSelectOutsideClick);
+      }
+    }
 
     // Set toggle handlers for all subscriptions
     allSubscriptions.forEach((subscription) => {
@@ -595,6 +622,36 @@ class ProductMain extends HTMLElement {
     }
   }
 
+  _filterSubscriptionSelectCurrentOnClick = (evt) => {
+    evt.preventDefault();
+    this.filterSubscriptionSelectWrapper.classList.toggle('is-active')
+    this.filterSubscriptionSelectCurrent.classList.toggle('is-active')
+  }
+
+  _filterSubscriptionSelectOptionOnClick = (evt) => {
+    evt.preventDefault();
+
+    const triggerTarget = evt?.currentTarget;
+    if (!this.filterSubscriptionSelectCurrent || !triggerTarget) return;
+
+    this.filterSubscriptionSelectCurrent.innerHTML = triggerTarget.innerHTML
+    this.filterSubscriptionSelectWrapper.classList.remove('is-active')
+    this.filterSubscriptionSelectCurrent.classList.remove('is-active')
+    this.filterPriceCopy.innerHTML = triggerTarget.querySelector(this._selectors.priceCopy).innerHTML
+    this.filterPriceCopy.querySelector('.hidden').classList.remove('hidden')
+  }
+
+  _filterSubscriptionSelectOutsideClick = (evt) => {
+    if (!this.filterSubscriptionSelectWrapper) return;
+    if (
+      !this.filterSubscriptionSelectWrapper.contains(evt.target) &&
+      !this.filterSubscriptionSelectCurrent.contains(evt.target)
+    ) {
+      this.filterSubscriptionSelectWrapper.classList.remove('is-active');
+      this.filterSubscriptionSelectCurrent.classList.remove('is-active');
+    }
+  }
+
   _filterSubscriptionVariantOnClick = (evt) => {
     evt.preventDefault();
 
@@ -701,12 +758,14 @@ class ProductMain extends HTMLElement {
     const subscriptionContainer = triggerTarget.closest('[js-subscription]');
     if (!subscriptionContainer) return;
 
+    const sellingPlanCopy = subscriptionContainer.querySelector(this._selectors.sellingPlanCopy);
     const subscriptionType = subscriptionContainer.dataset.type;
 
     if (subscriptionType == '2in1_purify_humidify') {
       const prevSelectedTrigger = triggerTarget.closest(this._selectors.filterSubscriptionSellingPlansGroup).querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
       if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
       triggerTarget.dataset.selected = 'true';
+      sellingPlanCopy.innerHTML = triggerTarget.dataset.sellingPlanName
 
       const filterSubscriptionSelectedVariantInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantInput}[name="items[${triggerTarget.dataset.index}][id]"]`);
       const filterSubscriptionSelectedVariantSellingPlanInputTarget = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSelectedVariantSellingPlanInput}[name="items[${triggerTarget.dataset.index}][selling_plan]"]`);
@@ -742,6 +801,7 @@ class ProductMain extends HTMLElement {
       const prevSelectedTrigger = subscriptionContainer.querySelector(`${this._selectors.filterSubscriptionSellingPlan}[data-selected="true"]`);
       if (prevSelectedTrigger) prevSelectedTrigger.dataset.selected = 'false';
       triggerTarget.dataset.selected = 'true';
+      sellingPlanCopy.innerHTML = triggerTarget.dataset.sellingPlanName
 
       const filterSubscriptionSelectedVariantInput = subscriptionContainer.querySelector(this._selectors.filterSubscriptionSelectedVariantInput);
       const filterSubscriptionSelectedVariantSellingPlanInput = subscriptionContainer.querySelector(this._selectors.filterSubscriptionSelectedVariantSellingPlanInput);
@@ -857,11 +917,13 @@ class ProductMain extends HTMLElement {
     if (!subscriptionContainer) return;
 
     // Deselect all other master frequency options within this subscription container
+    const sellingPlanCopy = subscriptionContainer.querySelector(this._selectors.sellingPlanCopy);
     const masterFrequencies = subscriptionContainer.querySelectorAll('[js-filter-subscription-master-frequency]');
     masterFrequencies.forEach((freqBtn) => {
       freqBtn.dataset.selected = 'false';
     });
     triggerTarget.dataset.selected = 'true';
+    sellingPlanCopy.innerHTML = triggerTarget.dataset.sellingPlanName
 
     const selectedFrequency = triggerTarget.dataset.frequency;
     const frequency = parseInt(selectedFrequency.toLowerCase().replace('months', '').trim());
